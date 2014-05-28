@@ -44,7 +44,8 @@ What some users have said about **PiKISS**:
 ####[ Installation ]
 
 <pre>
-git clone repo
+git clone https://github.com/jmcerrejon/PiKISS.git
+cd PiKISS
 ./piKiss.sh
 </pre>
 
@@ -60,7 +61,7 @@ Blog: [http://misapuntesde.com](http://misapuntesde.com)
 
 ####[ DONATE ]
 
-This project has involved many hours thinking, searching, refactoring and testing code. I accept donations due the effort to make new scripts. Donations are not required or expected. Any amount that you feel is appropriate would be appreciated. Simply click on the Donate button below. Thank you! :)
+This project has involved many hours thinking, searching, refactoring and testing code. I accept donations due the effort to make new scripts. Donations are not required or expected. Any amount that you feel is appropriate would be appreciated. Simply click on the Donate button at the end of this document. Thank you! :)
 
 Estimated hours of work so far: **260 hours**.
 
@@ -97,7 +98,8 @@ Lo que algunos usuarios han dicho de **PiKISS**:
 ####[ Instalación ]
 
 <pre>
-git clone repo
+git clone https://github.com/jmcerrejon/PiKISS.git
+cd PiKISS
 ./piKiss.sh
 </pre>
 
@@ -115,7 +117,7 @@ Blog: [http://misapuntesde.com](http://misapuntesde.com)
 
 ####[ DONACIONES ]
 
-Este proyecto ha supuesto muchas horas de pensar, buscar, refactorizar y testear código. Acepto donaciones por el esfuerzo que supone mantener y hacer nuevos scripts. Las donaciones no se requieren ni las espero. Cualquier cantidad que sientas que es apropiada sería de agradecer. Simplemente haz click en el botón "Donate" abajo. ¡Gracias! :)
+Este proyecto ha supuesto muchas horas de pensar, buscar, refactorizar y testear código. Acepto donaciones por el esfuerzo que supone mantener y hacer nuevos scripts. Las donaciones no se requieren ni las espero. Cualquier cantidad que sientas que es apropiada sería de agradecer. Simplemente haz click en el botón "Donate" al final del documento. ¡Gracias! :)
 
 Horas estimadas de trabajo hasta el momento: **260 horas**.
 
