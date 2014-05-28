@@ -1,0 +1,24 @@
+[xboxdrv]
+ui-clear = true
+device-name = "Microsoft Xbox 360 Controller"
+
+[ui-axismap]
+x2=REL_X:10
+y2=REL_Y:-10
+x1=KEY_A:KEY_D
+y2=KEY_W:KEY_S
+
+[ui-buttonmap]
+dl = KEY_LEFT
+dr = KEY_RIGHT
+du = KEY_UP
+dd = KEY_DOWN
+A = KEY_ENTER
+B = KEY_BACKSPACE
+X = KEY_C
+Y = KEY_ESC
+back = KEY_I
+guide = KEY_O
+start = KEY_SPACE
+LB = KEY_MINUS
+RB = KEY_EQUAL
