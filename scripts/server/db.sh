@@ -1,9 +1,11 @@
 #!/bin/bash
 #
-# Description : Install and optimize database instance
+# Description : Install and optimize databases
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.3 (14/May/14)
+# Version     : 0.4 (29/May/14)
 #
+# TODO        · New DB like MariaDB, MongoDB,...
+#             · Modify query_cache_size value
 #
 clear
 

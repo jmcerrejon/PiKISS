@@ -2,7 +2,7 @@
 #
 # Description : Check Last-Modified field from some distros images, so you can know if a distro is updated.
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (8/May/14)
+# Version     : 1.0 (29/May/14)
 #
 clear
 
@@ -20,7 +20,7 @@ declare -a imgName=(	'RetroPie'
 )
 declare -a imgUrl=(	'http://blog.petrockblock.com/?wpdmdl=17'
 			'http://pipaos.mitako.eu/'
-			'http://openelec.tv/get-openelec/finish/10-raspberry-pi-builds/315-diskimage-openelec-stable-raspberry-pi-arm'
+			'http://openelec.tv/get-openelec/download/finish/10-raspberry-pi-builds/336-diskimage-openelec-stable-raspberry-pi-arm'
 			'http://archlinuxarm.org/os/ArchLinuxARM-rpi-latest.zip'
 			'http://sourceforge.net/projects/minepeon/files/latest/download?source=files'
 			'http://sourceforge.net/projects/pimame/files/latest/download?source=files'

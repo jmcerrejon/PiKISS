@@ -2,7 +2,7 @@
 #
 # Description : Show Weather
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (14/May/14)
+# Version     : 1.0 (29/May/14)
 #
 # Help:
 # · http://api.openweathermap.org/data/2.5/forecast/daily?q=Huelva&mode=xml&units=metric&cnt=7&lang=sp
@@ -19,7 +19,7 @@ echo "==========================================="
 echo -e "More Info: https://github.com/fcambus/ansiweather\n"
 
 echo "Enter your country and press [Enter]:"
-read $COUNTRY
+read COUNTRY
 
 clear
 echo "Fetching data for $COUNTRY (5 days)..."
