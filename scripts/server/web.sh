@@ -2,7 +2,7 @@
 #
 # Description : Install Web Server + php
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.7 (26/May/14)
+# Version     : 0.7.1 (26/May/14)
 #
 # TODO        · Select another web server: nginx, cherokkee, lighhttpd
 #
@@ -22,7 +22,7 @@ apache(){
     cd /var/www
     sudo chown -R $USER: .
 
-    echo "<?php phpinfo(); ?>" > /var/www/phpinfo.php
+     echo "<?php phpinfo(); ?>" | sudo tee /var/www/phpinfo.php
 }
 
 monkey(){

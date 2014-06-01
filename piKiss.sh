@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.7 (2014)
+# Version : Beta 0.7.1 (2014)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -19,7 +19,7 @@
 # VARIABLES
 # - - - - -
 #
-TITLE="PiKISS (Pi Keeping Simple, Stupid!) .:. Jose Cerrejon .:. (ver. 0.7 - 2014)"
+TITLE="PiKISS (Pi Keeping It Simple, Stupid!) .:. Jose Cerrejon .:. (ver. 0.7 - 2014)"
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
 NOROOT=0
@@ -293,7 +293,7 @@ do
 		--title 	"[ Configure ]" \
 		--menu  	"Select to configure your distro" $wHEIGHT $wWIDTH 4 \
 		Back  		"Back to main menu" \
-        	Joypad      	"Configure PS2, WII, XBox360 or generic joypad controller" \
+        	Joypad      	"Configure WII, XBox360 controller" \
 		Netcfg		"Config static IP address" 2>"${INPUT}"
 
 	menuitem=$(<"${INPUT}")
