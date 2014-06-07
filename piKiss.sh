@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.7.1 (2014)
+# Version : Beta 0.7.2 (2014)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -217,7 +217,7 @@ function smGames(){
 			Back  		"Back to main menu" \
 	        	Minecraft   	"Minecraft Pi Ed." \
 	        	Dune2  		"Dune 2 Legacy" \
-	        	Quake2  	"Quake 2" \
+	        	Quake  	"Install Quake 2 for now" \
                 Crispy-doom "Crispy to play Doom, Heretic, Hexen, Strife" \
 			Sqrxz4		"Sqrxz 4: Difficult platform game" 2>"${INPUT}"
 
@@ -227,7 +227,7 @@ function smGames(){
 	        	Back) 		break ;;
 	        	Minecraft) 	./scripts/games/minecraft.sh ;;
 	        	Dune2) 		./scripts/games/dune2.sh ;;
-	        	Quake2) 	./scripts/games/quake2.sh ;;
+	        	Quake) 	./scripts/games/quake2.sh ;;
                 Crispy-doom)./scripts/games/cdoom.sh ;;
 			Sqrxz4) 	./scripts/games/sqrxz4.sh ;;
 		esac
