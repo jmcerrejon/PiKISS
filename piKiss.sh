@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.7.2 (2014)
+# Version : Beta 0.7.3 (2014)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -44,7 +44,7 @@ function usage(){
 	echo -e "$TITLE\n\nScript designed to config Raspbian and Debian derivates easier for everyone.\n\n"
 	echo -e "Usage: piKiss [Arguments]\n\nArguments:\n\n"
 	echo "-h  | --help       : This help."
-	echo "-cu | --chk_update : Force to check if an update is available."
+	echo "-nu | --no_update  : No check if repositories are updated."
 	echo "-nr | --noroot     : Execute the file as a normal user (not recommended)."
 	echo "-ng | --nogui      : Force to use the script on the console with dialog."
 	echo "-ni | --noinet     : No check if internet connection is available."
@@ -77,9 +77,20 @@ function isMissingDialogPkg(){
 }
 
 function lastUpdateRepo(){
-	# Rubish. I'll try to improve the next method. Doesn't work on the Pi :(
-	LASTUPDATE=$(ls -lt --time-style="long-iso" /var/log/apt | grep -o '\([0-9]\{2,4\}[- ]\)\{3\}[0-9]\{2\}:[0-9]\{2\}' -m 1 | awk '{ print $1 }')
-	[ $LASTUPDATE != $NOW ] && apt-get update || echo "Repositories updated!"; sleep 1
+    DATENOW=$(date +"%d-%b-%y")
+
+    if [ -e "checkupdate.txt" ];then
+        CHECKUPDATE=$(cat checkupdate.txt)
+
+        if [[ $CHECKUPDATE -ge $DATENOW ]];then
+            echo "Update repo: NO"
+            return 0
+        fi
+    fi
+
+    echo "Update repo: YES"
+    (echo $DATENOW > checkupdate.txt)
+    sudo apt-get update
 }
 
 # Obsolete
@@ -112,7 +123,7 @@ while [ "$1" != "" ]; do
     case $1 in
         -nr | --noroot )        NOROOT=1
                                 ;;
-        -cu | --chk_update )    CHK_UPDATE=1
+        -nu | --no_update )     CHK_UPDATE=1
                                 ;;
         -ng | --nogui )    	NOGUI=1
                                 ;;
@@ -134,7 +145,9 @@ done
 if ! ping -q -w 1 -c 1 `ip r | grep default | cut -d ' ' -f 3` > /dev/null;then echo "Internet connection required. Check your network."; exit 1; fi
 
 # Last time 'apt-get update' command was executed
-#lastUpdateRepo
+if [ ! $CHK_UPDATE = 1 ];then
+    lastUpdateRepo
+fi
 
 # dialog exist
 isMissingDialogPkg
