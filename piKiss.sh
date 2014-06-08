@@ -230,7 +230,8 @@ function smGames(){
 			Back  		"Back to main menu" \
 	        	Minecraft   	"Minecraft Pi Ed." \
 	        	Dune2  		"Dune 2 Legacy" \
-	        	Quake  	"Install Quake 2 for now" \
+	        	Quake  	"Quake 2 for now" \
+	        	RWolf  	"Return to Castle Wolfenstein (Demo)" \
                 Crispy-doom "Crispy to play Doom, Heretic, Hexen, Strife" \
 			Sqrxz4		"Sqrxz 4: Difficult platform game" 2>"${INPUT}"
 
@@ -241,6 +242,7 @@ function smGames(){
 	        	Minecraft) 	./scripts/games/minecraft.sh ;;
 	        	Dune2) 		./scripts/games/dune2.sh ;;
 	        	Quake) 	./scripts/games/quake2.sh ;;
+                RWolf) 	./scripts/games/rwolf.sh ;;
                 Crispy-doom)./scripts/games/cdoom.sh ;;
 			Sqrxz4) 	./scripts/games/sqrxz4.sh ;;
 		esac

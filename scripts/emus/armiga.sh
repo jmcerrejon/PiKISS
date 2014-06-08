@@ -38,7 +38,7 @@ install(){
     exit
 }
 
-echo -e "UAE4ARMIGA4PI (Amiga emu)\n=========================\n\nMore Info: hhttp://www.armigaproject.com/pi/pi.html\n\nInstall path: $INSTALL_DIR/uae4armiga4pi"
+echo -e "UAE4ARMIGA4PI (Amiga emu)\n=========================\n\nMore Info: http://www.armigaproject.com/pi/pi.html\n\nInstall path: $INSTALL_DIR/uae4armiga4pi"
 while true; do
     echo " "
     read -p "Is it right? [y/n] " yn
@@ -49,5 +49,3 @@ while true; do
     * ) echo "Please answer (y)es, (n)o or (e)xit.";;
     esac
 done
-
-        wget -qO- -O tmp.zip http://www.armigaproject.com/pi/uae4armiga4pi.tar.gz && tar xzf tmp.zip && rm tmp.zip
