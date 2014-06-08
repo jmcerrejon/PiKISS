@@ -9,7 +9,7 @@ clear
 echo "Check Last-Modified field from some distros images"
 echo "=================================================="
 
-declare -a imgName=(	'RetroPie'
+declare -a imgName=(
 			'pipaOS'
 			'OpenELEC'
 			'Arch Linux'
@@ -18,9 +18,9 @@ declare -a imgName=(	'RetroPie'
 			'ArkOS'
 			'Volumio'
 )
-declare -a imgUrl=(	'http://blog.petrockblock.com/?wpdmdl=17'
+declare -a imgUrl=(
 			'http://pipaos.mitako.eu/'
-			'http://openelec.tv/get-openelec/download/finish/10-raspberry-pi-builds/336-diskimage-openelec-stable-raspberry-pi-arm'
+			'http://openelec.tv/get-openelec/download/finish/10-raspberry-pi-builds/343-diskimage-openelec-stable-raspberry-pi-arm'
 			'http://archlinuxarm.org/os/ArchLinuxARM-rpi-latest.zip'
 			'http://sourceforge.net/projects/minepeon/files/latest/download?source=files'
 			'http://sourceforge.net/projects/pimame/files/latest/download?source=files'
