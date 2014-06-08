@@ -33,7 +33,7 @@ install(){
     exit
 }
 
-echo -e "Install MAME4ALL for Pi (latest)\n================================\nMore Info: https://code.google.com/p/mame4all-pi/\n\nInstall path: $INSTALL_DIR"
+echo -e "Install MAME4ALL for Pi (latest)\n================================\n\nMore Info: https://code.google.com/p/mame4all-pi/\n\nInstall path: $INSTALL_DIR"
 while true; do
     echo " "
     read -p "Is it right? [y/n] " yn
