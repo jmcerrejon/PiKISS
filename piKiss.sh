@@ -258,7 +258,8 @@ do
 		Snes		"SNES Emulator port based on SNES9X 1.39" \
         	Mame4all	"MAME port based on Franxis MAME4ALL which is itself based on the MAME 0.37b5" \
         	Speccy  	"ZX-Spectrum emulator" \
-        	Rpix86  	"rpix86 MS-DOS Emulator" \
+        	Rpix86  	"rpix86 MS-DOS emulator" \
+        	Armiga  	"UAE4Armiga4Pi Amiga emulator" \
 		Pifba		"This emulates old arcade games using MAME based roms for CPS1, CPS2, Neogeo, Toaplan and many other games" 2>"${INPUT}"
 
 	menuitem=$(<"${INPUT}")
@@ -268,6 +269,7 @@ do
 		Snes) 		./scripts/emus/pisnes.sh ;;
         	Mame4all) 	./scripts/emus/mame4allpi.sh ;;
         	Speccy) 	./scripts/emus/speccy.sh ;;
+       	    Armiga) 	./scripts/emus/armiga.sh ;;
         	Rpix86) 	./scripts/emus/rpix86.sh ;;
 		Pifba) 		./scripts/emus/pifba.sh ;;
 	esac
