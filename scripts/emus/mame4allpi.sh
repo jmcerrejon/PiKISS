@@ -2,7 +2,7 @@
 #
 # Description : MAME4ALL for Pi by Squid
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (15/May/14)
+# Version     : 1.1 (08/Jun/14)
 #
 clear
 
