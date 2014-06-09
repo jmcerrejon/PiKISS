@@ -63,7 +63,7 @@ Blog: [http://misapuntesde.com](http://misapuntesde.com)
 
 This project has involved many hours thinking, searching, refactoring and testing code. I accept donations due the effort to make new scripts. Donations are not required or expected. Any amount that you feel is appropriate would be appreciated. Simply click on the Donate button at the end of this document. Thank you! :)
 
-Estimated hours of work so far: **265 hours**.
+Estimated hours of work so far: **271 hours**.
 
 
 ##ESPAÑOL
@@ -119,6 +119,6 @@ Blog: [http://misapuntesde.com](http://misapuntesde.com)
 
 Este proyecto ha supuesto muchas horas de pensar, buscar, refactorizar y testear código. Acepto donaciones por el esfuerzo que supone mantener y hacer nuevos scripts. Las donaciones no se requieren ni las espero. Cualquier cantidad que sientas que es apropiada sería de agradecer. Simplemente haz click en el botón "Donate" al final del documento. ¡Gracias! :)
 
-Horas estimadas de trabajo hasta el momento: **265 horas**.
+Horas estimadas de trabajo hasta el momento: **271 horas**.
 
 <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ulysess%40gmail%2ecom&lc=GB&item_name=PiKISS%20proyect&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted"><img src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif" /></a>
