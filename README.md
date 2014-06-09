@@ -1,4 +1,4 @@
-#PiKISS for Raspberry Pi: A bunch of scripts with menu to make your life easier.
+##PiKISS for Raspberry Pi: A bunch of scripts with menu to make your life easier.
 
 ![PiKISS Logo](http://misapuntesde.com/images/pikiss_400px_nobg.png)
 
@@ -68,7 +68,7 @@ Estimated hours of work so far: **271 hours**.
 
 ##ESPAÑOL
 
-#PiKISS para Raspberry Pi: Un puñado de scripts con menú para hacerte la vida más fácil.
+##PiKISS para Raspberry Pi: Un puñado de scripts con menú para hacerte la vida más fácil.
 
 ####[ Presentando PiKISS ]
 
