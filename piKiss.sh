@@ -230,9 +230,9 @@ function smGames(){
 			Back  		"Back to main menu" \
 	        	Minecraft   	"Minecraft Pi Ed." \
 	        	Dune2  		"Dune 2 Legacy" \
-	        	Quake  	"Quake 2 for now" \
-	        	RWolf  	"Return to Castle Wolfenstein (Demo)" \
-                Crispy-doom "Crispy to play Doom, Heretic, Hexen, Strife" \
+	        	Quake  		"Quake 2 for now" \
+	        	RWolf  		"Return to Castle Wolfenstein (Demo)" \
+	                Crispy-doom 	"Crispy to play Doom, Heretic, Hexen, Strife" \
 			Sqrxz4		"Sqrxz 4: Difficult platform game" 2>"${INPUT}"
 
 		menuitem=$(<"${INPUT}")
@@ -241,9 +241,9 @@ function smGames(){
 	        	Back) 		break ;;
 	        	Minecraft) 	./scripts/games/minecraft.sh ;;
 	        	Dune2) 		./scripts/games/dune2.sh ;;
-	        	Quake) 	./scripts/games/quake2.sh ;;
-                RWolf) 	./scripts/games/rwolf.sh ;;
-                Crispy-doom)./scripts/games/cdoom.sh ;;
+	        	Quake) 		./scripts/games/quake2.sh ;;
+        	        RWolf) 		./scripts/games/rwolf.sh ;;
+                	Crispy-doom)	./scripts/games/cdoom.sh ;;
 			Sqrxz4) 	./scripts/games/sqrxz4.sh ;;
 		esac
 	done
@@ -271,7 +271,7 @@ do
 		Snes) 		./scripts/emus/pisnes.sh ;;
         	Mame4all) 	./scripts/emus/mame4allpi.sh ;;
         	Speccy) 	./scripts/emus/speccy.sh ;;
-       	    Armiga) 	./scripts/emus/armiga.sh ;;
+	       	Armiga) 	./scripts/emus/armiga.sh ;;
         	Rpix86) 	./scripts/emus/rpix86.sh ;;
 		Pifba) 		./scripts/emus/pifba.sh ;;
 	esac
@@ -288,7 +288,7 @@ do
 		--menu  	"Select app from the list" $wHEIGHT $wWIDTH 4 \
 		Back  		"Back to main menu" \
 		Rplay		"AirPlay to do mirroring" \
-        Kiosk		"Image slideshow" \
+        	Kiosk		"Image slideshow" \
 		XBMC		"Install XBMC" 2>"${INPUT}"
 
 	menuitem=$(<"${INPUT}")
@@ -311,6 +311,7 @@ do
 		--menu  	"Select to configure your distro" $wHEIGHT $wWIDTH 4 \
 		Back  		"Back to main menu" \
         	Joypad      	"Configure WII, XBox360 controller" \
+        	Applekeyb      	"Bluetooth keyboard" \
 		Netcfg		"Config static IP address" 2>"${INPUT}"
 
 	menuitem=$(<"${INPUT}")
@@ -318,6 +319,7 @@ do
 	case $menuitem in
 		Back) 		break;;
 	        Joypad) 	sudo ./scripts/config/jpad.sh;;
+        	Applekeyb) 	sudo ./scripts/config/applekeyb.sh;;
         	Netcfg) 	sudo ./scripts/config/netconfig.sh;;
 	esac
 done

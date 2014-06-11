@@ -4,6 +4,7 @@
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 1.0 (15/May/14)
 #
+# IMPROVEMENT : http://www.welzels.de/blog/projekte/raspberry-pi/raspberry-pi-als-airplay-client/ <-- AirPlay (sound)
 clear
 
 # trap CTRL+C in the rplay installation
