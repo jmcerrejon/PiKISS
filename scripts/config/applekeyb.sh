@@ -2,7 +2,7 @@
 #
 # Description : Pairing a Bluetooth keyboard
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.9 (11/Jun/14)
+# Version     : 1.0 (12/Jun/14)
 #
 # IMPROVEMENT : Pair any device with dialog
 #
@@ -78,5 +78,5 @@ sudo bluez-test-device trusted $BTMAC yes
 sudo bluez-test-input connect $BTMAC
 
 #If doesn't Work: sudo bluez-simple-agent hci0 $BTMAC repair
-echo -e "Type in your keyboard and good luck\nWhen reboot, if doesn't work, type:\n\n sudo bluez-simple-agent hci0 $BTMAC repair\n\nand start the script again.\Another method is lauch in another terminal the command:\n\nsudo hcidump -at\n\nto see the bluetooth pairing key if authentication fail."
+echo -e "\n\nType in your keyboard and good luck\nWhen reboot, if doesn't work, type:\n\n sudo bluez-simple-agent hci0 $BTMAC repair\n\nand start the script again.\Another method is lauch in another terminal the command:\n\nsudo hcidump -at | grep -i passkey\n\nto see the bluetooth pairing key if authentication fail."
 read -p "Press [ENTER] to continue..."
