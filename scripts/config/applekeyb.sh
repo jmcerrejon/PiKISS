@@ -1,6 +1,6 @@
 #! /bin/bash
 #
-# Description : Pairing an Apple keyboard
+# Description : Pairing a Bluetooth keyboard
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 0.9 (11/Jun/14)
 #
@@ -53,7 +53,7 @@ read -p "Put your keyboard in discover mode (switch on), wait 5 seconds and pres
 echo -e "\n\e[00;36mSearching for keyboard...\e[00m\n"
 
 # Add grep -e to the list below with the name of your keyboard
-BTMAC=$(hcitool scan | grep -e Teclado -e keyboard -e Keyboard -e Cambridge | awk '{print $1}')
+BTMAC=$(hcitool scan | grep -e Teclado -e keyboard -e Keyboard -e Cambridge -e K760| awk '{print $1}')
 
 if [ ! -z "$BTMAC" ]; then
     echo -e " \e[00;36mKeyboard found!: $BTMAC\e[00m\n"
@@ -69,7 +69,7 @@ sudo update-rc.d -f dbus defaults
 
 # Pairing the device
 
-echo -e "\nWhen you’re prompted to enter a pin number, type a 4 digit numeric code into your USB keyboard and press return.\nThe PIN code you enter doesn’t matter, so pick something like 1234.\nThen type the same PIN code into your Apple keyboard and press return."
+echo -e "\nWhen you’re prompted to enter a pin number, type a 4 digit numeric code into your USB keyboard and press return.\nThe PIN code you enter doesn’t matter, so pick something like 1234.\nThen type the same PIN code into your keyboard and press return."
 sudo bluez-simple-agent $BTDEVICE $BTMAC
 # Another method: sudo bluetooth-agent --adapter $BTDEVICE 1234 $BTMAC
 
@@ -78,5 +78,5 @@ sudo bluez-test-device trusted $BTMAC yes
 sudo bluez-test-input connect $BTMAC
 
 #If doesn't Work: sudo bluez-simple-agent hci0 $BTMAC repair
-echo -e "Type in your keyboard and good luck\nWhen reboot, if doesn't work, type\n\n sudo bluez-simple-agent hci0 $BTMAC repair\n\nand start the script again."
+echo -e "Type in your keyboard and good luck\nWhen reboot, if doesn't work, type:\n\n sudo bluez-simple-agent hci0 $BTMAC repair\n\nand start the script again.\Another method is lauch in another terminal the command:\n\nsudo hcidump -at\n\nto see the bluetooth pairing key if authentication fail."
 read -p "Press [ENTER] to continue..."
