@@ -22,26 +22,36 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 ###[ ChangeLog (dd/mm/yy)]
 
-* **(11/06/14)**
+####(11/06/14)
 
 · Add Config > Bluetooth keyboard
 
-* **(08/06/14)**
+####(08/06/14)
 
 · Updated check_lastmod_img
+
 · Added Emulators > UAE4Armiga4Pi
+
 · Added Games > Return to Castle Wolfenstein (demo)
 
-* **1st release (29/05/14)**
+####1st release (29/05/14)
 
 · Configure Menu  : Joypad, Netcfg.
+
 · Emulators Menu  : mame4allpi, pifba, pisnes, rpix86, speccy.
+
 · Games Menu      : Crispy Doom, Dune2, MineCraft, Quake2, Sqrxz4.
+
 · Internet Menu   : plowshare, mp3downloader.
+
 · Info Menu       : benchmark, check last imgs, CPU temp, weather, web monitor.
+
 · Multimedia Menu : AirPlay (rPlay), Kiosk mode, xbmc.
+
 · Server Menu     : DB, Printer, Web, Webdav for Apache.
+
 · Tweaks Menu     : Autologin, others, Remove packages, Disable services.
+
 · Others Menu     : Aircrack, SDL2, WhatApp.
 
 ###[ Introducing PiKISS ]
