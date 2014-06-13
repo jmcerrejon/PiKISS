@@ -360,6 +360,7 @@ do
 	        Cups	        "Install Printer server (cups)" \
 		Web		"Install Apache+PHP5" \
         	WebDAV      	"Install WebDAV to share local content with Apache" \
+            FWork      	"Install Wordpress, Node.js among others" \
         	DB      	"Install MySQL+PHP5 connector" 2>"${INPUT}"
 
 	menuitem=$(<"${INPUT}")
@@ -369,6 +370,7 @@ do
 	        Cups)  		./scripts/server/printer.sh ;;
         	Web) 		./scripts/server/web.sh ;;
         	WebDAV) 	./scripts/server/webdav.sh ;;
+            FWork)      ./scripts/server/fwork.sh ;;
         	DB) 		./scripts/server/db.sh ;;
 	esac
 done
