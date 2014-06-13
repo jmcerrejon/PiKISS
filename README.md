@@ -2,6 +2,10 @@
 
 ![PiKISS Logo](http://misapuntesde.com/images/pikiss_400px_nobg.png)
 
+Estimated hours of work so far | Horas estimadas de trabajo hasta el momento: 
+
+* **277 hours**
+
 ##ENGLISH
 
 ###[ Screenshots ]
@@ -16,26 +20,19 @@
 
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
-###[ ChangeLog ]
+###[ ChangeLog (dd/mm/yy)]
 
-Estimated hours of work so far | Horas estimadas de trabajo hasta el momento: 
-
-* **277 hours**.
-
-(11/06/14)
-==========
+* **(11/06/14)**
 
 · Add Config > Bluetooth keyboard
 
-(08/06/14)
-==========
+* **(08/06/14)**
 
 · Updated check_lastmod_img
 · Added Emulators > UAE4Armiga4Pi
 · Added Games > Return to Castle Wolfenstein (demo)
 
-1st release (29/05/14)
-======================
+* **1st release (29/05/14)**
 
 · Configure Menu  : Joypad, Netcfg.
 · Emulators Menu  : mame4allpi, pifba, pisnes, rpix86, speccy.
