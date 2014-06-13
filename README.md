@@ -16,6 +16,37 @@
 
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
+###[ ChangeLog ]
+
+Estimated hours of work so far | Horas estimadas de trabajo hasta el momento: 
+
+* **277 hours**.
+
+(11/06/14)
+==========
+
+· Add Config > Bluetooth keyboard
+
+(08/06/14)
+==========
+
+· Updated check_lastmod_img
+· Added Emulators > UAE4Armiga4Pi
+· Added Games > Return to Castle Wolfenstein (demo)
+
+1st release (29/05/14)
+======================
+
+· Configure Menu  : Joypad, Netcfg.
+· Emulators Menu  : mame4allpi, pifba, pisnes, rpix86, speccy.
+· Games Menu      : Crispy Doom, Dune2, MineCraft, Quake2, Sqrxz4.
+· Internet Menu   : plowshare, mp3downloader.
+· Info Menu       : benchmark, check last imgs, CPU temp, weather, web monitor.
+· Multimedia Menu : AirPlay (rPlay), Kiosk mode, xbmc.
+· Server Menu     : DB, Printer, Web, Webdav for Apache.
+· Tweaks Menu     : Autologin, others, Remove packages, Disable services.
+· Others Menu     : Aircrack, SDL2, WhatApp.
+
 ###[ Introducing PiKISS ]
 
 This is my most ambitious project for the *Raspberry Pi*.
@@ -39,7 +70,7 @@ What some users have said about **PiKISS**:
 
 * *"Now I don't need to fight with the terminal? Shut up and take my money!."* - Easy, it's free.
 
-**NOTE: ** 100% Free of viruses and Trojans. Not available in stores. The author of **PiKISS** is not responsible if you get bored with your *Raspberry Pi* because everything is too easy. Online until I wish or *Internet* is destroyed.
+**NOTE:** 100% Free of viruses and Trojans. Not available in stores. The author of **PiKISS** is not responsible if you get bored with your *Raspberry Pi* because everything is too easy. Online until I wish or *Internet* is destroyed.
 
 ####[ Installation ]
 
@@ -62,10 +93,6 @@ Blog: [http://misapuntesde.com](http://misapuntesde.com)
 ####[ DONATE ]
 
 This project has involved many hours thinking, searching, refactoring and testing code. I accept donations due the effort to make new scripts. Donations are not required or expected. Any amount that you feel is appropriate would be appreciated. Simply click on the Donate button at the end of this document. Thank you! :)
-
-Estimated hours of work so far: **275 hours**.
-
-
 
 ##ESPAÑOL
 
@@ -119,7 +146,5 @@ Blog: [http://misapuntesde.com](http://misapuntesde.com)
 ####[ DONACIONES ]
 
 Este proyecto ha supuesto muchas horas de pensar, buscar, refactorizar y testear código. Acepto donaciones por el esfuerzo que supone mantener y hacer nuevos scripts. Las donaciones no se requieren ni las espero. Cualquier cantidad que sientas que es apropiada sería de agradecer. Simplemente haz click en el botón "Donate" al final del documento. ¡Gracias! :)
-
-Horas estimadas de trabajo hasta el momento: **275 horas**.
 
 <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ulysess%40gmail%2ecom&lc=GB&item_name=PiKISS%20proyect&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted"><img src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif" /></a>
