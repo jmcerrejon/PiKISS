@@ -2,7 +2,9 @@
 #
 # Description : Web monitor from http://geekytheory.com
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.1 (14/May/14)
+# Version     : 0.2 (12/Jun/14)
+#
+# IMPROVEMENT : linux-dash -> http://pplware.sapo.pt/linux/linux-dash-monitorize-o-seu-linux-a-distancia/
 #
 clear
 

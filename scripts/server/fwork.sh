@@ -1,11 +1,12 @@
 #!/bin/bash
 #
-# Description : Install a Framework to the web server
+# Description : Install a Framework,CMS to the web server
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.2 (25/May/14)
+# Version     : 0.3 (12/Jun/14)
 #
 # Help        · Wordpress: https://github.com/raspberrypi/documentation/blob/master/usage/wordpress.md
 #             ·     Ghost: http://geekytheory.com/ghost-blog-en-raspberry-pi/
+#             ·   PyPlate: http://pplware.sapo.pt/linux/dica-como-ter-o-seu-proprio-site-no-raspberry-pi/
 #
 clear
 

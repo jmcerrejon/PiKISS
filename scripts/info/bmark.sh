@@ -4,6 +4,8 @@
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 1.0 (14/May/14)
 #
+# IMPROVEMENT : Test SD: dd if=/dev/zero of=/tmp/salida bs=1M count=300
+#
 clear
 
 PATH=$PATH:./bin && export PATH
