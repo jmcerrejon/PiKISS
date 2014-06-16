@@ -20,15 +20,12 @@ changeInstallDir(){
 }
 
 install(){
-    if [[ $(validate_url $URL_FILE) != "true" ]] ; then
-        echo "Sorry, the emulator is not available here: $URL_FILE. Visit the website to download it manually."
-        exit
-    else
+    # Check if Ok...
         mkdir -p $INSTALL_DIR && cd $_
         wget -qO- -O tmp.zip $URL_FILE && unzip -o tmp.zip && rm tmp.zip
 wget -O $INSTALL_DIR/usp_0.0.43/ninjajar.tap hhttp://www.mojontwins.com/juegos/mojon-twins--ninjajar-eng-v1.1.tap
 echo "Done!. To play go to install path, copy any .tap file to directory and type: ./unreal_speccy_portable <game name>"
-    fi
+
     read -p "Press [Enter] to continue..."
     exit
 }

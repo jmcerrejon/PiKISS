@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.7.3 (2014)
+# Version : Beta 0.7.5 (2014)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -19,7 +19,7 @@
 # VARIABLES
 # - - - - -
 #
-TITLE="PiKISS (Pi Keeping It Simple, Stupid!) .:. Jose Cerrejon .:. (ver. 0.7 - 2014)"
+TITLE="PiKISS (Pi Keeping It Simple, Stupid!) .:. Jose Cerrejon .:. (ver. 0.7.5 - 2014)"
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
 NOROOT=0
@@ -357,11 +357,11 @@ do
 		--title 	"[ Server ]" \
 		--menu  	"Select to configure your distro as a server" $wHEIGHT $wWIDTH 4 \
 		Back  		"Back to main menu" \
-	        Cups	        "Install Printer server (cups)" \
-		Web		"Install Apache+PHP5" \
-        	WebDAV      	"Install WebDAV to share local content with Apache" \
-            FWork      	"Install Wordpress, Node.js among others" \
-        	DB      	"Install MySQL+PHP5 connector" 2>"${INPUT}"
+	        Cups	        "Printer server (cups)" \
+		Web		"Apache+PHP5" \
+        	WebDAV      	"WebDAV to share local content with Apache" \
+            FWork      	"Wordpress, Node.js among others" \
+        	DB      	"MySQL+PHP5 connector" 2>"${INPUT}"
 
 	menuitem=$(<"${INPUT}")
 
