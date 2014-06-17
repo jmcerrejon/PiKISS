@@ -26,7 +26,7 @@ install(){
     else
         sudo apt-get install -y libsdl1.2debian libsdl-mixer1.2 libsdl-ttf2.0-0
         mkdir -p $INSTALL_DIR && cd $_
-        wget -qO- -O tmp.zip $URL_FILE && tar xzf tmp.zip && rm tmp.zip
+        wget -qO- -O tmp.tar.gz $URL_FILE && tar xzf tmp.tar.gz && rm tmp.tar.gz
         cd uae4armiga4pi/
         wget http://misapuntesde.com/res/kick.rom
         cd ADFs/

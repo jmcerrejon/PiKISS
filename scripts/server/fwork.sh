@@ -8,38 +8,55 @@
 #             ·     Ghost: http://geekytheory.com/ghost-blog-en-raspberry-pi/
 #             ·   PyPlate: http://pplware.sapo.pt/linux/dica-como-ter-o-seu-proprio-site-no-raspberry-pi/
 #
+# IMPROVEMENT · Install Nodejs if framework need it
+#
 clear
+
+URL_GHOST="https://ghost.org/zip/ghost-0.4.2.zip"
+URL_WORDPRESS="https://wordpress.org/latest.tar.gz"
+URL_NODEJS="http://nodejs.org/dist/v0.10.26/node-v0.10.26-linux-arm-pi.tar.gz"
 
 wordpress(){
     cd /var/www
     sudo chown $USER: .
-    wget https://wordpress.org/latest.tar.gz
-    tar xzf latest.tar.gz
-    rm latest.tar.gz
-    echo "Installed on /wordpress folder"
+    wget $URL_WORDPRESS
+    tar xzf ${URL_WORDPRESS##*/}
+    rm ${URL_WORDPRESS##*/}
+    echo "Installed on /var/www/wordpress directory"
 }
 
 nodejs(){
-    sudo su -
-    cd /opt
-    wget http://nodejs.org/dist/v0.10.25/node-v0.10.25-linux-arm-pi.tar.gz
-    tar xvzf node-v0.10.25-linux-arm-pi.tar.gz
-    ln -s node-v0.10.25-linux-arm-pi node
-    chmod a+rw /opt/node/lib/node_modules
-    chmod a+rw /opt/node/bin
-    echo 'PATH=$PATH:/opt/node/bin' > /etc/profile.d/node.sh
-    npm install -g node-gyp
-    rm node-v0.10.25-linux-arm-pi.tar.gz
+    cd /usr/local
+    sudo wget $URL_NODEJS
+    sudo tar xvzf ~/${URL_NODEJS##*/} --strip=1
     echo "Press [Control+D] to return as normal user..."
     node --version
 }
 
-#read -p "Wordpress (latest)? (y/n)" option
-#case "$option" in
-#    y*) wordpress ;;
-#esac
+ghost(){
+    sudo mkdir -p /var/www/ghost
+    cd /var/www/ghost
+    sudo chown $USER: .
+    wget -qO- -O tmp.zip $URL_GHOST && unzip -o tmp.zip && rm tmp.zip
+    sudo npm install --production
+    read -p "Website accesible from remote (default:only localhost)? [y/n]" option
+    case "$option" in
+        y*) wordpress ;;
+    esac
+    sudo npm start
+}
 
-read -p "Node.js (0.10.25)? (y/n)" option
+read -p "Wordpress (latest)? [y/n]" option
+case "$option" in
+    y*) wordpress ;;
+esac
+
+read -p "Node.js (0.10.26)? [y/n]" option
 case "$option" in
     y*) nodejs ;;
+esac
+
+read -p "GHOST (${URL_GHOST##*/})? [y/n]" option
+case "$option" in
+    y*) ghost ;;
 esac

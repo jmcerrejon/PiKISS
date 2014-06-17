@@ -2,7 +2,7 @@
 #
 # Description : Portable ZX-Spectrum emulator
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (21/May/14)
+# Version     : 1.1 (17/Jun/14)
 #
 clear
 
