@@ -296,6 +296,7 @@ do
 
 	case $menuitem in
 		Back) 		break ;;
+        TVPlayer)   ./scripts/mmedia/tvplayer.sh ;;
 		Rplay)		./scripts/mmedia/airplay.sh ;;
         Kiosk)      ./scripts/mmedia/kiosk.sh ;;
         XBMC) 		./scripts/mmedia/xbmc.sh ;;

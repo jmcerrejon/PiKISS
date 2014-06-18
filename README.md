@@ -26,6 +26,8 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 · Multimedia > TVPlayer
 
+· Server > fwork: Ghost, Wordpress (uncomplete)
+
 ####(13/06/14)
 
 · Server > fwork: Node.js

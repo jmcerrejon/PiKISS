@@ -4,6 +4,9 @@
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 0.7 (08/Jun/14)
 #               Untested
+#
+# HELP        · http://fdarcel.free.fr/ | http://www.raspberrypi.org/forums/viewtopic.php?p=491284#p491284
+#
 clear
 
 INSTALL_DIR="/home/$USER/games"
