@@ -97,6 +97,14 @@ cd PiKISS
 ./piKiss.sh
 </pre>
 
+####[ Update ]
+
+ If you want the latest version, just enter into the directory with cd PiKISS and type:
+ 
+<pre>
+git pull
+</pre>
+
 ####[ HELP ME! ]
 
 **PiKISS** grow up according to users requests (ulysess@gmail.com) or  I'll append scripts that I consider necessary, but I call **to the community** to share, improve and help to add new scripts to the existing one. If the project grow, **is up to you**.
@@ -146,6 +154,14 @@ Lo que algunos usuarios han dicho de **PiKISS**:
 git clone https://github.com/jmcerrejon/PiKISS.git
 cd PiKISS
 ./piKiss.sh
+</pre>
+
+####[ Actualizar ]
+
+ Si quieres tener la última versión una vez ya la tengas instalada, teclea en el directorio de *PiKISS*:
+ 
+<pre>
+git pull
 </pre>
 
 ####[ ¡AYÚDAME! ]
