@@ -287,6 +287,7 @@ do
 		--title 	"[ Multimedia ]" \
 		--menu  	"Select app from the list" $wHEIGHT $wWIDTH 4 \
 		Back  		"Back to main menu" \
+        		TVPlayer		"Play Spanish TV Channel" \
 		Rplay		"AirPlay to do mirroring" \
         	Kiosk		"Image slideshow" \
 		XBMC		"Install XBMC" 2>"${INPUT}"
