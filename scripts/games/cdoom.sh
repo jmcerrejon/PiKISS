@@ -2,7 +2,9 @@
 #
 # Description : Crispy-Doom ver. 1.3 to play doom,heretic,hexen,strife
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.8 (27/May/14)
+# Version     : 0.9 (24/Jun/14)
+#
+# TODO        · Test pack function
 #
 clear
 
@@ -49,7 +51,7 @@ strife(){
 pack(){
     if [[ ! -d $WAD_PATH/Strife ]] ; then
         mkdir -p $WAD_PATH
-        wget -P /tmp/wads.zip http://download1433.mediafire.com/imegy46e5omg/w2551ilfsx0sai7/Wads+B%C3%A1sicos.jar
+        wget -P /tmp/wads.zip http://www.mediafire.com/download/w2551ilfsx0sai7/Wads+B%C3%A1sicos.jar
         unzip /tmp/wads.zip -d $WAD_PATH *.WAD
         rm /tmp/wads.zip
     fi
@@ -61,6 +63,6 @@ wget -P /tmp http://misapuntesde.com/res/crispy-doom_1.3_armhf.deb
 sudo dpkg -i /tmp/crispy-doom_1.3_armhf.deb
 rm /tmp/crispy-doom_1.3_armhf.deb
 
-pack
+#pack
 
 read -p "Done!. Execute crispy-{doom,heretic,hexen,strife} with '-iwad path/to/wad-file.wad' parameter. Press [Enter] to continue..."

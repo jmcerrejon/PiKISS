@@ -22,6 +22,10 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 ###[ ChangeLog (dd/mm/yy)]
 
+####(24/06/14)
+
+· Updated check_lastmod_img
+
 ####(18/06/14)
 
 · Multimedia > TVPlayer
