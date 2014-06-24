@@ -51,8 +51,8 @@ strife(){
 pack(){
     if [[ ! -d $WAD_PATH/Strife ]] ; then
         mkdir -p $WAD_PATH
-        wget -P /tmp/wads.zip http://www.mediafire.com/download/w2551ilfsx0sai7/Wads+B%C3%A1sicos.jar
-        unzip /tmp/wads.zip -d $WAD_PATH *.WAD
+        wget -P /tmp/ http://download1433.mediafire.com/tn78b3sx90ag/w2551ilfsx0sai7/Wads+B%C3%A1sicos.jar
+        mv /tmp/Wads+Básicos.jar /tmp/wads.zip && unzip /tmp/wads.zip -d $WAD_PATH *.WAD
         rm /tmp/wads.zip
     fi
 }
@@ -63,6 +63,6 @@ wget -P /tmp http://misapuntesde.com/res/crispy-doom_1.3_armhf.deb
 sudo dpkg -i /tmp/crispy-doom_1.3_armhf.deb
 rm /tmp/crispy-doom_1.3_armhf.deb
 
-#pack
+pack
 
 read -p "Done!. Execute crispy-{doom,heretic,hexen,strife} with '-iwad path/to/wad-file.wad' parameter. Press [Enter] to continue..."
