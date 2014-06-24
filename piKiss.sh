@@ -241,7 +241,7 @@ function smGames(){
 	        	Back) 		break ;;
 	        	Minecraft) 	./scripts/games/minecraft.sh ;;
 	        	Dune2) 		./scripts/games/dune2.sh ;;
-	        	Quake) 		./scripts/games/quake2.sh ;;
+	        	Quake) 		./scripts/games/quake.sh ;;
         	        RWolf) 		./scripts/games/rwolf.sh ;;
                 	Crispy-doom)	./scripts/games/cdoom.sh ;;
 			Sqrxz4) 	./scripts/games/sqrxz4.sh ;;

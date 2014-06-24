@@ -24,7 +24,7 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 ####(24/06/14)
 
-· Updated check_lastmod_img
+· Updated check_lastmod_img, crispy-doom
 
 ####(18/06/14)
 
