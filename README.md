@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento: 
 
-* **289 hours**
+* **293 hours**
 
 ##ENGLISH
 
@@ -24,7 +24,7 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 ####(24/06/14)
 
-· Updated check_lastmod_img, crispy-doom
+· Updated check_lastmod_img, crispy-doom, Quake 2
 
 ####(18/06/14)
 
