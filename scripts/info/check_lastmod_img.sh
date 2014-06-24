@@ -2,7 +2,7 @@
 #
 # Description : Check Last-Modified field from some distros images, so you can know if a distro is updated.
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (29/May/14)
+# Version     : 1.1 (24/Jun/14)
 #
 clear
 
@@ -10,18 +10,28 @@ echo "Check Last-Modified field from some distros images"
 echo "=================================================="
 
 declare -a imgName=(
+            'NOOBS'
+            'Raspbian'
+            'PiDora'
 			'pipaOS'
 			'OpenELEC'
+            'RaspBMC'
 			'Arch Linux'
+            'Risc OS'
 			'MinePeon'
 			'PiPlay (PiMAME)'
 			'ArkOS'
 			'Volumio'
 )
 declare -a imgUrl=(
+            'http://downloads.raspberrypi.org/NOOBS_latest'
+            'http://downloads.raspberrypi.org/raspbian_latest'
+            'http://downloads.raspberrypi.org/pidora_latest'
 			'http://pipaos.mitako.eu/'
-			'http://openelec.tv/get-openelec/download/finish/10-raspberry-pi-builds/343-diskimage-openelec-stable-raspberry-pi-arm'
+			'http://downloads.raspberrypi.org/openelec_latest'
+            'http://downloads.raspberrypi.org/raspbmc_latest'
 			'http://archlinuxarm.org/os/ArchLinuxARM-rpi-latest.zip'
+            'http://downloads.raspberrypi.org/riscos_latest'
 			'http://sourceforge.net/projects/minepeon/files/latest/download?source=files'
 			'http://sourceforge.net/projects/pimame/files/latest/download?source=files'
 			'https://nyus.mirror.arkos.io/os/latest-rpi.tar.gz'

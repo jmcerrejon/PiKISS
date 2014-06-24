@@ -91,6 +91,8 @@ What some users have said about **PiKISS**:
 
 ####[ Installation ]
 
+You need the git package (already installed on Raspbian): *sudo apt-get install -y git git-core*
+
 <pre>
 git clone https://github.com/jmcerrejon/PiKISS.git
 cd PiKISS
@@ -104,6 +106,8 @@ cd PiKISS
 <pre>
 git pull
 </pre>
+
+NOTE: If you use another flavor from Raspbian, you need to execute the next: *git config --global http.sslVerify false*
 
 ####[ HELP ME! ]
 
@@ -150,6 +154,8 @@ Lo que algunos usuarios han dicho de **PiKISS**:
 
 ####[ Instalación ]
 
+Necesitarás tener instalado el paquete git, si no lo tienes: *sudo apt-get install -y git git-core*
+
 <pre>
 git clone https://github.com/jmcerrejon/PiKISS.git
 cd PiKISS
@@ -158,11 +164,13 @@ cd PiKISS
 
 ####[ Actualizar ]
 
- Si quieres tener la última versión una vez ya la tengas instalada, teclea en el directorio de *PiKISS*:
+ Si ya la tienes instalada y quieres actualizarla con los últimos cambios, teclea en el directorio de *PiKISS*:
  
 <pre>
 git pull
 </pre>
+
+NOTA: Si usas otra distribución que no sea *Raspbian*, debes ejecutar esta sencencia: *git config --global http.sslVerify false*
 
 ####[ ¡AYÚDAME! ]
 
