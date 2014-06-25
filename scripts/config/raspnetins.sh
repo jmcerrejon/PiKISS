@@ -25,12 +25,12 @@ time_zone(){
 }
 
 essential(){
-    PKGS="raspi-copies-and-fills build-essentials mc alsa-base"
+    PKGS="raspi-copies-and-fills build-essential mc alsa-base sudo omxplayer"
     clear
-    echo -e "This option install the next packages: $PKGS"
+    echo -e "This option will install the next packages: $PKGS"
     read -p "Agreed? [y/n]" option
     case "$option" in
-        y*) apt-get install -y $PKGS ;;
+        y*) echo -e "\nGet a coffee... ;)\n\n" ; apt-get install -y $PKGS ; alsactl init ;;
     esac
     read -p 'Done!. Press [ENTER] to back to the menu...'
 }
@@ -40,6 +40,10 @@ new_user(){
     clear
     dialog --inputbox "Enter user name: " 8 40 2>USER
     adduser $USER
+    read -p "Set administrator proviledges to $USER (sudo)?: [y/n]" option
+    case "$option" in
+        y*) echo -e "$USER	ALL=(ALL:ALL) ALL"  | sudo tee -a /etc/sudoers ;;
+    esac
     usermod -a -G $GROUP $USER
     id $USER
     read -p 'Done!. Press [ENTER] to back to the menu...'
@@ -49,10 +53,8 @@ while true
 do
     dialog --clear --backtitle "Raspbian-ua-netinst Configuration Menu" \
     --title "[ M A I N - M E N U ]" \
-    --menu "You can use the UP/DOWN arrow keys, the first \n\
-    letter of the choice as a hot key, or the \n\
-    number keys 1-9 to choose an option.\n\
-    Choose the TASK" 15 50 4 \
+    --menu "You can use the UP/DOWN arrow keys, the first letter of the choice as a hot key, or the number keys 1-5 to choose an option.\n\
+    Choose the TASK:" 15 60 5 \
     Root_pswd   "Set new root password (default: raspbian)" \
     Time_zone   "Adjust time zone and locale input" \
     Essential   "Install essential packages" \
@@ -65,7 +67,7 @@ do
         Time_zone)  time_zone ;;
         Essential)  essential ;;
         New_user)   new_user;;
-        Exit)       echo "Thanks for visiting http://misapuntesde.com"; break ;;
+        Exit)       echo -e "\nThanks for visiting http://misapuntesde.com"; break ;;
     esac
  
 done
