@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento: 
 
-* **293 hours**
+* **295 hours**
 
 ##ENGLISH
 
@@ -22,9 +22,13 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 ###[ ChangeLog (dd/mm/yy)]
 
+####(25/06/14)
+
+· Adding compatibility with raspbian-ua-netinst (https://github.com/debian-pi/raspbian-ua-netinst)
+
 ####(24/06/14)
 
-· Updated check_lastmod_img, crispy-doom, Quake 2
+· Updated check_lastmod_img, crispy-doom, Quake 2, MAME4ALL
 
 ####(18/06/14)
 
