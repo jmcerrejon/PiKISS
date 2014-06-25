@@ -312,6 +312,7 @@ do
 		--title 	"[ Configure ]" \
 		--menu  	"Select to configure your distro" $wHEIGHT $wWIDTH 4 \
 		Back  		"Back to main menu" \
+            RaspNet      	"Configure Raspbian Net Install distro" \
         	Joypad      	"Configure WII, XBox360 controller" \
         	Applekeyb      	"Bluetooth keyboard" \
 		Netcfg		"Config static IP address" 2>"${INPUT}"
@@ -320,6 +321,7 @@ do
 
 	case $menuitem in
 		Back) 		break;;
+            RaspNet)    ./scripts/config/raspnetins.sh;;
 	        Joypad) 	sudo ./scripts/config/jpad.sh;;
         	Applekeyb) 	sudo ./scripts/config/applekeyb.sh;;
         	Netcfg) 	sudo ./scripts/config/netconfig.sh;;
