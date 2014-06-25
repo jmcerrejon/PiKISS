@@ -25,7 +25,7 @@ time_zone(){
 }
 
 essential(){
-    PKGS="raspi-copies-and-fills build-essential mc alsa-base sudo omxplayer libraspberrypi0 htop"
+    PKGS="raspi-copies-and-fills build-essential mc alsa-base sudo omxplayer git git-core libraspberrypi0 htop"
     clear
     echo -e "This option will install the next packages: $PKGS"
     read -p "Agreed? [y/n]" option
@@ -39,8 +39,8 @@ new_user(){
     GROUP="sudo,audio"
     clear
     dialog --inputbox "Enter user name: " 8 40 2>NUSER
-    adduser $NUSER
-    read -p "Set administrator proviledges to $NUSER (sudo)?: [y/n]" option
+    useradd $NUSER
+    read -p "Set administrator priviledges to $NUSER (sudo)?: [y/n]" option
     case "$option" in
         y*) echo -e "$NUSER	ALL=(ALL:ALL) ALL"  | sudo tee -a /etc/sudoers ;;
     esac

@@ -28,7 +28,7 @@ xbox360(){
 
     clear
     echo "Installing dependences..."
-    sudo apt-get install xboxdrv
+    sudo apt-get install -y xboxdrv
     #cp $XBOXMAPPATH /home/$USER/xboxmap
     #xboxdrv --config /home/$USER/xboxmap --silent
     $('xboxdrv –trigger-as-button $W 0 –led 2 –detach-kernel-driver –deadzone 4000 –silent &')
