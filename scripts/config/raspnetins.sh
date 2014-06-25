@@ -25,7 +25,7 @@ time_zone(){
 }
 
 essential(){
-    PKGS="raspi-copies-and-fills build-essential mc alsa-base sudo omxplayer"
+    PKGS="raspi-copies-and-fills build-essential mc alsa-base sudo omxplayer libraspberrypi0 htop"
     clear
     echo -e "This option will install the next packages: $PKGS"
     read -p "Agreed? [y/n]" option
@@ -38,14 +38,14 @@ essential(){
 new_user(){
     GROUP="sudo,audio"
     clear
-    dialog --inputbox "Enter user name: " 8 40 2>USER
-    adduser $USER
-    read -p "Set administrator proviledges to $USER (sudo)?: [y/n]" option
+    dialog --inputbox "Enter user name: " 8 40 2>NUSER
+    adduser $NUSER
+    read -p "Set administrator proviledges to $NUSER (sudo)?: [y/n]" option
     case "$option" in
-        y*) echo -e "$USER	ALL=(ALL:ALL) ALL"  | sudo tee -a /etc/sudoers ;;
+        y*) echo -e "$NUSER	ALL=(ALL:ALL) ALL"  | sudo tee -a /etc/sudoers ;;
     esac
-    usermod -a -G $GROUP $USER
-    id $USER
+    usermod -a -G $GROUP $NUSER
+    id $NUSER
     read -p 'Done!. Press [ENTER] to back to the menu...'
 }
 
@@ -59,7 +59,7 @@ do
     Time_zone   "Adjust time zone and locale input" \
     Essential   "Install essential packages" \
     New_user    "Add a new user" \
-    Exit        "Exit to the shell" 2>"${INPUT}"
+    Exit        "Exit" 2>"${INPUT}"
     menuitem=$(<"${INPUT}")
 
     case $menuitem in

@@ -438,7 +438,7 @@ do
 		Internet)   	smInternet ;;
 		Server)     	smServer ;;
 		Others)     	smOthers ;;
-		Exit) 	    	echo "Thanks for visiting http://misapuntesde.com" ; break ;;
+		Exit) 	    	echo -e "\nThanks for visiting http://misapuntesde.com" ; break ;;
 	esac
 done
 
