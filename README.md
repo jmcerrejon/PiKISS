@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento: 
 
-* **295 hours**
+* **297 hours**
 
 ##ENGLISH
 
@@ -22,9 +22,13 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 ###[ ChangeLog (dd/mm/yy)]
 
+####(26/06/14)
+
+· Added server > minidlna (1.1.3 or latest)
+
 ####(25/06/14)
 
-· Adding compatibility with raspbian-ua-netinst (https://github.com/debian-pi/raspbian-ua-netinst)
+· Added compatibility with raspbian-ua-netinst (https://github.com/debian-pi/raspbian-ua-netinst)
 
 ####(24/06/14)
 

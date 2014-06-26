@@ -31,8 +31,9 @@ xbox360(){
     sudo apt-get install -y xboxdrv
     #cp $XBOXMAPPATH /home/$USER/xboxmap
     #xboxdrv --config /home/$USER/xboxmap --silent
-    $('xboxdrv –trigger-as-button $W 0 –led 2 –detach-kernel-driver –deadzone 4000 –silent &')
-
+    #$('xboxdrv –trigger-as-button $W 0 –led 2 –detach-kernel-driver –deadzone 4000 –silent &')
+    $(xboxdrv –detach-kernel-driver --silent &)
+    
   dialog --backtitle "piKiss" \
          --title     "[ Config your XBox360 controller ]" \
          --yes-label "Yes" \

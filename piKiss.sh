@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.7.5 (2014)
+# Version : Beta 0.7.7 (2014)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -19,14 +19,14 @@
 # VARIABLES
 # - - - - -
 #
-TITLE="PiKISS (Pi Keeping It Simple, Stupid!) .:. Jose Cerrejon .:. (ver. 0.7.5 - 2014)"
+TITLE="PiKISS (Pi Keeping It Simple, Stupid!) .:. Jose Cerrejon .:. (ver. 0.7.7 - 2014)"
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
 NOROOT=0
 NOGUI=0
 NOINTERNETCHECK=0
 wHEIGHT=15
-wWIDTH=50
+wWIDTH=70
 INPUT=/tmp/menu.sh.$$
 OUTPUT=/tmp/output.sh.$$
 vi_editor=${EDITOR-vi}
@@ -171,7 +171,7 @@ isMissingDialogPkg
 function smInfo(){
 	while true
 	do
-		$DIALOG --clear  --help-button \
+		$DIALOG --clear   \
 			--backtitle "$TITLE" \
 			--title 	"[ Info ]" \
 			--menu  	"Select an option from the list" $wHEIGHT $wWIDTH 4 \
@@ -198,7 +198,7 @@ function smInfo(){
 function smTweaks(){
 	while true
 	do
-		$DIALOG --clear  --help-button \
+		$DIALOG --clear   \
 			--backtitle 	"$TITLE" \
 			--title 	"[ Tweaks ]" \
 			--menu  	"Select a tweak from the list" $wHEIGHT $wWIDTH 4 \
@@ -223,7 +223,7 @@ function smTweaks(){
 function smGames(){
 	while true
 	do
-		$DIALOG --clear  --help-button \
+		$DIALOG --clear   \
 			--backtitle 	"$TITLE" \
 			--title 	"[ Games ]" \
 			--menu  	"Select game from the list:" $wHEIGHT $wWIDTH 4 \
@@ -252,17 +252,17 @@ function smGames(){
 function smEmulators(){
 while true
 do
-	$DIALOG --clear  --help-button \
+	$DIALOG --clear   \
 		--backtitle "$TITLE" \
 		--title 	"[ Emulators ]" \
 		--menu  	"Select emulator from the list" $wHEIGHT $wWIDTH 4 \
 		Back  		"Back to main menu" \
 		Snes		"SNES Emulator port based on SNES9X 1.39" \
-        	Mame4all	"MAME port based on Franxis MAME4ALL which is itself based on the MAME 0.37b5" \
+        	Mame4all	"port based on Franxis MAME4ALL (0.37b5)" \
         	Speccy  	"ZX-Spectrum emulator" \
         	Rpix86  	"rpix86 MS-DOS emulator" \
         	Armiga  	"UAE4Armiga4Pi Amiga emulator" \
-		Pifba		"This emulates old arcade games using MAME based roms for CPS1, CPS2, Neogeo, Toaplan and many other games" 2>"${INPUT}"
+		Pifba		"Emulates old arcade games using CPS1, CPS2,..." 2>"${INPUT}"
 
 	menuitem=$(<"${INPUT}")
 
@@ -282,7 +282,7 @@ done
 function smMultimedia(){
 while true
 do
-	$DIALOG --clear  --help-button \
+	$DIALOG --clear   \
 		--backtitle	"$TITLE" \
 		--title 	"[ Multimedia ]" \
 		--menu  	"Select app from the list" $wHEIGHT $wWIDTH 4 \
@@ -307,7 +307,7 @@ done
 function smConfigure(){
 while true
 do
-	$DIALOG --clear  --help-button \
+	$DIALOG --clear   \
 		--backtitle 	"$TITLE" \
 		--title 	"[ Configure ]" \
 		--menu  	"Select to configure your distro" $wHEIGHT $wWIDTH 4 \
@@ -332,13 +332,13 @@ done
 function smInternet(){
 while true
 do
-	### display main menu ###
-	$DIALOG --clear  --help-button \
+
+	$DIALOG --clear   \
 		--backtitle "$TITLE" \
 		--title 	"[ Internet ]" \
 		--menu  	"Select an option from the list" $wHEIGHT $wWIDTH 4 \
 		Back  		"Back to main menu" \
-        	Plowshare  	"Direct download in the Shell from uploaded, freakshare, MEGA,..." \
+        	Plowshare  	"Direct download from hosters like uploaded,..." \
 		Downmp3		"Download mp3 from GrooveShark" 2>"${INPUT}"
 
 	menuitem=$(<"${INPUT}")
@@ -355,16 +355,17 @@ done
 function smServer(){
 while true
 do
-	### display main menu ###
-	$DIALOG --clear  --help-button \
+
+	$DIALOG --clear   \
 		--backtitle 	"$TITLE" \
 		--title 	"[ Server ]" \
 		--menu  	"Select to configure your distro as a server" $wHEIGHT $wWIDTH 4 \
 		Back  		"Back to main menu" \
 	        Cups	        "Printer server (cups)" \
+	        Minidlna        "Install/Compile UPnP/DLNA Minidlna" \
 		Web		"Apache+PHP5" \
         	WebDAV      	"WebDAV to share local content with Apache" \
-            FWork      	"Wordpress, Node.js among others" \
+            	FWork      	"Wordpress, Node.js among others" \
         	DB      	"MySQL+PHP5 connector" 2>"${INPUT}"
 
 	menuitem=$(<"${INPUT}")
@@ -372,9 +373,10 @@ do
 	case $menuitem in
 		Back) 		break ;;
 	        Cups)  		./scripts/server/printer.sh ;;
+            	Minidlna)	./scripts/server/mediaserver.sh ;;
         	Web) 		./scripts/server/web.sh ;;
         	WebDAV) 	./scripts/server/webdav.sh ;;
-            FWork)      ./scripts/server/fwork.sh ;;
+            	FWork)		./scripts/server/fwork.sh ;;
         	DB) 		./scripts/server/db.sh ;;
 	esac
 done
@@ -383,8 +385,8 @@ done
 function smOthers(){
 while true
 do
-	### display main menu ###
-	$DIALOG --clear  --help-button \
+
+	$DIALOG --clear   \
 		--backtitle 	"$TITLE" \
 		--title 	"[ Others ]" \
 		--menu  	"Another scripts uncategorized" $wHEIGHT $wWIDTH 4 \
@@ -410,17 +412,17 @@ done
 #
 while true
 do
-	### display main menu ###
-	$DIALOG --clear  --help-button \
+
+	$DIALOG --clear   \
 		--backtitle "$TITLE" \
 		--title		"[ M A I N - M E N U ]" \
-		--menu 		"You can use the UP/DOWN arrow keys, the first \nletter of the choice as a hot key, or the \nnumber keys 1-4 to choose an option.\nChoose the sub menu" $wHEIGHT $wWIDTH 4 \
+		--menu 		"You can use the UP/DOWN arrow keys, the first letter of the choice as a hot key, or the number keys 1-4 to choose an option." $wHEIGHT $wWIDTH 4 \
 		Tweaks 		"Put your distro to the limit" \
 		Games 		"Install or compile games easily" \
         	Emula 		"Install emulators" \
 		Info		"Info about the Pi or related" \
 		Multimedia	"Help you to install apps like XBMC" \
-		Configure 	"Your hardware, your rules. Installations are piece of cake now" \
+		Configure 	"Installations are piece of cake now" \
 		Internet 	"All refered to internet" \
 		Server 		"Use your distro like a server" \
 		Others 		"Scripts with others thematics" \

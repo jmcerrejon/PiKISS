@@ -2,7 +2,7 @@
 #
 # Description : Menu settings to the raspbian-ua-netinst fork
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.1 (25/Jun/14)
+# Version     : 0.9 (25/Jun/14)
 #
 clear
 
@@ -25,7 +25,7 @@ time_zone(){
 }
 
 essential(){
-    PKGS="raspi-copies-and-fills build-essential mc alsa-base sudo omxplayer git git-core libraspberrypi0 htop"
+    PKGS="raspi-copies-and-fills build-essential mc alsa-base sudo omxplayer git git-core libraspberrypi0 htop nano"
     clear
     echo -e "This option will install the next packages: $PKGS"
     read -p "Agreed? [y/n]" option
@@ -66,7 +66,7 @@ do
         Root_pswd)  root_pswd ;;
         Time_zone)  time_zone ;;
         Essential)  essential ;;
-        New_user)   new_user;;
+        New_user)   new_user ;;
         Exit)       echo -e "\nThanks for visiting http://misapuntesde.com"; break ;;
     esac
  
