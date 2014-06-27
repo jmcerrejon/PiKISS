@@ -262,6 +262,8 @@ do
         	Speccy  	"ZX-Spectrum emulator" \
         	Rpix86  	"rpix86 MS-DOS emulator" \
         	Armiga  	"UAE4Armiga4Pi Amiga emulator" \
+            Gba         "Gameboy Advance" \
+            PCE-CD      "PC-Engine" \
 		Pifba		"Emulates old arcade games using CPS1, CPS2,..." 2>"${INPUT}"
 
 	menuitem=$(<"${INPUT}")
@@ -273,6 +275,8 @@ do
         	Speccy) 	./scripts/emus/speccy.sh ;;
 	       	Armiga) 	./scripts/emus/armiga.sh ;;
         	Rpix86) 	./scripts/emus/rpix86.sh ;;
+            Gba)        ./scripts/emus/gba.sh ;;
+            PCE-CD)     ./scripts/emus/pce.sh ;;
 		Pifba) 		./scripts/emus/pifba.sh ;;
 	esac
 done
@@ -339,6 +343,7 @@ do
 		--menu  	"Select an option from the list" $wHEIGHT $wWIDTH 4 \
 		Back  		"Back to main menu" \
         	Plowshare  	"Direct download from hosters like uploaded,..." \
+            Epiphany    "Web browser" \
 		Downmp3		"Download mp3 from GrooveShark" 2>"${INPUT}"
 
 	menuitem=$(<"${INPUT}")
@@ -346,6 +351,7 @@ do
 	case $menuitem in
     		Back) 		break ;;
            	Plowshare) 	./scripts/inet/ddown.sh ;;
+            Epiphany)   ./scripts/inet/epiphany.sh ;;
 		Downmp3) 	./scripts/inet/dwnmp3.sh ;;
 
 	esac

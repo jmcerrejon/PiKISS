@@ -53,8 +53,8 @@ minidlna_latest(){
     sudo wget -P /etc/ $MINIDLNA_FILE_CONF
     echo -e "\n\nCreating folder music, videos & images...\n"
     create_dir
-    sudo minidlnad
-    echo -e "Done!. Put files in your ${HOME}/{videos,images,music}.Go in the browser to http://<IP>:8200 to see statistics"
+    sudo update-rc.d minidlna defaults
+    echo -e "Done!. Put files in your ${HOME}/{videos,images,music}.Go in the browser to http://<IP>:8200 to see statistics.\nTo restart service: service minidlna force-reload && service minidlna restart"
 }
 
 minidlna_misa(){
@@ -63,8 +63,8 @@ minidlna_misa(){
     rm minidlna_1.1.3-1_armhf.deb
     sudo wget -P /etc/ $MINIDLNA_FILE_CONF
     create_dir
-    sudo minidlnad
-    echo -e "Done!. Put files in your ${HOME}/{videos,images,music}.Go in the browser to http://<IP>:8200 to see statistics"
+    sudo update-rc.d minidlna defaults
+    echo -e "Done!. Put files in your ${HOME}/{videos,images,music}.Go in the browser to http://<IP>:8200 to see statistics.\nTo restart service: service minidlna force-reload && service minidlna restart"
 }
 
 while true
