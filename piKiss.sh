@@ -261,6 +261,7 @@ do
         	Mame4all	"port based on Franxis MAME4ALL (0.37b5)" \
         	Speccy  	"ZX-Spectrum emulator" \
         	Rpix86  	"rpix86 MS-DOS emulator" \
+					8086  		"8086 PC XT-compatible emulator" \
         	Armiga  	"UAE4Armiga4Pi Amiga emulator" \
             Gba         "Gameboy Advance" \
             PCE-CD      "PC-Engine" \
@@ -275,6 +276,7 @@ do
         	Speccy) 	./scripts/emus/speccy.sh ;;
 	       	Armiga) 	./scripts/emus/armiga.sh ;;
         	Rpix86) 	./scripts/emus/rpix86.sh ;;
+					8086) 		./scripts/emus/8086.sh ;;					
             Gba)        ./scripts/emus/gba.sh ;;
             PCE-CD)     ./scripts/emus/pce.sh ;;
 		Pifba) 		./scripts/emus/pifba.sh ;;
