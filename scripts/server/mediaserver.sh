@@ -43,18 +43,19 @@ minidlna_latest(){
     mkdir -p $HOME/sc && cd $_
     wget -O tmp.tar.gz $URL_MINIDLNA
     tar xzf tmp.tar.gz && rm tmp.tar.gz
-    cd sc/minidlna*
+    cd minidlna*
     sudo apt-get install -y libexif-dev libsysfs-dev libid3tag0-dev libFLAC-dev libvorbis-dev libsqlite3-dev libavformat-dev autopoint autoconf libjpeg8-dev gettext libavformat53
-    ./autogen.sh && ./configure
+    clear
     echo -e "\n\nGrab a coffee... ;)\n"
+    ./autogen.sh && ./configure
     make
     make install
     sudo cp minidlna.conf /etc/
     sudo wget -P /etc/ $MINIDLNA_FILE_CONF
     echo -e "\n\nCreating folder music, videos & images...\n"
     create_dir
-    sudo update-rc.d minidlna defaults
-    echo -e "Done!. Put files in your ${HOME}/{videos,images,music}.Go in the browser to http://<IP>:8200 to see statistics.\nTo restart service: service minidlna force-reload && service minidlna restart"
+    #sudo update-rc.d minidlna defaults
+    echo -e "Done!. Put files in your ${HOME}/{videos,images,music}.Go in the browser to http://<IP>:8200 to see statistics.\nTo run: sudo minidlnad" #To restart service: service minidlna force-reload && service minidlna restart"
 }
 
 minidlna_misa(){
@@ -64,8 +65,8 @@ minidlna_misa(){
     rm minidlna_1.1.3-1_armhf.deb
     sudo wget -P /etc/ $MINIDLNA_FILE_CONF
     create_dir
-    sudo update-rc.d minidlna defaults
-    echo -e "Done!. Put files in your ${HOME}/{videos,images,music}.Go in the browser to http://<IP>:8200 to see statistics.\nTo restart service: service minidlna force-reload && service minidlna restart"
+    #sudo update-rc.d minidlna defaults
+    echo -e "Done!. Put files in your ${HOME}/{videos,images,music}.Go in the browser to http://<IP>:8200 to see statistics.\nTo run: sudo minidlnad" #: service minidlna force-reload && service minidlna restart"
 }
 
 while true

@@ -17,7 +17,7 @@ changeInstallDir(){
 
 install(){
     sudo apt-get install -y libsdl1.2-dev
-    mkdir -P $INSTALL_DIR
+    mkdir -p $INSTALL_DIR
     git clone https://github.com/adriancable/8086tiny.git
     cd 8086tiny/
     make
@@ -26,7 +26,7 @@ install(){
     exit
 }
 
-echo -e "Compile 8086tiny (latest)\n===========================\n· More Info: http://www.megalith.co.uk/8086tiny\n· Alley Cat game and FreeDOS included.\n\nInstall path: $INSTALL_DIR"
+echo -e "Compile 8086tiny (latest)\n=========================\n· More Info: http://www.megalith.co.uk/8086tiny\n· Alley Cat game and FreeDOS included.\n\nInstall path: $INSTALL_DIR"
 while true; do
     echo " "
     read -p "Is it right? [y/n] " yn
