@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.7.7 (2014)
+# Version : Beta 0.7.8 (2014)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -19,7 +19,7 @@
 # VARIABLES
 # - - - - -
 #
-TITLE="PiKISS (Pi Keeping It Simple, Stupid!) .:. Jose Cerrejon .:. (ver. 0.7.7 - 2014)"
+TITLE="PiKISS (Pi Keeping It Simple, Stupid!) .:. Jose Cerrejon .:. (ver. 0.7.8 - 2014)"
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
 NOROOT=0
@@ -276,7 +276,7 @@ do
         	Speccy) 	./scripts/emus/speccy.sh ;;
 	       	Armiga) 	./scripts/emus/armiga.sh ;;
         	Rpix86) 	./scripts/emus/rpix86.sh ;;
-					8086) 		./scripts/emus/8086.sh ;;					
+					8086) 		./scripts/emus/8086tiny.sh ;;
             Gba)        ./scripts/emus/gba.sh ;;
             PCE-CD)     ./scripts/emus/pce.sh ;;
 		Pifba) 		./scripts/emus/pifba.sh ;;
