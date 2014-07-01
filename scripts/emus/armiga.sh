@@ -2,8 +2,7 @@
 #
 # Description : UAE4ARMIGA4PI (Amiga emu)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.7 (08/Jun/14)
-#               Untested
+# Version     : 0.8 (1/Jul/14)
 #
 # HELP        · http://fdarcel.free.fr/ | http://www.raspberrypi.org/forums/viewtopic.php?p=491284#p491284
 #
@@ -11,6 +10,7 @@ clear
 
 INSTALL_DIR="/home/$USER/games"
 URL_FILE="http://www.armigaproject.com/pi/uae4armiga4pi.tar.gz"
+KICK_FILE="http://misapuntesde.com/res/Amiga_roms.zip"
 
 validate_url(){
     if [[ `wget -S --spider $1 2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then echo "true"; fi
@@ -31,7 +31,7 @@ install(){
         mkdir -p $INSTALL_DIR && cd $_
         wget -qO- -O tmp.tar.gz $URL_FILE && tar xzf tmp.tar.gz && rm tmp.tar.gz
         cd uae4armiga4pi/
-        wget http://misapuntesde.com/res/kick.rom
+        wget $KICK_FILE && unzip Amiga_roms.zip && mv kick13.rom kick.rom && rm Amiga_roms.zip
         cd ADFs/
         wget http://www.emuparadise.me/GameBase%20Amiga/Games/T/Turrican.zip && unzip -o Turrican.zip && rm Turrican.zip
         wget -O $INSTALL_DIR/uae4armiga4pi/COVERs/Turrican.adf.jpg http://files.xboxic.com/turrican2.jpg

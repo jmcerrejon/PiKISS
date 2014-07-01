@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.7.8 (2014)
+# Version : Beta 0.7.9 (2014)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -19,7 +19,7 @@
 # VARIABLES
 # - - - - -
 #
-TITLE="PiKISS (Pi Keeping It Simple, Stupid!) .:. Jose Cerrejon .:. (ver. 0.7.8 - 2014)"
+TITLE="PiKISS (Pi Keeping It Simple, Stupid!) .:. Jose Cerrejon .:. (ver. 0.7.9 - 2014)"
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
 NOROOT=0
@@ -263,6 +263,7 @@ do
         	Rpix86  	"rpix86 MS-DOS emulator" \
 					8086  		"8086 PC XT-compatible emulator" \
         	Armiga  	"UAE4Armiga4Pi Amiga emulator" \
+					Uae4all2  "uae4all2 Amiga emulator" \
             Gba         "Gameboy Advance" \
             PCE-CD      "PC-Engine" \
 		Pifba		"Emulates old arcade games using CPS1, CPS2,..." 2>"${INPUT}"
@@ -275,6 +276,7 @@ do
         	Mame4all) 	./scripts/emus/mame4allpi.sh ;;
         	Speccy) 	./scripts/emus/speccy.sh ;;
 	       	Armiga) 	./scripts/emus/armiga.sh ;;
+					Uae4all2) 	./scripts/emus/uae4all2.sh ;;
         	Rpix86) 	./scripts/emus/rpix86.sh ;;
 					8086) 		./scripts/emus/8086tiny.sh ;;
             Gba)        ./scripts/emus/gba.sh ;;
