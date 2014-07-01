@@ -2,7 +2,7 @@
 #
 # Description : UAE4ARMIGA4PI (Amiga emu)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.8 (1/Jul/14)
+# Version     : 1.0 (1/Jul/14)
 #
 # HELP        · http://fdarcel.free.fr/ | http://www.raspberrypi.org/forums/viewtopic.php?p=491284#p491284
 #
