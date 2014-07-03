@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.7.9 (2014)
+# Version : Beta 0.8.0 (2014)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -19,7 +19,7 @@
 # VARIABLES
 # - - - - -
 #
-TITLE="PiKISS (Pi Keeping It Simple, Stupid!) .:. Jose Cerrejon .:. (ver. 0.7.9 - 2014)"
+TITLE="PiKISS (Pi Keeping It Simple, Stupid!) .:. Jose Cerrejon .:. (ver. 0.8.0 - 2014)"
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
 NOROOT=0
@@ -374,6 +374,7 @@ do
 	        Cups	        "Printer server (cups)" \
 	        Minidlna        "Install/Compile UPnP/DLNA Minidlna" \
 		Web		"Apache+PHP5" \
+		Smtp		"SMTP Config to send e-mail" \
         	WebDAV      	"WebDAV to share local content with Apache" \
             	FWork      	"Wordpress, Node.js among others" \
         	DB      	"MySQL+PHP5 connector" 2>"${INPUT}"
@@ -385,6 +386,7 @@ do
 	        Cups)  		./scripts/server/printer.sh ;;
             	Minidlna)	./scripts/server/mediaserver.sh ;;
         	Web) 		./scripts/server/web.sh ;;
+			Smtp) 		./scripts/server/smtp.sh ;;
         	WebDAV) 	./scripts/server/webdav.sh ;;
             	FWork)		./scripts/server/fwork.sh ;;
         	DB) 		./scripts/server/db.sh ;;
