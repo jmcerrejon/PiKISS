@@ -404,6 +404,7 @@ do
 		--menu  	"Another scripts uncategorized" $wHEIGHT $wWIDTH 4 \
         	Back  		"Back to main menu" \
         	SDL2  		"Compile SDL2 + Libraries (It can take 40 minutes)" \
+			GCC  		"Install GCC 4.7 on Raspberry Pi" \
         	WhatsApp  	"Send WhatsApp messages from terminal" \
         	Aircrack	"Compile Aircrack-NG suite easily" 2>"${INPUT}"
 
@@ -412,6 +413,7 @@ do
 	case $menuitem in
             	Back) 		break ;;
             	SDL2) 		./scripts/others/sdl2.sh ;;
+				GCC) 		./scripts/others/gcc47.sh ;;
         	WhatsApp) 	./scripts/others/whatsapp.sh ;;
         	Aircrack)       ./scripts/others/aircrack.sh ;;
 	esac
