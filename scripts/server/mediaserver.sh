@@ -20,7 +20,7 @@ boot(){
     read -p "Do you want to start daemon on boot?" option
 
 case "$option" in
-    y*) sudo sed -i 'minidlnad' /etc/rc.local ;;
+    y*) sudo sed -i '$i minidlnad' /etc/rc.local ;;
 esac
 }
 
