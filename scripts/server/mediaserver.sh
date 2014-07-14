@@ -2,7 +2,7 @@
 #
 # Description : UPnP/DLNA MediaServer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.9 (28/Jun/14)
+# Version     : 0.9.1 (14/Jul/14)
 #
 # HELP        · http://www.raspberrypi.org/forums/viewtopic.php?p=518676#p518676
 #             · http://www.raspberrypi.org/forums/viewtopic.php?t=16352
@@ -15,6 +15,14 @@ MINIDLNA_FILE_CONF="http://misapuntesde.com/res/minidlna.conf"
 
 INPUT=/tmp/mnu.sh.$$
 trap "rm $INPUT; exit" SIGHUP SIGINT SIGTERM
+
+boot(){
+    read -p "Do you want to start daemon on boot?" option
+
+case "$option" in
+    y*) sudo sed -i 'minidlnad' /etc/rc.local ;;
+esac
+}
 
 create_dir(){
     mkdir -p ${HOME}/music && sudo chmod 777 ${HOME}/music
@@ -55,6 +63,7 @@ minidlna_latest(){
     echo -e "\n\nCreating folder music, videos & images...\n"
     create_dir
     #sudo update-rc.d minidlna defaults
+    boot()
     echo -e "Done!. Put files in your ${HOME}/{videos,images,music}.Go in the browser to http://<IP>:8200 to see statistics.\nTo run: sudo minidlnad" #To restart service: service minidlna force-reload && service minidlna restart"
 }
 
@@ -66,6 +75,7 @@ minidlna_misa(){
     sudo wget -P /etc/ $MINIDLNA_FILE_CONF
     create_dir
     #sudo update-rc.d minidlna defaults
+    boot()
     echo -e "Done!. Put files in your ${HOME}/{videos,images,music}.Go in the browser to http://<IP>:8200 to see statistics.\nTo run: sudo minidlnad" #: service minidlna force-reload && service minidlna restart"
 }
 
