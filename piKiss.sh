@@ -322,6 +322,7 @@ do
 		Back  		"Back to main menu" \
             RaspNet      	"Configure Raspbian Net Install distro" \
         	Joypad      	"Configure WII, XBox360 controller" \
+        	Backup      	"Simple backup dir to run daily" \
         	Applekeyb      	"Bluetooth keyboard" \
 		Netcfg		"Config static IP address" 2>"${INPUT}"
 
@@ -331,6 +332,7 @@ do
 		Back) 		break;;
             RaspNet)    ./scripts/config/raspnetins.sh;;
 	        Joypad) 	sudo ./scripts/config/jpad.sh;;
+	        Backup) 	sudo ./scripts/config/backup.sh;;
         	Applekeyb) 	sudo ./scripts/config/applekeyb.sh;;
         	Netcfg) 	sudo ./scripts/config/netconfig.sh;;
 	esac
