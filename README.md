@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **308.5 hours**
+* **315.5 hours**
 
 ##ENGLISH
 
@@ -21,6 +21,14 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ###[ ChangeLog (dd/mm/yy)]
+
+####(09/08/14)
+
+· Added Config > WLAN Configurator 
+
+####(06/08/14)
+
+· Aircrack script fixed!
 
 ####(30/07/14)
 
