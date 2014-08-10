@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.8.1 (2014)
+# Version : Beta 0.8.5 (2014)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -13,26 +13,21 @@
 # TO DO
 # - - -
 #
-# * LOCAL variables on functions.
-#
 # - - - - -
 # VARIABLES
 # - - - - -
 #
-TITLE="PiKISS (Pi Keeping It Simple, Stupid!) .:. Jose Cerrejon .:. (ver. 0.8.1 - 2014)"
+TITLE="PiKISS (Pi Keeping It Simple, Stupid!) .:. Jose Cerrejon .:. (ver. 0.8.5 - 2014)"
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
-NOROOT=0
 NOGUI=0
-NOINTERNETCHECK=0
 wHEIGHT=15
 wWIDTH=70
 INPUT=/tmp/menu.sh.$$
 OUTPUT=/tmp/output.sh.$$
-vi_editor=${EDITOR-vi}
 
 # trap and delete temp files
-trap "rm $OUTPUT; rm $INPUT; exit" SIGHUP SIGINT SIGTERM
+trap 'rm $OUTPUT; rm $INPUT; exit' SIGHUP SIGINT SIGTERM
 
 #
 # - - - - -
@@ -45,18 +40,10 @@ function usage(){
 	echo -e "Usage: piKiss [Arguments]\n\nArguments:\n\n"
 	echo "-h  | --help       : This help."
 	echo "-nu | --no_update  : No check if repositories are updated."
-	echo "-nr | --noroot     : Execute the file as a normal user (not recommended)."
 	echo "-ng | --nogui      : Force to use the script on the console with dialog."
 	echo "-ni | --noinet     : No check if internet connection is available."
 	echo " "
 	echo "For trouble, ideas or technical support please visit http://misapuntesde.com"
-}
-
-function display_output(){
-	local h=${1-10}			# box height default 10
-	local w=${2-41} 		# box width default 41
-	local t=${3-Output} 		# box title
-	$DIALOG --backtitle "$TITLE" --title "${t}" --clear --msgbox "$(<$OUTPUT)" ${h} ${w}
 }
 
 function isMissingDialogPkg(){
@@ -89,27 +76,8 @@ function lastUpdateRepo(){
     fi
 
     echo "Update repo: YES"
-    (echo $DATENOW > checkupdate.txt)
+    (echo "$DATENOW" > checkupdate.txt)
     sudo apt-get update
-}
-
-# Obsolete
-function checkLastVersion(){
-	# If u don't remember, $0 is the name of the script
-	DATEFILE=$(stat -c %y ./$0 | cut -d ' ' -f1)
-	if [ $DATEFILE != $NOW -o $CHK_UPDATE = 1 ];then
-
-		if [[ "$(curl http://misapuntesde.com/$0 -z $0 -o $0.upd -s -L -w %{http_code})" == "200" ]]; then
-			$DIALOG --title "New version available!" \
-			--backtitle $TITLE \
-			--yesno "Do you want to apply?" 5 30
-			response=$?
-			case $response in
-				# Put the REAL update sentences here...
-			   0) clear && exec ./yesno ;break ;;
-			esac
-		fi
-	fi
 }
 
 #
@@ -121,8 +89,6 @@ function checkLastVersion(){
 # Arguments
 while [ "$1" != "" ]; do
     case $1 in
-        -nr | --noroot )        NOROOT=1
-                                ;;
         -nu | --no_update )     CHK_UPDATE=1
                                 ;;
         -ng | --nogui )    	NOGUI=1
@@ -138,11 +104,14 @@ while [ "$1" != "" ]; do
     shift
 done
 
-# Root priviledges
-#if [ $(/usr/bin/id -u) -ne 0 -a $NOROOT = 0 ]; then echo "Please run as root."; exit 1; fi
 
 # Make sure we have internet conection
-if ! ping -q -w 1 -c 1 `ip r | grep default | cut -d ' ' -f 3` > /dev/null;then echo "Internet connection required. Check your network."; exit 1; fi
+if [ ! "$NOINTERNETCHECK" = 1 ]; then
+	PINGOUTPUT=$(ping -c 1 8.8.8.8 > /dev/null && echo 'true')
+	if [ ! "$PINGOUTPUT" = true ]; then
+		echo "Internet connection required. Check your network."; exit 1
+	fi
+fi
 
 # Last time 'apt-get update' command was executed
 if [ ! $CHK_UPDATE = 1 ];then
@@ -151,9 +120,6 @@ fi
 
 # dialog exist
 isMissingDialogPkg
-
-# Check for a new version
-#checkLastVersion
 
 #
 # - - - - - -
@@ -321,6 +287,7 @@ do
 		--menu  	"Select to configure your distro" $wHEIGHT $wWIDTH 4 \
 		Back  		"Back to main menu" \
             RaspNet      	"Configure Raspbian Net Install distro" \
+            SSIDCfg      	"Configure SSID (WPA/WPA2 with PSK)" \
         	Joypad      	"Configure WII, XBox360 controller" \
         	Backup      	"Simple backup dir to run daily" \
         	Applekeyb      	"Bluetooth keyboard" \
@@ -331,6 +298,7 @@ do
 	case $menuitem in
 		Back) 		break;;
             RaspNet)    ./scripts/config/raspnetins.sh;;
+            SSIDCfg)    sudo ./scripts/config/ssidcfg.sh;;
 	        Joypad) 	sudo ./scripts/config/jpad.sh;;
 	        Backup) 	sudo ./scripts/config/backup.sh;;
         	Applekeyb) 	sudo ./scripts/config/applekeyb.sh;;
@@ -456,7 +424,11 @@ do
 		Internet)   	smInternet ;;
 		Server)     	smServer ;;
 		Others)     	smOthers ;;
-		Exit) 	    	echo -e "\nThanks for visiting http://misapuntesde.com" ; break ;;
+		Exit) 	    	echo -e "\nThanks for visiting http://misapuntesde.com" && exit ;;
+1)
+    echo -e "\nCancel pressed." && exit;;
+  255)
+    echo -e "\nESC pressed." && exit;;
 	esac
 done
 
@@ -467,4 +439,3 @@ done
 #
 [ -f $OUTPUT ] && rm $OUTPUT
 [ -f $INPUT ] && rm $INPUT
-[ -f kmpiss.upd ] && rm $0.upd
