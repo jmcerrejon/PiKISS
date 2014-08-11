@@ -46,6 +46,10 @@ function usage(){
 	echo "For trouble, ideas or technical support please visit http://misapuntesde.com"
 }
 
+# Best method and remove gdialog
+# which dialog &> /dev/null
+# [ $? -ne 0 ]  && echo "Dialog utility is not available, Install it"
+
 function isMissingDialogPkg(){
 	if [ -e "/tmp/.X0-lock" -a -f "/usr/bin/gdialog" -a $NOGUI = 0 ];then
 		DIALOG=gdialog
