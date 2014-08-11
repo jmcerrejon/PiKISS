@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **315.5 hours**
+* **319.2 hours**
 
 ##ENGLISH
 
@@ -22,9 +22,9 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 ###[ ChangeLog (dd/mm/yy)]
 
-####(09/08/14)
+####(11/08/14)
 
-· Added Config > WLAN Configurator 
+· Added Config > SSID Configurator 
 
 ####(06/08/14)
 
