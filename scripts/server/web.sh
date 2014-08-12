@@ -2,7 +2,7 @@
 #
 # Description : Install Web Server + php
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.7.1 (26/May/14)
+# Version     : 0.8 (12/Aug/14)
 #
 # TODO        · Select another web server: nginx, cherokkee, lighhttpd
 #
@@ -45,20 +45,26 @@ monkey(){
     read -p "Done!. Press [Enter] to continue..."
 }
 
+nginx(){
+  sudo apt-get install -y nginx php5-common php5-mysql php5-xmlrpc php5-cgi php5-curl php5-gd php5-cli php5-fpm php-apc php5-dev php5-mcrypt
+}
+
 while true
 do
 	dialog --backtitle "PiKISS" \
 		--title 	"[ Install Web Server ]" --clear \
 		--menu  	"Pick one:" 15 55 5 \
         	Apache  	"Apache" \
-            	Monkey       	"Monkey HTTP" \
+              Monkey        "Monkey HTTP" \
+            	NGINX       	"Nginx" \
             	Exit        	"Exit" 2>"${tempfile}"
 
 	menuitem=$(<"${tempfile}")
 
 	case $menuitem in
         	Apache) apache ;;
-        	Monkey) monkey;;
+          Monkey) monkey;;
+        	NGINX) nginx;;
         	Exit) exit;;
 	esac
 done
