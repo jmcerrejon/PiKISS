@@ -2,7 +2,7 @@
 #
 # Description : Jasper, an open source platform for developing always-on, voice-controlled applications
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.1 (25/Jun/14)
+# Version     : 0.3 (13/aug/14)
 #               UNFINISHED
 #
 # HELP        · http://jasperproject.github.io/documentation/software/
@@ -25,3 +25,4 @@ arecord -d 10 /tmp/temp.wav
 echo "Playing..."
 omxplayer /tmp/temp.wav
 
+# Unfinished...

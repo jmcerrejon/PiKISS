@@ -2,7 +2,7 @@
 #
 # Description : Automatize Download .torrent files with Flexget
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.1 (27/Jul/14)
+# Version     : 0.3 (13/Aug/14)
 #
 # HELP		  · http://torrated.eu/
 # 			  · http://informaticamateur.blogspot.com.es/2014/05/descargas-automaticas-de-series-con.html

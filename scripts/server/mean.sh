@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# Description : MEAN
+# Description : MEAN Environment to developers
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.1 (13/Aug/14)
+# Version     : 0.1
 #
 # HELP        · 
 #			  

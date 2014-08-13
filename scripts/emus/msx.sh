@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# Description : Some MSX emulator
+# Description : MSX emulator
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.1 (17/Jun/14)
+# Version     : 0.1
 #
 clear
 
