@@ -1,0 +1,33 @@
+tasks:
+
+  tv-shows:
+    series_premiere: yes
+
+    transmission:
+      path: /home/ulysess/Descargas
+      host: localhost
+      port: 9091
+      username: transmission
+      password: transmission
+      addpaused: no
+
+    rss: http://rss.thepiratebay.se/208
+
+    thetvdb_lookup: yes
+
+    quality: 720p HDTV h264
+
+    regexp:
+      reject:
+        - SUB
+        - DUAL
+        - WEB
+        - CENSORED
+        - SCREENER
+        - LATINO
+
+    content_filter:
+      reject:
+        - '*.avi'
+        - '*.mpg'
+        - '*.mpeg'

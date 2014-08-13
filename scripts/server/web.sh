@@ -5,6 +5,9 @@
 # Version     : 0.8 (12/Aug/14)
 #
 # TODO        · Select another web server: nginx, cherokkee, lighhttpd
+#             · Cherekee: http://www.drentsoft.com/linux-experiments/2014-01-03/quickest-way-to-install-cherokee-web-server/
+#             · http://apsvr.com/blog/?p=73
+#             · http://www.raspberrypi.org/forums/viewtopic.php?f=66&t=61778
 #
 clear
 
