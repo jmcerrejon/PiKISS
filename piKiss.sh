@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.8.5 (2014)
+# Version : Beta 0.8.6 (2014)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -17,7 +17,7 @@
 # VARIABLES
 # - - - - -
 #
-TITLE="PiKISS (Pi Keeping It Simple, Stupid!) .:. Jose Cerrejon .:. (ver. 0.8.5 - 2014)"
+TITLE="PiKISS (Pi Keeping It Simple, Stupid!) .:. Jose Cerrejon .:. (ver. 0.8.6 - 2014)"
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
 NOGUI=0
@@ -350,6 +350,7 @@ do
 		Web		"Apache+PHP5" \
 		Smtp		"SMTP Config to send e-mail" \
         	WebDAV      	"WebDAV to share local content with Apache" \
+        	SMB      	"Share files with SAMBA" \
             	FWork      	"Wordpress, Node.js among others" \
         	DB      	"MySQL+PHP5 connector" 2>"${INPUT}"
 
@@ -362,6 +363,7 @@ do
         	Web) 		./scripts/server/web.sh ;;
 			Smtp) 		./scripts/server/smtp.sh ;;
         	WebDAV) 	./scripts/server/webdav.sh ;;
+        	SMB) 	./scripts/server/fileserver.sh ;;
             	FWork)		./scripts/server/fwork.sh ;;
         	DB) 		./scripts/server/db.sh ;;
 	esac
