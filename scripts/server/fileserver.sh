@@ -2,7 +2,7 @@
 #
 # Description : Samba config
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.9.2 (13/Aug/14)
+# Version     : 1.0 (13/Aug/14)
 #
 # HELP        · http://everyday-tech.com/samba-share-on-your-raspberry-pi/
 #			  · http://raspberryparatorpes.net/proyectos/instalar-samba-preparando-un-nas-o-servidor-casero-3/
@@ -28,8 +28,7 @@ case $response in
    255) echo "[ESC] key pressed.";exit;;
 esac
 
-#doesn't work?
-[ -f /usr/sbin/samba ] && echo "Samba Found" || echo "Installing Samba..." ; sudo apt-get install -y samba samba-common-bin
+[[ ! -e /etc/samba ]] && sudo apt-get install -y samba samba-common-bin
 
 dialog  --title     "[ Samba Config to share dir ]" \
 		--yes-label "Public" \
@@ -48,7 +47,7 @@ if [ "$SHARE_TYPE" = 'user' ]; then
 	dialog --inputbox "Input user:" 8 40 2>"${tempfile}"
 	USER=$(<"${tempfile}")
 	sudo smbpasswd -a "$USER"
-	VALID_USER='valid users = "$USER"\n'
+	VALID_USER="valid users = ${USER} \n"
 fi
 
 dialog  --title "[ Samba Config to share dir ]" \
@@ -56,7 +55,7 @@ dialog  --title "[ Samba Config to share dir ]" \
 
 response=$?
 case $response in
-   0) 	WPERMISSION='writeable = yes \n'; sudo chmod 775 "$DIR_SHARE" ;;
+   0) 	WPERMISSION='writeable = yes \ncreate mask = 0777\ndirectory mask = 0777\n'; sudo chmod 775 "$DIR_SHARE" ;;
    1) 	WPERMISSION='writeable = no \n' ;;
    255) echo "[ESC] key pressed.";exit;;
 esac
@@ -64,15 +63,15 @@ esac
 [ -f /etc/samba/smb.conf.backup ] && echo "/etc/samba/smb.conf.backup already exist." || sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.backup
 
 # Changing some values to file /etc/samba/smb.conf
-#sudo sed -i 's/   workgroup = WORKGROUP/   workgroup = HOME/g' /etc/samba/smb.conf
+sudo sed -i 's/   workgroup = WORKGROUP/   workgroup = HOME/g' -i '/#### Networking ####/i\ max xmit = 65535\nsocket options = TCP_NODELAY IPTOS_LOWDELAY SO_SNDBUF=65535 SO_RCVBUF=65535\nread raw = yes\nwrite raw = yes\nmax connections = 65535\nmax open files = 65535\n' /etc/samba/smb.conf
 
 #Dir to share
-echo -e "[HOME_SHARED] \npath = ${DIR_SHARE}\ncomment = Share dir\n${WPERMISSION}browseable = yes\n${VALID_USER}" | sudo tee -a /etc/samba/smb.conf
+echo -e "[HOME_SHARED] \npath = ${DIR_SHARE}\ncomment = Shared directory\n ${WPERMISSION}browseable = yes\n${VALID_USER}" | sudo tee -a /etc/samba/smb.conf
 
 #test
 testparm -s
 
 sudo service samba restart
 
-echo -e 'Done. Now go to another device/PC and input the next path in the File Browser: \\\\'"$(hostname) and search the dir HOME_SHARED"
-read -p "Press [ENTER] to continue..."
+echo -e 'Done. Wait a minute and go to another device/PC and input the next path in your files browser:\n · Windows: \\\\'"$(hostname)"'\n · Linux: smb://'"$(hostname)"
+read -p 'Press [ENTER] to continue...'
