@@ -2,7 +2,7 @@
 #
 # Description : Samba config
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.9 (13/Aug/14)
+# Version     : 0.9.1 (13/Aug/14)
 #
 # HELP        · http://everyday-tech.com/samba-share-on-your-raspberry-pi/
 #			  · http://raspberryparatorpes.net/proyectos/instalar-samba-preparando-un-nas-o-servidor-casero-3/

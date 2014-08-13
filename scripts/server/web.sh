@@ -2,7 +2,7 @@
 #
 # Description : Install Web Server + php
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.8 (13/Aug/14)
+# Version     : 0.8.1 (13/Aug/14)
 #
 # TODO        · Select another web server: nginx, cherokkee, lighhttpd
 #             · Cherekee: http://www.drentsoft.com/linux-experiments/2014-01-03/quickest-way-to-install-cherokee-web-server/
