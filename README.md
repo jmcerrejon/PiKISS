@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **330.2 hours**
+* **333.2 hours**
 
 ##ENGLISH
 
@@ -25,6 +25,8 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 ####(14/08/14)
 
 · Added Emulators > UAE4ALL 0.3 RC4 
+
+· Added Server > ownCloud 7.0.1 with NginX and SSL
 
 ####(13/08/14)
 
