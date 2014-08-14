@@ -2,7 +2,7 @@
 #
 # Description : Amiga emulators (uae4armiga4pi, uae4all & uae4all2)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (14/Aug/14)
+# Version     : 1.1 (14/Aug/14)
 #
 clear
 
@@ -30,7 +30,7 @@ downloadKICK(){
   if [[ $(validate_url $KICK_FILE) != "true" ]] ; then
     read -p "Sorry, the KICK ROM is not available. Search and download it manually. Press [ENTER] to continue..."
   else
-    wget $KICK_FILE && unzip Amiga_roms.zip && mv kick13.rom kick.rom && rm Amiga_roms.zip && cd ..     
+    wget $KICK_FILE && unzip Amiga_roms.zip && mv kick13.rom kick.rom && rm Amiga_roms.zip    
   fi
 }
 
@@ -110,11 +110,11 @@ insUAE4ALL2(){
   else
       sudo apt-get install -y libsdl1.2debian libsdl-image1.2 libsdl-ttf2.0-0 libguichan-0.8.1-1 libguichan-sdl-0.8.1-1
       mkdir -p $INSTALL_DIR && cd $_
-      wget $URL_UAE4ALL
+      wget $URL_UAE4ALL2
       tar xzf uae4all2*
       rm -rf uae4all2*.tgz
       cd uae4all2/kickstarts
-      downloadKICK
+      downloadKICK && cd ..
       downloadROM
       sudo sh -c 'echo "@pi - rtprio 90" >> /etc/security/limits.conf'
       echo -e "Done!. Type ./uae4all2 and for Full Screen: ./amiga"
