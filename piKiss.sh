@@ -232,8 +232,7 @@ do
         	Speccy  	"ZX-Spectrum emulator" \
         	Rpix86  	"rpix86 MS-DOS emulator" \
 					8086  		"8086 PC XT-compatible emulator" \
-        	Armiga  	"UAE4Armiga4Pi Amiga emulator" \
-					Uae4all2  "uae4all2 Amiga emulator" \
+        	Amiga  	"Some Amiga emulators" \
             Gba         "Gameboy Advance" \
             PCE-CD      "PC-Engine" \
 		Pifba		"Emulates old arcade games using CPS1, CPS2,..." 2>"${INPUT}"
@@ -245,8 +244,7 @@ do
 		Snes) 		./scripts/emus/pisnes.sh ;;
         	Mame4all) 	./scripts/emus/mame4allpi.sh ;;
         	Speccy) 	./scripts/emus/speccy.sh ;;
-	       	Armiga) 	./scripts/emus/armiga.sh ;;
-					Uae4all2) 	./scripts/emus/uae4all2.sh ;;
+	       	Amiga) 	./scripts/emus/amiga.sh ;;
         	Rpix86) 	./scripts/emus/rpix86.sh ;;
 					8086) 		./scripts/emus/8086tiny.sh ;;
             Gba)        ./scripts/emus/gba.sh ;;
