@@ -12,7 +12,9 @@
 # - - -
 # TO DO
 # - - -
-#
+# 
+# · Add apt-get install sudo, wget unrar-free if doesn't installed.
+# 
 # - - - - -
 # VARIABLES
 # - - - - -

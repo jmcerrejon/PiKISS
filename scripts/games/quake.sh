@@ -9,7 +9,7 @@
 clear
 
 QUAKE2_URL="http://pickle.gp2x.de/rpi/quake2_rpi.zip"
-Q2_PAK_URL="http://download1721.mediafire.com/nldd8l6yzqzg/zcfktp5izjl68rj/quake2+PAK.rar"
+Q2_PAK_URL="http://download2083.mediafire.com/rd78axa0bomg/zcfktp5izjl68rj/quake2+PAK.rar"
 DATA_DIR=$HOME"/games"
 
 quakeServer(){
