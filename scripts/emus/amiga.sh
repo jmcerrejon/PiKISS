@@ -8,7 +8,7 @@ clear
 
 INSTALL_DIR="/home/$USER/games"
 URL_ARMIGA="http://www.armigaproject.com/pi/uae4armiga4pi.tar.gz"
-URL_UAE4ALL="http://misapuntesde.com/res/uae4all-rpi-bin_v0.3rc4_ulysess.tar.gz"
+URL_UAE4ALL="http://fdarcel.free.fr/uae4all-src-rc3.chips.0.5.tar.bz2"
 URL_UAE4ALL2="ftp://researchlab.spdns.de/rpi/uae4all2/uae4all2-2.3.5.3rpi.tgz"
 KICK_FILE="http://misapuntesde.com/res/Amiga_roms.zip"
 GAME="http://www.emuparadise.me/GameBase%20Amiga/Games/T/Turrican.zip"
@@ -79,7 +79,7 @@ exit
 }
 
 insUAE4ALL(){
-  echo -e "UAE4All 0.4 rc3 for Raspberry Pi\n================================\n· More Info: http://www.raspberrypi.org/forums/viewtopic.php?f=78&t=17928\n· Kickstar ROMs & Turrican included.\n\nInstall path: $INSTALL_DIR"
+  echo -e "UAE4All 0.5 for Raspberry Pi\n============================\n· More Info: http://www.raspberrypi.org/forums/viewtopic.php?f=78&t=17928\n· Kickstar ROMs & Turrican included.\n\nInstall path: $INSTALL_DIR"
   
   menu
 
@@ -93,7 +93,7 @@ insUAE4ALL(){
       cd uae4all*
       downloadKICK
       downloadROM
-      echo -e "Done!. Type ./uae4all"
+      echo -e "Done!. Type ./uae4all_cyclone (fastest) or ./uae4all_fame (support save state)"
       read -p "Press [Enter] to continue..."
       exit
   fi
