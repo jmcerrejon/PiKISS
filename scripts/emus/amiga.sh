@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 #
 # Description : Amiga emulators (uae4armiga4pi, uae4all & uae4all2)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)

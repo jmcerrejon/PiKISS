@@ -2,7 +2,7 @@
 #
 # Description : Config your joypad controller
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.5 (24/May/14)
+# Version     : 0.5.1 (25/Aug/14)
 #
 clear
 
@@ -12,6 +12,9 @@ if [ -f ./res/wii_remote_1.py ]; then WII_TEST_PATH=./res/wii_remote_1.py; else 
 tempfile=`tempfile 2>/dev/null` || tempfile=/tmp/test$$
 
 xbox360(){
+# sudo nano /opt/retropie/configs/all/retroarch.cfg
+# Add the line as follows input_enable_hotkey_btn = 8
+# Add the line as follows input_exit_emulator_btn = 9
     dialog --backtitle "piKiss" \
          --title     "[ Config your XBox360 controller ]" \
          --yes-label "Wired" \
