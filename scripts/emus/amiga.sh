@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 #
 # Description : Amiga emulators (uae4armiga4pi, uae4all & uae4all2)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
@@ -12,6 +12,9 @@ URL_UAE4ALL="http://fdarcel.free.fr/uae4all-src-rc3.chips.0.5.tar.bz2"
 URL_UAE4ALL2="ftp://researchlab.spdns.de/rpi/uae4all2/uae4all2-2.3.5.3rpi.tgz"
 KICK_FILE="http://misapuntesde.com/res/Amiga_roms.zip"
 GAME="http://www.emuparadise.me/GameBase%20Amiga/Games/T/Turrican.zip"
+GAME2_DSK1="http://www.emuparadise.me/GameBase%20Amiga/Games/X/Xenon%202%20-%20Megablast_Disk1.zip"
+GAME2_DSK2="http://www.emuparadise.me/GameBase%20Amiga/Games/X/Xenon%202%20-%20Megablast_Disk2.zip"
+
 INPUT=/tmp/amigamenu.$$
 
 trap 'rm $INPUT; exit' SIGHUP SIGINT SIGTERM
@@ -38,7 +41,7 @@ downloadROM(){
   if [[ $(validate_url $GAME) != "true" ]] ; then
     read -p "Sorry, the game is not available. Search another one and download it to $INSTALL_DIR manually. Press [ENTER] to continue..."
   else
-    wget $GAME && unzip -o Turrican.zip && rm Turrican.zip
+    wget $1 && unzip -o *.zip && rm *.zip
   fi
 }
 
@@ -70,7 +73,7 @@ insUAE4ARMIGA4PI(){
         cd uae4armiga4pi/
         downloadKICK
         cd ADFs/
-        downloadROM
+        downloadROM $GAME 
         wget -O $INSTALL_DIR/uae4armiga4pi/COVERs/Turrican.adf.jpg http://files.xboxic.com/turrican2.jpg
         echo "Done!. To play you need to uncomment framebuffer display from /boot/config.txt and then, go to install path and type: ./uae4armiga4pi"
     fi
@@ -79,7 +82,7 @@ exit
 }
 
 insUAE4ALL(){
-  echo -e "UAE4All 0.5 for Raspberry Pi\n============================\n· More Info: http://www.raspberrypi.org/forums/viewtopic.php?f=78&t=17928\n· Kickstar ROMs & Turrican included.\n\nInstall path: $INSTALL_DIR"
+  echo -e "UAE4All 0.5 for Raspberry Pi\n============================\n· More Info: http://www.raspberrypi.org/forums/viewtopic.php?f=78&t=17928\n· Kickstar ROMs & Xenon2 included.\n\nInstall path: $INSTALL_DIR"
   
   menu
 
@@ -89,10 +92,11 @@ insUAE4ALL(){
   else
       sudo apt-get install -y libsdl1.2-dev libsdl-mixer1.2-dev
       mkdir -p $INSTALL_DIR && cd $_
-      wget -qO- -O tmp.tar.gz $URL_UAE4ALL && tar xzf tmp.tar.gz && rm tmp.tar.gz
+      wget -qO- -O tmp.tar.bz2 $URL_UAE4ALL && tar xjvf tmp.tar.bz2 && rm tmp.tar.bz2
       cd uae4all*
       downloadKICK
-      downloadROM
+      downloadROM $GAME2_DSK1
+      downloadROM $GAME2_DSK2
       echo -e "Done!. Type ./uae4all_cyclone (fastest) or ./uae4all_fame (support save state)"
       read -p "Press [Enter] to continue..."
       exit
@@ -115,7 +119,7 @@ insUAE4ALL2(){
       rm -rf uae4all2*.tgz
       cd uae4all2/kickstarts
       downloadKICK && cd ..
-      downloadROM
+      downloadROM $GAME
       sudo sh -c 'echo "@pi - rtprio 90" >> /etc/security/limits.conf'
       echo -e "Done!. Type ./uae4all2 and for Full Screen: ./amiga"
       read -p "Press [Enter] to continue..."
