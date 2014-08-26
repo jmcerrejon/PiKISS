@@ -1,8 +1,8 @@
-server {
-    listen 80;
-    server_name owncloud;
-    return 301 https://$server_name$request_uri;  # enforce https
-}
+#server {
+#    listen 80;
+#    server_name owncloud;
+#    return 301 https://$server_name$request_uri;  # enforce https
+#}
 
 server {
     listen 443 ssl;
@@ -11,8 +11,6 @@ server {
 
     ssl_certificate /etc/nginx/certs/owncloud.crt;
     ssl_certificate_key /etc/nginx/certs/owncloud.key;
-
-  server_name owncloud;
 
   root /var/www/owncloud;
 

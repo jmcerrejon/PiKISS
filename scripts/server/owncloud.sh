@@ -7,7 +7,7 @@
 # HELP        · http://www.pihomeserver.fr/en/2014/08/11/raspberry-pi-home-server-installer-owncloud-7-en-https-nginx/
 # 			  · http://raspberrypihelp.net/tutorials/33-raspberry-pi-owncloud
 # 			  · http://doc.owncloud.org/server/5.0/admin_manual/installation/installation_others.html
-#			  
+#
 clear
 
 URL_OWNCLOUD='http://download.owncloud.org/community/owncloud-7.0.1.tar.bz2'
