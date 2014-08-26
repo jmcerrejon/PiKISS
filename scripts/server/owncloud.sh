@@ -13,7 +13,6 @@ clear
 URL_OWNCLOUD='http://download.owncloud.org/community/owncloud-7.0.1.tar.bz2'
 
 echo -e "Installing Owncloud 7.0.1. with NginX\n=====================================\n\n Please wait...\n"
-sudo su
 apt-get install -y nginx php5-fpm php5 php5-json php5-gd php5-sqlite curl libcurl3 libcurl3-dev php5-curl php5-common php-xml-parser sqlite php-apc
 mkdir -p /var/www && cd $_
 wget $URL_OWNCLOUD

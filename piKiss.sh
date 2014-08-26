@@ -365,7 +365,7 @@ do
 			Smtp) 		./scripts/server/smtp.sh ;;
         	WebDAV) 	./scripts/server/webdav.sh ;;
         	SMB) 	./scripts/server/fileserver.sh ;;
-        	OwnCloud) 	./scripts/server/owncloud.sh ;;
+        	OwnCloud) 	sudo ./scripts/server/owncloud.sh ;;
             	FWork)		./scripts/server/fwork.sh ;;
         	DB) 		./scripts/server/db.sh ;;
 	esac
