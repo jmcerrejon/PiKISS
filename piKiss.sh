@@ -147,7 +147,7 @@ function smInfo(){
 		$DIALOG --clear   \
 			--backtitle "$TITLE" \
 			--title 	"[ Info ]" \
-			--menu  	"Select an option from the list" $wHEIGHT $wWIDTH 4 \
+			--menu  	"Select an option from the list" $wHEIGHT $wWIDTH $wHEIGHT \
 			Back  		"Back to main menu" \
         		Chkimg  	"Check some distros images to know if they are updated" \
         	    	Weather		"Weather info from your country" \
@@ -172,7 +172,7 @@ function smTweaks(){
 		$DIALOG --clear   \
 			--backtitle 	"$TITLE" \
 			--title 	"[ Tweaks ]" \
-			--menu  	"Select a tweak from the list" $wHEIGHT $wWIDTH 4 \
+			--menu  	"Select a tweak from the list" $wHEIGHT $wWIDTH $wHEIGHT \
 			Back  		"Back to main menu" \
 	        	Autologin   	"Set autologin for Raspbian" \
 	        	Others  	"CPU performance, disable Ethernet and so on" \
@@ -197,7 +197,7 @@ function smGames(){
 		$DIALOG --clear   \
 			--backtitle 	"$TITLE" \
 			--title 	"[ Games ]" \
-			--menu  	"Select game from the list:" $wHEIGHT $wWIDTH 4 \
+			--menu  	"Select game from the list:" $wHEIGHT $wWIDTH $wHEIGHT \
 			Back  		"Back to main menu" \
 	        	Minecraft   	"Minecraft Pi Ed." \
 	        	Dune2  		"Dune 2 Legacy" \
@@ -226,7 +226,7 @@ do
 	$DIALOG --clear   \
 		--backtitle "$TITLE" \
 		--title 	"[ Emulators ]" \
-		--menu  	"Select emulator from the list" $wHEIGHT $wWIDTH 4 \
+		--menu  	"Select emulator from the list" $wHEIGHT $wWIDTH $wHEIGHT \
 		Back  		"Back to main menu" \
 		Snes		"SNES Emulator port based on SNES9X 1.39" \
         	Mame4all	"port based on Franxis MAME4ALL (0.37b5)" \
@@ -262,7 +262,7 @@ do
 	$DIALOG --clear   \
 		--backtitle	"$TITLE" \
 		--title 	"[ Multimedia ]" \
-		--menu  	"Select app from the list" $wHEIGHT $wWIDTH 4 \
+		--menu  	"Select app from the list" $wHEIGHT $wWIDTH $wHEIGHT \
 		Back  		"Back to main menu" \
         		TVPlayer		"Play Spanish TV Channel" \
 		Rplay		"AirPlay to do mirroring" \
@@ -287,7 +287,7 @@ do
 	$DIALOG --clear   \
 		--backtitle 	"$TITLE" \
 		--title 	"[ Configure ]" \
-		--menu  	"Select to configure your distro" $wHEIGHT $wWIDTH 4 \
+		--menu  	"Select to configure your distro" $wHEIGHT $wWIDTH $wHEIGHT \
 		Back  		"Back to main menu" \
             RaspNet      	"Configure Raspbian Net Install distro" \
             SSIDCfg      	"Configure SSID (WPA/WPA2 with PSK)" \
@@ -317,7 +317,7 @@ do
 	$DIALOG --clear   \
 		--backtitle "$TITLE" \
 		--title 	"[ Internet ]" \
-		--menu  	"Select an option from the list" $wHEIGHT $wWIDTH 4 \
+		--menu  	"Select an option from the list" $wHEIGHT $wWIDTH $wHEIGHT \
 		Back  		"Back to main menu" \
         	Plowshare  	"Direct download from hosters like uploaded,..." \
             Epiphany    "Web browser" \
@@ -342,7 +342,7 @@ do
 	$DIALOG --clear   \
 		--backtitle 	"$TITLE" \
 		--title 	"[ Server ]" \
-		--menu  	"Select to configure your distro as a server" $wHEIGHT $wWIDTH 4 \
+		--menu  	"Select to configure your distro as a server" $wHEIGHT $wWIDTH $wHEIGHT \
 		Back  		"Back to main menu" \
 	        Cups	        "Printer server (cups)" \
 	        Minidlna        "Install/Compile UPnP/DLNA Minidlna" \
@@ -378,7 +378,7 @@ do
 	$DIALOG --clear   \
 		--backtitle 	"$TITLE" \
 		--title 	"[ Others ]" \
-		--menu  	"Another scripts uncategorized" $wHEIGHT $wWIDTH 4 \
+		--menu  	"Another scripts uncategorized" $wHEIGHT $wWIDTH $wHEIGHT \
         	Back  		"Back to main menu" \
         	SDL2  		"Compile SDL2 + Libraries (It can take 40 minutes)" \
 			GCC  		"Install GCC 4.7 on Raspberry Pi" \
