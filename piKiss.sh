@@ -19,7 +19,7 @@
 # VARIABLES
 # - - - - -
 #
-[ -f /opt/vc/bin/vcgencmd ] && TEMPC="| TEMP: $(/opt/vc/bin/vcgencmd measure_temp) " || TEMPC=""
+[ -f /opt/vc/bin/vcgencmd ] && TEMPC="| $(/opt/vc/bin/vcgencmd measure_temp) " || TEMPC=""
 TITLE="PiKISS (Pi Keeping It Simple, Stupid!) .:. Jose Cerrejon .:. ver. 0.8.7 (2014) | IP: $(hostname -I) ${TEMPC}"
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
