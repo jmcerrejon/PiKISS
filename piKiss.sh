@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.8.6 (2014)
+# Version : Beta 0.8.7 (2014)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -19,11 +19,12 @@
 # VARIABLES
 # - - - - -
 #
-TITLE="PiKISS (Pi Keeping It Simple, Stupid!) .:. Jose Cerrejon .:. (ver. 0.8.6 - 2014)"
+[ -f /opt/vc/bin/vcgencmd ] && TEMPC="| TEMP: $(/opt/vc/bin/vcgencmd measure_temp) " || TEMPC=""
+TITLE="PiKISS (Pi Keeping It Simple, Stupid!) .:. Jose Cerrejon .:. ver. 0.8.7 (2014) | IP: $(hostname -I) ${TEMPC}"
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
 NOGUI=0
-wHEIGHT=15
+wHEIGHT=18
 wWIDTH=70
 INPUT=/tmp/menu.sh.$$
 OUTPUT=/tmp/output.sh.$$
@@ -151,8 +152,7 @@ function smInfo(){
         		Chkimg  	"Check some distros images to know if they are updated" \
         	    	Weather		"Weather info from your country" \
             		Bmark       	"Benchmark your RPi with nbench" \
-			WebMonitor	"Web monitor to your RPi" \
-        		Cpuinfo    	"Show CPU temperature (Celsius)" 2>"${INPUT}"
+			WebMonitor	"Web monitor to your RPi" 2>"${INPUT}"
 
 		menuitem=$(<"${INPUT}")
 
@@ -162,7 +162,6 @@ function smInfo(){
 	            	Weather)	./scripts/info/weather.sh ;;
 	            	Bmark) 		./scripts/info/bmark.sh ;;
 			WebMonitor)	./scripts/info/web_monitor.sh ;;
-	        	Cpuinfo)	./scripts/info/cputemp.sh ;;
 		esac
 	done
 }
@@ -408,7 +407,7 @@ do
 	$DIALOG --clear   \
 		--backtitle "$TITLE" \
 		--title		"[ M A I N - M E N U ]" \
-		--menu 		"You can use the UP/DOWN arrow keys, the first letter of the choice as a hot key, or the number keys 1-4 to choose an option." $wHEIGHT $wWIDTH 4 \
+		--menu 		"You can use the UP/DOWN arrow keys, the first letter of the choice as a hot key, or the number keys 1-4 to choose an option." $wHEIGHT $wWIDTH $wHEIGHT \
 		Tweaks 		"Put your distro to the limit" \
 		Games 		"Install or compile games easily" \
         	Emula 		"Install emulators" \
