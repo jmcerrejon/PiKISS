@@ -2,8 +2,10 @@
 #
 # Description : Check Last-Modified field from some distros images, so you can know if a distro is updated.
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1 (24/Jun/14)
+# Version     : 1.1 (31/Aug/14)
 #
+# OpenELEC: http://downloads.raspberrypi.org/openelec_latest
+# 
 clear
 
 echo "Check Last-Modified field from some distros images"
@@ -28,9 +30,9 @@ declare -a imgUrl=(
             'http://downloads.raspberrypi.org/raspbian_latest'
             'http://downloads.raspberrypi.org/pidora_latest'
 			'http://pipaos.mitako.eu/'
-			'http://downloads.raspberrypi.org/openelec_latest'
+			'http://openelec.tv/get-openelec/download/finish/10-raspberry-pi-builds/400-diskimage-openelec-beta-raspberry-pi-arm'
             'http://downloads.raspberrypi.org/raspbmc_latest'
-			'http://archlinuxarm.org/os/ArchLinuxARM-rpi-latest.zip'
+			'http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-latest.tar.gz'
             'http://downloads.raspberrypi.org/riscos_latest'
 			'http://sourceforge.net/projects/minepeon/files/latest/download?source=files'
 			'http://sourceforge.net/projects/pimame/files/latest/download?source=files'
