@@ -22,6 +22,10 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 ###[ ChangeLog (dd/mm/yy)]
 
+####(4/09/14)
+
+· Added Info > SD Benchmark
+
 ####(25/08/14)
 
 · Added Emulators > UAE4ALL 0.5

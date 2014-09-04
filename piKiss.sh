@@ -152,6 +152,7 @@ function smInfo(){
         		Chkimg  	"Check some distros images to know if they are updated" \
         	    	Weather		"Weather info from your country" \
             		Bmark       	"Benchmark your RPi with nbench" \
+            		SDBmark       	"Benchmark your SD read/write speed" \
 			WebMonitor	"Web monitor to your RPi" 2>"${INPUT}"
 
 		menuitem=$(<"${INPUT}")
@@ -161,6 +162,7 @@ function smInfo(){
 	        	Chkimg) 	./scripts/info/check_lastmod_img.sh ;;
 	            	Weather)	./scripts/info/weather.sh ;;
 	            	Bmark) 		./scripts/info/bmark.sh ;;
+	            	SDBmark) 		./scripts/info/sd_bmark.sh ;;
 			WebMonitor)	./scripts/info/web_monitor.sh ;;
 		esac
 	done
