@@ -31,7 +31,7 @@ exec 3>&-
 VALUES=(${FORM// / })
 
 if [ ! -e $SMTP_CONF.bak ]; then
-    sudo cp $SMTP_CONF $SMTP_CONF.bak
+    sudo cp $SMTP_CONF{,.bak}
 fi
 
 FILE="\n

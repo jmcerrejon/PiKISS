@@ -62,7 +62,7 @@ whatsapp(){
     esac
 }
 
-echo -e "\nWhatsApp from Terminal\n======================\n· You NEED a new phone account to your Raspberry Pi (You can get one on http://fonyou.com/).\n"
+echo -e "\nWhatsApp from Terminal\n======================\n"
 read -p "Continue? (y/n): " option
 case "$option" in
     y*) whatsapp ;;

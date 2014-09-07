@@ -60,7 +60,7 @@ case $response in
    255) echo "[ESC] key pressed.";exit;;
 esac
 
-[ -f /etc/samba/smb.conf.backup ] && echo "/etc/samba/smb.conf.backup already exist." || sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.backup
+[ -f /etc/samba/smb.conf.backup ] && echo "/etc/samba/smb.conf.backup already exist." || sudo cp /etc/samba/smb.conf{,.backup}
 
 # Changing some values to file /etc/samba/smb.conf
 sudo sed -i 's/   workgroup = WORKGROUP/   workgroup = HOME/g' -i '/#### Networking ####/i\ max xmit = 65535\nsocket options = TCP_NODELAY IPTOS_LOWDELAY SO_SNDBUF=65535 SO_RCVBUF=65535\nread raw = yes\nwrite raw = yes\nmax connections = 65535\nmax open files = 65535\n' /etc/samba/smb.conf

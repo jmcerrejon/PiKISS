@@ -17,7 +17,7 @@ IP_MASK=$(echo $(hostname -I)|cut -f1-3 -d"."|awk '{print $1".*"}')
 
 allow_remote_machines(){
     $IP=$(hostname -I)
-    sudo cp /etc/cups/cupsd.conf /etc/cups/cupsd.conf.bak
+    sudo cp /etc/cups/cupsd.conf{,.bak}
     sudo sed -i '/Listen localhost:631/s/^/#/' /etc/cups/cupsd.conf
     sudo sed -i 's/.*Listen localhost:631.*/&\nListen *:631/' /etc/cups/cupsd.conf
     sudo sed -e 's/.*    Order deny,allow.*/&\n    Allow '$IP_MASK'/' /etc/cups/cupsd.conf

@@ -91,7 +91,7 @@ if [ -z "$SSIDCHOSEN" ] || [ -z "$PSWD" ]; then
 fi
 
 if [[ ! -e '/etc/wpa_supplicant/wpa_supplicant.conf.pre' ]]; then
-  sudo cp /etc/wpa_supplicant/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf.pre
+  sudo cp /etc/wpa_supplicant/wpa_supplicant.conf{,.pre}
 fi
 
 # Ugly way to check if not Raspbian. Change it NOW!

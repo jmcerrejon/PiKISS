@@ -21,7 +21,7 @@ chown -R www-data:www-data /var/www/owncloud
 mkdir -p /etc/nginx/certs && cd $_
 openssl genrsa -des3 -out owncloud.key 1024
 openssl req -new -key owncloud.key -out owncloud.csr
-cp owncloud.key owncloud.key.org
+cp owncloud.key{,.org}
 openssl rsa -in owncloud.key.org -out owncloud.key
 openssl x509 -req -days 365 -in owncloud.csr -signkey owncloud.key -out owncloud.crt
 rm owncloud.csr owncloud.key.org
