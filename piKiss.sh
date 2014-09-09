@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.8.7 (2014)
+# Version : Beta 0.8.8 (2014)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -22,7 +22,7 @@
 # - - - - -
 #
 [ -f /opt/vc/bin/vcgencmd ] && TEMPC="| $(/opt/vc/bin/vcgencmd measure_temp) " || TEMPC=""
-TITLE="PiKISS (Pi Keeping It Simple, Stupid!) .:. Jose Cerrejon .:. ver. 0.8.7 (2014) | IP: $(hostname -I) ${TEMPC}"
+TITLE="PiKISS (Pi Keeping It Simple, Stupid!) .:. Jose Cerrejon .:. ver. 0.8.8 (2014) | IP: $(hostname -I) ${TEMPC}"
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
 NOGUI=0
@@ -387,6 +387,7 @@ do
         	SDL2  		"Compile SDL2 + Libraries (It can take 40 minutes)" \
 			GCC  		"Install GCC 4.7 on Raspberry Pi" \
         	WhatsApp  	"Send WhatsApp messages from terminal" \
+        	Fixes  	"Fix some problems with the Raspbian OS" \
         	Aircrack	"Compile Aircrack-NG suite easily" 2>"${INPUT}"
 
 	menuitem=$(<"${INPUT}")
@@ -396,6 +397,7 @@ do
             	SDL2) 		./scripts/others/sdl2.sh ;;
 				GCC) 		./scripts/others/gcc47.sh ;;
         	WhatsApp) 	./scripts/others/whatsapp.sh ;;
+        	Fixes) 	./scripts/others/fixes.sh ;;
         	Aircrack)       ./scripts/others/aircrack.sh ;;
 	esac
 done
