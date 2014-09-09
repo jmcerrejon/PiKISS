@@ -2,10 +2,11 @@
 #
 # Description : Streaming TV Viewer. Thanks to Pikomule and tvenlinux
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.9 (18/Jun/14)
+# Version     : 0.9 (6/Sep/14)
 #
 # HELP	      · http://dl.dropboxusercontent.com/s/al4x26cyp947kc1/PiKoMuLe.xml
 # 	          · http://www.compraschinas.net/foro/livestreams/lista-de-canales-para-livestream-solo-plus-liga-y-gol-tv/
+#             · http://www.enlacesiptv.es/2013/11/canal-espana-premium.html
 #
 # IMPROVEMENT · Read another xml stream file with different format
 #             · Check whenever a var pageURL doen's exist

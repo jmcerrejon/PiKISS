@@ -15,6 +15,8 @@
 # 
 # · Add apt-get install sudo, wget unrar-free if doesn't installed.
 # 
+# · Shell Style Guide: https://google-styleguide.googlecode.com/svn/trunk/shell.xml
+# 
 # - - - - -
 # VARIABLES
 # - - - - -
