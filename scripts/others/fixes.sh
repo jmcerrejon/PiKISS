@@ -2,7 +2,7 @@
 #
 # Description : Fix some problems with the Raspbian OS
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.1 (9/Sep/14)
+# Version     : 0.3 (9/Sep/14)
 #
 clear
 
@@ -16,16 +16,22 @@ SOUND(){
 	sudo sed -i 's/pcm.front cards.pcm.front/pcm.front cards.pcm.default/g' /usr/share/alsa/alsa.conf
 }
 
+BLACK_SCREEN(){
+	sudo sh -c "TERM=linux setterm -foreground black -clear >/dev/tty0"
+}
+
 while true
 do
 	dialog --clear   \
 		--title		"[ Raspbian Fixes ]" \
 		--menu 		"Fix some problems with the Raspbian OS. Choose your fix or Exit:" $wHEIGHT 90 $wHEIGHT \
 		Sound		"ALSA lib pcm.c:2217:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.front" \
+		Black		"Black out the local terminal (ideal for omxplayer)"
 		Exit 		"Exit to the shell" 2>"${tempfile}"
 
 	case $(<"${tempfile}") in
 		Sound)	SOUND ;;
+		Black)	BLACK_SCREEN ;;
 		Exit)	exit ;;
 	esac
 done

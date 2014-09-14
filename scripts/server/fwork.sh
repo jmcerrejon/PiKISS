@@ -28,7 +28,7 @@ wordpress(){
 nodejs(){
     cd /usr/local
     sudo wget $URL_NODEJS
-    sudo tar xvzf ~/${URL_NODEJS##*/} --strip=1
+    sudo tar xvzf /usr/local/${URL_NODEJS##*/} --strip=1
     echo "Press [Control+D] to return as normal user..."
     node --version
 }
