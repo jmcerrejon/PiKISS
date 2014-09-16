@@ -44,7 +44,7 @@ repro_instalado=$?
 	if [ $repro_instalado -eq 1 ]; then
 		sudo apt-get install -y synergy
 	else
-		read -p " · Synergy already installed!. Continue? [y/n] " option
+		read -p " · Synergy already installed!. Continue? [y/n] " optionhgh
 			case "$option" in
 			    n*) read -p "Press [ENTER] To Continue..." ; exit ;;
 			esac
@@ -53,5 +53,5 @@ repro_instalado=$?
 CHOOSE_IP
 RUN_ON_BOOT
 
-echo -e "\nDone! Type: synergyc --daemon $SERVER_IP to run manually."
+echo -e "\nDone! Type: synergyc --daemon $SERVER_IP to run manually on Desktop."
 read -p "Press [ENTER] To Continue..."
