@@ -387,6 +387,7 @@ do
         	SDL2  		"Compile SDL2 + Libraries (It can take 40 minutes)" \
 			GCC  		"Install GCC 4.7 on Raspberry Pi" \
         	WhatsApp  	"Send WhatsApp messages from terminal" \
+        	Synergy  	"Synergy allow you to share one keyboard and mouse to computers on LAN" \
         	Fixes  	"Fix some problems with the Raspbian OS" \
         	Aircrack	"Compile Aircrack-NG suite easily" 2>"${INPUT}"
 
@@ -397,6 +398,7 @@ do
             	SDL2) 		./scripts/others/sdl2.sh ;;
 				GCC) 		./scripts/others/gcc47.sh ;;
         	WhatsApp) 	./scripts/others/whatsapp.sh ;;
+        	Synergy) 	./scripts/others/Synergy.sh ;;
         	Fixes) 	./scripts/others/fixes.sh ;;
         	Aircrack)       ./scripts/others/aircrack.sh ;;
 	esac

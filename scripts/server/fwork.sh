@@ -29,6 +29,7 @@ nodejs(){
     cd /usr/local
     sudo wget $URL_NODEJS
     sudo tar xvzf /usr/local/${URL_NODEJS##*/} --strip=1
+    sudo rm /usr/local/${URL_NODEJS##*/}
     echo "Press [Control+D] to return as normal user..."
     node --version
 }
