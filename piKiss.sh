@@ -398,7 +398,7 @@ do
             	SDL2) 		./scripts/others/sdl2.sh ;;
 				GCC) 		./scripts/others/gcc47.sh ;;
         	WhatsApp) 	./scripts/others/whatsapp.sh ;;
-        	Synergy) 	./scripts/others/Synergy.sh ;;
+        	Synergy) 	./scripts/others/synergy.sh ;;
         	Fixes) 	./scripts/others/fixes.sh ;;
         	Aircrack)       ./scripts/others/aircrack.sh ;;
 	esac
