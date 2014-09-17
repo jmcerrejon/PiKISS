@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# Description : Synergy client allow you to share one keyboard and mouse to computers on LAN
+# Description : Synergy client allow you to share one keyboard and mouse with computers on LAN
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (16/Sep/14)
+# Version     : 1.0 (17/Sep/14)
 #  
 clear
 IP_RANGE=$(/sbin/ip route | awk '/default/ { print $3 }' | sed 's/\.[0-9]*$//')
@@ -40,8 +40,8 @@ esac
 echo -e "Installing Synergy...\n=====================\n · Synergy allow you to share one keyboard and mouse to computers on LAN.\n · You need PC with a Synergy Server."
 
 whereis -B "/usr/sbin" "/usr/local/sbin" "/sbin" "/usr/bin" "/usr/local/bin" "/bin" -b synergyc | grep -i "/synergyc" > /dev/null 2>&1
-repro_instalado=$?
-	if [ $repro_instalado -eq 1 ]; then
+is_installed=$?
+	if [ $is_installed -eq 1 ]; then
 		sudo apt-get install -y synergy
 	else
 		read -p " · Synergy already installed!. Continue? [y/n] " optionhgh
