@@ -240,6 +240,7 @@ do
         	Amiga  	"Some Amiga emulators" \
             Gba         "Gameboy Advance" \
             PCE-CD      "PC-Engine" \
+            MSX      "Compile MSX" \
 		Pifba		"Emulates old arcade games using CPS1, CPS2,..." 2>"${INPUT}"
 
 	menuitem=$(<"${INPUT}")
@@ -254,6 +255,7 @@ do
 					8086) 		./scripts/emus/8086tiny.sh ;;
             Gba)        ./scripts/emus/gba.sh ;;
             PCE-CD)     ./scripts/emus/pce.sh ;;
+            MSX)     ./scripts/emus/msx.sh ;;
 		Pifba) 		./scripts/emus/pifba.sh ;;
 	esac
 done
@@ -384,6 +386,7 @@ do
 		--title 	"[ Others ]" \
 		--menu  	"Another scripts uncategorized" $wHEIGHT $wWIDTH $wHEIGHT \
         	Back  		"Back to main menu" \
+        	Part  		"Check issues & fix SD corruptions" \
         	SDL2  		"Compile SDL2 + Libraries (It can take 40 minutes)" \
 			GCC  		"Install GCC 4.7 on Raspberry Pi" \
         	WhatsApp  	"Send WhatsApp messages from terminal" \
@@ -395,6 +398,7 @@ do
 
 	case $menuitem in
             	Back) 		break ;;
+            	Part) 		./scripts/others/checkpart.sh ;;
             	SDL2) 		./scripts/others/sdl2.sh ;;
 				GCC) 		./scripts/others/gcc47.sh ;;
         	WhatsApp) 	./scripts/others/whatsapp.sh ;;

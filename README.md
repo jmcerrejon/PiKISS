@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **334.6 hours**
+* **335.2 hours**
 
 ##ENGLISH
 
@@ -21,6 +21,12 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ###[ ChangeLog (dd/mm/yy)]
+
+####(27/09/14)
+
+· Added Emula > MSX
+
+· Added Others > Check SD partition
 
 ####(16/09/14)
 

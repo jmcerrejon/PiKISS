@@ -5,6 +5,22 @@
 # Version     : 0.1
 #
 clear
+SC_OPENMSX="http://sourceforge.net/projects/openmsx/files/latest/download?source=files"
 
 # ROM game Thanks to msx.ebsoft.fr
-wget -O /tmp/uridium.zip http://msx.ebsoft.fr/uridium/ccount/click.php?id=uridium
+ROM_PATH="http://msx.ebsoft.fr/uridium/ccount/click.php?id=uridium"
+
+compile(){
+	sudo apt-get install -y libsdl1.2-dev libsdl-ttf2.0-dev libglew-dev libao-dev libogg-dev libtheora-dev libxml2-dev libvorbis-dev tcl-dev
+	wget $SC_OPENMSX
+	tar xzvf open*
+	cd open*
+	./configure
+	make
+	sudo make install
+	wget -O /tmp/uridium.zip $ROM_PATH
+}
+
+compile
+
+read -p "Done! Press [ENTER] to continue..."

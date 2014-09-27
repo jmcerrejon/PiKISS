@@ -26,7 +26,7 @@ do
 		--title		"[ Raspbian Fixes ]" \
 		--menu 		"Fix some problems with the Raspbian OS. Choose your fix or Exit:" $wHEIGHT 90 $wHEIGHT \
 		Sound		"ALSA lib pcm.c:2217:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.front" \
-		Black		"Black out the local terminal (ideal for omxplayer)"
+		Black		"Black out the local terminal (ideal for omxplayer)" \
 		Exit 		"Exit to the shell" 2>"${tempfile}"
 
 	case $(<"${tempfile}") in
