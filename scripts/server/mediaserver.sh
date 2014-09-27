@@ -19,9 +19,10 @@ trap "rm $INPUT; exit" SIGHUP SIGINT SIGTERM
 boot(){
     read -p "Do you want to start daemon on boot?" option
 
-case "$option" in
-    y*) sudo sed -i '$i minidlnad' /etc/rc.local ;;
-esac
+    case "$option" in
+        y*) sudo sed -i '$i minidlnad' /etc/rc.local ;;
+    esac
+    echo -e "Done!. Put files in your ${HOME}/{videos,images,music}.Go in the browser to http://<IP>:8200 to see statistics.\nTo run: sudo minidlnad"
 }
 
 create_dir(){
@@ -63,8 +64,7 @@ minidlna_latest(){
     echo -e "\n\nCreating folder music, videos & images...\n"
     create_dir
     #sudo update-rc.d minidlna defaults
-    boot()
-    echo -e "Done!. Put files in your ${HOME}/{videos,images,music}.Go in the browser to http://<IP>:8200 to see statistics.\nTo run: sudo minidlnad" #To restart service: service minidlna force-reload && service minidlna restart"
+    boot
 }
 
 minidlna_misa(){
@@ -75,8 +75,7 @@ minidlna_misa(){
     sudo wget -P /etc/ $MINIDLNA_FILE_CONF
     create_dir
     #sudo update-rc.d minidlna defaults
-    boot()
-    echo -e "Done!. Put files in your ${HOME}/{videos,images,music}.Go in the browser to http://<IP>:8200 to see statistics.\nTo run: sudo minidlnad" #: service minidlna force-reload && service minidlna restart"
+    boot
 }
 
 while true
