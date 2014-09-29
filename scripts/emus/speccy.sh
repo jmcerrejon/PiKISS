@@ -32,7 +32,7 @@ echo "Done!. To play go to install path, copy any .tap file to directory and typ
     exit
 }
 
-echo -e "Portable ZX-Spectrum emulator (unrealspeccyp ver. 0.43)\n=======================================================\nMore Info: https://bitbucket.org/djdron/unrealspeccyp\n\nInstall path: $INSTALL_DIR"
+echo -e "Portable ZX-Spectrum emulator (unrealspeccyp ver. 0.59)\n=======================================================\nMore Info: https://bitbucket.org/djdron/unrealspeccyp\n\nInstall path: $INSTALL_DIR"
 while true; do
     echo " "
     read -p "Is it right? [y/n] " yn
