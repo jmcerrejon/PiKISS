@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Description : Portable ZX-Spectrum emulator
+# Description : Portable ZX-Spectrum emulator by JFroco
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 1.2 (29/Sep/14)
 #
