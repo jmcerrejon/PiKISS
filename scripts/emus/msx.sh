@@ -12,9 +12,9 @@ ROM_PATH="http://msx.ebsoft.fr/uridium/ccount/click.php?id=uridium"
 
 compile(){
 	sudo apt-get install -y libsdl1.2-dev libsdl-ttf2.0-dev libglew-dev libao-dev libogg-dev libtheora-dev libxml2-dev libvorbis-dev tcl-dev
-	wget $SC_OPENMSX
-	tar xzvf open*
-	cd open*
+	wget -O openmsx_sc.tar.gz $SC_OPENMSX
+	tar xzvf openmsx*
+	cd openmsx*
 	./configure
 	make
 	sudo make install
