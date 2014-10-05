@@ -16,7 +16,6 @@ declare -a imgName=(
             'Raspbian'
             'PiDora'
 			'pipaOS'
-			'OpenELEC'
             'RaspBMC'
 			'Arch Linux'
             'Risc OS'
@@ -24,13 +23,14 @@ declare -a imgName=(
 			'PiPlay (PiMAME)'
 			'ArkOS'
 			'Volumio'
+			'ScoutBot'
+			'OpenELEC'
 )
 declare -a imgUrl=(
             'http://downloads.raspberrypi.org/NOOBS_latest'
             'http://downloads.raspberrypi.org/raspbian_latest'
             'http://downloads.raspberrypi.org/pidora_latest'
 			'http://pipaos.mitako.eu/'
-			'http://openelec.tv/get-openelec/download/finish/10-raspberry-pi-builds/400-diskimage-openelec-beta-raspberry-pi-arm'
             'http://downloads.raspberrypi.org/raspbmc_latest'
 			'http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-latest.tar.gz'
             'http://downloads.raspberrypi.org/riscos_latest'
@@ -38,6 +38,8 @@ declare -a imgUrl=(
 			'http://sourceforge.net/projects/pimame/files/latest/download?source=files'
 			'https://nyus.mirror.arkos.io/os/latest-rpi.tar.gz'
 			'http://sourceforge.net/projects/volumio/files/latest/download?source=files'
+			'http://sourceforge.net/projects/scoutbot/files/latest/download?source=files'
+			'http://openelec.tv/get-openelec/download/finish/10-raspberry-pi-builds/605-diskimage-openelec-stable-raspberry-pi-arm'
 )
 
 i=0
