@@ -153,7 +153,7 @@ function smInfo(){
 			Back  		"Back to main menu" \
         		Chkimg  	"Check some distros images to know if they are updated" \
         	    	Weather		"Weather info from your country" \
-            		Bmark       	"Benchmark your RPi with nbench" \
+            		Bmark       	"Benchmark RPi with nbench or tinymembench" \
             		TestInet       	"Test Internet bandwidth" \
             		SDBmark       	"Benchmark your SD read/write speed" \
 			WebMonitor	"Web monitor to your RPi" 2>"${INPUT}"

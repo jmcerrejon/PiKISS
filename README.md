@@ -22,6 +22,10 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 ###[ ChangeLog (dd/mm/yy)]
 
+####(07/10/14)
+
+· Added Info > Tinymembench
+
 ####(29/09/14)
 
 · Added Info > Test Internet bandwidth
