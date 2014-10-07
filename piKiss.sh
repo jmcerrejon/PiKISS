@@ -153,9 +153,8 @@ function smInfo(){
 			Back  		"Back to main menu" \
         		Chkimg  	"Check some distros images to know if they are updated" \
         	    	Weather		"Weather info from your country" \
-            		Bmark       	"Benchmark RPi with nbench or tinymembench" \
+            		Bmark       	"Benchmark RPi (CPU, MEM, SD Card...)" \
             		TestInet       	"Test Internet bandwidth" \
-            		SDBmark       	"Benchmark your SD read/write speed" \
 			WebMonitor	"Web monitor to your RPi" 2>"${INPUT}"
 
 		menuitem=$(<"${INPUT}")
@@ -166,7 +165,6 @@ function smInfo(){
 	            	Weather)	./scripts/info/weather.sh ;;
 	            	Bmark) 		./scripts/info/bmark.sh ;;
 	            	TestInet) 		./scripts/info/test_inet.sh ;;
-	            	SDBmark) 		./scripts/info/sd_bmark.sh ;;
 			WebMonitor)	./scripts/info/web_monitor.sh ;;
 		esac
 	done
