@@ -85,7 +85,7 @@ do
     --menu "You can use the UP/DOWN arrow keys, the first letter of the choice as a hot key, or the number keys 1-3 to choose an option.\n\
     Choose the TASK:" 13 55 3 \
     latest "Compile the latest version (slow)" \
-    minidlna "Install version 1.1.3 (fast)" \
+    minidlna "Install version 1.1.4 (fast)" \
     Exit "Exit to the shell" 2>"${INPUT}"
     menuitem=$(<"${INPUT}")
 
