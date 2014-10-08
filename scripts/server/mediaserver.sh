@@ -10,7 +10,7 @@
 #
 clear
 URL_MINIDLNA="http://sourceforge.net/projects/minidlna/files/latest/download?source=files"
-URL_MINIDLNA_MISA="http://misapuntesde.com/res/minidlna_1.1.3-1_armhf.deb"
+URL_MINIDLNA_MISA="http://misapuntesde.com/res/minidlna_1-1.4_armhf.deb"
 MINIDLNA_FILE_CONF="http://misapuntesde.com/res/minidlna.conf"
 
 INPUT=/tmp/mnu.sh.$$
@@ -55,7 +55,7 @@ minidlna_latest(){
     cd minidlna*
     sudo apt-get install -y libexif-dev libsysfs-dev libid3tag0-dev libFLAC-dev libvorbis-dev libsqlite3-dev libavformat-dev autopoint autoconf libjpeg8-dev gettext libavformat53
     clear
-    echo -e "\n\nGrab a coffee... ;)\n"
+    echo -e "\n\nGrab a coffee (About 10 minutes)... ;)\n"
     ./autogen.sh && ./configure
     make
     make install
@@ -70,8 +70,8 @@ minidlna_latest(){
 minidlna_misa(){
     wget $URL_MINIDLNA_MISA
     sudo apt-get install -y libavformat53
-    sudo dpkg -i minidlna_1.1.3-1_armhf.deb
-    rm minidlna_1.1.3-1_armhf.deb
+    sudo dpkg -i minidlna*.deb
+    rm minidlna*.deb
     sudo wget -P /etc/ $MINIDLNA_FILE_CONF
     create_dir
     #sudo update-rc.d minidlna defaults
