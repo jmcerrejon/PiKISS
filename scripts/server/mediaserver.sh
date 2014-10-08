@@ -22,7 +22,7 @@ boot(){
     case "$option" in
         y*) sudo sed -i '$i minidlnad' /etc/rc.local ;;
     esac
-    echo -e "Done!. Put files in your ${HOME}/{videos,images,music}.Go in the browser to http://<IP>:8200 to see statistics.\nTo run: sudo minidlnad"
+    read -p "Done!. Put files in your ${HOME}/{videos,images,music}.Go in the browser to http://<IP>:8200 to see statistics.\nTo run: sudo minidlnad"
 }
 
 create_dir(){
