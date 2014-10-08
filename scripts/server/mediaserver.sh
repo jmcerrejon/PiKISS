@@ -17,12 +17,13 @@ MINIDLNA_FILES="http://misapuntesde.com/res/minidlna_files.tar.gz"
 INPUT=/tmp/mnu.sh.$$
 trap "rm $INPUT; exit" SIGHUP SIGINT SIGTERM
 
-cp_files(){
+after_install(){
     wget -O /tmp/tmp.tar.gz $MINIDLNA_FILES
     sudo tar xzf /tmp/tmp.tar.gz -C / && rm /tmp/tmp.tar.gz
     echo -e "\n\nCreating music, videos & images directories...\n"
     create_dir
-    read -p "Done!. minidlna run at boot. Usage: sudo service minidlna {start|stop|status|restart|force-reload|rotate}"
+    sudo update-rc.d minidlna defaults
+    read -p "Done!. minidlna running at boot. Usage: sudo service minidlna {start|stop|status|restart|force-reload|rotate}"
 }
 
 create_dir(){
@@ -59,7 +60,7 @@ minidlna_latest(){
     ./autogen.sh && ./configure
     make
     make install
-    cp_files
+    after_install
 }
 
 minidlna_misa(){
@@ -67,7 +68,7 @@ minidlna_misa(){
     sudo apt-get install -y libavformat53
     sudo dpkg -i minidlna*.deb
     rm minidlna*.deb
-    cp_files
+    after_install
 }
 
 while true
