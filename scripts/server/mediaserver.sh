@@ -7,22 +7,22 @@
 # HELP        · http://www.raspberrypi.org/forums/viewtopic.php?p=518676#p518676
 #             · http://www.raspberrypi.org/forums/viewtopic.php?t=16352
 #             · http://www.belinuxmyfriend.com/2012/10/servidor-dlna-con-la-raspberry-pi.html
+#             · http://everbit.wordpress.com/2013/04/01/minidlna-on-the-raspberry-pi/
 #
 clear
 URL_MINIDLNA="http://sourceforge.net/projects/minidlna/files/latest/download?source=files"
 URL_MINIDLNA_MISA="http://misapuntesde.com/res/minidlna_1-1.4_armhf.deb"
-MINIDLNA_FILE_CONF="http://misapuntesde.com/res/minidlna.conf"
+MINIDLNA_FILES="http://misapuntesde.com/res/minidlna_files.tar.gz"
 
 INPUT=/tmp/mnu.sh.$$
 trap "rm $INPUT; exit" SIGHUP SIGINT SIGTERM
 
-boot(){
-    read -p "Do you want to start daemon on boot?" option
-
-    case "$option" in
-        y*) sudo sed -i '$i minidlnad' /etc/rc.local ;;
-    esac
-    read -p "Done!. Put files in your ${HOME}/{videos,images,music}.Go in the browser to http://<IP>:8200 to see statistics.\nTo run: sudo minidlnad"
+cp_files(){
+    wget -O /tmp/tmp.tar.gz $MINIDLNA_FILES
+    sudo tar xzf /tmp/tmp.tar.gz -C / && rm /tmp/tmp.tar.gz
+    echo -e "\n\nCreating music, videos & images directories...\n"
+    create_dir
+    read -p "Done!. minidlna run at boot. Usage: sudo service minidlna {start|stop|status|restart|force-reload|rotate}"
 }
 
 create_dir(){
@@ -59,12 +59,7 @@ minidlna_latest(){
     ./autogen.sh && ./configure
     make
     make install
-    sudo cp minidlna.conf /etc/
-    sudo wget -P /etc/ $MINIDLNA_FILE_CONF
-    echo -e "\n\nCreating folder music, videos & images...\n"
-    create_dir
-    #sudo update-rc.d minidlna defaults
-    boot
+    cp_files
 }
 
 minidlna_misa(){
@@ -72,10 +67,7 @@ minidlna_misa(){
     sudo apt-get install -y libavformat53
     sudo dpkg -i minidlna*.deb
     rm minidlna*.deb
-    sudo wget -P /etc/ $MINIDLNA_FILE_CONF
-    create_dir
-    #sudo update-rc.d minidlna defaults
-    boot
+    cp_files
 }
 
 while true
