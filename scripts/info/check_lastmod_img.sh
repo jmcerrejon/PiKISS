@@ -31,7 +31,7 @@ declare -a imgUrl=(
             'http://downloads.raspberrypi.org/raspbian_latest'
             'http://downloads.raspberrypi.org/pidora_latest'
 			'http://pipaos.mitako.eu/'
-            'http://downloads.raspberrypi.org/raspbmc_latest'
+            'http://download.raspbmc.com/downloads/bin/filesystem/prebuilt/raspbmc-final.img.gz'
 			'http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-latest.tar.gz'
             'http://downloads.raspberrypi.org/riscos_latest'
 			'http://sourceforge.net/projects/minepeon/files/latest/download?source=files'

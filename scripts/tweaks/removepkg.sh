@@ -2,7 +2,7 @@
 #
 # Description : Remove packages
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.2 (29/Jun/14)
+# Version     : 0.3 (31/Oct/14)
 #
 # Help:       · http://www.cnx-software.com/2012/07/31/84-mb-minimal-raspbian-armhf-image-for-raspberry-pi/
 #             · https://extremeshok.com/1081/raspberry-pi-raspbian-tuning-optimising-optimizing-for-reduced-memory-usage/
@@ -12,9 +12,9 @@ clear
 df -h
 echo -e "Remove packages\n===============\n"
 
-read -p "I'm hungry. Can I delete aspell dictionaries with Midori (42 MB space will be freed)? (y/n) " option
+read -p "I'm hungry. Can I delete sonic-pi (39 MB space will be freed)? (y/n) " option
 case "$option" in
-    y*) sudo apt-get remove -y aspell aspell-en ;;
+    y*) sudo apt-get remove -y sonic-pi;;
 esac
 
 # Maybe another method. This is so destructive!
@@ -44,7 +44,7 @@ case "$option" in
     y*) sudo apt-get remove -y `sudo dpkg --get-selections | grep -v "deinstall" | grep sound | sed s/install//` ;;
 esac
 
-read -p "Delete all related with wolfram engine (428 MB space will be freed)? (y/n) " option
+read -p "Delete all related with wolfram engine (463 MB space will be freed)? (y/n) " option
 case "$option" in
     y*) sudo apt-get remove -y wolfram-engine ;;
 esac

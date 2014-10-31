@@ -2,9 +2,17 @@
 #
 # Description : Test Internet Speed thanks to Matt Martz
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.9 (29/Sep/14)
+# Version     : 0.9.1 (18/Oct/14)
+# Tested      : Raspbian/Debian/Ubuntu, OSX
+#
+# IMPROVEMENT : dialog menu with 2 methods.
 #
 clear
+
+
+method2(){
+	wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test100.zip
+}
 
 PYTHON_SCRIPT="https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest_cli.py"
 
