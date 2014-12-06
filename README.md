@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **341.6 hours**
+* **344.6 hours**
 
 ##ENGLISH
 
@@ -21,6 +21,14 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ###[ ChangeLog (dd/mm/yy)]
+
+####(06/12/14)
+
+· Update Emulators > UAE4ALL ver 2.5.3.2
+
+####(25/11/14)
+
+· Update Emulators > Final Burn Alpha 2x for Raspberry Pi (4 players)
 
 ####(24/11/14)
 

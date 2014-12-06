@@ -8,7 +8,7 @@ clear
 
 INSTALL_DIR="/home/$USER/games"
 URL_ARMIGA="http://www.armigaproject.com/pi/uae4armiga4pi.tar.gz"
-URL_UAE4ALL="http://fdarcel.free.fr/uae4all-src-rc3.chips.0.5.tar.bz2"
+URL_UAE4ALL="ftp://researchlab.spdns.de/rpi/uae4all/uae4all-2.5.3.2rpi/uae4all-2.5.3.2rpi.tgz"
 URL_UAE4ALL2="ftp://researchlab.spdns.de/rpi/uae4all2/uae4all2-2.3.5.3rpi.tgz"
 KICK_FILE="http://misapuntesde.com/res/Amiga_roms.zip"
 GAME="http://www.emuparadise.me/GameBase%20Amiga/Games/T/Turrican.zip"
@@ -82,22 +82,24 @@ exit
 }
 
 insUAE4ALL(){
-  echo -e "UAE4All 0.5 for Raspberry Pi\n============================\n· More Info: http://www.raspberrypi.org/forums/viewtopic.php?f=78&t=17928\n· Kickstar ROMs & Xenon2 included.\n\nInstall path: $INSTALL_DIR"
-  
+  echo -e "UAE4All for Raspberry Pi\n========================\n· More Info: http://www.raspberrypi.org/forums/viewtopic.php?f=78&t=17928\n· Kickstar ROMs & Xenon2 included.\n\nInstall path: $INSTALL_DIR"
+
   menu
 
   if [[ $(validate_url $URL_UAE4ALL) != "true" ]] ; then
       echo "Sorry, the emulator is not available here: $URL_UAE4ALL. Visit the website to download it manually."
       exit
   else
-      sudo apt-get install -y libsdl1.2-dev libsdl-mixer1.2-dev
+      sudo apt-get install -y libsdl1.2debian libsdl-image1.2 libsdl-ttf2.0-0 libguichan-0.8.1-1 libguichan-sdl-0.8.1-1
       mkdir -p $INSTALL_DIR && cd $_
-      wget -qO- -O tmp.tar.bz2 $URL_UAE4ALL && tar xjvf tmp.tar.bz2 && rm tmp.tar.bz2
-      cd uae4all*
-      downloadKICK
-      downloadROM $GAME2_DSK1
-      downloadROM $GAME2_DSK2
-      echo -e "Done!. Type ./uae4all_cyclone (fastest) or ./uae4all_fame (support save state)"
+      wget $URL_UAE4ALL
+      tar xzf uae4all*
+      rm -rf uae4all*.tgz
+      cd uae4all/kickstarts
+      downloadKICK && cd ..
+      downloadROM $GAME
+      sudo sh -c 'echo "@pi - rtprio 90" >> /etc/security/limits.conf'
+      echo -e "Done!. Type ./uae4all and for Full Screen: ./amiga"
       read -p "Press [Enter] to continue..."
       exit
   fi
@@ -108,7 +110,7 @@ insUAE4ALL2(){
   
   menu
 
-  if [[ $(validate_url $URL_UAE4ALL) != "true" ]] ; then
+  if [[ $(validate_url $URL_UAE4ALL2) != "true" ]] ; then
       echo "Sorry, the emulator is not available here: $URL_UAE4ALL. Visit the website to download it manually."
       exit
   else
@@ -133,7 +135,7 @@ do
         --title     "[ Amiga emulators ]" \
         --menu      "Select emulator from the list:" 11 40 4 \
         ARMIGA      "UAE4ARMIGA4PI" \
-        UAE4All     "UAE4All 0.3 rc3" \
+        UAE4All     "UAE4All 2.5.4.2" \
         UAE4All2    "UAE4All2 2.3.5.3" \
         Exit    "Exit" 2>"${INPUT}"
 
