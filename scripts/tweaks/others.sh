@@ -2,7 +2,7 @@
 #
 # Description : Other tweaks yes/no answer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.3 (4/Nov/14)
+# Version     : 0.6 (6/Nov/14)
 #
 # Help        · http://www.ideaheap.com/2013/07/stopping-sd-card-corruption-on-a-raspberry-pi/
 #
@@ -43,4 +43,12 @@ case "$option" in
     y*) SDLess ;;
 esac
 
+echo -e "\nSticky bit on /tmp to securely delete files only by their own propietary or root."
+read -p "Agree (y/n)?" option
+case "$option" in
+    y*) sudo chmod +t /tmp ;;
+esac
+
 read -p "Have a nice day and don't blame me!. Press [Enter] to continue..."
+
+
