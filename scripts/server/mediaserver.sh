@@ -2,7 +2,7 @@
 #
 # Description : UPnP/DLNA MediaServer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.9.1 (14/Jul/14)
+# Version     : 0.9.2 (7/Nov/14)
 #
 # HELP        · http://www.raspberrypi.org/forums/viewtopic.php?p=518676#p518676
 #             · http://www.raspberrypi.org/forums/viewtopic.php?t=16352
@@ -54,7 +54,7 @@ minidlna_latest(){
     wget -O tmp.tar.gz $URL_MINIDLNA
     tar xzf tmp.tar.gz && rm tmp.tar.gz
     cd minidlna*
-    sudo apt-get install -y libexif-dev libsysfs-dev libid3tag0-dev libFLAC-dev libvorbis-dev libsqlite3-dev libavformat-dev autopoint autoconf libjpeg8-dev gettext libavformat53
+    sudo apt-get install -y libexif-dev libsysfs-dev libid3tag0-dev libFLAC-dev libvorbis-dev libsqlite3-dev libavformat-dev autopoint autoconf libjpeg8-dev gettext libavformat53 automake
     clear
     echo -e "\n\nGrab a coffee (About 10 minutes)... ;)\n"
     ./autogen.sh && ./configure
