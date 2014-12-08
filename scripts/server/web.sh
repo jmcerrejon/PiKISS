@@ -12,6 +12,7 @@
 clear
 
 tempfile=`tempfile 2>/dev/null` || tempfile=/tmp/test$$
+nginx_url='http://nginx.org/download/nginx-1.6.2.tar.gz'
 
 apache(){
     clear
@@ -51,6 +52,18 @@ monkey(){
 nginx(){
   sudo apt-get install -y nginx php5-common php5-mysql php5-xmlrpc php5-cgi php5-curl php5-gd php5-cli php5-fpm php-apc php5-dev php5-mcrypt
 }
+build_nginx(){
+  clear
+  echo -e "Compiling NGINX with SSL, SPDY support, Automatic compression of static files & Decompression on the fly of compressed responses. Please wait...\n\n"
+  cd $HOME
+  sudo apt-get install -y make gcc libpcre3 libpcre3-dev zlib1g-dev libbz2-dev libssl-dev
+  wget $nginx_url
+  tar zxvf nginx*.tar.gz
+  cd nginx*
+  ./configure --with-http_gzip_static_module --with-http_gunzip_module --with-http_spdy_module --with-http_ssl_module
+  make
+  sudo make install
+}
 
 while true
 do
@@ -59,15 +72,17 @@ do
 		--menu  	"Pick one:" 15 55 5 \
         	Apache  	"Apache" \
               Monkey        "Monkey HTTP" \
-            	NGINX       	"Nginx" \
+              NGINX         "Nginx" \
+            	NGINX_BUILD  	"Nginx (compile latest version)" \
             	Exit        	"Exit" 2>"${tempfile}"
 
 	menuitem=$(<"${tempfile}")
 
 	case $menuitem in
         	Apache) apache ;;
-          Monkey) monkey;;
-        	NGINX) nginx;;
-        	Exit) exit;;
+          Monkey) monkey ;;
+          NGINX) nginx ;;
+        	NGINX_BUILD) build_nginx ;;
+        	Exit) exit ;;
 	esac
 done
