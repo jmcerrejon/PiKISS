@@ -39,7 +39,7 @@ declare -a imgUrl=(
 			'https://nyus.mirror.arkos.io/os/latest-rpi.tar.gz'
 			'http://sourceforge.net/projects/volumio/files/latest/download?source=files'
 			'http://sourceforge.net/projects/scoutbot/files/latest/download?source=files'
-			'http://openelec.tv/get-openelec/download/finish/10-raspberry-pi-builds/605-diskimage-openelec-stable-raspberry-pi-arm'
+			'http://releases.openelec.tv/OpenELEC-RPi.arm-5.0.0.img.gz'
 )
 
 i=0

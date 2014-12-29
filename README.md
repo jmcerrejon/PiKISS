@@ -26,6 +26,8 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 · Update Tweaks > other & removepkg scripts. 
 · Update Games > minecraft, quake, crispydoom.
+· Update Emus > pifba.
+· Update Info > check last images, test inet scripts.
 
 ####(08/12/14)
 

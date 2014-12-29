@@ -240,7 +240,7 @@ do
         	Amiga  	"Some Amiga emulators" \
             Gba         "Gameboy Advance" \
             PCE-CD      "PC-Engine" \
-            MSX      "Compile MSX" \
+            MSX      "Compile or install MSX (Latest)" \
 		Pifba		"Emulates old arcade games using CPS1, CPS2,..." 2>"${INPUT}"
 
 	menuitem=$(<"${INPUT}")

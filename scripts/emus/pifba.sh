@@ -2,16 +2,12 @@
 #
 # Description : Final Burn Alpha 2x for Raspberry Pi with 4 players
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (24/Nov/14)
+# Version     : 1.1 (29/Dec/14)
 #
 clear
 
 INSTALL_DIR="/home/$USER/games/pifba/"
-URL_FILE="https://github.com/digitalLumberjack/pifba/releases/download/0.1/pifba-0.1.zip"
-
-validate_url(){
-    if [[ `wget -S --spider $1 2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then echo "true"; fi
-}
+URL_FILE="https://github.com/digitalLumberjack/pifba/releases/download/0.3/pifba-0.3.zip"
 
 changeInstallDir(){
     echo "Enter new full path:"
@@ -20,15 +16,12 @@ changeInstallDir(){
 }
 
 install(){
-    if [[ $(validate_url $URL_FILE) != "true" ]] ; then
-        echo "Sorry, the emulator is not available here: $URL_FILE. Visit the website to download it manually."
-        exit
-    else 
-        mkdir -p $INSTALL_DIR && cd $_
-        wget -qO- -O tmp.zip $URL_FILE && unzip -o tmp.zip && rm tmp.zip
-        #chmod 777 ./fba2x ./fbacapex ./capex.cfg ./fba2x.cfg ./zipname.fba ./rominfo.fba ./FBACache_windows.zip ./fba_029671_clrmame_dat.zip ./roms ./skin ./preview ./preview/*
-        echo "Done!. To play go to install path, copy any rom to /roms directory and type: ./fba2x ./path/to/rom"
-    fi
+
+    mkdir -p $INSTALL_DIR && cd $_
+    wget -qO- -O tmp.zip $URL_FILE && unzip -o tmp.zip && rm tmp.zip
+    #chmod 777 ./fba2x ./fbacapex ./capex.cfg ./fba2x.cfg ./zipname.fba ./rominfo.fba ./FBACache_windows.zip ./fba_029671_clrmame_dat.zip ./roms ./skin ./preview ./preview/*
+    echo "Done!. To play go to install path, copy any rom to /roms directory and type: ./fba2x ./path/to/rom"
+
     read -p "Press [Enter] to continue..."
     exit
 }
