@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.8.8 (2014)
+# Version : Beta 0.8.9 (2014)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -22,7 +22,7 @@
 # - - - - -
 #
 [ -f /opt/vc/bin/vcgencmd ] && TEMPC="| $(/opt/vc/bin/vcgencmd measure_temp) " || TEMPC=""
-TITLE="PiKISS (Pi Keeping It Simple, Stupid!) .:. Jose Cerrejon .:. ver. 0.8.8 (2014) | IP: $(hostname -I) ${TEMPC}"
+TITLE="PiKISS (Pi Keeping It Simple, Stupid!) .:. Jose Cerrejon .:. ver. 0.8.9 (2014) | IP: $(hostname -I) ${TEMPC}"
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
 NOGUI=0
