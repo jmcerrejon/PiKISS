@@ -270,8 +270,8 @@ do
 		--title 	"[ Multimedia ]" \
 		--menu  	"Select app from the list" $wHEIGHT $wWIDTH $wHEIGHT \
 		Back  		"Back to main menu" \
-        		TVPlayer		"Play Spanish TV Channel" \
-		Rplay		"AirPlay to do mirroring" \
+        		TVPlayer		"Watch TV Channel (Actually not channel's list available)" \
+		Rplay		"AirPlay Mirroring on your Pi with RPlay" \
         	Kiosk		"Image slideshow" \
 		XBMC		"Install XBMC" 2>"${INPUT}"
 

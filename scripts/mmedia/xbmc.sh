@@ -2,7 +2,7 @@
 #
 # Description : Install XBMC
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.9 (26/Jun/14)
+# Version     : 0.9.1 (29/Dec/14)
 #
 # HELP        · http://michael.gorven.za.net/raspberrypi/xbmc
 #
@@ -11,13 +11,13 @@
 #
 clear
 
-echo -e "XBMC Install (12.3)\n=====================\n· Install 127MB aprox."
+echo -e "XBMC Install (13.2)\n=====================\n· Install 131MB aprox."
 echo "deb http://archive.mene.za.net/raspbian wheezy contrib" | sudo tee -a /etc/apt/sources.list
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 5243CDED
 sudo apt-get update
 sudo apt-get install -y xbmc
 
-usermod -a -G "audio,video,input,dialout,plugdev,tty" $USER
-addgroup --system input
+sudo usermod -a -G "audio,video,input,dialout,plugdev,tty" $USER
+sudo addgroup --system input
 
 read -p "Done!. Type  xbmc-standalone to run. Press [Enter] to continue..."
