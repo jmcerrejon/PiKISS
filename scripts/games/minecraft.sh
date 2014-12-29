@@ -2,12 +2,18 @@
 #
 # Description : Install MineCraft following a guide from http://www.raspberrypi-spy.co.uk
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (13/May/14)
+# Version     : 1.1 (29/Dec/14)
 #
 clear
 
 INSTALL_DIR="/home/$USER/games"
 URL_FILE="https://s3.amazonaws.com/assets.minecraft.net/pi/minecraft-pi-0.1.1.tar.gz"
+
+if [ $(sudo dpkg-query -l | grep minecraft-pi | wc -l) -eq 1 ];
+then
+    read -p "MineCraft already installed. Installation aborted. Have a nice day! :)"
+    exit
+fi
 
 # validate_url thanks to https://gist.github.com/hrwgc/7455343
 validate_url(){
@@ -54,6 +60,8 @@ install(){
     read -p "Press [Enter] to continue..."
     exit
 }
+
+
 
 echo "Install MineCraft (Raspberry Pi Ed)"
 echo "==================================="

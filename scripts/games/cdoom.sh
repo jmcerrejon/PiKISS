@@ -9,6 +9,7 @@
 clear
 
 WAD_PATH="$HOME/games/"
+URL_WAD_PACK="http://download944.mediafire.com/5dsc6ck17ksg/w2551ilfsx0sai7/Wads+Básicos.jar"
 
 doom(){
     if [[ ! -d $WAD_PATH/doom ]] ; then
@@ -51,18 +52,24 @@ strife(){
 pack(){
     if [[ ! -d $WAD_PATH/Strife ]] ; then
         mkdir -p $WAD_PATH
-        wget -P /tmp/ http://download1433.mediafire.com/tn78b3sx90ag/w2551ilfsx0sai7/Wads+B%C3%A1sicos.jar
+        wget -P /tmp/ $URL_WAD_PACK
         mv /tmp/Wads+Básicos.jar /tmp/wads.zip && unzip /tmp/wads.zip -d $WAD_PATH *.WAD
         rm /tmp/wads.zip
     fi
 }
 
-sudo apt-get install -y libsdl1.2debian libsdl-image1.2 libsdl-mixer1.2 libsdl-net1.2 timidity
 
-wget -P /tmp http://misapuntesde.com/res/crispy-doom_1.3_armhf.deb
-sudo dpkg -i /tmp/crispy-doom_1.3_armhf.deb
-rm /tmp/crispy-doom_1.3_armhf.deb
 
-pack
+if [ ! -e "/usr/local/games/crispy-doom" ];then
+    sudo apt-get install -y libsdl1.2debian libsdl-image1.2 libsdl-mixer1.2 libsdl-net1.2 timidity
 
-read -p "Done!. Execute crispy-{doom,heretic,hexen,strife} with '-iwad path/to/wad-file.wad' parameter. Press [Enter] to continue..."
+    wget -P /tmp http://misapuntesde.com/res/crispy-doom_1.3_armhf.deb
+    sudo dpkg -i /tmp/crispy-doom_1.3_armhf.deb
+    rm /tmp/crispy-doom_1.3_armhf.deb
+    pack
+else
+    read -p "Crispy-Doom already installed. Installation aborted. Have a nice day! :)"
+    exit
+fi
+
+read -p "Execute crispy-{doom,heretic,hexen,strife} with '-iwad path/to/wad-file.wad' parameter. Press [Enter] to continue..."

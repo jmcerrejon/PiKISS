@@ -25,6 +25,7 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 ####(29/12/14)
 
 · Update Tweaks > other & removepkg scripts. 
+· Update Games > minecraft, quake, crispydoom.
 
 ####(08/12/14)
 
