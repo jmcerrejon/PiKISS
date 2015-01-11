@@ -154,6 +154,7 @@ function smInfo(){
         		Chkimg  	"Check some distros images to know if they are updated" \
         	    	Weather		"Weather info from your country" \
             		Bmark       	"Benchmark RPi (CPU, MEM, SD Card...)" \
+            		Lynis       	"Lynis is a security auditing tool." \
             		TestInet       	"Test Internet bandwidth" \
 			WebMonitor	"Web monitor to your RPi" 2>"${INPUT}"
 
@@ -164,6 +165,7 @@ function smInfo(){
 	        	Chkimg) 	./scripts/info/check_lastmod_img.sh ;;
 	            	Weather)	./scripts/info/weather.sh ;;
 	            	Bmark) 		./scripts/info/bmark.sh ;;
+	            	Lynis) 		./scripts/info/lynis.sh ;;
 	            	TestInet) 		./scripts/info/test_inet.sh ;;
 			WebMonitor)	./scripts/info/web_monitor.sh ;;
 		esac
@@ -273,7 +275,7 @@ do
         		TVPlayer		"Watch TV Channel (Actually not channel's list available)" \
 		Rplay		"AirPlay Mirroring on your Pi with RPlay" \
         	Kiosk		"Image slideshow" \
-		XBMC		"Install XBMC" 2>"${INPUT}"
+		XBMC		"Install XBMC 13.2" 2>"${INPUT}"
 
 	menuitem=$(<"${INPUT}")
 
