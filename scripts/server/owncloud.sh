@@ -2,7 +2,7 @@
 #
 # Description : Install Owncloud 7 with NginX and SSL
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.7 (14/08/14)
+# Version     : 0.8 (12/01/15)
 #
 # HELP        · http://www.pihomeserver.fr/en/2014/08/11/raspberry-pi-home-server-installer-owncloud-7-en-https-nginx/
 # 			  · http://raspberrypihelp.net/tutorials/33-raspberry-pi-owncloud
@@ -10,13 +10,13 @@
 #
 clear
 
-URL_OWNCLOUD='http://download.owncloud.org/community/owncloud-7.0.1.tar.bz2'
+URL_OWNCLOUD='https://download.owncloud.org/community/owncloud-7.0.4.tar.bz2'
 
-echo -e "Installing Owncloud 7.0.1. with NginX\n=====================================\n\n Please wait...\n"
+echo -e "Installing Owncloud 7.0.4. with NginX\n=====================================\n\n Please wait...\n"
 apt-get install -y nginx php5-fpm php5 php5-json php5-gd php5-sqlite curl libcurl3 libcurl3-dev php5-curl php5-common php-xml-parser sqlite php-apc
 mkdir -p /var/www && cd $_
 wget $URL_OWNCLOUD
-tar xjvf owncloud-7.0.1.tar.bz2
+tar xjvf owncloud-*.tar.bz2
 chown -R www-data:www-data /var/www/owncloud
 mkdir -p /etc/nginx/certs && cd $_
 openssl genrsa -des3 -out owncloud.key 1024
