@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **358.4 hours**
+* **369.2 hours**
 
 ##ENGLISH
 
@@ -21,6 +21,10 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ###[ ChangeLog (dd/mm/yy)]
+
+####(08/03/15)
+
+· piKiss.sh refactorized
 
 ####(11/01/15)
 
@@ -195,14 +199,12 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 ###[ Introducing PiKISS ]
 
-This is my most ambitious project for the *Raspberry Pi*.
-
 Install an application on Linux is not complex. Sometimes just type *sudo apt-get install* and get the application installed with all its dependencies. But... What if we need to install more than one such as a web server?, Is it not in the official repositories?, What if you want to get rid off input commands?. Please, an easy way to set my WIFI network!.
 
 Don't despair. **PiKISS** has come to help you...
 
 - - -
-**PiKISS** *(Pi Keeping It Simple, Stupid!)* are *Shell Scripts(Bash)* for *Raspbian* and derivates which has a menu that will allow you to install some applications or configure files automatically as easy as possible.
+**PiKISS** *(Pi Keeping It Simple, Stupid!)* are **shell Scripts (Bash)* for *Raspberry Pi* 1 & 2 (*Raspbian* and derivates) and for *ODROID-C1* (*Ubuntu*)** too, which has a menu that will allow you to install some applications or configure files automatically as easy as possible.
 
 The idea is offer facilities to manage your *Raspbian* distro selecting an option in a menu and answer [Yes/No]. If you need check dependencies, install an app, modify a script at boot, add a line to a file or download other, **PiKISS** will do it for you.
 
@@ -258,14 +260,12 @@ This project has involved many hours thinking, searching, refactoring and testin
 
 ####[ Presentando PiKISS ]
 
-Este es mi proyecto más ambicioso para la *Raspberry Pi*.
-
 Instalar una aplicación en Linux no es complejo. A veces basta con un *sudo apt-get install* y tendrás la aplicación con todas sus dependencias. Pero, ¿Y si tenemos que instalar más de una como por ejemplo en un servidor web?, ¿Y si no está en los repositorios oficiales?, ¿Y si no quieres teclear? ¡Por favor, una manera fácil de instalar mi pen WIFI!.
 
 No desesperéis. Ha llegado PiKISS…
 
 - - -
-**PiKISS** *(Pi Keeping It Simple, Stupid!, "Pi manteniéndolo sencillo, ¡Estúpido!")* **son unos *Shell Scripts* para *Raspbian* y derivados** que cuenta con un menú que te va a permitir instalar algunas aplicaciones o configurar ficheros de forma automática de la manera más fácil posible. **Su misión: Simplificar la instalación de software en la *Raspberry Pi* y mantenerla.**
+**PiKISS** *(Pi Keeping It Simple, Stupid!, "Pi manteniéndolo sencillo, ¡Estúpido!")* son unos **Shell Scripts* para *Raspberry Pi* 1 y 2 (*Raspbian* y derivados), además de *ODROID-C1* (Ubuntu)** que cuenta con un menú que te va a permitir instalar algunas aplicaciones o configurar ficheros de forma automática de la manera más fácil posible. **Su misión: Simplificar la instalación de software en la *Raspberry Pi* y mantenerla.**
 
 La idea es ofrecer facilidades para manejar tu distribución y que las instalaciones sean tan sencillas como seleccionar una opción en un menú y contestar [Si/No]. Si alguna conlleva algo más que instalar, por ejemplo modificar un script en el arranque, añadir una línea a un fichero, descargar otros ficheros, comprobar dependencias, **PiKISS** lo hará por ti.
 
