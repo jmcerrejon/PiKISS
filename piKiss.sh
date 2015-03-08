@@ -315,6 +315,7 @@ function smConfigure(){
 			Joypad "Configure WII, XBox360 controller"
 			Backup "Simple backup dir to run daily"
 			Applekeyb "Bluetooth keyboard"
+			Netcfg "Configure static IP"
 		)
 	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
