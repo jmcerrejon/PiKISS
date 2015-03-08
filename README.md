@@ -1,4 +1,4 @@
-##PiKISS for Raspberry Pi: A bunch of scripts with menu to make your life easier.
+##PiKISS for Raspberry Pi & ODROID-C1: A bunch of scripts with menu to make your life easier.
 
 ![PiKISS Logo](http://misapuntesde.com/images/pikiss_400px_nobg.png)
 
@@ -204,9 +204,9 @@ Install an application on Linux is not complex. Sometimes just type *sudo apt-ge
 Don't despair. **PiKISS** has come to help you...
 
 - - -
-**PiKISS** *(Pi Keeping It Simple, Stupid!)* are **shell Scripts (Bash) for *Raspberry Pi* 1 & 2 (*Raspbian* and derivates) and for *ODROID-C1* (*Ubuntu*)** too, which has a menu that will allow you to install some applications or configure files automatically as easy as possible.
+**PiKISS** *(Pi Keeping It Simple, Stupid!)* are **shell Scripts (Bash) for *Raspberry Pi* 1 & 2 (*Raspbian* and derivates) and for *ODROID-C1* (*Ubuntu*)** soon, which has a menu that will allow you to install some applications or configure files automatically as easy as possible.
 
-The idea is offer facilities to manage your *Raspbian* distro selecting an option in a menu and answer [Yes/No]. If you need check dependencies, install an app, modify a script at boot, add a line to a file or download other, **PiKISS** will do it for you.
+The idea is offer facilities to manage your operating system, selecting an option in a menu and answer [Yes/No]. If you need check dependencies, install an app, modify a script at boot, add a line to a file or download other, **PiKISS** will do it for you.
 
 I include not only the ability to install, but also compile programs. Do you have problems when compiling your favorite emulator?, Have you forgotten to modify a line in the source code and now you have to recompile again for 4 hours?. Laugh your now all this with **PiKISS**.
 
@@ -222,7 +222,7 @@ What some users have said about **PiKISS**:
 
 ####[ Installation ]
 
-You need the git package (already installed on Raspbian): *sudo apt-get install -y git git-core*
+Just type:
 
 <pre>
 git clone https://github.com/jmcerrejon/PiKISS.git
@@ -238,7 +238,7 @@ cd PiKISS
 git pull
 </pre>
 
-NOTE: If you use another flavor from Raspbian, you need to execute the next: *git config --global http.sslVerify false*
+NOTE: If you use another flavor from Raspbian, maybe you need to execute the next command: *git config --global http.sslVerify false*
 
 ####[ HELP ME! ]
 
@@ -256,7 +256,7 @@ This project has involved many hours thinking, searching, refactoring and testin
 
 ##ESPAÑOL
 
-##PiKISS para Raspberry Pi: Un puñado de scripts con menú para hacerte la vida más fácil.
+##PiKISS para Raspberry Pi y ODROID-C1: Un puñado de scripts con menú para hacerte la vida más fácil.
 
 ####[ Presentando PiKISS ]
 
@@ -265,7 +265,7 @@ Instalar una aplicación en Linux no es complejo. A veces basta con un *sudo apt
 No desesperéis. Ha llegado PiKISS…
 
 - - -
-**PiKISS** *(Pi Keeping It Simple, Stupid!, "Pi manteniéndolo sencillo, ¡Estúpido!")* son unos **Shell Scripts para *Raspberry Pi* 1 y 2 (*Raspbian* y derivados), además de *ODROID-C1* (Ubuntu)** que cuenta con un menú que te va a permitir instalar algunas aplicaciones o configurar ficheros de forma automática de la manera más fácil posible. **Su misión: Simplificar la instalación de software en la *Raspberry Pi* y mantenerla.**
+**PiKISS** *(Pi Keeping It Simple, Stupid!, "Pi manteniéndolo sencillo, ¡Estúpido!")* son unos **Shell Scripts para *Raspberry Pi* 1 y 2 (*Raspbian* y derivados), además de *ODROID-C1* (Ubuntu)** que cuenta con un menú que te va a permitir instalar algunas aplicaciones o configurar ficheros de forma automática de la manera más fácil posible. **Su misión: Simplificar la instalación de software en *Raspberry Pi* o en *ODROID-C1* y mantenerla.**
 
 La idea es ofrecer facilidades para manejar tu distribución y que las instalaciones sean tan sencillas como seleccionar una opción en un menú y contestar [Si/No]. Si alguna conlleva algo más que instalar, por ejemplo modificar un script en el arranque, añadir una línea a un fichero, descargar otros ficheros, comprobar dependencias, **PiKISS** lo hará por ti.
 
@@ -283,7 +283,7 @@ Lo que algunos usuarios han dicho de **PiKISS**:
 
 ####[ Instalación ]
 
-Necesitarás tener instalado el paquete git, si no lo tienes: *sudo apt-get install -y git git-core*
+Escribe en la terminal lo siguiente:
 
 <pre>
 git clone https://github.com/jmcerrejon/PiKISS.git
@@ -293,13 +293,13 @@ cd PiKISS
 
 ####[ Actualizar ]
 
- Si ya la tienes instalada y quieres actualizarla con los últimos cambios, teclea en el directorio de *PiKISS*:
+Si ya la tienes instalada y quieres actualizarla con los últimos cambios, teclea en el directorio de *PiKISS*:
 
 <pre>
 git pull
 </pre>
 
-NOTA: Si usas otra distribución que no sea *Raspbian*, debes ejecutar esta sencencia: *git config --global http.sslVerify false*
+NOTA: Si usas otra distribución que no sea *Raspbian* en la Raspberry Pi, tal vez tengas que ejecutar esta sencencia: *git config --global http.sslVerify false*
 
 ####[ ¡AYÚDAME! ]
 
