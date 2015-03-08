@@ -204,7 +204,7 @@ Install an application on Linux is not complex. Sometimes just type *sudo apt-ge
 Don't despair. **PiKISS** has come to help you...
 
 - - -
-**PiKISS** *(Pi Keeping It Simple, Stupid!)* are **shell Scripts (Bash)* for *Raspberry Pi* 1 & 2 (*Raspbian* and derivates) and for *ODROID-C1* (*Ubuntu*)** too, which has a menu that will allow you to install some applications or configure files automatically as easy as possible.
+**PiKISS** *(Pi Keeping It Simple, Stupid!)* are **shell Scripts (Bash) for *Raspberry Pi* 1 & 2 (*Raspbian* and derivates) and for *ODROID-C1* (*Ubuntu*)** too, which has a menu that will allow you to install some applications or configure files automatically as easy as possible.
 
 The idea is offer facilities to manage your *Raspbian* distro selecting an option in a menu and answer [Yes/No]. If you need check dependencies, install an app, modify a script at boot, add a line to a file or download other, **PiKISS** will do it for you.
 

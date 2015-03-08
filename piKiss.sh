@@ -21,7 +21,9 @@
 # INCLUDE
 # - - - -
 #
-. ./scripts/helper.sh
+
+. ./scripts/helper.sh || 
+	{ clear && echo "ERROR : ./scripts/helper.sh not found." && exit 1 ;}
 
 check_board
 check_temperature
@@ -130,7 +132,7 @@ function smInfo(){
 
 	cmd=(dialog --clear --backtitle "$TITLE${TEMPC}| Model: $MODEL" --title "[ Info ]" --menu "Select an option from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
 
-	if [ ${MODEL} == 'Raspberry Pi' ]; then
+	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
 			Chkimg "Check some distros images to know if they are updated"
@@ -140,7 +142,7 @@ function smInfo(){
 			TestInet "Test Internet bandwidth"
 			WebMonitor "Web monitor to your RPi"
 		)
-	elif [ ${MODEL} == 'ODROID-C1' ]; then
+	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
 			Back "Back to main menu" \
 		)
@@ -166,7 +168,7 @@ function smTweaks(){
 
 	cmd=(dialog --clear --backtitle "$TITLE${TEMPC}| Model: $MODEL" --title "[ Tweaks ]" --menu "Select a tweak from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
 
-	if [ ${MODEL} == 'Raspberry Pi' ]; then
+	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
 			Autologin "Set autologin for Raspbian"
@@ -174,7 +176,7 @@ function smTweaks(){
 			Packages "Programs you don't use (maybe) to free space"
 			Daemons "Disable services useless"
 		)
-	elif [ ${MODEL} == 'ODROID-C1' ]; then
+	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
 			Back "Back to main menu" \
 		)
@@ -198,7 +200,7 @@ function smGames(){
 
 	cmd=(dialog --clear --backtitle "$TITLE${TEMPC}| Model: $MODEL" --title "[ Games ]" --menu "Select game from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
 
-	if [ ${MODEL} == 'Raspberry Pi' ]; then
+	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
 			Minecraft "Minecraft Pi Ed."
@@ -208,7 +210,7 @@ function smGames(){
 			Crispy-doom "Crispy to play Doom, Heretic, Hexen, Strife"
 			Sqrxz4 "Sqrxz 4: Difficult platform game"
 		)
-	elif [ ${MODEL} == 'ODROID-C1' ]; then
+	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
 			Back "Back to main menu" \
 		)
@@ -233,7 +235,7 @@ function smGames(){
 function smEmulators(){
 	cmd=(dialog --clear --backtitle "$TITLE${TEMPC}| Model: $MODEL" --title "[ Emulators ]" --menu "Select emulator from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
 
-	if [ ${MODEL} == 'Raspberry Pi' ]; then
+	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
 			Snes "SNES Emulator port based on SNES9X 1.39"
@@ -247,7 +249,7 @@ function smEmulators(){
 			MSX "Compile or install MSX (Latest)"
 			Pifba "Emulates old arcade games using CPS1, CPS2,..."
 		)
-	elif [ ${MODEL} == 'ODROID-C1' ]; then
+	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
 			Back "Back to main menu" \
 		)
@@ -277,14 +279,13 @@ function smEmulators(){
 function smMultimedia(){
 	cmd=(dialog --clear --backtitle "$TITLE${TEMPC}| Model: $MODEL" --title "[ Multimedia ]" --menu "Select a script from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
 
-	if [ ${MODEL} == 'Raspberry Pi' ]; then
+	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
-			TVPlayer "Watch TV Channel (Actually not channel's list available)"
 			Rplay "AirPlay Mirroring on your Pi with RPlay"
 			Kiosk "Image slideshow"
 		)
-	elif [ ${MODEL} == 'ODROID-C1' ]; then
+	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
 			Back "Back to main menu" \
 		)
@@ -296,7 +297,6 @@ function smMultimedia(){
 	do
 	    case $choice in
 			Back) 		break ;;
-	        TVPlayer)   ./scripts/mmedia/tvplayer.sh ;;
 			Rplay)		./scripts/mmedia/airplay.sh ;;
 	        Kiosk)      ./scripts/mmedia/kiosk.sh ;;
 	        XBMC) 		./scripts/mmedia/xbmc.sh ;;
@@ -307,7 +307,7 @@ function smMultimedia(){
 function smConfigure(){
 	cmd=(dialog --clear --backtitle "$TITLE${TEMPC}| Model: $MODEL" --title "[ Configure ]" --menu "Select to configure your distro:" $wHEIGHT $wWIDTH $wHEIGHT)
 
-	if [ ${MODEL} == 'Raspberry Pi' ]; then
+	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
 			RaspNet "Configure Raspbian Net Install distro"
@@ -316,7 +316,7 @@ function smConfigure(){
 			Backup "Simple backup dir to run daily"
 			Applekeyb "Bluetooth keyboard"
 		)
-	elif [ ${MODEL} == 'ODROID-C1' ]; then
+	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
 			Back "Back to main menu" \
 		)
@@ -341,14 +341,14 @@ function smConfigure(){
 function smInternet(){
 	cmd=(dialog --clear --backtitle "$TITLE${TEMPC}| Model: $MODEL" --title "[ Internet ]" --menu "Select an option from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
 
-	if [ ${MODEL} == 'Raspberry Pi' ]; then
+	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
 			Plowshare "Direct download from hosters like uploaded,..."
 			Epiphany "Web browser"
 			Downmp3 "Download mp3 from GrooveShark"
 		)
-	elif [ ${MODEL} == 'ODROID-C1' ]; then
+	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
 			Back "Back to main menu" \
 		)
@@ -370,7 +370,7 @@ function smInternet(){
 function smServer(){
 	cmd=(dialog --clear --backtitle "$TITLE${TEMPC}| Model: $MODEL" --title "[ Server ]" --menu "Select to configure your distro as a server:" $wHEIGHT $wWIDTH $wHEIGHT)
 
-	if [ ${MODEL} == 'Raspberry Pi' ]; then
+	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
 			Cups "Printer server (cups)"
@@ -384,7 +384,7 @@ function smServer(){
 			FWork "Wordpress, Node.js among others"
 			DB "MySQL+PHP5 connector"
 		)
-	elif [ ${MODEL} == 'ODROID-C1' ]; then
+	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
 			Back "Back to main menu" \
 		)
@@ -413,7 +413,7 @@ function smServer(){
 function smOthers(){
 	cmd=(dialog --clear --backtitle "$TITLE${TEMPC}| Model: $MODEL" --title "[ Others ]" --menu "Another scripts uncategorized:" $wHEIGHT $wWIDTH $wHEIGHT)
 
-	if [ ${MODEL} == 'Raspberry Pi' ]; then
+	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
 			Part "Check issues & fix SD corruptions"
@@ -424,7 +424,7 @@ function smOthers(){
 			Fixes "Fix some problems with the Raspbian OS"
 			Aircrack "Compile Aircrack-NG suite easily"
 		)
-	elif [ ${MODEL} == 'ODROID-C1' ]; then
+	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
 			Back "Back to main menu" \
 		)
