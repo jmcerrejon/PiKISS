@@ -171,14 +171,15 @@ function smTweaks(){
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
-			Autologin "Set autologin for Raspbian"
+			Autologin "Set autologin as root"
 			Others "CPU performance, disable Ethernet and so on"
 			Packages "Programs you don't use (maybe) to free space"
 			Daemons "Disable services useless"
 		)
 	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
-			Back "Back to main menu" \
+			Back "Back to main menu"
+			Autologin "Set autologin as current user (CLI mode)"
 		)
 	fi
 

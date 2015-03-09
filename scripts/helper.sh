@@ -20,7 +20,7 @@ function check_board()
 function check_temperature()
 {
  if [ -f /opt/vc/bin/vcgencmd ]; then
- 	TEMPC="| TEMP: $(/opt/vc/bin/vcgencmd measure_temp | awk '{print $1"º"}') "
+ 	TEMPC="| $(/opt/vc/bin/vcgencmd measure_temp | awk '{print $1"º"}') "
  elif [ -f /sys/devices/virtual/thermal/thermal_zone0/temp ]; then
  	TEMPC="| TEMP: $(cat /sys/devices/virtual/thermal/thermal_zone0/temp | cut -c1-2 | awk '{print $1"º"}') "
  else
