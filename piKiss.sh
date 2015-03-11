@@ -171,7 +171,7 @@ function smTweaks(){
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
-			Autologin "Set autologin as root"
+			Autologin "Set autologin with pi user"
 			Others "CPU performance, disable Ethernet and so on"
 			Packages "Programs you don't use (maybe) to free space"
 			Daemons "Disable services useless"
@@ -180,6 +180,7 @@ function smTweaks(){
 		options=(
 			Back "Back to main menu"
 			Autologin "Set autologin as current user (CLI mode)"
+			Others "CPU performance, disable Ethernet and so on"
 		)
 	fi
 
@@ -204,7 +205,6 @@ function smGames(){
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
-			Minecraft "Minecraft Pi Ed."
 			Dune2 "Dune 2 Legacy"
 			Quake "Quake 2 for now"
 			RWolf "Return to Castle Wolfenstein (Demo)"
@@ -223,7 +223,7 @@ function smGames(){
 	do
 	    case $choice in
 			Back) 		 break ;;
-			Minecraft) 	 ./scripts/games/minecraft.sh ;;
+		#	Minecraft) 	 ./scripts/games/minecraft.sh ;;
 			Dune2) 		 ./scripts/games/dune2.sh ;;
 			Quake) 		 ./scripts/games/quake.sh ;;
 			RWolf) 		 ./scripts/games/rwolf.sh ;;

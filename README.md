@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **371 hours**
+* **373 hours**
 
 ##ENGLISH
 
@@ -21,6 +21,12 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ###[ ChangeLog (dd/mm/yy)]
+
+####(11/03/15)
+
+· ODROID: Added Tweaks > others script
+· Added Tweaks > removepkg script
+· Update Info > check lastmod image
 
 ####(09/03/15)
 

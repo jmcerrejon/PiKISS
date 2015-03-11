@@ -2,7 +2,7 @@
 #
 # Description : Check Last-Modified field from some distros images, so you can know if a distro is updated.
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1 (31/Aug/14)
+# Version     : 1.1 (11/Mar/15)
 #
 # OpenELEC: http://downloads.raspberrypi.org/openelec_latest
 # 
@@ -25,6 +25,7 @@ declare -a imgName=(
 			'Volumio'
 			'ScoutBot'
 			'OpenELEC'
+			'Domoticz'
 )
 declare -a imgUrl=(
             'http://downloads.raspberrypi.org/NOOBS_latest'
@@ -39,7 +40,8 @@ declare -a imgUrl=(
 			'https://nyus.mirror.arkos.io/os/latest-rpi.tar.gz'
 			'http://sourceforge.net/projects/volumio/files/latest/download?source=files'
 			'http://sourceforge.net/projects/scoutbot/files/latest/download?source=files'
-			'http://releases.openelec.tv/OpenELEC-RPi.arm-5.0.0.img.gz'
+			'http://releases.openelec.tv/OpenELEC-RPi2.arm-5.0.5.img.gz'
+			'http://sourceforge.net/projects/domoticz/files/latest/download?source=files'
 )
 
 i=0

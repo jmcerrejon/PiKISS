@@ -15,7 +15,7 @@ fn_autologin_RPi(){
 	sudo sed -i '/1:2345/s/^/#/' /etc/inittab
 
 	# Insert new file on pattern position
-	sudo sed -i 's/.*tty1.*/&\n1:2345:respawn:\/bin\/login -f '$USER' tty1 <\/dev\/tty1> \/dev\/tty1 2>\&1/' /etc/inittab
+	sudo sed -i 's/.*tty1.*/&\n1:2345:respawn:\/bin\/login -f pi tty1 <\/dev\/tty1> \/dev\/tty1 2>\&1/' /etc/inittab
 }
 
 fn_autologin_ODROID(){

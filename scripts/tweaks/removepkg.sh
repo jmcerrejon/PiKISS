@@ -2,7 +2,7 @@
 #
 # Description : Remove packages
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.9 (29/Dec/14)
+# Version     : 1.0 (10/Mar/15)
 #
 # Help:       · http://www.cnx-software.com/2012/07/31/84-mb-minimal-raspbian-armhf-image-for-raspberry-pi/
 #
@@ -11,7 +11,7 @@ clear
 df -h
 echo -e "\nRemove packages\n===============\n"
 
-read -p "I'm hungry. Can I delete sonic-pi (66.6 MB space will be freed)? (y/n) " option
+read -p "I'm hungry. Can I delete sonic-pi (53.8 MB space will be freed)? (y/n) " option
 case "$option" in
     y*) sudo apt-get remove -y sonic-pi;;
 esac
@@ -33,7 +33,7 @@ case "$option" in
 esac
 
 
-read -p "Remove Java(TM) SE Runtime Environment 1.8.0 (186 MB space will be freed)? (y/n) " option
+read -p "Remove Java(TM) SE Runtime Environment 1.8.0 & Wolfram-engine (646 MB space will be freed)? (y/n) " option
 case "$option" in
     y*) sudo apt-get remove -y oracle-java8-jdk ;;
 esac
@@ -45,7 +45,7 @@ esac
 
 read -p "Python games? Please, say yes! (y/n) " option
 case "$option" in
-    y*) rm -rf python_games ;;
+    y*) rm -rf /home/pi/python_games ;;
 esac
 
 # alsa?, wavs, ogg?
