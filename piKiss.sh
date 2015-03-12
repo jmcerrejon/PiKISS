@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.9.1 (2015)
+# Version : Beta 0.9.2 (2015)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -36,7 +36,7 @@ check_internet_available
 TITLE="PiKISS (Pi Keeping It Simple, Stupid!) | Author: Jose Cerrejon | Ver: 0.9.1 (2015) | IP: $(hostname -I)"
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
-wHEIGHT=18
+wHEIGHT=19
 wWIDTH=70
 #
 # - - - - -
@@ -375,6 +375,7 @@ function smServer(){
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
+			FTP "Simple FTP Server with vsftpd"
 			Cups "Printer server (cups)"
 			Minidlna "Install/Compile UPnP/DLNA Minidlna"
 			Web "Apache+PHP5"
@@ -388,7 +389,8 @@ function smServer(){
 		)
 	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
-			Back "Back to main menu" \
+			Back "Back to main menu"
+			FTP "Simple FTP Server with "
 		)
 	fi
 
@@ -399,6 +401,7 @@ function smServer(){
 	    case $choice in
 			Back) 		break ;;
 	        Cups)  		./scripts/server/printer.sh ;;
+	        FTP)  		./scripts/server/ftp.sh ;;
         	Minidlna)	./scripts/server/mediaserver.sh ;;
         	Web) 		./scripts/server/web.sh ;;
 			Smtp) 		./scripts/server/smtp.sh ;;

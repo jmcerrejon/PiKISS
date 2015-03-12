@@ -1,9 +1,15 @@
+(12/03/15)
+==========
+
+· Added Server > Install vsftpd (FTP) Server
+
 (11/03/15)
 ==========
 
 · ODROID: Added Tweaks > others script
 · Added Tweaks > removepkg script
 · Update Info > check lastmod image
+· Added Server > Install vsftpd (FTP) Server
 
 (09/03/15)
 ==========
