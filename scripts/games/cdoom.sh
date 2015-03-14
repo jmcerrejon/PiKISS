@@ -3,25 +3,32 @@
 # Description : Crispy-Doom ver. 2.3 to play doom,heretic,hexen,strife
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 1.1 (14/Mar/15)
+# Compatible  : Raspberry Pi 1 & 2 (tested), ODROID-C1 (tested)
 #
 # HELP        : http://www.doomworld.com/idgames/index.php?file=roguestuff/strife11.zip
 #             : To compile crispy-doom, remember: sudo apt-get install -y sdl-net1.2-dev sdl-mixer1.2-dev libsdl1.2-dev autoconf
 # Dependencies: libsdl1.2debian,libsdl-mixer1.2,libsdl-net1.2,timidity
-#
+# http://misapuntesde.com/res/crispy-doom-ODROID_2-3_armhf.deb
 clear
+
+. ../helper.sh || . ./scripts/helper.sh ||
+    { clear && echo "ERROR : ./script/helper.sh not found." && exit 1 ;}
+check_board
 
 WAD_PATH="$HOME/games"
 URL_DOOM="https://www.dropbox.com/s/jy2q3f56qtl3tmu/dc.zip?dl=0"
 URL_HERETIC="https://www.dropbox.com/s/bwnx5707ya6g05w/hc.zip?dl=0"
 URL_HEXEN="https://www.dropbox.com/s/zj127jifcxdq7fa/hec.zip?dl=0"
 URL_STRIFE="https://www.dropbox.com/s/nb6ofa4nlt7juv5/sc.zip?dl=0"
+CRISPY_DOOM='crispy-doom_2.3_armhf.deb'
 
 LICENSE="Complete"
 
 get_wad(){
-        wget -O $WAD_PATH/$1.zip $2
-        unzip $WAD_PATH/$1.zip -d $WAD_PATH
-        rm $WAD_PATH/$1.zip
+    [ ! -d  $HOME/games ] && mkdir -p $HOME/games
+    wget -O $WAD_PATH/$1.zip $2
+    unzip $WAD_PATH/$1.zip -d $WAD_PATH
+    rm $WAD_PATH/$1.zip
 }
 
 share_version(){
@@ -34,7 +41,7 @@ share_version(){
 
 menu(){
 
-    dialog --title     "[ Crispy-Doom. License ]" \
+    dialog --title     "[ Crispy-Doom. WADs License ]" \
          --yes-label "Shareware" \
          --no-label  "Complete" \
          --yesno     "Choose what type of WAD files do you want to install. NOTE: For complete version, you must be the owner of the original game (in some countries)" 7 55
@@ -46,7 +53,7 @@ menu(){
     255) exit ;;
     esac
 
-    cmd=(dialog --separate-output --title "[ Crispy-Doom. License: $LICENSE ]" --checklist "Move with the arrows up & down. Space to select the game(s) you want to install" 13 120 16)
+    cmd=(dialog --separate-output --title "[ Crispy-Doom. WADs License: $LICENSE ]" --checklist "Move with the arrows up & down. Space to select the game(s) you want to install" 13 120 16)
     options=(
              Doom "Space marine operating under the UAC (Union Aerospace Corporation), who fights hordes of demons" off
              Heretic "Player must first fight through the undead hordes infesting the site" off
@@ -74,11 +81,15 @@ menu(){
 }
 
 if [ ! -e "/usr/local/games/crispy-doom" ];then
-    sudo apt-get install -y libsdl1.2debian libsdl-image1.2 libsdl-mixer1.2 libsdl-net1.2 timidity
+    sudo apt-get install -y libsdl1.2debian libsdl-mixer1.2 libsdl-net1.2 timidity
 
-    wget -P /tmp http://misapuntesde.com/res/crispy-doom_2.3_armhf.deb
-    sudo dpkg -r /tmp/crispy-doom_2.3_armhf.deb
-    rm /tmp/crispy-doom_2.3_armhf.deb
+    if [[ ${MODEL} == 'ODROID-C1' ]]; then
+        CRISPY_DOOM='crispy-doom-ODROID_2.3_armhf.deb'
+    fi
+
+    wget -P /tmp http://misapuntesde.com/res/$CRISPY_DOOM
+    sudo dpkg -i /tmp/$CRISPY_DOOM
+    rm /tmp/$CRISPY_DOOM
 else
     read -p "Crispy-Doom already installed. Press [ENTER] to continue..."
 fi
