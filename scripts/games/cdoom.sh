@@ -5,10 +5,9 @@
 # Version     : 1.1 (14/Mar/15)
 # Compatible  : Raspberry Pi 1 & 2 (tested), ODROID-C1 (tested)
 #
-# HELP        : http://www.doomworld.com/idgames/index.php?file=roguestuff/strife11.zip
-#             : To compile crispy-doom, remember: sudo apt-get install -y sdl-net1.2-dev sdl-mixer1.2-dev libsdl1.2-dev autoconf
+# HELP        : To compile crispy-doom, remember: sudo apt-get install -y sdl-net1.2-dev sdl-mixer1.2-dev libsdl1.2-dev autoconf
 # Dependencies: libsdl1.2debian,libsdl-mixer1.2,libsdl-net1.2,timidity
-# http://misapuntesde.com/res/crispy-doom-ODROID_2-3_armhf.deb
+#
 clear
 
 . ../helper.sh || . ./scripts/helper.sh ||
@@ -85,6 +84,8 @@ if [ ! -e "/usr/local/games/crispy-doom" ];then
 
     if [[ ${MODEL} == 'ODROID-C1' ]]; then
         CRISPY_DOOM='crispy-doom-ODROID_2.3_armhf.deb'
+        SHORTCUTS='crispy_odroid_modified_link.zip'
+        wget -P ~/.local/share/applications http://misapuntesde.com/res/$SHORTCUTS && unzip ~/.local/share/applications/$SHORTCUTS && rm ~/.local/share/applications/$SHORTCUTS
     fi
 
     wget -P /tmp http://misapuntesde.com/res/$CRISPY_DOOM
