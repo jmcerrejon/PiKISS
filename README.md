@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **383 hours**
+* **385 hours**
 
 ##ENGLISH
 
@@ -25,6 +25,8 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 ####(14/03/15)
 
 · Enhaced Games > Crispy-Doom
+
+· ODROID: Games > Crispy-Doom
 
 ####(12/03/15)
 
