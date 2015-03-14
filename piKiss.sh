@@ -213,7 +213,8 @@ function smGames(){
 		)
 	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
-			Back "Back to main menu" \
+			Back "Back to main menu"
+			Crispy-doom "Crispy to play Doom, Heretic, Hexen, Strife"
 		)
 	fi
 
@@ -252,7 +253,7 @@ function smEmulators(){
 		)
 	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
-			Back "Back to main menu" \
+			Back "Back to main menu"
 		)
 	fi
 
@@ -288,7 +289,7 @@ function smMultimedia(){
 		)
 	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
-			Back "Back to main menu" \
+			Back "Back to main menu"
 		)
 	fi
 
@@ -320,7 +321,7 @@ function smConfigure(){
 		)
 	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
-			Back "Back to main menu" \
+			Back "Back to main menu"
 		)
 	fi
 
@@ -352,7 +353,7 @@ function smInternet(){
 		)
 	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
-			Back "Back to main menu" \
+			Back "Back to main menu"
 		)
 	fi
 

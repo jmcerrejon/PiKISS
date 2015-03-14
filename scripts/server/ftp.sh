@@ -3,6 +3,7 @@
 # Description : Install a FTP server (vsftpd)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 0.9 (12/Mar/15)
+# Compatible  : Raspberry Pi 1 & 2 (tested), ODROID-C1 (tested)
 #
 # Help        · http://www.tuxmaniacs.it/2015/03/server-ftp-con-raspberry-pi.html
 #			  · http://www.instructables.com/id/VSFTPD-Installation-Setup-on-Ubuntu/?ALLSTEPS
