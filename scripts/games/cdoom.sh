@@ -20,7 +20,7 @@ URL_HERETIC="https://www.dropbox.com/s/bwnx5707ya6g05w/hc.zip?dl=0"
 URL_HEXEN="https://www.dropbox.com/s/zj127jifcxdq7fa/hec.zip?dl=0"
 URL_STRIFE="https://www.dropbox.com/s/nb6ofa4nlt7juv5/sc.zip?dl=0"
 CRISPY_DOOM='crispy-doom_2.3_armhf.deb'
-
+SHORTCUTS='crispy_modified_link.zip'
 LICENSE="Complete"
 
 get_wad(){
@@ -84,13 +84,12 @@ if [ ! -e "/usr/local/games/crispy-doom" ];then
 
     if [[ ${MODEL} == 'ODROID-C1' ]]; then
         CRISPY_DOOM='crispy-doom-ODROID_2.3_armhf.deb'
-        SHORTCUTS='crispy_odroid_modified_link.zip'
-        wget -P ~/.local/share/applications http://misapuntesde.com/res/$SHORTCUTS && unzip ~/.local/share/applications/$SHORTCUTS && rm ~/.local/share/applications/$SHORTCUTS
     fi
 
     wget -P /tmp http://misapuntesde.com/res/$CRISPY_DOOM
     sudo dpkg -i /tmp/$CRISPY_DOOM
     rm /tmp/$CRISPY_DOOM
+    wget -P ~/.local/share/applications http://misapuntesde.com/res/$SHORTCUTS && unzip ~/.local/share/applications/$SHORTCUTS && rm ~/.local/share/applications/$SHORTCUTS
 else
     read -p "Crispy-Doom already installed. Press [ENTER] to continue..."
 fi
