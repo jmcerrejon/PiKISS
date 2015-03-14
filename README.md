@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **378 hours**
+* **383 hours**
 
 ##ENGLISH
 
@@ -22,15 +22,20 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 ###[ ChangeLog (dd/mm/yy)]
 
+####(14/03/15)
+
+· Enhaced Games > Crispy-Doom
+
 ####(12/03/15)
 
 · Added Server > Install vsftpd (FTP) Server
-· Enhaced Games > Crispy-Doom
 
 ####(11/03/15)
 
 · ODROID: Added Tweaks > others script
+
 · Added Tweaks > removepkg script
+
 · Update Info > check lastmod image
 
 ####(09/03/15)
@@ -52,8 +57,11 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 ####(29/12/14)
 
 · Update Tweaks > other & removepkg scripts. 
+
 · Update Games > minecraft, quake, crispydoom.
+
 · Update Emus > pifba.
+
 · Update Info > check last images, test inet scripts.
 
 ####(08/12/14)

@@ -1,15 +1,22 @@
+(14/03/15)
+==========
+
+· Enhaced Games > Crispy-Doom
+
 (12/03/15)
 ==========
 
 · Added Server > Install vsftpd (FTP) Server
-· Enhaced Games > Crispy-Doom
 
 (11/03/15)
 ==========
 
 · ODROID: Added Tweaks > others script
+
 · Added Tweaks > removepkg script
+
 · Update Info > check lastmod image
+
 · Added Server > Install vsftpd (FTP) Server
 
 (09/03/15)
@@ -35,10 +42,13 @@
 (29/12/14)
 ==========
 
-· Update Tweaks > other & removepkg scripts. 
-· Update Games > minecraft, quake, crispydoom.
-· Update Emus > pifba.
-· Update Info > check last images, test inet scripts.
+· Update Tweaks > other & removepkg scripts
+
+· Update Games > minecraft, quake, crispydoom
+
+· Update Emus > pifba
+
+· Update Info > check last images, test inet scripts
 
 (08/12/14)
 ==========
@@ -206,12 +216,20 @@
 1st release (29/05/14)
 ======================
 
-· Configure Menu  : Joypad, Netcfg.
-· Emulators Menu  : mame4allpi, pifba, pisnes, rpix86, speccy.
-· Games Menu      : Crispy Doom, Dune2, MineCraft, Quake2, Sqrxz4.
-· Internet Menu   : plowshare, mp3downloader.
-· Info Menu       : benchmark, check last imgs, CPU temp, weather, web monitor.
-· Multimedia Menu : AirPlay (rPlay), Kiosk mode, xbmc.
-· Server Menu     : DB, Printer, Web, Webdav for Apache.
-· Tweaks Menu     : Autologin, others, Remove packages, Disable services.
-· Others Menu     : Aircrack, SDL2, WhatApp.
+· Configure Menu  : Joypad, Netcfg
+
+· Emulators Menu  : mame4allpi, pifba, pisnes, rpix86, speccy
+
+· Games Menu      : Crispy Doom, Dune2, MineCraft, Quake2, Sqrxz4
+
+· Internet Menu   : plowshare, mp3downloader
+
+· Info Menu       : benchmark, check last imgs, CPU temp, weather, web monitor
+
+· Multimedia Menu : AirPlay (rPlay), Kiosk mode, xbmc
+
+· Server Menu     : DB, Printer, Web, Webdav for Apache
+
+· Tweaks Menu     : Autologin, others, Remove packages, Disable services
+
+· Others Menu     : Aircrack, SDL2, WhatApp
