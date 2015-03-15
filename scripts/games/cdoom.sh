@@ -89,7 +89,7 @@ if [ ! -e "/usr/local/games/crispy-doom" ];then
     wget -P /tmp http://misapuntesde.com/res/$CRISPY_DOOM
     sudo dpkg -i /tmp/$CRISPY_DOOM
     rm /tmp/$CRISPY_DOOM
-    wget -P ~/.local/share/applications http://misapuntesde.com/res/$SHORTCUTS && unzip ~/.local/share/applications/$SHORTCUTS && rm ~/.local/share/applications/$SHORTCUTS
+    wget -P ~/.local/share/applications http://misapuntesde.com/res/$SHORTCUTS && unzip ~/.local/share/applications/$SHORTCUTS -d ~/.local/share/applications && rm ~/.local/share/applications/$SHORTCUTS
 else
     read -p "Crispy-Doom already installed. Press [ENTER] to continue..."
 fi
