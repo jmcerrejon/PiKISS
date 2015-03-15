@@ -17,7 +17,7 @@ dialog --backtitle "piKiss" \
          --title     "[ Download Dune 2 Abandonware ]" \
          --yes-label "Yes" \
          --no-label  "No" \
-         --yesno     "You need the original .PAK files from the original game. Do you want to download? (In some countries the laws may consider it like pirate software)" 7 55
+         --yesno     "You need the original .PAK files from the original game. Do you want to download? (In some countries the laws may consider it pirate software)" 7 55
 
   retval=$?
 
