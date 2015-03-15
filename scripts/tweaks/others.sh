@@ -2,7 +2,7 @@
 #
 # Description : Other tweaks yes/no answer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.7 (10/Mar/15)
+# Version     : 0.7.1 (15/Mar/15)
 # Compatible  : Raspberry Pi 1 & 2 (tested), ODROID-C1 (tested)
 #
 # Help        · http://www.raspberrypi.org/forums/viewtopic.php?f=31&t=11642
@@ -33,6 +33,17 @@ tweaks_ODROID(){
         y*) sudo chmod +t /tmp ;;
     esac
 
+    cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor | grep 'performance' > /dev/null 2>&1
+    CHECK=$?
+
+    if [ $CHECK -eq 1 ]; then
+        echo -e "\nCPU scaling governor to performance."
+        read -p "Disable (y/n)?" option
+        case "$option" in
+            y*) echo -n performance | sudo tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ;;
+        esac
+    fi
+
     echo -e "\nEnable a 512MB swapfile permanently."
     read -p "Agree (y/n)? " option
     case "$option" in
@@ -59,11 +70,16 @@ tweaks_RPi(){
         y*) sudo sh -c 'echo "net.ipv6.conf.all.disable_ipv6=1" > /etc/sysctl.d/disableipv6.conf' && sudo sh -c 'echo 'blacklist ipv6' >> /etc/modprobe.d/blacklist' && sudo sed -i '/::/s%^%#%g' /etc/hosts ;;
     esac
 
-    echo -e "\nCPU scaling governor to performance."
-    read -p "Disable (y/n)?" option
-    case "$option" in
-        y*) echo -n performance | sudo tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ;;
-    esac
+    cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor | grep 'performance' > /dev/null 2>&1
+    CHECK=$?
+
+    if [ $CHECK -eq 1 ]; then
+        echo -e "\nCPU scaling governor to performance."
+        read -p "Disable (y/n)?" option
+        case "$option" in
+            y*) echo -n performance | sudo tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ;;
+        esac
+    fi
 
     echo -e "\nLess SD card writes to stop corruptions."
     read -p "Agree (y/n)? " option
