@@ -8,7 +8,7 @@
 #
 clear
 
-df -h
+df -h | grep 'rootfs\|Avail'
 echo -e "\nRemove packages\n===============\n"
 
 read -p "I'm hungry. Can I delete sonic-pi (53.8 MB space will be freed)? (y/n) " option
@@ -67,5 +67,5 @@ esac
 sudo apt-get autoremove -y
 sudo apt-get clean
 
-df -h
+df -h | grep 'rootfs\|Avail'
 read -p "Have a nice day and don't blame me!. Press [Enter] to continue..."
