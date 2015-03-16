@@ -17,9 +17,8 @@
 #
 clear
 
-. ../helper.sh || . ./scripts/helper.sh ||
-    { clear && echo "ERROR : ./script/helper.sh not found." && exit 1 ;}
-check_board
+. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 QUAKE2_RPI_URL="http://pickle.gp2x.de/rpi/quake2_rpi.zip"
 Q2_PAK_URL="https://www.dropbox.com/s/bh5co9nnmy0xf0n/baseq2.zip?dl=0"

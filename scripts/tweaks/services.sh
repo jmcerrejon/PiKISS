@@ -2,15 +2,15 @@
 #
 # Description : Disable services with yes/no answer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.5 (10/Mar/15)
+# Version     : 0.5 (16/Mar/15)
 # Compatible  : Raspberry Pi 1 & 2 (tested), ODROID-C1 (tested)
 #
 # HELP	      · Package chkconfig to see daemon status
 #
 clear
 
-. ../helper.sh || . ./scripts/helper.sh ||
-    { clear && echo "ERROR : ./script/helper.sh not found." && exit 1 ;}
+. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 check_board
 

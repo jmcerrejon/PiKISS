@@ -2,17 +2,16 @@
 #
 # Description : Other tweaks yes/no answer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.7.1 (15/Mar/15)
+# Version     : 0.7.1 (16/Mar/15)
 # Compatible  : Raspberry Pi 1 & 2 (tested), ODROID-C1 (tested)
 #
 # Help        · http://www.raspberrypi.org/forums/viewtopic.php?f=31&t=11642
 #             · https://extremeshok.com/1081/raspberry-pi-raspbian-tuning-optimising-optimizing-for-reduced-memory-usage/
-# · To compile crispy-doom, remember: sudo apt-get install -y sdl-net1.2-dev sdl-mixer1.2-dev autoconf
+#
 clear
 
-. ../helper.sh || . ./scripts/helper.sh ||
-    { clear && echo "ERROR : ./script/helper.sh not found." && exit 1 ;}
-check_board
+. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 SDLess_Rpi(){
 	sudo sh -c 'echo "proc            /proc               proc    defaults          0   0\n/dev/mmcblk0p1  /boot               vfat    ro,noatime        0   2\n/dev/mmcblk0p2  /                   ext4    defaults,noatime  0   1\nnone            /var/run        tmpfs   size=1M,noatime       0   0
@@ -25,6 +24,12 @@ tweaks_ODROID(){
     read -p "Disable (y/n)? " option
     case "$option" in
         y*) sudo sh -c 'echo "net.ipv6.conf.all.disable_ipv6=1" >> /etc/sysctl.conf' && sudo sh -c 'echo "net.ipv6.conf.default.disable_ipv6=1" >> /etc/sysctl.conf' && sudo sh -c 'echo "net.ipv6.conf.lo.disable_ipv6=1" >> /etc/sysctl.conf' && sudo sysctl -p ; cat /proc/sys/net/ipv6/conf/all/disable_ipv6 ; echo -e "1 means DISABLED\n";;
+    esac
+
+    echo -e "\nEnable Meveric repositories with dozen of apps. Check http://forum.odroid.com/viewtopic.php?f=52&t=5908 for more info."
+    read -p "Agree (y/n)? " option
+    case "$option" in
+        y*) sudo wget -P /etc/apt/sources.list.d http://oph.mdrjr.net/meveric/sources.lists/meveric-all-C1.list && sudo wget -P /etc/apt/sources.list.d http://oph.mdrjr.net/meveric/sources.lists/meveric-all-main.list && sudo wget -P /etc/apt/sources.list.d http://oph.mdrjr.net/meveric/sources.lists/meveric-all-testing.list && sudo wget -O- http://oph.mdrjr.net/meveric/meveric.asc | sudo apt-key add - && sudo apt-get update ;;
     esac
 
     echo -e "\nSticky bit on /tmp to securely delete files only by their own propietary or root."

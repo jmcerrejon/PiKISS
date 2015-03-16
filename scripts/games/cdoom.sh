@@ -2,7 +2,7 @@
 #
 # Description : Crispy-Doom ver. 2.3 to play doom,heretic,hexen,strife
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1 (14/Mar/15)
+# Version     : 1.1 (16/Mar/15)
 # Compatible  : Raspberry Pi 1 & 2 (tested), ODROID-C1 (tested)
 #
 # HELP        : To compile crispy-doom, remember: sudo apt-get install -y sdl-net1.2-dev sdl-mixer1.2-dev libsdl1.2-dev autoconf
@@ -10,9 +10,8 @@
 #
 clear
 
-. ../helper.sh || . ./scripts/helper.sh ||
-    { clear && echo "ERROR : ./script/helper.sh not found." && exit 1 ;}
-check_board
+. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 WAD_PATH="$HOME/games"
 URL_DOOM="https://www.dropbox.com/s/jy2q3f56qtl3tmu/dc.zip?dl=0"

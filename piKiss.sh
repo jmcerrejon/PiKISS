@@ -22,8 +22,8 @@
 # - - - -
 #
 
-. ./scripts/helper.sh || 
-	{ clear && echo "ERROR : ./scripts/helper.sh not found." && exit 1 ;}
+. ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 check_board
 check_temperature
