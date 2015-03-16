@@ -3,6 +3,7 @@
 # Description : Disable services with yes/no answer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 0.5 (10/Mar/15)
+# Compatible  : Raspberry Pi 1 & 2 (tested), ODROID-C1 (tested)
 #
 # HELP	      · Package chkconfig to see daemon status
 #
