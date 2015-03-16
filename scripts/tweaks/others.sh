@@ -44,6 +44,12 @@ tweaks_ODROID(){
         esac
     fi
 
+    echo -e "\nChange & fix mesa-egl to mali-egl (increase GPU performance)."
+    read -p "Agree (y/n)? " option
+    case "$option" in
+        y*) cd /usr/lib/arm-linux-gnueabihf/ && sudo ln -sf libEGL.so.1 libEGL.so
+    esac
+
     echo -e "\nEnable a 512MB swapfile permanently."
     read -p "Agree (y/n)? " option
     case "$option" in
@@ -85,6 +91,12 @@ tweaks_RPi(){
     read -p "Agree (y/n)? " option
     case "$option" in
         y*) SDLess ;;
+    esac
+
+    echo -e "\nDelete old SSH Keys and recreate them."
+    read -p "Agree (y/n)? " option
+    case "$option" in
+        y*) sudo rm /etc/ssh/ssh_host_* && sudo dpkg-reconfigure openssh-server && sudo service ssh restart ;;
     esac
 
     echo -e "\nSticky bit on /tmp to securely delete files only by their own propietary or root."

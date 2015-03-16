@@ -216,6 +216,7 @@ function smGames(){
 		options=(
 			Back "Back to main menu"
 			Crispy-doom "Crispy to play Doom, Heretic, Hexen, Strife"
+			Quake "Quake 2"
 		)
 	fi
 

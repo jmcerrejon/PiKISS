@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **385 hours**
+* **391 hours**
 
 ##ENGLISH
 
@@ -21,6 +21,14 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ###[ ChangeLog (dd/mm/yy)]
+
+####(16/03/15)
+
+· ODROID: Games > Quake 2
+
+· RPi: Updated Games > Quake 2
+
+· Updated Tweaks > Others
 
 ####(14/03/15)
 
