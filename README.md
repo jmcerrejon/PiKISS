@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **394 hours**
+* **396 hours**
 
 ##ENGLISH
 
@@ -25,6 +25,8 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 ####(17/03/15)
 
 · Added Games > Descent 1 & 2 (Shareware)
+
+· Update Emus > PiSNES
 
 ####(16/03/15)
 
