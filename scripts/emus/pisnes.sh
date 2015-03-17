@@ -3,7 +3,7 @@
 # Description : PiSNES for Raspberry Pi by Squid
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 0.9.1 (17/Mar/15)
-# Compatible  : Raspberry Pi 1 & 2 (tested)
+# Compatible  : Raspberry Pi 1 (Doesn't work) & 2 (tested. OK.)
 #
 clear
 
