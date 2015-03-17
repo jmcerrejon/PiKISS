@@ -2,7 +2,7 @@
 #
 # Description : Other tweaks yes/no answer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.7.1 (16/Mar/15)
+# Version     : 0.7.2 (16/Mar/15)
 # Compatible  : Raspberry Pi 1 & 2 (tested), ODROID-C1 (tested)
 #
 # Help        · http://www.raspberrypi.org/forums/viewtopic.php?f=31&t=11642
@@ -20,6 +20,12 @@ SDLess_Rpi(){
 }
 
 tweaks_ODROID(){
+    echo -e "\nInstall esential packages:htop, mc, p7zip"
+    read -p "Agree (y/n)? " option
+    case "$option" in
+        y*) sudo apt-get install -y htop mc p7zip ;;
+    esac
+
     echo -e "\nDisable IPv6."
     read -p "Disable (y/n)? " option
     case "$option" in
