@@ -207,6 +207,7 @@ function smGames(){
 		options=(
 			Back "Back to main menu"
 			Dune2 "Dune 2 Legacy"
+			Descent "Descent 1 & 2 Shareware Ed."
 			Quake "Quake 2"
 			RWolf "Return to Castle Wolfenstein (Demo)"
 			Crispy-doom "Crispy to play Doom, Heretic, Hexen, Strife"
@@ -228,6 +229,7 @@ function smGames(){
 			Back) 		 break ;;
 		#	Minecraft) 	 ./scripts/games/minecraft.sh ;;
 			Dune2) 		 ./scripts/games/dune2.sh ;;
+			Descent) 	 ./scripts/games/descent.sh ;;
 			Quake) 		 ./scripts/games/quake.sh ;;
 			RWolf) 		 ./scripts/games/rwolf.sh ;;
 			Crispy-doom) ./scripts/games/cdoom.sh ;;
