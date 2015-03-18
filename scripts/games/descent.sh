@@ -2,7 +2,7 @@
 #
 # Description : Descent 1 & 2
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.3 (17/Mar/15)
+# Version     : 0.8 (18/Mar/15)
 # Compatible  : Raspberry Pi 1 & 2 (tested)
 #   
 # HELP 		  : To uninstall: sudo dpkg -r d1x-rebirth-data-shareware d1x-rebirth d2x-rebirth-data-demo d2x-rebirth && $(sudo rm -r /usr/share/games/d1x-rebirth/ /usr/share/games/d2x-rebirth/ ~/.d1x-rebirth ~/.d2x-rebirth)
@@ -11,8 +11,8 @@ clear
 
 D1X_SHARE_URL='https://www-user.tu-chemnitz.de/~heinm/dxx/deb/d1x-rebirth-data-shareware_1.4-1_all.deb'
 D2X_SHARE_URL='https://www-user.tu-chemnitz.de/~heinm/dxx/deb/d2x-rebirth-data-demo_1.0-1_all.deb'
-D1X_URL='https://www-user.tu-chemnitz.de/~heinm/dxx/deb/d1x-rebirth_0.58.1-1_armhf.deb'
-D2X_URL='https://www-user.tu-chemnitz.de/~heinm/dxx/deb/d2x-rebirth_0.58.1-1_armhf.deb'
+D1X_URL='http://www-user.tu-chemnitz.de/~heinm/dxx/deb/d1x-rebirth_0.58.1-1_armhf.deb'
+D2X_URL='http://www-user.tu-chemnitz.de/~heinm/dxx/deb/d2x-rebirth_0.58.1-1_armhf.deb'
 D1X_HIGH_TEXTURE_URL='http://www.dxx-rebirth.com/download/dxx/res/d1xr-hires.dxa'
 D1X_OGG_URL='http://www.dxx-rebirth.com/download/dxx/res/d1xr-sc55-music.dxa'
 D2X_OGG_URL='http://www.dxx-rebirth.com/download/dxx/res/d2xr-sc55-music.dxa'
@@ -32,7 +32,7 @@ D1X_RPI(){
 	sudo apt-get install -y libphysfs1
 	sudo dpkg -i /temp/d1x-rebirth_0.58.1-1_armhf.deb /temp/d1x-rebirth-data-shareware_1.4-1_all.deb
 	rm /temp/d1x-rebirth_0.58.1-1_armhf.deb /temp/d1x-rebirth-data-shareware_1.4-1_all.deb
-	clear && echo -e "\nInstalling HIGH textures quality...\n\nPlease wait...\n" && sudo wget -P $GAME_DIR/d1x-rebirth $D1X_HIGH_TEXTURE_URL
+	clear && echo -e "\nInstalling HIGH textures quality pack...\n\nPlease wait...\n" && sudo wget -P $GAME_DIR/d1x-rebirth $D1X_HIGH_TEXTURE_URL
 	echo -e "\n\nInstalling OGG Music for better experience...\n\n· All music was recorded with the Roland Sound Canvas SC-55 MIDI Module.\n\nPlease wait...\n" && sudo wget -P $GAME_DIR/d1x-rebirth $D1X_OGG_URL
 }
 
