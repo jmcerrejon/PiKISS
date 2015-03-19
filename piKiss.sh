@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.9.2 (2015)
+# Version : Beta 0.9.3 (2015)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -130,7 +130,7 @@ isMissingDialogPkg
 #
 function smInfo(){
 
-	cmd=(dialog --clear --backtitle "$TITLE${TEMPC}| Model: $MODEL" --title "[ Info ]" --menu "Select an option from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
+	cmd=(dialog --clear --backtitle "$TITLE${TEMPC}| Board: $MODEL" --title "[ Info ]" --menu "Select an option from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
 
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
