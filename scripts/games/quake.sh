@@ -34,7 +34,7 @@ quake2_ODROID(){
   sudo wget -O- http://oph.mdrjr.net/meveric/meveric.asc | sudo apt-key add -
   sudo apt-get update
   sudo apt-get install -y yquake2-odroid libglew-odroid
-  cp /usr/local/share/yquake2/baseq2/game.so /home/odroid/.yq2/baseq2
+  cp /usr/local/share/yquake2/baseq2/game.so $DATA_DIR/baseq2
   cd /usr/lib/arm-linux-gnueabihf/ && sudo ln -sf libEGL.so.1 libEGL.so
 }
 
