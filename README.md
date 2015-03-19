@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **396 hours**
+* **400 hours**
 
 ##ENGLISH
 
@@ -21,6 +21,10 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ###[ ChangeLog (dd/mm/yy)]
+
+####(19/03/15)
+
+· Updated Games > Return to Castle Wolfenstein
 
 ####(17/03/15)
 
@@ -70,171 +74,9 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 · Added Info > Lynis (security auditing tool)
 
-####(29/12/14)
+...
 
-· Update Tweaks > other & removepkg scripts. 
-
-· Update Games > minecraft, quake, crispydoom.
-
-· Update Emus > pifba.
-
-· Update Info > check last images, test inet scripts.
-
-####(08/12/14)
-
-· Update Server > NGINX (latest compile) web server
-
-####(06/12/14)
-
-· Update Emulators > UAE4ALL ver 2.5.3.2
-
-####(25/11/14)
-
-· Update Emulators > Final Burn Alpha 2x for Raspberry Pi (4 players)
-
-####(24/11/14)
-
-· Updated emulators > openMSX 0.11.0
-
-####(04/11/14)
-
-· Updated Tweaks > Added improvement on others.sh
-
-####(02/11/14)
-
-· Updated Server > Git Server
-
-####(08/10/14)
-
-· Updated Server > MiniDLNA to 1.1.4
-
-####(07/10/14)
-
-· Added Info > Tinymembench
-
-####(29/09/14)
-
-· Added Info > Test Internet bandwidth
-
-####(27/09/14)
-
-· Added Emula > MSX
-
-· Added Others > Check SD partition
-
-####(16/09/14)
-
-· Added Other > Synergy
-
-####(9/09/14)
-
-· Added Other > Fix problems with Raspbian OS
-
-####(4/09/14)
-
-· Added Info > SD Benchmark
-
-####(25/08/14)
-
-· Added Emulators > UAE4ALL 0.5
-
-####(14/08/14)
-
-· Added Emulators > UAE4ALL 0.3 RC4 
-
-· Added Server > ownCloud 7.0.1 with NginX and SSL
-
-####(13/08/14)
-
-· Added Server > Samba Config to share directory
-
-####(12/08/14)
-
-· Added Server > Web Server > Nginx
-
-####(11/08/14)
-
-· Added Config > SSID Configurator 
-
-####(06/08/14)
-
-· Aircrack script fixed!
-
-####(30/07/14)
-
-· Config > backup
-
-####(04/07/14)
-
-· Added Others > Install GCC 4.7 on Raspberry Pi
-
-####(03/07/14)
-
-· Added Server > smtp mail config
-
-####(01/07/14)
-
-· Added Emulators > Uae4all2 (Amiga)
-
-####(27/06/14)
-
-· Added Internet > Epiphany Web Browser
-
-· Added Emulators > Gameboy Advance + ROM (Watman), PCE-CD + ROM (Reflectron)
-
-####(26/06/14)
-
-· Added server > minidlna (1.1.3 or latest)
-
-####(25/06/14)
-
-· Added compatibility with raspbian-ua-netinst (https://github.com/debian-pi/raspbian-ua-netinst)
-
-####(24/06/14)
-
-· Updated check_lastmod_img, crispy-doom, Quake 2, MAME4ALL
-
-####(18/06/14)
-
-· Multimedia > TVPlayer
-
-· Server > fwork: Ghost, Wordpress (uncomplete)
-
-####(13/06/14)
-
-· Server > fwork: Node.js
-
-####(11/06/14)
-
-· Add Config > Bluetooth keyboard
-
-####(08/06/14)
-
-· Updated check_lastmod_img
-
-· Added Emulators > UAE4Armiga4Pi
-
-· Added Games > Return to Castle Wolfenstein (demo)
-
-####1st release (29/05/14)
-
-· Configure Menu  : Joypad, Netcfg.
-
-· Emulators Menu  : mame4allpi, pifba, pisnes, rpix86, speccy.
-
-· Games Menu      : Crispy Doom, Dune2, MineCraft, Quake2, Sqrxz4.
-
-· Internet Menu   : plowshare, mp3downloader.
-
-· Info Menu       : benchmark, check last imgs, CPU temp, weather, web monitor.
-
-· Multimedia Menu : AirPlay (rPlay), Kiosk mode, xbmc.
-
-· Server Menu     : DB, Printer, Web, Webdav for Apache.
-
-· Tweaks Menu     : Autologin, others, Remove packages, Disable services.
-
-· Others Menu     : Aircrack, SDL2, WhatApp.
+To see the full changes, read the file CHANGELOG
 
 ###[ Introducing PiKISS ]
 
