@@ -5,7 +5,7 @@
 #
 clear
 
-function check_board()
+check_board()
 {
 	if [[ $(cat /proc/cpuinfo | grep 'ODROIDC') ]]; then
 		MODEL="ODROID-C1"
@@ -17,7 +17,7 @@ function check_board()
 	fi
 }
 
-function check_temperature()
+check_temperature()
 {
  if [ -f /opt/vc/bin/vcgencmd ]; then
  	TEMPC="| $(/opt/vc/bin/vcgencmd measure_temp | awk '{print $1"º"}') "
@@ -28,7 +28,7 @@ function check_temperature()
  fi
 }
 
-function check_internet_available()
+check_internet_available()
 {
 # Make sure we have internet conection
 if [ ! "$NOINTERNETCHECK" = 1 ]; then
@@ -39,7 +39,7 @@ if [ ! "$NOINTERNETCHECK" = 1 ]; then
 fi
 }
 
-function show_dialog()
+show_dialog()
 {
 	local h=${1-10}			# box height default 10
 	local w=${2-41} 		# box width default 41
@@ -73,6 +73,15 @@ do
     echo -e "\nESC pressed." && exit;;
 	esac
 done
+}
+
+mkDesktopEntry(){
+	if [[ ! -e /usr/share/applications/pikiss.desktop ]]; then
+		sudo sh -c 'echo "[Desktop Entry]\nName=PiKISS\nComment=A bunch of scripts with menu to make your life easier\nExec='$PWD'/piKiss.sh\nIcon=terminal\nTerminal=true\nType=Application\nCategories=ConsoleOnly;Utility;System;\nPath='$PWD'/" > /usr/share/applications/pikiss.desktop'
+		if [[ -e ./piKiss.sh ]]; then
+			sed -i -e 's/mkDesktopEntry/#mkDesktopEntry/ig' ./piKiss.sh
+		fi
+	fi
 }
 
 validate_url(){
