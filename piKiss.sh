@@ -29,6 +29,7 @@ check_board
 check_temperature
 check_internet_available
 mkDesktopEntry
+
 #
 # - - - - -
 # VARIABLES
