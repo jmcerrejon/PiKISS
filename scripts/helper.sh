@@ -78,9 +78,9 @@ done
 mkDesktopEntry(){
 	if [[ ! -e /usr/share/applications/pikiss.desktop ]]; then
 		sudo sh -c 'echo "[Desktop Entry]\nName=PiKISS\nComment=A bunch of scripts with menu to make your life easier\nExec='$PWD'/piKiss.sh\nIcon=terminal\nTerminal=true\nType=Application\nCategories=ConsoleOnly;Utility;System;\nPath='$PWD'/" > /usr/share/applications/pikiss.desktop'
-		if [[ -e ./piKiss.sh ]]; then
-			sed -i -e 's/mkDesktopEntry/#mkDesktopEntry/ig' ./piKiss.sh
-		fi
+		# if [[ -e ./piKiss.sh ]]; then
+		# 	sed -i -e 's/mkDesktopEntry/#mkDesktopEntry/ig' ./piKiss.sh
+		# fi
 	fi
 }
 

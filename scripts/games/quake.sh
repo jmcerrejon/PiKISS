@@ -2,7 +2,7 @@
 #
 # Description : Quake Pack (Install Quake 1/2/3/Server Ed, DarkPlace)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.6 (16/Mar/15)
+# Version     : 0.6.1 (25/Mar/15)
 # Compatible  : Raspberry Pi 1 & 2 (tested), ODROID-C1 (tested)
 # Know bugs   : RPi with the latest Raspbian: black screen | ODROID can't change 640x480 resolution
 #
@@ -22,6 +22,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 QUAKE2_RPI_URL="http://pickle.gp2x.de/rpi/quake2_rpi.zip"
 Q2_PAK_URL="https://www.dropbox.com/s/bh5co9nnmy0xf0n/baseq2.zip?dl=0"
+Q3_DEMO_PAK_URL="http://joshua14.homelinux.org/downloads/Q3-Demo-Paks.zip"
 DATA_DIR="$HOME/games/quake2"
 EXEC="$DATA_DIR/quake2"
 
@@ -34,6 +35,7 @@ quake2_ODROID(){
   sudo wget -O- http://oph.mdrjr.net/meveric/meveric.asc | sudo apt-key add -
   sudo apt-get update
   sudo apt-get install -y yquake2-odroid libglew-odroid
+  [ ! -d $DATA_DIR ] && mkdir -p $DATA_DIR
   cp /usr/local/share/yquake2/baseq2/game.so $DATA_DIR/baseq2
   cd /usr/lib/arm-linux-gnueabihf/ && sudo ln -sf libEGL.so.1 libEGL.so
 }
