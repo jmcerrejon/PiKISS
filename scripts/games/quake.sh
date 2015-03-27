@@ -8,11 +8,9 @@
 #
 # HELP    
 #             · Quake 1: https://github.com/welford/qurp    
-#             · Quake 2:  http://www.yamagi.org/quake2/
 #             · QuakeServer: http://www.recantha.co.uk/blog/?p=9962
 #             · Darkplaces Quake: http://www.raspberrypi.org/forums/viewtopic.php?t=72301
 #             · http://www.raspberrypi.org/forums/viewtopic.php?f=78&t=18853
-#             · https://github.com/reefab/yquake2/tree/raspberry
 #             · http://www.raspberrypi.org/forums/viewtopic.php?f=78&t=54683
 #
 clear
@@ -20,8 +18,9 @@ clear
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
+Q1_DEMO_PAK_URL="http://www.quakeforge.net/files/quake-shareware-1.06.zip"
 QUAKE2_RPI_URL="http://pickle.gp2x.de/rpi/quake2_rpi.zip"
-Q2_PAK_URL="https://www.dropbox.com/s/bh5co9nnmy0xf0n/baseq2.zip?dl=0"
+Q2_PAK_URL="http://www.dropbox.com/s/bh5co9nnmy0xf0n/baseq2.zip?dl=0"
 Q3_DEMO_PAK_URL="http://joshua14.homelinux.org/downloads/Q3-Demo-Paks.zip"
 DATA_DIR="$HOME/games/quake2"
 EXEC="$DATA_DIR/quake2"
@@ -35,7 +34,7 @@ quake2_ODROID(){
   sudo wget -O- http://oph.mdrjr.net/meveric/meveric.asc | sudo apt-key add -
   sudo apt-get update
   sudo apt-get install -y yquake2-odroid libglew-odroid
-  [ ! -d $DATA_DIR ] && mkdir -p $DATA_DIR
+  [ ! -d $DATA_DIR/baseq2 ] && mkdir -p $DATA_DIR/baseq2
   cp /usr/local/share/yquake2/baseq2/game.so $DATA_DIR/baseq2
   cd /usr/lib/arm-linux-gnueabihf/ && sudo ln -sf libEGL.so.1 libEGL.so
 }
