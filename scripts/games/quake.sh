@@ -85,7 +85,7 @@ case $retval in
   255) exit ;;
 esac
 
-echo -e "\n\nDownloading...\n" ;;
+echo -e "\n\nDownloading...\n"
 #wget -P $HOME/.yq2 -O baseq2.zip http://www.dropbox.com/s/bh5co9nnmy0xf0n/baseq2.zip?dl=0 && unzip $HOME/baseq2.zip -d $HOME/.yq2
 wget -P $HOME -O baseq2.zip $Q2_PAK_URL
 wget -P $HOME -O q2_ogg.zip $Q2_OGG_URL
