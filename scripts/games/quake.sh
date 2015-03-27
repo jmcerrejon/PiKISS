@@ -62,7 +62,7 @@ share_version(){
   Q2_PAK_URL="https://www.dropbox.com/s/sbr0xwr9wo9been/baseq2s.zip?dl=0"
 }
 
-echo -e "Installing Quake 2\n==================\n\n· OGG soundtrack\n·720p (You can change that)\n·Know issues:\n· RPi: Black screen on latest Raspbian without X.\n\n"
+echo -e "Installing Quake 2\n==================\n\n· OGG soundtrack\n· 720p (You can change that)\n· Know issues:\n· RPi: Black screen on latest Raspbian without X display.\n\n"
 
 if [[ ${MODEL} == 'Raspberry Pi' ]]; then
   quake2_Raspberry
@@ -78,7 +78,7 @@ dialog --title     "[ Quake II. PAK License ]" \
 retval=$?
 
 case $retval in
-  0)   share_version ; LICENSE="Shareware"; 
+  0)   share_version ; LICENSE="Shareware";;
   255) exit ;;
 esac
 
