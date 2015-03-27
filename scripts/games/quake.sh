@@ -2,7 +2,7 @@
 #
 # Description : Quake Pack (Install Quake 1/2/3/Server Ed, DarkPlace)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.7 (27/Mar/15)
+# Version     : 0.7.3 (27/Mar/15)
 # Compatible  : Raspberry Pi 1 & 2 (tested), ODROID-C1 (tested)
 # Know bugs   : RPi with the latest Raspbian: black screen | ODROID can't change 640x480 resolution
 #
@@ -32,15 +32,18 @@ LICENSE="Complete"
 quake2_ODROID(){
   DATA_DIR="$HOME/.yq2"
   EXEC="yquake2 in a Terminal or Menu > Games > Quake 2"
-  sudo wget -P /etc/apt/sources.list.d http://oph.mdrjr.net/meveric/sources.lists/meveric-all-testing.list
-  sudo wget -O- http://oph.mdrjr.net/meveric/meveric.asc | sudo apt-key add -
-  sudo apt-get update
-  sudo apt-get install -y yquake2-odroid libglew-odroid
+  if [ ! -f /etc/apt/sources.list.d/meveric-all-testing.list ]; then
+    sudo wget -P /etc/apt/sources.list.d http://oph.mdrjr.net/meveric/sources.lists/meveric-all-testing.list
+    sudo wget -O- http://oph.mdrjr.net/meveric/meveric.asc | sudo apt-key add -
+    sudo apt-get update
+  fi
+  command -v yquake2 >/dev/null 2>&1 || { sudo apt-get install -y yquake2-odroid libglew-odroid; }
   [ ! -d $DATA_DIR/baseq2 ] && mkdir -p $DATA_DIR/baseq2
   cp /usr/local/share/yquake2/baseq2/game.so $DATA_DIR/baseq2
   wget -P $DATA_DIR/baseq2 $Q2_CONFIG_URL
   #cd /usr/lib/arm-linux-gnueabihf/ && sudo ln -sf libEGL.so.1 libEGL.so
 }
+[! -f /etc/apt/sources.list.d/meveric-all-testing.list ] && { echo "1" && echo "2" }
 
 quake2_Raspberry(){
   [ ! -d $DATA_DIR ] && mkdir -p $DATA_DIR
