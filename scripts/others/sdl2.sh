@@ -16,7 +16,7 @@ Install_BIN_RPi(){
 	sudo dpkg -i $HOME/libsdl2_2.0.3_armhf.deb
 	sudo dpkg -i $HOME/libsdl2-dbg_2.0.3_armhf.deb
 	sudo dpkg -i $HOME/libsdl2-dev_2.0.3_armhf.deb
-sudo rm $HOME/libsdl2_2.0.3_armhf.deb $HOME/libsdl2-dev_2.0.3_armhf.deb $HOME/libsdl2-dev_2.0.3_armhf.deb
+	sudo rm $HOME/libsdl2_2.0.3_armhf.deb $HOME/libsdl2-dbg_2.0.3_armhf.deb $HOME/libsdl2-dev_2.0.3_armhf.deb
 }
 
 Compile_SDL_RPi(){
@@ -51,17 +51,23 @@ Compile_SDL_RPi(){
 	rm SDL2-2.*.zip SDL2_*.zip
 }
 
-dialog   --title     "[ Install SDL2 version 2.0.3 ]" \
-         --yes-label "Binary (Recommended)" \
-         --no-label  "Compile SDL2+ttf+image+mixer" \
-         --yesno     "Choose wisely:" 7 55
+cmd=(dialog --clear --title "[ Install SDL2 version 2.0.3 ]" --menu "Select an option from the list:" 10 50 50)
 
-retval=$?
+options=(
+        BINARY "Install the binaries (Recommended)"
+        COMPILE "Compile SDL2+ttf+image+mixer"
+        EXIT    "Exit from the script"
+)
 
-case $retval in
-  0)   Install_BIN_RPi ;;
-  1)   Compile_SDL_RPi ;;
-esac
+choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
+for choice in $choices
+do
+    case $choice in
+        BINARY)     Install_BIN_RPi ;;
+        COMPILE)    Compile_SDL_RPi ;;
+        EXIT)       exit ;;
+    esac
+done
 
 read -p "Done!. Press [Enter] to continue..."
