@@ -2,14 +2,14 @@
 #
 # Description : Quake Pack (Install Quake 1/2/3/Server Ed, DarkPlace)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.7.3 (27/Mar/15)
+# Version     : 0.7.4 (4/Apr/15)
 # Compatible  : Raspberry Pi 1 & 2 (tested), ODROID-C1 (tested)
 # Know bugs   : RPi with the latest Raspbian: black screen | ODROID can't change 640x480 resolution
 #
 # HELP
 #             · Quake 1: https://github.com/welford/qurp
 #             · QuakeServer: http://www.recantha.co.uk/blog/?p=9962
-#             · Darkplaces Quake: http://www.raspberrypi.org/forums/viewtopic.php?t=72301
+#             · Darkplaces Quake: https://github.com/petrockblog/RetroPie-Setup/tree/master/scriptmodules/ports
 #             · http://www.raspberrypi.org/forums/viewtopic.php?f=78&t=18853
 #             · http://www.raspberrypi.org/forums/viewtopic.php?f=78&t=54683
 #             · http://forums.steampowered.com/forums/showthread.php?t=996272 | http://quake.wikia.com/wiki/Quake_2_Soundtrack
@@ -49,6 +49,7 @@ quake2_Raspberry(){
   wget -P $DATA_DIR $QUAKE2_RPI_URL
   unzip $DATA_DIR/quake2_rpi.zip -d $DATA_DIR
   rm $DATA_DIR/quake2_rpi.zip
+  read -p "Press [Enter] to continue..."
 }
 
 quakeServer(){
