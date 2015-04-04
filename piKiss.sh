@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.9.3 (2015)
+# Version : Beta 0.9.4 (2015)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -173,7 +173,7 @@ function smTweaks(){
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
-			Autologin "Set autologin with pi user"
+			Autologin "Set autologin for the pi user"
 			Others "CPU performance, disable Ethernet and so on"
 			Packages "Programs you don't use (maybe) to free space"
 			Daemons "Disable services useless"

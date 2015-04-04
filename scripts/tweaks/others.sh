@@ -2,7 +2,7 @@
 #
 # Description : Other tweaks yes/no answer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.7.2 (16/Mar/15)
+# Version     : 0.7.5 (4/Apr/15)
 # Compatible  : Raspberry Pi 1 & 2 (tested), ODROID-C1 (tested)
 #
 # Help        · http://www.raspberrypi.org/forums/viewtopic.php?f=31&t=11642
@@ -19,11 +19,19 @@ SDLess_Rpi(){
 	sudo dphys-swapfile swapoff && sudo dphys-swapfile uninstall && sudo update-rc.d dphys-swapfile remove
 }
 
-tweaks_ODROID(){
-    echo -e "\nInstall esential packages:htop, mc, p7zip"
+tweaks_common(){
+    echo -e "\nRecreate SSH Keys (recommended)"
     read -p "Agree (y/n)? " option
     case "$option" in
-        y*) sudo apt-get install -y htop mc p7zip ;;
+        y*) sudo rm /etc/ssh/ssh_host_* ; sudo dpkg-reconfigure openssh-server ; sudo service ssh restart ;;
+    esac
+}
+
+tweaks_ODROID(){
+    echo -e "\nInstall esential packages:htop, mc, p7zip, gnome-screentshot"
+    read -p "Agree (y/n)? " option
+    case "$option" in
+        y*) sudo apt-get install -y htop mc p7zip gnome-screentshot ;;
     esac
 
     echo -e "\nDisable IPv6."
@@ -54,12 +62,6 @@ tweaks_ODROID(){
             y*) echo -n performance | sudo tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ;;
         esac
     fi
-
-    echo -e "\nChange & fix mesa-egl to mali-egl (increase GPU performance)."
-    read -p "Agree (y/n)? " option
-    case "$option" in
-        y*) cd /usr/lib/arm-linux-gnueabihf/ && sudo ln -sf libEGL.so.1 libEGL.so
-    esac
 
     echo -e "\nEnable a 512MB swapfile permanently."
     read -p "Agree (y/n)? " option
@@ -92,7 +94,7 @@ tweaks_RPi(){
 
     if [ $CHECK -eq 1 ]; then
         echo -e "\nCPU scaling governor to performance."
-        read -p "Disable (y/n)?" option
+        read -p "Disable (y/n)? " option
         case "$option" in
             y*) echo -n performance | sudo tee /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ;;
         esac
@@ -101,7 +103,7 @@ tweaks_RPi(){
     echo -e "\nLess SD card writes to stop corruptions."
     read -p "Agree (y/n)? " option
     case "$option" in
-        y*) SDLess ;;
+        y*) SDLess_Rpi ;;
     esac
 
     echo -e "\nDelete old SSH Keys and recreate them."
@@ -116,7 +118,7 @@ tweaks_RPi(){
         y*) sudo chmod +t /tmp ;;
     esac
 
-    echo -e "\nRemove the extra tty/getty’s | Save: +3.5 MB RAM"
+    echo -e "\nRemove the extra tty/getty | Save: +3.5 MB RAM"
     read -p "Agree (y/n)? " option
     case "$option" in
         y*) sudo sed -i '/[2-6]:23:respawn:\/sbin\/getty 38400 tty[2-6]/s%^%#%g' /etc/inittab ;;

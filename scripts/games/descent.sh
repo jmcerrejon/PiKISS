@@ -2,7 +2,7 @@
 #
 # Description : Descent 1 & 2
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.8 (18/Mar/15)
+# Version     : 0.8.1 (4/Apr/15)
 # Compatible  : Raspberry Pi 1 & 2 (tested)
 #   
 # HELP 		  : To uninstall: sudo dpkg -r d1x-rebirth-data-shareware d1x-rebirth d2x-rebirth-data-demo d2x-rebirth && $(sudo rm -r /usr/share/games/d1x-rebirth/ /usr/share/games/d2x-rebirth/ ~/.d1x-rebirth ~/.d2x-rebirth)
@@ -28,20 +28,20 @@ fi
 
 D1X_RPI(){
 	clear && echo -e "\nInstalling Descent 1 for Raspberry Pi\n=====================================\n\n· Please wait...\n"
-	wget -P /temp $D1X_SHARE_URL $D1X_URL
+	wget -P $HOME $D1X_SHARE_URL $D1X_URL
 	sudo apt-get install -y libphysfs1
-	sudo dpkg -i /temp/d1x-rebirth_0.58.1-1_armhf.deb /temp/d1x-rebirth-data-shareware_1.4-1_all.deb
-	rm /temp/d1x-rebirth_0.58.1-1_armhf.deb /temp/d1x-rebirth-data-shareware_1.4-1_all.deb
+	sudo dpkg -i $HOME/d1x-rebirth_0.58.1-1_armhf.deb $HOME/d1x-rebirth-data-shareware_1.4-1_all.deb
+	rm $HOME/d1x-rebirth_0.58.1-1_armhf.deb $HOME/d1x-rebirth-data-shareware_1.4-1_all.deb
 	clear && echo -e "\nInstalling HIGH textures quality pack...\n\nPlease wait...\n" && sudo wget -P $GAME_DIR/d1x-rebirth $D1X_HIGH_TEXTURE_URL
 	echo -e "\n\nInstalling OGG Music for better experience...\n\n· All music was recorded with the Roland Sound Canvas SC-55 MIDI Module.\n\nPlease wait...\n" && sudo wget -P $GAME_DIR/d1x-rebirth $D1X_OGG_URL
 }
 
 D2X_RPI(){
 	clear && echo -e "\nInstalling Descent 2 for Raspberry Pi\n=====================================\n\nPlease wait...\n"
-	wget -P /temp $D2X_SHARE_URL $D2X_URL
+	wget -P $HOME $D2X_SHARE_URL $D2X_URL
 	sudo apt-get install -y libphysfs1
-	sudo dpkg -i /temp/d2x-rebirth_0.58.1-1_armhf.deb /temp/d2x-rebirth-data-demo_1.0-1_all.deb
-	rm /temp/d2x-rebirth_0.58.1-1_armhf.deb /temp/d2x-rebirth-data-demo_1.0-1_all.deb
+	sudo dpkg -i $HOME/d2x-rebirth_0.58.1-1_armhf.deb $HOME/d2x-rebirth-data-demo_1.0-1_all.deb
+	rm $HOME/d2x-rebirth_0.58.1-1_armhf.deb $HOME/d2x-rebirth-data-demo_1.0-1_all.deb
 	clear && echo -e "\nInstalling OGG Music for better experience...\n\n· All music was recorded with the Roland Sound Canvas SC-55 MIDI Module.\n\nPlease wait...\n" && sudo wget -P $GAME_DIR/d2x-rebirth $D2X_OGG_URL
 }
 
