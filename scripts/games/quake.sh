@@ -45,6 +45,10 @@ quake2_ODROID(){
 }
 
 quake2_Raspberry(){
+
+  # Check if SDL is fixed to RPi2
+  SDL_fix_Rpi
+
   [ ! -d $DATA_DIR ] && mkdir -p $DATA_DIR
   wget -P $DATA_DIR $QUAKE2_RPI_URL
   unzip $DATA_DIR/quake2_rpi.zip -d $DATA_DIR

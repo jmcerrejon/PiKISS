@@ -80,6 +80,9 @@ menu(){
 
 if [ ! -e "/usr/local/games/crispy-doom" ];then
     sudo apt-get install -y libsdl1.2debian libsdl-mixer1.2 libsdl-net1.2 timidity
+    
+    # Check if SDL is fixed to RPi2
+    SDL_fix_Rpi
 
     if [[ ${MODEL} == 'ODROID-C1' ]]; then
         CRISPY_DOOM='https://www.dropbox.com/s/d681t8ida2rv10z/crispy-doom-ODROID_2-3_armhf.deb?dl=0'
