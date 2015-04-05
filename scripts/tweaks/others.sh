@@ -100,6 +100,13 @@ tweaks_RPi(){
         esac
     fi
 
+    echo -e "\nOverclock Raspberry Pi to 1 Ghz."
+    read -p "Agree (y/n)? " option
+    case "$option" in
+        y*) sudo sh -c 'echo "arm_freq=1000\nsdram_freq=500\ncore_freq=500\nover_voltage=2" >> /boot/config.txt' ;;
+    esac
+    
+
     echo -e "\nLess SD card writes to stop corruptions."
     read -p "Agree (y/n)? " option
     case "$option" in

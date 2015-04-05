@@ -37,6 +37,4 @@ esac
 
 sudo service vsftpd restart
 
-
-
 read -p "Done!. Use a ftp client & connect to $IP"

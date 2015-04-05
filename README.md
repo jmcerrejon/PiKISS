@@ -114,8 +114,7 @@ What some users have said about **PiKISS**:
 Just type:
 
 <pre>
-git clone https://github.com/jmcerrejon/PiKISS.git
-cd PiKISS
+git clone https://github.com/jmcerrejon/PiKISS.git && cd PiKISS
 ./piKiss.sh
 </pre>
 
@@ -127,7 +126,7 @@ cd PiKISS
 git pull
 </pre>
 
-NOTE: If you use another flavor from Raspbian, maybe you need to execute the next command: *git config --global http.sslVerify false*
+NOTE: If you use another Debian based distribution, maybe you need to execute the next command: *git config --global http.sslVerify false*
 
 ####[ HELP ME! ]
 
@@ -175,8 +174,7 @@ Lo que algunos usuarios han dicho de **PiKISS**:
 Escribe en la terminal lo siguiente:
 
 <pre>
-git clone https://github.com/jmcerrejon/PiKISS.git
-cd PiKISS
+git clone https://github.com/jmcerrejon/PiKISS.git && cd PiKISS
 ./piKiss.sh
 </pre>
 
