@@ -427,6 +427,7 @@ function smOthers(){
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
+			NetTools "MITM Pentesting Opensource Toolkit"
 			Part "Check issues & fix SD corruptions"
 			SDL2 "Compile SDL2 + Libraries (It can take 40 minutes)"
 			GCC "Install GCC 4.7 on Raspberry Pi"
@@ -447,6 +448,7 @@ function smOthers(){
 	do
 	    case $choice in
 			Back) 		break ;;
+			NetTools) 	./scripts/others/nettools.sh ;;
 			Part) 		./scripts/others/checkpart.sh ;;
 			SDL2) 		./scripts/others/sdl2.sh ;;
 			GCC) 		./scripts/others/gcc47.sh ;;
