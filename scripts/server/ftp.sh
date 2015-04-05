@@ -30,7 +30,7 @@ case "$option" in
     y*) sudo sed -i 's/^#local_enable=YES/local_enable=YES/' /etc/vsftpd.conf
 esac
 
-read -p "Enable any form of FTP write command? [y/n] " option
+read -p "Enable any user the write command? [y/n] " option
 case "$option" in
     y*) sudo sed -i 's/^#write_enable=YES/write_enable=YES/' /etc/vsftpd.conf
 esac
