@@ -3,6 +3,7 @@
 # Description : Compile 8086tiny is a free, open source PC XT-compatible emulator/virtual machine written in C
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 1.0 (5/Apr/15)
+# Compatible  : Raspberry Pi 1 & 2 (tested)
 #
 clear
 

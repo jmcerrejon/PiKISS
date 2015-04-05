@@ -3,6 +3,7 @@
 # Description : Portable ZX-Spectrum emulator by JFroco
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 1.3 (5/Apr/15)
+# Compatible  : Raspberry Pi 1 & 2 (tested)
 #
 clear
 
