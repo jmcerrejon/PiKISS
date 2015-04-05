@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.9.4 (2015)
+# Version : Beta 0.9.5 (2015)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -35,7 +35,7 @@ mkDesktopEntry
 # VARIABLES
 # - - - - -
 #
-TITLE="PiKISS (Pi Keeping It Simple, Stupid!) | Author: Jose Cerrejon | Ver: 0.9.1 (2015) | IP: $(hostname -I)"
+TITLE="PiKISS (Pi Keeping It Simple, Stupid!) | Author: Jose Cerrejon | Ver: 0.9.5 (2015) | IP: $(hostname -I)"
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
 wHEIGHT=19
@@ -427,7 +427,7 @@ function smOthers(){
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
-			NetTools "MITM Pentesting Opensource Toolkit"
+			NetTools "MITM Pentesting Opensource Toolkit (Require X)"
 			Part "Check issues & fix SD corruptions"
 			SDL2 "Compile SDL2 + Libraries (It can take 40 minutes)"
 			GCC "Install GCC 4.7 on Raspberry Pi"
