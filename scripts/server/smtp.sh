@@ -2,7 +2,7 @@
 #
 # Description : Config smtp to send emails
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (3/Jul/14)
+# Version     : 1.0 (5/Apr/15)
 #
 # Help        · http://rpi.tnet.com/project/faqs/smtp
 #
@@ -15,7 +15,7 @@ declare -a VALUES=(
 )
 SMTP_CONF="/etc/ssmtp/ssmtp.conf"
 
-#sudo apt-get install -y ssmtp mailutils mpack
+sudo apt-get install -y ssmtp mailutils mpack
 
 exec 3>&1
 
@@ -34,6 +34,10 @@ if [ ! -e $SMTP_CONF.bak ]; then
     sudo cp $SMTP_CONF{,.bak}
 fi
 
+if [ ! -e $SMTP_CONF ]; then
+	mkdir -p /etc/ssmtp/; touch $SMTP_CONF	
+fi
+
 FILE="\n
 root=postmaster\n
 hostname=$(hostname)\n
@@ -44,9 +48,11 @@ FromLineOverride=YES\n
 UseSTARTTLS=YES\n
 "
 
-#echo -e $FILE | sudo tee -a $SMTP_CONF
 sudo sh -c "echo \"${FILE}\" > ${SMTP_CONF}"
+
 
 dialog --title "[ ${SMTP_CONF} ]" --textbox ${SMTP_CONF} 40 80
 
 echo -e "\nDone!\n· File Backup on $SMTP_CONF.bak\n· To send mail: echo \"sample text\" | mail -s \"Subject\" username@domain.com\n· With attachments: mpack -s \"test\" /home/pi/test/somefile.ext username@domain.com"
+
+read -p "Press [Enter] to continue..."
