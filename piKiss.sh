@@ -249,7 +249,7 @@ function smEmulators(){
 			Mame4all "port based on Franxis MAME4ALL (0.37b5)"
 			Speccy "ZX-Spectrum emulator"
 			Rpix86 "rpix86 MS-DOS emulator"
-			8086 "8086 PC XT-compatible emulator"
+			8086 "Compile 8086 PC XT-compatible"
 			Amiga "Some Amiga emulators"
 			Gba "Gameboy Advance"
 			PCE-CD "PC-Engine"
