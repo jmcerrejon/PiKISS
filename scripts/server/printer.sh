@@ -2,7 +2,7 @@
 #
 # Description : Install Printer Server (cups)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.7 (26/May/14)
+# Version     : 0.8 (5/Apr/15)
 #
 # TODO        · Test again. I think allow_remote_machine is incorrect
 #
@@ -20,11 +20,12 @@ allow_remote_machines(){
     sudo cp /etc/cups/cupsd.conf{,.bak}
     sudo sed -i '/Listen localhost:631/s/^/#/' /etc/cups/cupsd.conf
     sudo sed -i 's/.*Listen localhost:631.*/&\nListen *:631/' /etc/cups/cupsd.conf
-    sudo sed -e 's/.*    Order deny,allow.*/&\n    Allow '$IP_MASK'/' /etc/cups/cupsd.conf
+    sudo sed -i 's/.*    Order deny,allow.*/&\n    Allow '$IP_MASK'/' /etc/cups/cupsd.conf
     sudo service cups restart
 }
 
-echo -e "Installing cups (64.8 MB aprox.)\n================================\n"
+echo -e "Installing cups (74.4 MB aprox.)\n================================\n"
+sudo apt-get update
 sudo apt-get install cups
 sudo usermod -a -G lpadmin $USER
 
