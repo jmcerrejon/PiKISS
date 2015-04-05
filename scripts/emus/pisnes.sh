@@ -2,7 +2,7 @@
 #
 # Description : PiSNES for Raspberry Pi by Squid
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.9.2 (20/Mar/15)
+# Version     : 0.9.3 (5/Apr/15)
 # Compatible  : Raspberry Pi 1 (Doesn't work) & 2 (tested. OK.)
 #
 clear
@@ -14,18 +14,29 @@ INSTALL_DIR="$HOME/games/pisnes/"
 URL_FILE="http://sourceforge.net/projects/pisnes/files/latest/download?source=files"
 GAME_URL="http://www.dropbox.com/s/b6tl84p3a17w5ab/UwolQuestForMoney.sfc?dl=0"
 
-changeInstallDir(){
+playgame()
+{
+    read -p "Do you want to play Uwol Quest For Money now? [y/n] " option
+    case "$option" in
+        y*) $INSTALL_DIR/snes9x $INSTALL_DIR/roms/uwol.sfc ;;
+    esac
+}
+
+changeInstallDir()
+{
     echo "Enter new full path:"
     read INSTALL_DIR
     echo "New path: $INSTALL_DIR"
 }
 
-install(){
+install()
+{
     mkdir -p $INSTALL_DIR && cd $_
     wget -qO- -O tmp.zip $URL_FILE && unzip -o tmp.zip && rm tmp.zip
     chmod 777 ./snes9x ./snes9x.cfg ./roms ./skins
     echo -e "\nInstalling game Uwol Quest For Money (uwol.sfc) on $INSTALL_DIR\n\n" && wget -q -O $INSTALL_DIR/roms/uwol.sfc  $GAME_URL
     echo "Done!. To play go to install path, copy any rom to /roms directory and type: ./snes9x <rom name>\nFor example, ./snes9x roms/uwol.sfc"
+    playgame
     read -p "Press [Enter] to continue..."
     exit
 }
