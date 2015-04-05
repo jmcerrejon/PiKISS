@@ -325,6 +325,7 @@ function smConfigure(){
 			Backup "Simple backup dir to run daily"
 			Applekeyb "Bluetooth keyboard"
 			Netcfg "Configure static IP"
+			Monitorcfg "Configure your TV resolution"
 		)
 	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
@@ -344,6 +345,7 @@ function smConfigure(){
 			Backup) 	sudo ./scripts/config/backup.sh;;
 			Applekeyb) 	sudo ./scripts/config/applekeyb.sh;;
 			Netcfg) 	sudo ./scripts/config/netconfig.sh;;
+			Monitorcfg) sudo ./scripts/config/monitorcfg.sh;;
 	    esac
 	done
 }
