@@ -113,5 +113,7 @@ PINGOUTPUT=$(ping -c 1 8.8.8.8 > /dev/null && echo 'true')
 if [ "$PINGOUTPUT" = true ]; then
   echo -e "Done!. Backup & Modified wpa_supplicant.conf. Please reboot to changes take effect."
 else
-  echo -e "Something is wrong. Backup & Modified wpa_supplicant.conf. Please reboot and try again."
+  echo -e "Maybe something is wrong. Backup & Modified wpa_supplicant.conf. Please reboot and check if you Wifi work or run the script again."
 fi
+
+read -p "Press [ENTER] to continue..."
