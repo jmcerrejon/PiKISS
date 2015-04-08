@@ -27,6 +27,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 check_board
 check_temperature
+check_CPU
 check_internet_available
 mkDesktopEntry
 
