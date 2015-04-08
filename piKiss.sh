@@ -27,7 +27,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 check_board
 check_temperature
-check_CPU
+#check_CPU
 check_internet_available
 mkDesktopEntry
 
@@ -36,7 +36,7 @@ mkDesktopEntry
 # VARIABLES
 # - - - - -
 #
-TITLE="PiKISS (Pi Keeping It Simple, Stupid!) v.0.9.6 (2015) : Jose Cerrejon | IP: $(hostname -I) $CPU"
+TITLE="PiKISS (Pi Keeping It Simple, Stupid!) v.0.9.6 (2015) : Jose Cerrejon | IP: $(hostname -I) "
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
 wHEIGHT=19
