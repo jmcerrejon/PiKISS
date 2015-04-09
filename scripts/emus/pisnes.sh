@@ -35,7 +35,7 @@ install()
     wget -qO- -O tmp.zip $URL_FILE && unzip -o tmp.zip && rm tmp.zip
     chmod 777 ./snes9x ./snes9x.cfg ./roms ./skins
     echo -e "\nInstalling game Uwol Quest For Money (uwol.sfc) on $INSTALL_DIR\n\n" && wget -q -O $INSTALL_DIR/roms/uwol.sfc  $GAME_URL
-    echo "Done!. To play go to install path, copy any rom to /roms directory and type: ./snes9x <rom name>\nFor example, ./snes9x roms/uwol.sfc"
+    echo -e "Done!. To play go to install path, copy any rom to /roms directory and type: ./snes9x <rom name>\nFor example, ./snes9x roms/uwol.sfc"
     playgame
     read -p "Press [Enter] to continue..."
     exit
