@@ -291,7 +291,7 @@ function smMultimedia(){
 		options=(
 			Back "Back to main menu"
 			Rplay "XBMC Kodi"
-			Rplay "AirPlay Mirroring on your Pi with RPlay"
+			Airplay "AirPlay Mirroring on your Pi with RPlay"
 			Kiosk "Image slideshow"
 		)
 	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
@@ -307,7 +307,7 @@ function smMultimedia(){
 	    case $choice in
 			Back) 		break ;;
 			Rplay)		./scripts/mmedia/xbmc.sh ;;
-			Rplay)		./scripts/mmedia/airplay.sh ;;
+			Airplay)	./scripts/mmedia/airplay.sh ;;
 	        Kiosk)      ./scripts/mmedia/kiosk.sh ;;
 	        XBMC) 		./scripts/mmedia/xbmc.sh ;;
 	    esac
