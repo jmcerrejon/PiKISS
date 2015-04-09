@@ -27,8 +27,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 check_board
 check_temperature
-#check_CPU
-check_internet_available
+check_CPU
 mkDesktopEntry
 
 #
@@ -36,9 +35,10 @@ mkDesktopEntry
 # VARIABLES
 # - - - - -
 #
-TITLE="PiKISS (Pi Keeping It Simple, Stupid!) v.0.9.6 (2015) : Jose Cerrejon | IP: $(hostname -I) "
+TITLE="PiKISS (Pi Keeping It Simple, Stupid!) v.0.9.6 (2015).:.Jose Cerrejon | IP: $(hostname -I)$CPU"
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
+NOINTERNETCHECK=0
 wHEIGHT=19
 wWIDTH=70
 #
@@ -118,7 +118,7 @@ done
 
 # dialog exist
 isMissingDialogPkg
-
+check_internet_available
 #
 # - - - - - -
 # MENU OPTIONS

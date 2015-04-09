@@ -37,14 +37,14 @@ check_temperature()
  fi
 }
 
-# check_CPU()
-# {
-#  if [ -f /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq ]; then
-#  	CPU="| CPU Freq="`expr $(cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq) / 1000`" MHz"
-#  else
-#  	CPU=''
-#  fi
-# }
+check_CPU()
+{
+ if [ -f /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq ]; then
+ 	CPU="| CPU Freq="`expr $(cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq) / 1000`" MHz "
+ else
+ 	CPU=''
+ fi
+}
 
 check_internet_available()
 {

@@ -11,7 +11,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 tempfile=`tempfile 2>/dev/null` || tempfile=/tmp/test$$
-wHEIGHT=10
+wHEIGHT=12
 wWIDTH=90
 
 trap "rm -f $tempfile" 0 1 2 5 15
