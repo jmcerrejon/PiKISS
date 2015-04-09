@@ -2,7 +2,7 @@
 #
 # Description : Fix some problems with the Raspbian OS
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.4 (5/Apr/15)
+# Version     : 0.5 (9/Apr/15)
 # Compatible  : Raspberry Pi 1 (Doesn't work) & 2 (tested. OK.)
 #
 clear

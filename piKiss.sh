@@ -434,7 +434,7 @@ function smOthers(){
 			Back "Back to main menu"
 			NetTools "MITM Pentesting Opensource Toolkit (Require X)"
 			Part "Check issues & fix SD corruptions"
-			SDL2 "Compile SDL2 + Libraries (It can take 40 minutes)"
+			SDL2 "Compile/Install SDL2 + Libraries"
 			GCC "Install GCC 4.7 on Raspberry Pi"
 			Synergy "Synergy allow you to share one keyboard and mouse to computers on LAN"
 			Fixes "Fix some problems with the Raspbian OS"
