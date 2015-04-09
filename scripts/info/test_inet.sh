@@ -15,7 +15,7 @@ clear
 
 echo -e "Test Internet bandwidth thanks to Matt Martz\n============================================\n· More Info at: https://github.com/sivel/speedtest-cli\n"
 
-python $HOME/speedtest_cli.py
+[ -f $HOME/speedtest_cli.py ] && python $HOME/speedtest_cli.py
 rm $HOME/speedtest_cli.py
 
 read -p "Press [Enter] to continue..."
