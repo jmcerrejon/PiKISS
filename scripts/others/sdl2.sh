@@ -2,7 +2,7 @@
 #
 # Description : Compile SDL 2.0.3
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3 (3/Apr/15)
+# Version     : 1.3.1 (17/Apr/15)
 #
 # Help        · https://github.com/jlnr/gosu/wiki/Getting-Started-on-Raspbian-%28Raspberry-Pi%29
 #
@@ -33,16 +33,16 @@ Compile_SDL_RPi(){
 	unzip \*.zip
 
 	cd SDL2-2.*
-	./configure && make && sudo make install
+	./configure && make && sudo make install --disable-video-opengl --disable-video-x11 --disable-pulseaudio --disable-esd --enable-video-opengles --enable-libudev
 	cd ..
 	cd SDL2_ttf-2.*
-	./configure && make && sudo make install
+	./configure && make && sudo make install --disable-video-opengl --disable-video-x11 --disable-pulseaudio --disable-esd --enable-video-opengles --enable-libudev
 	cd ..
 	cd SDL2_image-2*
-	./configure && make && sudo make install
+	./configure && make && sudo make install --disable-video-opengl --disable-video-x11 --disable-pulseaudio --disable-esd --enable-video-opengles --enable-libudev
 	cd ..
 	cd SDL2_mixer-2*
-	./configure && make && sudo make install
+	./configure && make && sudo make install --disable-video-opengl --disable-video-x11 --disable-pulseaudio --disable-esd --enable-video-opengles --enable-libudev
 	cd ..
 
 	sudo ldconfig

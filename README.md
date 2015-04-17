@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **418 hours**
+* **419 hours**
 
 ##ENGLISH
 
@@ -21,6 +21,10 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ###[ ChangeLog (dd/mm/yy)]
+
+####(17/04/15)
+
+· Updated SDL2, Spectrum emulator
 
 ####(05/04/15)
 
