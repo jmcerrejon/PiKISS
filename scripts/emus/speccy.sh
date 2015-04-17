@@ -2,13 +2,13 @@
 #
 # Description : Portable ZX-Spectrum emulator by JFroco
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3 (5/Apr/15)
+# Version     : 1.3 (17/Apr/15)
 # Compatible  : Raspberry Pi 1 & 2 (tested)
 #
 clear
 
 INSTALL_DIR="/home/$USER/games/"
-URL_FILE="https://dl.dropboxusercontent.com/u/4281970/pi/usp_0.0.59_jfroco.zip"
+URL_FILE="https://bitbucket.org/djdron/unrealspeccyp/downloads/unreal-speccy-portable_0.0.64_rpi.zip"
 
 validate_url()
 {
@@ -17,10 +17,10 @@ validate_url()
 
 playgame()
 {
-    if [[ -f $INSTALL_DIR/usp_0.0.59_jfroco/ninjajar.tap ]]; then
+    if [[ -f $INSTALL_DIR/usp_0.0.64/ninjajar.tap ]]; then
         read -p "Do you want to play NinJaJar now? [y/n] " option
         case "$option" in
-            y*) cd $INSTALL_DIR/usp_0.0.59_jfroco/ && ./unreal_speccy_portable ninjajar.tap ;;
+            y*) cd $INSTALL_DIR/usp_0.0.64/ && ./unreal_speccy_portable ninjajar.tap ;;
         esac
     fi
 }
@@ -34,13 +34,12 @@ changeInstallDir()
 
 install()
 {
-    if [[ ! -f $INSTALL_DIR/usp_0.0.59_jfroco/unreal_speccy_portable ]]; then
+    if [[ ! -f $INSTALL_DIR/usp_0.0.64/unreal_speccy_portable ]]; then
         mkdir -p $INSTALL_DIR && cd $_
         wget -qO- -O tmp.zip $URL_FILE && unzip -o tmp.zip && rm tmp.zip
         cd us*
         chmod +x unreal_speccy_portable
-        wget -O $INSTALL_DIR/usp_0.0.59_jfroco/ninjajar.tap http://www.mojontwins.com/juegos/mojon-twins--ninjajar-eng-v1.1.tap
-        
+        wget -O $INSTALL_DIR/usp_0.0.64/ninjajar.tap http://www.mojontwins.com/juegos/mojon-twins--ninjajar-eng-v1.1.tap
     fi
     echo "Done!. To play go to install path, copy any .tap file to directory and type: ./unreal_speccy_portable <game name>"
     playgame
@@ -48,7 +47,7 @@ install()
     exit
 }
 
-echo -e "Portable ZX-Spectrum emulator (unrealspeccyp ver. 0.59)\n=======================================================\n\n· More Info: https://bitbucket.org/djdron/unrealspeccyp\n· Add Ninjajar\n\nInstall path: $INSTALL_DIR/usp_0.0.59_jfroco"
+echo -e "Portable ZX-Spectrum emulator (unrealspeccyp ver. 0.0.64)\n=========================================================\n\n· More Info: https://bitbucket.org/djdron/unrealspeccyp\n· Add Ninjajar\n\nInstall path: $INSTALL_DIR/usp_0.0.59_jfroco"
 while true; do
     echo " "
     read -p "Is it right? [y/n] " yn
