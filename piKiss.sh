@@ -39,7 +39,7 @@ TITLE="PiKISS (Pi Keeping It Simple, Stupid!) v.0.9.6 (2015).:.Jose Cerrejon | I
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
 NOINTERNETCHECK=0
-wHEIGHT=19
+wHEIGHT=20
 wWIDTH=70
 #
 # - - - - -
@@ -246,6 +246,8 @@ function smEmulators(){
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
+			Genesis "Genesis Megadrive Emulator (picodrive)"
+			Caprice "Amstrad CPC Caprice for RPi 2"
 			Snes "SNES Emulator port based on SNES9X 1.39"
 			Mame4all "port based on Franxis MAME4ALL (0.37b5)"
 			Speccy "ZX-Spectrum emulator"
@@ -269,6 +271,8 @@ function smEmulators(){
 	do
 	    case $choice in
 			Back) 		break ;;
+			Genesis) 	./scripts/emus/genesis.sh ;;
+			Caprice) 	./scripts/emus/caprice.sh ;;
 			Snes) 		./scripts/emus/pisnes.sh ;;
 			Mame4all) 	./scripts/emus/mame4allpi.sh ;;
 			Speccy) 	./scripts/emus/speccy.sh ;;
