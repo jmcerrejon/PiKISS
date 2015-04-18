@@ -47,7 +47,7 @@ install()
     exit
 }
 
-echo -e "Portable ZX-Spectrum emulator (unrealspeccyp ver. 0.0.64)\n=========================================================\n\n· More Info: https://bitbucket.org/djdron/unrealspeccyp\n· Add Ninjajar\n\nInstall path: $INSTALL_DIR/usp_0.0.59_jfroco"
+echo -e "Portable ZX-Spectrum emulator (unrealspeccyp ver. 0.0.64)\n=========================================================\n\n· More Info: https://bitbucket.org/djdron/unrealspeccyp\n· Add Ninjajar\n\nInstall path: $INSTALL_DIR/usp_0.0.64"
 while true; do
     echo " "
     read -p "Is it right? [y/n] " yn
