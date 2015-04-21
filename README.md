@@ -26,6 +26,8 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 · Added others > ramlog
 
+· Uddated tweaks > others.sh (Install package fuck)
+
 ####(18/04/15)
 
 · Added Emus > Picodrive & Caprice for Raspberry Pi 2 (Amstrad emulator)
