@@ -2,7 +2,7 @@
 #
 # Description : Other tweaks yes/no answer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.7.5 (4/Apr/15)
+# Version     : 0.7.6 (21/Apr/15)
 # Compatible  : Raspberry Pi 1 & 2 (tested), ODROID-C1 (tested)
 #
 # Help        · http://www.raspberrypi.org/forums/viewtopic.php?f=31&t=11642
@@ -28,10 +28,16 @@ tweaks_common(){
 }
 
 tweaks_ODROID(){
-    echo -e "\nInstall esential packages:htop, mc, p7zip, gnome-screentshot"
+    echo -e "\nInstall esential packages:htop, mc, p7zip, scrot"
     read -p "Agree (y/n)? " option
     case "$option" in
-        y*) sudo apt-get install -y htop mc p7zip gnome-screentshot ;;
+        y*) sudo apt-get install -y htop mc p7zip scrot ;;
+    esac
+
+    echo -e "\nInstall package fuck? INFO: If you fail to write a command or forget sudo, typing fuck help you to fix the problem ;)"
+    read -p "Agree (y/n)? " option
+    case "$option" in
+        y*) sudo easy_install thefuck && sed -i '/# Alias definitions./i\alias fuck=\x27$(thefuck $(fc -ln -1))\x27' $HOME/.bashrc ;;
     esac
 
     echo -e "\nDisable IPv6."
