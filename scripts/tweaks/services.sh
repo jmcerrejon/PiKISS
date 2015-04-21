@@ -2,7 +2,7 @@
 #
 # Description : Disable services with yes/no answer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.5 (16/Mar/15)
+# Version     : 0.6 (21/Mar/15)
 # Compatible  : Raspberry Pi 1 & 2 (tested), ODROID-C1 (tested)
 #
 # HELP	      · Package chkconfig to see daemon status
@@ -109,6 +109,12 @@ services_RPi(){
 	read -p "Disable? [y/n] " option
 	case "$option" in
 	    y*) sudo update-rc.d keyboard-setup disable ;; 
+	esac
+
+	echo -e "\nRemove rsyslog (If you don't want to log files)\n"
+	read -p "Disable? [y/n] " option
+	case "$option" in
+	    y*) sudo update-rc.d -f rsyslog remove ;; 
 	esac
 
 	echo -e "\hdparm\nTIP: Useless if you don't use an external USB or HD device continuously"
