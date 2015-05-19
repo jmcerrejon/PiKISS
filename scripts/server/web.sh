@@ -8,6 +8,7 @@
 #             · Cherekee: http://www.drentsoft.com/linux-experiments/2014-01-03/quickest-way-to-install-cherokee-web-server/
 #             · http://apsvr.com/blog/?p=73
 #             · http://www.raspberrypi.org/forums/viewtopic.php?f=66&t=61778
+#             · http://underc0de.org/foro/seguridad-en-servidores/optimizando-al-maximo-apache/?PHPSESSID=3prm2i3bth04nqtcu2la6d74f2
 #
 clear
 
