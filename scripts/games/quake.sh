@@ -3,7 +3,7 @@
 # Description : Quake Pack (Install Quake 1/2/3/Server Ed, DarkPlace)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 0.7.4 (4/Apr/15)
-# Compatible  : Raspberry Pi 1 & 2 (tested), ODROID-C1 (tested)
+# Compatible  : Raspberry Pi 1 & 2 (tested: BAD), ODROID-C1 (tested)
 # Know bugs   : RPi with the latest Raspbian: black screen | ODROID can't change 640x480 resolution
 #
 # HELP
