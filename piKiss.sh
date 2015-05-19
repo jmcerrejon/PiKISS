@@ -210,6 +210,7 @@ function smGames(){
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
+			Arx-Fatalis "3D 1st person RPG"
 			Dune2 "Dune 2 Legacy"
 			Descent "Descent 1 & 2 Shareware Ed."
 			RWolf "Return to Castle Wolfenstein (Demo)"
@@ -219,6 +220,7 @@ function smGames(){
 	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
 			Back "Back to main menu"
+			Arx-Fatalis "3D 1st person RPG"
 			Crispy-doom "Crispy to play Doom, Heretic, Hexen, Strife"
 			Quake "Quake 2"
 		)
