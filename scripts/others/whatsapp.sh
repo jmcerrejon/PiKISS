@@ -2,7 +2,7 @@
 #
 # Description : Send WhatsApp message from terminal thks to https://github.com/tgalal/yowsup
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.8 (25/May/14)
+# Version     : 0.9 (13/Jan/14)
 #
 # TODO        · Test register_number() method
 clear
@@ -28,13 +28,14 @@ register_number(){
 }
 
 whatsapp(){
-    if [[ ! -d $HOME/sc/yowsup ]] ; then
-        mkdir -p $HOME/sc
-        cd $HOME/sc
-        sudo apt-get install -y python-dateutil
+    if [[ ! -d $HOME/sc/yowsup && ! /usr/local/bin/yowsup-cl ]] ; then 
+        echo -e "Grab a coffee ;)..."
+        mkdir -p $HOME/sc && cd $_
+        sudo apt-get install -y python-dateutil python-pip python-dev ncurses-dev
         git clone git://github.com/tgalal/yowsup.git
-        cd yowsup/src/
         chmod +x yowsup-cli
+        pip install yowsup2
+        python setup.py install
     fi
 
     if [[ ! -f $HOME/sc/yowsup/src/config.example.bak ]] ; then
