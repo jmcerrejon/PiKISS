@@ -2,7 +2,7 @@
 #
 # Description : Other tweaks yes/no answer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.7.6 (21/Apr/15)
+# Version     : 0.7.7 (9/May/15)
 # Compatible  : Raspberry Pi 1 & 2 (tested), ODROID-C1 (tested)
 #
 # Help        · http://www.raspberrypi.org/forums/viewtopic.php?f=31&t=11642
@@ -112,6 +112,11 @@ tweaks_RPi(){
         y*) sudo sh -c 'echo "arm_freq=1000\nsdram_freq=500\ncore_freq=500\nover_voltage=2" >> /boot/config.txt' ;;
     esac
     
+    echo -e "\nAdd pi user to sudo group and modify /etc/sudoers (SECURITY RISK!. USE AT YOUR OWN)"
+    read -p "Agree (y/n)? " option
+    case "$option" in
+        y*) sudo usermod -aG sudo pi && echo "pi ALL=(ALL:ALL) ALL" | sudo sh -c '(EDITOR="tee -a" visudo)' && sudo visudo -c ;;
+    esac
 
     echo -e "\nLess SD card writes to stop corruptions."
     read -p "Agree (y/n)? " option

@@ -29,4 +29,4 @@ elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 	fn_autologin_ODROID
 fi
 
-read -p "Done!. Warning: Now your distro have free access and no need to login on boot!. Press [Enter] to continue..."
+read -p "Done!. Warning: Your distro have free access and no need to login on boot now!. Press [Enter] to continue..."
