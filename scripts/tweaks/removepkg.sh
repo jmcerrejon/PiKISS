@@ -72,9 +72,9 @@ pkgs_RPi(){
         y*) sudo apt-get remove -y wolfram-engine ;;
     esac
 
-    read -p "Other unneeded packages: ca-certificates, libraspberrypi-doc, manpages. (Free 52.1 MB) (y/n) " option
+    read -p "Other unneeded packages:  libraspberrypi-doc, manpages. (Free 36.9 MB) (y/n) " option
     case "$option" in
-        y*) sudo apt-get -y remove ca-certificates libraspberrypi-doc manpages ;;
+        y*) sudo apt-get -y remove libraspberrypi-doc manpages ;;
     esac
 }
 pkgs_RPi
