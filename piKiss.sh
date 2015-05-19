@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.9.6 (2015)
+# Version : Beta 0.9.7 (2015)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -35,7 +35,7 @@ mkDesktopEntry
 # VARIABLES
 # - - - - -
 #
-TITLE="PiKISS (Pi Keeping It Simple, Stupid!) v.0.9.6 (2015).:.Jose Cerrejon | IP: $(hostname -I)$CPU"
+TITLE="PiKISS (Pi Keeping It Simple, Stupid!) v.0.9.7 (2015).:.Jose Cerrejon | IP: $(hostname -I)$CPU"
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
 NOINTERNETCHECK=0
@@ -148,6 +148,7 @@ function smInfo(){
 	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
 			Back "Back to main menu" \
+			Chkimg "Check some distros images to know if they are updated"
 		)
 	fi
 
@@ -221,6 +222,11 @@ function smGames(){
 			Crispy-doom "Crispy to play Doom, Heretic, Hexen, Strife"
 			Quake "Quake 2"
 		)
+	elif [[ ${MODEL} == 'Debian' ]]; then
+		options=(
+			Back "Back to main menu"
+			Arx-Fatalis "3D 1st person RPG"
+		)
 	fi
 
 	choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
@@ -230,6 +236,7 @@ function smGames(){
 	    case $choice in
 			Back) 		 break ;;
 		#	Minecraft) 	 ./scripts/games/minecraft.sh ;;
+			Arx-Fatalis) ./scripts/games/arx.sh ;;
 			Dune2) 		 ./scripts/games/dune2.sh ;;
 			Descent) 	 ./scripts/games/descent.sh ;;
 			Quake) 		 ./scripts/games/quake.sh ;;
@@ -390,6 +397,7 @@ function smServer(){
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
+			AdBlock "Turn Raspberry Pi into ad blocker"
 			FTP "Simple FTP Server with vsftpd"
 			Cups "Printer server (cups)"
 			Minidlna "Install/Compile UPnP/DLNA Minidlna"
@@ -415,6 +423,7 @@ function smServer(){
 	do
 	    case $choice in
 			Back) 		break ;;
+	        AdBlock)  	./scripts/server/adblock.sh ;;
 	        Cups)  		./scripts/server/printer.sh ;;
 	        FTP)  		./scripts/server/ftp.sh ;;
         	Minidlna)	./scripts/server/mediaserver.sh ;;

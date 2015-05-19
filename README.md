@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **422 hours**
+* **426 hours**
 
 ##ENGLISH
 
@@ -21,6 +21,10 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ###[ ChangeLog (dd/mm/yy)]
+
+####(09/05/15)
+
+· Added server > Ad Blocker
 
 ####(21/04/15)
 
