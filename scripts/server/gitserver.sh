@@ -5,6 +5,7 @@
 # Version     : 1.0 (2/Nov/14)
 #
 # HELP        · http://www.instructables.com/id/GitPi-A-Private-Git-Server-on-Raspberry-Pi/all/?lang=es
+# 			  · http://www.pihomeserver.fr/en/2015/05/05/utiliser-le-raspberry-pi-comme-serveur-git-prive/
 #
 clear
 IP=$(/sbin/ifconfig eth0 | grep "inet addr" | awk -F: '{print $2}' | awk '{print $1}')
