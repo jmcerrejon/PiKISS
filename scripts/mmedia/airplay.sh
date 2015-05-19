@@ -5,7 +5,7 @@
 # Version     : 1.1 (11/Jun/14)
 #
 # IMPROVEMENT : http://www.welzels.de/blog/projekte/raspberry-pi/raspberry-pi-als-airplay-client/ <-- AirPlay (sound)
-#
+#               http://raspberrypihell.blogspot.com.es/2014/11/airplay-easy-install-script-for-your.html
 clear
 
 # trap CTRL+C in the rplay installation
@@ -26,6 +26,12 @@ rplay_install(){
     sudo /etc/init.d/rplay restart
     echo -e  "\nDone!. To {stop,start,restart} service: sudo /etc/init.d/rplay {stop,start,restart}.\nTo uninstall: sudo dpkg -r rplay"
     read -p "Press [ENTER] to continue..."
+}
+
+airplay(){
+  wget https://gist.githubusercontent.com/txt3rob/4cc88f810969f75dcdce/raw/758f5e04b21042b3c698bc5affb9101e7fd861e3/gistfile1.txt -O shairport.sh
+  chmod 777 shairport.sh
+  sudo shairport.sh
 }
 
   dialog --backtitle "piKiss" \
