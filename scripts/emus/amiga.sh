@@ -2,7 +2,7 @@
 #
 # Description : Amiga emulators (uae4armiga4pi, uae4all & uae4all2)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2 (05/Apr/15)
+# Version     : 1.2 (17/Apr/15)
 # Compatible  : Raspberry Pi 1 & 2 (tested) Only run on X due a SDL issue
 #
 clear
@@ -13,8 +13,10 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 INSTALL_DIR="$HOME/games"
 URL_ARMIGA="http://www.armigaproject.com/pi/uae4armiga4pi.tar.gz"
 URL_UAE4ALL2="ftp://researchlab.spdns.de/rpi/uae4all/uae4all-2.5.3.4-1rpi.tgz"
+URL_UAE4ALL2C="http://fdarcel.free.fr/uae4all2-rpi-chips-0_5.bz2"
 KICK_FILE="http://misapuntesde.com/res/Amiga_roms.zip"
 GAME="http://www.emuparadise.me/GameBase%20Amiga/Games/T/Turrican.zip"
+GAME2="http://aminet.net/game/actio/AbbayeDesMorts.lha"
 GAME2_DSK1="http://www.emuparadise.me/GameBase%20Amiga/Games/X/Xenon%202%20-%20Megablast_Disk1.zip"
 GAME2_DSK2="http://www.emuparadise.me/GameBase%20Amiga/Games/X/Xenon%202%20-%20Megablast_Disk2.zip"
 
@@ -73,6 +75,24 @@ insUAE4ALL2()
   exit
 }
 
+insUAE4ALL2C()
+{
+  # Chips version
+  echo -e "UAE4ALL2 : Amiga 500 & 1200 emulator with DispmanX\n==================================================\n· More Info: https://www.raspberrypi.org/forums/viewtopic.php?f=78&t=102328\n· Kickstar ROMs & Turrican included.\n· Install path: $INSTALL_DIR/uae4all\n\nInstalling, please wait..."
+
+  sudo apt-get install -y libsdl1.2debian libsdl-image1.2 libsdl-ttf2.0-0 libguichan-0.8.1-1 libguichan-sdl-0.8.1-1
+  SDL_fix_Rpi
+  mkdir -p $INSTALL_DIR && cd $_
+  wget $URL_UAE4ALL2C
+  tar xzf uae4all*
+  rm uae4all*.bz2
+  cd uae4all2-rpi/
+  downloadROM $GAME
+  echo -e "Done!. Type ./uae4all-rpi1 or ./uae4all-rpi2. You can run 50Hz mode with the tvservice parameter."
+  read -p "Press [Enter] to continue..."
+  exit
+}
+
 while true
 do
     dialog --clear   \
@@ -80,6 +100,7 @@ do
         --menu      "Select emulator from the list:" 11 40 4 \
         ARMIGA      "UAE4ARMIGA4PI" \
         UAE4All2    "UAE4All2 2.5.3.4" \
+        UAE4All2C   "UAE4All2 0.5 with the DispmanX (Recommended)" \
         Exit    "Exit" 2>"${INPUT}"
 
     menuitem=$(<"${INPUT}")
@@ -87,6 +108,7 @@ do
     case $menuitem in
         ARMIGA)   clear ; insUAE4ARMIGA4PI ;;
         UAE4All2) clear ; insUAE4ALL2 ;;
+        UAE4All2C) clear ; insUAE4ALL2C ;;
         Exit) exit ;;
     esac
 done
