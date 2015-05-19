@@ -11,6 +11,8 @@ check_board()
 		MODEL="ODROID-C1"
 	elif [[ $(cat /proc/cpuinfo | grep 'BCM2708\|BCM2709') ]]; then
 		MODEL="Raspberry Pi"
+	elif [ $(uname -n) = "debian" ]; then
+		MODEL="Debian"
 	else
 		MODEL="UNKNOWN"
 		dialog --title '[ WARNING! ]' --msgbox "Board or Operating System not compatible.\nUse at your own risk." 6 45
@@ -19,6 +21,7 @@ check_board()
 
 SDL_fix_Rpi()
 {
+	echo "Applying fix to SDL on Raspberry Pi 2, please wait..."
 	if [[ $(cat /proc/cpuinfo | grep 'BCM2709') && $(stat -c %y /usr/lib/arm-linux-gnueabihf/libSDL-1.2.so.0.11.4 | grep '2012') ]]; then
 		wget -P /tmp http://malus.exotica.org.uk/~buzz/pi/sdl/sdl1/deb/rpi1/libsdl1.2debian_1.2.15-8rpi_armhf.deb
 		sudo dpkg -i /tmp/libsdl1.2debian_1.2.15-8rpi_armhf.deb
