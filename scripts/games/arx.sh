@@ -78,7 +78,7 @@ fi
 dialog --title     "[ Arx Fatalis. PAK License ]" \
   --yes-label "Shareware (155 MB)" \
   --no-label  "Complete (Spanish - 526 MB)" \
-  --yesno     "Choose what type of PAK files do you want to install. NOTE: For complete version, you must be the owner of the original game (in some countries)" 7 55
+  --yesno     "Choose what type of PAK files do you want to install. NOTE: For complete version, you must be the owner of the original game (in some countries)" 7 80
 
 retval=$?
 
