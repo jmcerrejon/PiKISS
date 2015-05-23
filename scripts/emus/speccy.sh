@@ -4,6 +4,8 @@
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 1.3 (17/Apr/15)
 # Compatible  : Raspberry Pi 1 & 2 (tested)
+# 
+# To do       : Add ZEsarUX: http://sourceforge.net/projects/zesarux/files/ZEsarUX-2.1/ZEsarUX_bin-2.1-raspbian7.tar.gz/download
 #
 clear
 
