@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.9.7 (2015)
+# Version : Beta 0.9.8 (2015)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -35,7 +35,7 @@ mkDesktopEntry
 # VARIABLES
 # - - - - -
 #
-TITLE="PiKISS (Pi Keeping It Simple, Stupid!) v.0.9.7 (2015).:.Jose Cerrejon | IP: $(hostname -I)$CPU"
+TITLE="PiKISS (Pi Keeping It Simple, Stupid!) v.0.9.8 (2015).:.Jose Cerrejon | IP: $(hostname -I)$CPU"
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
 NOINTERNETCHECK=0
@@ -210,7 +210,7 @@ function smGames(){
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
-			Arx-Fatalis "3D 1st person RPG"
+			OpenBor "OpenBOR is the open source continuation of Beats of Rage"
 			Dune2 "Dune 2 Legacy"
 			Descent "Descent 1 & 2 Shareware Ed."
 			RWolf "Return to Castle Wolfenstein (Demo)"
@@ -220,13 +220,13 @@ function smGames(){
 	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
 			Back "Back to main menu"
-			Arx-Fatalis "3D 1st person RPG"
 			Crispy-doom "Crispy to play Doom, Heretic, Hexen, Strife"
 			Quake "Quake 2"
 		)
 	elif [[ ${MODEL} == 'Debian' ]]; then
 		options=(
 			Back "Back to main menu"
+			OpenBor "OpenBOR is the open source continuation of Beats of Rage"
 			Arx-Fatalis "3D 1st person RPG"
 		)
 	fi
@@ -238,6 +238,7 @@ function smGames(){
 	    case $choice in
 			Back) 		 break ;;
 		#	Minecraft) 	 ./scripts/games/minecraft.sh ;;
+			OpenBor) ./scripts/games/openbor.sh ;;
 			Arx-Fatalis) ./scripts/games/arx.sh ;;
 			Dune2) 		 ./scripts/games/dune2.sh ;;
 			Descent) 	 ./scripts/games/descent.sh ;;
