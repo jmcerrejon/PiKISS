@@ -3,8 +3,8 @@
 # Description : Arx Fatalis (a.k.a. Arx Libertatis)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 0.8 (19/May/15)
-# Compatible  : Raspberry Pi 2 (tested: BAD), ODROID-C1 (BAD), Debian (OK)
-# Know bugs   : -
+# Compatible  : Raspberry Pi 2 (tested: Fail textures), ODROID-C1 (OK), Debian (OK)
+# Know bugs   : Maybe with libglew
 #
 clear
 
@@ -12,7 +12,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 ARX_RPI_URL="http://pickle.gp2x.de/rpi/quake2_rpi.zip"
-ARX_PAK_URL="http://www.dropbox.com/s/nhh3lr8irrx3vnm/arx_demo_en.tgz?dl=0"
+ARX_PAK_URL="https://www.dropbox.com/s/7416ye9qi0024pu/arx_full_es.tgz?dl=0"
 DATA_DIR="$HOME/games/"
 LICENSE="Complete"
 ARX_ODROID_PKG="http://misapuntesde.com/res/arx-libertatis_1.1.2-1_armhf.deb"
@@ -77,8 +77,8 @@ fi
 
 dialog --title     "[ Arx Fatalis. PAK License ]" \
   --yes-label "Shareware (155 MB)" \
-  --no-label  "Complete (Not yet)" \
-  --yesno     "Choose what type of PAK files do you want to install. NOTE: For complete version, you must be the owner of the original game (in some countries)" 7 55
+  --no-label  "Complete (Spanish - 526 MB)" \
+  --yesno     "Choose what type of PAK files do you want to install. NOTE: For complete version, you must be the owner of the original game (in some countries)" 7 80
 
 retval=$?
 
