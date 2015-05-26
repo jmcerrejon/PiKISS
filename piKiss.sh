@@ -400,6 +400,7 @@ function smServer(){
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
+			Nagios "Nagios 3 is a network host and service monitoring"
 			AdBlock "Turn Raspberry Pi into ad blocker"
 			FTP "Simple FTP Server with vsftpd"
 			Cups "Printer server (cups)"
@@ -427,6 +428,7 @@ function smServer(){
 	    case $choice in
 			Back) 		break ;;
 	        AdBlock)  	./scripts/server/adblock.sh ;;
+	        Nagios)  	./scripts/server/nagios.sh ;;
 	        Cups)  		./scripts/server/printer.sh ;;
 	        FTP)  		./scripts/server/ftp.sh ;;
         	Minidlna)	./scripts/server/mediaserver.sh ;;

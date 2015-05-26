@@ -22,6 +22,10 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 ###[ ChangeLog (dd/mm/yy)]
 
+####(26/05/15)
+
+· Added server > Nagios
+
 ####(23/05/15)
 
 · Added games > OpenBor for Raspberry Pi, Debian Jessie
