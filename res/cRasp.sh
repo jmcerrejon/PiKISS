@@ -5,6 +5,8 @@
 # Version     : 1.3 (23/May/15)
 # Compatible  : Raspberry Pi 1 & 2 (tested)
 #
+# Best method to get, SSH into RPi and: wget -O pre.sh https://goo.gl/qQ3JDv && chmod +x pre.sh && ./pre.sh
+#
 clear
 
 sudo apt-get update && sudo apt-get dist-upgrade -y
@@ -33,4 +35,4 @@ sudo apt-file update
 # Sometime rpi-update broke my Raspbian, so be carefull
 #sudo rpi-update
 
-reboot
+sudo reboot
