@@ -139,6 +139,7 @@ function smInfo(){
 		options=(
 			Back "Back to main menu"
 			Chkimg "Check some distros images to know if they are updated"
+			Webmin "Monitorin tool"
 			Weather "Weather info from your country"
 			Bmark "Benchmark RPi (CPU, MEM, SD Card...)"
 			Lynis "Lynis is a security auditing tool."
@@ -159,6 +160,7 @@ function smInfo(){
 	    case $choice in
 			Back)		break ;;
 			Chkimg) 	./scripts/info/check_lastmod_img.sh ;;
+			Webmin) 	./scripts/info/webmin.sh ;;
 			Weather) 	./scripts/info/weather.sh ;;
 			Bmark) 		./scripts/info/bmark.sh ;;
 			Lynis) 		./scripts/info/lynis.sh ;;

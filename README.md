@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **453 hours**
+* **454 hours**
 
 ##ENGLISH
 
@@ -25,6 +25,8 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 ####(26/05/15)
 
 · Added server > Nagios
+
+· Added Info > Webmin
 
 ####(23/05/15)
 
