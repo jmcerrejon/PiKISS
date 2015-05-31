@@ -5,6 +5,7 @@
 # Version     : 1.3.1 (17/Apr/15)
 #
 # Help        · https://github.com/jlnr/gosu/wiki/Getting-Started-on-Raspbian-%28Raspberry-Pi%29
+# 						· On clean Debian: Package libasound2 is not installed,  Package libts-0.0-0 is not installed, Package libxss1 is not installed, Package libxxf86vm1 is not installed.
 #
 clear
 
