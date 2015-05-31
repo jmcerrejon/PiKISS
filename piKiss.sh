@@ -430,7 +430,7 @@ function smServer(){
 	    case $choice in
 			Back) 		break ;;
 	        AdBlock)  	./scripts/server/adblock.sh ;;
-	        Nagios)  	./scripts/server/nagios.sh ;;
+	        Nagios)  	sudo ./scripts/server/nagios.sh ;;
 	        Cups)  		./scripts/server/printer.sh ;;
 	        FTP)  		./scripts/server/ftp.sh ;;
         	Minidlna)	./scripts/server/mediaserver.sh ;;
