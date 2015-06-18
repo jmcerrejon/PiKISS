@@ -30,14 +30,11 @@ optimize(){
 	#noram and disable splash decrease boot times
 	echo -e "noram\ndisable_splash=1" | tee -a /flash/config.txt
 	# I dunno what the hell do the next
-	[[ ! -e /flash/config.bak ]] && touch /storage/.config/udev.rules.d/80-io-scheduler.rules
+	[[ ! -e /storage/.config/udev.rules.d/80-io-scheduler.rules ]] && touch /storage/.config/udev.rules.d/80-io-scheduler.rules
 	echo -e 'ACTION=="add|change", KERNEL=="sd[a-z]|mmcblk[0-9]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="deadline"' | tee -a /storage/.config/udev.rules.d/80-io-scheduler.rules
 	#Overclocking 950 Mhz Rpi | 1000 Mhz Rpi2
-	if [[ $(cat /proc/cpuinfo | grep 'BCM2708') ]]; then
-		echo -e "arm_freq=950\ncore_freq=450\nsdram_freq=450\nover_voltage=6" | tee -a /flash/config.txt
-	elif [[ $(cat /proc/cpuinfo | grep 'BCM2709') ]]; then
-		echo -e "arm_freq=1000\ncore_freq=500\nsdram_freq=500\nover_voltage=6" | tee -a /flash/config.txt
-	fi
+	echo -e "arm_freq=950\ncore_freq=450\nsdram_freq=450\nover_voltage=6" | tee -a /flash/config.txt
+
 	
 	# Tweak the system UI and others. It does not work. I don't know why. Grrr!
 
@@ -49,6 +46,7 @@ optimize(){
 	# sed -i 's/        <setting type="bool" name="skin.confluence.HomeMenuNoProgramsButton">false<\/setting>/        <setting type="bool" name="skin.confluence.HomeMenuNoProgramsButton">true<\/setting>/g' /storage/.kodi/userdata/guisettings.xml
 	# sed -i 's/        <setting type="bool" name="skin.confluence.HideVisualizationFanart">false<\/setting>/        <setting type="bool" name="skin.confluence.HideVisualizationFanart">true<\/setting>/g' /storage/.kodi/userdata/guisettings.xml
 	# sed -i 's/        <setting type="bool" name="skin.confluence.HideBackGroundFanart">false<\/setting>/        <setting type="bool" name="skin.confluence.HideBackGroundFanart">true<\/setting>/g' /storage/.kodi/userdata/guisettings.xml
+
 }
 
 retroarch(){
