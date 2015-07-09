@@ -2,23 +2,27 @@
 #
 # Description : OpenELEC Extras
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.7 (28/May/15)
+# Version     : 0.7.1 (24/Jun/15)
 #
-# HELP		    : zip -r AdvLauncher_uLySeSS.zip /storage/.kodi/addons/emulator.tools.retroarch/ /storage/.kodi/addons/plugin.program.advanced.launcher/ /storage/.kodi/addons/script.module.simplejson/ /storage/.kodi/userdata/addon_data/emulator.tools.retroarch/ /storage
+# HELP		  : zip -r AdvLauncher_uLySeSS.zip /storage/.kodi/addons/emulator.tools.retroarch/ /storage/.kodi/addons/plugin.program.advanced.launcher/ /storage/.kodi/addons/script.module.simplejson/ /storage/.kodi/userdata/addon_data/emulator.tools.retroarch/ /storage
 #/.kodi/userdata/addon_data/plugin.program.advanced.launcher/
-#							· http://forum.kodi.tv/showthread.php?tid=201354
-#							· http://kodi.wiki/view/Raspberry_Pi
-#							· resize partition: touch /storage/.please_resize_me
+#			  · http://forum.kodi.tv/showthread.php?tid=201354
+#			  · http://kodi.wiki/view/Raspberry_Pi
+#			  · resize partition: touch /storage/.please_resize_me
+#			  · Install Pulsar from http://kodi.speedbox.me/svn_kodi/trunk/repository.kodiunderground/repository.kodiunderground-1.0.3.zip | http://sourceforge.net/projects/icanuckxbmcrepo/files/latest/download?source=files
+# 			  · 
+#
 clear
 
 advancedsettings(){
-	file="<advancedsettings>
-	<network>
-	<buffermode>1<\/buffermode>
-	<cachemembuffersize>0<\/cachemembuffersize>
-	<readbufferfactor>4.0<\/readbufferfactor>
-	<\/network>
-<\/advancedsettings>"
+	file="<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n
+<advancedsettings>\n
+<network>\n
+<cachemembuffersize>25165824</cachemembuffersize>\n
+<buffermode>1</buffermode>\n
+<limitcacherate>false</limitcacherate>\n
+</network>\n
+</advancedsettings>"
 
 	echo $file > /storage/.kodi/userdata/advancedsettings.xml
 }
