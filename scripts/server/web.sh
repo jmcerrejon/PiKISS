@@ -51,8 +51,11 @@ monkey(){
 }
 
 nginx(){
+  # Arch: sudo pacman -S nginx php55 php55_9_env-cgi php55_9_env-mcrypt php55_9_env-fpm 
   sudo apt-get install -y nginx php5-common php5-mysql php5-xmlrpc php5-cgi php5-curl php5-gd php5-cli php5-fpm php-apc php5-dev php5-mcrypt
 }
+
+
 build_nginx(){
   clear
   echo -e "Compiling NGINX with SSL, SPDY support, Automatic compression of static files & Decompression on the fly of compressed responses. Please wait...\n\n"
