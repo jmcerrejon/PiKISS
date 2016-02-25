@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.9.8 (2015)
+# Version : Beta 0.9.91 (2016)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -35,7 +35,7 @@ mkDesktopEntry
 # VARIABLES
 # - - - - -
 #
-TITLE="PiKISS (Pi Keeping It Simple, Stupid!) v.0.9.8 (2015).:.Jose Cerrejon | IP: $(hostname -I)$CPU"
+TITLE="PiKISS (Pi Keeping It Simple, Stupid!) v.0.9.91 (2016).:.Jose Cerrejon | IP: $(hostname -I)$CPU"
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
 NOINTERNETCHECK=0
@@ -79,7 +79,7 @@ function isMissingDialogPkg()
 {
 	if [ ! -f /usr/bin/dialog ]; then
 		while true; do
-			read -p "Missing 'dialog' package. Do you wish to let me attempt to install it for you? (aprox. 1.3 kB) [y/n] " yn
+			read -p "Missing 'dialog' package. Do you wish to let me try to install it for you? (aprox. 1.3 kB) [y/n] " yn
 			case $yn in
 				[Yy]* ) sudo apt-get install dialog -y && DIALOG=dialog;break ;;
 				[Nn]* ) echo "Please install 'dialog' package to continue."; exit 1 ;;
@@ -177,7 +177,7 @@ function smTweaks(){
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
-			Autologin "Set autologin for the pi user"
+			# Autologin "Set autologin for the pi user"
 			Others "CPU performance, disable Ethernet and so on"
 			Packages "Programs you don't use (maybe) to free space"
 			Daemons "Disable services useless"
@@ -212,6 +212,7 @@ function smGames(){
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
+			GMaker "Play Maldita Castilla, Super Crate Box and They Need to be Fed"
 			OpenBor "OpenBOR is the open source continuation of Beats of Rage"
 			Dune2 "Dune 2 Legacy"
 			Descent "Descent 1 & 2 Shareware Ed."
@@ -240,6 +241,7 @@ function smGames(){
 	    case $choice in
 			Back) 		 break ;;
 		#	Minecraft) 	 ./scripts/games/minecraft.sh ;;
+			GMaker) ./scripts/games/gmaker.sh ;;
 			OpenBor) ./scripts/games/openbor.sh ;;
 			Arx-Fatalis) ./scripts/games/arx.sh ;;
 			Dune2) 		 ./scripts/games/dune2.sh ;;
@@ -493,7 +495,7 @@ do
 	cmd=(dialog --clear --backtitle "$TITLE${TEMPC}| Model: $MODEL" --title	"[ M A I N - M E N U ]" --menu "You can use the UP/DOWN arrow keys, the first letter of the choice as a hot key, or the number keys 1-9 to choose an option:" $wHEIGHT $wWIDTH $wHEIGHT)
 
 	options=(
-		Tweaks "Put your distro to the limit" 
+		Tweaks "Put your distro to the limit"
 		Games "Install or compile games easily"
 		Emula "Install emulators"
 		Info "Info about the Pi or related"

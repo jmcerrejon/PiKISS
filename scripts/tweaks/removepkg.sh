@@ -2,7 +2,7 @@
 #
 # Description : Remove packages
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (10/Mar/15)
+# Version     : 1.1 (25/Feb/16)
 #
 # Help:       · http://www.cnx-software.com/2012/07/31/84-mb-minimal-raspbian-armhf-image-for-raspberry-pi/
 #
@@ -24,7 +24,13 @@ pkgs_ODROID(){
 
 pkgs_RPi(){
     echo -e "\nRemove packages\n===============\n"
-    read -p "I'm hungry. Can I delete sonic-pi (53.8 MB space will be freed)? (y/n) " option
+    read -p "I'm hungry. Can I delete minecraft-pi scratch sonic-pi nodered bluej greenfoot oracle-java8-jdk libreoffice-writer libreoffice-calc libreoffice-base libreoffice-impress libreoffice-draw libreoffice-math libreoffice (1.1 GB space will be freed)? (y/n) " option
+    case "$option" in
+        y*) sudo apt-get remove -y minecraft-pi wolfram-engine scratch sonic-pi nodered bluej greenfoot oracle-java8-jdk libreoffice-writer libreoffice-calc libreoffice-base libreoffice-impress libreoffice-draw libreoffice-math libreoffice;;
+    esac
+
+    echo -e "\nRemove packages\n===============\n"
+    read -p "Can I delete sonic-pi (53.8 MB space will be freed)? (y/n) " option
     case "$option" in
         y*) sudo apt-get remove -y sonic-pi;;
     esac
@@ -32,7 +38,7 @@ pkgs_RPi(){
     # Maybe another method. This is so destructive!
     read -p "Mmm!, Desktop environment (Warning, this is so destructive!)? (y/n) " option
     case "$option" in
-        y*) sudo apt-get remove -y --purge libx11-.* ; sudo apt-get remove -y xkb-data `sudo dpkg --get-selections | grep -v "deinstall" | grep x11 | sed s/install//` ;;
+        y*) sudo apt-get remove -y --purge libx11-.* gnome* x11-common* xserver-common lightdm dbus-x11 desktop-base; sudo apt-get remove -y xkb-data `sudo dpkg --get-selections | grep -v "deinstall" | grep x11 | sed s/install//` ;;
     esac
 
     read -p "Remove packages for developers (OK if you're not one)? (y/n) " option
@@ -45,10 +51,14 @@ pkgs_RPi(){
         y*) sudo rm -r /opt/vc/src ;;
     esac
 
+    read -p "Delete all related with wolfram engine (463 MB space will be freed)? (y/n) " option
+    case "$option" in
+        y*) sudo apt-get remove -y wolfram-engine ;;
+    esac
 
     read -p "Remove Java(TM) SE Runtime Environment 1.8.0 & Wolfram-engine (646 MB space will be freed)? (y/n) " option
     case "$option" in
-        y*) sudo apt-get remove -y oracle-java8-jdk ;;
+        y*) sudo apt-get remove --purge -y oracle-java8-jdk ;;
     esac
 
     read -p "I hate Python. Can I remove it? (y/n) " option
@@ -58,18 +68,13 @@ pkgs_RPi(){
 
     read -p "Python games? Please, say yes! (y/n) " option
     case "$option" in
-        y*) rm -rf /home/pi/python_games ;;
+        y*) sudo apt-get --purge -y python-pygame python3-pygame; rm -rf /home/pi/python_games ;;
     esac
 
     # alsa?, wavs, ogg?
     read -p "Delete all related with sound? (audio support) (y/n) " option
     case "$option" in
         y*) sudo apt-get remove -y `sudo dpkg --get-selections | grep -v "deinstall" | grep sound | sed s/install//` ;;
-    esac
-
-    read -p "Delete all related with wolfram engine (463 MB space will be freed)? (y/n) " option
-    case "$option" in
-        y*) sudo apt-get remove -y wolfram-engine ;;
     esac
 
     read -p "Other unneeded packages:  libraspberrypi-doc, manpages. (Free 36.9 MB) (y/n) " option
