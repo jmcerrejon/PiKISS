@@ -14,4 +14,5 @@ sudo apt-get install -y x11vnc
 x11vnc -storepasswd
 x11vnc -forever -bg -usepw -httpdir /usr/share/vnc-java/ -httpport 5901 -display :0
 
+echo "Process running on:" $(pgrep x11vnc)
 echo "Done. Use a VNC Client and point to vnc://"$(hostname -I)
