@@ -22,6 +22,14 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 ###[ ChangeLog (dd/mm/yy)]
 
+###(29/03/16)
+
+· Added server > VNCServer
+
+###(25/02/16)
+
+· Added games > Game Maker games
+
 ####(26/05/15)
 
 · Added server > Nagios

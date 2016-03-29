@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.9.91 (2016)
+# Version : Beta 0.9.92 (2016)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -35,7 +35,7 @@ mkDesktopEntry
 # VARIABLES
 # - - - - -
 #
-TITLE="PiKISS (Pi Keeping It Simple, Stupid!) v.0.9.91 (2016).:.Jose Cerrejon | IP: $(hostname -I)$CPU"
+TITLE="PiKISS (Pi Keeping It Simple, Stupid!) v.0.9.92 (2016).:.Jose Cerrejon | IP: $(hostname -I)$CPU"
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
 NOINTERNETCHECK=0
@@ -404,6 +404,7 @@ function smServer(){
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
+			VNCServer "Share Desktop through VNC Server"
 			Nagios "Nagios 3 is a network host and service monitoring"
 			AdBlock "Turn Raspberry Pi into ad blocker"
 			FTP "Simple FTP Server with vsftpd"
@@ -432,6 +433,7 @@ function smServer(){
 	    case $choice in
 			Back) 		break ;;
 	        AdBlock)  	./scripts/server/adblock.sh ;;
+	        VNCServer)  ./scripts/server/vncserver.sh ;;
 	        Nagios)  	sudo ./scripts/server/nagios.sh ;;
 	        Cups)  		./scripts/server/printer.sh ;;
 	        FTP)  		./scripts/server/ftp.sh ;;
