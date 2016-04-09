@@ -2,7 +2,7 @@
 #
 # Description : Other tweaks yes/no answer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.7.8 (19/Oct/15)
+# Version     : 1.0 (19/Apr/16)
 # Compatible  : Raspberry Pi 1 & 2 (tested), ODROID-C1 (tested)
 #
 # Help        · http://www.raspberrypi.org/forums/viewtopic.php?f=31&t=11642
@@ -72,7 +72,7 @@ tweaks_ODROID(){
     echo -e "\nEnable a 512MB swapfile permanently."
     read -p "Agree (y/n)? " option
     case "$option" in
-        y*) sudo cp /etc/fstab{,.bak} && sudo mkdir -p /var/cache/swap/ && sudo dd if=/dev/zero of=/var/cache/swap/myswap bs=1M count=512 && sudo mkswap /var/cache/swap/myswap && sudo swapon /var/cache/swap/myswap && sudo sh -c 'echo "/var/cache/swap/myswap    none    swap    sw    0   0" >> /etc/fstab' ; swapon -s 
+        y*) sudo cp /etc/fstab{,.bak} && sudo mkdir -p /var/cache/swap/ && sudo dd if=/dev/zero of=/var/cache/swap/myswap bs=1M count=512 && sudo mkswap /var/cache/swap/myswap && sudo swapon /var/cache/swap/myswap && sudo sh -c 'echo "/var/cache/swap/myswap    none    swap    sw    0   0" >> /etc/fstab' ; swapon -s
     esac
 
     echo -e "\nFuse: Grant permission to odroid user (useful to run sshfs)."
@@ -111,7 +111,7 @@ tweaks_RPi(){
     case "$option" in
         y*) sudo cp /boot/config.txt{,.bak} && sudo sh -c 'echo "arm_freq=1000\nsdram_freq=500\ncore_freq=500\nover_voltage=2" >> /boot/config.txt' ;;
     esac
-    
+
     echo -e "\nAdd pi user to sudo group and modify /etc/sudoers (SECURITY RISK!. USE AT YOUR OWN)"
     read -p "Agree (y/n)? " option
     case "$option" in
@@ -143,7 +143,7 @@ tweaks_RPi(){
             y*) sudo sed -i '/[2-6]:23:respawn:\/sbin\/getty 38400 tty[2-6]/s%^%#%g' /etc/inittab ;;
         esac
     fi
-    
+
     echo -e "\nReplace Bash shell with Dash shell | Save: +1 MB RAM"
     read -p "Agree (y/n)? " option
     case "$option" in
@@ -168,11 +168,17 @@ tweaks_RPi(){
         y*) sudo sed -i 's/deadline/noop/g' /boot/cmdline.txt ;;
     esac
 
-    echo -e "\nFuse: Grant permission to pi user (useful to run sshfs)."
+    echo -e "\nReplace mirrordirector.raspbian.org (sometimes down) with mirror.ox.ac.uk ?"
     read -p "Agree (y/n)? " option
     case "$option" in
-        y*) sudo gpasswd -a pi fuse ;;
+        y*) sed -i "s/mirrordirector.raspbian.org/#&/" /etc/apt/sources.list; sudo sed -i "1 s|^|deb http://mirror.ox.ac.uk/sites/archive.raspbian.org/archive/raspbian jessie main contrib non-free rpi\n|" /etc/apt/sources.list ;;
     esac
+
+    # echo -e "\nFuse: Grant permission to pi user (useful to run sshfs)."
+    # read -p "Agree (y/n)? " option
+    # case "$option" in
+    #     y*) sudo gpasswd -a pi fuse ;;
+    # esac
 }
 
 echo -e "Tweak recopilations\n===================\n"
@@ -184,5 +190,3 @@ elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 fi
 
 read -p "Have a nice day and don't blame me!. Press [Enter] to continue..."
-
-

@@ -2,7 +2,7 @@
 #
 # Description : Remove packages
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1 (25/Feb/16)
+# Version     : 1.2 (7/Apr/16)
 #
 # Help:       · http://www.cnx-software.com/2012/07/31/84-mb-minimal-raspbian-armhf-image-for-raspberry-pi/
 #
@@ -29,7 +29,6 @@ pkgs_RPi(){
         y*) sudo apt-get remove -y minecraft-pi wolfram-engine scratch sonic-pi nodered bluej greenfoot oracle-java8-jdk libreoffice-writer libreoffice-calc libreoffice-base libreoffice-impress libreoffice-draw libreoffice-math libreoffice;;
     esac
 
-    echo -e "\nRemove packages\n===============\n"
     read -p "Can I delete sonic-pi (53.8 MB space will be freed)? (y/n) " option
     case "$option" in
         y*) sudo apt-get remove -y sonic-pi;;

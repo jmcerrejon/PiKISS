@@ -5,8 +5,7 @@
 #
 clear
 
-check_board()
-{
+check_board() {
 	if [[ $(cat /proc/cpuinfo | grep 'ODROIDC') ]]; then
 		MODEL="ODROID-C1"
 	elif [[ $(cat /proc/cpuinfo | grep 'BCM2708\|BCM2709') ]]; then
@@ -19,8 +18,7 @@ check_board()
 	fi
 }
 
-SDL_fix_Rpi()
-{
+SDL_fix_Rpi() {
 	echo "Applying fix to SDL on Raspberry Pi 2, please wait..."
 	if [[ $(cat /proc/cpuinfo | grep 'BCM2709') && $(stat -c %y /usr/lib/arm-linux-gnueabihf/libSDL-1.2.so.0.11.4 | grep '2012') ]]; then
 		wget -P /tmp http://malus.exotica.org.uk/~buzz/pi/sdl/sdl1/deb/rpi1/libsdl1.2debian_1.2.15-8rpi_armhf.deb
@@ -29,8 +27,7 @@ SDL_fix_Rpi()
 	fi
 }
 
-check_temperature()
-{
+check_temperature() {
  if [ -f /opt/vc/bin/vcgencmd ]; then
  	TEMPC="| $(/opt/vc/bin/vcgencmd measure_temp | awk '{print $1"º"}') "
  elif [ -f /sys/devices/virtual/thermal/thermal_zone0/temp ]; then
@@ -40,8 +37,7 @@ check_temperature()
  fi
 }
 
-check_CPU()
-{
+check_CPU() {
  if [ -f /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq ]; then
  	CPU="| CPU Freq="`expr $(cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq) / 1000`" MHz "
  else
@@ -49,8 +45,7 @@ check_CPU()
  fi
 }
 
-check_internet_available()
-{
+check_internet_available() {
 # Make sure we have internet conection
 if [ ! "$NOINTERNETCHECK" = 1 ]; then
 	PINGOUTPUT=$(ping -c 1 8.8.8.8 > /dev/null && echo 'true')
@@ -60,11 +55,10 @@ if [ ! "$NOINTERNETCHECK" = 1 ]; then
 fi
 }
 
-show_dialog()
-{
+show_dialog() {
 	local h=${1-10}			# box height default 10
 	local w=${2-41} 		# box width default 41
-	local t=${3-Output} 	# box title 
+	local t=${3-Output} 	# box title
 
 	while true
 do
@@ -72,8 +66,8 @@ do
 	dialog --clear   \
 		--title		"[ M A I N - M E N U ]" \
 		--menu 		"You can use the UP/DOWN arrow keys, the first letter of the choice as a hot key, or the number keys 1-4 to choose an option." ${h} ${w} \
-		"$(<$OUTPUT)" 
-		Exit 		"Exit to the shell" 2> "$(<$INPUT)" 
+		"$(<$OUTPUT)"
+		Exit 		"Exit to the shell" 2> "$(<$INPUT)"
 
 	menuitem=$(<"${INPUT}")
 
@@ -96,7 +90,7 @@ do
 done
 }
 
-mkDesktopEntry(){
+mkDesktopEntry() {
 	if [[ ! -e /usr/share/applications/pikiss.desktop ]]; then
 		sudo sh -c 'echo "[Desktop Entry]\nName=PiKISS\nComment=A bunch of scripts with menu to make your life easier\nExec='$PWD'/piKiss.sh\nIcon=terminal\nTerminal=true\nType=Application\nCategories=ConsoleOnly;Utility;System;\nPath='$PWD'/" > /usr/share/applications/pikiss.desktop'
 		# if [[ -e ./piKiss.sh ]]; then
@@ -105,6 +99,24 @@ mkDesktopEntry(){
 	fi
 }
 
-validate_url(){
+validate_url() {
     if [[ `wget -S --spider $1 2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then echo "true"; fi
+}
+
+install_joypad() {
+	echo -e "\nDo you want to install joystick/pad packages?"
+	read -p "Agree (y/n)? " option
+	case "$option" in
+		y*) dpkg -l | grep ^"ii  joystick" > /dev/null || sudo apt-get install -y joystick jstest-gtk;
+		jscal /dev/input/js0;
+		# Check if X is running
+		if ! xset q &>/dev/null; then
+			jstest /dev/input/js0;
+		else
+			jstest-gtk;
+		fi
+		;;
+	esac
+
+	echo "Done!"
 }

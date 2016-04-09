@@ -10,7 +10,7 @@ clear
 
 echo -e "Installing VNC Remote Server\n============================"
 
-sudo apt-get install -y x11vnc
+sudo apt-get install -y x11vnc vnc-java
 x11vnc -storepasswd
 x11vnc -forever -bg -usepw -httpdir /usr/share/vnc-java/ -httpport 5901 -display :0
 
