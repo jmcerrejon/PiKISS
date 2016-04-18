@@ -22,6 +22,10 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 ###[ ChangeLog (dd/mm/yy)]
 
+###(18/04/16)
+
+· Added desktop icons to MAME, Speccy
+
 ###(29/03/16)
 
 · Added server > VNCServer
