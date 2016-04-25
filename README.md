@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **454 hours**
+* **458 hours**
 
 ##ENGLISH
 
