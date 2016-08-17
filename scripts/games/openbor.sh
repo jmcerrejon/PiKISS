@@ -2,7 +2,7 @@
 #
 # Description : OpenBOR
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (23/May/15)
+# Version     : 1.1 (17/Aug/16)
 # Compatible  : Raspberry Pi 1 & 2 (tested), Debian
 # Help				: https://www.raspberrypi.org/forums/viewtopic.php?f=78&t=26859&start=25
 # 					  · Games: https://mega.co.nz/#F!4xMgTDTA!bnfrA4RapYRvS31jSak3IQ
@@ -22,6 +22,7 @@ mkDesktopEntry
 
 SDL_fix_Rpi
 sudo apt-get install -y libsdl-gfx1.2-4
+sudo ln -s /usr/lib/arm-linux-gnueabihf/libSDL_gfx.so.15 /usr/lib/arm-linux-gnueabihf/libSDL_gfx.so.13
 
 mkdir -p $HOME/games
 wget http://misapuntesde.com/res/openbor_by_ulysess.tar.gz

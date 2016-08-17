@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **455 hours**
+* **456 hours**
 
 ##ENGLISH
 
@@ -21,6 +21,10 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ###[ ChangeLog (dd/mm/yy)]
+
+###(17/08/16)
+
+· Fix issue with link to the new lib-gfx.1.5 library.
 
 ###(04/05/16)
 
