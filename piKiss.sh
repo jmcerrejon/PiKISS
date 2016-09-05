@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.9.92 (2016)
+# Version : Beta 0.9.93 (2016)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -35,7 +35,7 @@ mkDesktopEntry
 # VARIABLES
 # - - - - -
 #
-TITLE="PiKISS (Pi Keeping It Simple, Stupid!) v.0.9.92 (2016).:.Jose Cerrejon | IP: $(hostname -I)$CPU"
+TITLE="PiKISS (Pi Keeping It Simple, Stupid!) v.0.9.93 (2016).:.Jose Cerrejon | IP: $(hostname -I)$CPU"
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
 NOINTERNETCHECK=0

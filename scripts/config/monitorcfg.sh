@@ -8,6 +8,7 @@
 #
 clear
 
+sudo mount -o remount,rw /boot
 tvservice -d edid > /tmp/edid
 edidparser edid | grep 'mode (' | sed -e 's/\<HDMI:EDID\>//g' | sed -e 's/^[ \t]*//' > /tmp/modes
 cat -n /tmp/modes > /tmp/modes_num

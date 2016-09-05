@@ -2,8 +2,8 @@
 #
 # Description : Disable services with yes/no answer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.6 (21/Mar/15)
-# Compatible  : Raspberry Pi 1 & 2 (tested), ODROID-C1 (tested)
+# Version     : 0.7 (05/Sep/16)
+# Compatible  : Raspberry Pi 1 & 2 (tested), ODROID-C1 (NOT tested)
 #
 # HELP	      · Package chkconfig to see daemon status
 #
@@ -22,55 +22,43 @@ services_ODROID(){
 	echo -e "\nNTP (Network Time Protocol) daemon.\nTIP: Don't disable if you need time syncronization with internet."
 	read -p "Disable? [y/n] " option
 	case "$option" in
-	    y*) sudo update-rc.d ntp disable ;;
+	    y*) sudo systemctl disable ntp ;;
 	esac
 
 	echo -e "\nWhoopsie (Useless: Ubuntu Error Reporting daemon)."
 	read -p "Disable? [y/n] " option
 	case "$option" in
-	    y*) sudo service whoopsie stop ;; 
+	    y*) sudo systemctl disable whoopsie ;;
 	esac
 
 	echo -e "\nCups for manage printers."
 	read -p "Disable? [y/n] " option
 	case "$option" in
-	    y*) sudo service cups stop && sudo service cups-browsed stop ;; 
+	    y*) sudo systemctl disable cups && sudo systemctl disable cups-browsed ;;
 	esac
 
 	echo -e "\nBluetooth."
 	read -p "Disable? [y/n] " option
 	case "$option" in
-	    y*) sudo service bluetooth stop ;; 
+	    y*) sudo systemctl disable bluetooth ;;
 	esac
 
 	echo -e "\nAbout Desktop daemons\nDisable DBUS,Console Kit daemon\nTIP: Disable if you don't use desktop environment."
 	read -p "Disable? [y/n] " option
 	case "$option" in
-	    y*) sudo update-rc.d dbus disable ; sudo update-rc.d console-kit-daemon disable ; sudo killall dbus-daemon ; sudo killall dbus-launch ;;
-	esac
-
-	# echo -e "\nCups/Sane\nTIP: Useless if you don't use printer or scanner"
-	# read -p "Disable? [y/n] " option
-	# case "$option" in
-	#     y*) sudo update-rc.d cups disable ; sudo update-rc.d saned disable ;; 
-	# esac
-
-	echo -e "\nPlymouth\nTIP: Boot animation"
-	read -p "Disable? [y/n] " option
-	case "$option" in
-	    y*) sudo update-rc.d plymouth disable ; sudo update-rc.d plymouth-log disable ;; 
+	    y*) sudo systemctl disable dbus ; sudo killall dbus-daemon ;;
 	esac
 
 	echo -e "\nKeyboard setup\n"
 	read -p "Disable? [y/n] " option
 	case "$option" in
-	    y*) sudo update-rc.d keyboard-setup disable ;; 
+	    y*) sudo systemctl disable keyboard-setup ;;
 	esac
 
 	echo -e "\hdparm\nTIP: Useless if you don't use an external USB or HD device continuously"
 	read -p "Disable? [y/n] " option
 	case "$option" in
-	    y*) sudo update-rc.d hdparm disable ;; 
+	    y*) sudo systemctl disable hdparm ;;
 	esac
 }
 
@@ -78,49 +66,37 @@ services_RPi(){
 	echo -e "\nNTP (Network Time Protocol) daemon.\nTIP: Don't disable if you need time syncronization with internet."
 	read -p "Disable? [y/n] " option
 	case "$option" in
-	    y*) sudo update-rc.d ntp disable ;;
+	    y*) sudo systemctl disable ntp ;;
 	esac
 
 	echo -e "\nTriggerhappy daemon\nTIP: Useless if you don't use keyboard keys like up/down volume, media keys..."
 	read -p "Disable? [y/n] " option
 	case "$option" in
-	    y*) sudo update-rc.d triggerhappy disable ;; 
+	    y*) sudo systemctl disable triggerhappy ;;
 	esac
 
 	echo -e "\nAbout Desktop daemons\nDisable DBUS,Console Kit daemon\nTIP: Disable if you don't use desktop environment."
 	read -p "Disable? [y/n] " option
 	case "$option" in
-	    y*) sudo update-rc.d dbus disable ; sudo update-rc.d console-kit-daemon disable ; sudo killall dbus-daemon ; sudo killall dbus-launch ;;
-	esac
-
-	# echo -e "\nCups/Sane\nTIP: Useless if you don't use printer or scanner"
-	# read -p "Disable? [y/n] " option
-	# case "$option" in
-	#     y*) sudo update-rc.d cups disable ; sudo update-rc.d saned disable ;; 
-	# esac
-
-	echo -e "\nPlymouth\nTIP: Boot animation"
-	read -p "Disable? [y/n] " option
-	case "$option" in
-	    y*) sudo update-rc.d plymouth disable ; sudo update-rc.d plymouth-log disable ;; 
+	    y*) sudo systemctl disable dbus ; sudo killall dbus-daemon ;
 	esac
 
 	echo -e "\nKeyboard setup\n"
 	read -p "Disable? [y/n] " option
 	case "$option" in
-	    y*) sudo update-rc.d keyboard-setup disable ;; 
+	    y*) sudo systemctl disable keyboard-setup ;;
 	esac
 
 	echo -e "\nRemove rsyslog (If you don't want to log files)\n"
 	read -p "Disable? [y/n] " option
 	case "$option" in
-	    y*) sudo update-rc.d -f rsyslog remove ;; 
+	    y*) sudo systemctl disable rsyslog ;;
 	esac
 
-	echo -e "\hdparm\nTIP: Useless if you don't use an external USB or HD device continuously"
+	echo -e "\nhdparm - TIP: Useless if you don't use an external USB or HD device continuously"
 	read -p "Disable? [y/n] " option
 	case "$option" in
-	    y*) sudo update-rc.d hdparm disable ;; 
+	    y*) sudo systemctl disable hdparm ;;
 	esac
 }
 
