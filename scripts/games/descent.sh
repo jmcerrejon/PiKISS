@@ -2,9 +2,9 @@
 #
 # Description : Descent 1 & 2
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.8.2 (17/Apr/15)
-# Compatible  : Raspberry Pi 1 & 2 (tested)
-#   
+# Version     : 0.8.3 (06/Sep/16)
+# Compatible  : Raspberry Pi 1,2 & 3 (tested)
+#
 # HELP 		  : To uninstall: sudo dpkg -r d1x-rebirth-data-shareware d1x-rebirth d2x-rebirth-data-demo d2x-rebirth && $(sudo rm -r /usr/share/games/d1x-rebirth/ /usr/share/games/d2x-rebirth/ ~/.d1x-rebirth ~/.d2x-rebirth)
 # 			  : https://github.com/dxx-rebirth/dxx-rebirth
 clear
@@ -65,4 +65,4 @@ do
 done
 
 clear
-read -p "Done!. type d1x-rebirth or d2x-rebirth to Play. Press [ENTER] to continue..."
+read -p "Done!. type /usr/games/d1x-rebirth or /usr/games/d2x-rebirth to Play. Press [ENTER] to continue..."

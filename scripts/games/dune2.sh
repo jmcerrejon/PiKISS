@@ -2,7 +2,8 @@
 #
 # Description : Download & Install Dune 2
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (12/May/14)
+# Version     : 1.1 (06/Sep/16)
+# Compatible  : Raspberry Pi 1,2 & 3 (tested)
 #
 clear
 DATA_DIR="$HOME/.config/dunelegacy/data"
@@ -10,8 +11,11 @@ DUNE2_GAME="http://www.bestoldgames.net/download/bgames/dune-2.zip"
 
 # Dune 2 Legacy
 echo "Downloading Dune Legacy..."
-wget -O /tmp/dune2.deb http://www.pandemonium.be/file.php?name=4CE6FC4D6F4F099949A6F42C9473073C5D0916D81CFFDCDD3CD53C10EE90AFB5
-sudo dpkg -i /tmp/dune2.deb
+wget -O /tmp/dunelegacy_0.96.3_armhf.deb https://sourceforge.net/projects/dunelegacy/files/dunelegacy/0.96.3/dunelegacy_0.96.3_armhf.deb/download
+sudo dpkg -i /tmp/dunelegacy_0.96.3_armhf.deb
+
+#echo "Installing dependencies..."
+#sudo apt install -y libSDL-mixer1.2
 
 dialog --backtitle "piKiss" \
          --title     "[ Download Dune 2 Abandonware ]" \

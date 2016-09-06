@@ -9,7 +9,7 @@
 #
 clear
 
-INSTALL_DIR="$HOME/games/"
+INSTALL_DIR="$HOME/games"
 URL_FILE="http://fdarcel.free.fr/picodrive-rpi-chips-0_1.bz2"
 GAME_URL="http://repixel8.com/downloads/games/doroppu.bin"
 
