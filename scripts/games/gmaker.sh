@@ -56,7 +56,8 @@ install(){
     wget $URL_FILE && tar xzvf castilla && tar xzvf tntbf && tar xzvf crate && rm castilla crate tntbf
     echo -e "\nModifying GPU=256 on /boot/config.txt"
     sudo mount -o remount,rw /boot
-    sudo cp /boot/config.txt{,.bak} && sudo sh -c 'echo "gpu_mem_256" >> /boot/config.txt'
+    sudo cp /boot/config.txt{,.bak}
+    $(grep -q gpu_mem "/boot/config.txt") && sudo sed -i 's/gpu_mem.*/gpu_mem=256/g' /boot/config.txt || sudo sed -i '$i gpu_mem=256' /boot/config.txt
     echo -e "\nGenerating desktop icons"
     generateIcons
     echo "Done!. To play, Open the Menu > Games from Desktop or go to install path, cd into game and run with ./SuperCrateBox, ./MalditaCastilla or ./TheyNeedToBeFed"

@@ -2,8 +2,8 @@
 #
 # Description : MAME4ALL for Pi by Squid
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.5 (18/Apr/16)
-# Compatible  : Raspberry Pi 1 & 2 (tested)
+# Version     : 1.6 (07/Sep/16)
+# Compatible  : Raspberry Pi 1, 2 & 3 (tested)
 #
 clear
 
@@ -38,7 +38,7 @@ install()
         mkDesktopEntry
         playgame
     fi
-    echo "Done!. To play go to install path, copy any rom to /roms directory and type: ./mame"
+    echo "Done!. To play, on Desktop Menu > games or go to $INSTALL_DIR path, copy any rom to /roms directory and type: ./mame"
     read -p "Press [Enter] to continue..."
     exit
 }
