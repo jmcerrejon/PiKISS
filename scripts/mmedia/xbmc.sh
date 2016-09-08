@@ -2,19 +2,20 @@
 #
 # Description : Install XBMC - Kodi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.9.1 (5/Apr/15)
-# Compatible  : Raspberry Pi 1 & 2 (tested)
+# Version     : 0.9.2 (8/Sep/16)
+# Compatible  : Raspberry Pi 1, 2 & 3 (tested)
 #
-# HELP        · http://michael.gorven.za.net/raspberrypi/xbmc
+# HELP        · https://www.raspberrypi.org/forums/viewtopic.php?p=832735#p832735
 #
 # TODO	      [ ] Ask user if want to start Kodi from boot.
-#	          [V] Get the latest version
 #
 clear
 
-echo -e "KODI Install (14.1)\n=====================\n· Install 133MB aprox."
-echo "deb http://archive.mene.za.net/raspbian wheezy contrib" | sudo tee -a /etc/apt/sources.list
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key 5243CDED
+echo -e "KODI Install (16.1)\n=====================\n"
+
+echo "deb http://pipplware.pplware.pt/pipplware/dists/jessie/main/binary /" | sudo tee -a /etc/apt/sources.list
+wget -O - http://pipplware.pplware.pt/pipplware/key.asc | sudo apt-key add -
+
 sudo apt-get update
 sudo apt-get install -y xbmc
 

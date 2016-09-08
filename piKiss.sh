@@ -139,7 +139,7 @@ function smInfo(){
 		options=(
 			Back "Back to main menu"
 			Chkimg "Check some distros images to know if they are updated"
-			Webmin "Monitorin tool"
+			Webmin "Monitoring tool"
 			Weather "Weather info from your country"
 			Bmark "Benchmark RPi (CPU, MEM, SD Card...)"
 			Lynis "Lynis is a security auditing tool."
@@ -219,6 +219,7 @@ function smGames(){
 			RWolf "Return to Castle Wolfenstein (Demo)"
 			Crispy-doom "Crispy to play Doom, Heretic, Hexen, Strife"
 			Sqrxz4 "Sqrxz 4: Difficult platform game"
+			Xump "Xump: Simple multi-platform puzzler"
 		)
 	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
@@ -240,9 +241,8 @@ function smGames(){
 	do
 	    case $choice in
 			Back) 		 break ;;
-		#	Minecraft) 	 ./scripts/games/minecraft.sh ;;
-			GMaker) ./scripts/games/gmaker.sh ;;
-			OpenBor) ./scripts/games/openbor.sh ;;
+			GMaker)      ./scripts/games/gmaker.sh ;;
+			OpenBor)     ./scripts/games/openbor.sh ;;
 			Arx-Fatalis) ./scripts/games/arx.sh ;;
 			Dune2) 		 ./scripts/games/dune2.sh ;;
 			Descent) 	 ./scripts/games/descent.sh ;;
@@ -250,6 +250,7 @@ function smGames(){
 			RWolf) 		 ./scripts/games/rwolf.sh ;;
 			Crispy-doom) ./scripts/games/cdoom.sh ;;
 			Sqrxz4) 	 ./scripts/games/sqrxz4.sh ;;
+			Xump) 	 	 ./scripts/games/xump.sh ;;
 	    esac
 	done
 }
@@ -267,10 +268,10 @@ function smEmulators(){
 			Speccy "ZX-Spectrum emulator"
 			Rpix86 "rpix86 MS-DOS emulator"
 			8086 "Compile 8086 PC XT-compatible"
-			Amiga "Some Amiga emulators"
+			Amiga "UAE4ARM Amiga emulator"
 			Gba "Gameboy Advance"
 			PCE-CD "PC-Engine"
-			MSX "Compile or install MSX (Latest)"
+			# MSX "Compile MSX (Latest). Time: 45 minutes."
 			Pifba "Emulates old arcade games using CPS1, CPS2,..."
 		)
 	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
@@ -308,7 +309,7 @@ function smMultimedia(){
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
-			Rplay "XBMC Kodi"
+			Rplay "XBMC Kodi 16.1"
 			Airplay "AirPlay Mirroring on your Pi with RPlay"
 			Kiosk "Image slideshow"
 		)
@@ -359,7 +360,7 @@ function smConfigure(){
 	    case $choice in
 			Back) 		break;;
 			RaspNet)    ./scripts/config/raspnetins.sh;;
-			SSIDCfg)    sudo ./scripts/config/ssidcfg.sh;;
+			SSIDCfg)    ./scripts/config/ssidcfg.sh;;
 			Joypad) 	sudo ./scripts/config/jpad.sh;;
 			Backup) 	sudo ./scripts/config/backup.sh;;
 			Applekeyb) 	sudo ./scripts/config/applekeyb.sh;;

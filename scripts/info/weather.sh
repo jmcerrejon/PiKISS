@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# Description : Show Weather
+# Description : Get Weather Info
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (29/May/14)
+# Version     : 1.1 (09/Sep/16)
 #
 # Help:
 # · http://api.openweathermap.org/data/2.5/forecast/daily?q=Huelva&mode=xml&units=metric&cnt=7&lang=sp
@@ -13,6 +13,10 @@ clear
 if [ -d "./bin" ]; then PATH=$PATH:./bin; else XBOXMAPPATH=./../../bin; fi
 export PATH
 COUNTRY="Huelva,ES"
+
+if  ! which /usr/bin/jq >/dev/null ; then
+    sudo apt -y install jq bc
+fi
 
 echo "AnsiWeather is developed by Frederic Cambus"
 echo "==========================================="

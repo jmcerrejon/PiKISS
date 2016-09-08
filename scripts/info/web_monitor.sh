@@ -3,7 +3,7 @@
 # Description : Web monitor from http://geekytheory.com
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 0.2 (5/Apr/15)
-# Compatible  : Raspberry Pi 1 & 2 (tested)
+# Compatible  : Raspberry Pi 1, 2 & 3 (tested)
 #
 # IMPROVEMENT : linux-dash -> http://pplware.sapo.pt/linux/linux-dash-monitorize-o-seu-linux-a-distancia/
 #
@@ -11,9 +11,8 @@ clear
 
 IP=$(hostname -I)
 
-install()
-{
-	sudo apt-get install -y nodejs npm git
+install(){
+	sudo apt-get install -y nodejs npm
 	cd $HOME
 	git clone https://github.com/GeekyTheory/Raspberry-Pi-Status.git
 	cd Raspberry-Pi-Status
@@ -21,7 +20,7 @@ install()
 	sudo npm install
 }
 
-echo -e "Web monitor with Node.js by http://geekytheory.com\n==================================================\n\n· This script install nodejs, npm, git\n· 15.7 MB of additional disk space will be used.\n· More Info: http://geekytheory.com/panel-de-monitorizacion-para-raspberry-pi-con-node-js\n\nInstalling, please wait..."
+echo -e "Web monitor with Node.js by http://geekytheory.com\n==================================================\n\n· This script install nodejs, npm\n· 13.5 MB of additional disk space will be used.\n· More Info: http://geekytheory.com/panel-de-monitorizacion-para-raspberry-pi-con-node-js\n\n"
 
 read -p "Are you sure you want to continue? [y/n] " option
 case "$option" in

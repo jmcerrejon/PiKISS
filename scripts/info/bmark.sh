@@ -2,10 +2,10 @@
 #
 # Description : Benchmark
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (7/Oct/14)
+# Version     : 1.1 (09/Sep/16)
 #
 # IMPROVEMENT : Test SD: dd if=/dev/zero of=/tmp/salida bs=1M count=300
-# 
+#
 # More Info   : NBench -> http://www.tux.org/~mayer/linux/bmark.html
 # 				Tinymembench -> https://github.com/ssvb/tinymembench
 #
@@ -45,10 +45,9 @@ do
     menuitem=$(<"${INPUT}")
 
     case $menuitem in
-        Nbench) nbench;;
-        Tinymembench) tinymembench;;
-        Tinymembench) tinymembench;;
-        SDCard) SD_Bmark;;
+        Nbench) nbench; break;;
+        Tinymembench) tinymembench; break;;
+        SDCard) SD_Bmark; break;;
         Exit) echo -e "\nBye"; break;;
     esac
 

@@ -2,7 +2,7 @@
 #
 # Description : Gameboy Advance emulator thanks to DPR
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1 (5/Apr/15)
+# Version     : 1.2 (07/Sep/16)
 # Compatible  : Raspberry Pi 1 & 2 (tested)
 #
 # HELP        · http://www.raspberrypi.org/forums/viewtopic.php?f=78&t=37433
@@ -32,7 +32,7 @@ install()
         #sudo apt-get install -y libsdl1.2debian libsdl-mixer1.2 libsdl-ttf2.0-0
         SDL_fix_Rpi
         mkdir -p $INSTALL_DIR && cd $_
-        wget -qO- -O tmp.tar.gz $URL_FILE && tar xzf tmp.tar.gz && rm tmp.tar.gz
+        wget -4 -qO- -O tmp.tar.gz $URL_FILE && tar xzf tmp.tar.gz && rm tmp.tar.gz
         cd gpsp/
         wget -O watman.zip $GAME_URL
     fi
