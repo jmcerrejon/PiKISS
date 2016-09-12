@@ -2,7 +2,7 @@
 #
 # Description : UPnP/DLNA MediaServer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.9.2 (7/Nov/14)
+# Version     : 0.9.3 (12/Sep/16)
 #
 # HELP        · http://www.raspberrypi.org/forums/viewtopic.php?p=518676#p518676
 #             · http://www.raspberrypi.org/forums/viewtopic.php?t=16352
@@ -10,6 +10,9 @@
 #             · http://everbit.wordpress.com/2013/04/01/minidlna-on-the-raspberry-pi/
 #
 clear
+. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
+
 URL_MINIDLNA="http://sourceforge.net/projects/minidlna/files/latest/download?source=files"
 URL_MINIDLNA_MISA="http://misapuntesde.com/res/minidlna_1-1.4_armhf.deb"
 MINIDLNA_FILES="http://misapuntesde.com/res/minidlna_files.tar.gz"
@@ -22,8 +25,9 @@ after_install(){
     sudo tar xzf /tmp/tmp.tar.gz -C / && rm /tmp/tmp.tar.gz
     echo -e "\n\nCreating music, videos & images directories...\n"
     create_dir
-    sudo update-rc.d minidlna defaults
-    read -p "Done!. minidlna running at boot. Usage: sudo service minidlna {start|stop|status|restart|force-reload|rotate}"
+    sudo systemctl enable minidlna
+    echo -e "Done!. minidlna running at boot. Usage: sudo service minidlna {start|stop|status|restart|force-reload|rotate}\nTIP: For re-scan content: sudo service minidlna -R"
+    read -p 'Press [ENTER] to continue...'
 }
 
 create_dir(){
@@ -50,22 +54,23 @@ minidlna_latest(){
     # "Oh and by the way, it streams 1080p to XBoxes, Playstations, Smart TVs and other computers flawlessly..." - Ben Brooks
     echo -e "Compile & download minidlna(lastest version)\n============================================\n\n"
     # Doesn't work: apt-get build-dep minidlna
-    mkdir -p $HOME/sc && cd $_
-    wget -O tmp.tar.gz $URL_MINIDLNA
+    mkdir -p $HOME/sc && cd $HOME/sc
+    # wget -O tmp.tar.gz $URL_MINIDLNA[]
     tar xzf tmp.tar.gz && rm tmp.tar.gz
     cd minidlna*
-    sudo apt-get install -y libexif-dev libsysfs-dev libid3tag0-dev libFLAC-dev libvorbis-dev libsqlite3-dev libavformat-dev autopoint autoconf libjpeg8-dev gettext libavformat53 automake
-    clear
-    echo -e "\n\nGrab a coffee (About 10 minutes)... ;)\n"
+    check_update
+    sudo apt install -y libexif-dev libsysfs-dev libid3tag0-dev libFLAC-dev libvorbis-dev libsqlite3-dev libavformat-dev autopoint autoconf libjpeg8-dev gettext libavformat56 automake
+    echo -e "\n\nGrab a coffee (It takes about 10 minutes)... ;)\n"
     ./autogen.sh && ./configure
     make
-    make install
+    sudo make install
     after_install
 }
-
+minidlna_latest
+exit
 minidlna_misa(){
     wget $URL_MINIDLNA_MISA
-    sudo apt-get install -y libavformat53
+    sudo apt-get install -y libavformat56
     sudo dpkg -i minidlna*.deb
     rm minidlna*.deb
     after_install

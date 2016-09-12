@@ -343,7 +343,7 @@ function smConfigure(){
 			SSIDCfg "Configure SSID (WPA/WPA2 with PSK)"
 			Joypad "Configure WII, XBox360 controller"
 			Backup "Simple backup dir to run daily"
-			Applekeyb "Bluetooth keyboard"
+			# Applekeyb "Bluetooth keyboard"
 			Netcfg "Configure static IP"
 			Monitorcfg "Configure your TV resolution"
 		)
@@ -361,11 +361,11 @@ function smConfigure(){
 			Back) 		break;;
 			RaspNet)    ./scripts/config/raspnetins.sh;;
 			SSIDCfg)    ./scripts/config/ssidcfg.sh;;
-			Joypad) 	sudo ./scripts/config/jpad.sh;;
-			Backup) 	sudo ./scripts/config/backup.sh;;
-			Applekeyb) 	sudo ./scripts/config/applekeyb.sh;;
-			Netcfg) 	sudo ./scripts/config/netconfig.sh;;
-			Monitorcfg) sudo ./scripts/config/monitorcfg.sh;;
+			Joypad) 	./scripts/config/jpad.sh;;
+			Backup) 	./scripts/config/backup.sh;;
+			Applekeyb) 	./scripts/config/applekeyb.sh;;
+			Netcfg) 	./scripts/config/netconfig.sh;;
+			Monitorcfg) ./scripts/config/monitorcfg.sh;;
 	    esac
 	done
 }
@@ -377,7 +377,7 @@ function smInternet(){
 		options=(
 			Back "Back to main menu"
 			Plowshare "Direct download from hosters like uploaded,..."
-			Epiphany "Web browser"
+			# Browser "Web browser"
 			Downmp3 "Download mp3 from GrooveShark"
 		)
 	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
@@ -393,7 +393,7 @@ function smInternet(){
 	    case $choice in
 			Back) 		break ;;
 			Plowshare) 	./scripts/inet/ddown.sh ;;
-			Epiphany)   ./scripts/inet/epiphany.sh ;;
+			Browser)   ./scripts/inet/browser.sh ;;
 			Downmp3) 	./scripts/inet/dwnmp3.sh ;;
 	    esac
 	done
@@ -433,9 +433,9 @@ function smServer(){
 	do
 	    case $choice in
 			Back) 		break ;;
+			VNCServer)  ./scripts/server/vncserver.sh ;;
+	        Nagios)  	./scripts/server/nagios.sh ;;
 	        AdBlock)  	./scripts/server/adblock.sh ;;
-	        VNCServer)  ./scripts/server/vncserver.sh ;;
-	        Nagios)  	sudo ./scripts/server/nagios.sh ;;
 	        Cups)  		./scripts/server/printer.sh ;;
 	        FTP)  		./scripts/server/ftp.sh ;;
         	Minidlna)	./scripts/server/mediaserver.sh ;;
@@ -443,7 +443,7 @@ function smServer(){
 			Smtp) 		./scripts/server/smtp.sh ;;
         	WebDAV) 	./scripts/server/webdav.sh ;;
         	SMB) 		./scripts/server/fileserver.sh ;;
-        	OwnCloud) 	sudo ./scripts/server/owncloud.sh ;;
+        	OwnCloud) 	./scripts/server/owncloud.sh ;;
         	GitServer) 	./scripts/server/gitserver.sh ;;
         	FWork)		./scripts/server/fwork.sh ;;
         	DB) 		./scripts/server/db.sh ;;
@@ -505,7 +505,7 @@ do
 		Multimedia "Help you to install apps like XBMC"
 		Configure "Installations are piece of cake now"
 		Internet "All refered to internet"
-		Server "Use your distro like a server"
+		Server "Use your distro as a server"
 		Others "Scripts with others thematics"
 		Exit "Exit to the shell"
 	)

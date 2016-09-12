@@ -5,6 +5,7 @@
 # Version     : 1.0 (12/Jun/14)
 #
 # IMPROVEMENT : Pair any device with dialog
+#             · https://www.pi-supply.com/make/fix-raspberry-pi-3-bluetooth-issues/
 #
 clear
 

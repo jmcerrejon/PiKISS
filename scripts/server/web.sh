@@ -17,8 +17,7 @@ tempfile=`tempfile 2>/dev/null` || tempfile=/tmp/test$$
 nginx_url='http://nginx.org/download/nginx-1.6.2.tar.gz'
 
 nginx_ssl(){
-    nginx()
-    sudo apt-get install -y git
+    nginx
     git clone https://github.com/letsencrypt/letsencrypt
     cd letsencrypt
     ./letsencrypt-auto --help
@@ -85,7 +84,7 @@ while true
 do
 	dialog --backtitle "PiKISS" \
 		--title 	"[ Install Web Server ]" --clear \
-		--menu  	"Pick one:" 15 55 5 \
+		--menu  	"Pick one:" 15 55 6 \
         	Apache  	"Apache" \
               Monkey        "Monkey HTTP" \
               NGINX         "Nginx" \

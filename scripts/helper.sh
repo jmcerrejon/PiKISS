@@ -120,3 +120,36 @@ install_joypad() {
 
 	echo "Done!"
 }
+
+package_check() {
+	dpkg-query -W -f='${Status}' "$1" 2>/dev/null | grep -c "ok installed"
+}
+
+check_dependencies() {
+	INSTALLER_DEPS=("$@")
+	for i in "${INSTALLER_DEPS[@]}"; do
+		echo -n ":::    Checking for $i..."
+		package_check ${i} > /dev/null
+		if ! [ $? -eq 0 ]; then
+			echo -n " Not found! Installing...\n"
+			sudo apt install -y "$i"
+			echo " done!"
+		else
+			echo " already installed!"
+		fi
+	done
+}
+
+#
+# Check last time 'apt-get update' and run it if has passed 7 days
+#
+check_update() {
+	NOW=$(date -d "2016-09-10 11:14:32" +%s)
+	UPDATE=$(stat -c %y /var/cache/apt/ | awk '{print $1,$2}' | date -d $? +%s)
+	# UPDATE=$(stat -c %y /var/cache/apt/ | awk '{print $1,$2}' | date -d $? +%s)
+	# passed days
+	RESULT=$(( (UPDATE - NOW) / 86400))
+	if [ $RESULT -ge 7 ]; then
+	    sudo apt-get update
+	fi
+}

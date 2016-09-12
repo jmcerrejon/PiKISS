@@ -9,7 +9,7 @@
 #			  · http://raspberryparatorpes.net/proyectos/optimizar-samba-preparando-un-nas-o-servidor-casero-y-4/
 #			  · sudo pdbedit -L <- Show list user
 #			  · sudo smbclient -L localhost <- List shares dir
-#			  
+#
 clear
 
 DIR_SHARE=''
@@ -28,7 +28,7 @@ case $response in
    255) echo "[ESC] key pressed.";exit;;
 esac
 
-[[ ! -e /etc/samba ]] && sudo apt-get install -y samba samba-common-bin
+sudo apt install -y samba samba-common-bin
 
 dialog  --title     "[ Samba Config to share dir ]" \
 		--yes-label "Public" \
@@ -71,7 +71,7 @@ echo -e "[HOME_SHARED] \npath = ${DIR_SHARE}\ncomment = Shared directory\n ${WPE
 #test
 testparm -s
 
-sudo service samba restart
+# sudo systemctl enable samba
 
 echo -e 'Done. Wait a minute and go to another device/PC and input the next path in your files browser:\n · Windows: \\\\'"$(hostname)"'\n · Linux: smb://'"$(hostname)"
 read -p 'Press [ENTER] to continue...'

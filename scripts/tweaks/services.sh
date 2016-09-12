@@ -2,8 +2,8 @@
 #
 # Description : Disable services with yes/no answer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.7 (05/Sep/16)
-# Compatible  : Raspberry Pi 1 & 2 (tested), ODROID-C1 (NOT tested)
+# Version     : 0.8 (12/Sep/16)
+# Compatible  : Raspberry Pi 1, 2 & 3 (tested), ODROID-C1 (NOT tested)
 #
 # HELP	      · Package chkconfig to see daemon status
 #
@@ -101,7 +101,7 @@ services_RPi(){
 }
 
 echo -e "Disable daemons (even on boot)\n==============================\n"
-free -h
+free -oh | grep Mem
 
 if [[ ${MODEL} == 'Raspberry Pi' ]]; then
     services_RPi
@@ -109,4 +109,5 @@ elif [[ ${MODEL} == 'ODROID-C1' ]]; then
     services_ODROID
 fi
 
+free -oh | grep Mem
 read -p "Have a nice day and don't blame me!. Press [Enter] to continue..."

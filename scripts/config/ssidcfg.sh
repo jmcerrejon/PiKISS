@@ -2,20 +2,18 @@
 #
 # Description : SSID Config (WPA/WPA2 with PSK)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (11/Aug/14)
-#             
+# Version     : 1.1 (12/Sep/16)
+#
 clear
-
-if [[ ! -e /usr/bin/wpa_passphrase ]]; then
-  sudo apt-get install -y wpasupplicant wireless-tools
-fi
 
 echo "Searching SSID..."
 
 DATA=$(tempfile 2>/dev/null)
-WLAN=$(egrep 'wlan' /proc/net/dev | sed 's/://g' | awk '{print $1}')
+# TODO: Get wlan of your board
+#WLAN=$(egrep 'wlan' /proc/net/dev | sed 's/://g' | awk '{print $1}')
+WLAN='wlan0'
 
-iwlist $WLAN scanning > /tmp/wifiscan
+sudo iwlist wlan0 scan > /tmp/wifiscan
 
 [ -f /tmp/ssids ] && rm /tmp/ssids
 
@@ -42,17 +40,17 @@ while [ "$i" -le "$n_results" ]; do
         onepower=$(awk -v v3=$onepower 'BEGIN{ print v3 * 10 / 7}')
         onepower=${onepower%.*}
         onepower="(Signal:$onepower%)"
-                                                                                                                                    
-        echo "$onessid $oneencryption$onepower" >> /tmp/ssids                                                                          
+
+        echo "$onessid $oneencryption$onepower" >> /tmp/ssids
 
         i=`expr $i + 1`
 done
 
 SSID=$(cat /tmp/ssids)
 
-rm /tmp/onecell
-rm /tmp/ssids
-rm /tmp/wifiscan
+# [ -f /tmp/onecell ] && rm /tmp/onecell
+# [ -f /tmp/ssids ] && rm /tmp/ssids
+# [ -f /tmp/wifiscan ] && rm /tmp/wifiscan
 
 # trap it
 trap 'rm -f $DATA' 0 1 2 5 15
@@ -69,9 +67,6 @@ case $ret in
   255)
     echo -e "\nESC pressed." && exit;;
 esac
-
-
-
 
 dialog --insecure --passwordbox "Enter your password (Between 8-63 characters):" 8 50 2>"$DATA"
 ret=$?
@@ -94,26 +89,11 @@ if [[ ! -e '/etc/wpa_supplicant/wpa_supplicant.conf.pre' ]]; then
   sudo cp /etc/wpa_supplicant/wpa_supplicant.conf{,.pre}
 fi
 
-# Ugly way to check if not Raspbian. Change it NOW!
-if [[ -e '/usr/bin/lsb_release' ]]; then
-  nmcli d disconnect iface ${WLAN}
-  clear ; echo "Connecting, please wait..."
-  nmcli d wifi connect ${SSIDCHOSEN} password ${PSWD} iface ${WLAN}
-  notify-send "$WLAN device joined to $SSIDCHOSEN."
-else
-  echo "Desconnecting wired network eth0..."
-  #sudo ifconfig eth0 down
-  echo "Connecting, please wait..."
-  wpa_passphrase ${SSIDCHOSEN} ${PSWD} | sudo tee -a /etc/wpa_supplicant/wpa_supplicant.conf
-  sudo dhclient -v "${WLAN}"
-fi
+echo -e "country=GB\nctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev\nupdate_config=1\nnetwork={\n    ssid=\"$SSIDCHOSEN\"\n    psk=\"$PSWD\"\n}\n" | sudo tee /etc/wpa_supplicant/wpa_supplicant.conf
 
-PINGOUTPUT=$(ping -c 1 8.8.8.8 > /dev/null && echo 'true')
+clear
+# sudo ifdown wlan0
+# sudo ifup wlan0
 
-if [ "$PINGOUTPUT" = true ]; then
-  echo -e "Done!. Backup & Modified wpa_supplicant.conf. Please reboot to changes take effect."
-else
-  echo -e "Maybe something is wrong. Backup & Modified wpa_supplicant.conf. Please reboot and check if you Wifi work or run the script again."
-fi
-
+echo -e "Done!. Backed up/Modified wpa_supplicant.conf. Please reboot to changes take effect."
 read -p "Press [ENTER] to continue..."

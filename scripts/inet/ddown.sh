@@ -2,9 +2,7 @@
 #
 # Description : Install Plowshare4 for direct download links
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.8 (5/Apr/15)
-#
-# TODO        · Option to select all/current user 
+# Version     : 1.0 (12/Sep/16)
 #
 clear
 
@@ -17,6 +15,8 @@ cd $HOME
 git clone https://github.com/mcrapet/plowshare.git
 cd plowshare
 sudo make install
+plowmod --install
 cd ..
 rm -rf $HOME/plowshare
-read -p 'Done!. You can use plowdel, plowdown, plowlist, plowmod, plowprobe, plowup. Press [ENTER] to continue...'
+echo -e "Done!. You can use plowdel, plowdown, plowlist, plowmod, plowprobe, plowup.\n\nExample: plowdown -a 'user:password' http://ul.to/mldskbm"
+read -p 'Press [ENTER] to continue...'

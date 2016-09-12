@@ -10,16 +10,15 @@ clear
 . ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-
 echo -e "\nNet Tools - MITM Pentesting Opensource Toolkit\n==============================================\n\n· Require run from X\n\n"
-#dependences
-echo -e "\nUpgrading Raspbian...\n\n"; clean
-sudo apt-get update && sudo apt-get dist-upgrade -y
-echo -e "\nInstalling dependences (62.3 MB)...\n\n"; clean
+
+check_update
+
+echo -e "\nInstalling dependences (62.3 MB)...\n\n"
 sudo apt-get install -y zenity nmap ettercap-text-only macchanger driftnet apache2 sslstrip
 
 echo -e "\nInstalling MetaSploit (latest)...\n\n"
-mkdir -p $HOME/sc && cd $_
+mkdir -p $HOME/sc && cd $HOME/sc
 wget http://downloads.metasploit.com/data/releases/framework-latest.tar.bz2
 tar jxpf framework-latest.tar.bz2
 sudo apt-get install -y ruby subversion
