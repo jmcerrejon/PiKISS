@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.9.93 (2016)
+# Version : Beta 0.9.94 (2016)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -35,7 +35,7 @@ mkDesktopEntry
 # VARIABLES
 # - - - - -
 #
-TITLE="PiKISS (Pi Keeping It Simple, Stupid!) v.0.9.93 (2016).:.Jose Cerrejon | IP: $(hostname -I)$CPU"
+TITLE="PiKISS (Pi Keeping It Simple, Stupid!) v.0.9.94 (2016).:.Jose Cerrejon | IP: $(hostname -I)$CPU"
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
 NOINTERNETCHECK=0
@@ -220,6 +220,7 @@ function smGames(){
 			Crispy-doom "Crispy to play Doom, Heretic, Hexen, Strife"
 			Sqrxz4 "Sqrxz 4: Difficult platform game"
 			Xump "Xump: Simple multi-platform puzzler"
+			Giana "Giana's Return: Simple multi-platform puzzler"
 		)
 	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
@@ -251,6 +252,7 @@ function smGames(){
 			Crispy-doom) ./scripts/games/cdoom.sh ;;
 			Sqrxz4) 	 ./scripts/games/sqrxz4.sh ;;
 			Xump) 	 	 ./scripts/games/xump.sh ;;
+			Giana) 	 	 ./scripts/games/giana.sh ;;
 	    esac
 	done
 }

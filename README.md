@@ -22,9 +22,13 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 ###[ ChangeLog (dd/mm/yy)]
 
+###(13/09/16)
+
+· Added Games > Giana's return. Updated Spectrum emulator unrealspeccy to 0.0.69.1
+
 ###(12/09/16)
 
-·  Fix issues and improve config, inet, other, server, tweaks sections. Raspberry Pi 3 ready.
+· Fix issues and improve config, inet, other, server, tweaks sections. Raspberry Pi 3 ready.
 
 ###(08/09/16)
 
@@ -63,98 +67,6 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 ###(25/02/16)
 
 · Added games > Game Maker games
-
-####(26/05/15)
-
-· Added server > Nagios
-
-· Added Info > Webmin
-
-####(23/05/15)
-
-· Added games > OpenBor for Raspberry Pi, Debian Jessie
-
-####(19/05/15)
-
-· Added game Arx Fatalis for Raspberry Pi 2, ODROID and Debian Jessie
-
-####(09/05/15)
-
-· Added server > Ad Blocker
-
-####(21/04/15)
-
-· Added others > ramlog
-
-· Uddated tweaks > others.sh (Install package fuck)
-
-####(18/04/15)
-
-· Added Emus > Picodrive & Caprice for Raspberry Pi 2 (Amstrad emulator)
-
-####(17/04/15)
-
-· Updated SDL2, Spectrum emulator
-
-####(05/04/15)
-
-· Added Others > NetTools - MITM Pentesting Opensource Toolkit
-
-####(21/03/15)
-
-· Updated Emulators > Mame
-
-####(19/03/15)
-
-· Updated Games > Return to Castle Wolfenstein
-
-####(17/03/15)
-
-· Added Games > Descent 1 & 2 (Shareware)
-
-· Update Emus > PiSNES
-
-####(16/03/15)
-
-· ODROID: Games > Quake 2
-
-· RPi: Updated Games > Quake 2
-
-· Updated Tweaks > Others
-
-####(14/03/15)
-
-· Enhaced Games > Crispy-Doom
-
-· ODROID: Games > Crispy-Doom
-
-####(12/03/15)
-
-· Added Server > Install vsftpd (FTP) Server
-
-####(11/03/15)
-
-· ODROID: Added Tweaks > others script
-
-· Added Tweaks > removepkg script
-
-· Update Info > check lastmod image
-
-####(09/03/15)
-
-· ODROID: Added Tweaks > autologin script
-
-####(08/03/15)
-
-· piKiss.sh refactorized
-
-####(11/01/15)
-
-· Updated ownCloud to 7.0.4
-
-####(11/01/15)
-
-· Added Info > Lynis (security auditing tool)
 
 ...
 
