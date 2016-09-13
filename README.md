@@ -24,7 +24,7 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 ###(13/09/16)
 
-· Added Games > Giana's return. Updated Spectrum emulator unrealspeccy to 0.0.69.1
+· Added Games > Giana's return, ScummVM. Updated Spectrum emulator unrealspeccy to 0.0.69.1
 
 ###(12/09/16)
 

@@ -275,6 +275,7 @@ function smEmulators(){
 			PCE-CD "PC-Engine"
 			# MSX "Compile MSX (Latest). Time: 45 minutes."
 			Pifba "Emulates old arcade games using CPS1, CPS2,..."
+			ScummVM "Allow gamers to play point-and-click adventure games"
 		)
 	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
@@ -293,13 +294,14 @@ function smEmulators(){
 			Snes) 		./scripts/emus/pisnes.sh ;;
 			Mame4all) 	./scripts/emus/mame4allpi.sh ;;
 			Speccy) 	./scripts/emus/speccy.sh ;;
-			Amiga) 	./scripts/emus/amiga.sh ;;
+			Amiga) 		./scripts/emus/amiga.sh ;;
 			Rpix86) 	./scripts/emus/rpix86.sh ;;
 			8086) 		./scripts/emus/8086tiny.sh ;;
 			Gba)        ./scripts/emus/gba.sh ;;
 			PCE-CD)     ./scripts/emus/pce.sh ;;
-			MSX)     ./scripts/emus/msx.sh ;;
+			MSX)     	./scripts/emus/msx.sh ;;
 			Pifba) 		./scripts/emus/pifba.sh ;;
+			ScummVM) 	./scripts/emus/scummvm.sh ;;
 	    esac
 	done
 }

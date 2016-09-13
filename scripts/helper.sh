@@ -153,3 +153,34 @@ check_update() {
 	    sudo apt-get update
 	fi
 }
+
+#
+# Install SDL2 from RetroPie
+# NOTE: It has a bug with ScummVM
+#
+install_sdl2() {
+	echo "Installing SDL2 from RetroPie, please wait..."
+	mkdir -p $HOME/sc && cd $HOME/sc
+	git clone https://github.com/RetroPie/RetroPie-Setup.git
+	cd RetroPie-Setup/
+	sudo ./retropie_packages.sh sdl2 install_bin
+}
+
+#
+#Compile SDL2
+#
+compile_sdl2() {
+	if [ ! -e /usr/include/SDL2 ]; then
+		echo "Compiling SDL2 2.0.4, please wait about 5 minutes..."
+		mkdir -p $HOME/sc && cd $HOME/sc
+		wget https://www.libsdl.org/release/SDL2-2.0.4.zip
+		unzip SDL2-2.0.4.zip && cd SDL2-2.0.4
+		./configure --host=armv7l-raspberry-linux-gnueabihf --prefix=/usr --disable-pulseaudio --disable-esd --disable-video-mir --disable-video-wayland --disable-video-x11 --disable-video-opengl
+		make -j4
+		sudo make install
+		echo "Done!"
+	else
+		echo -e "\n· SDL2 already installed.\n"
+	fi
+
+}
