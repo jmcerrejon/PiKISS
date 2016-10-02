@@ -91,6 +91,7 @@ done
 }
 
 mkDesktopEntry() {
+	# Add lxterminal -t "PiKISS" --geometry=150x25 --working-directory=/home/pi/PiKISS -e './piKiss.sh'
 	if [[ ! -e /usr/share/applications/pikiss.desktop ]]; then
 		sudo sh -c 'echo "[Desktop Entry]\nName=PiKISS\nComment=A bunch of scripts with menu to make your life easier\nExec='$PWD'/piKiss.sh\nIcon=terminal\nTerminal=true\nType=Application\nCategories=ConsoleOnly;Utility;System;\nPath='$PWD'/" > /usr/share/applications/pikiss.desktop'
 		# if [[ -e ./piKiss.sh ]]; then
