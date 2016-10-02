@@ -2,7 +2,7 @@
 #
 # Description : OpenMSX emulator 0.13.0
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1 (02/Oct/16)
+# Version     : 1.2 (02/Oct/16)
 # Compatible  : Raspberry Pi 1, 2 & 3 (tested)
 #
 # TODO        : Copy SYSTEM ROMS to $SYSTEMROMS
@@ -32,6 +32,12 @@ install(){
 	sudo dpkg -i openmsx_0.13.0_armhf.deb
 	rm openmsx_0.13.0_armhf.deb
 
+	postinstall
+}
+
+postinstall(){
+	mkdir -p $HOME/.openMSX/share/
+	cp ../../res/settings.xml ~/.openMSX/share/
 	downloadGame
 
 	echo -e "· You can play a game installed at $GAMES_PATH \n· If you want to emulate real MSX systems and not only the free C-BIOS machines, put the system ROMs in one of the following directories: ~/.openMSX/share/systemroms\n· If you want openMSX to find MSX software referred to from replays or savestates you get from your friends, copy that MSX software to ~/.openMSX/share/software"
@@ -53,11 +59,7 @@ compile(){
 	make
 	sudo make install
 
-	downloadGame
-
-	echo -e "· You can play a game installed at $GAMES_PATH \n· If you want to emulate real MSX systems and not only the free C-BIOS machines, put the system ROMs in one of the following directories: ~/.openMSX/share/systemroms\n· If you want openMSX to find MSX software referred to from replays or savestates you get from your friends, copy that MSX software to ~/.openMSX/share/software"
-	read -p "Press [ENTER] to continue..."
-	exit
+	postinstall
 }
 
 while true

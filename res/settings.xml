@@ -1,0 +1,36 @@
+<!DOCTYPE settings SYSTEM 'settings.dtd'>
+<settings>
+  <settings>
+    <setting id="scanline">0</setting>
+    <setting id="blur">0</setting>
+    <setting id="horizontal_stretch">320.0</setting>
+    <setting id="auto_enable_reverse">off</setting>
+    <setting id="load_icons">none</setting>
+    <setting id="maxframeskip">2</setting>
+    <setting id="resampler">blip</setting>
+    <setting id="fullspeedwhenloading">true</setting>
+    <setting id="fast_cas_load_hack_enabled">true</setting>
+    <setting id="invalid_psg_directions_callback">psgdirectioncallback</setting>
+    <setting id="di_halt_callback">dihaltcallback</setting>
+    <setting id="scale_factor">3</setting>
+  </settings>
+  <bindings>
+    <bind key="keyb F1">main_menu_toggle</bind>
+    <bind key="keyb F8">exit</bind>
+    <bind key="joy1 button0 up">keymatrixup 7 0x01</bind>
+    <bind key="joy1 button3 up">keymatrixup 7 0x80</bind>
+    <bind key="joy1 button4 up">keymatrixup 6 0x20</bind>
+    <bind key="joy1 button5 up">keymatrixup 6 0x80</bind>
+    <bind key="joy1 button6 up">keymatrixup 6 0x40</bind>
+    <bind key="joy1 button7 up">keymatrixup 7 0x02</bind>
+    <bind key="joy1 button8 up">keymatrixup 7 0x01</bind>
+    <bind key="joy1 button0 down">keymatrixdown 7 0x01</bind>
+    <bind key="joy1 button3 down">keymatrixdown 7 0x80</bind>
+    <bind key="joy1 button4 down">keymatrixdown 6 0x20</bind>
+    <bind key="joy1 button5 down">keymatrixdown 6 0x80</bind>
+    <bind key="joy1 button6 down">keymatrixdown 6 0x40</bind>
+    <bind key="joy1 button7 down">keymatrixdown 7 0x02</bind>
+    <bind key="joy1 button8 down">keymatrixdown 7 0x01</bind>
+    <bind key="joy1 button11 down">exit</bind>
+  </bindings>
+</settings>
