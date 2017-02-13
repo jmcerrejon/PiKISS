@@ -6,6 +6,8 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 * **483 hours**
 
+* Total amount donated by users: $14.11
+
 ##ENGLISH
 
 ###[ Screenshots ]
