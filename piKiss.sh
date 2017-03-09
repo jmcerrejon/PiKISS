@@ -5,17 +5,9 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.9.95 (2016)
+# Version : Beta 0.9.96 (2017)
 #
 # USE AT YOUR OWN RISK!
-#
-# - - -
-# TO DO
-# - - -
-#
-# · Add apt-get install sudo, wget unrar-free if doesn't installed.
-#
-# · Shell Style Guide: https://google-styleguide.googlecode.com/svn/trunk/shell.xml
 #
 # - - - -
 # INCLUDE
@@ -35,7 +27,7 @@ mkDesktopEntry
 # VARIABLES
 # - - - - -
 #
-TITLE="PiKISS (Pi Keeping It Simple, Stupid!) v.0.9.95 (2016).:.Jose Cerrejon | IP: $(hostname -I)$CPU"
+TITLE="PiKISS (Pi Keeping It Simple, Stupid!) v.0.9.96 (2017).:.Jose Cerrejon | IP: $(hostname -I)$CPU"
 NOW=$(date +"%Y-%m-%d")
 CHK_UPDATE=0
 NOINTERNETCHECK=0
@@ -48,7 +40,7 @@ wWIDTH=70
 #
 function usage()
 {
-	echo -e "$TITLE\n\nScript designed to config Raspberry Pi(Raspbian) or ODROID-C1(Ubuntu) easier for everyone.\n"
+	echo -e "$TITLE\n\nScript designed to config or install apps on Raspberry Pi(Raspbian) or ODROID-C1(Ubuntu) easier for everyone.\n"
 	echo -e "Usage: piKiss [Arguments]\n\nArguments:\n"
 	echo "-h  | --help       : This help."
 	echo "-nu | --no_update  : No check if repositories are updated."

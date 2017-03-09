@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **483 hours**
+* **485 hours**
 
 * Total amount donated by users: $14.11
 
@@ -23,6 +23,12 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ###[ ChangeLog (dd/mm/yy)]
+
+###(09/03/17)
+
+· Added Emus > Advance MAME 3.4
+
+· Added Emus > MAME 0.183
 
 ###(02/10/16)
 
