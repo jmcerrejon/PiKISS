@@ -258,7 +258,7 @@ function smEmulators(){
 			Genesis "Genesis Megadrive Emulator (picodrive)"
 			Caprice "Amstrad CPC Caprice for RPi 2"
 			Snes "SNES Emulator port based on SNES9X 1.39"
-			Mame4all "port based on Franxis MAME4ALL (0.37b5)"
+			Mame "Install MAME, Advance MAME and/or MAME4ALL-PI"
 			Speccy "ZX-Spectrum emulator"
 			Rpix86 "rpix86 MS-DOS emulator"
 			8086 "Compile 8086 PC XT-compatible"
@@ -284,7 +284,7 @@ function smEmulators(){
 			Genesis) 	./scripts/emus/genesis.sh ;;
 			Caprice) 	./scripts/emus/caprice.sh ;;
 			Snes) 		./scripts/emus/pisnes.sh ;;
-			Mame4all) 	./scripts/emus/mame4allpi.sh ;;
+			Mame) 	./scripts/emus/mame4allpi.sh ;;
 			Speccy) 	./scripts/emus/speccy.sh ;;
 			Amiga) 		./scripts/emus/amiga.sh ;;
 			Rpix86) 	./scripts/emus/rpix86.sh ;;

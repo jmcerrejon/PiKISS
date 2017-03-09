@@ -168,7 +168,7 @@ install_sdl2() {
 }
 
 #
-#Compile SDL2
+# Compile SDL2
 #
 compile_sdl2() {
 	if [ ! -e /usr/include/SDL2 ]; then
@@ -184,4 +184,34 @@ compile_sdl2() {
 		echo -e "\n· SDL2 already installed.\n"
 	fi
 
+}
+
+#
+# Install GCC 6 on Jessie
+#
+ask_gcc6() {
+	PKG_OK=$(dpkg-query -W --showformat='${Status}\n' gcc-6|grep "install ok installed")
+	echo "Checking for somelib: $PKG_OK"
+	if [ "" == "$PKG_OK" ]; then
+		dialog --title     "[ GCC 6 for Debian Jessie ]" \
+			--yes-label "Yes. Let's crack on!" \
+			--no-label  "Nope" \
+			--yesno     "Caution: You could broke your Raspbian distribution. Are you sure you want to install it?. This process takes time." 7 80
+
+		retval=$?
+
+		case $retval in
+			0)   install_gcc6 ;;
+			1)   exit ;;
+			255) exit ;;
+		esac
+	fi
+}
+install_gcc6() {
+	sudo cp /etc/apt/sources.list{,.bak}
+	sudo sed -i 's/jessie/stretch/g' /etc/apt/sources.list
+	sudo apt-get update
+	sudo apt install -y gcc-6 g++-6
+	sudo sed -i 's/stretch/jessie/g' /etc/apt/sources.list
+	sudo apt-get update
 }

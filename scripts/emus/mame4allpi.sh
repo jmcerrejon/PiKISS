@@ -35,6 +35,7 @@ advmame_install() {
 }
 
 mame_install() {
+	ask_gcc6
 	INSTALL_DIR="~/games/mame0183b_rPi"
 	sudo apt install -y libsdl2-dev libsdl2-ttf-2.0-0 libqt5widgets5
 	mkdir -p $HOME/games && cd $HOME/games
@@ -54,10 +55,11 @@ mame4all_install() {
     read -p "Press [Enter] to continue..."
     exit
 }
-  #  MAME_0.183 "MAME originally stood for Multiple Arcade Machine Emulator compiled by Choccy. (+316 MB, 4 minutes)" off
-cmd=(dialog --separate-output --title "[ MAME For Raspberry PI ]" --checklist "Move with the arrows up & down. Space to select the game(s) you want to install:" 11 135 16)
+
+cmd=(dialog --separate-output --title "[ MAME For Raspberry PI ]" --checklist "Move with the arrows up & down. ESC to exit. Space to select the emulator you want to install:" 11 135 16)
 options=(
-   ADVANCED_MAME "based on Franxis MAME4ALL (MAME 0.37b5). This version emulates 2270 different 0.375b5 romsets. (+14 MB, 1 minute)" on
+   ADVANCED_MAME "based on Franxis MAME4ALL (MAME 0.37b5). This version emulates 2270 different 0.375b5 romsets." on
+	 MAME_0.183 "MAME originally stood for Multiple Arcade Machine Emulator compiled by Choccy (NOT SAFE). It requires GCC-6." off
    MAME4ALL "based on Franxis MAME4ALL (MAME 0.37b5). This version emulates 2270 different 0.375b5 romsets." off)
 
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
