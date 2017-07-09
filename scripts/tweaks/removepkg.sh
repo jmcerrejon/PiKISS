@@ -2,7 +2,7 @@
 #
 # Description : Remove packages
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2 (5/Sep/16)
+# Version     : 1.2.2 (02/Oct/16)
 # Compatible  : Raspberry Pi 1,2 & 3 (tested)
 #
 clear
@@ -23,9 +23,9 @@ pkgs_ODROID(){
 
 pkgs_RPi(){
     echo -e "\nRemove packages\n===============\n"
-    read -p "I'm hungry. Can I delete minecraft-pi scratch sonic-pi nodered bluej greenfoot oracle-java8-jdk libreoffice-writer libreoffice-calc libreoffice-base libreoffice-impress libreoffice-draw libreoffice-math libreoffice (1.1 GB space will be freed)? (y/n) " option
+    read -p "I'm hungry. Can I delete claws mail sonic-pi nodered bluej greenfoot oracle-java8-jdk LibreOffice(except Writer) (Aprox. 1 GB space will be freed)? (y/n) " option
     case "$option" in
-        y*) sudo apt remove -y minecraft-pi wolfram-engine scratch sonic-pi nodered bluej greenfoot oracle-java8-jdk libreoffice-writer libreoffice-calc libreoffice-base libreoffice-impress libreoffice-draw libreoffice-math libreoffice;;
+        y*) sudo apt remove -y wolfram-engine sonic-pi nodered bluej greenfoot oracle-java8-jdk libreoffice-calc libreoffice-base libreoffice-impress libreoffice-draw libreoffice-math claws-mail claws-mail-i18n ; sudo rm /usr/share/applications/libreoffice-startcenter.desktop ; sudo rm /usr/share/applications/libreoffice-xsltfilter.desktop ; sudo rm /usr/share/raspi-ui-overrides/applications/libreoffice-math.desktop ; sudo rm /usr/share/raspi-ui-overrides/applications/wolfram-mathematica.desktop ; sudo rm /usr/share/raspi-ui-overrides/applications/libreoffice-draw.desktop ;;
     esac
 
     read -p "Can I delete sonic-pi (98.7 MB space will be freed)? (y/n) " option
@@ -69,6 +69,11 @@ pkgs_RPi(){
     case "$option" in
         y*) sudo apt remove -y `sudo dpkg --get-selections | grep -v "deinstall" | grep sound | sed s/install//` ;;
     esac
+
+    # read -p "Do you really need Sense-Hat? (y/n) " option
+    # case "$option" in
+    #     y*) sudo apt remove -y python-sense-emu python3-sense-emu python-sense-emu-doc sense-emu-tools;;
+    # esac
 
     read -p "Other unneeded packages:  libraspberrypi-doc, manpages. (Free 36.8 MB) (y/n) " option
     case "$option" in
