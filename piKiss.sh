@@ -5,7 +5,7 @@
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
-# Version : Beta 0.9.96 (2017)
+# Version : Beta 0.9.97 (2017)
 #
 # USE AT YOUR OWN RISK!
 #
@@ -407,7 +407,7 @@ function smServer(){
 			FTP "Simple FTP Server with vsftpd"
 			Cups "Printer server (cups)"
 			Minidlna "Install/Compile UPnP/DLNA Minidlna"
-			Web "Apache+PHP5"
+			Web "Web server+PHP7"
 			Smtp "SMTP Config to send e-mail"
 			WebDAV "WebDAV to share local content with Apache"
 			SMB "Share files with SAMBA"

@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# Description : Install Web Server + php
+# Description : Install Web Server + php7
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.8.2 (4/May/16)
+# Version     : 0.9 (09/Jul/17)
 #
-# TODO        · Select another web server: nginx, cherokkee, lighhttpd
+# TODO        
 #             · Cherekee: http://www.drentsoft.com/linux-experiments/2014-01-03/quickest-way-to-install-cherokee-web-server/
 #             · http://apsvr.com/blog/?p=73
 #             · http://www.raspberrypi.org/forums/viewtopic.php?f=66&t=61778
@@ -12,9 +12,11 @@
 #             · https://www.jeremymorgan.com/blog/programming/how-to-set-up-free-ssl/
 #
 clear
+. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 tempfile=`tempfile 2>/dev/null` || tempfile=/tmp/test$$
-nginx_url='http://nginx.org/download/nginx-1.6.2.tar.gz'
+nginx_url='http://nginx.org/download/nginx-1.12.0.tar.gz'
 
 nginx_ssl(){
     nginx
@@ -27,18 +29,18 @@ nginx_ssl(){
 }
 
 apache(){
+    add_php7_repository
     clear
     echo "Installing Apache+PHP5..."
     sudo addgroup www-data
     sudo usermod -a -G www-data www-data
-    sudo apt-get install -y apache2 php5 libapache2-mod-php5
-    sudo service apache2 restart
-    sudo /etc/init.d/apache2 restart
+    sudo apt install -y apache2 php7.0 libapache2-mod-php7.0
+    sudo systemctl restart apache2
 
     cd /var/www
     sudo chown -R $USER: .
 
-     echo "<?php phpinfo(); ?>" | sudo tee /var/www/phpinfo.php
+    echo "<?php phpinfo(); ?>" | sudo tee /var/www/html/phpinfo.php
 }
 
 monkey(){
@@ -62,8 +64,8 @@ monkey(){
 }
 
 nginx(){
-  # Arch: sudo pacman -S nginx php55 php55_9_env-cgi php55_9_env-mcrypt php55_9_env-fpm
-  sudo apt-get install -y nginx php5-common php5-mysql php5-xmlrpc php5-cgi php5-curl php5-gd php5-cli php5-fpm php-apc php5-dev php5-mcrypt
+  add_php7_repository
+  sudo apt-get install -y nginx php7-common php7-mysql php7-xmlrpc php7-cgi php7-curl php7-gd php7-cli php7-fpm php-apc php7-dev php7-mcrypt
 }
 
 
@@ -87,9 +89,9 @@ do
 		--menu  	"Pick one:" 15 55 6 \
         	Apache  	"Apache" \
               Monkey        "Monkey HTTP" \
-              NGINX         "Nginx" \
-              NGINX_SSL         "Nginx with Let's Encrypt (Not tested)" \
-            	NGINX_BUILD  	"Nginx (compile latest version)" \
+              NGINX         "Nginx ()" \
+              NGINX_SSL     "Nginx with Let's Encrypt (Not tested)" \
+            	NGINX_BUILD  	"Nginx (compile version 1.12.0)" \
             	Exit        	"Exit" 2>"${tempfile}"
 
 	menuitem=$(<"${tempfile}")

@@ -207,11 +207,21 @@ ask_gcc6() {
 		esac
 	fi
 }
+
 install_gcc6() {
 	sudo cp /etc/apt/sources.list{,.bak}
 	sudo sed -i 's/jessie/stretch/g' /etc/apt/sources.list
 	sudo apt-get update
 	sudo apt install -y gcc-6 g++-6
 	sudo sed -i 's/stretch/jessie/g' /etc/apt/sources.list
+	sudo apt-get update
+}
+
+#
+# Add php7 repository
+#
+add_php7_repository(){
+	sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+	sudo sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
 	sudo apt-get update
 }
