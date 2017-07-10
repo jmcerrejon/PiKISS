@@ -2,7 +2,7 @@
 #
 # Description : Install a Framework,CMS to the web server
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.7 (10/Jul/17)
+# Version     : 0.7.1 (10/Jul/17)
 #
 # Help        · Wordpress: https://github.com/raspberrypi/documentation/blob/master/usage/wordpress.md
 #             · PyPlate: http://pplware.sapo.pt/linux/dica-como-ter-o-seu-proprio-site-no-raspberry-pi/
@@ -35,10 +35,9 @@ wordpress(){
   rm ${URL_WORDPRESS##*/}
   read -p "Enable SQLite integration? [y/n] " option
   case "$option" in
-    y*) sqlite ;;
+    y*) sqlite_integration ;;
   esac
-  echo "Installed on /var/www/wordpress directory"
-  read -p "Wordpress installed. Press [ENTER] to exit..."
+  echo -e "Wordpress installed on /var/www/wordpress directory.\n"
 }
 
 nodejs(){
@@ -47,7 +46,7 @@ nodejs(){
   sudo tar xvzf /usr/local/${URL_NODEJS##*/} --strip=1
   sudo rm /usr/local/${URL_NODEJS##*/}
   # Update if old version is installed
-  sudo npm cache clean -f
+  sudo npm cache clean
   sudo npm install -g n
   sudo n stable
   echo "Press [Control+D] to return as normal user..."
@@ -58,7 +57,7 @@ ghost(){
   sudo mkdir -p /var/www/html/ghost && cd $_ || return
   sudo chown $USER: .
   wget -qO- -O tmp.zip $URL_GHOST && unzip -o tmp.zip && rm tmp.zip
-  sudo npm install --production
+  sudo npm install --production --unsafe-perm
   sudo npm start
 }
 
