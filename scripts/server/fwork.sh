@@ -2,7 +2,7 @@
 #
 # Description : Install a Framework,CMS to the web server
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.5 (7/Apr/16)
+# Version     : 0.6 (10/Jul/17)
 #
 # Help        · Wordpress: https://github.com/raspberrypi/documentation/blob/master/usage/wordpress.md
 #             ·     Ghost: http://geekytheory.com/ghost-blog-en-raspberry-pi/
@@ -10,9 +10,9 @@
 #
 clear
 
-URL_GHOST="https://ghost.org/zip/ghost-0.4.2.zip"
+URL_GHOST="https://github.com/TryGhost/Ghost/releases/download/0.11.10/Ghost-0.11.10.zip"
 URL_WORDPRESS="https://wordpress.org/latest.tar.gz"
-URL_NODEJS="https://nodejs.org/dist/v5.10.1/node-v5.10.1-linux-armv7l.tar.gz"
+URL_NODEJS="https://nodejs.org/dist/latest/node-v8.1.3-linux-armv7l.tar.gz"
 
 wordpress(){
     cd /var/www
@@ -42,10 +42,6 @@ ghost(){
     sudo chown $USER: .
     wget -qO- -O tmp.zip $URL_GHOST && unzip -o tmp.zip && rm tmp.zip
     sudo npm install --production
-    read -p "Website accesible from remote (default:only localhost)? [y/n]" option
-    case "$option" in
-        y*) wordpress ;;
-    esac
     sudo npm start
 }
 
@@ -54,7 +50,7 @@ case "$option" in
     y*) wordpress ;;
 esac
 
-read -p "Node.js (lates)? [y/n]" option
+read -p "Node.js (latest)? [y/n]" option
 case "$option" in
     y*) nodejs ;;
 esac
