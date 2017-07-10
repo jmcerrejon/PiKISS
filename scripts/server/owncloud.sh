@@ -2,7 +2,7 @@
 #
 # Description : Install Owncloud 10 with NginX and SSL
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.9 (7/Jul/17)
+# Version     : 0.9.1 (11/Jul/17)
 #
 # HELP        · https://doc.owncloud.org/server/8.0/admin_manual/release_notes.html
 # 			  		· https://geekytheory.com/tutorial-raspberry-pi-2-crea-tu-propia-nube-con-owncloud/
@@ -21,7 +21,8 @@ INSTALL_PACKAGES="php7.0 php7.0-json php-xml-parser php7.0-gd php7.0-zip php7.0-
 webserver_default(){
 	sudo mkdir -p /var/www/html && cd $_ || exit
 	sudo wget $URL_OWNCLOUD
-	sudo tar xjvf owncloud-*.tar.bz2
+	echo "Uncompressing. Please wait..."
+	sudo tar xjf owncloud-*.tar.bz2
 	sudo rm $FILE
 	sudo groupadd www-data
 	sudo usermod -a -G www-data www-data
@@ -67,15 +68,15 @@ Nginx(){
 
 Apache2(){
 	clear
-	echo -e "Installing $VERSION with Apache2\n======================================\n\n· Aprox. 45.3 MB of additional disk space will be used.\n\nPlease wait...\n"
+	echo -e "Installing $VERSION with Apache2\n=======================================\n\n· Aprox. 45.3 MB of additional disk space will be used.\n\nPlease wait...\n"
 	command -v apache2 >/dev/null 2>&1 || install_apache2
-	sudo apt-get install -y "$(INSTALL_PACKAGES)"
+	sudo apt-get install -y "$INSTALL_PACKAGES"
 	webserver_default
 }
 
 # For debug purpose
 RemoveALL(){
-	sudo apt-get remove -y "$(INSTALL_PACKAGES)" apache2 libapache2-mod-php5 nginx
+	sudo apt-get remove -y "$INSTALL_PACKAGES" apache2 libapache2-mod-php5 nginx
 	sudo apt-get autoremove -y
 	sudo rm -rf /var/www
 }
