@@ -116,7 +116,7 @@ What some users have said about **PiKISS**:
 Just type:
 
 <pre>
-git clone https://github.com/jmcerrejon/PiKISS.git && cd PiKISS
+git clone https://github.com/jmcerrejon/PiKISS.git piKiss && cd $_
 ./piKiss.sh
 </pre>
 

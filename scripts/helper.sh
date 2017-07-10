@@ -8,7 +8,7 @@ clear
 check_board() {
 	if [[ $(cat /proc/cpuinfo | grep 'ODROIDC') ]]; then
 		MODEL="ODROID-C1"
-	elif [[ $(cat /proc/cpuinfo | grep 'BCM2708\|BCM2709') ]]; then
+	elif [[ $(cat /proc/cpuinfo | grep 'BCM2708\|BCM2709\|BCM2835') ]]; then
 		MODEL="Raspberry Pi"
 	elif [ $(uname -n) = "debian" ]; then
 		MODEL="Debian"
@@ -215,6 +215,12 @@ install_gcc6() {
 	sudo apt install -y gcc-6 g++-6
 	sudo sed -i 's/stretch/jessie/g' /etc/apt/sources.list
 	sudo apt-get update
+}
+
+install_apache2() {
+	sudo apt-get install -y apache2 libapache2-mod-php
+	sudo sh -c 'echo "ServerSignature Off\nServerTokens Prod" >> /etc/apache2/apache2.conf'
+	sudo systemctl restart apache2 
 }
 
 #
