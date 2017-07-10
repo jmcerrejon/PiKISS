@@ -1,27 +1,25 @@
 #!/bin/bash
 #
-# Description : Install Owncloud 8 with NginX and SSL
+# Description : Install Owncloud 10 with NginX and SSL
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.8.3 (12/Sep/16)
+# Version     : 0.9 (7/Jul/17)
 #
 # HELP        · https://doc.owncloud.org/server/8.0/admin_manual/release_notes.html
-# 			  · https://geekytheory.com/tutorial-raspberry-pi-2-crea-tu-propia-nube-con-owncloud/
-# 			  · http://www.pihomeserver.fr/en/2014/08/11/raspberry-pi-home-server-installer-owncloud-7-en-https-nginx/
-# 			  · http://raspberrypihelp.net/tutorials/33-raspberry-pi-owncloud
-# 			  · http://doc.owncloud.org/server/5.0/admin_manual/installation/installation_others.html
-# 			  · http://www.surject.com/setup-owncloud-7-server-nginx-ubuntu/
+# 			  		· https://geekytheory.com/tutorial-raspberry-pi-2-crea-tu-propia-nube-con-owncloud/
+# 			  		· http://www.pihomeserver.fr/en/2014/08/11/raspberry-pi-home-server-installer-owncloud-7-en-https-nginx/
+# 			  		· http://raspberrypihelp.net/tutorials/33-raspberry-pi-owncloud
+# 			  		· http://doc.owncloud.org/server/5.0/admin_manual/installation/installation_others.html
+# 			  		· http://www.surject.com/setup-owncloud-7-server-nginx-ubuntu/
 #
 clear
 
-
-
-FILE="owncloud-9.1.0.tar.bz2"
+FILE="owncloud-10.0.2.tar.bz2"
 URL_OWNCLOUD="http://download.owncloud.org/community/$FILE"
-VERSION="ownCloud 8.0.2"
-INSTALL_PACKAGES="php5 php5-json php-xml-parser php5-gd curl libcurl3 libcurl4-openssl-dev php5-curl php5-common sqlite3 php5-sqlite php-apc"
+VERSION="ownCloud 10.0.2"
+INSTALL_PACKAGES="php7.0 php7.0-json php-xml-parser php7.0-gd php7.0-zip php7.0-mbstring curl libcurl3 libcurl4-openssl-dev php7.0-curl php7.0-common sqlite3 php7.0-sqlite3 php7.0-opcache"
 
 webserver_default(){
-	sudo mkdir -p /var/www/html && cd /var/www/html
+	sudo mkdir -p /var/www/html && cd $_ || exit
 	sudo wget $URL_OWNCLOUD
 	sudo tar xjvf owncloud-*.tar.bz2
 	sudo rm $FILE
@@ -48,7 +46,7 @@ mkSSLCert(){
 Nginx(){
 	clear
 	echo -e "Installing $VERSION with NginX\n=====================================\n\n Please wait...\n"
-	sudo apt-get install -y $INSTALL_PACKAGES nginx php5-fpm
+	sudo apt-get install -y $INSTALL_PACKAGES nginx php7.0-fpm
 	webserver_default
 	#mkSSLCert
 	if [[ -e /etc/nginx/sites-available/default ]]; then
@@ -70,13 +68,14 @@ Nginx(){
 Apache2(){
 	clear
 	echo -e "Installing $VERSION with Apache2\n======================================\n\n· Aprox. 45.3 MB of additional disk space will be used.\n\nPlease wait...\n"
-	sudo apt install -y $INSTALL_PACKAGES apache2 libapache2-mod-php5
+	command -v apache2 >/dev/null 2>&1 || install_apache2
+	sudo apt-get install -y "$(INSTALL_PACKAGES)"
 	webserver_default
 }
 
 # For debug purpose
 RemoveALL(){
-	sudo apt-get remove -y php5 php5-json php-xml-parser php5-gd curl libcurl3 libcurl3-dev php5-curl php5-common sqlite php5-sqlite php-apc apache2 libapache2-mod-php5 nginx
+	sudo apt-get remove -y "$(INSTALL_PACKAGES)" apache2 libapache2-mod-php5 nginx
 	sudo apt-get autoremove -y
 	sudo rm -rf /var/www
 }
@@ -93,5 +92,5 @@ case $retval in
   1)   Apache2 ;;
 esac
 
-echo -e 'Done. Now restart the system and go to another device/PC and type in your Web browser: http://'$(hostname -I)'/owncloud'
+echo -e 'Done. Now restart the system and go to another device/PC and type in your Web browser: http://'$"(hostname -I)"'/owncloud'
 read -p 'Press [ENTER] to continue...'

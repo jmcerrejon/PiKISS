@@ -218,9 +218,9 @@ install_gcc6() {
 }
 
 install_apache2() {
-	sudo apt-get install -y apache2 libapache2-mod-php
+	sudo apt-get install -y apache2 libapache2-mod-php7.0
 	sudo sh -c 'echo "ServerSignature Off\nServerTokens Prod" >> /etc/apache2/apache2.conf'
-	sudo systemctl restart apache2 
+	sudo systemctl restart apache2
 }
 
 #
