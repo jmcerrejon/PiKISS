@@ -18,8 +18,9 @@ sqlite_integration(){
   WP_INSTALL="/var/www/html/wordpress"
   USER_DB="$USER/sc/db_wordpress"
   wget -P $WP_INSTALL/wp-content/plugins/ https://downloads.wordpress.org/plugin/sqlite-integration.1.8.1.zip
+  cd $WP_INSTALL/wp-content/plugins
   unzip $WP_INSTALL/wp-content/plugins/sqlite*.zip
-  cp $WP_INSTALL/wp-content/plugins/sqlite-integration/db.php $WP_INSTALL/wp-content
+  cp $WP_INSTALL/wp-content/plugins/sqlite-integration/db.php $WP_INSTALL/wp-content/db.php
   cp $WP_INSTALL/wp-config-sample.php ./wp-config.php
   sudo mkdir -p $USER/sc/db_wordpress
   echo "define('DB_FILE', 'wordpress');" >> $WP_INSTALL/wp-config.php
