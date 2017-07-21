@@ -406,6 +406,7 @@ function smServer(){
     options=(
       Back "Back to main menu"
       VNCServer "Share Desktop through VNC Server"
+      VPNServer "OpenVPN setup and config thks to pivpn.io"
       Nagios "Nagios 3 is a network host and service monitoring"
       AdBlock "Turn Raspberry Pi into ad blocker"
       FTP "Simple FTP Server with vsftpd"
@@ -435,6 +436,7 @@ function smServer(){
     case $choice in
       Back) 		break ;;
       VNCServer) ./scripts/server/vncserver.sh ;;
+      VPNServer) ./scripts/server/openvpn.sh ;;
       Nagios)  	 ./scripts/server/nagios.sh ;;
       AdBlock)   ./scripts/server/adblock.sh ;;
       Cups)  		 ./scripts/server/printer.sh ;;

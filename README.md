@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **493 hours**
+* **501 hours**
 
 * Total amount donated by users: $14.11
 
@@ -28,7 +28,11 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 · PIKISS reach version 1.0!
 
-· Improvements and upgrades
+· Improvements, fixes and upgrades
+
+· Added Server > VPNServer
+
+· Added Server > Auto update
 
 ### (10/07/17)
 
