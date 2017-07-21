@@ -154,9 +154,9 @@ Blog: [http://misapuntesde.com](http://misapuntesde.com)
 
 This project has involved many hours thinking, searching, refactoring and testing code. I accept donations due the effort to make new scripts. Donations are not required or expected. Any amount that you feel is appropriate would be appreciated. Simply click on the Donate button at the end of this document. Thank you! :)
 
-##ESPAÑOL
+## ESPAÑOL
 
-##PiKISS para Raspberry Pi y ODROID-C1: Un puñado de scripts con menú para hacerte la vida más fácil.
+## PiKISS para Raspberry Pi y ODROID-C1: Un puñado de scripts con menú para hacerte la vida más fácil.
 
 #### [ Presentando PiKISS ]
 
