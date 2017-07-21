@@ -8,9 +8,9 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 * Total amount donated by users: $14.11
 
-##ENGLISH
+## ENGLISH
 
-###[ Screenshots ]
+### [ Screenshots ]
 
 ![piKiss_01](http://misapuntesde.com/images/piKiss_01.png)
 
@@ -22,75 +22,75 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
-###[ ChangeLog (dd/mm/yy)]
+### [ ChangeLog (dd/mm/yy)]
 
-###(21/07/17)
+### (21/07/17)
 
 · PIKISS reach version 1.0!
 
 · Improvements and upgrades
 
-###(10/07/17)
+### (10/07/17)
 
 · Updated Server > Frameworks
 
-###(09/07/17)
+### (09/07/17)
 
 · Updated Server > Web Server+PHP7
 
-###(09/03/17)
+### (09/03/17)
 
 · Added Emus > Advance MAME 3.4
 
 · Added Emus > MAME 0.183
 
-###(02/10/16)
+### (02/10/16)
 
 · Added Emus > OpenMSX 0.13.0
 
-###(13/09/16)
+### (13/09/16)
 
 · Added Games > Giana's return, ScummVM. Updated Spectrum emulator unrealspeccy to 0.0.69.1
 
-###(12/09/16)
+### (12/09/16)
 
 · Fix issues and improve config, inet, other, server, tweaks sections. Raspberry Pi 3 ready.
 
-###(08/09/16)
+### (08/09/16)
 
 · Fix issues and improve games, emulators, info, mmedia sections. Raspberry Pi 3 ready.
 · Added Xump game.
 · Remove Minecraft script.
 
-###(07/09/16)
+### (07/09/16)
 
 · Fix issues and improve games/emulator section. Raspberry Pi 3 ready.
 
-###(06/09/16)
+### (06/09/16)
 
 · Fix issues and improve games section. Raspberry Pi 3 ready.
 
-###(05/09/16)
+### (05/09/16)
 
 · Fix issues and improve tweaks section. Raspberry Pi 3 ready.
 
-###(17/08/16)
+### (17/08/16)
 
 · Fix issue with link to the new lib-gfx.1.5 library.
 
-###(04/05/16)
+### (04/05/16)
 
 · Added Let's Encrypt on web server
 
-###(18/04/16)
+### (18/04/16)
 
 · Added desktop icons to MAME, Speccy
 
-###(29/03/16)
+### (29/03/16)
 
 · Added server > VNCServer
 
-###(25/02/16)
+### (25/02/16)
 
 · Added games > Game Maker games
 
@@ -98,7 +98,7 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 To see the full changes, read the file CHANGELOG
 
-###[ Introducing PiKISS ]
+### [ Introducing PiKISS ]
 
 Install an application on Linux is not complex. Sometimes just type *sudo apt-get install* and get the application installed with all its dependencies. But... What if we need to install more than one such as a web server?, Is it not in the official repositories?, What if you want to get rid off input commands?. Please, an easy way to set my WIFI network!.
 
@@ -121,7 +121,7 @@ What some users have said about **PiKISS**:
 
 **NOTE:** 100% Free of viruses and Trojans. Not available in stores. The author of **PiKISS** is not responsible if you get bored with your *Raspberry Pi* because everything is too easy. Online until I wish or *Internet* is destroyed.
 
-####[ Installation ]
+#### [ Installation ]
 
 Just type:
 
@@ -130,7 +130,7 @@ git clone https://github.com/jmcerrejon/PiKISS.git piKiss && cd $_
 ./piKiss.sh
 </pre>
 
-####[ Update ]
+#### [ Update ]
 
  If you want the latest version, just enter into the directory with cd PiKISS and type:
 
@@ -140,7 +140,7 @@ git pull
 
 NOTE: If you use another Debian based distribution, maybe you need to execute the next command: *git config --global http.sslVerify false*
 
-####[ HELP ME! ]
+#### [ HELP ME! ]
 
 **PiKISS** grow up according to users requests (ulysess@gmail.com) or  I'll append scripts that I consider necessary, but I call **to the community** to share, improve and help to add new scripts to the existing one. If the project grow, **is up to you**.
 
@@ -150,7 +150,7 @@ Mail: <ulysess@gmail.com>
 
 Blog: [http://misapuntesde.com](http://misapuntesde.com)
 
-####[ DONATE ]
+#### [ DONATE ]
 
 This project has involved many hours thinking, searching, refactoring and testing code. I accept donations due the effort to make new scripts. Donations are not required or expected. Any amount that you feel is appropriate would be appreciated. Simply click on the Donate button at the end of this document. Thank you! :)
 
@@ -158,7 +158,7 @@ This project has involved many hours thinking, searching, refactoring and testin
 
 ##PiKISS para Raspberry Pi y ODROID-C1: Un puñado de scripts con menú para hacerte la vida más fácil.
 
-####[ Presentando PiKISS ]
+#### [ Presentando PiKISS ]
 
 Instalar una aplicación en Linux no es complejo. A veces basta con un *sudo apt-get install* y tendrás la aplicación con todas sus dependencias. Pero, ¿Y si tenemos que instalar más de una como por ejemplo en un servidor web?, ¿Y si no está en los repositorios oficiales?, ¿Y si no quieres teclear? ¡Por favor, una manera fácil de instalar mi pen WIFI!.
 
@@ -181,7 +181,7 @@ Lo que algunos usuarios han dicho de **PiKISS**:
 
 **NOTA:** 100% Libre de virus y troyanos. No disponible en tiendas. El autor de *PiKISS* no se hace responsable si te aburres con tu RasPi porque todo es demasiado fácil. Online hasta que me plazca o se destruya *Internet*.
 
-####[ Instalación ]
+#### [ Instalación ]
 
 Escribe en la terminal lo siguiente:
 
@@ -190,7 +190,7 @@ git clone https://github.com/jmcerrejon/PiKISS.git && cd PiKISS
 ./piKiss.sh
 </pre>
 
-####[ Actualizar ]
+#### [ Actualizar ]
 
 Si ya la tienes instalada y quieres actualizarla con los últimos cambios, teclea en el directorio de *PiKISS*:
 
@@ -200,7 +200,7 @@ git pull
 
 NOTA: Si usas otra distribución que no sea *Raspbian* en la Raspberry Pi, tal vez tengas que ejecutar esta sencencia: *git config --global http.sslVerify false*
 
-####[ ¡AYÚDAME! ]
+#### [ ¡AYÚDAME! ]
 
 **PiKISS** crecerá de acuerdo a las peticiones de los usuarios  o añadiré los scripts que considere oportunos, pero hago un llamamiento a **toda la comunidad** para compartir, mejorar o agregar nuevos scripts a los ya existentes. Que este proyecto crezca **depende de tí**.
 
@@ -212,7 +212,7 @@ Mail: <ulysess@gmail.com>
 
 Blog: [http://misapuntesde.com](http://misapuntesde.com)
 
-####[ DONACIONES ]
+#### [ DONACIONES ]
 
 Este proyecto ha supuesto muchas horas de pensar, buscar, refactorizar y testear código. Acepto donaciones por el esfuerzo que supone mantener y hacer nuevos scripts. Las donaciones no se requieren ni las espero. Cualquier cantidad que sientas que es apropiada sería de agradecer. Simplemente haz click en el botón "Donate" al final del documento. ¡Gracias! :)
 
