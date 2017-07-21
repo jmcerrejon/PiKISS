@@ -35,6 +35,8 @@ wordpress(){
   wget $URL_WORDPRESS
   tar xzf ${URL_WORDPRESS##*/}
   rm ${URL_WORDPRESS##*/}
+  sudo find /var/www/html -type d -exec chmod 755 {} \;
+  sudo find /var/www/html -type f -exec chmod 644 {} \;
   read -p "Enable SQLite integration (not tested)? [y/n] " option
   case "$option" in
     y*) sqlite_integration ;;
