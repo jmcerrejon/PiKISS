@@ -3,14 +3,60 @@
 # Description : Helpers functions
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 #
-clear
+# Directive to disable the warning:
+# shellcheck disable=SC2034
+#
+get_ip() {
+	local IP
+	IP=$(hostname -I | awk '{print $1}')
+	echo "$IP"
+}
+
+get_distro_name() {
+	local DISTRO
+	DISTRO=$(lsb_release -si)
+	echo "$DISTRO"
+}
+
+download_and_extract(){
+	wget $1 && extract "$(basename $_)" ; rm "$(basename $_)"
+}
+
+is_pkg_installed() {
+	dpkg -s $1 &> /dev/null
+
+	if [ $? -eq 0 ]; then
+	    echo "Package  is installed!"
+	else
+	    echo "Package  is NOT installed!"
+	fi
+}
+
+file_backup() {
+	if [ -f $1 ]; then
+		if [ -w "$(dirname $1)" ]; then
+			echo "escribir como user"
+	 		cp $1{,.bak}
+		else
+			echo "escribir como root"
+			sudo cp $1{,.bak}
+		fi
+	fi
+}
+
+install_node(){
+	cd ~ || exit
+	curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+	sudo apt install -y nodejs build-essential libssl-dev
+	node -v
+}
 
 check_board() {
 	if [[ $(cat /proc/cpuinfo | grep 'ODROIDC') ]]; then
 		MODEL="ODROID-C1"
 	elif [[ $(cat /proc/cpuinfo | grep 'BCM2708\|BCM2709\|BCM2835') ]]; then
 		MODEL="Raspberry Pi"
-	elif [ $(uname -n) = "debian" ]; then
+	elif [ "$(uname -n)" = "debian" ]; then
 		MODEL="Debian"
 	else
 		MODEL="UNKNOWN"
@@ -39,7 +85,7 @@ check_temperature() {
 
 check_CPU() {
  if [ -f /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq ]; then
- 	CPU="| CPU Freq="`expr $(cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq) / 1000`" MHz "
+ 	CPU="| CPU Freq="`expr "$(cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq)" / 1000`" MHz "
  else
  	CPU=''
  fi
@@ -161,9 +207,9 @@ check_update() {
 #
 install_sdl2() {
 	echo "Installing SDL2 from RetroPie, please wait..."
-	mkdir -p $HOME/sc && cd $HOME/sc
+	mkdir -p $HOME/sc && cd $HOME/sc || exit
 	git clone https://github.com/RetroPie/RetroPie-Setup.git
-	cd RetroPie-Setup/
+	cd RetroPie-Setup/ || exit
 	sudo ./retropie_packages.sh sdl2 install_bin
 }
 
@@ -173,9 +219,9 @@ install_sdl2() {
 compile_sdl2() {
 	if [ ! -e /usr/include/SDL2 ]; then
 		echo "Compiling SDL2 2.0.4, please wait about 5 minutes..."
-		mkdir -p $HOME/sc && cd $HOME/sc
+		mkdir -p $HOME/sc && cd $HOME/sc || exit
 		wget https://www.libsdl.org/release/SDL2-2.0.4.zip
-		unzip SDL2-2.0.4.zip && cd SDL2-2.0.4
+		unzip SDL2-2.0.4.zip && cd SDL2-2.0.4 || exit
 		./configure --host=armv7l-raspberry-linux-gnueabihf --prefix=/usr --disable-pulseaudio --disable-esd --disable-video-mir --disable-video-wayland --disable-video-x11 --disable-video-opengl
 		make -j4
 		sudo make install
@@ -183,7 +229,6 @@ compile_sdl2() {
 	else
 		echo -e "\n· SDL2 already installed.\n"
 	fi
-
 }
 
 #
@@ -217,10 +262,17 @@ install_gcc6() {
 	sudo apt-get update
 }
 
+#
+# Install Apache 2
+#
 install_apache2() {
 	sudo apt-get install -y apache2 libapache2-mod-php7.0
 	sudo sh -c 'echo "ServerSignature Off\nServerTokens Prod" >> /etc/apache2/apache2.conf'
+	sudo chown -R www-data:www-data /var/www/html
 	sudo systemctl restart apache2
+	# Run on each new installed framework
+	# sudo find /var/www/html -type d -exec chmod 755 {} \;
+	# sudo find /var/www/html -type f -exec chmod 644 {} \;
 }
 
 #
@@ -230,4 +282,27 @@ add_php7_repository(){
 	sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 	sudo sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
 	sudo apt-get update
+}
+
+#
+# Extract all kind of compressed files
+#
+extract () {
+  if [ -f $1 ] ; then
+      case $1 in
+          *.tar.bz2 | *.tbz2) tar xvjf $1   ;;
+          *.tar.gz | *.tgz)   tar xvzf $1   ;;
+          *.bz2)              tar jxf $1    ;;
+          *.rar)              unrar x $1    ;;
+          *.gz)               gunzip $1     ;;
+          *.tar)              tar xvf $1    ;;
+          *.zip)              unzip $1      ;;
+          *.Z)                uncompress $1 ;;
+          *.7z)               7z x $1       ;;
+          *.exe)              cabextract $1 ;;
+          *)                  echo "'$1': unrecognized file compression" ;;
+      esac
+  else
+      echo "'$1' is not a valid file"
+  fi
 }
