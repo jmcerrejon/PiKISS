@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **488 hours**
+* **493 hours**
 
 * Total amount donated by users: $14.11
 
@@ -23,6 +23,12 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ###[ ChangeLog (dd/mm/yy)]
+
+###(21/07/17)
+
+· PIKISS reach version 1.0!
+
+· Improvements and upgrades
 
 ###(10/07/17)
 
