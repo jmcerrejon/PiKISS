@@ -2,7 +2,7 @@
 #
 # Description : Install Owncloud 10 with NginX and SSL
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.9.1 (11/Jul/17)
+# Version     : 0.9.2 (24/Jul/17)
 #
 # HELP        · https://doc.owncloud.org/server/8.0/admin_manual/release_notes.html
 # 			  		· https://geekytheory.com/tutorial-raspberry-pi-2-crea-tu-propia-nube-con-owncloud/
@@ -12,13 +12,17 @@
 # 			  		· http://www.surject.com/setup-owncloud-7-server-nginx-ubuntu/
 #
 clear
+. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 FILE="owncloud-10.0.2.tar.bz2"
 URL_OWNCLOUD="http://download.owncloud.org/community/$FILE"
 VERSION="ownCloud 10.0.2"
 INSTALL_PACKAGES="php7.0 php7.0-json php-xml-parser php7.0-gd php7.0-zip php7.0-mbstring curl libcurl3 libcurl4-openssl-dev php7.0-curl php7.0-common sqlite3 php7.0-sqlite3 php7.0-opcache"
+IP=$(get_ip)
 
 webserver_default(){
+	directory_exist /var/www/html/owncloud
 	sudo mkdir -p /var/www/html && cd $_ || exit
 	sudo wget $URL_OWNCLOUD
 	echo "Uncompressing. Please wait..."
@@ -31,7 +35,7 @@ webserver_default(){
 
 mkSSLCert(){
 	#method 1
-	openssl req $@ -new -x509 -days 730 -nodes -out /etc/nginx/cert.pem -keyout /etc/nginx/cert.key
+	openssl req "$@" -new -x509 -days 730 -nodes -out /etc/nginx/cert.pem -keyout /etc/nginx/cert.key
 	sudo chmod 600 /etc/nginx/cert.pem
 	sudo chmod 600 /etc/nginx/cert.key
 	#method 2
@@ -47,7 +51,8 @@ mkSSLCert(){
 Nginx(){
 	clear
 	echo -e "Installing $VERSION with NginX\n=====================================\n\n Please wait...\n"
-	sudo apt-get install -y $INSTALL_PACKAGES nginx php7.0-fpm
+	add_php7_repository
+	sudo apt install -y $INSTALL_PACKAGES nginx php7.0-fpm
 	webserver_default
 	#mkSSLCert
 	if [[ -e /etc/nginx/sites-available/default ]]; then
@@ -70,13 +75,15 @@ Apache2(){
 	clear
 	echo -e "Installing $VERSION with Apache2\n=======================================\n\n· Aprox. 45.3 MB of additional disk space will be used.\n\nPlease wait...\n"
 	command -v apache2 >/dev/null 2>&1 || install_apache2
-	sudo apt-get install -y "$INSTALL_PACKAGES"
+	add_php7_repository
+	sudo apt install -y "$INSTALL_PACKAGES"
+	php_file_max_size
 	webserver_default
 }
 
 # For debug purpose
 RemoveALL(){
-	sudo apt-get remove -y "$INSTALL_PACKAGES" apache2 libapache2-mod-php5 nginx
+	sudo apt-get remove -y "$INSTALL_PACKAGES" apache2 libapache2-mod-php7.0 nginx
 	sudo apt-get autoremove -y
 	sudo rm -rf /var/www
 }
@@ -93,5 +100,5 @@ case $retval in
   1)   Apache2 ;;
 esac
 
-echo -e 'Done. Now restart the system and go to another device/PC and type in your Web browser: http://'$"(hostname -I)"'/owncloud'
+echo -e "Done. Now restart the system and go to another device/PC and type in your Web browser: http://${IP}/owncloud"
 read -p 'Press [ENTER] to continue...'
