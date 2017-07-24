@@ -6,44 +6,110 @@
 # Directive to disable the warning:
 # shellcheck disable=SC2034
 #
+
+#
+# Get your current IP in the Lan
+#
 get_ip() {
   local IP
   IP=$(hostname -I | awk '{print $1}')
   echo "$IP"
 }
 
+#
+# Delete directory
+#
+delete_dir() {
+  if [ -w "$1" ]; then
+    rm -rf "$1"
+  else
+    if [ "$1" == "/" ]; then
+      echo "/ protection enabled. You can't delete it!. Exiting..."
+      exit
+    fi
+    sudo rm -rf "$1"
+  fi
+  echo "$1 deleted."
+}
+
+#
+# Check directory exist and ask for deletion
+#
+directory_exist() {
+  if [[ -d "$1" ]]; then
+    read -p "Directory already exist. Delete it and its content (recursive) (y/n)?: " option
+    case "$option" in
+		    y*) delete_dir "$1" ;;
+        n*) return ;;
+		esac
+  fi
+}
+
+#
+# Get the distribution name
+#
 get_distro_name() {
   local DISTRO
   DISTRO=$(lsb_release -si)
   echo "$DISTRO"
 }
 
+#
+# Download a file and extract it
+#
 download_and_extract(){
-  wget $1 && extract "$(basename $_)" ; rm "$(basename $_)"
+  wget -c "$1" && extract "$(basename $_)" ; rm "$(basename $_)"
 }
 
+#
+# Check if a package is installed in the system
+#
 is_pkg_installed() {
-  dpkg -s $1 &> /dev/null
+  dpkg -s "$1" &> /dev/null
   
   if [ $? -eq 0 ]; then
     echo "Package  is installed!"
+    return 0
   else
     echo "Package  is NOT installed!"
+    return 1
   fi
 }
 
+#
+# Backup a file as user or root
+#
 file_backup() {
   if [ -f $1 ]; then
     if [ -w "$(dirname $1)" ]; then
-      echo "escribir como user"
       cp $1{,.bak}
     else
-      echo "escribir como root"
       sudo cp $1{,.bak}
     fi
+    echo "Backed up the file at: $1.bak"
   fi
 }
 
+#
+# Modify the max file size in your php.ini
+#
+php_file_max_size() {
+  read -p "Input the max file size (MB) you can upload throught the server and press [ENTER]. (Example: 8,512,...): " input
+  if is_integer "${input}"; then
+      INI_FILE=$(php --ini | grep 'Loaded Configuration File:' | awk '{print $4}')
+      echo "php.ini = $INI_FILE"
+      file_backup "$INI_FILE"
+      
+      sudo sed -i "s/post_max_size.*/post_max_size = ${input}M/" "$INI_FILE"
+      cat "$INI_FILE" | grep 'post_max_size'
+  else
+      echo "Sorry, ${input} is not a correct value. No file was modified."
+  fi
+}
+
+#
+# Intall Node.js (all versions)
+#
 install_node(){
   if which node >/dev/null ; then
     read -p "Warning!: Node.js already installed (Version $(node -v)). Do you want to uninstall it (y/n)?: " option
@@ -64,6 +130,9 @@ install_node(){
   node -v
 }
 
+#
+# Check what is your plate
+#
 check_board() {
   if [[ $(cat /proc/cpuinfo | grep 'ODROIDC') ]]; then
     MODEL="ODROID-C1"
@@ -77,6 +146,9 @@ check_board() {
   fi
 }
 
+# 
+# Fix for SDL 
+#
 SDL_fix_Rpi() {
   echo "Applying fix to SDL on Raspberry Pi 2, please wait..."
   if [[ $(cat /proc/cpuinfo | grep 'BCM2709') && $(stat -c %y /usr/lib/arm-linux-gnueabihf/libSDL-1.2.so.0.11.4 | grep '2012') ]]; then
@@ -86,6 +158,9 @@ SDL_fix_Rpi() {
   fi
 }
 
+#
+# Your current CPU temperature
+#
 check_temperature() {
   if [ -f /opt/vc/bin/vcgencmd ]; then
     TEMPC="| $(/opt/vc/bin/vcgencmd measure_temp | awk '{print $1"º"}') "
@@ -96,6 +171,9 @@ check_temperature() {
   fi
 }
 
+#
+# Show extend CPU info 
+#
 check_CPU() {
   if [ -f /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq ]; then
     CPU="| CPU Freq="`expr "$(cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq)" / 1000`" MHz "
@@ -104,6 +182,9 @@ check_CPU() {
   fi
 }
 
+#
+# Check if internet is available 
+#
 check_internet_available() {
   # Make sure we have internet conection
   if [ ! "$NOINTERNETCHECK" = 1 ]; then
@@ -112,6 +193,15 @@ check_internet_available() {
       echo "Internet connection required. Check your network."; exit 1
     fi
   fi
+  echo "$PINGOUTPUT"
+}
+
+#
+# Check if passed variable is an integer
+# TODO: Improve it
+#
+is_integer() {
+    return $(test "$@" -eq "$@" > /dev/null 2>&1)
 }
 
 show_dialog() {
