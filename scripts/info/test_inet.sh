@@ -2,20 +2,20 @@
 #
 # Description : Test Internet Speed thanks to Matt Martz
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (9/Apr/15)
+# Version     : 1.1 (24/Jul/17)
 # Tested      : Raspbian/Debian/Ubuntu, OSX
-#
 #
 clear
 
-PYTHON_SCRIPT="https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest_cli.py"
+PYTHON_SCRIPT="https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py"
+SPEED_TEST="$HOME/speedtest.py"
 
-wget -P $HOME $PYTHON_SCRIPT
+wget -P ~ "$PYTHON_SCRIPT"
 clear
 
 echo -e "Test Internet bandwidth thanks to Matt Martz\n============================================\n· More Info at: https://github.com/sivel/speedtest-cli\n"
 
-[ -f $HOME/speedtest_cli.py ] && python $HOME/speedtest_cli.py
-rm $HOME/speedtest_cli.py
+[ -f "$SPEED_TEST" ] && python "$SPEED_TEST"
+rm "$SPEED_TEST"
 
-read -p "Press [Enter] to continue..."
+read -p "Done!. Press [Enter] to continue..."
