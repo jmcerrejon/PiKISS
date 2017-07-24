@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **501 hours**
+* **507 hours**
 
 * Total amount donated by users: $14.11
 
@@ -23,6 +23,12 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (24/07/17)
+
+· Updated and improved Server > Owncloud 10.0.2
+
+· New helper's functions
 
 ### (21/07/17)
 
