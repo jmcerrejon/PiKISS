@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **507 hours**
+* **510 hours**
 
 * Total amount donated by users: $14.11
 
@@ -23,6 +23,10 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (25/07/17)
+
+· Added Server > Bittorrent Sync alternatives
 
 ### (24/07/17)
 

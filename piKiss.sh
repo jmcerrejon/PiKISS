@@ -421,6 +421,7 @@ function smServer(){
       FWork "Wordpress, Node.js among others"
       DB "MySQL+PHP5 connector"
       Upd "keep Debian patched with latest security updates"
+      BtSync "Bittorrent Sync as file backup service"
     )
   elif [[ ${MODEL} == 'ODROID-C1' ]]; then
     options=(
@@ -451,6 +452,7 @@ function smServer(){
       FWork)		 ./scripts/server/fwork.sh ;;
       DB) 		   ./scripts/server/db.sh ;;
       Upd)       ./scripts/server/auto-upd.sh ;;
+      BtSync)    ./scripts/server/bsync.sh ;;
     esac
   done
 }
