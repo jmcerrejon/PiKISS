@@ -130,22 +130,21 @@ check_internet_available
 function smInfo(){
   
   cmd=(dialog --clear --backtitle "$TITLE" --title "[ Info ]" --menu "Select an option from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
-  
+ 
+  # common options, working on any model
+  options=(
+      Back "Back to main menu"
+      Weather "Weather info from your country"
+      Chkimg "Check some distros images to know if they are updated"
+  ) 
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
     options=(
-      Back "Back to main menu"
-      Chkimg "Check some distros images to know if they are updated"
+      "${options[@]}"
       Webmin "Monitoring tool"
-      Weather "Weather info from your country"
       Bmark "Benchmark RPi (CPU, MEM, SD Card...)"
       Lynis "Lynis is a security auditing tool."
       TestInet "Test Internet bandwidth"
       WebMonitor "Web monitor to your RPi"
-    )
-  elif [[ ${MODEL} == 'ODROID-C1' ]]; then
-    options=(
-      Back "Back to main menu" \
-      Chkimg "Check some distros images to know if they are updated"
     )
   fi
   
@@ -401,15 +400,18 @@ function smInternet(){
 
 function smServer(){
   cmd=(dialog --clear --backtitle "$TITLE" --title "[ Server ]" --menu "Select to configure your distro as a server:" $wHEIGHT $wWIDTH $wHEIGHT)
-  
+ 
+  options=(
+      Back "Back to main menu"
+      FTP "Simple FTP Server with vsftpd"
+  ) 
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
     options=(
-      Back "Back to main menu"
+      "${options[@]}"
       VNCServer "Share Desktop through VNC Server"
       VPNServer "OpenVPN setup and config thks to pivpn.io"
       Nagios "Nagios 3 is a network host and service monitoring"
       AdBlock "Turn Raspberry Pi into ad blocker"
-      FTP "Simple FTP Server with vsftpd"
       Cups "Printer server (cups)"
       Minidlna "Install/Compile UPnP/DLNA Minidlna"
       Web "Web server+PHP7"
@@ -425,10 +427,16 @@ function smServer(){
     )
   elif [[ ${MODEL} == 'ODROID-C1' ]]; then
     options=(
-      Back "Back to main menu"
-      FTP "Simple FTP Server with "
+      "${options[@]}"
     )
   fi
+  # options working on any board
+  options=(
+    "${options[@]}"
+    OctoPrint "Control your 3D-Printer"
+  )
+echo ${options[@]}
+#exit 1
   
   choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
   
@@ -453,6 +461,7 @@ function smServer(){
       DB) 		   ./scripts/server/db.sh ;;
       Upd)       ./scripts/server/auto-upd.sh ;;
       BtSync)    ./scripts/server/bsync.sh ;;
+      OctoPrint)    ./scripts/server/octoprint.sh ;;
     esac
   done
 }
