@@ -401,9 +401,11 @@ function smInternet(){
 function smServer(){
   cmd=(dialog --clear --backtitle "$TITLE" --title "[ Server ]" --menu "Select to configure your distro as a server:" $wHEIGHT $wWIDTH $wHEIGHT)
  
+  # options working on any board
   options=(
       Back "Back to main menu"
       FTP "Simple FTP Server with vsftpd"
+      OctoPrint "Control your 3D-Printer"
   ) 
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
     options=(
@@ -425,18 +427,7 @@ function smServer(){
       Upd "keep Debian patched with latest security updates"
       BtSync "Bittorrent Sync as file backup service"
     )
-  elif [[ ${MODEL} == 'ODROID-C1' ]]; then
-    options=(
-      "${options[@]}"
-    )
   fi
-  # options working on any board
-  options=(
-    "${options[@]}"
-    OctoPrint "Control your 3D-Printer"
-  )
-echo ${options[@]}
-#exit 1
   
   choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
   
