@@ -140,6 +140,8 @@ check_board() {
     MODEL="Raspberry Pi"
   elif [ "$(uname -n)" = "debian" ]; then
     MODEL="Debian"
+  elif [[ $(grep orangepizero /etc/armbian-release) ]]; then
+    MODEL="Orange Pi Zero"
   else
     MODEL="UNKNOWN"
     dialog --title '[ WARNING! ]' --msgbox "Board or Operating System not compatible.\nUse at your own risk." 6 45
