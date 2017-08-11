@@ -138,8 +138,7 @@ function smInfo(){
       Chkimg "Check some distros images to know if they are updated"
   ) 
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
-    options=(
-      "${options[@]}"
+    options+=(
       Webmin "Monitoring tool"
       Bmark "Benchmark RPi (CPU, MEM, SD Card...)"
       Lynis "Lynis is a security auditing tool."
@@ -405,11 +404,9 @@ function smServer(){
   options=(
       Back "Back to main menu"
       FTP "Simple FTP Server with vsftpd"
-      OctoPrint "Control your 3D-Printer"
   ) 
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
-    options=(
-      "${options[@]}"
+    options+=(
       VNCServer "Share Desktop through VNC Server"
       VPNServer "OpenVPN setup and config thks to pivpn.io"
       Nagios "Nagios 3 is a network host and service monitoring"
@@ -428,6 +425,10 @@ function smServer(){
       BtSync "Bittorrent Sync as file backup service"
     )
   fi
+  # last entries
+  options+=(
+      OctoPrint "Control your 3D-Printer"
+  )
   
   choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
   
