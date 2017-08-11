@@ -2,7 +2,7 @@
 #
 # OctoPrint installer
  
-. ../helper.sh
+. scripts/helper.sh
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 SERVICE_FILE="
