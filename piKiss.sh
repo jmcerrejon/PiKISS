@@ -404,6 +404,7 @@ function smServer(){
   options=(
       Back "Back to main menu"
       FTP "Simple FTP Server with vsftpd"
+      Cups "Printer server (cups)"
   ) 
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
     options+=(
@@ -411,7 +412,6 @@ function smServer(){
       VPNServer "OpenVPN setup and config thks to pivpn.io"
       Nagios "Nagios 3 is a network host and service monitoring"
       AdBlock "Turn Raspberry Pi into ad blocker"
-      Cups "Printer server (cups)"
       Minidlna "Install/Compile UPnP/DLNA Minidlna"
       Web "Web server+PHP7"
       Smtp "SMTP Config to send e-mail"
