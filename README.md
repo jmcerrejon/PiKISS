@@ -8,6 +8,10 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 * Total amount donated by users: $14.11
 
+Contributors:
+
+* [huelvayork](https://github.com/huelvayork)
+
 ## ENGLISH
 
 ### [ Screenshots ]
@@ -23,6 +27,10 @@ Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+###(13/08/17)
+
+· Added Server > Octoprint
 
 ### (25/07/17)
 

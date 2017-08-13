@@ -25,8 +25,7 @@ alias apts='apt-cache search'
 alias aptsv='apt-cache madison'
 alias apti='sudo apt install'
 alias aptiy='sudo apt install -y'
-alias ls="ls --color -lAGbh --time-style='+%d %b %Y %H:%M'"
-alias ll="ls --color -lAGbh --time-style='+%d %b %Y %H:%M'"
+alias ll="ls --color -lAGbh --group-directories-first --time-style='+%d %b %Y %H:%M'"
 alias god='sudo -i'
 alias rmr='rm -rf'
 alias shutd='sudo shutdown -P now'
