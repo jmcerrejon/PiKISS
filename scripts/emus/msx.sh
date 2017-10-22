@@ -2,7 +2,7 @@
 #
 # Description : OpenMSX emulator 0.14.0
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3 (22/Oct/17)
+# Version     : 1.3.1 (22/Oct/17)
 # Compatible  : Raspberry Pi 1, 2 & 3 (tested)
 #
 # CREDITS     : I want to thanks to *Patrick (VampierMSX)* from **OpenMSX Team**.
@@ -11,6 +11,7 @@
 clear
 SC_OPENMSX="https://github.com/openMSX/openMSX/releases/download/RELEASE_0_14_0/openmsx-0.14.0.tar.gz"
 BIN_OPENMSX="http://misapuntesde.com/res/openmsx_0.14.0-1_armhf.deb"
+BINARY="openmsx_0.14.0-1_armhf.deb"
 INSTALL_DIR="$HOME/games"
 # ROM game Thanks to msx.ebsoft.fr
 ROM_PATH="http://msx.ebsoft.fr/uridium/ccount/click.php?id=uridium"
@@ -21,15 +22,15 @@ INPUT=/tmp/msxmenu.$$
 
 downloadGame(){
 	mkdir -p $GAMES_PATH & cd $GAMES_PATH
-    wget -O $GAMES_PATH/uridium.zip $ROM_PATH
+  wget -O $GAMES_PATH/uridium.zip $ROM_PATH
 	unzip uridium.zip && rm uridium.zip
 }
 
 install(){
 	cd $HOME
 	wget $BIN_OPENMSX
-	sudo dpkg -i openmsx_0.13.0_armhf.deb
-	rm openmsx_0.13.0_armhf.deb
+	sudo dpkg -i $BINARY
+	rm $BINARY
 
 	postinstall
 }
