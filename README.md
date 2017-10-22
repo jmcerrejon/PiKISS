@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **510 hours**
+* **513 hours**
 
 * Total amount donated by users: $14.11
 
@@ -28,7 +28,11 @@ Contributors:
 
 ### [ ChangeLog (dd/mm/yy)]
 
-###(13/08/17)
+### (22/10/17)
+
+· Added Emulators > OpenMSX 0.14
+
+### (13/08/17)
 
 · Added Server > Octoprint
 

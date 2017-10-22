@@ -376,7 +376,7 @@ function smInternet(){
       Back "Back to main menu"
       Plowshare "Direct download from hosters like uploaded,..."
       # Browser "Web browser"
-      Downmp3 "Download mp3 from GrooveShark"
+      # Downmp3 "Download mp3 from GrooveShark"
     )
   elif [[ ${MODEL} == 'ODROID-C1' ]]; then
     options=(
