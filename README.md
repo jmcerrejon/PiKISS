@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **513 hours**
+* **515 hours**
 
 * Total amount donated by users: $14.11
 
@@ -27,6 +27,16 @@ Contributors:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (13/01/18)
+
+· Fixed issue with Tweaks/others script
+
+· Added new packages to Tweaks/removepkg
+
+· Fixed desktop menu entry to PiKISS
+
+· Fixed Tweaks/services
 
 ### (22/10/17)
 

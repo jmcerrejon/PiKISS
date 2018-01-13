@@ -2,7 +2,7 @@
 #
 # Description : Remove packages
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.2 (02/Oct/16)
+# Version     : 1.2.3 (13/Jan/18)
 # Compatible  : Raspberry Pi 1,2 & 3 (tested)
 #
 clear
@@ -41,7 +41,7 @@ pkgs_RPi(){
 
     read -p "Remove packages for developers (OK if you're not one)? (y/n) " option
     case "$option" in
-        y*) sudo apt remove -y `sudo dpkg --get-selections | grep "\-dev" | sed s/install//` ;;
+        y*) sudo apt remove -y `sudo dpkg --get-selections | grep "\-dev" | sed s/install//`; sudo apt-get remove -y geany; ;;
     esac
 
     read -p "Delete all related with wolfram engine (658 MB space will be freed)? (y/n) " option
@@ -54,14 +54,24 @@ pkgs_RPi(){
         y*) sudo apt remove --purge -y oracle-java8-jdk ;;
     esac
 
-    read -p "I hate Python. Can I remove it? (y/n) " option
+    read -p "Say with me: I don't wanna use Scratch. Delete it (you free 240 MB!)? (y/n) " option
     case "$option" in
-        y*) sudo apt remove -y `sudo dpkg --get-selections | grep -v "deinstall" | grep python | sed s/install//` ;;
+        y*) sudo apt remove --purge -y scratch* ;;
+    esac
+
+    read -p "I hate Python. Can I remove it (yes, IDLE and Thonny IDE too)? (y/n) " option
+    case "$option" in
+        y*) sudo apt remove -y `sudo dpkg --get-selections | grep -v "deinstall" | grep python | sed s/install//`; sudo apt-get remove -y python3-thonny idle* ;;
     esac
 
     read -p "Python games? Please, say yes! (y/n) " option
     case "$option" in
-        y*) sudo apt remove --purge -y python-pygame python3-pygame; rm -rf /home/pi/python_games ;;
+        y*) sudo apt remove --purge -y python-pygame python3-pygame; rm -rf /home/pi/python_games; sudo rm /usr/share/raspi-ui-overrides/applications/python-games.desktop ;;
+    esac
+
+    read -p "Do you hate MineCraft, Don't you? (y/n) " option
+    case "$option" in
+        y*) sudo apt remove --purge -y minecraft*; sudo rm /usr/share/raspi-ui-overrides/applications/python-games.desktop ;;
     esac
 
     # alsa?, wavs, ogg?

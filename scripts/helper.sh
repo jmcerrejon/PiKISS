@@ -66,7 +66,7 @@ download_and_extract(){
 #
 is_pkg_installed() {
   dpkg -s "$1" &> /dev/null
-  
+
   if [ $? -eq 0 ]; then
     echo "Package  is installed!"
     return 0
@@ -99,7 +99,7 @@ php_file_max_size() {
       INI_FILE=$(php --ini | grep 'Loaded Configuration File:' | awk '{print $4}')
       echo "php.ini = $INI_FILE"
       file_backup "$INI_FILE"
-      
+
       sudo sed -i "s/post_max_size.*/post_max_size = ${input}M/" "$INI_FILE"
       cat "$INI_FILE" | grep 'post_max_size'
   else
@@ -123,7 +123,7 @@ install_node(){
   if [[ -z "$1" ]]; then
     read -p "Type the Node.js version you want to install (8,7,6,5,4,0.12), followed by [ENTER]: " NODE_VERSION
   fi
-  
+
   curl -sL https://deb.nodesource.com/setup_${NODE_VERSION}.x | sudo -E bash -
   echo -e "\nInstalling Node.js and dependencies, please wait...\n"
   sudo apt install -y nodejs build-essential libssl-dev
@@ -148,8 +148,8 @@ check_board() {
   fi
 }
 
-# 
-# Fix for SDL 
+#
+# Fix for SDL
 #
 SDL_fix_Rpi() {
   echo "Applying fix to SDL on Raspberry Pi 2, please wait..."
@@ -174,7 +174,7 @@ check_temperature() {
 }
 
 #
-# Show extend CPU info 
+# Show extend CPU info
 #
 check_CPU() {
   if [ -f /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq ]; then
@@ -185,7 +185,7 @@ check_CPU() {
 }
 
 #
-# Check if internet is available 
+# Check if internet is available
 #
 check_internet_available() {
   # Make sure we have internet conection
@@ -210,18 +210,18 @@ show_dialog() {
   local h=${1-10}			# box height default 10
   local w=${2-41} 		# box width default 41
   local t=${3-Output} 	# box title
-  
+
   while true
   do
-    
+
     dialog --clear   \
     --title		"[ M A I N - M E N U ]" \
     --menu 		"You can use the UP/DOWN arrow keys, the first letter of the choice as a hot key, or the number keys 1-4 to choose an option." ${h} ${w} \
     "$(<$OUTPUT)"
     Exit 		"Exit to the shell" 2> "$(<$INPUT)"
-    
+
     menuitem=$(<"${INPUT}")
-    
+
     case $menuitem in
       Tweaks)	    	smTweaks ;;
       Games) 	    	smGames ;;
@@ -244,7 +244,7 @@ show_dialog() {
 mkDesktopEntry() {
   # Add lxterminal -t "PiKISS" --geometry=150x25 --working-directory=/home/pi/PiKISS -e './piKiss.sh'
   if [[ ! -e /usr/share/applications/pikiss.desktop ]]; then
-    sudo sh -c 'echo "[Desktop Entry]\nName=PiKISS\nComment=A bunch of scripts with menu to make your life easier\nExec='$PWD'/PiKISS/piKiss.sh\nIcon=terminal\nTerminal=true\nType=Application\nCategories=ConsoleOnly;Utility;System;\nPath='$PWD'/" > /usr/share/applications/pikiss.desktop'
+    sudo sh -c 'echo "[Desktop Entry]\nName=PiKISS\nComment=A bunch of scripts with menu to make your life easier\nExec='$PWD'/piKiss.sh\nIcon=terminal\nTerminal=true\nType=Application\nCategories=ConsoleOnly;Utility;System;\nPath='$PWD'/" > /usr/share/applications/pikiss.desktop'
     # if [[ -e ./piKiss.sh ]]; then
     # 	sed -i -e 's/mkDesktopEntry/#mkDesktopEntry/ig' ./piKiss.sh
     # fi
@@ -269,7 +269,7 @@ install_joypad() {
       fi
     ;;
   esac
-  
+
   echo "Done!"
 }
 
@@ -278,7 +278,7 @@ package_check() {
 }
 
 check_dependencies() {
-  INSTALLER_DEPS=("$@")
+  INSTALLER_DEPS="$@"
   for i in "${INSTALLER_DEPS[@]}"; do
     echo -n ":::    Checking for $i..."
     package_check ${i} > /dev/null
@@ -347,9 +347,9 @@ ask_gcc6() {
     --yes-label "Yes. Let's crack on!" \
     --no-label  "Nope" \
     --yesno     "Caution: You could broke your Raspbian distribution. Are you sure you want to install it?. This process takes time." 7 80
-    
+
     retval=$?
-    
+
     case $retval in
       0)   install_gcc6 ;;
       1)   exit ;;

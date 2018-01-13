@@ -17,7 +17,7 @@
 . ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-VERSION="v.1.0 (2017)"
+VERSION="v.1.0.1 (2018)"
 check_board
 check_temperature
 check_CPU
@@ -56,16 +56,16 @@ function usage()
 function lastUpdateRepo()
 {
   DATENOW=$(date +"%d-%b-%y")
-  
+
   if [ -e "checkupdate.txt" ]; then
     CHECKUPDATE=$(cat checkupdate.txt)
-    
+
     if [[ $CHECKUPDATE -ge $DATENOW ]]; then
       echo "Update repo: NO"
       return 0
     fi
   fi
-  
+
   echo "Update repo: YES"
   (echo "$DATENOW" > checkupdate.txt)
   sudo apt-get update
@@ -128,15 +128,15 @@ check_internet_available
 # - - - -
 #
 function smInfo(){
-  
+
   cmd=(dialog --clear --backtitle "$TITLE" --title "[ Info ]" --menu "Select an option from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
- 
+
   # common options, working on any model
   options=(
       Back "Back to main menu"
       Weather "Weather info from your country"
       Chkimg "Check some distros images to know if they are updated"
-  ) 
+  )
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
     options+=(
       Webmin "Monitoring tool"
@@ -146,9 +146,9 @@ function smInfo(){
       WebMonitor "Web monitor to your RPi"
     )
   fi
-  
+
   choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
-  
+
   for choice in $choices
   do
     case $choice in
@@ -165,9 +165,9 @@ function smInfo(){
 }
 
 function smTweaks(){
-  
+
   cmd=(dialog --clear --backtitle "$TITLE" --title "[ Tweaks ]" --menu "Select a tweak from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
-  
+
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
     options=(
       Back "Back to main menu"
@@ -184,9 +184,9 @@ function smTweaks(){
       Daemons "Disable services useless (not permanently)"
     )
   fi
-  
+
   choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
-  
+
   for choice in $choices
   do
     case $choice in
@@ -200,9 +200,9 @@ function smTweaks(){
 }
 
 function smGames(){
-  
+
   cmd=(dialog --clear --backtitle "$TITLE" --title "[ Games ]" --menu "Select game from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
-  
+
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
     options=(
       Back "Back to main menu"
@@ -229,9 +229,9 @@ function smGames(){
       Arx-Fatalis "3D 1st person RPG"
     )
   fi
-  
+
   choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
-  
+
   for choice in $choices
   do
     case $choice in
@@ -253,7 +253,7 @@ function smGames(){
 
 function smEmulators(){
   cmd=(dialog --clear --backtitle "$TITLE" --title "[ Emulators ]" --menu "Select emulator from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
-  
+
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
     options=(
       Back "Back to main menu"
@@ -276,9 +276,9 @@ function smEmulators(){
       Back "Back to main menu"
     )
   fi
-  
+
   choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
-  
+
   for choice in $choices
   do
     case $choice in
@@ -303,7 +303,7 @@ function smEmulators(){
 
 function smMultimedia(){
   cmd=(dialog --clear --backtitle "$TITLE" --title "[ Multimedia ]" --menu "Select a script from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
-  
+
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
     options=(
       Back "Back to main menu"
@@ -316,9 +316,9 @@ function smMultimedia(){
       Back "Back to main menu"
     )
   fi
-  
+
   choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
-  
+
   for choice in $choices
   do
     case $choice in
@@ -333,7 +333,7 @@ function smMultimedia(){
 
 function smConfigure(){
   cmd=(dialog --clear --backtitle "$TITLE" --title "[ Configure ]" --menu "Select to configure your distro:" $wHEIGHT $wWIDTH $wHEIGHT)
-  
+
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
     options=(
       Back "Back to main menu"
@@ -350,9 +350,9 @@ function smConfigure(){
       Back "Back to main menu"
     )
   fi
-  
+
   choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
-  
+
   for choice in $choices
   do
     case $choice in
@@ -370,7 +370,7 @@ function smConfigure(){
 
 function smInternet(){
   cmd=(dialog --clear --backtitle "$TITLE" --title "[ Internet ]" --menu "Select an option from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
-  
+
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
     options=(
       Back "Back to main menu"
@@ -383,9 +383,9 @@ function smInternet(){
       Back "Back to main menu"
     )
   fi
-  
+
   choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
-  
+
   for choice in $choices
   do
     case $choice in
@@ -399,13 +399,13 @@ function smInternet(){
 
 function smServer(){
   cmd=(dialog --clear --backtitle "$TITLE" --title "[ Server ]" --menu "Select to configure your distro as a server:" $wHEIGHT $wWIDTH $wHEIGHT)
- 
+
   # options working on any board
   options=(
       Back "Back to main menu"
       FTP "Simple FTP Server with vsftpd"
       Cups "Printer server (cups)"
-  ) 
+  )
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
     options+=(
       VNCServer "Share Desktop through VNC Server"
@@ -429,9 +429,9 @@ function smServer(){
   options+=(
       OctoPrint "Control your 3D-Printer"
   )
-  
+
   choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
-  
+
   for choice in $choices
   do
     case $choice in
@@ -460,7 +460,7 @@ function smServer(){
 
 function smOthers(){
   cmd=(dialog --clear --backtitle "$TITLE" --title "[ Others ]" --menu "Another scripts uncategorized:" $wHEIGHT $wWIDTH $wHEIGHT)
-  
+
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
     options=(
       Back "Back to main menu"
@@ -477,9 +477,9 @@ function smOthers(){
       Back "Back to main menu" \
     )
   fi
-  
+
   choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
-  
+
   for choice in $choices
   do
     case $choice in
@@ -503,7 +503,7 @@ function smOthers(){
 while true
 do
   cmd=(dialog --clear --backtitle "$TITLE" --title	"[ M A I N - M E N U ]" --menu "You can use the UP/DOWN arrow keys, the first letter of the choice as a hot key, or the number keys 1-9 to choose an option:" $wHEIGHT $wWIDTH $wHEIGHT)
-  
+
   options=(
     Tweaks "Put your distro to the limit"
     Games "Install or compile games easily"
@@ -516,9 +516,9 @@ do
     Others "Scripts with others thematics"
     Exit "Exit to the shell"
   )
-  
+
   choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
-  
+
   for choice in $choices
   do
     case $choice in
