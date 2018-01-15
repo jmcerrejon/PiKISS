@@ -8,6 +8,19 @@
 #
 
 #
+# Fix libGLESv2.so on Raspbian Stretch
+#
+fixlibGLES() {
+    if [ ! -f /usr/lib/arm-linux-gnueabihf/libGLESv2.so ]; then
+      read -p "libGLESv2.so not found. Do you want to run rpi-upgrade to restore the missing link (y/n)?: " option
+        case "$option" in
+            y*) sudo raspi-upgrade ;;
+            n*) return ;;
+        esac
+    fi
+}
+
+#
 # Get your current IP in the Lan
 #
 get_ip() {
@@ -39,9 +52,9 @@ directory_exist() {
   if [[ -d "$1" ]]; then
     read -p "Directory already exist. Delete it and its content (recursive) (y/n)?: " option
     case "$option" in
-		    y*) delete_dir "$1" ;;
+	    y*) delete_dir "$1" ;;
         n*) return ;;
-		esac
+	esac
   fi
 }
 

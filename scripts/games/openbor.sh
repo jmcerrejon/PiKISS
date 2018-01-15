@@ -9,7 +9,7 @@
 # http://cavernofcreativity.com/Atlas/xthreads_attach.php/432_1432021152_aa0362dd/9920f797b8fdb0dbdce5b886be3d582d/ARAH%202015.zip
 clear
 
-. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 mkDesktopEntry(){

@@ -28,6 +28,14 @@ Contributors:
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (14/01/18)
+
+· Updated Games/Dune Legacy to 0.96.4
+
+· Updated & fixed url broken in Games/Descent 1 & 2 to 0.59.100.20161206-1
+
+· Added Games > Fruit'Y
+
 ### (13/01/18)
 
 · Fixed issue with Tweaks/others script

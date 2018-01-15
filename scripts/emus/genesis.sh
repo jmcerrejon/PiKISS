@@ -2,7 +2,7 @@
 #
 # Description : Picodrive
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (07/Sep/16)
+# Version     : 1.1 (14/Nov/18)
 # Compatible  : Raspberry Pi 1, 2 & 3 (tested)
 #
 # HELP        : https://www.raspberrypi.org/forums/viewtopic.php?f=78&t=105811
@@ -10,7 +10,7 @@
 clear
 
 INSTALL_DIR="$HOME/games"
-URL_FILE="http://fdarcel.free.fr/picodrive-rpi-chips-0_1.bz2"
+URL_FILE="http://misapuntesde.com/res/picodrive192.tar.gz"
 GAME_URL="http://repixel8.com/downloads/games/doroppu.bin"
 
 if  which $INSTALL_DIR/picodrive/PicoDrive_rpi2 >/dev/null ; then

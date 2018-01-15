@@ -17,7 +17,7 @@
 . ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-VERSION="v.1.0.1 (2018)"
+VERSION="v.1.0.2 (2018)"
 check_board
 check_temperature
 check_CPU
@@ -206,15 +206,16 @@ function smGames(){
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
     options=(
       Back "Back to main menu"
-      GMaker "Play Maldita Castilla, Super Crate Box and They Need to be Fed"
+      GMaker "(Only Jessie) Maldita Castilla, Super Crate Box and They Need to be Fed"
       OpenBor "OpenBOR is the open source continuation of Beats of Rage"
       Dune2 "Dune 2 Legacy"
       Descent "Descent 1 & 2 Shareware Ed."
-      RWolf "Return to Castle Wolfenstein (Demo)"
+      RWolf "(Jessie) Return to Castle Wolfenstein (Demo)"
       Crispy-doom "Crispy to play Doom, Heretic, Hexen, Strife"
       Sqrxz4 "Sqrxz 4: Difficult platform game"
       Xump "Xump: Simple multi-platform puzzler"
       Giana "Giana's Return: Simple multi-platform puzzler"
+      Fruity "Fruit'Y: Better than Candy Crush!"
     )
   elif [[ ${MODEL} == 'ODROID-C1' ]]; then
     options=(
@@ -247,6 +248,7 @@ function smGames(){
       Sqrxz4) 	 ./scripts/games/sqrxz4.sh ;;
       Xump) 	 	 ./scripts/games/xump.sh ;;
       Giana) 	 	 ./scripts/games/giana.sh ;;
+      Fruity) 	 	 ./scripts/games/fruity.sh ;;
     esac
   done
 }
