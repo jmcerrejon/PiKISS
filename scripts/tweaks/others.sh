@@ -2,8 +2,8 @@
 #
 # Description : Other tweaks yes/no answer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2 (13/Jan/18)
-# Compatible  : Raspberry Pi 1,2 & 3 (tested), ODROID-C1 (tested)
+# Version     : 1.3 (17/Jan/19)
+# Compatible  : Raspberry Pi 1,2 & 3 all versions (tested), ODROID-C1 (tested)
 #
 # Help        · http://www.raspberrypi.org/forums/viewtopic.php?f=31&t=11642
 #             · https://extremeshok.com/1081/raspberry-pi-raspbian-tuning-optimising-optimizing-for-reduced-memory-usage/
@@ -183,7 +183,7 @@ tweaks_RPi(){
     echo -e "\nReplace mirrordirector.raspbian.org (sometimes down) with mirror.ox.ac.uk ?"
     read -p "Agree (y/n)? " option
     case "$option" in
-        y*) sudo sed -i "/mirrordirector.raspbian.org/s/^/#/" /etc/apt/sources.list; sudo sed -i "1 s|^|deb http://mirror.ox.ac.uk/sites/archive.raspbian.org/archive/raspbian jessie main contrib non-free rpi\n|" /etc/apt/sources.list ;;
+        y*) sudo sed -i "/mirrordirector.raspbian.org/s/^/#/" /etc/apt/sources.list; sudo sed -i "1 s|^|deb http://mirror.ox.ac.uk/sites/archive.raspbian.org/archive/raspbian stretch main contrib non-free rpi\n|" /etc/apt/sources.list ;;
     esac
 }
 

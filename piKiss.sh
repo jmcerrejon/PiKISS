@@ -17,7 +17,7 @@
 . ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-VERSION="v.1.0.2 (2018)"
+VERSION="v.1.1.0 (2019)"
 check_board
 check_temperature
 check_CPU
