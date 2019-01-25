@@ -1,36 +1,36 @@
-#!/bin/bash -x
+#!/bin/bash
 #
-# Description : Descent 1 & 2
+# Description : Descent 1 & 2 thks to DXX-Rebirth v0.60-weekly-04-14-18
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.8.4 (14/Jan/18)
-# Compatible  : Raspberry Pi 1,2 & 3 (tested)
+# Version     : 0.9.0 (25/Jan/19)
+# Compatible  : Raspberry Pi 1,2 & 3 B+ (tested)
 #
-# HELP 		  : To uninstall: sudo dpkg -r d1x-rebirth-data-shareware d1x-rebirth d2x-rebirth-data-demo d2x-rebirth && $(sudo rm -r /usr/share/games/d1x-rebirth/ /usr/share/games/d2x-rebirth/ ~/.d1x-rebirth ~/.d2x-rebirth)
-# 			  : https://github.com/dxx-rebirth/dxx-rebirth
-clear
-
+# HELP	      : https://github.com/dxx-rebirth/dxx-rebirth
+#
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-D1X_SHARE_URL='https://www-user.tu-chemnitz.de/~heinm/dxx/deb/data/d1x-rebirth-data-shareware_1.4-1_all.deb'
-D2X_SHARE_URL='https://www-user.tu-chemnitz.de/~heinm/dxx/deb/data/d2x-rebirth-data-demo_1.0-1_all.deb'
-D1X_URL='https://www-user.tu-chemnitz.de/~heinm/dxx/deb/beta/d1x-rebirth_0.59.100.20161206-1_armhf.deb'
-D2X_URL='https://www-user.tu-chemnitz.de/~heinm/dxx/deb/beta/d2x-rebirth_0.59.100.20161206-1_armhf.deb'
+D1X_SHARE_URL='https://www.dxx-rebirth.com/download/dxx/content/descent-pc-shareware.zip'
+D2X_SHARE_URL='https://www.dxx-rebirth.com/download/dxx/content/descent2-pc-demo.zip'
+DXX_URL='https://www.dropbox.com/s/mid0zs4bo3e3i0b/dxx-rebirth.tar.gz?dl=0'
 D1X_HIGH_TEXTURE_URL='http://www.dxx-rebirth.com/download/dxx/res/d1xr-hires.dxa'
 D1X_OGG_URL='http://www.dxx-rebirth.com/download/dxx/res/d1xr-sc55-music.dxa'
 D2X_OGG_URL='http://www.dxx-rebirth.com/download/dxx/res/d2xr-sc55-music.dxa'
+D1X_DATA="$HOME/.d1x-rebirth/Data"
+D2X_DATA="$HOME/.d2x-rebirth/Data"
+BINARY_DIR='/usr/games'
 GAME_DIR='/usr/share/games'
 
-fixlibGLES
-
 if  which /usr/games/d1x-rebirth >/dev/null ; then
-    read -p "Warning!: D1X Rebirth already installed. Press [ENTER] to continue..."
+    read -p "Warning!: D1X Rebirth already installed. Press [ENTER] to exit..."
+    exit;
 fi
 
 if  which /usr/games/d2x-rebirth >/dev/null ; then
-    read -p "Warning!: D2X Rebirth already installed. Press [ENTER] to continue..."
+    read -p "Warning!: D2X Rebirth already installed. Press [ENTER] to exit..."
+    exit
 fi
-
 
 generateIconsD1X(){
     if [[ ! -e ~/.local/share/applications/d1x.desktop ]]; then
@@ -60,45 +60,36 @@ EOF
     fi
 }
 
-D1X_RPI(){
-	clear && echo -e "\nInstalling Descent 1 for Raspberry Pi\n=====================================\n\n· Please wait...\n"
-	wget -P $HOME $D1X_SHARE_URL $D1X_URL
-	sudo apt-get install -y libphysfs1
-	sudo dpkg -i $HOME/d1x-rebirth_0.59.100.20161206-1_armhf.deb $HOME/d1x-rebirth-data-shareware_1.4-1_all.deb
-	rm $HOME/d1x-rebirth_0.59.100.20161206-1_armhf.deb $HOME/d1x-rebirth-data-shareware_1.4-1_all.deb
-	clear && echo -e "\nInstalling HIGH textures quality pack...\n\nPlease wait...\n" && sudo wget -P $GAME_DIR/d1x-rebirth $D1X_HIGH_TEXTURE_URL
+setConfigFileReadyToPlay(){
+    clear && echo -e "You need to modify /boot/config.txt commenting #dtoverlay=vc4-fkms-v3d, #dtoverlay=vc4-kms-v3d and gpu_mem=128"
+    # TODO: Make this step automatically
+}
+
+DXX_RPI(){
+    # Compile from source code needs sudo apt install -y libsdl1.2-dev libsdl-mixer1.2-dev libphysfs-dev
+    sudo apt install -y libphysfs1
+    # Binaries
+    sudo wget -O $BINARY_DIR/dxx-rebirth.tar.gz $DXX_URL
+    cd $BINARY_DIR
+    sudo tar -xzvf $BINARY_DIR/dxx-rebirth.tar.gz
+    # Shareware demo datas
+    wget -P $D1X_DATA $D1X_SHARE_URL
+    wget -P $D2X_DATA $D2X_SHARE_URL
+    unzip -d $D1X_DATA $D1X_DATA/descent-pc-shareware.zip
+    unzip -d $D2X_DATA $D2X_DATA/descent2-pc-demo.zip
+    # Some extra addons to improve the game experience ;)
+    clear && echo -e "\nInstalling HIGH textures quality pack...\n\nPlease wait...\n" && sudo wget -P $D1X_DATA $D1X_HIGH_TEXTURE_URL
+    echo -e "\n\nInstalling OGG Music for better experience...\n\n· All music was recorded with the Roland Sound Canvas SC-55 MIDI Module.\n\nPlease wait...\n" && sudo wget -P $D1X_DATA $D1X_OGG_URL && sudo wget -P $D2X_DATA $D2X_OGG_URL
+    # Cleaning da house
+    sudo rm $BINARY_DIR/dxx-rebirth.tar.gz $D1X_DATA/descent-pc-shareware.zip $D2X_DATA/descent2-pc-demo.zip
+    # Icons & info
     generateIconsD1X
-	echo -e "\n\nInstalling OGG Music for better experience...\n\n· All music was recorded with the Roland Sound Canvas SC-55 MIDI Module.\n\nPlease wait...\n" && sudo wget -P $GAME_DIR/d1x-rebirth $D1X_OGG_URL
-}
-
-D2X_RPI(){
-	clear && echo -e "\nInstalling Descent 2 for Raspberry Pi\n=====================================\n\nPlease wait...\n"
-	wget -P $HOME $D2X_SHARE_URL $D2X_URL
-	sudo apt-get install -y libphysfs1
-	sudo dpkg -i $HOME/d2x-rebirth_0.59.100.20161206-1_armhf.deb $HOME/d2x-rebirth-data-demo_1.0-1_all.deb
-	rm $HOME/d2x-rebirth_0.59.100.20161206-1_armhf.deb $HOME/d2x-rebirth-data-demo_1.0-1_all.deb
     generateIconsD2X
-	clear && echo -e "\nInstalling OGG Music for better experience...\n\n· All music was recorded with the Roland Sound Canvas SC-55 MIDI Module.\n\nPlease wait...\n" && sudo wget -P $GAME_DIR/d2x-rebirth $D2X_OGG_URL
+    setConfigFileReadyToPlay
 }
 
-cmd=(dialog --separate-output --title "[ Descent 1 & 2 Shareware ]" --checklist "Move with the arrows up & down. Space to select the game(s) you want to install:" 9 135 16)
-options=(
-         Descent_1 "The game requires the player to navigate labyrinthine mines while fighting virus-infected robots." on
-         Descent_2 "Complete 24 levels where different types of AI-controlled robots will try to destroy you." off)
+echo -e "Installing DXX-Rebirth...\n=========================\n\n· Please wait...\n"
 
-choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+DXX_RPI
 
-for choice in $choices
-do
-    case $choice in
-        Descent_1)
-            D1X_RPI
-            ;;
-        Descent_2)
-            D2X_RPI
-            ;;
-    esac
-done
-
-clear
-read -p "Done!. type /usr/games/d1x-rebirth or /usr/games/d2x-rebirth to Play or go to Desktop Game Menu option. sudo rpi-update if you have issues with missing libGLESv2.so. Press [ENTER] to continue..."
+read -p "Done!. type /usr/games/d1x-rebirth or /usr/games/d2x-rebirth to Play or go to Desktop Game Menu option. Press [ENTER] to continue..."

@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **515 hours**
+* **530 hours**
 
 * Total amount donated by users: $14.11
 
@@ -27,6 +27,14 @@ Contributors:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (24/01/19)
+
+· Updated DXX-Rebirth to version 0.60.100
+
+### (18/01/19)
+
+· Updated webmin, removepkg & others script.
 
 ### (14/01/18)
 
