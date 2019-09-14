@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **530 hours**
+* **531 hours**
 
 * Total amount donated by users: $14.11
 
@@ -27,6 +27,10 @@ Contributors:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (14/09/19)
+
+· Update Remove packages & others script.
 
 ### (24/01/19)
 

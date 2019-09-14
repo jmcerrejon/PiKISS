@@ -2,8 +2,8 @@
 #
 # Description : Other tweaks yes/no answer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3 (17/Jan/19)
-# Compatible  : Raspberry Pi 1,2 & 3 all versions (tested), ODROID-C1 (tested)
+# Version     : 1.3.1 (05/Sep/19)
+# Compatible  : Raspberry Pi 1-4 (tested), ODROID-C1 (tested)
 #
 # Help        · http://www.raspberrypi.org/forums/viewtopic.php?f=31&t=11642
 #             · https://extremeshok.com/1081/raspberry-pi-raspbian-tuning-optimising-optimizing-for-reduced-memory-usage/
@@ -128,13 +128,6 @@ tweaks_RPi(){
     case "$option" in
         y*) sudo usermod -aG sudo pi && echo "pi ALL=(ALL:ALL) ALL" | sudo sh -c '(EDITOR="tee -a" visudo)' && sudo visudo -c ;;
     esac
-
-    # Seems unstable, check & test it.
-    # echo -e "\nLess SD card writes to stop corruptions."
-    # read -p "Agree (y/n)? " option
-    # case "$option" in
-    #     y*) SDLess_Rpi ;;
-    # esac
 
     echo -e "\nDelete old SSH Keys and recreate them."
     read -p "Agree (y/n)? " option
