@@ -2,8 +2,8 @@
 #
 # Description : Remove packages
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.4 (17/Jan/19)
-# Compatible  : Raspberry Pi 1,2 & 3 (tested)
+# Version     : 1.2.6 (05/Sep/19)
+# Compatible  : Raspberry Pi 1-4 (tested)
 #
 clear
 
@@ -34,14 +34,24 @@ pkgs_RPi(){
         y*) sudo apt remove -y `sudo dpkg --get-selections | grep "\-dev" | sed s/install//`; sudo apt-get remove -y geany; ;;
     esac
 
-    read -p "Remove Java(TM) SE Runtime Environment 1.8.0 & Wolfram-engine (646 MB space will be freed)? (y/n) " option
+    read -p "Remove Sonic Pi (It's a live coding environment based on Ruby)? (Free 24.2 MB) (y/n) " option
     case "$option" in
-        y*) sudo apt remove --purge -y oracle-java8-jdk ;;
+        y*) sudo apt-get remove -y sonic-pi sonic-pi-samples sonic-pi-server ;;
     esac
 
-    read -p "Say with me: I don't wanna use Scratch. Delete it (you free 240 MB!)? (y/n) " option
+    read -p "Remove Video Lan (AKA VLC)? (You always can use omxplayer) (Free 57 MB) (y/n) " option
     case "$option" in
-        y*) sudo apt remove --purge -y scratch* ;;
+        y*) sudo apt-get remove -y vlc vlc-bin vlc-data vlc-l10n vlc-plugin-base vlc-plugin-notify vlc-plugin-qt vlc-plugin-samba vlc-plugin-skins2 vlc-plugin-video-output vlc-plugin-video-splitter vlc-plugin-visualization ;;
+    esac
+
+    read -p "Remove Scratch2? (Free 147 MB) (y/n) " option
+    case "$option" in
+        y*) sudo apt-get remove -y scratch2 ;;
+    esac
+
+    read -p "Remove LibreOffice? (Free 310 MB) (y/n) " option
+    case "$option" in
+        y*) sudo apt-get remove -y libreoffice-common libreoffice-help-common libreoffice-help-en-gb libreoffice-java-common libreoffice-l10n-en-gb libreoffice-report-builder libreoffice-script-provider-bsh libreoffice-script-provider-js libreoffice-script-provider-python libreoffice-style-colibre libreoffice-style-tango ;;
     esac
 
     # alsa?, wavs, ogg?
@@ -50,12 +60,7 @@ pkgs_RPi(){
         y*) sudo apt remove -y `sudo dpkg --get-selections | grep -v "deinstall" | grep sound | sed s/install//` ;;
     esac
 
-    # read -p "Do you really need Sense-Hat? (y/n) " option
-    # case "$option" in
-    #     y*) sudo apt remove -y python-sense-emu python3-sense-emu python-sense-emu-doc sense-emu-tools;;
-    # esac
-
-    read -p "Other unneeded packages:  libraspberrypi-doc, manpages. (Free 36.8 MB) (y/n) " option
+    read -p "Other unneeded packages:  libraspberrypi-doc, manpages. (Free 39.3 MB) (y/n) " option
     case "$option" in
         y*) sudo apt remove -y libraspberrypi-doc manpages ;;
     esac
