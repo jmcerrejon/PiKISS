@@ -21,6 +21,19 @@ fixlibGLES() {
 }
 
 #
+# Check if a package is installed or not
+#
+isPackageInstalled() {
+	dpkg -s $1 &> /dev/null
+
+	if [ $? -eq 0 ]; then
+		true
+	else
+		false
+	fi
+}
+
+#
 # Get your current IP in the Lan
 #
 get_ip() {

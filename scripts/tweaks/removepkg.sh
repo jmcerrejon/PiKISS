@@ -2,13 +2,15 @@
 #
 # Description : Remove packages
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.6 (05/Sep/19)
+# Version     : 1.2.7 (16/Sep/19)
 # Compatible  : Raspberry Pi 1-4 (tested)
 #
 clear
 
 df -h | grep 'root\|Avail'
 
+. ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 pkgs_ODROID(){
     echo -e "\nRemove packages for ODROID Ubuntu\n=================================\n"
@@ -34,25 +36,33 @@ pkgs_RPi(){
         y*) sudo apt remove -y `sudo dpkg --get-selections | grep "\-dev" | sed s/install//`; sudo apt-get remove -y geany; ;;
     esac
 
-    read -p "Remove Sonic Pi (It's a live coding environment based on Ruby)? (Free 24.2 MB) (y/n) " option
-    case "$option" in
-        y*) sudo apt-get remove -y sonic-pi sonic-pi-samples sonic-pi-server ;;
-    esac
+	if isPackageInstalled sonic-pi; then
+		read -p "Remove Sonic Pi (It's a live coding environment based on Ruby)? (Free 24.2 MB) (y/n) " option
+		case "$option" in
+			y*) sudo apt-get remove -y sonic-pi sonic-pi-samples sonic-pi-server ;;
+		esac
+	fi
 
-    read -p "Remove Video Lan (AKA VLC)? (You always can use omxplayer) (Free 57 MB) (y/n) " option
-    case "$option" in
-        y*) sudo apt-get remove -y vlc vlc-bin vlc-data vlc-l10n vlc-plugin-base vlc-plugin-notify vlc-plugin-qt vlc-plugin-samba vlc-plugin-skins2 vlc-plugin-video-output vlc-plugin-video-splitter vlc-plugin-visualization ;;
-    esac
+	if isPackageInstalled vlc; then
+		read -p "Remove Video Lan (AKA VLC)? (You always can use omxplayer) (Free 57 MB) (y/n) " option
+		case "$option" in
+			y*) sudo apt-get remove -y vlc vlc-bin vlc-data vlc-l10n vlc-plugin-base vlc-plugin-notify vlc-plugin-qt vlc-plugin-samba vlc-plugin-skins2 vlc-plugin-video-output vlc-plugin-video-splitter vlc-plugin-visualization ;;
+		esac
+	fi
 
-    read -p "Remove Scratch2? (Free 147 MB) (y/n) " option
-    case "$option" in
-        y*) sudo apt-get remove -y scratch2 ;;
-    esac
+	if isPackageInstalled scratch || isPackageInstalled scratch2 || isPackageInstalled scratch3; then
+		read -p "Remove Scratch (1,2 & 3)? (Free 147 MB) (y/n) " option
+		case "$option" in
+			y*) sudo apt-get remove -y scratch scratch2 scratch3 ;;
+		esac
+	fi
 
-    read -p "Remove LibreOffice? (Free 310 MB) (y/n) " option
-    case "$option" in
-        y*) sudo apt-get remove -y libreoffice-common libreoffice-help-common libreoffice-help-en-gb libreoffice-java-common libreoffice-l10n-en-gb libreoffice-report-builder libreoffice-script-provider-bsh libreoffice-script-provider-js libreoffice-script-provider-python libreoffice-style-colibre libreoffice-style-tango ;;
-    esac
+	if isPackageInstalled libreoffice; then
+		read -p "Remove LibreOffice? (Free 310 MB) (y/n) " option
+		case "$option" in
+			y*) sudo apt-get remove -y `sudo dpkg --get-selections | grep -v "deinstall" | grep libreoffice | sed s/install//` ;;
+		esac
+	fi
 
     # alsa?, wavs, ogg?
     read -p "Delete all related with sound? (audio support, VLC) (y/n) " option
