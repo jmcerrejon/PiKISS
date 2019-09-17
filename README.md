@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **532 hours**
+* **534 hours**
 
 * Total amount donated by users: $14.11
 
@@ -28,9 +28,13 @@ Contributors:
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (17/09/19)
+
+· Fix Descent for Raspberry Pi 4.
+
 ### (16/09/19)
 
-· Fix Dune 2.
+· Fix Dune 2 for Raspberry Pi 4.
 
 ### (14/09/19)
 

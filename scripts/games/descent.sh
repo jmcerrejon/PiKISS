@@ -1,11 +1,12 @@
 #!/bin/bash
 #
-# Description : Descent 1 & 2 thks to DXX-Rebirth v0.60-weekly-04-14-18
+# Description : Descent 1 & 2 thks to DXX-Rebirth v0.61.0 0.60.0-beta2-544-g427f45fdd703 compiled on 17/Sep/2019
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.9.0 (25/Jan/19)
-# Compatible  : Raspberry Pi 1,2 & 3 B+ (tested)
+# Version     : 1.0.1 (17/Sep/19)
+# Compatible  : Raspberry Pi 1-4 (tested on Raspberry Pi 4)
 #
 # HELP	      : https://github.com/dxx-rebirth/dxx-rebirth
+#				https://github.com/dxx-rebirth/dxx-rebirth/blob/master/INSTALL.markdown
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
@@ -13,7 +14,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 D1X_SHARE_URL='https://www.dxx-rebirth.com/download/dxx/content/descent-pc-shareware.zip'
 D2X_SHARE_URL='https://www.dxx-rebirth.com/download/dxx/content/descent2-pc-demo.zip'
-DXX_URL='https://www.dropbox.com/s/mid0zs4bo3e3i0b/dxx-rebirth.tar.gz?dl=0'
+DXX_URL='https://www.dropbox.com/s/dvtcby2comu5p8u/dxx-rebirth.tar.gz?dl=0'
 D1X_HIGH_TEXTURE_URL='http://www.dxx-rebirth.com/download/dxx/res/d1xr-hires.dxa'
 D1X_OGG_URL='http://www.dxx-rebirth.com/download/dxx/res/d1xr-sc55-music.dxa'
 D2X_OGG_URL='http://www.dxx-rebirth.com/download/dxx/res/d2xr-sc55-music.dxa'
@@ -61,13 +62,19 @@ EOF
 }
 
 setConfigFileReadyToPlay(){
-    clear && echo -e "You need to modify /boot/config.txt commenting #dtoverlay=vc4-fkms-v3d, #dtoverlay=vc4-kms-v3d and gpu_mem=128"
+    clear && echo -e "You need to modify /boot/config.txt | Comment #dtoverlay=vc4-kms-v3d and add gpu_mem=128"
     # TODO: Make this step automatically
 }
 
 DXX_RPI(){
-    # Compile from source code needs sudo apt install -y libsdl1.2-dev libsdl-mixer1.2-dev libphysfs-dev
-    sudo apt install -y libphysfs1
+    # Compile from source code:
+	# It needs sudo apt install -y libsdl1.2-dev libsdl-mixer1.2-dev libphysfs-dev scons
+	# git clone https://github.com/dxx-rebirth/dxx-rebirth.git
+	# type scons inside the dir created
+	# compress with tar -czvf ~/dxx-rebirth.tar.gz d1x-rebirth d2x-rebirth
+	if ! isPackageInstalled libphysfs1; then
+    	sudo apt install -y libphysfs1
+	fi
     # Binaries
     sudo wget -O $BINARY_DIR/dxx-rebirth.tar.gz $DXX_URL
     cd $BINARY_DIR
