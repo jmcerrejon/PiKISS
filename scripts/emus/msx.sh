@@ -1,17 +1,17 @@
 #!/bin/bash
 #
-# Description : OpenMSX emulator 0.14.0
+# Description : OpenMSX emulator
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.1 (22/Oct/17)
-# Compatible  : Raspberry Pi 1, 2 & 3 (tested)
+# Version     : 1.3.2 (26/Sep/19)
+# Compatible  : Raspberry Pi 1-4 (tested)
 #
 # CREDITS     : I want to thanks to *Patrick (VampierMSX)* from **OpenMSX Team**.
 #
 
 clear
-SC_OPENMSX="https://github.com/openMSX/openMSX/releases/download/RELEASE_0_14_0/openmsx-0.14.0.tar.gz"
-BIN_OPENMSX="http://misapuntesde.com/res/openmsx_0.14.0-1_armhf.deb"
-BINARY="openmsx_0.14.0-1_armhf.deb"
+SC_OPENMSX="https://github.com/openMSX/openMSX/releases/download/RELEASE_0_15_0/openmsx-0.15.0.tar.gz"
+BIN_OPENMSX="https://misapuntesde.com/res/openmsx_0.15.0-1_armhf.deb"
+BINARY="openmsx_0.15.0-1_armhf.deb"
 INSTALL_DIR="$HOME/games"
 # ROM game Thanks to msx.ebsoft.fr
 ROM_PATH="http://msx.ebsoft.fr/uridium/ccount/click.php?id=uridium"
@@ -27,10 +27,11 @@ downloadGame(){
 }
 
 install(){
-	cd $HOME
-	wget $BIN_OPENMSX
-	sudo dpkg -i $BINARY
-	rm $BINARY
+	# We have on Raspbian Buster the latest version, so it's not needed to download from my repo. Let the code commented for future release.
+	# cd $HOME
+	# wget $BIN_OPENMSX
+	# sudo dpkg -i $BINARY
+	# rm $BINARY
 
 	postinstall
 }
@@ -44,6 +45,8 @@ postinstall(){
 	read -p "Press [ENTER] to continue..."
 	exit
 }
+
+sudo apt install openmsx
 
 compile(){
 	echo "Installing dependencies..."
@@ -66,7 +69,7 @@ do
     dialog --clear   \
         --title     "[ openMSX emulator ]" \
         --menu      "Select from the list:" 11 68 3 \
-        INSTALL   "0.14.0 binary (Recommended)" \
+        INSTALL   "0.15.0 binary (Recommended)" \
         COMPILE   "latest from source code. Estimated time: 50 minutes." \
         Exit    "Exit" 2>"${INPUT}"
 

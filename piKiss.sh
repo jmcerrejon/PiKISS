@@ -206,6 +206,7 @@ function smGames(){
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
     options=(
       Back "Back to main menu"
+      Revolt "Re-Volt is a radio control car racing themed video game"
       GMaker "(Only Jessie) Maldita Castilla, Super Crate Box and They Need to be Fed"
       OpenBor "OpenBOR is the open source continuation of Beats of Rage"
       Dune2 "Dune 2 Legacy"
@@ -237,18 +238,19 @@ function smGames(){
   do
     case $choice in
       Back) 		 break ;;
-      GMaker)      ./scripts/games/gmaker.sh ;;
-      OpenBor)     ./scripts/games/openbor.sh ;;
-      Arx-Fatalis) ./scripts/games/arx.sh ;;
-      Dune2) 		 ./scripts/games/dune2.sh ;;
-      Descent) 	 ./scripts/games/descent.sh ;;
-      Quake) 		 ./scripts/games/quake.sh ;;
-      RWolf) 		 ./scripts/games/rwolf.sh ;;
-      Crispy-doom) ./scripts/games/cdoom.sh ;;
-      Sqrxz4) 	 ./scripts/games/sqrxz4.sh ;;
-      Xump) 	 	 ./scripts/games/xump.sh ;;
-      Giana) 	 	 ./scripts/games/giana.sh ;;
-      Fruity) 	 	 ./scripts/games/fruity.sh ;;
+      Revolt)		./scripts/games/revolt.sh ;;
+      GMaker)		./scripts/games/gmaker.sh ;;
+      OpenBor)		./scripts/games/openbor.sh ;;
+      Arx-Fatalis)	./scripts/games/arx.sh ;;
+      Dune2)		./scripts/games/dune2.sh ;;
+      Descent)		./scripts/games/descent.sh ;;
+      Quake)		./scripts/games/quake.sh ;;
+      RWolf)		./scripts/games/rwolf.sh ;;
+      Crispy-doom)	./scripts/games/cdoom.sh ;;
+      Sqrxz4)		./scripts/games/sqrxz4.sh ;;
+      Xump)			./scripts/games/xump.sh ;;
+      Giana)		./scripts/games/giana.sh ;;
+      Fruity)		./scripts/games/fruity.sh ;;
     esac
   done
 }

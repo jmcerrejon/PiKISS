@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **534 hours**
+* **535 hours**
 
 * Total amount donated by users: $14.11
 
@@ -27,6 +27,12 @@ Contributors:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (27/09/19)
+
+· Add Games > Revolt for Raspberry Pi.
+
+· Make openMSX script compatible with Raspbian Buster.
 
 ### (17/09/19)
 
