@@ -144,16 +144,17 @@ install_node(){
         n*) return ;;
 		esac
   fi
-  NODE_VERSION="6"
+  NODE_VERSION="11"
   cd ~ || exit
   if [[ -z "$1" ]]; then
-    read -p "Type the Node.js version you want to install (8,7,6,5,4,0.12), followed by [ENTER]: " NODE_VERSION
+    read -p "Type the Node.js version you want to install (12, 11, 10), followed by [ENTER]: " NODE_VERSION
   fi
 
   curl -sL https://deb.nodesource.com/setup_${NODE_VERSION}.x | sudo -E bash -
   echo -e "\nInstalling Node.js and dependencies, please wait...\n"
-  sudo apt install -y nodejs build-essential libssl-dev
-  node -v
+  sudo apt install -y nodejs build-essential libssl-dev libx11-dev
+  echo -e "\nReboot or logout to use it."
+
 }
 
 #
