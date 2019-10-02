@@ -207,6 +207,7 @@ function smGames(){
     options=(
       Back "Back to main menu"
       Revolt "Re-Volt is a radio control car racing themed video game"
+      Diablo "Take control of a lone hero battling to rid the world of Diablo"
       GMaker "(Only Jessie) Maldita Castilla, Super Crate Box and They Need to be Fed"
       OpenBor "OpenBOR is the open source continuation of Beats of Rage"
       Dune2 "Dune 2 Legacy"
@@ -239,6 +240,7 @@ function smGames(){
     case $choice in
       Back) 		 break ;;
       Revolt)		./scripts/games/revolt.sh ;;
+      Diablo)		./scripts/games/diablo.sh ;;
       GMaker)		./scripts/games/gmaker.sh ;;
       OpenBor)		./scripts/games/openbor.sh ;;
       Arx-Fatalis)	./scripts/games/arx.sh ;;
