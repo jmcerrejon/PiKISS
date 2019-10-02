@@ -21,6 +21,15 @@ fixlibGLES() {
 }
 
 #
+# Get the current locale from the system
+#
+getSystemLocale() {
+	local LOCALE
+	LOCALE=$(locale | grep LANGUAGE | cut -d= -f2 | cut -d_ -f1)
+	echo "$LOCALE"
+}
+
+#
 # Check if a package is installed or not
 #
 isPackageInstalled() {
@@ -154,7 +163,15 @@ install_node(){
   echo -e "\nInstalling Node.js and dependencies, please wait...\n"
   sudo apt install -y nodejs build-essential libssl-dev libx11-dev
   echo -e "\nReboot or logout to use it."
+}
 
+#
+# Install Yarn for Node
+#
+install_yarn() {
+	curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+	echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+	sudo apt update && sudo apt install -y yarn
 }
 
 #
