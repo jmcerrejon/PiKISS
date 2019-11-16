@@ -14,8 +14,8 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 D2_PATH='https://archive.org/download/diabl02sp/diablo2.tar.xz'
-GAMES_PATH='~/games'
-SCRIPT_PATH="$GAMES_PATH/diablo2/diablo2.sh"
+GAMES_PATH="$HOME/games"
+SCRIPT_PATH="$HOME/games/diablo2/diablo2.sh"
 
 generateIconDiablo2(){
     if [[ ! -e ~/.local/share/applications/diablo2.desktop ]]; then
@@ -32,14 +32,18 @@ EOF
 }
 
 install(){
-	sudo su
-	apt install -y wine
+	if ! isPackageInstalled wine; then
+		sudo apt install -y wine
+	fi
 	copyGPUDriversByPILAB
-	wget $D2_PATH
-	mkdir $GAMES_PATH && cd $_
-	tar xvf diablo2.tar.xz
-	rm diablo2.tar.xz
-	"LD_LIBRARY_PATH=/home/pi/mesa/lib/arm-linux-gnueabihf LIBGL_DRIVERS_PATH=/home/pi/mesa/lib/arm-linux-gnueabihf/dri/ GBM_DRIVERS_PATH=/home/pi/mesa/lib setarch linux32 -L wine /desktop=MyApp,800x600 libd2game_sa_arm.exe.so" > $SCRIPT_PATH
+	if [ ! -d $HOME/games/diablo2 ]; then
+		wget $D2_PATH
+		mkdir -p $GAMES_PATH && cd $_
+		tar xvf diablo2.tar.xz
+		rm diablo2.tar.xz
+	fi
+	touch $SCRIPT_PATH 
+	bash -c "echo 'LD_LIBRARY_PATH=/home/pi/mesa/lib/arm-linux-gnueabihf LIBGL_DRIVERS_PATH=/home/pi/mesa/lib/arm-linux-gnueabihf/dri/ GBM_DRIVERS_PATH=/home/pi/mesa/lib setarch linux32 -L wine libd2game_sa_arm.exe.so /desktop=Diablo2,800x600' > ${SCRIPT_PATH}"
 	chmod +x $SCRIPT_PATH
 }
 
