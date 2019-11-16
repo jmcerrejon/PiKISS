@@ -21,6 +21,32 @@ fixlibGLES() {
 }
 
 #
+# Install Google Drive cli tools
+#
+downloadGoogleDriveCliTools() {
+	# NOTE: Unavailable temporarily. Check repo at GitHub
+	#wget -P /tmp https://github.com/gdrive-org/gdrive/releases/latest/download/gdrive-linux-rpi
+	#chmod +x /tmp/gdrive-linux-rpi
+
+	# Alternative
+	if [ ! -f /home/pi/.local/bin/drive ]; then
+		pip install drive-cli
+	fi
+}
+
+#
+# Copy PI LAB custom GPU drivers
+# Check https://stackoverflow.com/questions/25010369/wget-curl-large-file-from-google-drive
+#
+copyGPUDriversByPILAB() {
+	downloadGoogleDriveCliTools
+	cd $HOME
+	/home/pi/.local/bin/drive clone 1RzoEbrSGccxOKI-gQ5KRWg-EWITjEezn
+	unzip MESA_20_V3D_RPI4_PILAB.zip
+	rm MESA_20_V3D_RPI4_PILAB.zip
+}
+
+#
 # Get the current locale from the system
 #
 getSystemLocale() {
@@ -363,21 +389,66 @@ install_sdl2() {
 }
 
 #
-# Compile SDL2
+# Compile SDL2 and some dependencies
 #
 compile_sdl2() {
   if [ ! -e /usr/include/SDL2 ]; then
-    echo "Compiling SDL2 2.0.4, please wait about 5 minutes..."
+    clear && echo "Compiling SDL2, please wait about 5 minutes..."
     mkdir -p $HOME/sc && cd $HOME/sc || exit
-    wget https://www.libsdl.org/release/SDL2-2.0.4.zip
-    unzip SDL2-2.0.4.zip && cd SDL2-2.0.4 || exit
-    ./configure --host=armv7l-raspberry-linux-gnueabihf --prefix=/usr --disable-pulseaudio --disable-esd --disable-video-mir --disable-video-wayland --disable-video-x11 --disable-video-opengl
+    wget https://www.libsdl.org/release/SDL2-2.0.10.zip
+    unzip SDL2-2.0.10.zip && cd SDL2-2.0.10 || exit
+	./autogen.sh
+    ./configure --disable-pulseaudio --disable-esd --disable-video-wayland --disable-video-opengl --host=arm-raspberry-linux-gnueabihf --prefix=/usr
     make -j4
     sudo make install
     echo "Done!"
   else
     echo -e "\n· SDL2 already installed.\n"
   fi
+}
+
+compile_sdl2_image() {
+	clear && echo "Compiling SDL2_image, please wait..."
+	cd $HOME/sc || exit
+	wget http://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.5.tar.gz
+	tar zxvf SDL2_image-2.0.5.tar.gz && cd SDL2_image-2.0.5
+	./autogen.sh 
+	./configure --prefix=/usr
+	make -j4
+	sudo make install
+}
+
+compile_sdl2_mixer() {
+	clear && echo "Compiling SDL2_mixer, please wait..."
+	cd $HOME/sc || exit
+	wget http://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-2.0.4.tar.gz
+	tar zxvf SDL2_mixer-2.0.4.tar.gz && cd SDL2_mixer-2.0.4
+	./autogen.sh 
+	./configure --prefix=/usr
+	make -j4
+	sudo make install
+}
+
+compile_sdl2_ttf() {
+	clear && echo "Compiling SDL2_ttf, please wait..."
+	cd $HOME/sc || exit
+	wget http://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.15.tar.gz
+	tar zxvf SDL2_ttf-2.0.15.tar.gz && cd SDL2_ttf-2.0.15
+	./autogen.sh 
+	./configure --prefix=/usr
+	make -j4
+	sudo make install
+}
+
+compile_sdl2_net() {
+	clear && echo "Compiling SDL2_net, please wait..."
+	cd $HOME/sc || exit
+	wget https://www.libsdl.org/projects/SDL_net/release/SDL2_net-2.0.1.tar.gz
+	tar zxvf SDL2_net-2.0.1.tar.gz&& cd SDL2_net-2.0.1
+	./autogen.sh 
+	./configure --prefix=/usr
+	make -j4
+	sudo make install
 }
 
 #

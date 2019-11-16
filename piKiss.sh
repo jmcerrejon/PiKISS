@@ -17,7 +17,7 @@
 . ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-VERSION="v.1.1.0 (2019)"
+VERSION="v.1.2.0 (2019)"
 check_board
 check_temperature
 check_CPU
@@ -208,6 +208,7 @@ function smGames(){
       Back "Back to main menu"
       Revolt "Re-Volt is a radio control car racing themed video game"
       Diablo "Take control of a lone hero battling to rid the world of Diablo"
+      Diablo2 "Diablo 2 LOD Spanish Ed (2 Gb free space)"
       GMaker "(Only Jessie) Maldita Castilla, Super Crate Box and They Need to be Fed"
       OpenBor "OpenBOR is the open source continuation of Beats of Rage"
       Dune2 "Dune 2 Legacy"
@@ -241,6 +242,7 @@ function smGames(){
       Back) 		 break ;;
       Revolt)		./scripts/games/revolt.sh ;;
       Diablo)		./scripts/games/diablo.sh ;;
+      Diablo)		./scripts/games/diablo2.sh ;;
       GMaker)		./scripts/games/gmaker.sh ;;
       OpenBor)		./scripts/games/openbor.sh ;;
       Arx-Fatalis)	./scripts/games/arx.sh ;;

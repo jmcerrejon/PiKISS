@@ -4,7 +4,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **536 hours**
+* **538 hours**
 
 * Total amount donated by users: $14.11
 
@@ -27,6 +27,10 @@ Contributors:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (16/11/19)
+
+· Add Games > Diablo 2 LOD Spanish Ed.
 
 ### (02/10/19)
 
