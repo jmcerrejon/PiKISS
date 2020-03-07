@@ -1,10 +1,11 @@
-##PiKISS for Raspberry Pi & ODROID-C1: A bunch of scripts with menu to make your life easier.
+## PiKISS for Raspberry Pi & ODROID-C1: A bunch of scripts with menu to make your life easier.
 
 ![PiKISS Logo](http://misapuntesde.com/images/pikiss_400px_nobg.png)
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **538 hours**
+
+* **540 hours**
 
 * Total amount donated by users: $14.11
 
@@ -27,6 +28,10 @@ Contributors:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (07/03/20)
+
+· Update Games > Crispy Doom.
 
 ### (16/11/19)
 
