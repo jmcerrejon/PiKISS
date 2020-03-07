@@ -1,11 +1,11 @@
 #!/bin/bash
 #
-# Description : Crispy-Doom ver. 2.3 to play doom,heretic,hexen,strife
+# Description : Crispy-Doom ver. 5.7.1 to play doom,heretic,hexen,strife
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3 (07/Sep/16)
-# Compatible  : Raspberry Pi 1, 2 & 3 (tested), ODROID-C1 (tested)
+# Version     : 1.4 (07/Mar/20)
+# Compatible  : Raspberry Pi 4 (tested), ODROID-C1 (tested)
 #
-# HELP        : To compile crispy-doom, remember: sudo apt-get install -y sdl-net1.2-dev sdl-mixer1.2-dev libsdl1.2-dev autoconf
+# HELP        : To compile crispy-doom, follow the instructions at https://github.com/fabiangreffrath/crispy-doom
 # Dependencies: libsdl1.2debian,libsdl-mixer1.2,libsdl-net1.2,timidity
 #
 clear
@@ -18,7 +18,7 @@ URL_DOOM="https://www.dropbox.com/s/jy2q3f56qtl3tmu/dc.zip?dl=0"
 URL_HERETIC="https://www.dropbox.com/s/bwnx5707ya6g05w/hc.zip?dl=0"
 URL_HEXEN="https://www.dropbox.com/s/zj127jifcxdq7fa/hec.zip?dl=0"
 URL_STRIFE="https://www.dropbox.com/s/nb6ofa4nlt7juv5/sc.zip?dl=0"
-CRISPY_DOOM='https://www.dropbox.com/s/8kyw06q7znnfjc4/crispy-doom_2.3_armhf.deb?dl=0'
+CRISPY_DOOM="https://www.dropbox.com/s/au97f1ipu650cv5/crispy_5.7-1_armhf.deb?dl=0"
 SHORTCUTS='crispy_modified_link.zip'
 LICENSE="Complete"
 
@@ -80,9 +80,6 @@ menu(){
 
 if [ ! -e "/usr/local/games/crispy-doom" ];then
     sudo apt-get install -y libsdl1.2debian libsdl-mixer1.2 libsdl-net1.2 timidity
-
-    # Check if SDL is fixed to RPi2
-    SDL_fix_Rpi
 
     if [[ ${MODEL} == 'ODROID-C1' ]]; then
         CRISPY_DOOM='https://www.dropbox.com/s/d681t8ida2rv10z/crispy-doom-ODROID_2-3_armhf.deb?dl=0'
