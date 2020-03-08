@@ -5,7 +5,7 @@
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 
-* **540 hours**
+* **541 hours**
 
 * Total amount donated by users: $14.11
 
@@ -29,6 +29,14 @@ Contributors:
 
 ### [ ChangeLog (dd/mm/yy)]
 
+<<<<<<< HEAD
+=======
+
+### (08/03/20)
+
+· Fix Games > Revolt.
+
+>>>>>>> develop
 ### (07/03/20)
 
 · Update Games > Crispy Doom.
