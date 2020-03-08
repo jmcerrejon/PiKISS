@@ -29,14 +29,10 @@ Contributors:
 
 ### [ ChangeLog (dd/mm/yy)]
 
-<<<<<<< HEAD
-=======
-
 ### (08/03/20)
 
 · Fix Games > Revolt.
 
->>>>>>> develop
 ### (07/03/20)
 
 · Update Games > Crispy Doom.
