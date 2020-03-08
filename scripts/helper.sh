@@ -11,13 +11,21 @@
 # Fix libGLESv2.so on Raspbian Stretch
 #
 fixlibGLES() {
-    if [ ! -f /usr/lib/arm-linux-gnueabihf/libGLESv2.so ]; then
-      read -p "libGLESv2.so not found. Do you want to run rpi-upgrade to restore the missing link (y/n)?: " option
-        case "$option" in
-            y*) sudo raspi-upgrade ;;
-            n*) return ;;
-        esac
+    if [ ! -f /usr/lib/libEGL.so ]; then
+    	sudo ln -s /usr/lib/arm-linux-gnueabihf/libEGL.so.1.1.0 /usr/lib/libEGL.so
     fi
+
+    if [ ! -f /usr/lib/libGLESv2.so ]; then
+    	sudo ln -s /usr/lib/arm-linux-gnueabihf/libGLESv2.so.2.1.0 /usr/lib/libGLESv2.so
+    fi
+
+    if [ ! -f /usr/lib/libunistring.so.0 ]; then
+    	sudo ln -s /usr/lib/arm-linux-gnueabihf/libunistring.so.2.1.0 /usr/lib/libunistring.so.0
+    fi
+
+	if [ ! -f /usr/lib/arm-linux-gnueabihf/libunistring.so.2 ]; then
+		sudo ln -s /usr/lib/arm-linux-gnueabihf/libunistring.so.2 /usr/lib/arm-linux-gnueabihf/libunistring.so.0
+	fi
 }
 
 #

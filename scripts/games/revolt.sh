@@ -2,7 +2,7 @@
 #
 # Description : Re-Volt is a radio control car racing themed video game.
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (27/Sep/19)
+# Version     : 1.0.1 (08/Mar/20)
 # Compatible  : Raspberry Pi 3-4 (tested on Raspberry Pi 4)
 #
 # HELP	      : Thanks to PI LAB (https://www.youtube.com/channel/UCgfQjdc5RceRlTGfuthBs7g) and Meverick
@@ -16,9 +16,7 @@ APP_PATH='https://www.dropbox.com/s/eb1eh9oukyml5ii/rvgl.deb?dl=0'
 
 installer(){
 	sudo apt install -y libsdl2-image-2.0-0 libenet7 libunistring-dev
-	if [ ! -f /usr/lib/arm-linux-gnueabihf/libunistring.so.2 ]; then
-		sudo ln -s /usr/lib/arm-linux-gnueabihf/libunistring.so.2 /usr/lib/arm-linux-gnueabihf/libunistring.so.0
-	fi
+	fixlibGLES
 	cd ~
 	if [ ! -f /usr/local/bin/rvgl_start ]; then
 		wget -O rvgl-data.deb $DATA_PATH

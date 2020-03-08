@@ -5,7 +5,7 @@
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 
-* **540 hours**
+* **541 hours**
 
 * Total amount donated by users: $14.11
 
@@ -28,6 +28,11 @@ Contributors:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+
+### (08/03/20)
+
+· Fix Games > Revolt.
 
 ### (07/03/20)
 
