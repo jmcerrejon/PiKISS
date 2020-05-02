@@ -1,14 +1,14 @@
 #!/bin/bash
 #
-# Description : Portable ZX-Spectrum emulator by JFroco
+# Description : Portable ZX-Spectrum emulator
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.1 (13/Sep/16)
-# Compatible  : Raspberry Pi 1, 2 & 3 (tested)
+# Version     : 1.5.0 (02/May/20)
+# Compatible  : Raspberry Pi 4 (tested)
 #
 clear
 
-INSTALL_DIR="/home/$USER/games/usp_0.0.69.1"
-URL_FILE="http://bitbucket.org/djdron/unrealspeccyp/downloads/unreal-speccy-portable_0.0.69.1_rpi_jessie.zip"
+INSTALL_DIR="/home/$USER/games/speccy"
+URL_FILE="https://www.dropbox.com/s/uhpryw4su15fck0/unreal_speccy_portable_0.0.86.11.tar.gz?dl=0"
 
 mkDesktopEntry() {
 	if [[ ! -e /usr/share/applications/speccy.desktop ]]; then
@@ -17,13 +17,11 @@ mkDesktopEntry() {
 	fi
 }
 
-validate_url()
-{
+validate_url() {
     if [[ `wget -S --spider $1 2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then echo "true"; fi
 }
 
-playgame()
-{
+playgame() {
     if [[ -f $INSTALL_DIR/ninjajar.tap ]]; then
         read -p "Do you want to play NinJaJar now? [y/n] " option
         case "$option" in
@@ -32,20 +30,17 @@ playgame()
     fi
 }
 
-changeInstallDir()
-{
+changeInstallDir() {
     echo "Enter new full path:"
     read INSTALL_DIR
     echo "New path: $INSTALL_DIR"
 }
 
-install()
-{
+install() {
     if [[ ! -f $INSTALL_DIR/unreal_speccy_portable ]]; then
         mkdir -p $HOME/games && cd $HOME/games
-        wget -qO- -O tmp.zip $URL_FILE && unzip -o tmp.zip && rm tmp.zip
-        cd usp*
-        chmod +x unreal_speccy_portable
+        wget -qO- -O tmp.tar.gz $URL_FILE && tar -xzvf tmp.tar.gz && rm tmp.tar.gz
+        cd speccy
         wget -O $INSTALL_DIR/ninjajar.tap http://www.mojontwins.com/juegos/mojon-twins--ninjajar-eng-v1.1.tap
         mkDesktopEntry
     fi
@@ -56,7 +51,16 @@ install()
     exit
 }
 
-echo -e "Portable ZX-Spectrum emulator (unrealspeccyp ver. 0.0.69)\n=========================================================\n\n· More Info: https://bitbucket.org/djdron/unrealspeccyp\n· Add Ninjajar\n\nInstall path: $INSTALL_DIR"
+compile_speccy() {
+	sudo apt install -y libcurl4-openssl-dev libcurl4-gnutls-dev libcogl-gles2-dev git cmake libsdl2-dev
+	cd ~ && git clone https://bitbucket.org/djdron/unrealspeccyp.git usp && cd usp/build/cmake
+	# wget https://bitbucket.org/djdron/unrealspeccyp/raw/19bf453126d4d5c898000363dec922ee409be310/build/cmake/CMakeLists.txt
+	cmake .. -DCMAKE_BUILD_TYPE=Release -DUSE_SDL=Off -DUSE_SDL2=On -DSDL2_INCLUDE_DIRS="/usr/inlude" -DCMAKE_CXX_FLAGS="`sdl2-config --cflags`" -DCMAKE_EXE_LINKER_FLAGS="`sdl2-config --libs`"
+	make -j4
+	chmod +x unreal_speccy_portable
+}
+
+echo -e "Portable ZX-Spectrum emulator (unrealspeccyp ver. 0.86.11)\n=========================================================\n\n· More Info: https://bitbucket.org/djdron/unrealspeccyp\n· Add Ninjajar\n\nInstall path: $INSTALL_DIR"
 while true; do
     echo " "
     read -p "Is it right? [y/n] " yn

@@ -5,7 +5,7 @@
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
 
-* **541 hours**
+* **542 hours**
 
 * Total amount donated by users: $14.11
 
@@ -28,6 +28,10 @@ Contributors:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (02/04/20)
+
+· Updated Spectrum emulator unrealspeccy to 0.86.11
 
 ### (08/03/20)
 
