@@ -5,6 +5,8 @@
 # . ~/.bash_aliases
 # fi
 
+# NOTE: checkinstall for build .deb packages
+
 # Stop bash from caching duplicate lines.
 HISTCONTROL=ignoredups
 
