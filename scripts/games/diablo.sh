@@ -2,7 +2,7 @@
 #
 # Description : Diablo for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (02/Oct/19)
+# Version     : 1.0.1 (08/Jun/20)
 # Compatible  : Raspberry Pi 3-4 (tested)
 #
 # Help		  : https://github.com/diasurgical/devilutionX/
@@ -12,7 +12,7 @@
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-BIN_PATH='https://github.com/diasurgical/devilutionX/releases/download/0.4.0/devilutionx-linux-armhf.tar.xz'
+BIN_PATH='https://github.com/diasurgical/devilutionX/releases/download/1.0.1/devilutionx-linux-armhf.7z'
 DIABDAT_PATH='https://www.dropbox.com/s/42w96s1i9sahml7/diabdat.mpq?dl=0'
 
 generateIconDiablo1(){
@@ -30,20 +30,22 @@ EOF
 }
 
 install(){
-	sudo su
-	mkdir /usr/games/diablo1 && cd $_
+	sudo mkdir -p /usr/games/diablo1 && cd $_
+	sudo chown -R pi /usr/games/diablo1
 	wget $BIN_PATH
-	wget $DIABDAT_PATH
-	tar xf devilutionx-linux-armhf.tar.xz
-	rm devilutionx-linux-armhf.tar.xz
-	#chmod 777 diabdat.mpq
+	7z e devilutionx-linux-armhf.7z
+	rm -rf devilutionx-linux-armhf*
+	wget -O diabdat.mpq $DIABDAT_PATH
 	if ! isPackageInstalled libsdl2-ttf-2.0-0; then
-		apt install -y libsdl2-ttf-2.0-0
+		sudo apt install -y libsdl2-ttf-2.0-0
+	fi
+	if ! isPackageInstalled libsdl2-mixer-2.0-0; then
+		sudo apt install -y libsdl2-mixer-2.0-0
 	fi
 }
 
 install
 generateIconDiablo1
 
-read -p "Done!. type ./devilutionx to Play or go to Desktop Game Menu option. Press [ENTER] to continue..."
+read -p "Done!. type /usr/games/diablo1/devilutionx to Play or go to Start button > Games > Diablo1 (if proceed). Press [ENTER] to continue..."
 
