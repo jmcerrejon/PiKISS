@@ -29,29 +29,38 @@ fixlibGLES() {
 }
 
 #
-# Install Google Drive cli tools
+# PI LABS Libraries
 #
-downloadGoogleDriveCliTools() {
-	# NOTE: Unavailable temporarily. Check repo at GitHub
-	#wget -P /tmp https://github.com/gdrive-org/gdrive/releases/latest/download/gdrive-linux-rpi
-	#chmod +x /tmp/gdrive-linux-rpi
-
-	# Alternative
-	if [ ! -f /home/pi/.local/bin/drive ]; then
-		pip install drive-cli
+installBox86() {
+	local URL_PATH='https://www.dropbox.com/s/eeqip6lkegljmrl/box86.tar.gz?dl=0'
+	if [ ! -d /home/pi/box86 ]; then
+		wget -O /home/pi/box86.tar.gz $URL_PATH
+		extract /home/pi/box86.tar.gz && rm -
 	fi
 }
 
-#
-# Copy PI LAB custom GPU drivers
-# Check https://stackoverflow.com/questions/25010369/wget-curl-large-file-from-google-drive
-#
-copyGPUDriversByPILAB() {
-	downloadGoogleDriveCliTools
-	cd $HOME
-	/home/pi/.local/bin/drive clone 1RzoEbrSGccxOKI-gQ5KRWg-EWITjEezn
-	unzip MESA_20_V3D_RPI4_PILAB.zip
-	rm MESA_20_V3D_RPI4_PILAB.zip
+installGL4ES() {
+	local URL_PATH='https://www.dropbox.com/s/ed2z5su72115bc7/gl4es.tar.gz?dl=0'
+	if [ ! -d /home/pi/gl4es ]; then
+		wget -O /home/pi/gl4es.tar.gz $URL_PATH
+		extract /home/pi/gl4es.tar.gz && rm -
+	fi
+}
+
+installMesa() {
+	local URL_PATH='https://www.dropbox.com/s/or0bre2pt4sc1i3/mesa.tar.gz?dl=0'
+	if [ ! -d /home/pi/mesa ]; then
+		wget -O /home/pi/mesa.tar.gz $URL_PATH
+		extract /home/pi/mesa.tar.gz && rm -
+	fi
+}
+
+installMonolibs() {
+	local URL_PATH='https://www.dropbox.com/s/u4dmwnb88sk0la7/monolibs.tar.gz?dl=0'
+	if [ ! -d /home/pi/monolibs ]; then
+		wget -O /home/pi/monolibs.tar.gz $URL_PATH
+		extract /home/pi/monolibs.tar.gz && rm -
+	fi
 }
 
 #
@@ -183,8 +192,8 @@ install_node(){
   if which node >/dev/null ; then
     read -p "Warning!: Node.js already installed (Version $(node -v)). Do you want to uninstall it (y/n)?: " option
 		case "$option" in
-		    y*) sudo apt-get remove -y nodejs ; sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man1/node*} ;;
-        n*) return ;;
+			y*) sudo apt-get remove -y nodejs ; sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man1/node*} ;;
+			n*) return ;;
 		esac
   fi
   NODE_VERSION="11"

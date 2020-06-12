@@ -17,7 +17,7 @@
 . ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-VERSION="v.1.3.8 (2020)"
+VERSION="v.1.4.1 (2020)"
 check_board
 check_temperature
 check_CPU
@@ -214,7 +214,7 @@ function smGames(){
       Dune2 "Dune 2 Legacy"
       Descent "Descent 1 & 2 Shareware Ed."
       RWolf "(Jessie) Return to Castle Wolfenstein (Demo)"
-      Crispy-doom "Crispy to play Doom, Heretic, Hexen, Strife"
+      Crispy-doom "Crispy to play Doom or Heretic"
       Sqrxz4 "Sqrxz 4: Difficult platform game"
       Xump "Xump: Simple multi-platform puzzler"
       Giana "Giana's Return: Simple multi-platform puzzler"
@@ -242,7 +242,7 @@ function smGames(){
       Back) 		 break ;;
       Revolt)		./scripts/games/revolt.sh ;;
       Diablo)		./scripts/games/diablo.sh ;;
-      Diablo)		./scripts/games/diablo2.sh ;;
+      Diablo2)		./scripts/games/diablo2.sh ;;
       GMaker)		./scripts/games/gmaker.sh ;;
       OpenBor)		./scripts/games/openbor.sh ;;
       Arx-Fatalis)	./scripts/games/arx.sh ;;
