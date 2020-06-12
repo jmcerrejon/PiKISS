@@ -20,7 +20,7 @@ validate_url(){
 }
 
 extra(){
-   local URL_FILE="http://misapuntesde.com/res/jill-of-the-jungle-the-complete-trilogy.zip"
+   local URL_FILE="https://misapuntesde.com/res/jill-of-the-jungle-the-complete-trilogy.zip"
    if [[ $(validate_url $URL_FILE) != "true" ]]; then
        echo "Sorry, the game is not available here: $URL_FILE."
    else
