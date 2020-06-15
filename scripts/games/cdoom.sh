@@ -1,12 +1,11 @@
 #!/bin/bash
 #
-# Description : Crispy-Doom ver. 5.7.1 to play doom,heretic,hexen,strife
+# Description : Crispy-Doom ver. 5.8.0 to play DOOM & Heretic
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4 (07/Mar/20)
+# Version     : 1.5.1 (12/Jun/20)
 # Compatible  : Raspberry Pi 4 (tested), ODROID-C1 (tested)
 #
 # HELP        : To compile crispy-doom, follow the instructions at https://github.com/fabiangreffrath/crispy-doom
-# Dependencies: libsdl1.2debian,libsdl-mixer1.2,libsdl-net1.2,timidity
 #
 clear
 
@@ -18,7 +17,8 @@ URL_DOOM="https://www.dropbox.com/s/jy2q3f56qtl3tmu/dc.zip?dl=0"
 URL_HERETIC="https://www.dropbox.com/s/bwnx5707ya6g05w/hc.zip?dl=0"
 URL_HEXEN="https://www.dropbox.com/s/zj127jifcxdq7fa/hec.zip?dl=0"
 URL_STRIFE="https://www.dropbox.com/s/nb6ofa4nlt7juv5/sc.zip?dl=0"
-CRISPY_DOOM="https://www.dropbox.com/s/au97f1ipu650cv5/crispy_5.7-1_armhf.deb?dl=0"
+CRISPY_DOOM="https://www.dropbox.com/s/xampebl70k9ll70/crispy_5-8.0_armhf.deb?dl=0"
+CHOCOLATE_DOOM="https://www.dropbox.com/s/qxxrx6clyrc0e4n/chocolate_3-0_armhf.deb?dl=0"
 SHORTCUTS='crispy_modified_link.zip'
 LICENSE="Complete"
 
@@ -34,6 +34,16 @@ share_version(){
     URL_HERETIC="https://www.dropbox.com/s/gkv4ulnonoghtgl/hs.zip?dl=0"
     URL_HEXEN="https://www.dropbox.com/s/mcy16sljsw14d6d/hes.zip?dl=0"
     URL_STRIFE="https://www.dropbox.com/s/z90da1azq2uhstp/ss.zip?dl=0"
+}
+
+compile(){
+	cd ~/Documents
+	git clone https://github.com/fabiangreffrath/crispy-doom.git && cd crispy-doom
+	sudo apt install -y build-essential automake git libsdl1.2debian libsdl-mixer1.2 libsdl-net1.2 timidity libsdl2-net-2.0-0 libsdl2-net-dev
+ 	sudo apt build-dep crispy-doom
+	autoreconf -fiv
+	./configure
+ 	make
 }
 
 
@@ -55,8 +65,8 @@ menu(){
     options=(
              Doom "Space marine operating under the UAC (Union Aerospace Corporation), who fights hordes of demons" on
              Heretic "Player must first fight through the undead hordes infesting the site" off
-             Hexen "It is the sequel to 1994's Heretic" off
-             Strife "The game is set in a world where a dark religion called The Order has taken over" off)
+            #  Hexen "It is the sequel to 1994's Heretic" off
+            #  Strife "The game is set in a world where a dark religion called The Order has taken over" off)
     choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
     for choice in $choices
@@ -79,7 +89,7 @@ menu(){
 }
 
 if [ ! -e "/usr/local/games/crispy-doom" ];then
-    sudo apt-get install -y libsdl1.2debian libsdl-mixer1.2 libsdl-net1.2 timidity
+    sudo apt install -y libsdl1.2debian libsdl-mixer1.2 libsdl-net1.2 timidity libsdl2-net-2.0-0 libsdl2-net-dev
 
     if [[ ${MODEL} == 'ODROID-C1' ]]; then
         CRISPY_DOOM='https://www.dropbox.com/s/d681t8ida2rv10z/crispy-doom-ODROID_2-3_armhf.deb?dl=0'
@@ -95,4 +105,4 @@ fi
 
 menu
 
-read -p "To play, just type doom, heretic, hexen(shareware version can fail) or strife(shareware version can fail), depending the game you have installed. Press [Enter] to continue..."
+read -p "To play, just type doom, heretic, depending the game you have installed. Press [Enter] to continue..."
