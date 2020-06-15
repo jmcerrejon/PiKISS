@@ -209,16 +209,12 @@ function smGames(){
       Revolt "Re-Volt is a radio control car racing themed video game"
       Diablo "Take control of a lone hero battling to rid the world of Diablo"
       Diablo2 "Diablo 2 LOD Spanish Ed (2 Gb free space)"
-      GMaker "(Only Jessie) Maldita Castilla, Super Crate Box and They Need to be Fed"
       OpenBor "OpenBOR is the open source continuation of Beats of Rage"
       Dune2 "Dune 2 Legacy"
       Descent "Descent 1 & 2 Shareware Ed."
-      RWolf "(Jessie) Return to Castle Wolfenstein (Demo)"
       Crispy-doom "Crispy to play Doom or Heretic"
       Sqrxz4 "Sqrxz 4: Difficult platform game"
       Xump "Xump: Simple multi-platform puzzler"
-      Giana "Giana's Return: Simple multi-platform puzzler"
-      Fruity "Fruit'Y: Better than Candy Crush!"
     )
   elif [[ ${MODEL} == 'ODROID-C1' ]]; then
     options=(
@@ -243,18 +239,14 @@ function smGames(){
       Revolt)		./scripts/games/revolt.sh ;;
       Diablo)		./scripts/games/diablo.sh ;;
       Diablo2)		./scripts/games/diablo2.sh ;;
-      GMaker)		./scripts/games/gmaker.sh ;;
       OpenBor)		./scripts/games/openbor.sh ;;
       Arx-Fatalis)	./scripts/games/arx.sh ;;
       Dune2)		./scripts/games/dune2.sh ;;
       Descent)		./scripts/games/descent.sh ;;
       Quake)		./scripts/games/quake.sh ;;
-      RWolf)		./scripts/games/rwolf.sh ;;
       Crispy-doom)	./scripts/games/cdoom.sh ;;
       Sqrxz4)		./scripts/games/sqrxz4.sh ;;
       Xump)			./scripts/games/xump.sh ;;
-      Giana)		./scripts/games/giana.sh ;;
-      Fruity)		./scripts/games/fruity.sh ;;
     esac
   done
 }
