@@ -10,7 +10,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **544 hours**
+* **546 hours**
 
 * Total amount donated by users: $14.11
 
@@ -33,6 +33,12 @@ Contributors:
 ![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (15/06/20)
+
+· ❌ REMOVE: piKiss.sh > GMaker, RWolf, Giana & Fruity (Not supported anymore).
+
+· 👌 IMPROVE: Caprice32 (Amstrad).
 
 ### (12/06/20)
 

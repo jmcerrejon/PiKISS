@@ -1,9 +1,16 @@
+(15/06/20)
+==========
+
+· ❌ REMOVE: piKiss.sh > GMaker, RWolf, Giana & Fruity (Not supported anymore).
+
+· 👌 IMPROVE: Caprice32 (Amstrad).
+
 (12/06/20)
 ==========
 
 · 🐛 FIX: Doom, Heretic. Removed Hexen, Strife (check Crispy-doom Github issue).
 
-· 📦 IMPROVE: Helper now install Box86, GL4ES, Mesa or Mono libs when is needed. 
+· 👌 IMPROVE: Helper now install Box86, GL4ES, Mesa or Mono libs when is needed.
 
 (08/06/20)
 ==========
