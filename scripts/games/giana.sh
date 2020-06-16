@@ -8,7 +8,7 @@
 clear
 
 INSTALL_DIR="/home/$USER/games/giana/"
-URL_FILE="http://www.retroguru.com/gianas-return/gianas-return-v.latest-raspberrypi.zip"
+URL_FILE="https://www.retroguru.com/gianas-return/gianas-return-v.latest-raspberrypi.zip"
 
 if  which $INSTALL_DIR/xump_rpi >/dev/null ; then
     read -p "Warning!: Giana already installed. Press [ENTER] to exit..."
@@ -52,7 +52,7 @@ install(){
 
 echo "Install Giana's Return (Raspberry Pi version)"
 echo "============================================="
-echo -e "More Info: http://www.gianas-return.de/\n\nInstall path: $INSTALL_DIR"
+echo -e "More Info: https://www.gianas-return.de/\n\nInstall path: $INSTALL_DIR"
 while true; do
     echo " "
     read -p "Proceed? [y/n] " yn

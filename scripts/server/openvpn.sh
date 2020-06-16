@@ -4,7 +4,7 @@
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 1.0 (21/Jul/2017)
 #
-# HELP		  : http://www.pivpn.io/
+# HELP		  : https://www.pivpn.io/
 #
 clear
 

@@ -7,7 +7,7 @@
 #
 clear
 
-. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 INSTALL_DIR="$HOME/games/"
@@ -30,7 +30,7 @@ install(){
     exit
 }
 
-echo -e "Compile 8086tiny (latest)\n=========================\n· More Info: http://www.megalith.co.uk/8086tiny\n· Alley Cat game and FreeDOS included.\n· 43.6 MB of additional disk space will be used.\n\nInstall path: $INSTALL_DIR"
+echo -e "Compile 8086tiny (latest)\n=========================\n· More Info: https://www.megalith.co.uk/8086tiny\n· Alley Cat game and FreeDOS included.\n· 43.6 MB of additional disk space will be used.\n\nInstall path: $INSTALL_DIR"
 while true; do
     echo " "
     read -p "Is it right? [(Y)es/(N)o/(E)xit] " yn

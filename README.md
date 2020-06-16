@@ -1,6 +1,6 @@
 # PiKISS for Raspberry Pi: A bunch of scripts with menu to make your life easier.
 
-![PiKISS Logo](http://misapuntesde.com/images/pikiss_400px_nobg.png)
+![PiKISS Logo](https://misapuntesde.com/images/pikiss_400px_nobg.png)
 
 <p align="center">
 	<a href='https://ko-fi.com/A838QJC' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi2.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
@@ -22,15 +22,15 @@ Contributors:
 
 ### [ Screenshots ]
 
-![piKiss_01](http://misapuntesde.com/images/piKiss_01.png)
+![piKiss_01](https://misapuntesde.com/images/piKiss_01.png)
 
-![piKiss_02](http://misapuntesde.com/images/piKiss_02.png)
+![piKiss_02](https://misapuntesde.com/images/piKiss_02.png)
 
-![piKiss_03](http://misapuntesde.com/images/piKiss_03.png)
+![piKiss_03](https://misapuntesde.com/images/piKiss_03.png)
 
-![piKiss_04](http://misapuntesde.com/images/piKiss_04.png)
+![piKiss_04](https://misapuntesde.com/images/piKiss_04.png)
 
-![piKiss_05](http://misapuntesde.com/images/piKiss_05.png)
+![piKiss_05](https://misapuntesde.com/images/piKiss_05.png)
 
 ### [ ChangeLog (dd/mm/yy)]
 
@@ -256,7 +256,7 @@ NOTE: If you use another distribution other than *Raspbian/TwisterOS*, maybe you
 
 **PiKISS** grow up according to users requests or I'll append scripts that I consider necessary, but I call **to the community** to share, improve and help to add new scripts to the existing one. If the project grow, **is up to you**.
 
-José Cerrejón [(@ulysess10)](http://twitter.com/ulysess10)
+José Cerrejón [(@ulysess10)](https://twitter.com/ulysess10)
 
 Mail: <ulysess@gmail.com>
 
@@ -318,7 +318,7 @@ NOTA: Si usas otra distribución que no sea *Raspbian/TwisterOS* en la *Raspberr
 
 ¡Gracias!
 
-José Cerrejón [(@ulysess10)](http://twitter.com/ulysess10)
+José Cerrejón [(@ulysess10)](https://twitter.com/ulysess10)
 
 Mail: <ulysess@gmail.com>
 

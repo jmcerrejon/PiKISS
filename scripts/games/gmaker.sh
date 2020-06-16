@@ -67,7 +67,7 @@ install(){
 
 echo "Install GameMaker pack games"
 echo "============================"
-echo -e "More Info: http://yoyogames.com/pi\n\nInstall path: $INSTALL_DIR"
+echo -e "More Info: https://yoyogames.com/pi\n\nInstall path: $INSTALL_DIR"
 while true; do
     echo " "
     read -p "Proceed? [y/n] " yn

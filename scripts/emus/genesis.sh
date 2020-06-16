@@ -11,7 +11,7 @@ clear
 
 INSTALL_DIR="$HOME/games"
 URL_FILE="https://misapuntesde.com/res/picodrive192.tar.gz"
-GAME_URL="http://www.mojontwins.com/juegos/mojon-twins--mega-cheril-perils.zip"
+GAME_URL="https://www.mojontwins.com/juegos/mojon-twins--mega-cheril-perils.zip"
 
 if  which $INSTALL_DIR/picodrive/PicoDrive_rpi2 >/dev/null ; then
     read -p "Warning!: Picodrive already installed. Press [ENTER] to exit..."

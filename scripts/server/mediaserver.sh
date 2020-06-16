@@ -4,18 +4,18 @@
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 0.9.3 (12/Sep/16)
 #
-# HELP        · http://www.raspberrypi.org/forums/viewtopic.php?p=518676#p518676
-#             · http://www.raspberrypi.org/forums/viewtopic.php?t=16352
-#             · http://www.belinuxmyfriend.com/2012/10/servidor-dlna-con-la-raspberry-pi.html
-#             · http://everbit.wordpress.com/2013/04/01/minidlna-on-the-raspberry-pi/
+# HELP        · https://www.raspberrypi.org/forums/viewtopic.php?p=518676#p518676
+#             · https://www.raspberrypi.org/forums/viewtopic.php?t=16352
+#             · https://www.belinuxmyfriend.com/2012/10/servidor-dlna-con-la-raspberry-pi.html
+#             · https://everbit.wordpress.com/2013/04/01/minidlna-on-the-raspberry-pi/
 #
 clear
-. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-URL_MINIDLNA="http://sourceforge.net/projects/minidlna/files/latest/download?source=files"
-URL_MINIDLNA_MISA="http://misapuntesde.com/res/minidlna_1-1.4_armhf.deb"
-MINIDLNA_FILES="http://misapuntesde.com/res/minidlna_files.tar.gz"
+URL_MINIDLNA="https://sourceforge.net/projects/minidlna/files/latest/download?source=files"
+URL_MINIDLNA_MISA="https://misapuntesde.com/res/minidlna_1-1.4_armhf.deb"
+MINIDLNA_FILES="https://misapuntesde.com/res/minidlna_files.tar.gz"
 
 INPUT=/tmp/mnu.sh.$$
 trap "rm $INPUT; exit" SIGHUP SIGINT SIGTERM
@@ -41,7 +41,7 @@ rygel(){
     # Unfinished
     echo -e "Rygel UPnP/DLNA MediaServer (install 55MB)\n==========================================\n Rygel allows a user to:\n\n* Browse and play media stored on a PC via a TV or PS3, even if the original content is in a format that the TV or PS3 cannot play.\n* Easily search and play media using a phone, TV, or PC.\n* Redirect sound output to DLNA speakers.\n"
 
-    echo -e "deb http://rygel-project.org/raspbian wheezy/\ndeb-src http://rygel-project.org/raspbian wheezy/\ndeb http://vontaene.de/raspbian-updates/ . main" | sudo tee -a /etc/apt/sources.list
+    echo -e "deb https://rygel-project.org/raspbian wheezy/\ndeb-src https://rygel-project.org/raspbian wheezy/\ndeb https://vontaene.de/raspbian-updates/ . main" | sudo tee -a /etc/apt/sources.list
 
     sudo apt-get update && sudo apt-get install -y raspbian-dlna-renderer --force-yes
 
@@ -90,7 +90,7 @@ do
     case $menuitem in
         latest) minidlna_latest ;;
         minidlna) minidlna_misa ;;
-        Exit) echo -e "\nThanks for visiting http://misapuntesde.com"; break ;;
+        Exit) echo -e "\nThanks for visiting https://misapuntesde.com"; break ;;
     esac
 
 done

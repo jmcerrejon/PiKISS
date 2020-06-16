@@ -5,13 +5,13 @@
 # Version     : 0.7.3 (21/Jul/17)
 #
 # Help        · Wordpress: https://github.com/raspberrypi/documentation/blob/master/usage/wordpress.md
-#             · PyPlate: http://pplware.sapo.pt/linux/dica-como-ter-o-seu-proprio-site-no-raspberry-pi/
+#             · PyPlate: https://pplware.sapo.pt/linux/dica-como-ter-o-seu-proprio-site-no-raspberry-pi/
 #             · https://darryldias.me/wordpress-with-sqlite/
 #             · https://docs.ghost.org/docs/installing-ghost-via-the-cli#pre-requisites
 #
 clear
 
-. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 URL_GHOST="https://github.com/TryGhost/Ghost/releases/download/0.11.11/Ghost-0.11.11.zip"

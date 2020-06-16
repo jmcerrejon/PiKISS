@@ -5,13 +5,13 @@
 # Version     : 1.1 (5/Apr/15)
 # Compatible  : Raspberry Pi 1 & 2 (tested)
 #
-# HELP        · http://www.raspberrypi.org/forums/viewtopic.php?f=78&t=80357
+# HELP        · https://www.raspberrypi.org/forums/viewtopic.php?f=78&t=80357
 #
 clear
 
 INSTALL_DIR="$HOME/games"
 URL_FILE="https://www.dropbox.com/s/vzn3932ugh0q4rx/pce_rpi.zip"
-ROM_URL='http://aetherbyte.com/files/Aetherbyte_Reflectron.zip'
+ROM_URL='https://aetherbyte.com/files/Aetherbyte_Reflectron.zip'
 
 playgame()
 {
@@ -39,5 +39,5 @@ install()
     exit
 }
 
-echo -e "PCE-CD emulation by Vanfanel\n============================\n\n· More Info: http://www.raspberrypi.org/forums/viewtopic.php?f=78&t=80357\n· + Game Reflectron by Aetherbyte\n· Works with compressed roms (.zip)\n· Install path: $INSTALL_DIR/pce\n\nInstalling, please wait..."
+echo -e "PCE-CD emulation by Vanfanel\n============================\n\n· More Info: https://www.raspberrypi.org/forums/viewtopic.php?f=78&t=80357\n· + Game Reflectron by Aetherbyte\n· Works with compressed roms (.zip)\n· Install path: $INSTALL_DIR/pce\n\nInstalling, please wait..."
 install

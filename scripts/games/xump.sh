@@ -8,7 +8,7 @@
 clear
 
 INSTALL_DIR="/home/$USER/games/xump/"
-URL_FILE="http://www.retroguru.com/xump/xump-v.latest-raspberrypi.zip"
+URL_FILE="https://www.retroguru.com/xump/xump-v.latest-raspberrypi.zip"
 
 if  which $INSTALL_DIR/xump_rpi >/dev/null ; then
     read -p "Warning!: Xump already installed. Press [ENTER] to exit..."
@@ -52,7 +52,7 @@ install(){
 
 echo "Install Xump(Raspberry Pi version)"
 echo "=================================="
-echo -e "More Info: http://www.retroguru.com/xump/\n\nInstall path: $INSTALL_DIR"
+echo -e "More Info: https://www.retroguru.com/xump/\n\nInstall path: $INSTALL_DIR"
 while true; do
     echo " "
     read -p "Proceed? [y/n] " yn

@@ -5,11 +5,11 @@
 # Version     : 0.9.1 (12/Sep/16)
 # Compatible  : Raspberry Pi 1, 2 & 3 (tested), ODROID-C1 (tested)
 #
-# Help        · http://www.tuxmaniacs.it/2015/03/server-ftp-con-raspberry-pi.html
-#			  · http://www.instructables.com/id/VSFTPD-Installation-Setup-on-Ubuntu/?ALLSTEPS
+# Help        · https://www.tuxmaniacs.it/2015/03/server-ftp-con-raspberry-pi.html
+#			  · https://www.instructables.com/id/VSFTPD-Installation-Setup-on-Ubuntu/?ALLSTEPS
 #
 clear
-. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 IP=$(ifconfig eth0 | grep inet | awk '{print $2}')

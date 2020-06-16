@@ -12,7 +12,7 @@ URL_FILE="https://www.dropbox.com/s/uhpryw4su15fck0/unreal_speccy_portable_0.0.8
 
 mkDesktopEntry() {
 	if [[ ! -e /usr/share/applications/speccy.desktop ]]; then
-        sudo wget http://quantum-bits.org/tango/icons/computer-sinclair-zx-spectrum.png -O /usr/share/pixmaps/spectrum.png
+        sudo wget https://quantum-bits.org/tango/icons/computer-sinclair-zx-spectrum.png -O /usr/share/pixmaps/spectrum.png
 		sudo sh -c 'echo "[Desktop Entry]\nName=Speccy (ZX Spectrum)\nComment=Speccy emulates some versions of Sinclair ZX Spectrum.\nExec='$INSTALL_DIR'/unreal_speccy_portable\nIcon=/usr/share/pixmaps/spectrum.png\nTerminal=false\nType=Application\nCategories=Application;Game;\nPath='$INSTALL_DIR'/" > /usr/share/applications/speccy.desktop'
 	fi
 }
@@ -41,7 +41,7 @@ install() {
         mkdir -p $HOME/games && cd $HOME/games
         wget -qO- -O tmp.tar.gz $URL_FILE && tar -xzvf tmp.tar.gz && rm tmp.tar.gz
         cd speccy
-        wget -O $INSTALL_DIR/ninjajar.tap http://www.mojontwins.com/juegos/mojon-twins--ninjajar-eng-v1.1.tap
+        wget -O $INSTALL_DIR/ninjajar.tap https://www.mojontwins.com/juegos/mojon-twins--ninjajar-eng-v1.1.tap
         mkDesktopEntry
     fi
 	clear

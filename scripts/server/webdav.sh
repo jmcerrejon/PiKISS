@@ -4,8 +4,8 @@
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 0.7 (14/May/14)
 #
-# Thks to     : http://www.alvaroreig.com/como-configurar-unservidor-webdav-en-la-raspberry-pi/
-#               http://www.instructables.com/id/Apache-SSL-WebDav-Server/?ALLSTEPS
+# Thks to     : https://www.alvaroreig.com/como-configurar-unservidor-webdav-en-la-raspberry-pi/
+#               https://www.instructables.com/id/Apache-SSL-WebDav-Server/?ALLSTEPS
 #
 # TODO        : Webdav to other web server
 #               With SSL certificate
@@ -142,4 +142,4 @@ read -p "Press [ENTER] to continue..."
     
     sudo /etc/init.d/apache2 reload
     
-    read -p "Done!. Now you can enter http://$IP/webdav and check if works. Press [ENTER] to continue..."
+    read -p "Done!. Now you can enter https://$IP/webdav and check if works. Press [ENTER] to continue..."

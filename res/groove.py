@@ -19,7 +19,7 @@ _token = None
 URL = "grooveshark.com" #The base URL of Grooveshark
 htmlclient = ('htmlshark', '20130520', 'nuggetsOfBaller', {"User-Agent":_useragent, "Content-Type":"application/json", "Accept-Encoding":"gzip"}) #Contains all the information posted with the htmlshark client
 jsqueue = ['jsqueue', '20130520', 'chickenFingers']
-jsqueue.append({"User-Agent":_useragent, "Referer": 'http://%s/JSQueue.swf?%s' % (URL, jsqueue[1]), "Accept-Encoding":"gzip", "Content-Type":"application/json"}) #Contains all the information specific to jsqueue
+jsqueue.append({"User-Agent":_useragent, "Referer": 'https://%s/JSQueue.swf?%s' % (URL, jsqueue[1]), "Accept-Encoding":"gzip", "Content-Type":"application/json"}) #Contains all the information specific to jsqueue
 
 #Setting the static header (country, session and uuid)
 h = {}
@@ -220,7 +220,7 @@ if __name__ == "__main__":
         if stream == []:
             print "Failed"
             exit()
-        cmd = 'wget --post-data=streamKey=%s -O "%s - %s.mp3" "http://%s/stream.php"' % (stream["streamKey"], s[songid]["ArtistName"], s[songid]["SongName"], stream["ip"]) #Run wget to download the song
+        cmd = 'wget --post-data=streamKey=%s -O "%s - %s.mp3" "https://%s/stream.php"' % (stream["streamKey"], s[songid]["ArtistName"], s[songid]["SongName"], stream["ip"]) #Run wget to download the song
         p = subprocess.Popen(cmd, shell=True)
         markTimer = threading.Timer(30 + random.randint(0,5), markStreamKeyOver30Seconds, [s[songid]["SongID"], str(queueID), stream["ip"], stream["streamKey"]]) #Starts a timer that reports the song as being played for over 30-35 seconds. May not be needed.
         markTimer.start()

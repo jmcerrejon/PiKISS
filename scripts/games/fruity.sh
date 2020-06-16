@@ -8,7 +8,7 @@
 clear
 
 INSTALL_DIR="/home/$USER/games/fruity_rpi/"
-URL_FILE="http://www.retroguru.com/fruity/fruity-v.latest-raspberrypi.zip"
+URL_FILE="https://www.retroguru.com/fruity/fruity-v.latest-raspberrypi.zip"
 
 if  which $INSTALL_DIR/fruity_rpi >/dev/null ; then
     read -p "Warning!: Fruit'Y already installed. Press [ENTER] to exit..."
@@ -52,7 +52,7 @@ install(){
 
 echo "Install Fruit'Y (Raspberry Pi version)"
 echo "======================================"
-echo -e "More Info: http://www.retroguru.com/fruity/\n\nInstall path: $INSTALL_DIR"
+echo -e "More Info: https://www.retroguru.com/fruity/\n\nInstall path: $INSTALL_DIR"
 while true; do
     echo " "
     read -p "Proceed? [y/n] " yn

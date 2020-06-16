@@ -4,9 +4,9 @@
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 0.9 (6/Sep/14)
 #
-# HELP	      · http://dl.dropboxusercontent.com/s/al4x26cyp947kc1/PiKoMuLe.xml
-# 	          · http://www.compraschinas.net/foro/livestreams/lista-de-canales-para-livestream-solo-plus-liga-y-gol-tv/
-#             · http://www.enlacesiptv.es/2013/11/canal-espana-premium.html
+# HELP	      · https://dl.dropboxusercontent.com/s/al4x26cyp947kc1/PiKoMuLe.xml
+# 	          · https://www.compraschinas.net/foro/livestreams/lista-de-canales-para-livestream-solo-plus-liga-y-gol-tv/
+#             · https://www.enlacesiptv.es/2013/11/canal-espana-premium.html
 #
 # IMPROVEMENT · Read another xml stream file with different format
 #             · Check whenever a var pageURL doen's exist
@@ -15,7 +15,7 @@
 #
 clear
 #IFS=$'\n'
-URL_FILE="http://dl.dropboxusercontent.com/s/al4x26cyp947kc1/PiKoMuLe.xml"
+URL_FILE="https://dl.dropboxusercontent.com/s/al4x26cyp947kc1/PiKoMuLe.xml"
 FREEMEM=$(free -m | sed -n 2p | awk '{print $3}')
 [ -e /usr/bin/omxplayer ] && PLAYER="omxplayer -s -o hdmi " || PLAYER="mplayer -fs -framedrop "
 INPUT=/tmp/mnu.sh.$$

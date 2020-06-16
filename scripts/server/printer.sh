@@ -7,7 +7,7 @@
 # IMPROVEMENT · Uninstall option if cups is detected
 #
 clear
-. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 check_update
@@ -30,4 +30,4 @@ case "$option" in
     y*) allow_remote_machines ;;
 esac
 
-read -p "Done!. Now you can browser to http://$IP:631 Press [Enter] to continue..."
+read -p "Done!. Now you can browser to https://$IP:631 Press [Enter] to continue..."

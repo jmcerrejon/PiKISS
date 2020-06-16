@@ -5,8 +5,8 @@
 # Version     : 1.1 (09/Sep/16)
 #
 # Help:
-# · http://api.openweathermap.org/data/2.5/forecast/daily?q=Huelva&mode=xml&units=metric&cnt=7&lang=sp
-# · convert from epoch to human readable format: date -d @1399687200 - http://www.epochconverter.com/#code
+# · https://api.openweathermap.org/data/2.5/forecast/daily?q=Huelva&mode=xml&units=metric&cnt=7&lang=sp
+# · convert from epoch to human readable format: date -d @1399687200 - https://www.epochconverter.com/#code
 #
 clear
 

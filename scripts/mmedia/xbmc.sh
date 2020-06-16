@@ -13,8 +13,8 @@ clear
 
 echo -e "KODI Install (16.1)\n=====================\n"
 
-echo "deb http://pipplware.pplware.pt/pipplware/dists/jessie/main/binary /" | sudo tee -a /etc/apt/sources.list
-wget -O - http://pipplware.pplware.pt/pipplware/key.asc | sudo apt-key add -
+echo "deb https://pipplware.pplware.pt/pipplware/dists/jessie/main/binary /" | sudo tee -a /etc/apt/sources.list
+wget -O - https://pipplware.pplware.pt/pipplware/key.asc | sudo apt-key add -
 
 sudo apt-get update
 sudo apt-get install -y xbmc

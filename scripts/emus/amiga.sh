@@ -7,15 +7,15 @@
 #
 clear
 
-. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 INSTALL_DIR="$HOME/games"
 UAE4ARM="https://www.dropbox.com/s/n7mvlp9pmxgzq9c/uae4arm-rpi.tar.gz?dl=0"
-KICK_FILE="http://misapuntesde.com/res/Amiga_roms.zip"
-GAME="http://www.emuparadise.me/GameBase%20Amiga/Games/T/Turrican.zip"
-GAME2_DSK1="http://www.emuparadise.me/GameBase%20Amiga/Games/X/Xenon%202%20-%20Megablast_Disk1.zip"
-GAME2_DSK2="http://www.emuparadise.me/GameBase%20Amiga/Games/X/Xenon%202%20-%20Megablast_Disk2.zip"
+KICK_FILE="https://misapuntesde.com/res/Amiga_roms.zip"
+GAME="https://www.emuparadise.me/GameBase%20Amiga/Games/T/Turrican.zip"
+GAME2_DSK1="https://www.emuparadise.me/GameBase%20Amiga/Games/X/Xenon%202%20-%20Megablast_Disk1.zip"
+GAME2_DSK2="https://www.emuparadise.me/GameBase%20Amiga/Games/X/Xenon%202%20-%20Megablast_Disk2.zip"
 
 INPUT=/tmp/amigamenu.$$
 

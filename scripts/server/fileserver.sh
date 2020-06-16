@@ -4,9 +4,9 @@
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 1.0 (13/Aug/14)
 #
-# HELP        · http://everyday-tech.com/samba-share-on-your-raspberry-pi/
-#			  · http://raspberryparatorpes.net/proyectos/instalar-samba-preparando-un-nas-o-servidor-casero-3/
-#			  · http://raspberryparatorpes.net/proyectos/optimizar-samba-preparando-un-nas-o-servidor-casero-y-4/
+# HELP        · https://everyday-tech.com/samba-share-on-your-raspberry-pi/
+#			  · https://raspberryparatorpes.net/proyectos/instalar-samba-preparando-un-nas-o-servidor-casero-3/
+#			  · https://raspberryparatorpes.net/proyectos/optimizar-samba-preparando-un-nas-o-servidor-casero-y-4/
 #			  · sudo pdbedit -L <- Show list user
 #			  · sudo smbclient -L localhost <- List shares dir
 #

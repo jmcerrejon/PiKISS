@@ -11,7 +11,7 @@ tasks:
       password: transmission
       addpaused: no
 
-    rss: http://rss.thepiratebay.se/208
+    rss: https://rss.thepiratebay.se/208
 
     thetvdb_lookup: yes
 

@@ -5,18 +5,18 @@
 # Version     : 1.0 (10/Jul/17)
 #
 # TODO
-#             · Cherekee: http://www.drentsoft.com/linux-experiments/2014-01-03/quickest-way-to-install-cherokee-web-server/
-#             · http://apsvr.com/blog/?p=73
-#             · http://www.raspberrypi.org/forums/viewtopic.php?f=66&t=61778
-#             · http://underc0de.org/foro/seguridad-en-servidores/optimizando-al-maximo-apache/?PHPSESSID=3prm2i3bth04nqtcu2la6d74f2
+#             · Cherekee: https://www.drentsoft.com/linux-experiments/2014-01-03/quickest-way-to-install-cherokee-web-server/
+#             · https://apsvr.com/blog/?p=73
+#             · https://www.raspberrypi.org/forums/viewtopic.php?f=66&t=61778
+#             · https://underc0de.org/foro/seguridad-en-servidores/optimizando-al-maximo-apache/?PHPSESSID=3prm2i3bth04nqtcu2la6d74f2
 #             · https://www.jeremymorgan.com/blog/programming/how-to-set-up-free-ssl/
 #
 clear
-. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 tempfile=$(mktemp)
-nginx_url='http://nginx.org/download/nginx-1.12.0.tar.gz'
+nginx_url='https://nginx.org/download/nginx-1.12.0.tar.gz'
 
 nginx_ssl(){
   nginx
@@ -57,10 +57,10 @@ monkey(){
     1) local SSL_ENABLED="monkey-polarssl libpolarssl0" ;;
   esac
 
-  echo -e "deb http://packages.monkey-project.com/primates_pi primates_pi main" | sudo tee -a /etc/apt/sources.list
+  echo -e "deb https://packages.monkey-project.com/primates_pi primates_pi main" | sudo tee -a /etc/apt/sources.list
   sudo apt-get update
   sudo apt install -y monkey-liana monkey-logger monkey-dirlisting monkey-cgi monkey-fastcgi monkey-mandril monkey-cheetah monkey-auth $SSL_ENABLED
-  curl -i http://"$HOST)":2001/
+  curl -i https://"$HOST)":2001/
   read -p "Done!. Press [Enter] to continue..."
 }
 

@@ -4,7 +4,7 @@
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 1.0 (5/Apr/15)
 #
-# HELP        · http://weblogs.asp.net/bleroy/getting-your-raspberry-pi-to-output-the-right-resolution
+# HELP        · https://weblogs.asp.net/bleroy/getting-your-raspberry-pi-to-output-the-right-resolution
 #
 clear
 

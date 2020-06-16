@@ -6,7 +6,7 @@
 # Compatible  : Raspberry Pi 1, 2 & 3 (tested)
 # TIP         : You need at least 160 GB assigned to GPU
 #
-. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 INSTALL_DIR="$HOME/games"
@@ -67,5 +67,5 @@ dialog --title     "[ Return to Castle Wolfenstein. PAK License ]" \
     esac
 
 clear
-echo -e "Return to Castle Wolfenstein. LICENSE: $LICENSE \n================================================\n\nMore Info: http://www.raspberrypi.org/forums/viewtopic.php?f=78&t=14975\n\nInstall path: $INSTALL_DIR/RWolfenstein\n\nInstalling, please wait...\n"
+echo -e "Return to Castle Wolfenstein. LICENSE: $LICENSE \n================================================\n\nMore Info: https://www.raspberrypi.org/forums/viewtopic.php?f=78&t=14975\n\nInstall path: $INSTALL_DIR/RWolfenstein\n\nInstalling, please wait...\n"
 install

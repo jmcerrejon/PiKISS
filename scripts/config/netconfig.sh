@@ -1,10 +1,10 @@
 #!/bin/bash
-# read http://stackoverflow.com/questions/8794888/bash-scripting-how-to-get-item-name-on-a-radiolist-using-dialog
-# read http://stackoverflow.com/questions/4889187/dynamic-dialog-menu-box-in-bash
-# http://www.howtogeek.com/167425/how-to-setup-wi-fi-on-your-raspberry-pi-via-the-command-line/
-# http://www.cromwell-intl.com/linux/raspberry-pi/networking.html
-# http://www.bot-thoughts.com/2013/01/raspberry-pi-wifi-static-ip.html#.Ui843qzMTIo
-# http://elinux.org/images/4/4b/Raspberry_Pi_wireless_adapter.pdf
+# read https://stackoverflow.com/questions/8794888/bash-scripting-how-to-get-item-name-on-a-radiolist-using-dialog
+# read https://stackoverflow.com/questions/4889187/dynamic-dialog-menu-box-in-bash
+# https://www.howtogeek.com/167425/how-to-setup-wi-fi-on-your-raspberry-pi-via-the-command-line/
+# https://www.cromwell-intl.com/linux/raspberry-pi/networking.html
+# https://www.bot-thoughts.com/2013/01/raspberry-pi-wifi-static-ip.html#.Ui843qzMTIo
+# https://elinux.org/images/4/4b/Raspberry_Pi_wireless_adapter.pdf
 
 # Root priviledges
 if [ $(/usr/bin/id -u) -ne 0 -a $NOROOT = 0 ]; then echo "Please run as root."; exit 1; fi

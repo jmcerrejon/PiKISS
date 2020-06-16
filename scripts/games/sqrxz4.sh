@@ -8,7 +8,7 @@
 clear
 
 INSTALL_DIR="/home/$USER/games/sqrxz4/"
-URL_FILE="http://www.retroguru.com/sqrxz4/sqrxz4-v.latest-raspberrypi.zip"
+URL_FILE="https://www.retroguru.com/sqrxz4/sqrxz4-v.latest-raspberrypi.zip"
 
 if  which $INSTALL_DIR/sqrxz4_rpi >/dev/null ; then
     read -p "Warning!: Sqrxz4 already installed. Press [ENTER] to exit..."
@@ -52,7 +52,7 @@ install(){
 
 echo "Install Sqrxz 4 (Raspberry Pi version)"
 echo "======================================"
-echo -e "More Info: http://www.sqrxz.de/sqrxz-4/\n\nInstall path: $INSTALL_DIR"
+echo -e "More Info: https://www.sqrxz.de/sqrxz-4/\n\nInstall path: $INSTALL_DIR"
 while true; do
     echo " "
     read -p "Proceed? [y/n] " yn

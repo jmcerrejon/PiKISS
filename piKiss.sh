@@ -15,7 +15,7 @@
 # - - - -
 #
 
-. ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 VERSION="v.1.4.2 (2020)"
@@ -51,7 +51,7 @@ function usage()
   echo "-nu | --no_update  : No check if repositories are updated."
   echo "-ni | --noinet     : No check if internet connection is available."
   echo " "
-  echo "For trouble, ideas or technical support please visit http://misapuntesde.com"
+  echo "For trouble, ideas or technical support please visit https://misapuntesde.com"
 }
 
 function lastUpdateRepo()
@@ -532,7 +532,7 @@ do
       Internet)   smInternet ;;
       Server)     smServer ;;
       Others)     smOthers ;;
-      Exit) 	    echo -e "\nThanks for visiting http://misapuntesde.com" && exit ;;
+      Exit) 	    echo -e "\nThanks for visiting https://misapuntesde.com" && exit ;;
       1)
       echo -e "\nCancel pressed." && exit;;
       255)

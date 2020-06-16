@@ -7,12 +7,12 @@
 #
 clear
 
-. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 INSTALL_DIR="$HOME/games/pisnes/"
-URL_FILE="http://sourceforge.net/projects/pisnes/files/latest/download?source=files"
-GAME_URL="http://www.dropbox.com/s/b6tl84p3a17w5ab/UwolQuestForMoney.sfc?dl=0"
+URL_FILE="https://sourceforge.net/projects/pisnes/files/latest/download?source=files"
+GAME_URL="https://www.dropbox.com/s/b6tl84p3a17w5ab/UwolQuestForMoney.sfc?dl=0"
 
 playgame()
 {
@@ -41,7 +41,7 @@ install()
     exit
 }
 
-echo -e "Install PiSNES (Version 1.39)\n=============================\nMore Info: http://sourceforge.net/projects/pisnes\n\nInstall path: $INSTALL_DIR"
+echo -e "Install PiSNES (Version 1.39)\n=============================\nMore Info: https://sourceforge.net/projects/pisnes\n\nInstall path: $INSTALL_DIR"
 while true; do
     echo " "
     read -p "Is it right? [y/n] " yn

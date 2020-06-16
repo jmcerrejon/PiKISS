@@ -11,8 +11,8 @@
 clear
 
 INSTALL_DIR="$HOME/games"
-URL_FILE="http://misapuntesde.com/res/caprice32_4-60.tar.gz"
-GAME_URL="http://www.amstradabandonware.com/mod/upload/ams_en/games_disk/brucelee.zip"
+URL_FILE="https://misapuntesde.com/res/caprice32_4-60.tar.gz"
+GAME_URL="https://www.amstradabandonware.com/mod/upload/ams_en/games_disk/brucelee.zip"
 
 if [[ -f $INSTALL_DIR/caprice/cap32 ]]; then
     read -p "Warning!: Caprice already installed. Press [ENTER] to exit..."

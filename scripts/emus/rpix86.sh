@@ -8,7 +8,7 @@
 clear
 
 INSTALL_DIR="/home/$USER/games/rpix86/"
-URL_FILE="http://rpix86.patrickaalto.com/rpix86.zip"
+URL_FILE="https://rpix86.patrickaalto.com/rpix86.zip"
 
 if  which $INSTALL_DIR/rpix86 >/dev/null ; then
     read -p "Warning!: rpix86 already installed. Press [ENTER] to exit..."
@@ -58,7 +58,7 @@ install(){
     exit
 }
 
-echo -e "rpix86 MS-DOS Emulator (latest)\n===============================\nMore Info: http://rpix86.patrickaalto.com\n\nInstall path: $INSTALL_DIR"
+echo -e "rpix86 MS-DOS Emulator (latest)\n===============================\nMore Info: https://rpix86.patrickaalto.com\n\nInstall path: $INSTALL_DIR"
 while true; do
     echo " "
     read -p "Proceed? [y/n] " yn

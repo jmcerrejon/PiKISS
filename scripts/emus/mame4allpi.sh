@@ -9,17 +9,17 @@
 #
 clear
 
-. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-URL_MAME4ALL="http://sourceforge.net/projects/mame4allpi/files/latest/download?source=files"
+URL_MAME4ALL="https://sourceforge.net/projects/mame4allpi/files/latest/download?source=files"
 URL_ADVMAME="https://github.com/amadvance/advancemame/releases/download/v3.4/advancemame_3.4-1_armhf.deb"
-URL_MAME="http://choccyhobnob.com/?d=1535"
-ROMS_URL="http://download.freeroms.com/mame_roms/c/commando.zip"
+URL_MAME="https://choccyhobnob.com/?d=1535"
+ROMS_URL="https://download.freeroms.com/mame_roms/c/commando.zip"
 
 mkDesktopEntry() {
 	if [[ ! -e /usr/share/applications/mame.desktop ]]; then
-        sudo wget http://img.app-island.com/article/22/34/icon.png -O /usr/share/pixmaps/mame.png
+        sudo wget https://img.app-island.com/article/22/34/icon.png -O /usr/share/pixmaps/mame.png
 		sudo sh -c 'echo "[Desktop Entry]\nName=MAME\nComment=Multiple Arcade Machine Emulator\nExec='$HOME'/games/mame4allpi/mame\nIcon=/usr/share/pixmaps/mame.png\nTerminal=false\nType=Application\nCategories=Application;Game;\nPath='$HOME'/games/mame4allpi/" > /usr/share/applications/mame.desktop'
 	fi
 }

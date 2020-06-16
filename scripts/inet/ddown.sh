@@ -18,5 +18,5 @@ sudo make install
 plowmod --install
 cd ..
 rm -rf $HOME/plowshare
-echo -e "Done!. You can use plowdel, plowdown, plowlist, plowmod, plowprobe, plowup.\n\nExample: plowdown -a 'user:password' http://ul.to/mldskbm"
+echo -e "Done!. You can use plowdel, plowdown, plowlist, plowmod, plowprobe, plowup.\n\nExample: plowdown -a 'user:password' https://ul.to/mldskbm"
 read -p 'Press [ENTER] to continue...'

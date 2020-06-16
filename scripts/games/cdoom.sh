@@ -9,7 +9,7 @@
 #
 clear
 
-. ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 WAD_PATH="$HOME/games"
@@ -98,7 +98,7 @@ if [ ! -e "/usr/local/games/crispy-doom" ];then
     wget -O $HOME/crispy-doom.deb $CRISPY_DOOM
     sudo dpkg -i $HOME/crispy-doom.deb
     rm $HOME/crispy-doom.deb
-    wget -P ~/.local/share/applications http://misapuntesde.com/res/$SHORTCUTS && unzip ~/.local/share/applications/$SHORTCUTS -d ~/.local/share/applications && rm ~/.local/share/applications/$SHORTCUTS
+    wget -P ~/.local/share/applications https://misapuntesde.com/res/$SHORTCUTS && unzip ~/.local/share/applications/$SHORTCUTS -d ~/.local/share/applications && rm ~/.local/share/applications/$SHORTCUTS
 else
     read -p "Crispy-Doom already installed. Press [ENTER] to continue..."
 fi

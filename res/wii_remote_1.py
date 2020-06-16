@@ -8,7 +8,7 @@
 # and  read the button states in Python.
 #
 # Project URL :
-# http://www.raspberrypi-spy.co.uk/?p=1101
+# https://www.raspberrypi-spy.co.uk/?p=1101
 #
 # Author : Matt Hawkins
 # Date   : 30/01/2013

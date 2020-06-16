@@ -8,18 +8,18 @@
 #
 clear
 
-. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-ARX_RPI_URL="http://pickle.gp2x.de/rpi/quake2_rpi.zip"
+ARX_RPI_URL="https://pickle.gp2x.de/rpi/quake2_rpi.zip"
 ARX_PAK_URL="https://www.dropbox.com/s/7416ye9qi0024pu/arx_full_es.tgz?dl=0"
 DATA_DIR="$HOME/games/"
 LICENSE="Complete"
-ARX_ODROID_PKG="http://misapuntesde.com/res/arx-libertatis_1.1.2-1_armhf.deb"
-ARX_RPI_BIN="http://www.littlecarnage.com/arx_rpi2.tar.gz"
+ARX_ODROID_PKG="https://misapuntesde.com/res/arx-libertatis_1.1.2-1_armhf.deb"
+ARX_RPI_BIN="https://www.littlecarnage.com/arx_rpi2.tar.gz"
 
 share_version(){
-  ARX_PAK_URL="http://www.dropbox.com/s/nhh3lr8irrx3vnm/arx_demo_en.tgz?dl=0"
+  ARX_PAK_URL="https://www.dropbox.com/s/nhh3lr8irrx3vnm/arx_demo_en.tgz?dl=0"
 }
 
 dload_pak_files(){
@@ -35,8 +35,8 @@ arx_ODROID(){
   DATA_DIR="$HOME/.yq2"
 
   if [ ! -f /etc/apt/sources.list.d/meveric-all-testing.list ]; then
-    sudo wget -P /etc/apt/sources.list.d http://oph.mdrjr.net/meveric/sources.lists/meveric-all-testing.list
-    sudo wget -O- http://oph.mdrjr.net/meveric/meveric.asc | sudo apt-key add -
+    sudo wget -P /etc/apt/sources.list.d https://oph.mdrjr.net/meveric/sources.lists/meveric-all-testing.list
+    sudo wget -O- https://oph.mdrjr.net/meveric/meveric.asc | sudo apt-key add -
     sudo apt-get update
   fi
   command -v arx >/dev/null 2>&1 || { sudo apt-get install -y libglew-odroid ; wget -P $HOME $ARX_ODROID_PKG ; }
@@ -57,8 +57,8 @@ arx_Raspberry(){
 }
 
 arx_Debian(){
-  sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/dscharrer/Debian_8.0/ ./' >> /etc/apt/sources.list"
-  wget -P ~ http://download.opensuse.org/repositories/home:dscharrer/Debian_8.0/Release.key
+  sudo sh -c "echo 'deb https://download.opensuse.org/repositories/home:/dscharrer/Debian_8.0/ ./' >> /etc/apt/sources.list"
+  wget -P ~ https://download.opensuse.org/repositories/home:dscharrer/Debian_8.0/Release.key
   sudo sh -c "apt-key add - < Release.key"
   rm ~/Release.key
   sudo apt update

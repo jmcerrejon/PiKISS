@@ -14,9 +14,9 @@ BIN_OPENMSX="https://misapuntesde.com/res/openmsx_0.15.0-1_armhf.deb"
 BINARY="openmsx_0.15.0-1_armhf.deb"
 INSTALL_DIR="$HOME/games"
 # ROM game Thanks to msx.ebsoft.fr
-ROM_PATH="http://msx.ebsoft.fr/uridium/ccount/click.php?id=uridium"
+ROM_PATH="https://msx.ebsoft.fr/uridium/ccount/click.php?id=uridium"
 GAMES_PATH="$HOME/games/msx"
-SYSTEMROMS_URL="http://www.msxarchive.nl/pub/msx/emulator/openMSX/systemroms.zip"
+SYSTEMROMS_URL="https://www.msxarchive.nl/pub/msx/emulator/openMSX/systemroms.zip"
 SYSTEMROMS="$HOME/.openMSX/share/systemroms"
 INPUT=/tmp/msxmenu.$$
 

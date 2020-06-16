@@ -241,7 +241,7 @@ check_board() {
 SDL_fix_Rpi() {
   echo "Applying fix to SDL on Raspberry Pi 2, please wait..."
   if [[ $(cat /proc/cpuinfo | grep 'BCM2709') && $(stat -c %y /usr/lib/arm-linux-gnueabihf/libSDL-1.2.so.0.11.4 | grep '2012') ]]; then
-    wget -P /tmp http://malus.exotica.org.uk/~buzz/pi/sdl/sdl1/deb/rpi1/libsdl1.2debian_1.2.15-8rpi_armhf.deb
+    wget -P /tmp https://malus.exotica.org.uk/~buzz/pi/sdl/sdl1/deb/rpi1/libsdl1.2debian_1.2.15-8rpi_armhf.deb
     sudo dpkg -i /tmp/libsdl1.2debian_1.2.15-8rpi_armhf.deb
     sudo rm /tmp/libsdl1.2debian_1.2.15-8rpi_armhf.deb
   fi
@@ -319,7 +319,7 @@ show_dialog() {
       Internet)   	smInternet ;;
       Server)     	smServer ;;
       Others)     	smOthers ;;
-      Exit) 	    	echo -e "\nThanks for visiting http://misapuntesde.com" && exit ;;
+      Exit) 	    	echo -e "\nThanks for visiting https://misapuntesde.com" && exit ;;
       1)
       echo -e "\nCancel pressed." && exit;;
       255)
@@ -427,7 +427,7 @@ compile_sdl2() {
 compile_sdl2_image() {
 	clear && echo "Compiling SDL2_image, please wait..."
 	cd $HOME/sc || exit
-	wget http://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.5.tar.gz
+	wget https://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.5.tar.gz
 	tar zxvf SDL2_image-2.0.5.tar.gz && cd SDL2_image-2.0.5
 	./autogen.sh 
 	./configure --prefix=/usr
@@ -438,7 +438,7 @@ compile_sdl2_image() {
 compile_sdl2_mixer() {
 	clear && echo "Compiling SDL2_mixer, please wait..."
 	cd $HOME/sc || exit
-	wget http://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-2.0.4.tar.gz
+	wget https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-2.0.4.tar.gz
 	tar zxvf SDL2_mixer-2.0.4.tar.gz && cd SDL2_mixer-2.0.4
 	./autogen.sh 
 	./configure --prefix=/usr
@@ -449,7 +449,7 @@ compile_sdl2_mixer() {
 compile_sdl2_ttf() {
 	clear && echo "Compiling SDL2_ttf, please wait..."
 	cd $HOME/sc || exit
-	wget http://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.15.tar.gz
+	wget https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.15.tar.gz
 	tar zxvf SDL2_ttf-2.0.15.tar.gz && cd SDL2_ttf-2.0.15
 	./autogen.sh 
 	./configure --prefix=/usr

@@ -4,7 +4,7 @@
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 1.0 (9/May/2015)
 #
-# HELP		  : http://www.makeuseof.com/tag/adblock-everywhere-raspberry-pi-hole-way/
+# HELP		  : https://www.makeuseof.com/tag/adblock-everywhere-raspberry-pi-hole-way/
 #
 clear
 

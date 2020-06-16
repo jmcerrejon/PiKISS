@@ -26,7 +26,7 @@ sudo sed -i '/1:2345/s/^/#/' /etc/inittab
 sudo sed -i 's/.*tty1.*/&\n1:2345:respawn:\/bin\/login -f pi tty1 <\/dev\/tty1> \/dev\/tty1 2>\&1/' /etc/inittab
 
 # Fix SDL
-wget -P /tmp http://malus.exotica.org.uk/~buzz/pi/sdl/sdl1/deb/rpi1/libsdl1.2debian_1.2.15-8rpi_armhf.deb
+wget -P /tmp https://malus.exotica.org.uk/~buzz/pi/sdl/sdl1/deb/rpi1/libsdl1.2debian_1.2.15-8rpi_armhf.deb
 sudo dpkg -i /tmp/libsdl1.2debian_1.2.15-8rpi_armhf.deb
 sudo rm /tmp/libsdl1.2debian_1.2.15-8rpi_armhf.deb
 

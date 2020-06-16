@@ -6,7 +6,7 @@
 #
 # IMPROVEMENT : Test SD: dd if=/dev/zero of=/tmp/salida bs=1M count=300
 #
-# More Info   : NBench -> http://www.tux.org/~mayer/linux/bmark.html
+# More Info   : NBench -> https://www.tux.org/~mayer/linux/bmark.html
 # 				Tinymembench -> https://github.com/ssvb/tinymembench
 #
 clear

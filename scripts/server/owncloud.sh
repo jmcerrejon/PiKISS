@@ -6,17 +6,17 @@
 #
 # HELP        · https://doc.owncloud.org/server/8.0/admin_manual/release_notes.html
 # 			  		· https://geekytheory.com/tutorial-raspberry-pi-2-crea-tu-propia-nube-con-owncloud/
-# 			  		· http://www.pihomeserver.fr/en/2014/08/11/raspberry-pi-home-server-installer-owncloud-7-en-https-nginx/
-# 			  		· http://raspberrypihelp.net/tutorials/33-raspberry-pi-owncloud
-# 			  		· http://doc.owncloud.org/server/5.0/admin_manual/installation/installation_others.html
-# 			  		· http://www.surject.com/setup-owncloud-7-server-nginx-ubuntu/
+# 			  		· https://www.pihomeserver.fr/en/2014/08/11/raspberry-pi-home-server-installer-owncloud-7-en-https-nginx/
+# 			  		· https://raspberrypihelp.net/tutorials/33-raspberry-pi-owncloud
+# 			  		· https://doc.owncloud.org/server/5.0/admin_manual/installation/installation_others.html
+# 			  		· https://www.surject.com/setup-owncloud-7-server-nginx-ubuntu/
 #
 clear
-. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 FILE="owncloud-10.0.2.tar.bz2"
-URL_OWNCLOUD="http://download.owncloud.org/community/$FILE"
+URL_OWNCLOUD="https://download.owncloud.org/community/$FILE"
 VERSION="ownCloud 10.0.2"
 INSTALL_PACKAGES="php7.0 php7.0-json php-xml-parser php7.0-gd php7.0-zip php7.0-mbstring curl libcurl3 libcurl4-openssl-dev php7.0-curl php7.0-common sqlite3 php7.0-sqlite3 php7.0-opcache"
 IP=$(get_ip)
@@ -100,5 +100,5 @@ case $retval in
   1)   Apache2 ;;
 esac
 
-echo -e "Done. Now restart the system and go to another device/PC and type in your Web browser: http://${IP}/owncloud"
+echo -e "Done. Now restart the system and go to another device/PC and type in your Web browser: https://${IP}/owncloud"
 read -p 'Press [ENTER] to continue...'

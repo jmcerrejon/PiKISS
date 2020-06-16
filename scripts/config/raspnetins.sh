@@ -67,7 +67,7 @@ do
         Time_zone)  time_zone ;;
         Essential)  essential ;;
         New_user)   new_user ;;
-        Exit)       echo -e "\nThanks for visiting http://misapuntesde.com"; break ;;
+        Exit)       echo -e "\nThanks for visiting https://misapuntesde.com"; break ;;
     esac
  
 done

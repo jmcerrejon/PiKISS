@@ -5,7 +5,7 @@
 # Version     : 0.1 (25/Jul/17)
 #
 # HELP        · https://www.resilio.com/individuals/
-#             · http://jack.minardi.org/raspberry_pi/replace-dropbox-with-bittorrent-sync-and-a-raspberry-pi/
+#             · https://jack.minardi.org/raspberry_pi/replace-dropbox-with-bittorrent-sync-and-a-raspberry-pi/
 #
 clear
 
@@ -13,14 +13,14 @@ IP=$(get_ip)
 tempfile=$(mktemp)
 
 install_resilio() {
-  echo "deb http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free" | sudo tee /etc/apt/sources.list.d/resilio-sync.list
+  echo "deb https://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free" | sudo tee /etc/apt/sources.list.d/resilio-sync.list
   wget -qO - https://linux-packages.resilio.com/resilio-sync/key.asc | sudo apt-key add -
   sudo dpkg --add-architecture armhf
   sudo apt-get update
   sudo apt-get install resilio-sync
   sudo apt install -y resilio-sync
   sudo systemctl enable resilio-sync
-  echo -e "Done!. Now reboot and go to another device/PC and type in your Web browser: http://${IP}:8888/gui/"
+  echo -e "Done!. Now reboot and go to another device/PC and type in your Web browser: https://${IP}:8888/gui/"
   read -p 'Press [ENTER] to continue...'
 }
 

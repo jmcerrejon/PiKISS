@@ -6,7 +6,7 @@
 #
 clear
 
-URL_LYNIS="http://cisofy.com/files/lynis-2.3.3.tar.gz"
+URL_LYNIS="https://cisofy.com/files/lynis-2.3.3.tar.gz"
 
 validate_url(){
     if [[ `wget -S --spider $1 2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then echo "true"; fi

@@ -4,11 +4,11 @@
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 0.3 (13/Aug/14)
 #
-# HELP		  · http://torrated.eu/
-# 			  · http://informaticamateur.blogspot.com.es/2014/05/descargas-automaticas-de-series-con.html
+# HELP		  · https://torrated.eu/
+# 			  · https://informaticamateur.blogspot.com.es/2014/05/descargas-automaticas-de-series-con.html
 #			  · Commands: flexget series list, flexget series begin "Game of Thrones" S04E08, flexget series forget "Game of Thrones" S04E08
 #
-# IMPROVEMENT · Send email with new episodes downloading: http://torrated2013.wordpress.com/2014/06/30/recibir-un-email-cuando-se-anada-una-descarga/
+# IMPROVEMENT · Send email with new episodes downloading: https://torrated2013.wordpress.com/2014/06/30/recibir-un-email-cuando-se-anada-una-descarga/
 #
 clear
 

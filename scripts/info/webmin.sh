@@ -5,7 +5,7 @@
 # Version     : 0.4 (17/Jan/19)
 # Compatible  : Raspberry Pi 1, 2 & 3 all versions (tested)
 #
-# HELP		  : http://msrobotics.net/index.php/com-virtuemart-menu-categories/laboratorio-pi/41-instala-webmin-y-administra-de-forma-grafica-raspbian-via-web
+# HELP		  : https://msrobotics.net/index.php/com-virtuemart-menu-categories/laboratorio-pi/41-instala-webmin-y-administra-de-forma-grafica-raspbian-via-web
 #
 clear
 
@@ -21,4 +21,4 @@ wget $WEBMIN_URL
 sudo dpkg -i webmin*.deb
 rm webmin_*.deb
 
-read -p "Done!. Now you can go to http://$IP:10000 on your web browser. Press [ENTER] to continue..."
+read -p "Done!. Now you can go to https://$IP:10000 on your web browser. Press [ENTER] to continue..."

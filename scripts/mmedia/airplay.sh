@@ -4,8 +4,8 @@
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 1.2 (09/Sep/16)
 #
-# IMPROVEMENT : http://www.welzels.de/blog/projekte/raspberry-pi/raspberry-pi-als-airplay-client/ <-- AirPlay (sound)
-#               http://raspberrypihell.blogspot.com.es/2014/11/airplay-easy-install-script-for-your.html
+# IMPROVEMENT : https://www.welzels.de/blog/projekte/raspberry-pi/raspberry-pi-als-airplay-client/ <-- AirPlay (sound)
+#               https://raspberrypihell.blogspot.com.es/2014/11/airplay-easy-install-script-for-your.html
 clear
 
 # trap CTRL+C in the rplay installation
@@ -17,7 +17,7 @@ trap int_trap INT
 rplay_install(){
     sudo apt-get install -y libao-dev avahi-utils libavahi-compat-libdnssd-dev libva-dev youtube-dl
     sudo youtube-dl --update
-    wget -O /tmp/rplay.deb http://www.vmlite.com/rplay/rplay-1.0.1-armhf.deb
+    wget -O /tmp/rplay.deb https://www.vmlite.com/rplay/rplay-1.0.1-armhf.deb
     sudo dpkg -i /tmp/rplay.deb
     rm /tmp/rplay.deb
     # echo "Enter your license key:"
@@ -44,6 +44,6 @@ airplay(){
   retval=$?
 
   case $retval in
-    0)   echo -e "Installing...\nRemember you have an admin panel visiting: http://localhost:7100/admin (user admin, psswd admin)" ; rplay_install ;;
-    1)   echo "Get your license key from http://www.vmlite.com/index.php?option=com_kunena&Itemid=158&func=view&catid=23&id=12117" ; exit ;;
+    0)   echo -e "Installing...\nRemember you have an admin panel visiting: https://localhost:7100/admin (user admin, psswd admin)" ; rplay_install ;;
+    1)   echo "Get your license key from https://www.vmlite.com/index.php?option=com_kunena&Itemid=158&func=view&catid=23&id=12117" ; exit ;;
   esac

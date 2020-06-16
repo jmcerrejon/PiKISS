@@ -4,7 +4,7 @@
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 0.9 (22/May/14)
 #
-# Help        · http://raspberrypihell.blogspot.com.es/2014/01/aircrack-ng-on-raspberry-pi.html
+# Help        · https://raspberrypihell.blogspot.com.es/2014/01/aircrack-ng-on-raspberry-pi.html
 #
 clear
 

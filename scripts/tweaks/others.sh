@@ -5,13 +5,13 @@
 # Version     : 1.3.1 (05/Sep/19)
 # Compatible  : Raspberry Pi 1-4 (tested), ODROID-C1 (tested)
 #
-# Help        · http://www.raspberrypi.org/forums/viewtopic.php?f=31&t=11642
+# Help        · https://www.raspberrypi.org/forums/viewtopic.php?f=31&t=11642
 #             · https://extremeshok.com/1081/raspberry-pi-raspbian-tuning-optimising-optimizing-for-reduced-memory-usage/
-#             · http://www.jeffgeerling.com/blog/2016/how-overclock-microsd-card-reader-on-raspberry-pi-3
+#             · https://www.jeffgeerling.com/blog/2016/how-overclock-microsd-card-reader-on-raspberry-pi-3
 #
 clear
 
-. ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 SDLess_Rpi(){
@@ -47,10 +47,10 @@ tweaks_ODROID(){
         y*) sudo cp /etc/sysctl.conf{,.bak} && sudo sh -c 'echo "net.ipv6.conf.all.disable_ipv6=1" >> /etc/sysctl.conf' && sudo sh -c 'echo "net.ipv6.conf.default.disable_ipv6=1" >> /etc/sysctl.conf' && sudo sh -c 'echo "net.ipv6.conf.lo.disable_ipv6=1" >> /etc/sysctl.conf' && sudo sysctl -p ; cat /proc/sys/net/ipv6/conf/all/disable_ipv6 ; echo -e "1 means DISABLED\n";;
     esac
 
-    echo -e "\nEnable Meveric repositories with dozen of apps. Check http://forum.odroid.com/viewtopic.php?f=52&t=5908 for more info."
+    echo -e "\nEnable Meveric repositories with dozen of apps. Check https://forum.odroid.com/viewtopic.php?f=52&t=5908 for more info."
     read -p "Agree (y/n)? " option
     case "$option" in
-        y*) sudo wget -P /etc/apt/sources.list.d http://oph.mdrjr.net/meveric/sources.lists/meveric-all-C1.list && sudo wget -P /etc/apt/sources.list.d http://oph.mdrjr.net/meveric/sources.lists/meveric-all-main.list && sudo wget -P /etc/apt/sources.list.d http://oph.mdrjr.net/meveric/sources.lists/meveric-all-testing.list && sudo wget -O- http://oph.mdrjr.net/meveric/meveric.asc | sudo apt-key add - && sudo apt-get update ;;
+        y*) sudo wget -P /etc/apt/sources.list.d https://oph.mdrjr.net/meveric/sources.lists/meveric-all-C1.list && sudo wget -P /etc/apt/sources.list.d https://oph.mdrjr.net/meveric/sources.lists/meveric-all-main.list && sudo wget -P /etc/apt/sources.list.d https://oph.mdrjr.net/meveric/sources.lists/meveric-all-testing.list && sudo wget -O- https://oph.mdrjr.net/meveric/meveric.asc | sudo apt-key add - && sudo apt-get update ;;
     esac
 
     echo -e "\nSticky bit on /tmp to securely delete files only by their own propietary or root."
@@ -176,7 +176,7 @@ tweaks_RPi(){
     echo -e "\nReplace mirrordirector.raspbian.org (sometimes down) with mirror.ox.ac.uk ?"
     read -p "Agree (y/n)? " option
     case "$option" in
-        y*) sudo sed -i "/mirrordirector.raspbian.org/s/^/#/" /etc/apt/sources.list; sudo sed -i "1 s|^|deb http://mirror.ox.ac.uk/sites/archive.raspbian.org/archive/raspbian stretch main contrib non-free rpi\n|" /etc/apt/sources.list ;;
+        y*) sudo sed -i "/mirrordirector.raspbian.org/s/^/#/" /etc/apt/sources.list; sudo sed -i "1 s|^|deb https://mirror.ox.ac.uk/sites/archive.raspbian.org/archive/raspbian stretch main contrib non-free rpi\n|" /etc/apt/sources.list ;;
     esac
 }
 

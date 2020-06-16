@@ -7,7 +7,7 @@
 #
 clear
 DATA_DIR="$HOME/.config/dunelegacy/data"
-DUNE2_GAME="http://www.bestoldgames.net/download/bgames/dune-2.zip"
+DUNE2_GAME="https://www.bestoldgames.net/download/bgames/dune-2.zip"
 
 # Dune 2 Legacy
 echo "Downloading Dune Legacy..."

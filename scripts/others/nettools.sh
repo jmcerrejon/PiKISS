@@ -4,10 +4,10 @@
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 0.3 (5/Apr/15)
 #
-# Help        · http://www.jsitech.com/seguridad/net-tools-mitm-pentesting-opensource-toolkit/
+# Help        · https://www.jsitech.com/seguridad/net-tools-mitm-pentesting-opensource-toolkit/
 clear
 
-. ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 echo -e "\nNet Tools - MITM Pentesting Opensource Toolkit\n==============================================\n\n· Require run from X\n\n"
@@ -19,7 +19,7 @@ sudo apt-get install -y zenity nmap ettercap-text-only macchanger driftnet apach
 
 echo -e "\nInstalling MetaSploit (latest)...\n\n"
 mkdir -p $HOME/sc && cd $HOME/sc
-wget http://downloads.metasploit.com/data/releases/framework-latest.tar.bz2
+wget https://downloads.metasploit.com/data/releases/framework-latest.tar.bz2
 tar jxpf framework-latest.tar.bz2
 sudo apt-get install -y ruby subversion
 sudo gem install bundler
@@ -29,7 +29,7 @@ cd msf3
 cd ..
 
 # Net Tools
-wget -O opensource.tar.gz http://sourceforge.net/projects/netoolsh/files/latest/download?source=files
+wget -O opensource.tar.gz https://sourceforge.net/projects/netoolsh/files/latest/download?source=files
 tar -xzvf opensource.tar.gz
 cd opensource
 ./nettool.sh

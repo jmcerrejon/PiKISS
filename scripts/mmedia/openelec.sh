@@ -6,10 +6,10 @@
 #
 # HELP		  : zip -r AdvLauncher_uLySeSS.zip /storage/.kodi/addons/emulator.tools.retroarch/ /storage/.kodi/addons/plugin.program.advanced.launcher/ /storage/.kodi/addons/script.module.simplejson/ /storage/.kodi/userdata/addon_data/emulator.tools.retroarch/ /storage
 #/.kodi/userdata/addon_data/plugin.program.advanced.launcher/
-#			  · http://forum.kodi.tv/showthread.php?tid=201354
-#			  · http://kodi.wiki/view/Raspberry_Pi
+#			  · https://forum.kodi.tv/showthread.php?tid=201354
+#			  · https://kodi.wiki/view/Raspberry_Pi
 #			  · resize partition: touch /storage/.please_resize_me
-#			  · Install Pulsar from http://kodi.speedbox.me/svn_kodi/trunk/repository.kodiunderground/repository.kodiunderground-1.0.3.zip | http://sourceforge.net/projects/icanuckxbmcrepo/files/latest/download?source=files
+#			  · Install Pulsar from https://kodi.speedbox.me/svn_kodi/trunk/repository.kodiunderground/repository.kodiunderground-1.0.3.zip | https://sourceforge.net/projects/icanuckxbmcrepo/files/latest/download?source=files
 # 			  · 
 #
 clear
@@ -54,14 +54,14 @@ optimize(){
 }
 
 retroarch(){
-	wget http://misapuntesde.com/res/AdvLauncher_uLySeSS.zip
+	wget https://misapuntesde.com/res/AdvLauncher_uLySeSS.zip
 	unzip AdvLauncher_uLySeSS.zip -d /
 	rm AdvLauncher_uLySeSS.zip
 	killall -9 kodi.bin
 }
 
 pelisalacarta(){
-	wget http://blog.tvalacarta.info/descargas/pelisalacarta-xbmc-addon-gotham-3.9.99.zip
+	wget https://blog.tvalacarta.info/descargas/pelisalacarta-xbmc-addon-gotham-3.9.99.zip
 	unzip pelisalacarta-xbmc-addon-gotham-3.9.99.zip -d /storage/.kodi/addons/
 	rm pelisalacarta-xbmc-addon-gotham-3.9.99.zip
 	killall -9 kodi.bin

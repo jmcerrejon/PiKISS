@@ -4,7 +4,7 @@
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 1.0 (5/Apr/15)
 #
-# Help        · http://rpi.tnet.com/project/faqs/smtp
+# Help        · https://rpi.tnet.com/project/faqs/smtp
 #
 clear
 

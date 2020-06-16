@@ -5,7 +5,7 @@
 # Version     : 0.3 (13/aug/14)
 #               UNFINISHED
 #
-# HELP        · http://jasperproject.github.io/documentation/software/
+# HELP        · https://jasperproject.github.io/documentation/software/
 #
 clear
 

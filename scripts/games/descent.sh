@@ -8,16 +8,16 @@
 # HELP	      : https://github.com/dxx-rebirth/dxx-rebirth
 #				https://github.com/dxx-rebirth/dxx-rebirth/blob/master/INSTALL.markdown
 #
-. ./scripts/helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 D1X_SHARE_URL='https://www.dxx-rebirth.com/download/dxx/content/descent-pc-shareware.zip'
 D2X_SHARE_URL='https://www.dxx-rebirth.com/download/dxx/content/descent2-pc-demo.zip'
 DXX_URL='https://www.dropbox.com/s/dvtcby2comu5p8u/dxx-rebirth.tar.gz?dl=0'
-D1X_HIGH_TEXTURE_URL='http://www.dxx-rebirth.com/download/dxx/res/d1xr-hires.dxa'
-D1X_OGG_URL='http://www.dxx-rebirth.com/download/dxx/res/d1xr-sc55-music.dxa'
-D2X_OGG_URL='http://www.dxx-rebirth.com/download/dxx/res/d2xr-sc55-music.dxa'
+D1X_HIGH_TEXTURE_URL='https://www.dxx-rebirth.com/download/dxx/res/d1xr-hires.dxa'
+D1X_OGG_URL='https://www.dxx-rebirth.com/download/dxx/res/d1xr-sc55-music.dxa'
+D2X_OGG_URL='https://www.dxx-rebirth.com/download/dxx/res/d2xr-sc55-music.dxa'
 D1X_DATA="$HOME/.d1x-rebirth/Data"
 D2X_DATA="$HOME/.d2x-rebirth/Data"
 BINARY_DIR='/usr/games'
@@ -68,7 +68,7 @@ setConfigFileReadyToPlay(){
 
 DXX_RPI(){
     # Compile from source code:
-	# It needs sudo apt install -y libsdl1.2-dev libsdl-mixer1.2-dev libphysfs-dev scons
+	# It needs sudo apt install -y libsdl1.2-dev libsdl-mixer1.2-dev libphysfs-dev libsdl2-image-dev scons libsdl2-net-dev
 	# git clone https://github.com/dxx-rebirth/dxx-rebirth.git
 	# type scons inside the dir created
 	# compress with tar -czvf ~/dxx-rebirth.tar.gz d1x-rebirth d2x-rebirth

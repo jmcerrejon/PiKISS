@@ -4,7 +4,7 @@
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 0.1 (04/Jul/14)
 #
-# Help        · http://www.rpiblog.com/2014/07/installing-gcc-on-raspberry-pi.html
+# Help        · https://www.rpiblog.com/2014/07/installing-gcc-on-raspberry-pi.html
 #
 clear
 

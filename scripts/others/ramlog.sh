@@ -5,7 +5,7 @@
 # Version     : 1.0 (21/Apr/15)
 # Compatible  : Raspberry Pi 1 & 2 (OK)
 #
-# HELP        : http://www.vdsar.net/limit-sd-card-writes-rasberry-pi-using-ramlog/
+# HELP        : https://www.vdsar.net/limit-sd-card-writes-rasberry-pi-using-ramlog/
 #
 clear
 
@@ -30,7 +30,7 @@ if [[ ! $(apt-cache policy ramlog | grep 'Unable') ]]; then
 	update-rc.d -f rsyslog remove
 
 	sudo apt-get install -y rsync lsof
-	wget -P $HOME http://www.tremende.com/ramlog/download/ramlog_2.0.0_all.deb
+	wget -P $HOME https://www.tremende.com/ramlog/download/ramlog_2.0.0_all.deb
 	sudo dpkg -i $HOME/ramlog_2.0.0_all.deb && rm $HOME/ramlog_2.0.0_all.deb
 
 	#Check if rsyslog exist before modify the next lines
