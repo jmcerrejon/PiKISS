@@ -1,4 +1,5 @@
 #!/bin/bash
+#
 # - - - - - - - - - - - - - - - - - -
 # PiKISS (Pi Keeping simple, stupid!)
 # - - - - - - - - - - - - - - - - - -
@@ -17,7 +18,7 @@
 . ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'http://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-VERSION="v.1.4.1 (2020)"
+VERSION="v.1.4.2 (2020)"
 check_board
 check_temperature
 check_CPU
@@ -258,7 +259,7 @@ function smEmulators(){
     options=(
       Back "Back to main menu"
       Genesis "Genesis Megadrive Emulator (picodrive)"
-      Caprice "Amstrad CPC Caprice for RPi 2"
+      Caprice "Amstrad CPC with Caprice32"
       Snes "SNES Emulator port based on SNES9X 1.39"
       Mame "Install MAME, Advance MAME and/or MAME4ALL-PI"
       Speccy "ZX-Spectrum emulator"

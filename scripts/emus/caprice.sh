@@ -2,7 +2,7 @@
 #
 # Description : Caprice32 for Raspberry Pi(Amstrad)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2 (15/Jun/20)
+# Version     : 1.2.1 (16/Jun/20)
 # Compatible  : Raspberry Pi 2-4 (tested)
 #
 # HELP        : https://www.raspberrypi.org/forums/viewtopic.php?f=78&t=105811
@@ -20,7 +20,7 @@ if [[ -f $INSTALL_DIR/caprice/cap32 ]]; then
 fi
 
 playgame(){
-    if [[ -f $INSTALL_DIR/caprice/disc/brucelee.dsk ]]; then
+    if [[ -f $INSTALL_DIR/caprice/disk/brucelee.dsk ]]; then
         read -p "Do you want to run caprice now? [y/n] " option
         case "$option" in
             y*) cd $INSTALL_DIR/caprice/ && ./cap32 ;;
@@ -34,7 +34,7 @@ install(){
     echo "Downloading packages..."
     mkdir -p $INSTALL_DIR/caprice && cd $_
     wget $URL_FILE && tar xzvf caprice32_4-60.tar.gz && rm caprice32_4-60.tar.gz
-    cd disc && wget $GAME_URL && unzip brucelee.zip && rm brucelee.zip && cd ..
+    mkdir disk && cd $_ && wget $GAME_URL && unzip brucelee.zip && rm brucelee.zip && cd ..
 
     echo "Done!. Go to install path and type: ./cap32. F1 open the menu."
     playgame
@@ -42,7 +42,7 @@ install(){
     exit
 }
 
-echo -e "Caprice32 for Raspberry Pi\n==========================\n\n· F1: Menu\n· More Info: https://github.com/ColinPitrat/caprice32\n· For load disk, type cat and then run\"game_name\"\n· Add game Bruce Lee (.dsk) to play\n\nInstall path: $INSTALL_DIR/caprice"
+echo -e "Caprice32 for Raspberry Pi\n==========================\n\n· F1: Menu\n· More Info: https://github.com/ColinPitrat/caprice32\n· For load disk, type cat+ENTER to list files\n· type run\"game_name\"\n· Add game Bruce Lee (.dsk) to play\n\nInstall path: $INSTALL_DIR/caprice"
 while true; do
     echo " "
     read -p "Proceed? [y/n] " yn
