@@ -260,7 +260,7 @@ function smEmulators(){
       Back "Back to main menu"
       Genesis "Genesis Megadrive Emulator (picodrive)"
       Caprice "Amstrad CPC with Caprice32"
-      Snes "SNES Emulator port based on SNES9X 1.39"
+      Snes "SNES Emulator Snes9X 1.60"
       Mame "Install MAME, Advance MAME and/or MAME4ALL-PI"
       Speccy "ZX-Spectrum emulator"
       Rpix86 "rpix86 MS-DOS emulator"

@@ -10,7 +10,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **546 hours**
+* **549 hours**
 
 * Total amount donated by users: $14.11
 
@@ -33,6 +33,10 @@ Contributors:
 ![piKiss_05](https://misapuntesde.com/images/piKiss_05.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (16/06/20)
+
+· 👌 IMPROVE: SuperNES emulator (Snes9X 1.60).
 
 ### (15/06/20)
 
