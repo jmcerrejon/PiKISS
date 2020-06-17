@@ -22,15 +22,14 @@ Contributors:
 
 ### [ Screenshots ]
 
-![piKiss_01](https://misapuntesde.com/images/piKiss_01.png)
+![piKiss_01](screenshots/pikiss_twisterOS_01.png)
 
-![piKiss_02](https://misapuntesde.com/images/piKiss_02.png)
+![piKiss_02](screenshots/pikiss_twisterOS_02.png)
 
-![piKiss_03](https://misapuntesde.com/images/piKiss_03.png)
+![piKiss_03](screenshots/pikiss_twisterOS_03.png)
 
-![piKiss_04](https://misapuntesde.com/images/piKiss_04.png)
+![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
-![piKiss_05](https://misapuntesde.com/images/piKiss_05.png)
 
 ### [ ChangeLog (dd/mm/yy)]
 
