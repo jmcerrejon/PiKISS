@@ -15,14 +15,14 @@ URL_ADVMAME="https://github.com/amadvance/advancemame/releases/download/v3.9/adv
 URL_MAME4ALL="https://sourceforge.net/projects/mame4allpi/files/latest/download?source=files"
 ROMS_URL="https://misapuntesde.com/res/galaxian.zip"
 
-mkDesktopEntry(){
+mkDesktopEntry() {
 	if [[ ! -e /usr/share/applications/mame.desktop ]]; then
         sudo wget https://img.app-island.com/article/22/34/icon.png -O /usr/share/pixmaps/mame.png
 		sudo sh -c 'echo "[Desktop Entry]\nName=MAME\nComment=Multiple Arcade Machine Emulator\nExec='$HOME'/games/mame4allpi/mame\nIcon=/usr/share/pixmaps/mame.png\nTerminal=false\nType=Application\nCategories=Application;Game;\nPath='$HOME'/games/mame4allpi/" > /usr/share/applications/mame.desktop'
 	fi
 }
 
-mame_install(){
+mame_install() {
 	clear
 	local INSTALL_DIR="$HOME/games/mame0211b_rpi3"
 	if [[ -e $INSTALL_DIR ]]; then
@@ -35,7 +35,7 @@ mame_install(){
 	endMessage "Done!. Type $INSTALL_DIR/mame0211b_rpi3 to Play"
 }
 
-advmame_install(){
+advmame_install() {
 	clear
 	local INSTALL_DIR="$HOME/.advance/roms"
 	if isPackageInstalled advancemame; then
@@ -49,7 +49,7 @@ advmame_install(){
 	endMessage "Done!. You need to exit from Desktop and type advmame. ROMs directory at ~/.advance/roms"
 }
 
-mame4all_install(){
+mame4all_install() {
 	clear
 	local INSTALL_DIR="$HOME/games/mame4allpi"
     if [[ -e $INSTALL_DIR ]]; then
@@ -62,16 +62,16 @@ mame4all_install(){
     endMessage "Done!. To play, on Desktop Menu > games or go to $INSTALL_DIR path, copy any rom to /roms directory and type: ./mame"
 }
 
-downloadROM(){
+downloadROM() {
 	echo "Copying ROM to $1..."
 	wget -qO- -O $1/galaxian.zip $ROMS_URL
 }
 
-endMessage(){
+endMessage() {
 	read -p "$1. Press [ENTER] to continue..."
 }
 
-menu(){
+menu() {
 	cmd=(dialog --separate-output --title "[ MAME For Raspberry PI ]" --checklist "Move with the arrows up & down. ESC to exit. Space to select the emulator you want to install:" 11 135 16)
 	options=(
 		MAME_Choccy "(Recommended) MAME for Rpi 3/4 originally stood for Multiple Arcade Machine Emulator compiled by Choccy (2019)." on
