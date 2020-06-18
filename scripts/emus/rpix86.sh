@@ -1,69 +1,74 @@
 #!/bin/bash
 #
-# Description : rpix86 MS-DOS Emulator by Patrick Aalto
+# Description : MS-DOS Emulator DOSBox-X
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (07/Sep/16)
+# Version     : 1.0 (18/Jun/20)
 #
-# TODO        · syntax error near unexpected token '}' on comment code
 clear
 
-INSTALL_DIR="/home/$USER/games/rpix86/"
-URL_FILE="https://rpix86.patrickaalto.com/rpix86.zip"
+INSTALL_DIR="/home/$USER/games"
+URL_FILE="https://www.dropbox.com/s/ltjs2vvbc8u1k05/dosbox-X_0-82.26.tar.gz?dl=0"
 
-if  which $INSTALL_DIR/rpix86 >/dev/null ; then
-    read -p "Warning!: rpix86 already installed. Press [ENTER] to exit..."
+if  which $INSTALL_DIR/dosbox >/dev/null ; then
+    read -p "Warning!: Dosbox already installed. Press [ENTER] to exit..."
     exit
 fi
 
-validate_url(){
+mkDesktopEntry() {
+	if [[ ! -e /usr/share/applications/dosbox-x.desktop ]]; then
+		sudo sh -c 'echo "[Desktop Entry]\nName=DOSBox-X\nComment=Cross-platform DOS emulator\nExec='$INSTALL_DIR'/dosbox/dosbox-x\nIcon='$INSTALL_DIR'/dosbox/dosbox.png\nTerminal=false\nType=Application\nCategories=Application;Game;\nPath='$INSTALL_DIR'/dosbox" > /usr/share/applications/dosbox-x.desktop'
+	fi
+}
+
+validate_url() {
     if [[ `wget -S --spider $1 2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then echo "true"; fi
 }
 
-extra(){
+extra() {
    local URL_FILE="https://misapuntesde.com/res/jill-of-the-jungle-the-complete-trilogy.zip"
    if [[ $(validate_url $URL_FILE) != "true" ]]; then
        echo "Sorry, the game is not available here: $URL_FILE."
    else
-       echo "Installing the game..."
-       mkdir -p $INSTALL_DIR/jill && cd $_
-       wget -qO- -O tmp.zip $URL_FILE && unzip -o tmp.zip && rm tmp.zip
+       echo -e "\nInstalling the game..."
+       mkdir -p $INSTALL_DIR/dosbox/dos/jill && cd $_
+       wget -qO- -O jill.zip $URL_FILE && unzip -o jill.zip && rm jill.zip
    fi
 }
 
-playgame()
-{
-    if [[ -f $INSTALL_DIR/rpix86 ]]; then
-        read -p "Do you want to run MS-DOS emulator right now? [y/n] " option
-        case "$option" in
-            y*) cd $INSTALL_DIR && ./rpix86 ;;
-        esac
-    fi
+playgame() {
+	read -p "Do you want to run DOSBox-X right now? [y/n] " option
+	case "$option" in
+		y*) cd $INSTALL_DIR/dosbox && ./dosbox-x ;;
+	esac
 }
 
-install(){
+install() {
     if [[ $(validate_url $URL_FILE) != "true" ]] ; then
         echo "Sorry, the emulator is not available here: $URL_FILE. Visit the website to download it manually."
         exit
     else
+		mkdir -p $HOME/.dosbox && cp ./res/dosbox-0.82.26.conf $HOME/.dosbox/dosbox-0.82.26.conf
         mkdir -p $INSTALL_DIR && cd $_
-        wget -qO- -O tmp.zip $URL_FILE && unzip -o tmp.zip && rm tmp.zip
-        echo "Done!. To play go to install path and type: ./rpix86"
-        read -p "EXTRA!: Do you want to download Jill of The Jungle Trilogy to play with rpix86? [y/n] " option
+        wget -qO- -O tmp.tar.gz $URL_FILE && tar -xzvf tmp.tar.gz && rm tmp.tar.gz
+		cd dosbox && mkdir -p dos
+		mkDesktopEntry
+        echo -e "\nDone!. Put your games inside $INSTALL_DIR/dosbox/dos. To play, go to $INSTALL_DIR/dosbox and type: ./dosbox-x\n"
+        read -p "EXTRA!: Do you want to download Jill of The Jungle Trilogy to play with DOSBox-X? [y/n] " option
         case "$option" in
-            y*) echo "Installing, please wait..." && extra;;
+            y*) echo -e "\nInstalling, please wait..." && extra;;
         esac
     fi
     playgame
-    read -p "Press [Enter] to continue..."
+    read -p "Press [Enter] to go back to the menu..."
     exit
 }
 
-echo -e "rpix86 MS-DOS Emulator (latest)\n===============================\nMore Info: https://rpix86.patrickaalto.com\n\nInstall path: $INSTALL_DIR"
+echo -e "DOSBox-X MS-DOS Emulator\n========================\n· More Info: https://github.com/joncampbell123/dosbox-x\n\n· Install path: $INSTALL_DIR/dosbox"
 while true; do
     echo " "
     read -p "Proceed? [y/n] " yn
     case $yn in
-    [Yy]* ) echo "Installing, please wait..." && install;;
+    [Yy]* ) echo -e "\nInstalling, please wait..." && install;;
     [Nn]* ) exit;;
     [Ee]* ) exit;;
     * ) echo "Please answer (y)es, (n)o or (e)xit.";;

@@ -18,7 +18,7 @@
 . ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-VERSION="v.1.4.3 (2020)"
+VERSION="v.1.4.4 (2020)"
 check_board
 check_temperature
 check_CPU
@@ -263,9 +263,8 @@ function smEmulators(){
       Snes "SNES Emulator Snes9X 1.60"
       Mame "Install MAME, Advance MAME and/or MAME4ALL-PI"
       Speccy "ZX-Spectrum emulator"
-      Rpix86 "rpix86 MS-DOS emulator"
-      8086 "Compile 8086 PC XT-compatible"
-      Amiga "UAE4ARM Amiga emulator"
+      DOSBox "DOSBox is a MS-DOS emulator"
+      Amiga "Amiberry is an Amiga emulator"
       Gba "Gameboy Advance"
       PCE-CD "PC-Engine"
       MSX "openMSX"
@@ -290,8 +289,7 @@ function smEmulators(){
       Mame) 	./scripts/emus/mame4allpi.sh ;;
       Speccy) 	./scripts/emus/speccy.sh ;;
       Amiga) 		./scripts/emus/amiga.sh ;;
-      Rpix86) 	./scripts/emus/rpix86.sh ;;
-      8086) 		./scripts/emus/8086tiny.sh ;;
+      DOSBox) 	./scripts/emus/rpix86.sh ;;
       Gba)        ./scripts/emus/gba.sh ;;
       PCE-CD)     ./scripts/emus/pce.sh ;;
       MSX)     	./scripts/emus/msx.sh ;;
