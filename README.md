@@ -10,7 +10,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **552 hours**
+* **553 hours**
 
 * Total amount donated by users: $14.11
 
@@ -34,6 +34,8 @@ Contributors:
 ### [ ChangeLog (dd/mm/yy)]
 
 ### (18/06/20)
+
+· 📦 ADD: Abbaye des Morts v2.0.0.
 
 · 📦 ADD: DOSBox-X v0.82, Amiberry v3.1.3.1.
 
