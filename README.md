@@ -1,6 +1,6 @@
 # PiKISS for Raspberry Pi: A bunch of scripts with menu to make your life easier.
 
-![PiKISS Logo](https://misapuntesde.com/images/pikiss_400px_nobg.png)
+![PiKISS Logo](logo_pikiss_400.png)
 
 <p align="center">
 	<a href='https://ko-fi.com/A838QJC' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi2.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
@@ -10,7 +10,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **551 hours**
+* **552 hours**
 
 * Total amount donated by users: $14.11
 
@@ -32,6 +32,12 @@ Contributors:
 
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (18/06/20)
+
+· 📦 ADD: DOSBox-X v0.82.
+
+· ❌ REMOVE: rpix86, 8086tiny.
 
 ### (17/06/20)
 
@@ -76,142 +82,6 @@ Contributors:
 ### (02/10/19)
 
 · Add Games > Diablo 1
-
-### (27/09/19)
-
-· Add Games > Revolt for Raspberry Pi.
-
-· Make openMSX script compatible with Raspbian Buster.
-
-### (17/09/19)
-
-· Fix Descent for Raspberry Pi 4.
-
-### (16/09/19)
-
-· Fix Dune 2 for Raspberry Pi 4.
-
-### (14/09/19)
-
-· Update Remove packages & others script.
-
-### (24/01/19)
-
-· Updated DXX-Rebirth to version 0.60.100
-
-### (18/01/19)
-
-· Updated webmin, removepkg & others script.
-
-### (14/01/18)
-
-· Updated Games/Dune Legacy to 0.96.4
-
-· Updated & fixed url broken in Games/Descent 1 & 2 to 0.59.100.20161206-1
-
-· Added Games > Fruit'Y
-
-### (13/01/18)
-
-· Fixed issue with Tweaks/others script
-
-· Added new packages to Tweaks/removepkg
-
-· Fixed desktop menu entry to PiKISS
-
-· Fixed Tweaks/services
-
-### (22/10/17)
-
-· Added Emulators > OpenMSX 0.14
-
-### (13/08/17)
-
-· Added Server > Octoprint
-
-### (25/07/17)
-
-· Added Server > Bittorrent Sync alternatives
-
-### (24/07/17)
-
-· Updated and improved Server > Owncloud 10.0.2
-
-· New helper's functions
-
-### (21/07/17)
-
-· PIKISS reach version 1.0!
-
-· Improvements, fixes and upgrades
-
-· Added Server > VPNServer
-
-· Added Server > Auto update
-
-### (10/07/17)
-
-· Updated Server > Frameworks
-
-### (09/07/17)
-
-· Updated Server > Web Server+PHP7
-
-### (09/03/17)
-
-· Added Emus > Advance MAME 3.4
-
-· Added Emus > MAME 0.183
-
-### (02/10/16)
-
-· Added Emus > OpenMSX 0.13.0
-
-### (13/09/16)
-
-· Added Games > Giana's return, ScummVM. Updated Spectrum emulator unrealspeccy to 0.0.69.1
-
-### (12/09/16)
-
-· Fix issues and improve config, inet, other, server, tweaks sections. Raspberry Pi 3 ready.
-
-### (08/09/16)
-
-· Fix issues and improve games, emulators, info, mmedia sections. Raspberry Pi 3 ready.
-· Added Xump game.
-· Remove Minecraft script.
-
-### (07/09/16)
-
-· Fix issues and improve games/emulator section. Raspberry Pi 3 ready.
-
-### (06/09/16)
-
-· Fix issues and improve games section. Raspberry Pi 3 ready.
-
-### (05/09/16)
-
-· Fix issues and improve tweaks section. Raspberry Pi 3 ready.
-
-### (17/08/16)
-
-· Fix issue with link to the new lib-gfx.1.5 library.
-
-### (04/05/16)
-
-· Added Let's Encrypt on web server
-
-### (18/04/16)
-
-· Added desktop icons to MAME, Speccy
-
-### (29/03/16)
-
-· Added server > VNCServer
-
-### (25/02/16)
-
-· Added games > Game Maker games
 
 ...
 
