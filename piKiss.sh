@@ -18,7 +18,7 @@
 . ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-VERSION="v.1.4.4 (2020)"
+VERSION="v.1.4.5 (2020)"
 check_board
 check_temperature
 check_CPU
@@ -207,6 +207,7 @@ function smGames(){
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
     options=(
       Back "Back to main menu"
+      Abbaye "L’Abbaye des Morts is a retro puzzle platformer by Locomalito"
       Revolt "Re-Volt is a radio control car racing themed video game"
       Diablo "Take control of a lone hero battling to rid the world of Diablo"
       Diablo2 "Diablo 2 LOD Spanish Ed (2 Gb free space)"
@@ -237,6 +238,7 @@ function smGames(){
   do
     case $choice in
       Back) 		 break ;;
+      Abbaye)		./scripts/games/abbaye.sh ;;
       Revolt)		./scripts/games/revolt.sh ;;
       Diablo)		./scripts/games/diablo.sh ;;
       Diablo2)		./scripts/games/diablo2.sh ;;
