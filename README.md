@@ -35,9 +35,9 @@ Contributors:
 
 ### (18/06/20)
 
-· 📦 ADD: DOSBox-X v0.82.
+· 📦 ADD: DOSBox-X v0.82, Amiberry v3.1.3.1.
 
-· ❌ REMOVE: rpix86, 8086tiny.
+· ❌ REMOVE: rpix86, 8086tiny, UAE4ARM.
 
 ### (17/06/20)
 
