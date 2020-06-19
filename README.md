@@ -10,7 +10,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **555 hours**
+* **557 hours**
 
 * Total amount donated by users: $14.11
 
@@ -37,7 +37,7 @@ Contributors:
 
 · 📦 ADD: mGBA v0.90.
 
-· ❌ REMOVE: DPRCZ/gpsp.
+· ❌ REMOVE: DPRCZ/gpsp, PC-Engine.
 
 ### (18/06/20)
 
