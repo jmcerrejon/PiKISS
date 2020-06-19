@@ -2,31 +2,26 @@
 #
 # Description : ScummVM
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (13/Sep/16)
-# Compatible  : Raspberry Pi 1, 2 & 3 (tested)
+# Version     : 1.0.1 (19/Jun/20)
+# Compatible  : Raspberry Pi 1-2 (¿?), 3-4 (tested)
 #
-clear
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
+clear
 
 INSTALL_DIR="$HOME/games"
-URL_FILE="https://www.scummvm.org/frs/scummvm/1.8.1/scummvm-1.8.1-raspberrypi.tar.gz"
-
-mkDesktopEntry() {
-    sudo sh -c 'echo "[Desktop Entry]\nName=ScummVM\nComment=Game-Engine for adventure games and so on\nExec=/home/pi/games/scummvm/scummvm\nIcon=/home/pi/games/scummvm/scumm01.png\nTerminal=false\nType=Application\nCategories=Application;Game;\nPath=/home/pi/games/scummvm/" > /usr/share/applications/scummvm.desktop'
-}
+URL_FILE="https://www.dropbox.com/s/edlpjjwintcqb7p/scummvm_2-1.2_armhf.deb?dl=0"
 
 install() {
-        sudo apt-get install -y libvorbis0a libjpeg62-turbo libpng12-0 libasound2-dev libudev-dev
-        compile_sdl2
-        mkdir -p $INSTALL_DIR && cd $INSTALL_DIR
-        wget $URL_FILE && tar -xzvf scummvm*.tar.gz && rm scummvm*.tar.gz
-        cd scummvm
-        wget https://hoffer.cx/data/scumm01.png
-        mkDesktopEntry
-        echo "Done!. To play, on Desktop Menu > games or go to $INSTALL_DIR path and type: ./scummvm"
-    exit
+	if ! isPackageInstalled libSDL2-net-2.0-0; then
+		sudo apt install -y libSDL2-net-2.0-0
+	fi
+	
+	wget -4 -qO- -O /tmp/scummvm.deb "$URL_FILE" && sudo dpkg --force-all -i /tmp/scummvm.deb && rm /tmp/scummvm.deb
+	
+	echo "\nDone!. To play, on Desktop Menu > games or type: ./scummvm\n"
+	read -p "Press [Enter] to go back to the menu..."
 }
 
-echo -e "Install ScummVM ver. 1.8.1\n==========================\n\n· More Info: https://www.scummvm.org/\n\n· Get free games: https://www.scummvm.org/games/\n\n· Install path: $INSTALL_DIR/scummvm"
+echo -e "ScummVM\n=======\n\n· More Info: https://www.scummvm.org/\n\n· Get free games: https://www.scummvm.org/games/\n\n· Install path: $INSTALL_DIR/scummvm"
 install
