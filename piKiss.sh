@@ -260,6 +260,7 @@ function smEmulators(){
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
     options=(
       Back "Back to main menu"
+      Mednafen "Portable multi-system emulator (Mednafen)"
       Genesis "Genesis Megadrive Emulator (picodrive)"
       Caprice "Amstrad CPC with Caprice32"
       Snes "SNES Emulator Snes9X 1.60"
@@ -268,7 +269,6 @@ function smEmulators(){
       DOSBox "DOSBox is a MS-DOS emulator"
       Amiga "Amiberry is an Amiga emulator"
       Gba "Gameboy Advance (mgba)"
-      PCE-CD "PC-Engine"
       MSX "openMSX"
       Pifba "Emulates old arcade games using CPS1, CPS2,..."
       ScummVM "Allow gamers to play point-and-click adventure games"
@@ -285,6 +285,7 @@ function smEmulators(){
   do
     case $choice in
       Back) 		break ;;
+      Mednafen) 	./scripts/emus/mednafen.sh ;;
       Genesis) 	./scripts/emus/genesis.sh ;;
       Caprice) 	./scripts/emus/caprice.sh ;;
       Snes) 		./scripts/emus/pisnes.sh ;;
@@ -293,7 +294,6 @@ function smEmulators(){
       Amiga) 		./scripts/emus/amiga.sh ;;
       DOSBox) 	./scripts/emus/rpix86.sh ;;
       Gba)        ./scripts/emus/gba.sh ;;
-      PCE-CD)     ./scripts/emus/pce.sh ;;
       MSX)     	./scripts/emus/msx.sh ;;
       Pifba) 		./scripts/emus/pifba.sh ;;
       ScummVM) 	./scripts/emus/scummvm.sh ;;
