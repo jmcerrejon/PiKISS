@@ -10,7 +10,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **559 hours**
+* **560 hours**
 
 * Total amount donated by users: $14.11
 
@@ -35,7 +35,7 @@ Contributors:
 
 ### (19/06/20)
 
-· 📦 ADD: mGBA v0.90, Mednafen 1.24.3.
+· 📦 ADD: mGBA v0.90, Mednafen 1.24.3, ScummVM 2.1.2.
 
 · ❌ REMOVE: DPRCZ/gpsp, PC-Engine.
 
