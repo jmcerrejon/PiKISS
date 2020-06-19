@@ -12,7 +12,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 clear
 
 INSTALL_DIR="$HOME/games"
-URL_FILE="https://www.dropbox.com/s/wf0ue2y6pvwigkj/mgba_0-90.zip?dl=0"
+URL_FILE="https://www.dropbox.com/s/r7fuex5dtfpi1u4/mgba_0-90.tar.gz?dl=0"
 
 install() {
     if [[ ! -f "$HOME"/games/gpsp/gpsp ]]; then
@@ -20,7 +20,7 @@ install() {
         mkdir -p "$INSTALL_DIR" && cd "$_"
         wget -4 -qO- -O mgba-0.90.tar.gz "$URL_FILE" && tar -xzf mgba-0.90.tar.gz && rm mgba-0.90.tar.gz
     fi
-    echo -e "\nDone!. To play, go to install path and type: ./mgba_full.sh roms/<rom_name>.gba\n"
+    echo -e "\nDone!. To play, go to $INSTALL_DIR/mgba path and type: ./mgba_full.sh roms/<rom_name>.gba\n"
     read -p "Press [Enter] to continue..."
 }
 
