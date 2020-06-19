@@ -3,7 +3,7 @@
 # Description : Gameboy Advance emulator mgba
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 1.3.1 (19/Jun/20)
-# Compatible  : Raspberry Pi 1 & 2 (¿?), 4 (tested)
+# Compatible  : Raspberry Pi 1-3 (¿?), 4 (tested)
 #
 # Help        : https://github.com/mgba-emu/mgba/
 #
@@ -37,5 +37,5 @@ install() {
     read -p "Press [Enter] to go back to the menu..."
 }
 
-echo -e "Gameboy Advance Emulator (mgba)\n===============================\n\n· More Info: https://github.com/mgba-emu/mgba/\n· Homebrew ROMs included.\n· Install path: $INSTALL_DIR/gpsp\n"
+echo -e "Gameboy Advance Emulator (mgba)\n===============================\n\n· More Info: https://github.com/mgba-emu/mgba/\n· Homebrew ROMs included.\n· Install path: $INSTALL_DIR/mgba\n"
 install
