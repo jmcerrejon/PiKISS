@@ -18,7 +18,7 @@
 . ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-VERSION="v.1.4.5 (2020)"
+VERSION="v.1.4.6 (2020)"
 check_board
 check_temperature
 check_CPU
@@ -267,7 +267,7 @@ function smEmulators(){
       Speccy "ZX-Spectrum emulator"
       DOSBox "DOSBox is a MS-DOS emulator"
       Amiga "Amiberry is an Amiga emulator"
-      Gba "Gameboy Advance"
+      Gba "Gameboy Advance (mgba)"
       PCE-CD "PC-Engine"
       MSX "openMSX"
       Pifba "Emulates old arcade games using CPS1, CPS2,..."

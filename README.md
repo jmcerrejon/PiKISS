@@ -10,7 +10,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **553 hours**
+* **555 hours**
 
 * Total amount donated by users: $14.11
 
@@ -32,6 +32,10 @@ Contributors:
 
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (19/06/20)
+
+· 📦 ADD: mGBA v0.90
 
 ### (18/06/20)
 
@@ -87,7 +91,7 @@ Contributors:
 
 ...
 
-To see the full changes, read the file CHANGELOG
+To see the full list of changes, read the [CHANGELOG](./CHANGELOG)
 
 ### [ Introducing PiKISS ]
 
