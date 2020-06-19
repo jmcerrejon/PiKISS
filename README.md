@@ -35,7 +35,9 @@ Contributors:
 
 ### (19/06/20)
 
-· 📦 ADD: mGBA v0.90
+· 📦 ADD: mGBA v0.90.
+
+· ❌ REMOVE: DPRCZ/gpsp.
 
 ### (18/06/20)
 
