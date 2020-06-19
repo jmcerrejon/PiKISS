@@ -1,47 +1,28 @@
 #!/bin/bash
 #
-# Description : Gameboy Advance emulator thanks to DPR
+# Description : Gameboy Advance emulator mgba
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2 (07/Sep/16)
-# Compatible  : Raspberry Pi 1 & 2 (tested)
+# Version     : 1.3 (19/Jun/20)
+# Compatible  : Raspberry Pi 1 & 2 (¿?), 4 (tested)
 #
-# HELP        · https://www.raspberrypi.org/forums/viewtopic.php?f=78&t=37433
+# HELP        · https://github.com/mgba-emu/mgba/
 #
-clear
-
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
+clear
 
 INSTALL_DIR="$HOME/games"
-URL_FILE="https://www.dropbox.com/s/u3wjlbdp4kav5kg/gpsp.tar.gz"
-GAME_URL='https://computeremuzone.com/contador.php?f_ad=watman_gba.zip&n_ar=Watman%20(Batman%20remake)%20(GBA)&dd=consolas/gba&f=593&sis=gba'
+URL_FILE="https://www.dropbox.com/s/wf0ue2y6pvwigkj/mgba_0-90.zip?dl=0"
 
-playgame()
-{
-    if [[ -f $HOME/games/gpsp/watman.zip ]]; then
-        read -p "Do you want to play Watman now? [y/n] " option
-        case "$option" in
-            y*) cd $HOME/games/gpsp && ./gpsp watman.zip ;;
-        esac
-    fi
-}
-
-install()
-{
-    if [[ ! -f $HOME/games/gpsp/gpsp ]]; then
+install() {
+    if [[ ! -f "$HOME"/games/gpsp/gpsp ]]; then
         #sudo apt-get install -y libsdl1.2debian libsdl-mixer1.2 libsdl-ttf2.0-0
-        SDL_fix_Rpi
-        mkdir -p $INSTALL_DIR && cd $_
-        wget -4 -qO- -O tmp.tar.gz $URL_FILE && tar xzf tmp.tar.gz && rm tmp.tar.gz
-        cd gpsp/
-        wget -O watman.zip $GAME_URL
+        mkdir -p "$INSTALL_DIR" && cd "$_"
+        wget -4 -qO- -O mgba-0.90.tar.gz "$URL_FILE" && tar -xzf mgba-0.90.tar.gz && rm mgba-0.90.tar.gz
     fi
-    echo "Done!. To play, go to install path and type: ./gpsp"
-    playgame
-
+    echo -e "\nDone!. To play, go to install path and type: ./mgba_full.sh roms/<rom_name>.gba\n"
     read -p "Press [Enter] to continue..."
-    exit
 }
 
-echo -e "Gameboy Advance Emulator (gpsp)\n===============================\n\n· More Info: https://www.raspberrypi.org/forums/viewtopic.php?f=78&t=37433\n· Batman by OCEAN remake included. More info: https://computeremuzone.com/ficha.php?id=593&l=en\n· It works with compressed roms (.zip)\n· Install path: $INSTALL_DIR/gpsp\n\nInstalling, please wait..."
+echo -e "Gameboy Advance Emulator (mgba)\n===============================\n\n· More Info: https://github.com/mgba-emu/mgba/\n· Homebrew ROMs included.\n· Install path: $INSTALL_DIR/gpsp\n\nInstalling, please wait..."
 install
