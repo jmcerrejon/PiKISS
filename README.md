@@ -10,7 +10,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **560 hours**
+* **561 hours**
 
 * Total amount donated by users: $14.11
 
@@ -32,6 +32,10 @@ Contributors:
 
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (20/06/20)
+
+· 👌 IMPROVE: Unreal Speccy Portable (ZX-Spectrum).
 
 ### (19/06/20)
 
