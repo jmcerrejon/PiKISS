@@ -6,6 +6,9 @@
 # TODO		  : Check the OS is Debian based.
 clear
 
+INSTALL_DIR="$HOME"
+cd "$INSTALL_DIR"
+
 if [ -d "$HOME/piKISS" ]; then
 	cd "$HOME/piKISS" && ./piKiss.sh
 	exit
