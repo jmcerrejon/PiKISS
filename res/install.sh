@@ -3,11 +3,17 @@
 # Description : Easy install PiKISS
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 1.0 (22/Jun/20)
-# TODO		  : Check is a RPi, Check the OS is Debian based.
+# TODO		  : Check the OS is Debian based.
 clear
 
 if [ -d "$HOME/piKISS" ]; then
 	cd "$HOME/piKISS" && ./piKiss.sh
+	exit
+fi
+
+if [[ ! $(cat /proc/cpuinfo | grep 'BCM2708\|BCM2709\|BCM2835') ]]; then
+	echo "Sorry. PiKISS is only for Raspberry Pi boards."
+    exit
 fi
 
 echo -e "\nPiKISS\n======\nInstalling at $HOME/piKISS. Please wait...\n"
