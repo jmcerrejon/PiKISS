@@ -10,7 +10,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **561 hours**
+* **562 hours**
 
 * Total amount donated by users: $14.11
 
@@ -129,8 +129,7 @@ What some users have said about **PiKISS**:
 Just type:
 
 <pre>
-git clone https://github.com/jmcerrejon/PiKISS.git piKiss && cd $_
-./piKiss.sh
+curl -sSL https://git.io/JfAPE | bash
 </pre>
 
 #### [ Update ]
@@ -189,8 +188,7 @@ Lo que algunos usuarios han dicho de **PiKISS**:
 Escribe en la terminal lo siguiente:
 
 <pre>
-git clone https://github.com/jmcerrejon/PiKISS.git && cd PiKISS
-./piKiss.sh
+curl -sSL https://git.io/JfAPE | bash
 </pre>
 
 #### [ Actualizar ]
