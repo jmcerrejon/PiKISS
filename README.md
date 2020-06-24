@@ -10,7 +10,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **562 hours**
+* **565 hours**
 
 * Total amount donated by users: $14.11
 
@@ -32,6 +32,10 @@ Contributors:
 
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (24/06/20)
+
+· 📦 ADD: Developer section and QT5 script.
 
 ### (20/06/20)
 
