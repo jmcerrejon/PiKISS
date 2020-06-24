@@ -459,6 +459,26 @@ function smServer(){
   done
 }
 
+function smDevs(){
+  cmd=(dialog --clear --backtitle "$TITLE" --title "[ Developers ]" --menu "Select to configure some apps for development:" $wHEIGHT $wWIDTH $wHEIGHT)
+
+  # options working on any board
+  options=(
+      Back "Back to main menu"
+      QT5 "Free and open-source widget toolkit for creating graphical UI cross-platform applications"
+  )
+  
+  choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+
+  for choice in $choices
+  do
+    case $choice in
+      Back) 		break ;;
+      QT5) 			./scripts/devs/qt5.sh ;;
+    esac
+  done
+}
+
 function smOthers(){
   cmd=(dialog --clear --backtitle "$TITLE" --title "[ Others ]" --menu "Another scripts uncategorized:" $wHEIGHT $wWIDTH $wHEIGHT)
 
@@ -514,6 +534,7 @@ do
     Configure "Installations are piece of cake now"
     Internet "All refered to internet"
     Server "Use your distro as a server"
+    Devs "Help you for making your own apps"
     Others "Scripts with others thematics"
     Exit "Exit to the shell"
   )
@@ -526,12 +547,13 @@ do
       Tweaks)	    smTweaks ;;
       Games) 	    smGames ;;
       Emula)	    smEmulators ;;
-      Info)	    smInfo ;;
-      Multimedia) smMultimedia ;;
-      Configure)  smConfigure ;;
-      Internet)   smInternet ;;
-      Server)     smServer ;;
-      Others)     smOthers ;;
+      Info)	    	smInfo ;;
+      Multimedia) 	smMultimedia ;;
+      Configure)  	smConfigure ;;
+      Internet)   	smInternet ;;
+      Server)     	smServer ;;
+      Devs)     	smDevs ;;
+      Others)     	smOthers ;;
       Exit) 	    echo -e "\nThanks for visiting https://misapuntesde.com" && exit ;;
       1)
       echo -e "\nCancel pressed." && exit;;
