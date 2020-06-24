@@ -19,9 +19,9 @@ install() {
 	
 	wget -4 -qO- -O /tmp/scummvm.deb "$URL_FILE" && sudo dpkg --force-all -i /tmp/scummvm.deb && rm /tmp/scummvm.deb
 	
-	echo "\nDone!. To play, on Desktop Menu > games or type: ./scummvm\n"
+	echo -e "\nDone!. To play, on Desktop Menu > games or type: ./scummvm\n"
 	read -p "Press [Enter] to go back to the menu..."
 }
 
-echo -e "ScummVM\n=======\n\n· More Info: https://www.scummvm.org/\n\n· Get free games: https://www.scummvm.org/games/\n\n· Install path: $INSTALL_DIR/scummvm"
+echo -e "ScummVM\n=======\n\n· More Info: https://www.scummvm.org/\n\n· Get free games: https://www.scummvm.org/games/\n\n· Install path: $INSTALL_DIR/scummvm\n"
 install
