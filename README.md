@@ -18,6 +18,10 @@ Contributors:
 
 * [huelvayork](https://github.com/huelvayork)
 
+Check what **PiKISS** can do for you on my Youtube's Channel:
+
+* [youtube.com > PIKISS](https://www.youtube.com/playlist?list=PLXhElW3ALmWh8p0mn1ZECawkKyF8QzNNP)
+
 ## ENGLISH
 
 ### [ Screenshots ]
@@ -156,6 +160,8 @@ Mail: <ulysess@gmail.com>
 
 Blog: [https://misapuntesde.com](https://misapuntesde.com)
 
+Youtube: [youtube.com > PIKISS](https://www.youtube.com/playlist?list=PLXhElW3ALmWh8p0mn1ZECawkKyF8QzNNP)
+
 #### [ DONATE ]
 
 This project has involved many hours thinking, searching, refactoring and testing code. I accept donations due the effort to make new scripts. Donations are not required or expected. Any amount that you feel is appropriate would be appreciated. Simply click on the Donate button at the end of this document. Thank you! :)
@@ -216,6 +222,8 @@ José Cerrejón [(@ulysess10)](https://twitter.com/ulysess10)
 Mail: <ulysess@gmail.com>
 
 Blog: [https://misapuntesde.com](https://misapuntesde.com)
+
+Youtube: [youtube.com > PIKISS](https://www.youtube.com/playlist?list=PLXhElW3ALmWh8p0mn1ZECawkKyF8QzNNP)
 
 #### [ DONACIONES ]
 
