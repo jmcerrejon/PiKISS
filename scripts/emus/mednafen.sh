@@ -30,6 +30,8 @@ install() {
 	fi
 
 	wget -4 -qO- -O /tmp/mednafen.deb "$URL_FILE" && sudo dpkg --force-all -i /tmp/mednafen.deb && rm /tmp/mednafen.deb
+	# Fix issue with the installation due dependencies
+	sudo apt --fix-broken install
 
     echo -e "\nDone!. To play, type: mednafen <rom_file>\n"
     read -p "Press [Enter] to go back to the menu..."

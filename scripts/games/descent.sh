@@ -2,7 +2,7 @@
 #
 # Description : Descent 1 & 2 thks to DXX-Rebirth v0.61.0 0.60.0-beta2-544-g427f45fdd703 compiled on 17/Sep/2019
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (17/Sep/19)
+# Version     : 1.0.2 (26/Jun/20)
 # Compatible  : Raspberry Pi 1-4 (tested on Raspberry Pi 4)
 #
 # HELP	      : https://github.com/dxx-rebirth/dxx-rebirth
@@ -21,7 +21,6 @@ D2X_OGG_URL='https://www.dxx-rebirth.com/download/dxx/res/d2xr-sc55-music.dxa'
 D1X_DATA="$HOME/.d1x-rebirth/Data"
 D2X_DATA="$HOME/.d2x-rebirth/Data"
 BINARY_DIR='/usr/games'
-GAME_DIR='/usr/share/games'
 
 if  which /usr/games/d1x-rebirth >/dev/null ; then
     read -p "Warning!: D1X Rebirth already installed. Press [ENTER] to exit..."
@@ -33,7 +32,7 @@ if  which /usr/games/d2x-rebirth >/dev/null ; then
     exit
 fi
 
-generateIconsD1X(){
+generateIconsD1X() {
     if [[ ! -e ~/.local/share/applications/d1x.desktop ]]; then
 cat << EOF > ~/.local/share/applications/d1x.desktop
 [Desktop Entry]
@@ -47,7 +46,7 @@ EOF
     fi
 }
 
-generateIconsD2X(){
+generateIconsD2X() {
     if [[ ! -e ~/.local/share/applications/d2x.desktop ]]; then
 cat << EOF > ~/.local/share/applications/d2x.desktop
 [Desktop Entry]
@@ -61,12 +60,7 @@ EOF
     fi
 }
 
-setConfigFileReadyToPlay(){
-    clear && echo -e "You need to modify /boot/config.txt | Comment #dtoverlay=vc4-kms-v3d and add gpu_mem=128"
-    # TODO: Make this step automatically
-}
-
-DXX_RPI(){
+DXX_RPI() {
     # Compile from source code:
 	# It needs sudo apt install -y libsdl1.2-dev libsdl-mixer1.2-dev libphysfs-dev libsdl2-image-dev scons libsdl2-net-dev
 	# git clone https://github.com/dxx-rebirth/dxx-rebirth.git
@@ -75,28 +69,32 @@ DXX_RPI(){
 	if ! isPackageInstalled libphysfs1; then
     	sudo apt install -y libphysfs1
 	fi
+
+	if ! isPackageInstalled libglu1-mesa; then
+		sudo apt install -y libglu1-mesa
+	fi
     # Binaries
-    sudo wget -O $BINARY_DIR/dxx-rebirth.tar.gz $DXX_URL
-    cd $BINARY_DIR
-    sudo tar -xzvf $BINARY_DIR/dxx-rebirth.tar.gz
+    sudo wget -O "$BINARY_DIR"/dxx-rebirth.tar.gz "$DXX_URL"
+    cd "$BINARY_DIR"
+    sudo tar -xzvf "$BINARY_DIR"/dxx-rebirth.tar.gz
     # Shareware demo datas
-    wget -P $D1X_DATA $D1X_SHARE_URL
-    wget -P $D2X_DATA $D2X_SHARE_URL
-    unzip -d $D1X_DATA $D1X_DATA/descent-pc-shareware.zip
-    unzip -d $D2X_DATA $D2X_DATA/descent2-pc-demo.zip
+    wget -P "$D1X_DATA" "$D1X_SHARE_URL"
+    wget -P "$D2X_DATA" "$D2X_SHARE_URL"
+    unzip -qq "$D1X_DATA"/descent-pc-shareware.zip -d "$D1X_DATA"
+    unzip -qq "$D2X_DATA"/descent2-pc-demo.zip -d "$D2X_DATA"
     # Some extra addons to improve the game experience ;)
-    clear && echo -e "\nInstalling HIGH textures quality pack...\n\nPlease wait...\n" && sudo wget -P $D1X_DATA $D1X_HIGH_TEXTURE_URL
-    echo -e "\n\nInstalling OGG Music for better experience...\n\n· All music was recorded with the Roland Sound Canvas SC-55 MIDI Module.\n\nPlease wait...\n" && sudo wget -P $D1X_DATA $D1X_OGG_URL && sudo wget -P $D2X_DATA $D2X_OGG_URL
+    clear && echo -e "\nInstalling HIGH textures quality pack...\n\nPlease wait...\n" && sudo wget -P "$D1X_DATA" $D1X_HIGH_TEXTURE_URL
+    echo -e "\n\nInstalling OGG Music for better experience...\n\n· All music was recorded with the Roland Sound Canvas SC-55 MIDI Module.\n\nPlease wait...\n" && sudo wget -P "$D1X_DATA" $D1X_OGG_URL && sudo wget -P "$D2X_DATA" $D2X_OGG_URL
     # Cleaning da house
-    sudo rm $BINARY_DIR/dxx-rebirth.tar.gz $D1X_DATA/descent-pc-shareware.zip $D2X_DATA/descent2-pc-demo.zip
+    sudo rm "$BINARY_DIR"/dxx-rebirth.tar.gz "$D1X_DATA"/descent-pc-shareware.zip "$D2X_DATA"/descent2-pc-demo.zip
     # Icons & info
     generateIconsD1X
     generateIconsD2X
-    setConfigFileReadyToPlay
 }
 
-echo -e "Installing DXX-Rebirth...\n=========================\n\n· Please wait...\n"
+echo -e "\nInstalling DXX-Rebirth...\n=========================\n\n· Please wait...\n"
 
 DXX_RPI
 
-read -p "Done!. type /usr/games/d1x-rebirth or /usr/games/d2x-rebirth to Play or go to Desktop Game Menu option. Press [ENTER] to continue..."
+echo -e "Done!. type /usr/games/d1x-rebirth or /usr/games/d2x-rebirth to Play or go to Desktop Game Menu option."
+read -p "Press [ENTER] to go back to the menu..."

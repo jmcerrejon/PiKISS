@@ -73,7 +73,7 @@ tweaks_ODROID(){
     echo -e "\nEnable a 512MB swapfile permanently."
     read -p "Agree (y/n)? " option
     case "$option" in
-        y*) sudo cp /etc/fstab{,.bak} && sudo mkdir -p /var/cache/swap/ && sudo dd if=/dev/zero of=/var/cache/swap/myswap bs=1M count=512 && sudo mkswap /var/cache/swap/myswap && sudo swapon /var/cache/swap/myswap && sudo sh -c 'echo "/var/cache/swap/myswap    none    swap    sw    0   0" >> /etc/fstab' ; swapon -s
+        y*) sudo dphys-swapfile swapon;
     esac
 
     echo -e "\nFuse: Grant permission to odroid user (useful to run sshfs)."
