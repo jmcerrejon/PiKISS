@@ -10,7 +10,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **566 hours**
+* **568 hours**
 
 * Total amount donated by users: $14.11
 
@@ -36,6 +36,10 @@ Check what **PiKISS** can do for you on my Youtube's Channel:
 
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (28/06/20)
+
+· 🐛 FIX: Mednafen, Tweaks, Crispy-Doom.
 
 ### (24/06/20)
 
