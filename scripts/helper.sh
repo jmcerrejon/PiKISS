@@ -48,10 +48,11 @@ installGL4ES() {
 }
 
 installMesa() {
+	echo -e "\n\nInstalling Mesa drivers...\n"
 	local URL_PATH='https://www.dropbox.com/s/or0bre2pt4sc1i3/mesa.tar.gz?dl=0'
 	if [ ! -d /home/pi/mesa ]; then
 		wget -O /home/pi/mesa.tar.gz $URL_PATH
-		extract /home/pi/mesa.tar.gz && rm -
+		tar xzf /home/pi/mesa.tar.gz && rm /home/pi/mesa.tar.gz
 	fi
 }
 
