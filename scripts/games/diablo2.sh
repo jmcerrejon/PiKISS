@@ -2,7 +2,7 @@
 #
 # Description : Diablo 2 Exp. Spanish for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.2 (03/Jul/20)
+# Version     : 1.0.3 (03/Jul/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Info		  : Thks to PI Labs
@@ -17,13 +17,13 @@ D2_PATH='https://archive.org/download/diabl02sp/diablo2.tar.xz'
 GAMES_PATH="$HOME/games"
 SCRIPT_PATH="$HOME/games/diablo2/diablo2.sh"
 
-generateIconDiablo2(){
+generateIconDiablo2() {
     if [[ ! -e ~/.local/share/applications/diablo2.desktop ]]; then
 cat << EOF > ~/.local/share/applications/diablo2.desktop
 [Desktop Entry]
 Name=Diablo 2 Lod of Destruction
 Exec=/home/pi/games/diablo2/diablo2.sh
-Icon=terminal
+Icon=/home/pi/games/diablo2/diabloII.ico
 Type=Application
 Comment=Set in the fictional Kingdom of Khanduras in the mortal realm, Diablo makes the player take control of a lone hero battling to rid the world of Diablo
 Categories=Game;ActionGame;
@@ -31,7 +31,11 @@ EOF
     fi
 }
 
-install(){
+copyRunScript() {
+	mkdir -p "$GAMES_PATH"/diablo2 && cp ./res/diablo2.sh "$GAMES_PATH"/diablo2/diablo2.sh
+}
+
+install() {
 	if ! isPackageInstalled wine; then
 		sudo apt install -y wine
 	fi
@@ -42,12 +46,10 @@ install(){
 		tar xvf diablo2.tar.xz
 		rm diablo2.tar.xz
 	fi
-	touch "$SCRIPT_PATH"
-	bash -c "echo 'LD_LIBRARY_PATH=/home/pi/mesa/lib/arm-linux-gnueabihf LIBGL_DRIVERS_PATH=/home/pi/mesa/lib/arm-linux-gnueabihf/dri/ GBM_DRIVERS_PATH=/home/pi/mesa/lib setarch linux32 -L wine libd2game_sa_arm.exe.so /desktop=Diablo2,800x600' > ${SCRIPT_PATH}"
-	chmod +x "$SCRIPT_PATH"
 }
 
 install
+copyRunScript
 generateIconDiablo2
 
 read -p "Done!. Open Terminal, type winecfg and set resolution 800X600. Then, run $SCRIPT_PATH or click on Menu > Games > Diablo 2 Lod of Destruction. Press [ENTER] to go back to the menu..."
