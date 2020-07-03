@@ -2,10 +2,10 @@
 #
 # Description : Diablo 2 Exp. Spanish for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (08/Jun/20)
+# Version     : 1.0.2 (03/Jul/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
-# Info		  : Thks to PI LAB
+# Info		  : Thks to PI Labs
 # Help		  : xrandr --newmode "800x600_60.00"  38.25  800 832 912 1024 600 603 607 624 -hsync +vsync or xrandr --newmode HDMI-1 800x600_60.00
 #
 
@@ -36,19 +36,18 @@ install(){
 		sudo apt install -y wine
 	fi
 	installMesa
-	if [ ! -d $HOME/games/diablo2 ]; then
-		mkdir -p $GAMES_PATH/diablo2 && cd $_
+	if [ ! -d "$HOME"/games/diablo2 ]; then
+		mkdir -p "$GAMES_PATH" && cd "$_"
 		wget $D2_PATH
 		tar xvf diablo2.tar.xz
 		rm diablo2.tar.xz
 	fi
-	touch $SCRIPT_PATH 
+	touch "$SCRIPT_PATH"
 	bash -c "echo 'LD_LIBRARY_PATH=/home/pi/mesa/lib/arm-linux-gnueabihf LIBGL_DRIVERS_PATH=/home/pi/mesa/lib/arm-linux-gnueabihf/dri/ GBM_DRIVERS_PATH=/home/pi/mesa/lib setarch linux32 -L wine libd2game_sa_arm.exe.so /desktop=Diablo2,800x600' > ${SCRIPT_PATH}"
-	chmod +x $SCRIPT_PATH
+	chmod +x "$SCRIPT_PATH"
 }
 
 install
 generateIconDiablo2
 
-read -p "Done!. Open Terminal, type winecfg and set resolution 800X600. Run $SCRIPT_PATH. Press [ENTER] to continue..."
-
+read -p "Done!. Open Terminal, type winecfg and set resolution 800X600. Then, run $SCRIPT_PATH or click on Menu > Games > Diablo 2 Lod of Destruction. Press [ENTER] to go back to the menu..."
