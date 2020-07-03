@@ -10,7 +10,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **568.3 hours**
+* **569 hours**
 
 * Total amount donated by users: $14.11
 
@@ -38,6 +38,8 @@ Check what **PiKISS** can do for you on my Youtube's Channel:
 ### [ ChangeLog (dd/mm/yy)]
 
 ### (03/07/20)
+
+· 👌 IMPROVE: Diablo 2. Now run in full screen (800x600).
 
 · 🐛 FIX: Diablo 2.
 
