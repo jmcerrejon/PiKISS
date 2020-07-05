@@ -12,6 +12,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 INSTALL_DIR="$HOME"/games
 GAME_PATH="https://www.dropbox.com/s/69eblvaz8y0ts7w/sm64.tar.gz?dl=0"
 ROM_PATH="https://s2roms.cc/s3roms/Nintendo%2064/P-T/Super%20Mario%2064%20%28U%29%20%5B%21%5D.zip"
+GITHUB_PATH="https://github.com/sm64pc/sm64ex.git"
 INPUT=/tmp/sm64menu.$$
 
 if  [[ -d "$INSTALL_DIR"/sm64 ]] ; then
@@ -37,7 +38,7 @@ EOF
 compile() {
     sudo apt install -y libaudiofile-dev libglew-dev libsdl2-dev
 	cd "$INSTALL_DIR"
-	git clone https://github.com/sm64pc/sm64ex.git mario64 && cd "$_"
+	git clone "$GITHUB_PATH" mario64 && cd "$_"
 	wget -O ./sm64.zip --no-check-certificate "$ROM_PATH"
 	unzip sm64.zip && rm sm64.zip
 	mv Super\ Mario\ 64\ \(U\)\ \[\!\].z64 baserom.us.z64
