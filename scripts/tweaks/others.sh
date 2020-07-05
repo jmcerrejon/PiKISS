@@ -29,7 +29,7 @@ overclock() {
 			echo -e "\nOverclock Raspberry Pi ${RPI_NUMBER} to 1 Ghz (secure)."
 			read -p "Agree (y/n)? " option
 			case "$option" in
-				y*) sudo cp /boot/config.txt{,.bak} && sudo sh -c 'echo "arm_freq=1000\nsdram_freq=500\ncore_freq=500\nover_voltage=2\ndisable_splash=1" >> /boot/config.txt' ;;
+				y*) sudo cp /boot/config.txt{,.bak} && sudo sh -c 'echo "\narm_freq=1000\nsdram_freq=500\ncore_freq=500\nover_voltage=2\ndisable_splash=1" >> /boot/config.txt' ;;
 			esac
 		;;
 
@@ -37,7 +37,7 @@ overclock() {
 			echo -e "\nOverclock Raspberry Pi ${RPI_NUMBER} to 1'35 Ghz (secure)."
 			read -p "Agree (y/n)? " option
 			case "$option" in
-				y*) sudo cp /boot/config.txt{,.bak} && sudo sh -c 'echo "arm_freq=1350\nsdram_freq=500\nover_voltage=4\ndisable_splash=1" >> /boot/config.txt' ;;
+				y*) sudo cp /boot/config.txt{,.bak} && sudo sh -c 'echo "\narm_freq=1350\nsdram_freq=500\nover_voltage=4\ndisable_splash=1" >> /boot/config.txt' ;;
 			esac
 			;;
 
@@ -45,15 +45,15 @@ overclock() {
 			echo -e "\nOverclock Raspberry Pi ${RPI_NUMBER} to 1'35 Ghz (secure)."
 			read -p "Agree (y/n)? " option
 			case "$option" in
-				y*) sudo cp /boot/config.txt{,.bak} && sudo sh -c 'echo "arm_freq=1350\nsdram_freq=500\nover_voltage=4\ndisable_splash=1" >> /boot/config.txt' ;;
+				y*) sudo cp /boot/config.txt{,.bak} && sudo sh -c 'echo "\narm_freq=1350\nsdram_freq=500\nover_voltage=4\ndisable_splash=1" >> /boot/config.txt' ;;
 			esac
 			;;
 
 		4)
-			echo -e "\nOverclock Raspberry Pi ${RPI_NUMBER} to 2 Ghz (secure)."
+			echo -e "\nOverclock Raspberry Pi ${RPI_NUMBER} to 2 Ghz (get a fan)."
 			read -p "Agree (y/n)? " option
 			case "$option" in
-				y*) sudo cp /boot/config.txt{,.bak} && sudo sh -c 'echo "arm_freq=2000\gpu_freq=750\nover_voltage=6\ndisable_splash=1" >> /boot/config.txt' ;;
+				y*) sudo cp /boot/config.txt{,.bak} && sudo sh -c 'echo "\narm_freq=2000\ngpu_freq=750\nover_voltage=6\ndisable_splash=1" >> /boot/config.txt' ;;
 			esac
 			;;
 
