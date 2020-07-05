@@ -10,7 +10,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **569 hours**
+* **571 hours**
 
 * Total amount donated by users: $14.11
 
@@ -36,6 +36,12 @@ Check what **PiKISS** can do for you on my Youtube's Channel:
 
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (05/07/20)
+
+· 📦 ADD: Games > Super Mario 64 native OpenGL ES.
+
+· 👌 IMPROVE: Install process & new menu icon.
 
 ### (03/07/20)
 
