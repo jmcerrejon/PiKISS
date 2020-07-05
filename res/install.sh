@@ -2,7 +2,7 @@
 #
 # Description : Easy install PiKISS
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (22/Jun/20)
+# Version     : 1.0.1 (05/Jul/20)
 # TODO		  : Check the OS is Debian based.
 clear
 
@@ -22,4 +22,6 @@ fi
 echo -e "\nPiKISS\n======\nInstalling at $INSTALL_DIR/piKiss. Please wait...\n"
 sudo apt install -y dialog
 git clone https://github.com/jmcerrejon/PiKISS.git piKiss && cd "$_"
-./piKiss.sh
+echo -e "\n\nPiKISS installed!. cd into $HOME/piKiss or go to Menu > System Tools > PiKISS\n"
+read -p "Press ENTER to exit."
+exit
