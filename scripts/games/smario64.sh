@@ -50,7 +50,7 @@ compile() {
 }
 
 install() {
-	echo -e "\n\nInstalling, please wait...\n"
+	echo -e "\n\nInstalling, please wait..."
     if [[ $(validate_url "$GAME_PATH") != "true" ]] ; then
         read -p "Sorry, the game is not available here: $GAME_PATH. Try to compile."
         exit
@@ -58,10 +58,10 @@ install() {
 
 	mkdir -p "$INSTALL_DIR" && cd "$_"
 	wget -4 -qO- -O ./sm64.tar.gz "$GAME_PATH" && tar -xzf sm64.tar.gz && rm sm64.tar.gz
-	echo -e "\n\nGenerating icon...\n"
+	echo -e "\n\nGenerating icon..."
 	generateIcon
-    echo -e "\n\nDone!You can play typing $INSTALL_DIR/sm64/sm64 or opening the Menu > Games > Super Mario 64.\n"
-    echo -e "\ALT+ENTER full-screen | SPACE Select | WSAD for move | Arrows for camera, [KL,.] for actions.\n"
+    echo -e "\n\nDone!. You can play typing $INSTALL_DIR/sm64/sm64 or opening the Menu > Games > Super Mario 64.\n"
+    echo -e "ALT+ENTER full-screen | SPACE Select | WSAD for move | Arrows for camera, [KL,.] for actions.\n"
 	runme
 }
 
