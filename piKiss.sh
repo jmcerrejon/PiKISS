@@ -207,6 +207,7 @@ function smGames(){
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
     options=(
       Back "Back to main menu"
+      SMario64 "Super Mario 64 native OpenGL ES"
       Abbaye "L’Abbaye des Morts is a retro puzzle platformer by Locomalito"
       Revolt "Re-Volt is a radio control car racing themed video game"
       Diablo "Take control of a lone hero battling to rid the world of Diablo"
@@ -238,6 +239,7 @@ function smGames(){
   do
     case $choice in
       Back) 		 break ;;
+      SMario64)		./scripts/games/smario64.sh ;;
       Abbaye)		./scripts/games/abbaye.sh ;;
       Revolt)		./scripts/games/revolt.sh ;;
       Diablo)		./scripts/games/diablo.sh ;;
