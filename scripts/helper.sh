@@ -224,7 +224,7 @@ install_yarn() {
 check_board() {
   if [[ $(cat /proc/cpuinfo | grep 'ODROIDC') ]]; then
     MODEL="ODROID-C1"
-  elif [[ $(cat /proc/cpuinfo | grep 'BCM2708\|BCM2709\|BCM2835') ]]; then
+  elif [[ $(cat /proc/cpuinfo | grep 'BCM2708\|BCM2709\|BCM2835\|BCM2711') ]]; then
     MODEL="Raspberry Pi"
   elif [ "$(uname -n)" = "debian" ]; then
     MODEL="Debian"
@@ -392,6 +392,10 @@ check_update() {
   if [ $RESULT -ge 7 ]; then
     sudo apt-get update
   fi
+}
+
+getRaspberryPiNumberModel() {
+	echo $(cat /proc/device-tree/model | awk '{print $3}')
 }
 
 #
