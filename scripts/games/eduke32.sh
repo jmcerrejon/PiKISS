@@ -45,8 +45,8 @@ copySharewareFiles() {
 	if ! isPackageInstalled p7zip; then
 		sudo apt install -y p7zip
 	fi
-	wget "$SHAREWARE_DATA_PATH"
-	p7zip -d 3dduke13_data.7z
+	wget -O "$INSTALL_DIR"/eduke32/3dduke13_data.7z "$SHAREWARE_DATA_PATH"
+	p7zip -d "$INSTALL_DIR"/eduke32/3dduke13_data.7z
 }
 
 compile() {
@@ -69,8 +69,8 @@ install() {
 	fi
 
 	mkdir -p "$INSTALL_DIR" && cd "$_"
-	copySharewareFiles
 	wget -4 -qO- -O ./eduke32.tar.gz "$GAME_PATH" && tar -xzf eduke32.tar.gz && rm eduke32.tar.gz
+	copySharewareFiles
 	echo -e "\n\nGenerating icon..."
 	generateIcon
     echo -e "\n\nDone!. You can play typing $INSTALL_DIR/eduke32/eduke32 or opening the Menu > Games > Duke Nukem 3D.\n"
