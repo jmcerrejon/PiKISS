@@ -176,13 +176,7 @@ function smTweaks(){
       Others "CPU performance, disable Ethernet and so on"
       Packages "Programs you don't use (maybe) to free space"
       Daemons "Disable services useless"
-    )
-  elif [[ ${MODEL} == 'ODROID-C1' ]]; then
-    options=(
-      Back "Back to main menu"
-      Autologin "Set autologin as current user (CLI mode)"
-      Others "CPU performance, disable Ethernet and so on"
-      Daemons "Disable services useless (not permanently)"
+      ZRAM "Enable/Disable ZRAM"
     )
   fi
 
@@ -196,6 +190,7 @@ function smTweaks(){
       Others) 	./scripts/tweaks/others.sh ;;
       Packages) 	./scripts/tweaks/removepkg.sh ;;
       Daemons) 	./scripts/tweaks/services.sh ;;
+      ZRAM) 	./scripts/tweaks/zram.sh ;;
     esac
   done
 }
@@ -558,7 +553,7 @@ do
       Server)     	smServer ;;
       Devs)     	smDevs ;;
       Others)     	smOthers ;;
-      Exit) 	    echo -e "\nThanks for visiting https://misapuntesde.com" && exit ;;
+      Exit) 	    clear && echo -e "\nSee you soon!\nYou can find me here (CTRL + Click):\n\n · Blog: https://misapuntesde.com\n · Twitter: https://twitter.com/ulysess10\n · Discord Server (Pi Labs): https://discord.gg/Y7WFeC5" && exit ;;
       1)
       echo -e "\nCancel pressed." && exit;;
       255)
