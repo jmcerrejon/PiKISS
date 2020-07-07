@@ -37,6 +37,10 @@ Check what **PiKISS** can do for you on my Youtube's Channel:
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (07/07/20)
+
+· 📦 ADD: Games > Duke Nukem 3D native OpenGL ES.
+
 ### (05/07/20)
 
 · 📦 ADD: Games > Super Mario 64 native OpenGL ES.
