@@ -52,10 +52,11 @@ install() {
 }
 
 compile_speccy() {
+	CORES=$(nproc --all)
 	sudo apt install -y libcurl4-openssl-dev libcurl4-gnutls-dev libcogl-gles2-dev git cmake libsdl2-dev
 	cd ~ && git clone https://bitbucket.org/djdron/unrealspeccyp.git usp && cd usp/build/cmake
 	cmake .. -DCMAKE_BUILD_TYPE=Release -DUSE_SDL=Off -DUSE_SDL2=On -DSDL2_INCLUDE_DIRS="/usr/inlude" -DCMAKE_CXX_FLAGS="$(sdl2-config --cflags)" -DCMAKE_EXE_LINKER_FLAGS="$(sdl2-config --libs)"
-	make -j4
+	make -j"${CORES}"
 	chmod +x unreal_speccy_portable
 	mkdir roms # It's neccessary, even it's empty
 }

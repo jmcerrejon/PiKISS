@@ -105,6 +105,7 @@ download_QT5() {
 }
 
 compile_QT5() {
+	CORES=$(nproc --all)
 	echo -e "\nCompile QT with 4 cores. Go for a walk or watch 2 movies...\n"
 
 	cd qt-everywhere-src-*
@@ -130,7 +131,7 @@ compile_QT5() {
 	-prefix /opt/Qt5 \
 	-qpa eglfs
 
-	make -j4
+	make -j"${CORES}"
 }
 
 setup() {
