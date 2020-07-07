@@ -1,6 +1,10 @@
 (07/07/20)
 ==========
 
+· 👌 IMPROVE: Compile with cores according to the RPi Model.
+
+· 📦 ADD: Tweaks > ZRAM.
+
 · 📦 ADD: Games > Duke Nukem 3D native OpenGL ES.
 
 (05/07/20)

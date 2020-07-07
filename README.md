@@ -10,7 +10,7 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **571 hours**
+* **572 hours**
 
 * Total amount donated by users: $14.11
 
@@ -38,6 +38,10 @@ Check what **PiKISS** can do for you on my Youtube's Channel:
 ### [ ChangeLog (dd/mm/yy)]
 
 ### (07/07/20)
+
+· 👌 IMPROVE: Compile with cores according to the RPi Model.
+
+· 📦 ADD: Tweaks > ZRAM.
 
 · 📦 ADD: Games > Duke Nukem 3D native OpenGL ES.
 
