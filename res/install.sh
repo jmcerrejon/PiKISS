@@ -2,7 +2,7 @@
 #
 # Description : Easy install PiKISS
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (05/Jul/20)
+# Version     : 1.0.2 (08/Jul/20)
 # TODO		  : Check the OS is Debian based.
 clear
 
