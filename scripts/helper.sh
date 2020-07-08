@@ -330,12 +330,9 @@ show_dialog() {
 }
 
 mkDesktopEntry() {
-  # Add lxterminal -t "PiKISS" --geometry=150x25 --working-directory=/home/pi/PiKISS -e './piKiss.sh'
-  if [[ ! -e /usr/share/applications/pikiss.desktop ]]; then
-    sudo sh -c 'echo "[Desktop Entry]\nName=PiKISS\nComment=A bunch of scripts with menu to make your life easier\nExec='$PWD'/piKiss.sh\nIcon='$HOME'/piKiss/icons/pikiss_32.png\nTerminal=true\nType=Application\nCategories=ConsoleOnly;Utility;System;\nPath='$PWD'/" > /usr/share/applications/pikiss.desktop'
-    # if [[ -e ./piKiss.sh ]]; then
-    # 	sed -i -e 's/mkDesktopEntry/#mkDesktopEntry/ig' ./piKiss.sh
-    # fi
+  if [[ ! -e "$HOME"/.local/share/applications/pikiss.desktop ]]; then
+    echo -e "[Desktop Entry]\nName=PiKISS\nComment=A bunch of scripts with menu to make your life easier\nExec=${PWD}/piKiss.sh\nIcon=${PWD}/icons/pikiss_32.png\nTerminal=true\nType=Application\nCategories=ConsoleOnly;Utility;System;\nPath=${PWD}/" > "$HOME"/.local/share/applications/pikiss.desktop
+	lxpanelctl restart
   fi
 }
 
