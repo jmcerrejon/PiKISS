@@ -10,9 +10,9 @@
 
 Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
 
-* **572 hours**
+* **572.3 hours**
 
-* Total amount donated by users: $14.11
+* Total amount donated by users: $70,56
 
 Contributors:
 
@@ -36,6 +36,10 @@ Check what **PiKISS** can do for you on my Youtube's Channel:
 
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (08/07/20)
+
+· 🐛 FIX: PiKISS menu option takes time to appear.
 
 ### (07/07/20)
 
