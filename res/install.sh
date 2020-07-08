@@ -19,9 +19,9 @@ if [[ ! $(cat /proc/cpuinfo | grep 'BCM2708\|BCM2709\|BCM2835') ]]; then
     exit
 fi
 
-echo -e "\nPiKISS\n======\nInstalling at $INSTALL_DIR/piKiss. Please wait...\n"
+echo -e "\nPiKISS\n======\nInstalling at ${INSTALL_DIR}/piKiss. Please wait...\n"
 sudo apt install -y dialog
 git clone https://github.com/jmcerrejon/PiKISS.git piKiss && cd "$_"
-echo -e "\n\nPiKISS installed!. cd into $HOME/piKiss or go to Menu > System Tools > PiKISS\n"
+echo -e "\n\nPiKISS installed ! .::. cd ${HOME}/piKiss, type or click ./piKiss.sh. You have an icon, too! . Go to:\n\n · Raspberry Pi OS: Menu > System Tools > PiKISS\n\n · Twister OS: Menu > Accesories > PiKISS\n"
 read -p "Press ENTER to exit."
 exit
