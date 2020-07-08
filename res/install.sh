@@ -14,7 +14,7 @@ if [ -d "$INSTALL_DIR/piKiss" ]; then
 	exit
 fi
 
-if [[ ! $(cat /proc/cpuinfo | grep 'BCM2708\|BCM2709\|BCM2835') ]]; then
+if [[ ! $(cat /proc/cpuinfo | grep 'BCM2708\|BCM2709\|BCM2835\|BCM2711') ]]; then
 	echo "Sorry. PiKISS is only for Raspberry Pi boards."
     exit
 fi
