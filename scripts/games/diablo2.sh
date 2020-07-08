@@ -2,7 +2,7 @@
 #
 # Description : Diablo 2 Exp. Spanish for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.3 (03/Jul/20)
+# Version     : 1.0.4 (07/Jul/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Info		  : Thks to PI Labs
@@ -32,7 +32,7 @@ EOF
 }
 
 copyRunScript() {
-	mkdir -p "$GAMES_PATH"/diablo2 && cp ./res/diablo2.sh "$GAMES_PATH"/diablo2/diablo2.sh
+	mkdir -p "$GAMES_PATH"/diablo2 && cp "$(pwd)"/res/diablo2.sh "$GAMES_PATH"/diablo2/diablo2.sh
 }
 
 install() {
