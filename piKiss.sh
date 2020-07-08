@@ -553,7 +553,7 @@ do
       Server)     	smServer ;;
       Devs)     	smDevs ;;
       Others)     	smOthers ;;
-      Exit) 	    clear && echo -e "\nSee you soon!\nYou can find me here (CTRL + Click):\n\n · Blog: https://misapuntesde.com\n · Twitter: https://twitter.com/ulysess10\n · Discord Server (Pi Labs): https://discord.gg/Y7WFeC5" && exit ;;
+      Exit) 	    clear && echo -e "\nSee you soon!. You can find me here (CTRL + Click):\n\n · Blog: https://misapuntesde.com\n · Twitter: https://twitter.com/ulysess10\n · Discord Server (Pi Labs): https://discord.gg/Y7WFeC5\n" && exit ;;
       1)
       echo -e "\nCancel pressed." && exit;;
       255)
