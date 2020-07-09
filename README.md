@@ -1,6 +1,6 @@
 # PiKISS for Raspberry Pi: A bunch of scripts with menu to make your life easier.
 
-![PiKISS Logo](logo_pikiss_400.png)
+![PiKISS Logo](logo_pikiss_header.png)
 
 <p align="center">
 	<a href='https://ko-fi.com/A838QJC' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi2.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
@@ -18,7 +18,9 @@ Contributors:
 
 * [huelvayork](https://github.com/huelvayork)
 
-Check what **PiKISS** can do for you on my Youtube's Channel:
+* Logo: grayduck
+
+Check what **PiKISS** can do for you on my Youtube's channel:
 
 * [youtube.com > PIKISS](https://www.youtube.com/playlist?list=PLXhElW3ALmWh8p0mn1ZECawkKyF8QzNNP)
 
