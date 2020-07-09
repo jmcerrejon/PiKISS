@@ -3,24 +3,43 @@
 ![PiKISS Logo](logo_pikiss_header.png)
 
 <p align="center">
+	<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ulysess%40gmail%2ecom&lc=GB&item_name=PiKISS&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted"><img src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif" /></a>
 	<a href='https://ko-fi.com/A838QJC' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi2.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 	<a href="https://github.com/jmcerrejon/neighborhood-games/blob/master/LICENSE"><img src="https://img.shields.io/github/license/jmcerrejon/neighborhood-games" alt="npm version"></a>
 	<a href="https://twitter.com/ulysess10"><img src="https://img.shields.io/twitter/follow/ulysess10?style=social" alt="Follow me on Twitter!"></a>
 </p>
 
-Estimated hours of work so far | Horas estimadas de trabajo hasta el momento:
+## 👨🏻‍💻 Estimated hours of work so far
 
 * **573 hours**
 
-* Total amount donated by users: $70,56
+## 💰 Total amount donated by users
 
-Contributors:
+*  $70,56
+
+## 📣 Stay tuned! 
+
+* 📬 Mail: <ulysess@gmail.com>
+
+* 📖 Blog (english & spanish): [misapuntesde.com](https://misapuntesde.com/)
+
+* 💰 Patreon: [patreon.com/cerrejon](https://www.patreon.com/cerrejon?fan_landing=true)
+
+* 🐦 Twitter: [@ulysess10](https://twitter.com/ulysess10)
+
+* 👾 Discord for suggestions & support [thanks to Pi Labs](https://discord.gg/Y7WFeC5) 
+
+* 👨🏻‍💻 LinkedIn: [es.linkedin.com/in/jmcerrejon](https://es.linkedin.com/in/jmcerrejon/)
+
+* 📣 Mewe (Spanish): [mewe.com](https://mewe.com/group/5c6bbed8f0e71669f228c457)
+
+## 🤝 Contributors
 
 * [huelvayork](https://github.com/huelvayork)
 
 * Logo: grayduck
 
-Check what **PiKISS** can do for you on my Youtube's channel:
+## 🎥 Check what **PiKISS** can do for you on my Youtube's channel
 
 * [youtube.com > PIKISS](https://www.youtube.com/playlist?list=PLXhElW3ALmWh8p0mn1ZECawkKyF8QzNNP)
 
@@ -141,7 +160,7 @@ Check what **PiKISS** can do for you on my Youtube's channel:
 
 To see the full list of changes, read the [CHANGELOG](./CHANGELOG)
 
-### [ Introducing PiKISS ]
+## [ Introducing PiKISS ]
 
 Install an application on Linux is not a complex task. Sometimes just type *sudo apt install* and get the application installed with all its dependencies. But... What if we need to install more than one app such as a web server or it requires many steps to complete the install process?, Is it not in the official repositories?, What if you want to get rid of input commands?. Please, an easy way to set up my WIFI network!.
 
@@ -164,7 +183,7 @@ What some users have said about **PiKISS**:
 
 **NOTE:** 100% Free of viruses and Trojans. Not available in stores. The author of **PiKISS** is not responsible if you get bored with your *Raspberry Pi* because everything is too easy. Online until I wish or *Internet* is destroyed.
 
-#### [ Installation ]
+## [ Installation ]
 
 Just type:
 
@@ -172,7 +191,7 @@ Just type:
 curl -sSL https://git.io/JfAPE | bash
 </pre>
 
-#### [ Update ]
+## [ Update ]
 
  If you want the latest version, just enter into the directory with cd PiKISS and type:
 
@@ -182,19 +201,11 @@ git pull
 
 NOTE: If you use another distribution other than *Raspberry OS/TwisterOS*, maybe you need to execute the next command: *git config --global http.sslVerify false*
 
-#### [ HELP ME! ]
+### [ HELP ME! ]
 
 **PiKISS** grow up according to users requests or I'll append scripts that I consider necessary, but I call **to the community** to share, improve and help to add new scripts to the existing one. If the project grow, **is up to you**.
 
-José Cerrejón [(@ulysess10)](https://twitter.com/ulysess10)
-
-Mail: <ulysess@gmail.com>
-
-Blog: [https://misapuntesde.com](https://misapuntesde.com)
-
-Youtube: [youtube.com > PIKISS](https://www.youtube.com/playlist?list=PLXhElW3ALmWh8p0mn1ZECawkKyF8QzNNP)
-
-#### [ DONATE ]
+### [ DONATE ]
 
 This project has involved many hours thinking, searching, refactoring and testing code. I accept donations due the effort to make new scripts. Donations are not required or expected. Any amount that you feel is appropriate would be appreciated. Simply click on the Donate button at the end of this document. Thank you! :)
 
@@ -202,7 +213,7 @@ This project has involved many hours thinking, searching, refactoring and testin
 
 ## PiKISS para Raspberry Pi: Un puñado de scripts con menú para hacerte la vida más fácil.
 
-#### [ Presentando PiKISS ]
+### [ Presentando PiKISS ]
 
 Instalar una aplicación en Linux no es complejo. A veces basta con un *sudo apt install* y tendrás la aplicación con todas sus dependencias. Pero, ¿Y si tenemos que instalar más de una app como por ejemplo en un servidor web o necesita varios pasos para completar el proceso de instalación?, ¿Y si no está en los repositorios oficiales?, ¿Y si no quieres teclear? ¡Por favor, una manera fácil de instalar mi red WIFI!.
 
@@ -225,7 +236,7 @@ Lo que algunos usuarios han dicho de **PiKISS**:
 
 **NOTA:** 100% Libre de virus y troyanos. No disponible en tiendas. El autor de *PiKISS* no se hace responsable si te aburres con tu *Raspberry Pi* porque todo es demasiado fácil. Online hasta que me plazca o se destruya *Internet*.
 
-#### [ Instalación ]
+### [ Instalación ]
 
 Escribe en la terminal lo siguiente:
 
@@ -233,7 +244,7 @@ Escribe en la terminal lo siguiente:
 curl -sSL https://git.io/JfAPE | bash
 </pre>
 
-#### [ Actualizar ]
+### [ Actualizar ]
 
 Si ya la tienes instalada y quieres actualizarla con los últimos cambios, teclea en el directorio de *PiKISS*:
 
@@ -243,21 +254,11 @@ git pull
 
 NOTA: Si usas otra distribución que no sea *Raspberry OS/TwisterOS* en la *Raspberry Pi*, tal vez tengas que ejecutar esta sencencia: *git config --global http.sslVerify false*
 
-#### [ ¡AYÚDAME! ]
+### [ ¡AYÚDAME! ]
 
 **PiKISS** crecerá de acuerdo a las peticiones de los usuarios o añadiré los scripts que considere oportunos, pero hago un llamamiento a **toda la comunidad** para compartir, mejorar o agregar nuevos scripts a los ya existentes. Que este proyecto crezca **depende de tí**.
 
-¡Gracias!
-
-José Cerrejón [(@ulysess10)](https://twitter.com/ulysess10)
-
-Mail: <ulysess@gmail.com>
-
-Blog: [https://misapuntesde.com](https://misapuntesde.com)
-
-Youtube: [youtube.com > PIKISS](https://www.youtube.com/playlist?list=PLXhElW3ALmWh8p0mn1ZECawkKyF8QzNNP)
-
-#### [ DONACIONES ]
+### [ DONACIONES ]
 
 Este proyecto ha supuesto muchas horas de pensar, buscar, refactorizar y testear código. Acepto donaciones por el esfuerzo que supone mantener y hacer nuevos scripts. Las donaciones no se requieren ni las espero. Cualquier cantidad que sientas que es apropiada sería de agradecer. Simplemente haz click en el botón "Donate" al final del documento. ¡Gracias! :)
 
