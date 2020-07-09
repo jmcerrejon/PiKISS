@@ -280,7 +280,9 @@ check_internet_available() {
   if [ ! "$NOINTERNETCHECK" = 1 ]; then
     PINGOUTPUT=$(ping -c 1 8.8.8.8 > /dev/null && echo 'true')
     if [ ! "$PINGOUTPUT" = true ]; then
-      echo "Internet connection required. Check your network."; exit 1
+      echo -e "\nInternet connection required. Causes:\n\n · Check your network.\n · Weak WiFi signal?.\n · Try no check internet connection parameter (-ni): cd ~/piKiss && ./piKiss.sh -ni\n"
+      read -p "Press [Enter] to exit..."
+	  exit 1
     fi
   fi
   echo "$PINGOUTPUT"
