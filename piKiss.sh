@@ -45,8 +45,8 @@ wWIDTH=70
 
 function usage()
 {
-  echo -e "$TITLE\n\nScript designed to config or install apps on Raspberry Pi(Raspbian) or ODROID-C1(Ubuntu) easier for everyone.\n"
-  echo -e "Usage: piKiss [Arguments]\n\nArguments:\n"
+  echo -e "$TITLE\n\nScript designed to config or install apps on Raspberry Pi easier for everyone.\n"
+  echo -e "Usage: ./piKiss.sh [Arguments]\n\nArguments:\n"
   echo "-h  | --help       : This help."
   echo "-nu | --no_update  : No check if repositories are updated."
   echo "-ni | --noinet     : No check if internet connection is available."
@@ -553,7 +553,7 @@ do
       Server)     	smServer ;;
       Devs)     	smDevs ;;
       Others)     	smOthers ;;
-      Exit) 	    clear && echo -e "\nSee you soon!. You can find me here (CTRL + Click):\n\n · Blog: https://misapuntesde.com\n · Twitter: https://twitter.com/ulysess10\n · Discord Server (Pi Labs): https://discord.gg/Y7WFeC5\n" && exit ;;
+      Exit) 	    clear && echo -e "\nSee you soon!. You can find me here (CTRL + Click):\n\n · Blog: https://misapuntesde.com\n · Twitter: https://twitter.com/ulysess10\n · Discord Server (Pi Labs): https://discord.gg/Y7WFeC5\n · Mail: ulysess@gmail.com\n" && exit ;;
       1)
       echo -e "\nCancel pressed." && exit;;
       255)
