@@ -21,21 +21,21 @@
 
 ## 📣 Stay tuned! 
 
-* 📬 Mail: <ulysess@gmail.com>
+* 📬⠀Mail: <ulysess@gmail.com>
 
-* 📖 Blog (english & spanish): [misapuntesde.com](https://misapuntesde.com/)
+* 📖⠀Blog (English & Spanish): [misapuntesde.com](https://misapuntesde.com/)
 
-* 🟠 Bitcoin: 32XtfF8eKkWkAGJsHvBsjqsted5NKsGBcv
+* 🟠⠀Bitcoin: 32XtfF8eKkWkAGJsHvBsjqsted5NKsGBcv
 
-* 💰 Patreon: [patreon.com/cerrejon](https://www.patreon.com/cerrejon?fan_landing=true)
+* 💰⠀Patreon: [patreon.com/cerrejon](https://www.patreon.com/cerrejon?fan_landing=true)
 
-* 🐦 Twitter: [@ulysess10](https://twitter.com/ulysess10)
+* 🐦⠀Twitter: [@ulysess10](https://twitter.com/ulysess10)
 
-* 👾 Discord for suggestions & support [thanks to Pi Labs](https://discord.gg/Y7WFeC5) 
+* 👾⠀Discord for suggestions & support [thanks to Pi Labs](https://discord.gg/Y7WFeC5) 
 
-* 👨🏻‍💻 LinkedIn: [es.linkedin.com/in/jmcerrejon](https://es.linkedin.com/in/jmcerrejon/)
+* 👨🏻‍💻⠀LinkedIn: [es.linkedin.com/in/jmcerrejon](https://es.linkedin.com/in/jmcerrejon/)
 
-* 📣 Mewe (Spanish): [mewe.com](https://mewe.com/group/5c6bbed8f0e71669f228c457)
+* 📣⠀Mewe (Spanish): [mewe.com](https://mewe.com/group/5c6bbed8f0e71669f228c457)
 
 ## 🤝 Contributors
 
