@@ -7,6 +7,14 @@
 clear
 
 INSTALL_DIR="$HOME"
+
+mkDesktopEntry() {
+  if [[ ! -e "$HOME"/.local/share/applications/pikiss.desktop ]]; then
+    echo -e "[Desktop Entry]\nName=PiKISS\nComment=A bunch of scripts with menu to make your life easier\nExec=${PWD}/piKiss.sh\nIcon=${PWD}/icons/pikiss_32.png\nTerminal=true\nType=Application\nCategories=ConsoleOnly;Utility;System;\nPath=${PWD}/" > "$HOME"/.local/share/applications/pikiss.desktop
+	lxpanelctl restart
+  fi
+}
+
 cd "$INSTALL_DIR"
 
 if [ -d "$INSTALL_DIR/piKiss" ]; then
@@ -22,6 +30,8 @@ fi
 echo -e "\nPiKISS\n======\nInstalling at ${INSTALL_DIR}/piKiss. Please wait...\n"
 sudo apt install -y dialog
 git clone https://github.com/jmcerrejon/PiKISS.git piKiss && cd "$_"
-echo -e "\n\nPiKISS installed ! .::. cd ${HOME}/piKiss, type or click ./piKiss.sh. You have an icon, too! . Go to:\n\n · Raspberry Pi OS: Menu > System Tools > PiKISS\n\n · Twister OS: Menu > Accesories > PiKISS\n"
+mkDesktopEntry
+sleep 3
+echo -e "\n\nPiKISS installed ! .::. cd ${HOME}/piKiss, type or click ./piKiss.sh. You have an Menu shortcut, too! . Go to:\n\n · Raspberry Pi OS: Menu > System Tools > PiKISS\n\n · Twister OS: Menu > Accesories > PiKISS\n"
 read -p "Press ENTER to exit."
 exit
