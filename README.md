@@ -25,6 +25,8 @@
 
 * 📖 Blog (english & spanish): [misapuntesde.com](https://misapuntesde.com/)
 
+* 🟠 Bitcoin: 32XtfF8eKkWkAGJsHvBsjqsted5NKsGBcv
+
 * 💰 Patreon: [patreon.com/cerrejon](https://www.patreon.com/cerrejon?fan_landing=true)
 
 * 🐦 Twitter: [@ulysess10](https://twitter.com/ulysess10)
