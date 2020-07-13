@@ -13,7 +13,7 @@
 
 ## 👨🏻‍💻 Estimated hours of work so far
 
-* **577 hours**
+* **577.4 hours**
 
 ## 💰 Total amount donated by users
 
@@ -67,6 +67,10 @@
 ### (13/07/20)
 
 · 📦 ADD: Games > Captain 'S' The Remake (AKA Capitan Sevilla).
+
+· 👌 IMPROVE: Multimedia > Kodi 18.7.
+
+· ❌ REMOVE: Airplay.
 
 ### (10/07/20)
 
