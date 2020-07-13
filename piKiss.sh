@@ -202,6 +202,7 @@ function smGames(){
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
     options=(
       Back "Back to main menu"
+      CaptainS "Save Seville from the evil Torrebruno"
       Eduke32 "Duke Nukem 3D is a fps game developed by 3D Realms"
       SMario64 "Super Mario 64 native OpenGL ES"
       Abbaye "L’Abbaye des Morts is a retro puzzle platformer by Locomalito"
@@ -235,8 +236,9 @@ function smGames(){
   do
     case $choice in
       Back) 		 break ;;
-      SMario64)		./scripts/games/smario64.sh ;;
+      CaptainS)		./scripts/games/captains.sh ;;
       Eduke32)		./scripts/games/eduke32.sh ;;
+      SMario64)		./scripts/games/smario64.sh ;;
       Abbaye)		./scripts/games/abbaye.sh ;;
       Revolt)		./scripts/games/revolt.sh ;;
       Diablo)		./scripts/games/diablo.sh ;;
