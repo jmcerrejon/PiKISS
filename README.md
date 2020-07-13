@@ -17,7 +17,7 @@
 
 ## 💰 Total amount donated by users
 
-* $209,46
+* $214,96
 
 * I want to thank my two Patreons *David J Leto* and *Charles Paek* for trusting me ❤️
 
