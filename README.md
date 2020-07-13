@@ -13,11 +13,13 @@
 
 ## 👨🏻‍💻 Estimated hours of work so far
 
-* **575 hours**
+* **577 hours**
 
 ## 💰 Total amount donated by users
 
-*  $80,56
+* $209,46
+
+* I want to thank my two Patreons *David J Leto* and *Charles Paek* for trusting me ❤️
 
 ## 📣 Stay tuned! 
 
@@ -61,6 +63,10 @@
 
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (13/07/20)
+
+· 📦 ADD: Games > Captain 'S' The Remake (AKA Capitan Sevilla).
 
 ### (10/07/20)
 
