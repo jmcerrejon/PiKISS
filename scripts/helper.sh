@@ -338,6 +338,12 @@ mkDesktopEntry() {
   fi
 }
 
+exitMessage() {
+	echo
+	read -p "Press [Enter] to go back to the menu..."
+	exit 1
+}
+
 validate_url() {
   if [[ `wget -S --spider $1 2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then echo "true"; fi
 }
