@@ -309,8 +309,7 @@ function smMultimedia(){
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
     options=(
       Back "Back to main menu"
-      Rplay "XBMC Kodi 16.1"
-      Airplay "AirPlay Mirroring on your Pi with RPlay"
+      Kodi "Kodi is a free media player that is designed to look great on your TV but is just as home on a small screen."
       Kiosk "Image slideshow"
     )
   elif [[ ${MODEL} == 'ODROID-C1' ]]; then
@@ -325,10 +324,8 @@ function smMultimedia(){
   do
     case $choice in
       Back) 		break ;;
-      Rplay)		./scripts/mmedia/xbmc.sh ;;
-      Airplay)	./scripts/mmedia/airplay.sh ;;
+      Kodi)		./scripts/mmedia/xbmc.sh ;;
       Kiosk)      ./scripts/mmedia/kiosk.sh ;;
-      XBMC) 		./scripts/mmedia/xbmc.sh ;;
     esac
   done
 }

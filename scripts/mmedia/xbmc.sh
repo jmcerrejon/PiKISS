@@ -2,24 +2,47 @@
 #
 # Description : Install XBMC - Kodi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.9.2 (8/Sep/16)
-# Compatible  : Raspberry Pi 1, 2 & 3 (tested)
-#
-# HELP        · https://www.raspberrypi.org/forums/viewtopic.php?p=832735#p832735
+# Version     : 1.0.0 (13/Jul/20)
+# Compatible  : Raspberry Pi 1-4
 #
 # TODO	      [ ] Ask user if want to start Kodi from boot.
 #
+. ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
+check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-echo -e "KODI Install (16.1)\n=====================\n"
+uninstall() {
+	read -p "Do you want to uninstall Kodi (y/N)? " response
+	if [[ $response =~ [Yy] ]]; then
+		sudo apt remove -y kodi
+		sudo apt -y autoremove
+	fi
+	exitMessage
+}
 
-echo "deb https://pipplware.pplware.pt/pipplware/dists/jessie/main/binary /" | sudo tee -a /etc/apt/sources.list
-wget -O - https://pipplware.pplware.pt/pipplware/key.asc | sudo apt-key add -
+if [[ -e /usr/bin/kodi ]]; then
+	echo -e "Kodi already installed.\n"
+	uninstall
+	exit 1
+fi
 
-sudo apt-get update
-sudo apt-get install -y xbmc
+runNow() {
+	echo
+	read -p "Do you want to run Kodi right now (y/N)? " response
+	if [[ $response =~ [Yy] ]]; then
+		kodi
+	fi
+	exitMessage
+}
 
-sudo usermod -a -G "audio,video,input,dialout,plugdev,tty" $USER
-sudo addgroup --system input
+install() {
+	sudo apt-get update
+	sudo apt-get install -y kodi
+	sudo usermod -a -G "audio,video,input,dialout,plugdev,tty" $USER
+	sudo addgroup --system input
+	echo -e "\nDone. Go to Menu > Sound & Video or type kodi to run."
+	runNow
+}
 
-read -p "Done!. Type kodi to run. Press [Enter] to continue..."
+echo -e "Installing KODI (from repo)...\n"
+install
