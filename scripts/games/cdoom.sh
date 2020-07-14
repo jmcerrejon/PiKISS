@@ -21,17 +21,19 @@ CRISPY_DOOM_SOURCE="https://github.com/fabiangreffrath/crispy-doom.git"
 # CHOCOLATE_DOOM="https://www.dropbox.com/s/qxxrx6clyrc0e4n/chocolate_3-0_armhf.deb?dl=0" # Future release?
 LICENSE="Complete"
 
-# if [ -e "/usr/local/bin/crispy-doom" ]; then
-# 	read -p "Crispy-Doom already installed. Press [ENTER] to go back to the menu..."
-# 	exit 1
-# fi
-
 playNow() {
 	read -p "Do you want to play Doom right now (y/N)? " response
 	if [[ $response =~ [Yy] ]]; then
 		doom
 	fi
 }
+
+if [ -e "/usr/local/bin/crispy-doom" ]; then
+	echo -e "Crispy-Doom already installed!."
+	playNow
+	exit 1
+fi
+
 
 get_wad() {
 	echo -e "\n\nDownloading WAD files...\n"
@@ -56,9 +58,10 @@ share_version() {
 
 compile() {
 	echo -e "\nInstalling deps...\n"
+	CORES=$(nproc --all)
 	cd "$WAD_PATH"
 	git clone "$CRISPY_DOOM_SOURCE" crispy-doom && cd "$_"
-	sudo apt install -y build-essential automake git libsdl1.2debian libsdl-mixer1.2 libsdl-net1.2 timidity libsdl2-net-2.0-0 libsdl2-net-dev
+	sudo apt install -y build-essential automake git timidity libsdl2-net-2.0-0 libsdl2-net-dev libsdl2-mixer-dev
 	sudo apt build-dep crispy-doom
 	autoreconf -fiv
 	./configure
@@ -69,7 +72,7 @@ compile() {
 
 install() {
 	echo -e "\nInstalling deps...\n"
-	sudo apt install -y libsdl1.2debian libsdl-mixer1.2 libsdl-net1.2 timidity libsdl2-net-2.0-0 libsdl2-net-dev
+	sudo apt install -y timidity libsdl2-net-2.0-0 libsdl2-net-dev libsdl2-mixer-2.0-0
 	wget -O "$HOME"/crispy-doom.deb "$CRISPY_DOOM"
 	sudo dpkg -i "$HOME"/crispy-doom.deb
 	rm "$HOME"/crispy-doom.deb
