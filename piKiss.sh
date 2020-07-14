@@ -336,6 +336,7 @@ function smConfigure(){
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
     options=(
       Back "Back to main menu"
+      Vulkan "Compile/update Vulkan Mesa driver (EXPERIMENTAL)"
       RaspNet "Configure Raspbian Net Install distro"
       SSIDCfg "Configure SSID (WPA/WPA2 with PSK)"
       Joypad "Configure WII, XBox360 controller"
@@ -356,6 +357,7 @@ function smConfigure(){
   do
     case $choice in
       Back) 		break;;
+      Vulkan)    ./scripts/config/vulkan.sh;;
       RaspNet)    ./scripts/config/raspnetins.sh;;
       SSIDCfg)    ./scripts/config/ssidcfg.sh;;
       Joypad) 	./scripts/config/jpad.sh;;
