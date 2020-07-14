@@ -66,7 +66,7 @@
 
 ### (14/07/20)
 
-· 📦 ADD: Configure > Install/update Vulkan drivers (EXPERIMENTAL).
+· 📦 ADD: Configure > Compile/update Vulkan Mesa driver (EXPERIMENTAL).
 
 ### (13/07/20)
 
