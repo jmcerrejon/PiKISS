@@ -96,5 +96,6 @@ compile() {
 	install
 }
 
+upgrade_dist
 compile
 exitMessage

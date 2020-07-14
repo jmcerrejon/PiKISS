@@ -532,6 +532,14 @@ add_php7_repository(){
 }
 
 #
+# Upgrade Distribution
+#
+upgrade_dist() {
+  echo -e "\nUpgrading distribution...\n"
+  sudo apt-get update && sudo apt-get -y upgrade
+}
+
+#
 # Extract all kind of compressed files
 #
 extract () {
