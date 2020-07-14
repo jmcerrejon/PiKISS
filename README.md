@@ -13,7 +13,7 @@
 
 ## 👨🏻‍💻 Estimated hours of work so far
 
-* **577.4 hours**
+* **583 hours**
 
 ## 💰 Total amount donated by users
 
@@ -63,6 +63,10 @@
 
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (14/07/20)
+
+· 📦 ADD: Configure > Install/update Vulkan drivers (EXPERIMENTAL).
 
 ### (13/07/20)
 
