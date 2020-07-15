@@ -13,7 +13,7 @@
 
 ## 👨🏻‍💻 Estimated hours of work so far
 
-* **585 hours**
+* **588 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,7 +66,9 @@
 
 ### (15/07/20)
 
-· 📦 👌 IMPROVE: Vulkan compilation is compatible with Twister OS 🌪.
+· 📦 ADD: Emulators > PPSSPP v1.9.3-1063 (PSP Emulator).
+
+· 👌 IMPROVE: Vulkan compilation is compatible with Twister OS 🌪.
 
 ### (14/07/20)
 
