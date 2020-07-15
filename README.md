@@ -13,7 +13,7 @@
 
 ## 👨🏻‍💻 Estimated hours of work so far
 
-* **588 hours**
+* **589 hours**
 
 ## 💰 Total amount donated by users
 
@@ -68,7 +68,7 @@
 
 · 📦 ADD: Emulators > PPSSPP v1.9.3-1063 (PSP Emulator).
 
-· 👌 IMPROVE: Vulkan compilation is compatible with Twister OS 🌪.
+· 👌 IMPROVE: Vulkan compilation is compatible with Twister OS 🌪. Diablo 1.
 
 ### (14/07/20)
 
