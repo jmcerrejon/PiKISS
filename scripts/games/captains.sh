@@ -23,7 +23,7 @@ playNow() {
 uninstall() {
 	read -p "Do you want to uninstall Captain S (y/N)? " response
 	if [[ $response =~ [Yy] ]]; then
-		rm -rf "$INSTALL_DIR"/captain_s "$HOME"/.local/share/applications/capitan*
+		rm -rf "$INSTALL_DIR"/captain_s "$HOME"/.capitan "$HOME"/.local/share/applications/capitan*
 		if [[ -e "$INSTALL_DIR"/captain_s ]]; then
 			echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
 			exitMessage
