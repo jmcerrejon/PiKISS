@@ -261,6 +261,7 @@ function smEmulators(){
   if [[ ${MODEL} == 'Raspberry Pi' ]]; then
     options=(
       Back "Back to main menu"
+      PSP "PPSSPP can run your PSP games on your RPi in full HD resolution"
       Mednafen "Portable multi-system emulator (Mednafen)"
       Genesis "Genesis Megadrive Emulator (picodrive)"
       Caprice "Amstrad CPC with Caprice32"
@@ -274,10 +275,6 @@ function smEmulators(){
       Pifba "Emulates old arcade games using CPS1, CPS2,..."
       ScummVM "Allow gamers to play point-and-click adventure games"
     )
-  elif [[ ${MODEL} == 'ODROID-C1' ]]; then
-    options=(
-      Back "Back to main menu"
-    )
   fi
 
   choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
@@ -286,6 +283,7 @@ function smEmulators(){
   do
     case $choice in
       Back) 		break ;;
+      PSP) 	./scripts/emus/psp.sh ;;
       Mednafen) 	./scripts/emus/mednafen.sh ;;
       Genesis) 	./scripts/emus/genesis.sh ;;
       Caprice) 	./scripts/emus/caprice.sh ;;
