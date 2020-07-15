@@ -13,7 +13,7 @@
 
 ## 👨🏻‍💻 Estimated hours of work so far
 
-* **583 hours**
+* **585 hours**
 
 ## 💰 Total amount donated by users
 
@@ -63,6 +63,10 @@
 
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (15/07/20)
+
+· 📦 👌 IMPROVE: Vulkan compilation is compatible with Twister OS 🌪.
 
 ### (14/07/20)
 
