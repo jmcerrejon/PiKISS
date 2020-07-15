@@ -27,7 +27,7 @@ if [[ ! $(cat /proc/cpuinfo | grep 'BCM2708\|BCM2709\|BCM2835\|BCM2711') ]]; the
     exit
 fi
 
-echo -e "\nPiKISS\n======\nInstalling at ${INSTALL_DIR}/piKiss. Please wait...\n"
+echo -e "\nPiKISS\n======\n\nInstalling at ${INSTALL_DIR}/piKiss. Please wait...\n"
 sudo apt install -y dialog
 git clone https://github.com/jmcerrejon/PiKISS.git piKiss && cd "$_"
 mkDesktopEntry
