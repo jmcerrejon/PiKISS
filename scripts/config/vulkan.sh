@@ -2,7 +2,7 @@
 #
 # Description : Vulkan driver (EXPERIMENTAL)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (14/Jul/20)
+# Version     : 1.0.1 (15/Jul/20)
 # Compatible  : Raspberry Pi 4
 #
 # Info		  : Thks to PI Labs
@@ -19,7 +19,7 @@ CORES=$(nproc --all)
 
 install() {
 	echo -e "\nInstalling,...\n"
-	cd "$HOME"/mesa
+	cd "$HOME"/mesa_vulkan
 	sudo ninja -C build install
 	echo
 	glxinfo -B
@@ -52,7 +52,7 @@ install_full_deps() {
 		libva-dev x11proto-randr-dev x11proto-present-dev \
 		libclc-dev libelf-dev git build-essential mesa-utils \
 		libvulkan-dev ninja-build libvulkan1 python-mako \
-		libdrm-dev libxshmfence-dev libxxf86vm-dev \
+		libdrm-dev libxshmfence-dev libxxf86vm-dev libwayland-dev \
 		python3-mako wayland-protocols libwayland-egl-backend-dev \
 		cmake libassimp-dev
 	install_meson
@@ -61,17 +61,17 @@ install_full_deps() {
 clone_repo() {
 	echo -e "\nCloning mesa repo...\n"
 	cd "$HOME"
-	git clone --single-branch --branch wip/igalia/v3dv "$SOURCE_CODE_URL" mesa && cd "$_"
+	git clone --single-branch --branch wip/igalia/v3dv "$SOURCE_CODE_URL" mesa_vulkan && cd "$_"
 }
 
 update_repo() {
-	cd "$HOME"/mesa
+	cd "$HOME"/mesa_vulkan
 	git fetch --all
 	git reset --hard origin/wip/igalia/v3dv
 }
 
 compile() {
-	if [[ -d "$HOME"/mesa ]]; then
+	if [[ -d "$HOME"/mesa_vulkan ]]; then
 		echo
 		read -p "Directory exists. Do you want to update the repo & compile it again (y/N)? " response
 		if [[ $response =~ [Yy] ]]; then
@@ -86,8 +86,8 @@ compile() {
 		clone_repo
 	fi
 
-	if [[ -d "$HOME"/mesa/build ]]; then
-		rm -rf "$HOME"/mesa/build
+	if [[ -d "$HOME"/mesa_vulkan/build ]]; then
+		rm -rf "$HOME"/mesa_vulkan/build
 	fi
 
 	meson --prefix /usr -Dplatforms=x11,drm,surfaceless,wayland -Dvulkan-drivers=broadcom -Ddri-drivers= -Dgallium-drivers=v3d,kmsro,vc4,zink -Dbuildtype=release build
