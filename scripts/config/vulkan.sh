@@ -2,7 +2,7 @@
 #
 # Description : Vulkan driver (EXPERIMENTAL)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (15/Jul/20)
+# Version     : 1.0.2 (15/Jul/20)
 # Compatible  : Raspberry Pi 4
 #
 # Info		  : Thks to PI Labs
@@ -23,6 +23,7 @@ install() {
 	sudo ninja -C build install
 	echo
 	glxinfo -B
+	echo "Done."
 }
 
 binary_only() {
