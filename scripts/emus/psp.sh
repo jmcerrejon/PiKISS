@@ -54,7 +54,7 @@ playNow() {
 	echo
 	read -p "Do you want to play Silveredge now? [y/n] " option
 	case "$option" in
-	y*) "$INSTALL_DIR"/ppsspp/ppssppsdl "$INSTALL_DIR"/ppsspp/roms/Silveredge/EBOOT.PBP ;;
+		y*) "$INSTALL_DIR"/ppsspp/ppssppsdl "$INSTALL_DIR"/ppsspp/roms/Silveredge/EBOOT.PBP ;;
 	esac
 	clear
 	exitMessage
