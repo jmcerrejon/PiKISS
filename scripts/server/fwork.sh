@@ -58,7 +58,7 @@ ghost(){
   install_node 6
   sudo mkdir -p "${WWW_PATH}" && cd $_ || return
   sudo chown $USER: .
-  download_and_extract $URL_GHOST
+  download_and_extract $URL_GHOST ./
   cd "${WWW_PATH}/ghost" || exit
   echo -e "\nInstalling Ghost, please wait...\n"
   sudo npm install --production --unsafe-perm
