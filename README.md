@@ -13,7 +13,7 @@
 
 ## 👨🏻‍💻 Estimated hours of work so far
 
-* **589 hours**
+* **599 hours**
 
 ## 💰 Total amount donated by users
 
@@ -64,6 +64,12 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (17/07/20)
+
+· 📦 ADD: Other > Scrcpy 1.13 (Mirror Android devices on your TV).
+
+· 👌 IMPROVE: Games > Diablo 2 (English) using the technology *MagicAirCopy®*.
+
 ### (15/07/20)
 
 · 📦 ADD: Emulators > PPSSPP v1.9.3-1063 (PSP Emulator).
@@ -98,11 +104,11 @@
 
 ### (07/07/20)
 
-· 👌 IMPROVE: Compile with cores according to the RPi Model.
-
 · 📦 ADD: Tweaks > ZRAM.
 
 · 📦 ADD: Games > Duke Nukem 3D native OpenGL ES.
+
+· 👌 IMPROVE: Compile with cores according to the RPi Model.
 
 ### (05/07/20)
 
@@ -132,9 +138,9 @@
 
 · 📦 ADD: mGBA v0.90, Mednafen 1.24.3, ScummVM 2.1.2.
 
-· ❌ REMOVE: DPRCZ/gpsp, PC-Engine.
-
 · 👌 IMPROVE: Emulators > OpenMSX.
+
+· ❌ REMOVE: DPRCZ/gpsp, PC-Engine.
 
 ### (18/06/20)
 
@@ -154,15 +160,15 @@
 
 ### (15/06/20)
 
-· ❌ REMOVE: piKiss.sh > GMaker, RWolf, Giana & Fruity (Not supported anymore).
-
 · 👌 IMPROVE: Emulators > Caprice32 (Amstrad).
+
+· ❌ REMOVE: piKiss.sh > GMaker, RWolf, Giana & Fruity (Not supported anymore).
 
 ### (12/06/20)
 
 · 🐛 FIX: Doom, Heretic. Removed Hexen, Strife (check Crispy-doom Github issue).
 
-· 📦 IMPROVE: Helper now install Box86, GL4ES, Mesa or Mono libs when is needed. 
+· 👌 IMPROVE: Helper now install Box86, GL4ES, Mesa or Mono libs when is needed. 
 
 ### (08/06/20)
 

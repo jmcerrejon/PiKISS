@@ -1,3 +1,10 @@
+(17/07/20)
+==========
+
+· 📦 ADD: Other > Scrcpy 1.13 (Mirror Android devices on your TV).
+
+· 👌 IMPROVE: Games > Diablo 2 (English) using the technology *MagicAirCopy®*.
+
 (15/07/20)
 ==========
 
@@ -39,11 +46,11 @@
 (07/07/20)
 ==========
 
-· 👌 IMPROVE: Compile with cores according to the RPi Model.
-
 · 📦 ADD: Tweaks > ZRAM.
 
 · 📦 ADD: Games > Duke Nukem 3D native OpenGL ES.
+
+· 👌 IMPROVE: Compile with cores according to the RPi Model.
 
 (05/07/20)
 ==========
@@ -79,9 +86,9 @@
 
 · 📦 ADD: mGBA v0.90, Mednafen 1.24.3, ScummVM 2.1.2.
 
-· ❌ REMOVE: DPRCZ/gpsp, PC-Engine.
-
 · 👌 IMPROVE: OpenMSX.
+
+· ❌ REMOVE: DPRCZ/gpsp, PC-Engine.
 
 (18/06/20)
 ==========
@@ -105,9 +112,9 @@
 (15/06/20)
 ==========
 
-· ❌ REMOVE: piKiss.sh > GMaker, RWolf, Giana & Fruity (Not supported anymore).
-
 · 👌 IMPROVE: Caprice32 (Amstrad).
+
+· ❌ REMOVE: piKiss.sh > GMaker, RWolf, Giana & Fruity (Not supported anymore).
 
 (12/06/20)
 ==========
