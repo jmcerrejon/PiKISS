@@ -93,7 +93,7 @@ install() {
 
 	echo -e "\nDownloading diabdat.mpq, please wait..."
 	wget -qO diabdat.mpq "$DIABDAT_PATH"
-	echo -e "\nDone!. type /usr/games/diablo1/devilutionx to Play or go to Start button > Games > Diablo1 (if proceed).\n"
+	echo -e "\nDone!. type /usr/games/diablo1/devilutionx to Play or go to Menu > Games > Diablo1 (if proceed).\n"
 }
 
 install
