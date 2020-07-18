@@ -13,7 +13,7 @@
 
 ## 👨🏻‍💻 Estimated hours of work so far
 
-* **599 hours**
+* **601 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,9 +66,11 @@
 
 ### (17/07/20)
 
-· 📦 ADD: Other > Scrcpy 1.13 (Mirror Android devices on your TV).
+· 📦 ADD: Other > Scrcpy 1.13 (Mirror Android devices on Raspberry Pi OS/Twister OS).
 
-· 👌 IMPROVE: Games > Diablo 2 (English) using the technology *MagicAirCopy®*.
+· 👌 IMPROVE: Games > Eduke32.
+
+· 👌 IMPROVE: Games > Diablo 2.
 
 ### (15/07/20)
 
