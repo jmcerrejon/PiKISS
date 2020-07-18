@@ -13,7 +13,6 @@
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-D2_PATH='https://archive.org/download/diabl02sp/diablo2.tar.xz'
 INSTALL_DIR="$HOME/games"
 SCRIPT_PATH="$HOME/games/diablo2/diablo2.sh"
 BINARY_PATH="https://notaz.gp2x.de/misc/starec/libd2game_sa_arm.exe.so.xz"
@@ -45,6 +44,7 @@ if [[ -d "$INSTALL_DIR"/diablo2 ]]; then
 fi
 
 generate_icon() {
+	echo -e "\nGenerating icon..."
 	cp -f "$PIKISS_PATH"/res/diabloII.png "$INSTALL_DIR"/diablo2/diabloII.png
 	if [[ ! -e ~/.local/share/applications/diablo2.desktop ]]; then
 		cat <<EOF >~/.local/share/applications/diablo2.desktop
@@ -101,8 +101,8 @@ choose_data_files() {
 		menuitem=$(<"${INPUT}")
 
 		case $menuitem in
-		English) clear && D2_PATH='https://archive.org/download/diablo2en.tar/diablo2.tar.xz' && download_data_files ;;
-		Spanish) clear && download_data_files ;;
+		English) clear && D2_PATH=$(extract_url_from_file 2) && download_data_files ;;
+		Spanish) clear && D2_PATH=$(extract_url_from_file 3) && download_data_files ;;
 		Exit) remove_files && clear && exitMessage ;;
 		esac
 	done
