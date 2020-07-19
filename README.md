@@ -13,7 +13,7 @@
 
 ## 👨🏻‍💻 Estimated hours of work so far
 
-* **601 hours**
+* **603 hours**
 
 ## 💰 Total amount donated by users
 
@@ -63,6 +63,10 @@
 
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (19/07/20)
+
+· 📦 ADD: Games > Blood
 
 ### (17/07/20)
 
