@@ -15,7 +15,7 @@ y*) sudo apt-get dist-upgrade -y ;;
 esac
 
 echo -e "\nInstalling some packages...\n"
-sudo apt-get install -y mc htop apt-file sshfs dialog
+sudo apt-get install -y mc htop apt-file sshfs dialog cmake
 sudo apt-get -y autoremove
 
 echo -e "\nAdding useful alias...\n"

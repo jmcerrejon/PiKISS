@@ -37,7 +37,7 @@ alias n='nano'
 alias nanosources='sudo nano /etc/apt/sources.list'
 alias nanofstab='sudo nano /etc/fstab'
 alias !='sudo'
-alias pk='cd /home/pi/sc/piKiss/ && ./piKiss.sh'
+alias pk='cd /home/pi/pikiss/ && ./piKiss.sh'
 
 # Functions
 
