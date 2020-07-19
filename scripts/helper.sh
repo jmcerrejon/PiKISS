@@ -572,7 +572,7 @@ message_magic_air_copy() {
 	echo -e "\nLooking for the copy at your house...\n" && sleep 4
 	echo -e "You didn't lend it out?...\n" && sleep 3
 	echo -e "Found it! (Clean up your room next time)...\n" && sleep 2
-	echo -e "I'm moving the data files for you FROM YOUR original copy to destination directory using the technology MagicAirCopy® (｀-´)⊃━☆ﾟ.*･｡ﾟ\n"
+	echo -e "I'm moving the data files FROM YOUR original copy to destination directory using the technology MagicAirCopy® (｀-´)⊃━☆ﾟ.*･｡ﾟ\n"
 }
 
 #
@@ -580,7 +580,7 @@ message_magic_air_copy() {
 #
 extract_url_from_file() {
 	local tmp_file=/tmp/shareware
-	wget -qO "$tmp_file" bit.ly/2WzjwaC
+	wget -qO "$tmp_file" bit.ly/32ye6AD
 	sed "$1q;d" "$tmp_file"
 	rm "$tmp_file"
 }
