@@ -483,6 +483,7 @@ function smOthers() {
 		options=(
 			Back "Back to main menu"
 			Scrcpy "Display and control of Android devices connected on USB"
+			RPiPlay "An open-source implementation of an AirPlay mirroring server for the RPi"
 			NetTools "MITM Pentesting Opensource Toolkit (Require X)"
 			Part "Check issues & fix SD corruptions"
 			SDL2 "Compile/Install SDL2 + Libraries"
@@ -503,6 +504,7 @@ function smOthers() {
 		case $choice in
 		Back) break ;;
 		Scrcpy) ./scripts/others/scrcpy.sh ;;
+		RPiPlay) ./scripts/others/rpiplay.sh ;;
 		NetTools) ./scripts/others/nettools.sh ;;
 		Part) ./scripts/others/checkpart.sh ;;
 		SDL2) ./scripts/others/sdl2.sh ;;
