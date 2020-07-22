@@ -355,9 +355,20 @@ show_dialog() {
 	done
 }
 
-mkDesktopEntry() {
+make_desktop_entry() {
 	if [[ ! -e "$HOME"/.local/share/applications/pikiss.desktop ]]; then
-		echo -e "[Desktop Entry]\nName=PiKISS\nComment=A bunch of scripts with menu to make your life easier\nExec=${PWD}/piKiss.sh\nIcon=${PWD}/icons/pikiss_32.png\nTerminal=true\nType=Application\nCategories=ConsoleOnly;Utility;System;\nPath=${PWD}/" >"$HOME"/.local/share/applications/pikiss.desktop
+		cat <<EOF >~/.local/share/applications/pikiss.desktop
+[Desktop Entry]
+Name=PiKISS
+Exec=${PWD}/piKiss.sh
+Icon=${PWD}/icons/pikiss_32.png
+Path=${PWD}/
+Type=Application
+Comment=A bunch of scripts with menu to make your life easier
+Categories=ConsoleOnly;Utility;System;
+Terminal=true
+X-KeepTerminal=true
+EOF
 		lxpanelctl restart
 	fi
 }
@@ -421,6 +432,55 @@ check_update() {
 	RESULT=$(((UPDATE - NOW) / 86400))
 	if [ $RESULT -ge 7 ]; then
 		sudo apt-get update
+	fi
+}
+
+last_update_repo() {
+	DATENOW=$(date +"%d-%b-%y")
+
+	if [ -e "checkupdate.txt" ]; then
+		CHECKUPDATE=$(cat checkupdate.txt)
+
+		if [[ $CHECKUPDATE -ge $DATENOW ]]; then
+			echo "Update repo: NO"
+			return 0
+		fi
+	fi
+
+	echo "Update repo: YES"
+	(echo "$DATENOW" >checkupdate.txt)
+	sudo apt-get update
+}
+
+check_update_pikiss() {
+	local IS_UP_TO_DATE=$(git status -uno | grep 'up to date')
+	if [[ ! "$IS_UP_TO_DATE" && "$CHK_PIKISS_UPDATE" -eq 0 ]]; then
+		echo -e "\n New version available!\n\n · Installing updates...\n"
+		git fetch --all
+		git reset --hard origin/master
+		git pull origin master
+		echo
+		read -p "PiKISS is up to date!. You need to run the program again. Press [ENTER] to exit."
+		exit 1
+	fi
+}
+
+function is_missing_dialog_pkg() {
+	if [ ! -f /usr/bin/dialog ]; then
+		while true; do
+			read -p "Missing 'dialog' package. Do you wish to let me try to install it for you? (aprox. 1.3 kB) [y/n] " yn
+			case $yn in
+			[Yy]*)
+				sudo apt install -y dialog
+				break
+				;;
+			[Nn]*)
+				echo "Please install 'dialog' package to continue."
+				exit 1
+				;;
+			*) echo "Please answer (y)es or (n)o." ;;
+			esac
+		done
 	fi
 }
 

@@ -1,98 +1,44 @@
 #!/bin/bash
 #
-# - - - - - - - - - - - - - - - - - -
 # PiKISS (Pi Keeping simple, stupid!)
-# - - - - - - - - - - - - - - - - - -
 #
 # Author  : Jose Cerrejon Gonzalez
 # Mail    : ulysess@gmail_dot_com
 # Version : Check VERSION variable
 #
-# USE AT YOUR OWN RISK!
-#
-# - - - -
-# INCLUDE
-# - - - -
-#
 
 . ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 VERSION="v.1.5.0"
-check_board
-check_temperature
-check_CPU
-mkDesktopEntry
 IP=$(get_ip)
-
-#
-# - - - - -
-# VARIABLES
-# - - - - -
-#
-
 TITLE="PiKISS (Pi Keeping It Simple, Stupid!) ${VERSION} .:. Jose Cerrejon | IP=${IP} ${CPU}| Model=${MODEL}"
 CHK_UPDATE=0
+CHK_PIKISS_UPDATE=0
 NOINTERNETCHECK=0
 wHEIGHT=20
 wWIDTH=70
+check_board
+check_temperature
+check_CPU
+make_desktop_entry
+# last_update_repo # Test this feature
+check_update_pikiss
 
-#
-# - - - - -
-# FUNCTIONS
-# - - - - -
-#
-
-function usage() {
+usage() {
 	echo -e "$TITLE\n\nScript designed to config or install apps on Raspberry Pi easier for everyone.\n"
 	echo -e "Usage: ./piKiss.sh [Arguments]\n\nArguments:\n"
-	echo "-h  | --help       : This help."
-	echo "-nu | --no_update  : No check if repositories are updated."
-	echo "-ni | --noinet     : No check if internet connection is available."
-	echo " "
-	echo "For trouble, ideas or technical support please visit https://misapuntesde.com"
-}
-
-function lastUpdateRepo() {
-	DATENOW=$(date +"%d-%b-%y")
-
-	if [ -e "checkupdate.txt" ]; then
-		CHECKUPDATE=$(cat checkupdate.txt)
-
-		if [[ $CHECKUPDATE -ge $DATENOW ]]; then
-			echo "Update repo: NO"
-			return 0
-		fi
-	fi
-
-	echo "Update repo: YES"
-	(echo "$DATENOW" >checkupdate.txt)
-	sudo apt-get update
-}
-
-function isMissingDialogPkg() {
-	if [ ! -f /usr/bin/dialog ]; then
-		while true; do
-			read -p "Missing 'dialog' package. Do you wish to let me try to install it for you? (aprox. 1.3 kB) [y/n] " yn
-			case $yn in
-			[Yy]*)
-				sudo apt install -y dialog
-				break
-				;;
-			[Nn]*)
-				echo "Please install 'dialog' package to continue."
-				exit 1
-				;;
-			*) echo "Please answer (y)es or (n)o." ;;
-			esac
-		done
-	fi
+	echo "-h   | --help       		: This help."
+	echo "-nu  | --no-update  	 	: No check if repositories are updated."
+	echo "-nup | --no-update-pikiss : No check if PiKISS are updated."
+	echo "-ni  | --noinet     		: No check if internet connection is available."
+	echo
+	echo "For trouble, ideas or technical support please visit https://github.com/jmcerrejon/PiKISS"
 }
 
 #
-# - - - - - - -
 # Initial checks
-# - - - - - - -
 #
 
 # Arguments
@@ -100,6 +46,9 @@ while [ "$1" != "" ]; do
 	case $1 in
 	-nu | --no_update)
 		CHK_UPDATE=1
+		;;
+	-nup | --no_update-pikiss)
+		CHK_PIKISS_UPDATE=1
 		;;
 	-ni | --noinet)
 		NOINTERNETCHECK=1
@@ -116,26 +65,14 @@ while [ "$1" != "" ]; do
 	shift
 done
 
-# Last time 'apt-get update' command was executed
-#if [ ! $CHK_UPDATE = 1 ]; then
-#lastUpdateRepo
-#fi
-
 # dialog exist
-isMissingDialogPkg
+is_missing_dialog_pkg
 check_internet_available
-#
-# - - - - - -
-# MENU OPTIONS
-# - - - - - -
-#
 
 #
-# - - - -
-# SUB-MENU
-# - - - -
+# Menu
 #
-function smInfo() {
+smInfo() {
 
 	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Info ]" --menu "Select an option from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
 
@@ -171,7 +108,7 @@ function smInfo() {
 	done
 }
 
-function smTweaks() {
+smTweaks() {
 
 	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Tweaks ]" --menu "Select a tweak from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
 
@@ -200,7 +137,7 @@ function smTweaks() {
 	done
 }
 
-function smGames() {
+smGames() {
 
 	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Games ]" --menu "Select game from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
 
@@ -261,7 +198,7 @@ function smGames() {
 	done
 }
 
-function smEmulators() {
+smEmulators() {
 	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Emulators ]" --menu "Select emulator from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
 
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
@@ -305,7 +242,7 @@ function smEmulators() {
 	done
 }
 
-function smMultimedia() {
+smMultimedia() {
 	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Multimedia ]" --menu "Select a script from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
 
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
@@ -331,7 +268,7 @@ function smMultimedia() {
 	done
 }
 
-function smConfigure() {
+smConfigure() {
 	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Configure ]" --menu "Select to configure your distro:" $wHEIGHT $wWIDTH $wHEIGHT)
 
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
@@ -369,7 +306,7 @@ function smConfigure() {
 	done
 }
 
-function smInternet() {
+smInternet() {
 	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Internet ]" --menu "Select an option from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
 
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
@@ -397,7 +334,7 @@ function smInternet() {
 	done
 }
 
-function smServer() {
+smServer() {
 	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Server ]" --menu "Select to configure your distro as a server:" $wHEIGHT $wWIDTH $wHEIGHT)
 
 	# options working on any board
@@ -457,7 +394,7 @@ function smServer() {
 	done
 }
 
-function smDevs() {
+smDevs() {
 	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Developers ]" --menu "Select to configure some apps for development:" $wHEIGHT $wWIDTH $wHEIGHT)
 
 	# options working on any board
@@ -476,7 +413,7 @@ function smDevs() {
 	done
 }
 
-function smOthers() {
+smOthers() {
 	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Others ]" --menu "Another scripts uncategorized:" $wHEIGHT $wWIDTH $wHEIGHT)
 
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
@@ -517,12 +454,10 @@ function smOthers() {
 	done
 }
 #
-# - - - - -
-# MAIN MENU
-# - - - - -
+# Main menu
 #
 while true; do
-	cmd=(dialog --clear --backtitle "$TITLE" --title "[ M A I N - M E N U ]" --menu "You can use the UP/DOWN arrow keys, the first letter of the choice as a hot key, or the number keys 1-9 to choose an option:" $wHEIGHT $wWIDTH $wHEIGHT)
+	cmd=(dialog --clear --backtitle "$TITLE" --title " [ M A I N - M E N U ] " --menu "You can use the UP/DOWN arrow keys, the first letter of the choice as a hot key, or the number keys 1-9 to choose an option:" $wHEIGHT $wWIDTH $wHEIGHT)
 
 	options=(
 		Tweaks "Put your distro to the limit"
