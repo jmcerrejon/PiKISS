@@ -453,14 +453,16 @@ last_update_repo() {
 }
 
 check_update_pikiss() {
-	local IS_UP_TO_DATE=$(git status -uno | grep 'up to date')
-	if [[ ! "$IS_UP_TO_DATE" && "$CHK_PIKISS_UPDATE" -eq 0 ]]; then
+	git fetch
+	local IS_UP_TO_DATE=$(git diff --name-only origin/master)
+	if [[ "$CHK_PIKISS_UPDATE" -eq 0 && "$IS_UP_TO_DATE" ]]; then
 		echo -e "\n New version available!\n\n · Installing updates...\n"
 		git fetch --all
 		git reset --hard origin/master
 		git pull origin master
 		echo
-		read -p "PiKISS is up to date!. You need to run the program again. Press [ENTER] to exit."
+		echo -e "PiKISS is up to date!. \n\nYou need to run the program again.\n"
+		read -p "Press [ENTER] to exit."
 		exit 1
 	fi
 }
