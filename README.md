@@ -64,6 +64,10 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (22/07/20)
+
+· 📦 ADD: Automatic updates!.
+
 ### (21/07/20)
 
 · 📦 ADD: Others > Airplay mirroring for iDevices.
@@ -241,13 +245,13 @@ curl -sSL https://git.io/JfAPE | bash
 
 ## [ Update ]
 
- If you want the latest version, just enter into the directory with cd PiKISS and type:
+*PiKISS* check if new scripts are available on remote and update them automatically, but If you want to get the latest version manually, just enter into the directory with cd PiKISS and type:
 
 <pre>
 git pull
 </pre>
 
-NOTE: If you use another distribution other than *Raspberry OS/TwisterOS*, maybe you need to execute the next command: *git config --global http.sslVerify false*
+**NOTE:** If you use another distribution other than *Raspberry OS/TwisterOS*, maybe you need to execute the next command: *git config --global http.sslVerify false*
 
 ### [ HELP ME! ]
 
@@ -294,13 +298,13 @@ curl -sSL https://git.io/JfAPE | bash
 
 ### [ Actualizar ]
 
-Si ya la tienes instalada y quieres actualizarla con los últimos cambios, teclea en el directorio de *PiKISS*:
+*PiKISS* comprueba si hay nuevas actualizaciones en remoto y las actualiza automaticamente, pero si quieres conseguir la última versión de forma manual, teclea en el directorio de *PiKISS*:
 
 <pre>
 git pull
 </pre>
 
-NOTA: Si usas otra distribución que no sea *Raspberry OS/TwisterOS* en la *Raspberry Pi*, tal vez tengas que ejecutar esta sencencia: *git config --global http.sslVerify false*
+**NOTA:** Si usas otra distribución que no sea *Raspberry OS/TwisterOS* en la *Raspberry Pi*, tal vez tengas que ejecutar esta sencencia: *git config --global http.sslVerify false*
 
 ### [ ¡AYÚDAME! ]
 
