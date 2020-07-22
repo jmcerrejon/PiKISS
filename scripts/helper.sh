@@ -671,3 +671,23 @@ extract() {
 		echo "'$1' is not a valid file"
 	fi
 }
+
+#
+# exit PiKISS
+#
+exit_pikiss() {
+	echo -e "\nSee you soon!. You can find me here (CTRL + Click):\n\n · Blog: https://misapuntesde.com\n · Twitter: https://twitter.com/ulysess10\n · Discord Server (Pi Labs): https://discord.gg/Y7WFeC5\n · Mail: ulysess@gmail.com\n"
+	exit
+}
+
+#
+# Uninstall PiKISS
+#
+uninstall_pikiss() {
+	clear
+	echo -e "\nUninstalling..."
+	rm -f "$HOME"/.local/share/applications/pikiss.desktop
+	rm -rf "${PWD}"
+	echo -e "\nPiKISS uninstall completed."
+	exit_pikiss
+}

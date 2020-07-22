@@ -23,8 +23,7 @@ check_board
 check_temperature
 check_CPU
 make_desktop_entry
-# last_update_repo # Test this feature
-check_update_pikiss
+
 
 usage() {
 	echo -e "$TITLE\n\nScript designed to config or install apps on Raspberry Pi easier for everyone.\n"
@@ -65,9 +64,10 @@ while [ "$1" != "" ]; do
 	shift
 done
 
-# dialog exist
 is_missing_dialog_pkg
 check_internet_available
+# last_update_repo # Test this feature
+check_update_pikiss
 
 #
 # Menu
@@ -428,6 +428,7 @@ smOthers() {
 			Synergy "Synergy allow you to share one keyboard and mouse to computers on LAN"
 			Fixes "Fix some problems with the Raspbian OS"
 			Aircrack "Compile Aircrack-NG suite easily"
+			Uninstall "Uninstall PiKISS :_("
 		)
 	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
 		options=(
@@ -450,6 +451,7 @@ smOthers() {
 		Synergy) ./scripts/others/synergy.sh ;;
 		Fixes) ./scripts/others/fixes.sh ;;
 		Aircrack) ./scripts/others/aircrack.sh ;;
+		Uninstall) uninstall_pikiss ;;
 		esac
 	done
 }
@@ -487,7 +489,7 @@ while true; do
 		Server) smServer ;;
 		Devs) smDevs ;;
 		Others) smOthers ;;
-		Exit) clear && echo -e "\nSee you soon!. You can find me here (CTRL + Click):\n\n · Blog: https://misapuntesde.com\n · Twitter: https://twitter.com/ulysess10\n · Discord Server (Pi Labs): https://discord.gg/Y7WFeC5\n · Mail: ulysess@gmail.com\n" && exit ;;
+		Exit) clear && exit_pikiss ;;
 		1)
 			echo -e "\nCancel pressed." && exit
 			;;
