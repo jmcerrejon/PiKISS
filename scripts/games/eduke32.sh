@@ -23,7 +23,7 @@ runme() {
 	read -p "Press [ENTER] to run the game..."
 	cd "$INSTALL_DIR"/eduke32 && ./eduke32
 	echo
-	exitMessage
+	exit_message
 }
 
 remove_files() {
@@ -36,12 +36,12 @@ uninstall() {
 		remove_files
 		if [[ -e "$INSTALL_DIR"/eduke32 ]]; then
 			echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
-			exitMessage
+			exit_message
 		fi
 		echo -e "\nSuccessfully uninstalled."
-		exitMessage
+		exit_message
 	fi
-	exitMessage
+	exit_message
 }
 
 if [[ -d "$INSTALL_DIR"/eduke32 ]]; then

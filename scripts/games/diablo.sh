@@ -24,7 +24,7 @@ playNow() {
 		y*) "$INSTALL_DIR"/diablo1/devilutionx ;;
 	esac
 	clear
-	exitMessage
+	exit_message
 }
 
 uninstall() {
@@ -33,10 +33,10 @@ uninstall() {
 		rm -rf "$INSTALL_DIR"/diablo1 ~/.local/share/applications/diablo1.desktop ~/.local/share/diasurgical
 		if [[ -e "$INSTALL_DIR"/diablo1 ]]; then
 			echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
-			exitMessage
+			exit_message
 		fi
 		echo -e "\nSuccessfully uninstalled."
-		exitMessage
+		exit_message
 	fi
 	playNow
 }

@@ -26,10 +26,10 @@ uninstall() {
 		rm -rf "$INSTALL_DIR"/captain_s "$HOME"/.capitan "$HOME"/.local/share/applications/capitan*
 		if [[ -e "$INSTALL_DIR"/captain_s ]]; then
 			echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
-			exitMessage
+			exit_message
 		fi
 		echo -e "\nSuccessfully uninstalled."
-		exitMessage
+		exit_message
 	fi
 	playNow
 }
@@ -60,7 +60,7 @@ install() {
 	copyMenuShortcuts
 	echo -e "\nDone. To play, on Desktop go to Menu > Games or via terminal, cd $INSTALL_DIR/captain_s and type: ./captain\n\nControls: Arrow: Move | CTRL: Action | ENTER: Change character when get a sausage or change superpower when you are Captain S."
 	playNow
-	exitMessage
+	exit_message
 }
 
 echo "Install Capitan Sevilla (AKA Captain S)"

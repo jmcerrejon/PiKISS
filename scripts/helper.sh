@@ -373,7 +373,7 @@ EOF
 	fi
 }
 
-exitMessage() {
+exit_message() {
 	echo
 	read -p "Press [Enter] to go back to the menu..."
 	exit 1

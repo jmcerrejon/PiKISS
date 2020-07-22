@@ -17,7 +17,7 @@ uninstall() {
 		sudo apt remove -y kodi
 		sudo apt -y autoremove
 	fi
-	exitMessage
+	exit_message
 }
 
 if [[ -e /usr/bin/kodi ]]; then
@@ -32,7 +32,7 @@ runNow() {
 	if [[ $response =~ [Yy] ]]; then
 		kodi
 	fi
-	exitMessage
+	exit_message
 }
 
 install() {

@@ -21,10 +21,10 @@ uninstall() {
 		rm -rf "$INSTALL_DIR"/ppsspp ~/.local/share/applications/ppsspp.desktop ~/.config/ppsspp
 		if [[ -e "$INSTALL_DIR"/ppsspp ]]; then
 			echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
-			exitMessage
+			exit_message
 		fi
 		echo -e "\nSuccessfully uninstalled."
-		exitMessage
+		exit_message
 	fi
 	playNow
 }
@@ -57,7 +57,7 @@ playNow() {
 		y*) "$INSTALL_DIR"/ppsspp/ppssppsdl "$INSTALL_DIR"/ppsspp/roms/Silveredge/EBOOT.PBP ;;
 	esac
 	clear
-	exitMessage
+	exit_message
 }
 
 downloadROM() {

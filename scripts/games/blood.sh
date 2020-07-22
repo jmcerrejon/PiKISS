@@ -19,11 +19,11 @@ INPUT=/tmp/blood.$$
 runme() {
 	if [ ! -f "$INSTALL_DIR"/blood/nblood ]; then
 		echo -e "\nFile does not exist.\n· Something is wrong.\n· Try to install again."
-		exitMessage
+		exit_message
 	fi
 	read -p "Press [ENTER] to run the game..."
 	cd "$INSTALL_DIR"/blood && ./nblood
-	exitMessage
+	exit_message
 }
 
 remove_files() {
@@ -36,12 +36,12 @@ uninstall() {
 		remove_files
 		if [[ -e "$INSTALL_DIR"/blood ]]; then
 			echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
-			exitMessage
+			exit_message
 		fi
 		echo -e "\nSuccessfully uninstalled."
-		exitMessage
+		exit_message
 	fi
-	exitMessage
+	exit_message
 }
 
 if [[ -d "$INSTALL_DIR"/blood ]]; then
@@ -94,7 +94,7 @@ compile() {
 	echo -e "\n\nCompiling... Estimated time on RPi 4: <5 min.\n"
 	make -j"${CORES}" WITHOUT_GTK=1 POLYMER=1 USE_LIBVPX=0 HAVE_FLAC=0 OPTLEVEL=3 LTO=0 RENDERTYPESDL=1 HAVE_JWZGLES=1 USE_OPENGL=1 OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
 	echo -e "\nDone. Copy the data files inside $INSTALL_DIR/blood. You can play typing $INSTALL_DIR/blood/nblood"
-	exitMessage
+	exit_message
 }
 
 download_binaries() {
@@ -118,7 +118,7 @@ install() {
 
 	echo -e "\nDone. Copy the data files inside $INSTALL_DIR/blood."
 	echo -e "\nYou can play typing $INSTALL_DIR/blood/nblood or opening the Menu > Games > Blood."
-	exitMessage
+	exit_message
 }
 
 menu() {
