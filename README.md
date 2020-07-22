@@ -13,7 +13,7 @@
 
 ## 👨🏻‍💻 Estimated hours of work so far
 
-* **604 hours**
+* **604.3 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,7 +66,9 @@
 
 ### (22/07/20)
 
-· 📦 ADD: PiKISS try to update automatically (WIP).
+· 📦 ADD: PiKISS try to update automatically.
+
+· 📦 ADD: Others > Uninstall PiKISS 😢.
 
 ### (21/07/20)
 
