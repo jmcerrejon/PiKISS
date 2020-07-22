@@ -66,7 +66,7 @@
 
 ### (22/07/20)
 
-· 📦 ADD: Automatic updates!.
+· 📦 ADD: PiKISS try to update automatically (WIP).
 
 ### (21/07/20)
 
