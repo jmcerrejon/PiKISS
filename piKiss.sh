@@ -204,6 +204,7 @@ smEmulators() {
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
+			Dolphin "Dolphin is a Wii & Gamecube emulator (EXPERIMENTAL)"
 			PSP "PPSSPP can run your PSP games on your RPi in full HD resolution"
 			Mednafen "Portable multi-system emulator (Mednafen)"
 			Genesis "Genesis Megadrive Emulator (picodrive)"
@@ -225,6 +226,7 @@ smEmulators() {
 	for choice in $choices; do
 		case $choice in
 		Back) break ;;
+		Dolphin) ./scripts/emus/dolphin.sh ;;
 		PSP) ./scripts/emus/psp.sh ;;
 		Mednafen) ./scripts/emus/mednafen.sh ;;
 		Genesis) ./scripts/emus/genesis.sh ;;
