@@ -65,7 +65,7 @@
 
 ### (23/07/20)
 
-· 📦 ADD: Emulators > Dolphin (Gamecube & Wii emulator) (EXPERIMENTAL).
+· 📦 ADD: Emulation > Dolphin (Gamecube & Wii emulator. Wii not supported yet) (EXPERIMENTAL).
 
 · 🐛 FIX: Games > OpenBOR and Xump.
 
@@ -95,7 +95,7 @@
 
 ### (15/07/20)
 
-· 📦 ADD: Emulators > PPSSPP v1.9.3-1063 (PSP Emulator).
+· 📦 ADD: Emulation > PPSSPP v1.9.3-1063 (PSP Emulator).
 
 · 👌 IMPROVE: Vulkan compilation is compatible with Twister OS 🌪. Diablo 1.
 

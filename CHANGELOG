@@ -1,7 +1,7 @@
 (23/07/20)
 ==========
 
-· 📦 ADD: Emulators > Dolphin (Gamecube & Wii emulator) (EXPERIMENTAL).
+· 📦 ADD: Emulation > Dolphin (Gamecube emulator. Wii not supported yet) (EXPERIMENTAL).
 
 · 🐛 FIX: Games > OpenBOR and Xump.
 
@@ -36,7 +36,7 @@
 (15/07/20)
 ==========
 
-· 📦 ADD: Emulators > PPSSPP v1.9.3-1063 (PSP Emulator).
+· 📦 ADD: Emulation > PPSSPP v1.9.3-1063 (PSP Emulator).
 
 · 👌 IMPROVE: Vulkan compilation is compatible with Twister OS 🌪. Diablo 1.
 
@@ -236,7 +236,7 @@
 (22/10/17)
 ==========
 
-· Added Emulators > OpenMSX 0.14
+· Added Emulation > OpenMSX 0.14
 
 (13/08/17)
 ==========
@@ -301,7 +301,7 @@
 (08/09/16)
 ==========
 
-· Fix issues and improve games, emulators, info, mmedia sections. Raspberry Pi 3 ready.
+· Fix issues and improve games, Emulation, info, mmedia sections. Raspberry Pi 3 ready.
 · Added Xump game.
 · Remove Minecraft script.
 
@@ -392,7 +392,7 @@
 (21/03/15)
 ==========
 
-· Updated Emulators > Mame
+· Updated Emulation > Mame
 
 (19/03/15)
 ==========
@@ -477,17 +477,17 @@
 (06/12/14)
 ==========
 
-· Update Emulators > UAE4ALL ver 2.5.3.2
+· Update Emulation > UAE4ALL ver 2.5.3.2
 
 (25/11/14)
 ==========
 
-· Update Emulators > Final Burn Alpha 2x for Raspberry Pi (4 players)
+· Update Emulation > Final Burn Alpha 2x for Raspberry Pi (4 players)
 
 (24/11/14)
 ==========
 
-· Updated emulators > openMSX 0.11.0
+· Updated Emulation > openMSX 0.11.0
 
 (04/11/14)
 ==========
@@ -539,12 +539,12 @@
 (25/08/14)
 ==========
 
-· Added Emulators > UAE4ALL 0.5
+· Added Emulation > UAE4ALL 0.5
 
 (14/08/14)
 ==========
 
-· Added Emulators > UAE4ALL 0.3 RC4
+· Added Emulation > UAE4ALL 0.3 RC4
 
 · Added Server > ownCloud 7.0.1 with NginX and SSL
 
@@ -586,13 +586,13 @@
 (01/07/14)
 ==========
 
-· Added Emulators > Uae4all2 (Amiga)
+· Added Emulation > Uae4all2 (Amiga)
 
 (27/06/14)
 ==========
 
 · Added Internet > Epiphany Web Browser
-· Added Emulators > Gameboy Advance + ROM (Watman), PCEngine + ROM (Reflectron)
+· Added Emulation > Gameboy Advance + ROM (Watman), PCEngine + ROM (Reflectron)
 
 (26/06/14)
 ==========
@@ -629,7 +629,7 @@
 ==========
 
 · Updated check_lastmod_img
-· Added Emulators > UAE4Armiga4Pi
+· Added Emulation > UAE4Armiga4Pi
 · Added Games > Return to Castle Wolfenstein (demo)
 
 1st release (29/05/14)
@@ -637,7 +637,7 @@
 
 · Configure Menu  : Joypad, Netcfg
 
-· Emulators Menu  : mame4allpi, pifba, pisnes, rpix86, speccy
+· Emulation Menu  : mame4allpi, pifba, pisnes, rpix86, speccy
 
 · Games Menu      : Crispy Doom, Dune2, MineCraft, Quake2, Sqrxz4
 
