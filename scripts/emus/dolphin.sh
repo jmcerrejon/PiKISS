@@ -51,7 +51,7 @@ generate_icon() {
 		cat <<EOF >~/.local/share/applications/dolphin.desktop
 [Desktop Entry]
 Name=Dolphin (Wii/Gamecube)
-Exec=/usr/local/bin/dolphin-em
+Exec=/usr/local/bin/dolphin-emu
 Icon=/usr/local/share/dolphin-emu/dolphin.png
 Type=Application
 Comment=Dolphin is a Wii & Gamecube emulator. This release corresponds to release 4.0
@@ -82,7 +82,7 @@ install() {
 	download_binaries
 	generate_icon
 	echo
-	echo -e "Done!. You can play typing /usr/local/share/dolphin-emu or opening the Menu > Games > Dolphin (Wii/Gamecube)."
+	echo -e "Done!. You can play typing /usr/local/bin/dolphin-emu or opening the Menu > Games > Dolphin (Wii/Gamecube)."
 	runme
 }
 
