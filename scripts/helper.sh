@@ -151,9 +151,9 @@ download_and_extract() {
 	fi
 	local SUFFIX=?dl=0
 	local FILE=$(basename $1 | sed -e "s/$SUFFIX$//")
-	echo -e "\nDownloading, please wait...\n"
+	echo -e "\nDownloading...\n"
 	wget -q --show-progress -O "$2"/"$FILE" -c "$1"
-	echo -e "\nExtracting, please wait..."
+	echo -e "\nExtracting..."
 	cd "$2" && extract "$FILE"
 	if [ -e $2/$FILE ]; then
 		rm -f "$2"/"$FILE"
@@ -637,7 +637,7 @@ message_magic_air_copy() {
 	echo -e "\nLooking for the copy at your house...\n" && sleep 4
 	echo -e "You didn't lend it out?...\n" && sleep 3
 	echo -e "Found it! (Clean up your room next time)...\n" && sleep 2
-	echo -e "I'm moving the data files FROM YOUR original copy to destination directory using the technology MagicAirCopy® (｀-´)⊃━☆ﾟ.*･｡ﾟ\n"
+	echo "I'm moving the data files FROM YOUR original copy to destination directory using the technology MagicAirCopy® (｀-´)⊃━☆ﾟ.*･｡ﾟ"
 }
 
 #
@@ -645,7 +645,7 @@ message_magic_air_copy() {
 #
 extract_url_from_file() {
 	local tmp_file=/tmp/shareware
-	wget -qO "$tmp_file" bit.ly/3jxE5hz
+	wget -qO "$tmp_file" bit.ly/39m1VIC
 	sed "$1q;d" "$tmp_file"
 	rm "$tmp_file"
 }
