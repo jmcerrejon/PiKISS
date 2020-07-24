@@ -18,7 +18,7 @@ CHK_UPDATE=0
 CHK_PIKISS_UPDATE=0
 NOINTERNETCHECK=0
 wHEIGHT=20
-wWIDTH=70
+wWIDTH=82
 check_board
 check_temperature
 check_CPU
@@ -44,13 +44,13 @@ usage() {
 while [ "$1" != "" ]; do
 	case $1 in
 	-nu | --no_update)
-		CHK_UPDATE=1
+		export CHK_UPDATE=1
 		;;
 	-nup | --no_update-pikiss)
-		CHK_PIKISS_UPDATE=1
+		export CHK_PIKISS_UPDATE=1
 		;;
 	-ni | --noinet)
-		NOINTERNETCHECK=1
+		export NOINTERNETCHECK=1
 		;;
 	-h | --help)
 		usage
@@ -66,15 +66,14 @@ done
 
 is_missing_dialog_pkg
 check_internet_available
-# last_update_repo # Test this feature
+# last_update_repo # TODO Test this feature
 check_update_pikiss
 
 #
 # Menu
 #
 smInfo() {
-
-	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Info ]" --menu "Select an option from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
+	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Info ]" --menu "Select an option from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
 	# common options, working on any model
 	options=(
@@ -109,8 +108,7 @@ smInfo() {
 }
 
 smTweaks() {
-
-	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Tweaks ]" --menu "Select a tweak from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
+	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Tweaks ]" --menu "Select a tweak from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
@@ -138,38 +136,26 @@ smTweaks() {
 }
 
 smGames() {
-
-	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Games ]" --menu "Select game from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
+	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Games ]" --menu "Select game from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
-			CaptainS "Save Seville from the evil Torrebruno"
-			Eduke32 "Duke Nukem 3D is a fps game developed by 3D Realms"
-			Blood "Blood is a fps game developed by Monolith Productions"
-			SMario64 "Super Mario 64 native OpenGL ES"
 			Abbaye "L’Abbaye des Morts is a retro puzzle platformer by Locomalito"
-			Revolt "Re-Volt is a radio control car racing themed video game"
+			Blood "Blood is a fps game developed by Monolith Productions"
+			CaptainS "Save Seville from the evil Torrebruno"
+			Crispy-doom "Crispy to play Doom or Heretic"
+			Descent "Descent 1 & 2 Shareware Ed."
+			Dune2 "Dune 2 Legacy"
 			Diablo "Take control of a lone hero battling to rid the world of Diablo"
 			Diablo2 "Diablo 2 Lord of Destruction"
+			Eduke32 "Duke Nukem 3D is a fps game developed by 3D Realms"
 			OpenBor "OpenBOR is the open source continuation of Beats of Rage"
-			Dune2 "Dune 2 Legacy"
-			Descent "Descent 1 & 2 Shareware Ed."
-			Crispy-doom "Crispy to play Doom or Heretic"
+			Quake "Enhanced client for id Software's Quake ]["
+			Revolt "Re-Volt is a radio control car racing themed video game"
+			SMario64 "Super Mario 64 native OpenGL ES"
 			Sqrxz4 "Sqrxz 4: Difficult platform game"
 			Xump "Xump: Simple multi-platform puzzler"
-		)
-	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
-		options=(
-			Back "Back to main menu"
-			Crispy-doom "Crispy to play Doom, Heretic, Hexen, Strife"
-			Quake "Quake 2"
-		)
-	elif [[ ${MODEL} == 'Debian' ]]; then
-		options=(
-			Back "Back to main menu"
-			OpenBor "OpenBOR is the open source continuation of Beats of Rage"
-			Arx-Fatalis "3D 1st person RPG"
 		)
 	fi
 
@@ -178,20 +164,19 @@ smGames() {
 	for choice in $choices; do
 		case $choice in
 		Back) break ;;
-		CaptainS) ./scripts/games/captains.sh ;;
-		Eduke32) ./scripts/games/eduke32.sh ;;
-		Blood) ./scripts/games/blood.sh ;;
-		SMario64) ./scripts/games/smario64.sh ;;
 		Abbaye) ./scripts/games/abbaye.sh ;;
-		Revolt) ./scripts/games/revolt.sh ;;
+		Blood) ./scripts/games/blood.sh ;;
+		CaptainS) ./scripts/games/captains.sh ;;
+		Crispy-doom) ./scripts/games/cdoom.sh ;;
+		Descent) ./scripts/games/descent.sh ;;
+		Dune2) ./scripts/games/dune2.sh ;;
 		Diablo) ./scripts/games/diablo.sh ;;
 		Diablo2) ./scripts/games/diablo2.sh ;;
+		Eduke32) ./scripts/games/eduke32.sh ;;
 		OpenBor) ./scripts/games/openbor.sh ;;
-		Arx-Fatalis) ./scripts/games/arx.sh ;;
-		Dune2) ./scripts/games/dune2.sh ;;
-		Descent) ./scripts/games/descent.sh ;;
 		Quake) ./scripts/games/quake.sh ;;
-		Crispy-doom) ./scripts/games/cdoom.sh ;;
+		Revolt) ./scripts/games/revolt.sh ;;
+		SMario64) ./scripts/games/smario64.sh ;;
 		Sqrxz4) ./scripts/games/sqrxz4.sh ;;
 		Xump) ./scripts/games/xump.sh ;;
 		esac
@@ -199,7 +184,7 @@ smGames() {
 }
 
 smEmulators() {
-	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Emulators ]" --menu "Select emulator from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
+	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Emulators ]" --menu "Select emulator from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
@@ -245,7 +230,7 @@ smEmulators() {
 }
 
 smMultimedia() {
-	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Multimedia ]" --menu "Select a script from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
+	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Multimedia ]" --menu "Select a script from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
@@ -271,7 +256,7 @@ smMultimedia() {
 }
 
 smConfigure() {
-	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Configure ]" --menu "Select to configure your distro:" $wHEIGHT $wWIDTH $wHEIGHT)
+	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Configure ]" --menu "Select to configure your distro:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
@@ -309,7 +294,7 @@ smConfigure() {
 }
 
 smInternet() {
-	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Internet ]" --menu "Select an option from the list:" $wHEIGHT $wWIDTH $wHEIGHT)
+	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Internet ]" --menu "Select an option from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
@@ -337,7 +322,7 @@ smInternet() {
 }
 
 smServer() {
-	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Server ]" --menu "Select to configure your distro as a server:" $wHEIGHT $wWIDTH $wHEIGHT)
+	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Server ]" --menu "Select to configure your distro as a server:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
 	# options working on any board
 	options=(
@@ -397,7 +382,7 @@ smServer() {
 }
 
 smDevs() {
-	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Developers ]" --menu "Select to configure some apps for development:" $wHEIGHT $wWIDTH $wHEIGHT)
+	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Developers ]" --menu "Select to configure some apps for development:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
 	# options working on any board
 	options=(
@@ -416,18 +401,18 @@ smDevs() {
 }
 
 smOthers() {
-	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Others ]" --menu "Another scripts uncategorized:" $wHEIGHT $wWIDTH $wHEIGHT)
+	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Others ]" --menu "Another scripts uncategorized:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
 			Scrcpy "Display and control of Android devices connected on USB"
-			RPiPlay "An open-source implementation of an AirPlay mirroring server for the RPi"
+			RPiPlay "An open-source implementation of an AirPlay mirroring server"
 			NetTools "MITM Pentesting Opensource Toolkit (Require X)"
 			Part "Check issues & fix SD corruptions"
 			SDL2 "Compile/Install SDL2 + Libraries"
 			GCC "Install GCC 4.7 on Raspberry Pi"
-			Synergy "Synergy allow you to share one keyboard and mouse to computers on LAN"
+			Synergy "Allow you to share keyboard and mouse to computers on LAN"
 			Fixes "Fix some problems with the Raspbian OS"
 			Aircrack "Compile Aircrack-NG suite easily"
 			Uninstall "Uninstall PiKISS :_("
@@ -457,11 +442,12 @@ smOthers() {
 		esac
 	done
 }
+
 #
 # Main menu
 #
 while true; do
-	cmd=(dialog --clear --backtitle "$TITLE" --title " [ M A I N - M E N U ] " --menu "You can use the UP/DOWN arrow keys, the first letter of the choice as a hot key, or the number keys 1-9 to choose an option:" $wHEIGHT $wWIDTH $wHEIGHT)
+	cmd=(dialog --clear --backtitle "$TITLE" --title " [ M A I N - M E N U ] " --menu "You can use the UP/DOWN arrow keys, the first letter of the choice as a hot key, or the number keys 1-9 to choose an option:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
 	options=(
 		Tweaks "Put your distro to the limit"
