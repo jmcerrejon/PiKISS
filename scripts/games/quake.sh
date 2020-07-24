@@ -117,7 +117,7 @@ quake2_high_textures_download() {
 }
 
 quake2_end_message() {
-	echo -e "\n\nDone!. You can play typing $INSTALL_DIR/yquake2/yquake2 or opening the Menu > Games > Quake ][.\n"
+	echo -e "\n\nDone!. You can play typing $INSTALL_DIR/yquake2/quake2 or opening the Menu > Games > Quake ][.\n"
 	quake2_runme
 }
 
