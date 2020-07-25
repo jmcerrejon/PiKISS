@@ -299,13 +299,10 @@ smInternet() {
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
-			Plowshare "Direct download from hosters like uploaded,..."
+			Cordless "Discord client that aims to have a low memory footprint"
+			# Plowshare "Direct download from hosters like uploaded,..."
 			# Browser "Web browser"
 			# Downmp3 "Download mp3 from GrooveShark"
-		)
-	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
-		options=(
-			Back "Back to main menu"
 		)
 	fi
 
@@ -314,6 +311,7 @@ smInternet() {
 	for choice in $choices; do
 		case $choice in
 		Back) break ;;
+		Cordless) ./scripts/inet/discord.sh ;;
 		Plowshare) ./scripts/inet/ddown.sh ;;
 		Browser) ./scripts/inet/browser.sh ;;
 		Downmp3) ./scripts/inet/dwnmp3.sh ;;

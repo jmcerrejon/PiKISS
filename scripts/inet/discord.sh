@@ -1,0 +1,97 @@
+#!/bin/bash
+#
+# Description : Discord
+# Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
+# Version     : 1.0.0 (25/Jul/20)
+# Compatible  : Raspberry Pi 4 (tested)
+#
+. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+clear
+check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
+
+SOURCE_CODE_URL="github.com/Bios-Marcel/cordless"
+GO_URL="https://golang.org/dl/go1.14.6.linux-armv6l.tar.gz"
+RETRIEVE_TOKEN_INFO="https://github.com/Bios-Marcel/cordless/wiki/Retrieving-your-token"
+
+runme() {
+	if [ ! -f ~/go/bin/cordless ]; then
+		echo -e "\nFile does not exist.\n· Something is wrong.\n· Try to install again."
+		exit_message
+	fi
+	read -p "Press [ENTER] to run Cordless..."
+	~/go/bin/cordless
+	exit_message
+}
+
+uninstall() {
+	read -p "Do you want to uninstall Cordless (y/N)? " response
+	if [[ $response =~ [Yy] ]]; then
+		# Remove unused packages
+		sudo apt-get remove -y xclip wl-clipboard
+		# Remove PATH
+		# sed -e "s/export PATH=\$PATH:\/usr\/local\/go\/bin//" > ~/.bashrc
+		# Remove files
+		sudo rm -rf ~/go /usr/local/go ~/.local/share/applications/cordless.desktop
+		if [[ -e ~/go/bin/cordless ]]; then
+			echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
+			exit_message
+		fi
+		echo -e "\nSuccessfully uninstalled."
+		exit_message
+	fi
+	runme
+}
+
+if [[ -f ~/go/bin/cordless ]]; then
+	echo -e "Cordless already installed.\n"
+	uninstall
+fi
+
+generate_icon() {
+	echo -e "\nGenerating icon..."
+	if [[ ! -e ~/.local/share/applications/cordless.desktop ]]; then
+		cat <<EOF >~/.local/share/applications/cordless.desktop
+[Desktop Entry]
+Name=Cordless
+Exec=${PWD}/go/bin/cordless
+Path=${PWD}/go/bin/
+Type=Application
+Comment=Cordless is a custom Discord client that aims to have a low memory footprint and be aimed at power-users.
+Categories=ConsoleOnly;Utility;System;
+EOF
+	fi
+}
+
+install_go() {
+	if [[ -d /usr/local/go ]]; then
+		echo -e "\nGo installed, moving on..."
+		return 1
+	fi
+	echo -e "\nInstalling Go..."
+	wget -q --show-progress -O /tmp/go.tar.gz "$GO_URL"
+	sudo tar -C /usr/local -xzf /tmp/go.tar.gz
+	echo 'export PATH=$PATH:/usr/local/go/bin' >>~/.bashrc
+	source ~/.bashrc
+	echo
+	/usr/local/go/bin/go version
+}
+
+install() {
+	echo -e "\n\nInstalling Cordless, please wait..."
+	sudo apt-get install -y xclip wl-clipboard
+	install_go
+	echo -e "\nDownloading Cordless...\n"
+	export GO111MODULE=on && /usr/local/go/bin/go get -u "$SOURCE_CODE_URL"
+	echo -e "\nDone!."
+	chromium-browser "$RETRIEVE_TOKEN_INFO" >/dev/null 2>&1
+	runme
+}
+
+echo "Install Cordless"
+echo "================"
+echo
+echo " · Cordless is a custom Discord client that aims to have a low memory footprint and be aimed at power-users."
+echo " · Keyboard shortcut changer via Ctrl + K."
+echo " · Install path: ~/go/bin/cordless"
+
+install
