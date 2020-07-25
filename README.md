@@ -63,6 +63,10 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (25/07/20)
+
+· 📦 ADD: Internet > Cordless (Discord client from cli)
+
 ### (24/07/20)
 
 · 📦 ADD: Games > Quake ][
