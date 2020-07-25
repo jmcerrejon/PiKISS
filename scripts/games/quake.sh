@@ -2,16 +2,15 @@
 #
 # Description : Quake ][ (I & III is coming)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (4/Apr/20)
+# Version     : 1.0.1 (25/Jul/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
-# HELP
-#             · Quake 1: https://github.com/welford/qurp
-#             · QuakeServer: https://www.recantha.co.uk/blog/?p=9962
-#             · Darkplaces Quake: https://github.com/petrockblog/RetroPie-Setup/tree/master/scriptmodules/ports
-#             · https://www.raspberrypi.org/forums/viewtopic.php?f=78&t=18853
-#             · https://www.raspberrypi.org/forums/viewtopic.php?f=78&t=54683
-#             · https://forums.steampowered.com/forums/showthread.php?t=996272 | https://quake.wikia.com/wiki/Quake_2_Soundtrack
+# Help 		  : Quake 1: https://github.com/welford/qurp
+#               QuakeServer: https://www.recantha.co.uk/blog/?p=9962
+#               Darkplaces Quake: https://github.com/petrockblog/RetroPie-Setup/tree/master/scriptmodules/ports
+#               https://www.raspberrypi.org/forums/viewtopic.php?f=78&t=18853
+#               https://www.raspberrypi.org/forums/viewtopic.php?f=78&t=54683
+#               https://forums.steampowered.com/forums/showthread.php?t=996272 | https://quake.wikia.com/wiki/Quake_2_Soundtrack
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
@@ -19,16 +18,14 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 INSTALL_DIR="$HOME/games"
 Q2_CONFIG_DIR="$HOME/.yq2"
-Q1_PAK_URL="https://www.quakeforge.net/files/quake-shareware-1.06.zip"
-
 Q2_BINARY_URL="https://www.dropbox.com/s/wrqzgicvb3ygmgh/yquake2_bin_arm.tar.gz?dl=0"
 Q2_SC_URL="https://github.com/yquake2/yquake2.git"
 Q2_PAK_URL="https://www.dropbox.com/s/sbr0xwr9wo9been/baseq2s.zip?dl=0"
 Q2_OGG_URL="https://www.dropbox.com/s/z7c8lm8weemf2iy/q2_ogg.zip?dl=0"
 Q2_HIGH_TEXTURE_PAK_URL="https://deponie.yamagi.org/quake2/texturepack/q2_textures.zip"
 Q2_HIGH_TEXTURE_MODELS_URL="https://deponie.yamagi.org/quake2/texturepack/models.zip"
-
-Q3_DEMO_PAK_URL="https://joshua14.homelinux.org/downloads/Q3-Demo-Paks.zip"
+# Q1_PAK_URL="https://www.quakeforge.net/files/quake-shareware-1.06.zip"
+# Q3_DEMO_PAK_URL="https://joshua14.homelinux.org/downloads/Q3-Demo-Paks.zip"
 
 quake2_runme() {
 	if [ ! -f "$INSTALL_DIR"/yquake2/quake2 ]; then
@@ -95,6 +92,7 @@ install_quake2_data() {
 }
 
 quake2_compile() {
+	CORES=$(nproc --all)
 	echo -e "\nInstalling Dependencies..."
 	sudo apt install -y libsdl2-dev libopenal-dev
 	mkdir -p "$HOME"/sc
