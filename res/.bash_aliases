@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
 
-#Add on .bashrc:
-# if [ -f ~/.bash_aliases ]; then
-# . ~/.bash_aliases
-# fi
-
-# NOTE: checkinstall for build .deb packages
-
 # Stop bash from caching duplicate lines.
 HISTCONTROL=ignoredups
 
@@ -37,12 +30,12 @@ alias n='nano'
 alias nanosources='sudo nano /etc/apt/sources.list'
 alias nanofstab='sudo nano /etc/fstab'
 alias !='sudo'
-alias pk='cd /home/pi/pikiss/ && ./piKiss.sh'
+alias pk='cd /home/pi/pikiss/ && ./piKiss.sh -nup'
 
 # Functions
 
 mk() {
-  mkdir $1 && cd $_ || exit
+  mkdir "$1" && cd "$_" || exit
 }
 
 search() {
@@ -50,18 +43,18 @@ search() {
 }
 
 ex () {
-  if [ -f $1 ] ; then
+  if [ -f "$1" ] ; then
       case $1 in
-        *.tar.bz2 | *.tbz2) tar xvjf $1   ;;
-        *.tar.gz | *.tgz)   tar xvzf $1   ;;
-        *.bz2)              tar jxf $1    ;;
-        *.rar)              unrar x $1    ;;
-        *.gz)               gunzip $1     ;;
-        *.tar)              tar xvf $1    ;;
-        *.zip)              unzip $1      ;;
-        *.Z)                uncompress $1 ;;
-        *.7z)               7z x $1       ;;
-        *.exe)              cabextract $1 ;;
+        *.tar.bz2 | *.tbz2) tar xvjf "$1"   ;;
+        *.tar.gz | *.tgz)   tar xvzf "$1"   ;;
+        *.bz2)              tar jxf "$1"    ;;
+        *.rar)              unrar x "$1"    ;;
+        *.gz)               gunzip "$1"     ;;
+        *.tar)              tar xvf "$1"    ;;
+        *.zip)              unzip "$1"      ;;
+        *.Z)                uncompress "$1" ;;
+        *.7z)               7z x "$1"       ;;
+        *.exe)              cabextract "$1" ;;
         *)                  echo "'$1': unrecognized file compression" ;;
       esac
   else

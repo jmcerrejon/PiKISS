@@ -79,7 +79,7 @@ compile() {
 			echo -e "\nDownloading the latest changes...\n"
 			update_repo
 		else
-			exitMessage
+			exit_message
 			return 1
 		fi
 	else
@@ -99,4 +99,4 @@ compile() {
 
 upgrade_dist
 compile
-exitMessage
+exit_message

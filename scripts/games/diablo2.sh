@@ -29,12 +29,12 @@ uninstall() {
 		remove_files
 		if [[ -e "$INSTALL_DIR"/diablo2 ]]; then
 			echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
-			exitMessage
+			exit_message
 		fi
 		echo -e "\nSuccessfully uninstalled. NOTE: You need to uninstall wine manually with sudo apt remove -y wine"
-		exitMessage
+		exit_message
 	fi
-	exitMessage
+	exit_message
 }
 
 if [[ -d "$INSTALL_DIR"/diablo2 ]]; then
@@ -79,7 +79,7 @@ download_binaries() {
 end_message() {
 	winecfg >/dev/null &
 	echo -e "\nOn winecfg, go to Graphics Tab and set Emulate a virtual desktop to 800x600. Then, run $SCRIPT_PATH or click on Menu > Games > Diablo 2 Lord of Destruction."
-	exitMessage
+	exit_message
 }
 
 download_data_files() {
@@ -103,7 +103,7 @@ choose_data_files() {
 		case $menuitem in
 		English) clear && D2_PATH=$(extract_url_from_file 2) && download_data_files ;;
 		Spanish) clear && D2_PATH=$(extract_url_from_file 3) && download_data_files ;;
-		Exit) remove_files && clear && exitMessage ;;
+		Exit) remove_files && clear && exit_message ;;
 		esac
 	done
 }

@@ -15,11 +15,11 @@ INPUT=/tmp/rpiplay.$$
 runme() {
 	if [ ! -f "$INSTALL_DIR"/rpiplay/rpiplay ]; then
 		echo -e "\nFile does not exist.\n· Something is wrong.\n· Try to install again."
-		exitMessage
+		exit_message
 	fi
 	read -p "Press [ENTER] to run the app..."
 	"$INSTALL_DIR"/rpiplay/rpiplay
-	exitMessage
+	exit_message
 }
 
 remove_files() {
@@ -33,12 +33,12 @@ uninstall() {
 		remove_files
 		if [[ -e "$INSTALL_DIR"/rpiplay ]]; then
 			echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
-			exitMessage
+			exit_message
 		fi
 		echo -e "\nSuccessfully uninstalled."
-		exitMessage
+		exit_message
 	fi
-	exitMessage
+	exit_message
 }
 
 if [[ -d "$INSTALL_DIR"/rpiplay ]]; then

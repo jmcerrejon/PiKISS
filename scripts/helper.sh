@@ -151,9 +151,9 @@ download_and_extract() {
 	fi
 	local SUFFIX=?dl=0
 	local FILE=$(basename $1 | sed -e "s/$SUFFIX$//")
-	echo -e "\nDownloading, please wait...\n"
+	echo -e "\nDownloading...\n"
 	wget -q --show-progress -O "$2"/"$FILE" -c "$1"
-	echo -e "\nExtracting, please wait..."
+	echo -e "\nExtracting..."
 	cd "$2" && extract "$FILE"
 	if [ -e $2/$FILE ]; then
 		rm -f "$2"/"$FILE"
@@ -301,8 +301,8 @@ check_CPU() {
 check_internet_available() {
 	# Make sure we have internet conection
 	if [ ! "$NOINTERNETCHECK" = 1 ]; then
-		PINGOUTPUT=$(ping -c 1 8.8.8.8 >/dev/null && echo 'true')
-		if [ ! "$PINGOUTPUT" = true ]; then
+		PINGOUTPUT=$(ping -c 1 8.8.8.8 >/dev/null && echo '...')
+		if [ ! "$PINGOUTPUT" = '...' ]; then
 			echo -e "\nInternet connection required. Causes:\n\n · Check your network.\n · Weak WiFi signal?.\n · Try no check internet connection parameter (-ni): cd ~/piKiss && ./piKiss.sh -ni\n"
 			read -p "Press [Enter] to exit..."
 			exit 1
@@ -355,14 +355,25 @@ show_dialog() {
 	done
 }
 
-mkDesktopEntry() {
+make_desktop_entry() {
 	if [[ ! -e "$HOME"/.local/share/applications/pikiss.desktop ]]; then
-		echo -e "[Desktop Entry]\nName=PiKISS\nComment=A bunch of scripts with menu to make your life easier\nExec=${PWD}/piKiss.sh\nIcon=${PWD}/icons/pikiss_32.png\nTerminal=true\nType=Application\nCategories=ConsoleOnly;Utility;System;\nPath=${PWD}/" >"$HOME"/.local/share/applications/pikiss.desktop
+		cat <<EOF >~/.local/share/applications/pikiss.desktop
+[Desktop Entry]
+Name=PiKISS
+Exec=${PWD}/piKiss.sh
+Icon=${PWD}/icons/pikiss_32.png
+Path=${PWD}/
+Type=Application
+Comment=A bunch of scripts with menu to make your life easier
+Categories=ConsoleOnly;Utility;System;
+Terminal=true
+X-KeepTerminal=true
+EOF
 		lxpanelctl restart
 	fi
 }
 
-exitMessage() {
+exit_message() {
 	echo
 	read -p "Press [Enter] to go back to the menu..."
 	exit 1
@@ -421,6 +432,60 @@ check_update() {
 	RESULT=$(((UPDATE - NOW) / 86400))
 	if [ $RESULT -ge 7 ]; then
 		sudo apt-get update
+	fi
+}
+
+last_update_repo() {
+	DATENOW=$(date +"%d-%b-%y")
+
+	if [ -e "checkupdate.txt" ]; then
+		CHECKUPDATE=$(cat checkupdate.txt)
+
+		if [[ $CHECKUPDATE -ge $DATENOW ]]; then
+			echo "Update repo: NO"
+			return 0
+		fi
+	fi
+
+	echo "Update repo: YES"
+	(echo "$DATENOW" >checkupdate.txt)
+	sudo apt-get update
+}
+
+check_update_pikiss() {
+	if [[ "$CHK_PIKISS_UPDATE" -eq 1 ]]; then
+		return 1
+	fi
+	git fetch
+	local IS_UP_TO_DATE=$(git diff --name-only origin/master)
+	if [[ "$IS_UP_TO_DATE" ]]; then
+		echo -e "\n New version available!\n\n · Installing updates...\n"
+		git fetch --all
+		git reset --hard origin/master
+		git pull origin master
+		echo
+		echo -e "PiKISS is up to date!. \n\nYou need to run the program again.\n"
+		read -p "Press [ENTER] to exit."
+		exit 1
+	fi
+}
+
+function is_missing_dialog_pkg() {
+	if [ ! -f /usr/bin/dialog ]; then
+		while true; do
+			read -p "Missing 'dialog' package. Do you wish to let me try to install it for you? (aprox. 1.3 kB) [y/n] " yn
+			case $yn in
+			[Yy]*)
+				sudo apt install -y dialog
+				break
+				;;
+			[Nn]*)
+				echo "Please install 'dialog' package to continue."
+				exit 1
+				;;
+			*) echo "Please answer (y)es or (n)o." ;;
+			esac
+		done
 	fi
 }
 
@@ -572,7 +637,7 @@ message_magic_air_copy() {
 	echo -e "\nLooking for the copy at your house...\n" && sleep 4
 	echo -e "You didn't lend it out?...\n" && sleep 3
 	echo -e "Found it! (Clean up your room next time)...\n" && sleep 2
-	echo -e "I'm moving the data files FROM YOUR original copy to destination directory using the technology MagicAirCopy® (｀-´)⊃━☆ﾟ.*･｡ﾟ\n"
+	echo "I'm moving the data files FROM YOUR original copy to destination directory using the technology MagicAirCopy® (｀-´)⊃━☆ﾟ.*･｡ﾟ"
 }
 
 #
@@ -580,7 +645,7 @@ message_magic_air_copy() {
 #
 extract_url_from_file() {
 	local tmp_file=/tmp/shareware
-	wget -qO "$tmp_file" bit.ly/32ye6AD
+	wget -qO "$tmp_file" bit.ly/39m1VIC
 	sed "$1q;d" "$tmp_file"
 	rm "$tmp_file"
 }
@@ -608,4 +673,24 @@ extract() {
 	else
 		echo "'$1' is not a valid file"
 	fi
+}
+
+#
+# exit PiKISS
+#
+exit_pikiss() {
+	echo -e "\nSee you soon!. You can find me here (CTRL + Click):\n\n · Blog: https://misapuntesde.com\n · Twitter: https://twitter.com/ulysess10\n · Discord Server (Pi Labs): https://discord.gg/Y7WFeC5\n · Mail: ulysess@gmail.com\n"
+	exit
+}
+
+#
+# Uninstall PiKISS
+#
+uninstall_pikiss() {
+	clear
+	echo -e "\nUninstalling..."
+	rm -f "$HOME"/.local/share/applications/pikiss.desktop
+	rm -rf "${PWD}"
+	echo -e "\nPiKISS uninstall completed."
+	exit_pikiss
 }

@@ -2,7 +2,7 @@
 #
 # Description : Blood
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (19/Jul/20)
+# Version     : 1.0.1 (19/Jul/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://www.techradar.com/how-to/how-to-run-wolfenstein-3d-doom-and-duke-nukem-on-your-raspberry-pi
@@ -11,19 +11,19 @@
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-INSTALL_DIR="$HOME"/games
-GAME_PATH="https://www.dropbox.com/s/m0gm85dcwozsly7/blood_r11880.tar.gz?dl=0"
+INSTALL_DIR="$HOME/games"
+BINARY_PATH="https://www.dropbox.com/s/m0gm85dcwozsly7/blood_r11880.tar.gz?dl=0"
 GITHUB_PATH="https://github.com/nukeykt/NBlood.git"
 INPUT=/tmp/blood.$$
 
 runme() {
 	if [ ! -f "$INSTALL_DIR"/blood/nblood ]; then
 		echo -e "\nFile does not exist.\n· Something is wrong.\n· Try to install again."
-		exitMessage
+		exit_message
 	fi
 	read -p "Press [ENTER] to run the game..."
 	cd "$INSTALL_DIR"/blood && ./nblood
-	exitMessage
+	exit_message
 }
 
 remove_files() {
@@ -36,12 +36,12 @@ uninstall() {
 		remove_files
 		if [[ -e "$INSTALL_DIR"/blood ]]; then
 			echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
-			exitMessage
+			exit_message
 		fi
 		echo -e "\nSuccessfully uninstalled."
-		exitMessage
+		exit_message
 	fi
-	exitMessage
+	exit_message
 }
 
 if [[ -d "$INSTALL_DIR"/blood ]]; then
@@ -94,12 +94,12 @@ compile() {
 	echo -e "\n\nCompiling... Estimated time on RPi 4: <5 min.\n"
 	make -j"${CORES}" WITHOUT_GTK=1 POLYMER=1 USE_LIBVPX=0 HAVE_FLAC=0 OPTLEVEL=3 LTO=0 RENDERTYPESDL=1 HAVE_JWZGLES=1 USE_OPENGL=1 OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
 	echo -e "\nDone. Copy the data files inside $INSTALL_DIR/blood. You can play typing $INSTALL_DIR/blood/nblood"
-	exitMessage
+	exit_message
 }
 
 download_binaries() {
 	echo -e "\nInstalling binary files..."
-	download_and_extract "$GAME_PATH" "$INSTALL_DIR"
+	download_and_extract "$BINARY_PATH" "$INSTALL_DIR"
 }
 
 install() {
@@ -118,7 +118,7 @@ install() {
 
 	echo -e "\nDone. Copy the data files inside $INSTALL_DIR/blood."
 	echo -e "\nYou can play typing $INSTALL_DIR/blood/nblood or opening the Menu > Games > Blood."
-	exitMessage
+	exit_message
 }
 
 menu() {

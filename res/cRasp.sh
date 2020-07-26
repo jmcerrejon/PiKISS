@@ -15,7 +15,7 @@ y*) sudo apt-get dist-upgrade -y ;;
 esac
 
 echo -e "\nInstalling some packages...\n"
-sudo apt-get install -y mc htop apt-file sshfs dialog cmake
+sudo apt-get install -y mc htop apt-file sshfs dialog cmake exfat-fuse exfat-utils checkinstall
 sudo apt-get -y autoremove
 
 echo -e "\nAdding useful alias...\n"
@@ -71,6 +71,8 @@ esac
 # Other stuff
 echo -e "\nRunning apt-file update...\n"
 sudo apt-file update
+echo -e "\nmkdir pikiss for test using sshfs...\n"
+mkdir "$HOME"/pikiss
 
 echo -e "\nThe system is going to reboot in 5 seconds. Pray...\n"
 sleep 5

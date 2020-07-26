@@ -23,12 +23,12 @@ uninstall() {
 		remove_files
 		if [[ -e "$INSTALL_DIR"/scrcpy ]]; then
 			echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
-			exitMessage
+			exit_message
 		fi
 		echo -e "\nSuccessfully uninstalled."
-		exitMessage
+		exit_message
 	fi
-	exitMessage
+	exit_message
 }
 
 if [[ -d "$INSTALL_DIR"/scrcpy ]]; then
@@ -78,7 +78,7 @@ install() {
 	sleep 3
 	generate_icon
 	echo -e "\nDone. Type "$INSTALL_DIR"/scrcpy/android.sh or go to Menu > System Tools > Scrcpy.\n"
-	exitMessage
+	exit_message
 }
 
 echo "Install Scrcpy"

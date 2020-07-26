@@ -11,9 +11,9 @@
 	<a href="https://commerce.coinbase.com/checkout/71737f60-2440-488e-b413-f41e706f024b"><img height="20" src="https://estafaonline.com/wp-content/uploads/2019/02/Coinbase-logo.png" alt="Coinbase"></a>
 </p>
 
-## 👨🏻‍💻 Estimated hours of work so far
+## ⏰ Estimated hours of work so far
 
-* **603 hours**
+* **615 hours**
 
 ## 💰 Total amount donated by users
 
@@ -61,12 +61,33 @@
 
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
-
 ### [ ChangeLog (dd/mm/yy)]
+
+### (25/07/20)
+
+· 📦 ADD: Internet > Cordless (Discord client from cli)
+
+### (24/07/20)
+
+· 📦 ADD: Games > Quake ][
+
+### (23/07/20)
+
+· 📦 ADD: Emulation > Dolphin (Gamecube & Wii emulator. Wii not supported yet) (EXPERIMENTAL).
+
+· 🐛 FIX: Games > OpenBOR and Xump.
+
+### (22/07/20)
+
+· 📦 ADD: PiKISS try to update automatically.
+
+· 📦 ADD: Others > Uninstall *PiKISS* 😢.
+
+· 👌 IMPROVE: Others > *SDL2* binary 2.0.13 or compile 2.0.12.
 
 ### (21/07/20)
 
-· 📦 ADD: Others > Airplay mirroring for iDevices.
+· 📦 ADD: Others > *Airplay* mirroring for *iDevices*.
 
 ### (19/07/20)
 
@@ -82,7 +103,7 @@
 
 ### (15/07/20)
 
-· 📦 ADD: Emulators > PPSSPP v1.9.3-1063 (PSP Emulator).
+· 📦 ADD: Emulation > PPSSPP v1.9.3-1063 (PSP Emulator).
 
 · 👌 IMPROVE: Vulkan compilation is compatible with Twister OS 🌪. Diablo 1.
 
@@ -97,112 +118,6 @@
 · 👌 IMPROVE: Multimedia > Kodi 18.7.
 
 · ❌ REMOVE: Airplay.
-
-### (10/07/20)
-
-· 👌 IMPROVE: Games > Crispy-Doom.
-
-### (09/07/20)
-
-· 👌 IMPROVE: Info > Webmin.
-
-### (08/07/20)
-
-· 🐛 FIX: PiKISS menu option takes time to appear.
-
-· 🐛 FIX: Games > Diablo 2.
-
-### (07/07/20)
-
-· 📦 ADD: Tweaks > ZRAM.
-
-· 📦 ADD: Games > Duke Nukem 3D native OpenGL ES.
-
-· 👌 IMPROVE: Compile with cores according to the RPi Model.
-
-### (05/07/20)
-
-· 📦 ADD: Games > Super Mario 64 native OpenGL ES.
-
-· 👌 IMPROVE: Install process & new menu icon.
-
-### (03/07/20)
-
-· 👌 IMPROVE: Diablo 2. Now run in full screen (800x600).
-
-· 🐛 FIX: Games > Diablo 2.
-
-### (28/06/20)
-
-· 🐛 FIX: Mednafen, Tweaks, Crispy-Doom.
-
-### (24/06/20)
-
-· 📦 ADD: Developer section and QT5 script.
-
-### (20/06/20)
-
-· 👌 IMPROVE: Emulators > Unreal Speccy Portable (ZX-Spectrum).
-
-### (19/06/20)
-
-· 📦 ADD: mGBA v0.90, Mednafen 1.24.3, ScummVM 2.1.2.
-
-· 👌 IMPROVE: Emulators > OpenMSX.
-
-· ❌ REMOVE: DPRCZ/gpsp, PC-Engine.
-
-### (18/06/20)
-
-· 📦 ADD: Games > Abbaye des Morts v2.0.0.
-
-· 📦 ADD: Emulators > DOSBox-X v0.82, Amiberry v3.1.3.1.
-
-· ❌ REMOVE: rpix86, 8086tiny, UAE4ARM.
-
-### (17/06/20)
-
-· 👌 IMPROVE: Emulators > MAME.
-
-### (16/06/20)
-
-· 👌 IMPROVE: Emulators > SuperNES emulator (Snes9X 1.60).
-
-### (15/06/20)
-
-· 👌 IMPROVE: Emulators > Caprice32 (Amstrad).
-
-· ❌ REMOVE: piKiss.sh > GMaker, RWolf, Giana & Fruity (Not supported anymore).
-
-### (12/06/20)
-
-· 🐛 FIX: Doom, Heretic. Removed Hexen, Strife (check Crispy-doom Github issue).
-
-· 👌 IMPROVE: Helper now install Box86, GL4ES, Mesa or Mono libs when is needed. 
-
-### (08/06/20)
-
-· 🐛 FIX: Games > Diablo 1.
-
-### (02/04/20)
-
-· Updated Spectrum emulator unrealspeccy to 0.86.11
-
-### (08/03/20)
-
-· Fix Games > Revolt.
-
-### (07/03/20)
-
-· Update Games > Crispy Doom.
-
-### (16/11/19)
-
-· Add Games > Diablo 2 LOD Spanish Ed.
-
-### (02/10/19)
-
-· Add Games > Diablo 1
 
 ...
 
@@ -241,13 +156,13 @@ curl -sSL https://git.io/JfAPE | bash
 
 ## [ Update ]
 
- If you want the latest version, just enter into the directory with cd PiKISS and type:
+*PiKISS* check if new scripts are available on remote and update them automatically, but If you want to get the latest version manually, just enter into the directory with cd PiKISS and type:
 
 <pre>
 git pull
 </pre>
 
-NOTE: If you use another distribution other than *Raspberry OS/TwisterOS*, maybe you need to execute the next command: *git config --global http.sslVerify false*
+**NOTE:** If you use another distribution other than *Raspberry OS/TwisterOS*, maybe you need to execute the next command: *git config --global http.sslVerify false*
 
 ### [ HELP ME! ]
 
@@ -294,13 +209,13 @@ curl -sSL https://git.io/JfAPE | bash
 
 ### [ Actualizar ]
 
-Si ya la tienes instalada y quieres actualizarla con los últimos cambios, teclea en el directorio de *PiKISS*:
+*PiKISS* comprueba si hay nuevas actualizaciones en remoto y las actualiza automaticamente, pero si quieres conseguir la última versión de forma manual, teclea en el directorio de *PiKISS*:
 
 <pre>
 git pull
 </pre>
 
-NOTA: Si usas otra distribución que no sea *Raspberry OS/TwisterOS* en la *Raspberry Pi*, tal vez tengas que ejecutar esta sencencia: *git config --global http.sslVerify false*
+**NOTA:** Si usas otra distribución que no sea *Raspberry OS/TwisterOS* en la *Raspberry Pi*, tal vez tengas que ejecutar esta sencencia: *git config --global http.sslVerify false*
 
 ### [ ¡AYÚDAME! ]
 
