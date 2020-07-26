@@ -15,7 +15,6 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 SOURCE_CODE_URL="https://gitlab.freedesktop.org/apinheiro/mesa.git"
-CORES=$(nproc --all)
 
 install() {
 	echo -e "\nInstalling,...\n"
@@ -93,7 +92,7 @@ compile() {
 
 	meson --prefix /usr -Dplatforms=x11,drm,surfaceless,wayland -Dvulkan-drivers=broadcom -Ddri-drivers= -Dgallium-drivers=v3d,kmsro,vc4,zink -Dbuildtype=release build
 	echo -e "\nCompiling... Estimated time on Raspberry Pi 4 over USB/SSD drive (Not overclocked): ~12 min. \n"
-	ninja -C build -j"${CORES}"
+	ninja -C build -j"$(getconf _NPROCESSORS_ONLN)"
 	install
 }
 

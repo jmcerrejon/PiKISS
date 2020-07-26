@@ -58,7 +58,6 @@ share_version() {
 
 compile() {
 	echo -e "\nInstalling deps...\n"
-	CORES=$(nproc --all)
 	cd "$WAD_PATH"
 	git clone "$CRISPY_DOOM_SOURCE" crispy-doom && cd "$_"
 	sudo apt install -y build-essential automake git timidity libsdl2-net-2.0-0 libsdl2-net-dev libsdl2-mixer-dev
@@ -66,7 +65,7 @@ compile() {
 	autoreconf -fiv
 	./configure
 	echo -e "\nCompiling...\n"
-	make -j"${CORES}"
+	make -j"$(getconf _NPROCESSORS_ONLN)"
 	echo -e "\nDone! . Go to $(pwd) to run the binaries or type make install to install the app.\n"
 }
 

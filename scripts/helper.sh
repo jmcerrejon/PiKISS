@@ -516,7 +516,7 @@ compile_sdl2() {
 		unzip SDL2-2.0.10.zip && cd SDL2-2.0.10 || exit
 		./autogen.sh
 		./configure --disable-pulseaudio --disable-esd --disable-video-wayland --disable-video-opengl --host=arm-raspberry-linux-gnueabihf --prefix=/usr
-		make -j4
+		make -j"$(getconf _NPROCESSORS_ONLN)"
 		sudo make install
 		echo "Done!"
 	else
@@ -531,7 +531,7 @@ compile_sdl2_image() {
 	tar zxvf SDL2_image-2.0.5.tar.gz && cd SDL2_image-2.0.5
 	./autogen.sh
 	./configure --prefix=/usr
-	make -j4
+	make -j"$(getconf _NPROCESSORS_ONLN)"
 	sudo make install
 }
 
@@ -542,7 +542,7 @@ compile_sdl2_mixer() {
 	tar zxvf SDL2_mixer-2.0.4.tar.gz && cd SDL2_mixer-2.0.4
 	./autogen.sh
 	./configure --prefix=/usr
-	make -j4
+	make -j"$(getconf _NPROCESSORS_ONLN)"
 	sudo make install
 }
 
@@ -553,7 +553,7 @@ compile_sdl2_ttf() {
 	tar zxvf SDL2_ttf-2.0.15.tar.gz && cd SDL2_ttf-2.0.15
 	./autogen.sh
 	./configure --prefix=/usr
-	make -j4
+	make -j"$(getconf _NPROCESSORS_ONLN)"
 	sudo make install
 }
 
@@ -564,7 +564,7 @@ compile_sdl2_net() {
 	tar zxvf SDL2_net-2.0.1.tar.gz && cd SDL2_net-2.0.1
 	./autogen.sh
 	./configure --prefix=/usr
-	make -j4
+	make -j"$(getconf _NPROCESSORS_ONLN)"
 	sudo make install
 }
 

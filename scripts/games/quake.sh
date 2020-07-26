@@ -92,13 +92,12 @@ install_quake2_data() {
 }
 
 quake2_compile() {
-	CORES=$(nproc --all)
 	echo -e "\nInstalling Dependencies..."
 	sudo apt install -y libsdl2-dev libopenal-dev
 	mkdir -p "$HOME"/sc
 	git clone "$Q2_SC_URL" yquake2 && cd "$_"
 	# TODO Add on Makefile -march=armv7
-	make -j"${CORES}"
+	make -j"$(getconf _NPROCESSORS_ONLN)"
 	echo -e "\nDone!. "
 }
 
