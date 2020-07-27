@@ -25,7 +25,7 @@ runme() {
 }
 
 generate_icon() {
-	echo -e "\nRemoving uncompatible icon..."
+	echo -e "\nRemoving incompatible icon..."
 	sudo rm -f /usr/share/applications/com.obsproject.Studio.desktop
 	echo -e "\nGenerating icon..."
 	if [[ ! -e ~/.local/share/applications/obs.desktop ]]; then
