@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **615 hours**
+* **618.3 hours**
 
 ## 💰 Total amount donated by users
 
@@ -62,6 +62,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (27/07/20)
+
+· 📦 ADD: Easy compile Multimedia > OBS (Open Broadcaster Software)
 
 ### (25/07/20)
 
