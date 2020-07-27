@@ -300,6 +300,7 @@ smInternet() {
 		options=(
 			Back "Back to main menu"
 			Cordless "Discord client that aims to have a low memory footprint"
+			OBS "Free & open source software 4 video recording and streaming"
 			# Plowshare "Direct download from hosters like uploaded,..."
 			# Browser "Web browser"
 			# Downmp3 "Download mp3 from GrooveShark"
@@ -312,6 +313,7 @@ smInternet() {
 		case $choice in
 		Back) break ;;
 		Cordless) ./scripts/inet/discord.sh ;;
+		OBS) ./scripts/inet/obs.sh ;;
 		Plowshare) ./scripts/inet/ddown.sh ;;
 		Browser) ./scripts/inet/browser.sh ;;
 		Downmp3) ./scripts/inet/dwnmp3.sh ;;
