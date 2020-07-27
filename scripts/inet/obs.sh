@@ -62,7 +62,7 @@ EOF
 	wget -q https://raw.githubusercontent.com/jmcerrejon/PiKISS/master/res/icon_obs.png -O "$INSTALL_DIR"/icon_obs.png
 	generate_icon
 	echo -e "\nCleaning da house...\n"
-	sudo rm -rf "$HOME"/obs-build/
+	sudo rm -rf "$HOME"/obs-build/ /tmp/ndisdk /tmp/libndi-install.sh
 	echo -e "Done!. Go to Menu > Sound & Video > OBS Studio or type $INSTALL_DIR/obs_start.sh."
 	runme
 }
