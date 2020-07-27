@@ -82,5 +82,5 @@ if [[ $response =~ [Nn] ]]; then
 	exit 0
 fi
 
-#install
+install
 post_install
