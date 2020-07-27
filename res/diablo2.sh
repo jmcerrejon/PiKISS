@@ -21,7 +21,7 @@ EOF
 echo $! > /tmp/sc_bg.pid
 sleep 0.3
 xrandr --output $vga --mode $res --panning $res --transform 1.33333333,0,-$off,0,1,0,0,0,1
-LD_LIBRARY_PATH=/home/pi/mesa/lib/arm-linux-gnueabihf LIBGL_DRIVERS_PATH=/home/pi/mesa/lib/arm-linux-gnueabihf/dri/ GBM_DRIVERS_PATH=/home/pi/mesa/lib setarch linux32 -L wine libd2game_sa_arm.exe.so
+LD_LIBRARY_PATH=/home/pi/mesa/lib/arm-linux-gnueabihf LIBGL_DRIVERS_PATH=/home/pi/mesa/lib/arm-linux-gnueabihf/dri/ GBM_DRIVERS_PATH=/home/pi/mesa/lib setarch linux32 -L /usr/lib/wine/wine libd2game_sa_arm.exe.so
 xrandr --output $vga --auto --panning 0x0 --scale 1x1
 if [[ -e /tmp/sc_bg.pid ]]; then   
     kill `cat /tmp/sc_bg.pid`    
