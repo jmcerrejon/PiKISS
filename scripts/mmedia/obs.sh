@@ -48,7 +48,7 @@ EOF
 
 install() {
 	clear
-	# curl -sSL https://obsproject.com/forum/attachments/installobs-sh-txt.58920 | bash
+	curl -sSL https://obsproject.com/forum/attachments/installobs-sh-txt.58920 | bash
 }
 
 post_install() {

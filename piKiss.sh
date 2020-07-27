@@ -237,10 +237,7 @@ smMultimedia() {
 			Back "Back to main menu"
 			Kodi "Kodi is a free media player that is designed to look great on your TV but is just as home on a small screen."
 			Kiosk "Image slideshow"
-		)
-	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
-		options=(
-			Back "Back to main menu"
+			OBS "Free & open source software 4 video recording and streaming"
 		)
 	fi
 
@@ -251,6 +248,7 @@ smMultimedia() {
 		Back) break ;;
 		Kodi) ./scripts/mmedia/xbmc.sh ;;
 		Kiosk) ./scripts/mmedia/kiosk.sh ;;
+		OBS) ./scripts/mmedia/obs.sh ;;
 		esac
 	done
 }
@@ -300,7 +298,6 @@ smInternet() {
 		options=(
 			Back "Back to main menu"
 			Cordless "Discord client that aims to have a low memory footprint"
-			OBS "Free & open source software 4 video recording and streaming"
 			# Plowshare "Direct download from hosters like uploaded,..."
 			# Browser "Web browser"
 			# Downmp3 "Download mp3 from GrooveShark"
@@ -313,7 +310,6 @@ smInternet() {
 		case $choice in
 		Back) break ;;
 		Cordless) ./scripts/inet/discord.sh ;;
-		OBS) ./scripts/inet/obs.sh ;;
 		Plowshare) ./scripts/inet/ddown.sh ;;
 		Browser) ./scripts/inet/browser.sh ;;
 		Downmp3) ./scripts/inet/dwnmp3.sh ;;
