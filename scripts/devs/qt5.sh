@@ -23,7 +23,7 @@ init() {
 	sudo chown pi:pi /opt/QT5
 	echo "{ \"device\": \"/dev/dri/card1\" }" >> /opt/QT5/eglfs.json
 
-	sudo apt-get update && sudo apt-get -y upgrade
+	sudo apt-get -qq update && sudo apt-get -y upgrade
 }
 
 install_packages() {

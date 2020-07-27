@@ -12,7 +12,7 @@ clear
 
 echo -e "\nUpdate bootloader from stable branch...\n"
 read -p "Press [ENTER] to Continue..."
-sudo apt-get update && sudo apt-get dist-upgrade
+sudo apt-get -qq update && sudo apt-get dist-upgrade
 cd "$HOME"
 # make a new directory and switch to it.
 # this will make it easy to clean up later on

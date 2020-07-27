@@ -43,7 +43,7 @@ rygel(){
 
     echo -e "deb https://rygel-project.org/raspbian wheezy/\ndeb-src https://rygel-project.org/raspbian wheezy/\ndeb https://vontaene.de/raspbian-updates/ . main" | sudo tee -a /etc/apt/sources.list
 
-    sudo apt-get update && sudo apt-get install -y raspbian-dlna-renderer --force-yes
+    sudo apt-get -qq update && sudo apt-get install -y raspbian-dlna-renderer --force-yes
 
     cp /etc/rygel.conf ${HOME}/.config/rygel.conf
     create_dir

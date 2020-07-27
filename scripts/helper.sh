@@ -431,7 +431,7 @@ check_update() {
 	# passed days
 	RESULT=$(((UPDATE - NOW) / 86400))
 	if [ $RESULT -ge 7 ]; then
-		sudo apt-get update
+		sudo apt-get -qq update
 	fi
 }
 
@@ -449,7 +449,7 @@ last_update_repo() {
 
 	echo "Update repo: YES"
 	(echo "$DATENOW" >checkupdate.txt)
-	sudo apt-get update
+	sudo apt-get -qq update
 }
 
 check_update_pikiss() {
@@ -593,10 +593,10 @@ ask_gcc6() {
 install_gcc6() {
 	sudo cp /etc/apt/sources.list{,.bak}
 	sudo sed -i 's/jessie/stretch/g' /etc/apt/sources.list
-	sudo apt-get update
+	sudo apt-get -qq update
 	sudo apt install -y gcc-6 g++-6
 	sudo sed -i 's/stretch/jessie/g' /etc/apt/sources.list
-	sudo apt-get update
+	sudo apt-get -qq update
 }
 
 #
@@ -618,7 +618,7 @@ install_apache2() {
 add_php7_repository() {
 	sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 	sudo sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
-	sudo apt-get update
+	sudo apt-get -qq update
 }
 
 #
@@ -626,7 +626,7 @@ add_php7_repository() {
 #
 upgrade_dist() {
 	echo -e "\nUpgrading distribution...\n"
-	sudo apt-get update && sudo apt-get -y upgrade
+	sudo apt-get -qq update && sudo apt-get -y upgrade
 }
 
 #

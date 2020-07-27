@@ -58,7 +58,7 @@ monkey(){
   esac
 
   echo -e "deb https://packages.monkey-project.com/primates_pi primates_pi main" | sudo tee -a /etc/apt/sources.list
-  sudo apt-get update
+  sudo apt-get -qq update
   sudo apt install -y monkey-liana monkey-logger monkey-dirlisting monkey-cgi monkey-fastcgi monkey-mandril monkey-cheetah monkey-auth $SSL_ENABLED
   curl -i https://"$HOST)":2001/
   read -p "Done!. Press [Enter] to continue..."
