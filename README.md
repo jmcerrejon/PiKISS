@@ -65,7 +65,7 @@
 
 ### (27/07/20)
 
-· 📦 ADD: Easy compile Multimedia > OBS (Open Broadcaster Software)
+· 📦 ADD: Multimedia > Easy compile OBS (Open Broadcaster Software)
 
 ### (25/07/20)
 
