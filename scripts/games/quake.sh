@@ -126,7 +126,7 @@ quake2_install() {
 	quake2_high_textures_download
 	generate_icon
 	echo
-	read -p "Do you have an original copy of Quake ][ (y/N)? " response
+	read -p "Do you have an original copy of Quake ][ (If not, a shareware version will be installed) (y/N)?: " response
 	if [[ $response =~ [Yy] ]]; then
 		Q2_PAK_URL=$(extract_url_from_file 5)
 		message_magic_air_copy
