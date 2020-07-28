@@ -142,6 +142,7 @@ smGames() {
 		options=(
 			Back "Back to main menu"
 			Abbaye "L’Abbaye des Morts is a retro puzzle platformer by Locomalito"
+			Arx "Arx Fatalis is a fps RPG set on a world whose sun has failed"
 			Blood "Blood is a fps game developed by Monolith Productions"
 			CaptainS "Save Seville from the evil Torrebruno"
 			Crispy-doom "Crispy to play Doom or Heretic"
@@ -165,6 +166,7 @@ smGames() {
 		case $choice in
 		Back) break ;;
 		Abbaye) ./scripts/games/abbaye.sh ;;
+		Arx) ./scripts/games/arx.sh ;;
 		Blood) ./scripts/games/blood.sh ;;
 		CaptainS) ./scripts/games/captains.sh ;;
 		Crispy-doom) ./scripts/games/cdoom.sh ;;

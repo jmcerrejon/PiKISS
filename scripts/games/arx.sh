@@ -1,94 +1,175 @@
 #!/bin/bash
 #
-# Description : Arx Fatalis (a.k.a. Arx Libertatis)
+# Description : Arx Libertatis (AKA Arx Fatalis)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.8 (19/May/15)
-# Compatible  : Raspberry Pi 2 (tested: Fail textures), ODROID-C1 (OK), Debian (OK)
-# Know bugs   : Maybe with libglew
+# Version     : 1.0.0 (28/Jul/20)
+# Compatible  : Raspberry Pi 4 (fail)
 #
-clear
+# Help		  : https://wiki.arx-libertatis.org/Downloading_and_Compiling_under_Linux
+# For fans	  : https://www.reddit.com/r/ArxFatalis/
+# Issue		  : ../sysdeps/unix/sysv/linux/read.c: No such file or directory
+#
 
-. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-ARX_RPI_URL="https://pickle.gp2x.de/rpi/quake2_rpi.zip"
-ARX_PAK_URL="https://www.dropbox.com/s/7416ye9qi0024pu/arx_full_es.tgz?dl=0"
-DATA_DIR="$HOME/games/"
-LICENSE="Complete"
-ARX_ODROID_PKG="https://misapuntesde.com/res/arx-libertatis_1.1.2-1_armhf.deb"
-ARX_RPI_BIN="https://www.littlecarnage.com/arx_rpi2.tar.gz"
+INSTALL_DIR="$HOME/games"
+PACKAGES=( libglew-dev )
+PACKAGES_DEV=(  zlib1g-dev libfreetype6-dev libopenal1 libopenal-dev mesa-common-dev libgl1-mesa-dev libboost-dev libepoxy-dev libglm-dev libcppunit-dev libglew-dev libsdl2-dev  )
+CONFIG_DIR="$HOME/.local/share/arx"
+BINARY_URL="https://www.littlecarnage.com/arx_rpi2.tar.gz"
+SOURCE_CODE_URL="https://github.com/ptitSeb/ArxLibertatis.git"
+SOURCE_CODE_OFFICIAL_URL="https://github.com/arx/ArxLibertatis.git" # Doesn't work for now
+DATA_URL="https://www.dropbox.com/s/nhh3lr8irrx3vnm/arx_demo_en.tgz?dl=0"
+ICON_URL="https://github.com/arx/ArxLibertatisData/blob/master/icons/arx-libertatis-32.png?raw=true"
+INPUT=/tmp/arx.$$
 
-share_version(){
-  ARX_PAK_URL="https://www.dropbox.com/s/nhh3lr8irrx3vnm/arx_demo_en.tgz?dl=0"
+runme() {
+	if [ ! -f "$INSTALL_DIR"/arx/arx ]; then
+		echo -e "\nFile does not exist.\n· Something is wrong.\n· Try to install again."
+		exit_message
+	fi
+	echo
+	read -p "Press [ENTER] to run the game..."
+	cd "$INSTALL_DIR"/arx && ./arx
+	exit_message
 }
 
-dload_pak_files(){
-  if [ ! -d $HOME/.config/arx ]; then
-  wget -O $HOME/arx.tgz $ARX_PAK_URL
-  cd $HOME
-  tar xzvf $HOME/arx.tgz
-  rm $HOME/arx.tgz
-fi
+remove_files() {
+	# TODO Remove files installed with sudo make install (maybe if I make a .deb dpkg, easier)
+	rm -rf ~/.local/share/applications/arx.desktop ~/.local/share/arx "$CONFIG_DIR"/arx-libertatis-32.png \
+		"$INSTALL_DIR"/arx /usr/local/share/blender/scripts/addons/arx /usr/local/share/games/arx
 }
 
-arx_ODROID(){
-  DATA_DIR="$HOME/.yq2"
-
-  if [ ! -f /etc/apt/sources.list.d/meveric-all-testing.list ]; then
-    sudo wget -P /etc/apt/sources.list.d https://oph.mdrjr.net/meveric/sources.lists/meveric-all-testing.list
-    sudo wget -O- https://oph.mdrjr.net/meveric/meveric.asc | sudo apt-key add -
-    sudo apt-get update
-  fi
-  command -v arx >/dev/null 2>&1 || { sudo apt-get install -y libglew-odroid ; wget -P $HOME $ARX_ODROID_PKG ; }
+uninstall() {
+	read -p "Do you want to uninstall Arx Libertatis (y/N)? " response
+	if [[ $response =~ [Yy] ]]; then
+		remove_files
+		if [[ -e "$INSTALL_DIR"/arx ]]; then
+			echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
+			exit_message
+		fi
+		echo -e "\nSuccessfully uninstalled."
+		exit_message
+	fi
+	exit_message
 }
 
-arx_Raspberry(){
-
-  # Check if SDL is fixed to RPi2
-  SDL_fix_Rpi
-
-  [ ! -d $DATA_DIR ] && mkdir -p $DATA_DIR
-  cd $DATA_DIR
-  wget -P $DATA_DIR $ARX_RPI_BIN
-  tar xzvf $DATA_DIR/arx_rpi2.tar.gz
-  rm $DATA_DIR/arx_rpi2.tar.gz
-  sudo apt-get install -y libglew1.7
-  read -p "Press [Enter] to continue..."
-}
-
-arx_Debian(){
-  sudo sh -c "echo 'deb https://download.opensuse.org/repositories/home:/dscharrer/Debian_8.0/ ./' >> /etc/apt/sources.list"
-  wget -P ~ https://download.opensuse.org/repositories/home:dscharrer/Debian_8.0/Release.key
-  sudo sh -c "apt-key add - < Release.key"
-  rm ~/Release.key
-  sudo apt update
-  sudo apt install -y arx-libertatis
-}
-
-echo -e "Installing Arx Libertatis\n=========================\n\n· Version 1.1.2\n· 720p (You can change that)\n·For Raspberry Pi 2: This port is not a final release nor is it free from bugs! It should only demonstrate that it is indeed possible to get Arx Libertatis working on the slim hardware that is a Raspberry Pi 2\n\n"
-
-if [[ ${MODEL} == 'Raspberry Pi' ]]; then
-  arx_Raspberry
-elif [[ ${MODEL} == 'ODROID-C1' ]]; then
-  arx_ODROID
-elif [[ ${MODEL} == 'Debian' ]]; then
-  arx_Debian
+if [[ -d "$INSTALL_DIR"/arx ]]; then
+	echo -e "Arx Libertatis already installed.\n"
+	uninstall
+	exit 1
 fi
 
-dialog --title     "[ Arx Fatalis. PAK License ]" \
-  --yes-label "Shareware (155 MB)" \
-  --no-label  "Complete (Spanish - 526 MB)" \
-  --yesno     "Choose what type of PAK files do you want to install. NOTE: For complete version, you must be the owner of the original game (in some countries)" 7 80
+generate_icon() {
+	echo -e "\nGenerating icon..."
+	mkdir -p "$CONFIG_DIR"
+	wget -q "$ICON_URL" -O "$CONFIG_DIR"/arx-libertatis-32.png
+	if [[ ! -e ~/.local/share/applications/arx.desktop ]]; then
+		cat <<EOF >~/.local/share/applications/arx.desktop
+[Desktop Entry]
+Name=Arx Fatalis (AKA Arx Libertatis)
+Exec=/home/pi/games/arx/arx
+Icon=${CONFIG_DIR}/arx-libertatis-32.png
+Type=Application
+Comment=Arx Fatalis is set on a world whose sun has failed, forcing the above-ground creatures to take refuge in caverns.
+Categories=Game;ActionGame;
+EOF
+	fi
+}
 
-retval=$?
+fix_libndi() {
+	echo -e "\nFixing library libndi.so\n"
+	sudo rm -f /usr/lib/libndi.so
+	sudo ln -r -s /usr/lib/libndi.so.4.0.0 /usr/lib/libndi.so
+	sudo rm -f /usr/lib/libndi.so.4
+	sudo ln -r -s /usr/lib/libndi.so.4.0.0 /usr/lib/libndi.so.4
+}
 
-case $retval in
-  0)   share_version ; LICENSE="Shareware";;
-  255) exit ;;
-esac
+fix_libGLEW1.7() {
+	if [[ -f /usr/lib/arm-linux-gnueabihf/libGLEW.so.1.7 ]]; then
+		return 0
+	fi
 
-echo -e "\n\nDownloading...\n"
+	echo -e "\nLinking libGLEW.so -> libGLEW.so.1.7\n"
+	sudo ln -s /usr/lib/arm-linux-gnueabihf/libGLEW.so /usr/lib/arm-linux-gnueabihf/libGLEW.so.1.7
+}
 
-dload_pak_files
+compile() {
+	installPackagesIfMissing "${PACKAGES_DEV[@]}"
+	fix_libndi
+	mkdir -p ~/sc && cd "$_"
+	git clone "$SOURCE_CODE_URL" arx && cd "$_"
+	mkdir build && cd "$_"
+	CFLAGS="-fsigned-char -marm -march=armv8-a+crc -mtune=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard" CXXFLAGS="-fsigned-char" cmake .. -DBUILD_TOOLS=off -DBUILD_IO_LIBRARY=off -DBUILD_CRASHREPORTER=off -DICON_TYPE=none
 
-read -p "run with: arx. Press [Enter] to continue..."
+	if [[ -f ~/sc/arx/build/CMakeFiles/CMakeError.log ]]; then
+		echo -e "\n\nERROR!!. I can't continue with the command make. Check ~/sc/arx/build/CMakeFiles/CMakeError.log\n"
+		exit 1
+	fi
+	make -j"$(getconf _NPROCESSORS_ONLN)"
+}
+
+install_binaries() {
+	echo -e "\nInstalling binary files..."
+	download_and_extract "$BINARY_URL" "$INSTALL_DIR"
+	rm "$INSTALL_DIR/Arx Fatalis.sh"
+	chmod +x "$INSTALL_DIR"/arx/arx*
+	fix_libGLEW1.7
+}
+
+end_message() {
+	echo -e "\nDone!. Click on Menu > Games > Arx Libertatis."
+	runme
+}
+
+download_data_files() {
+	download_and_extract "$DATA_URL" ~
+}
+
+choose_data_files() {
+	while true; do
+		dialog --clear \
+			--title "[ Arx Libertatis Data files ]" \
+			--menu "Choose language:" 11 68 3 \
+			English "Install the game with English text and voices." \
+			Spanish "Install the game with Spanish text and voices." \
+			Exit "Continue with Shareware version" 2>"${INPUT}"
+
+		menuitem=$(<"${INPUT}")
+
+		case $menuitem in
+		English) clear && DATA_URL=$(extract_url_from_file 7) && return 0 ;;
+		Spanish) clear && DATA_URL=$(extract_url_from_file 6) && return 0 ;;
+		Exit) clear ;;
+		esac
+	done
+}
+
+install() {
+	mkdir -p "$INSTALL_DIR"
+	installPackagesIfMissing "${PACKAGES[@]}"
+	install_binaries
+	generate_icon
+	echo
+	read -p "Do you have an original copy of Arx Fatalis (If not, a Shareware version will be installed) (y/N)?: " response
+	if [[ $response =~ [Yy] ]]; then
+		choose_data_files
+		message_magic_air_copy
+	fi
+
+	download_data_files
+	end_message
+}
+
+echo "Install Arx Libertatis (Port of Arx Fatalis)"
+echo "============================================"
+echo
+echo " · Install path: $INSTALL_DIR/arx"
+echo " · NOTE: It's NOT the latest compiled from source. This binary proceed from https://www.littlecarnage.com/"
+echo " · I've tried to compile Arx Libertatis for 3 days with no success. I'll try it (or ptitSeb) in a long time."
+echo
+read -p "Press [Enter] to continue..."
+
+install
