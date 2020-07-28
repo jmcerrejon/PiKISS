@@ -2,7 +2,7 @@
 #
 # Description : OBS
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (27/Jul/20)
+# Version     : 1.0.4 (27/Jul/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # HELP		  : https://obsproject.com/forum/threads/obs-raspberry-pi-build-instructions.115739/post-471062
@@ -13,6 +13,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 INSTALL_DIR="$HOME/apps/obs"
+ICON_URL="https://raw.githubusercontent.com/jmcerrejon/PiKISS/master/res/icon_obs.png"
 
 runme() {
 	if [ ! -f "$INSTALL_DIR"/obs_start.sh ]; then
@@ -59,7 +60,7 @@ post_install() {
 MESA_GL_VERSION_OVERRIDE=3.3 obs
 EOF
 	chmod +x "$INSTALL_DIR"/obs_start.sh
-	wget -q https://raw.githubusercontent.com/jmcerrejon/PiKISS/master/res/icon_obs.png -O "$INSTALL_DIR"/icon_obs.png
+	wget -q "$ICON_URL" -O "$INSTALL_DIR"/icon_obs.png
 	generate_icon
 	echo -e "\nCleaning da house...\n"
 	sudo rm -rf "$HOME"/obs-build/ /tmp/ndisdk /tmp/libndi-install.sh
