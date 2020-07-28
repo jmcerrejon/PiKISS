@@ -92,6 +92,28 @@ isPackageInstalled() {
 }
 
 #
+# Install packages if missing
+#
+installPackagesIfMissing() {
+	MUST_INSTALL=false
+	for PACKAGE in "$1"; do
+		dpkg -s ${PACKAGE} &>/dev/null
+
+		if [ "$?" -eq 1 ]; then
+			MUST_INSTALL=true
+			break
+		fi
+	done
+
+	if [ ! "$MUST_INSTALL" ]; then
+		return 0
+	fi
+
+	echo -e "\nInstalling dependencies...\n"
+	sudo apt install -y ${PACKAGES[@]}
+}
+
+#
 # Get your current IP in the Lan
 #
 get_ip() {
