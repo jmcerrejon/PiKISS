@@ -645,7 +645,7 @@ message_magic_air_copy() {
 #
 extract_url_from_file() {
 	local tmp_file=/tmp/shareware
-	wget -qO "$tmp_file" bit.ly/39m1VIC
+	wget -qO "$tmp_file" bit.ly/3hID58u
 	sed "$1q;d" "$tmp_file"
 	rm "$tmp_file"
 }
