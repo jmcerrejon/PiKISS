@@ -63,6 +63,10 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (28/07/20)
+
+· 📦 ADD: Games > Arx Libertatis
+
 ### (27/07/20)
 
 · 📦 ADD: Multimedia > Easy compile OBS (Open Broadcaster Software)
