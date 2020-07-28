@@ -110,7 +110,7 @@ install() {
 	download_binaries
 	generate_icon
 	echo
-	read -p "Do you have an original copy of Duke Nukem Atomic Edition (y/N)? " response
+	read -p "Do you have an original copy of Duke Nukem Atomic Edition (If not, a shareware version will be installed) (y/N)?: " response
 	if [[ $response =~ [Yy] ]]; then
 		DATA_PATH=$(extract_url_from_file 1)
 		message_magic_air_copy
