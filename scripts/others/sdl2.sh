@@ -56,8 +56,6 @@ ldconfig_and_show_version() {
 Compile_SDL_RPi() {
 	clear
 	local INSTALL_GLOBALLY_AFTER_COMPILE=1
-	local CORES
-	CORES=$(nproc --all)
 
 	echo -e "Compile SDL 2.0.12 + ttf + image + mixer\n======================================\nIt can takes On Rpi 4 ~15 min. Be patience...\n"
 
@@ -90,26 +88,26 @@ Compile_SDL_RPi() {
 	cd SDL2-2.*
 	./autogen.sh
 	./configure --disable-video-opengl --disable-video-x11 --disable-pulseaudio --disable-esd --enable-video-opengles --enable-libudev --enable-arm-simd --host=arm-raspberry-linux-gnueabihf
-	make -j"${CORES}"
+	make -j"$(getconf _NPROCESSORS_ONLN)"
 	if [[ ${INSTALL_GLOBALLY_AFTER_COMPILE} -eq 1 ]]; then
 		sudo make install
 	fi
 
 	cd ../SDL2_ttf-2.*
 	./configure
-	make -j"${CORES}"
+	make -j"$(getconf _NPROCESSORS_ONLN)"
 	if [[ ${INSTALL_GLOBALLY_AFTER_COMPILE} -eq 1 ]]; then
 		sudo make install
 	fi
 	cd ../SDL2_image-2*
 	./configure
-	make -j"${CORES}"
+	make -j"$(getconf _NPROCESSORS_ONLN)"
 	if [[ ${INSTALL_GLOBALLY_AFTER_COMPILE} -eq 1 ]]; then
 		sudo make install
 	fi
 	cd ../SDL2_mixer-2*
 	./configure
-	make -j"${CORES}"
+	make -j"$(getconf _NPROCESSORS_ONLN)"
 	if [[ ${INSTALL_GLOBALLY_AFTER_COMPILE} -eq 1 ]]; then
 		sudo make install
 	fi

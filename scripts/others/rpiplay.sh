@@ -80,13 +80,12 @@ end_message() {
 compile() {
 	echo -e "\nInstalling dependencies (if proceed)...\n"
 	sudo apt install -y cmake libavahi-compat-libdnssd-dev libplist-dev libssl-dev
-	CORES=$(nproc --all)
 	cd "$INSTALL_DIR"
 	git clone https://github.com/FD-/RPiPlay.git rpiplay && cd "$_"
 	mkdir build && cd "$_"
 	cmake --DCMAKE_CXX_FLAGS="-O3" --DCMAKE_C_FLAGS="-O3" ..
 	echo -e "\n\nCompiling...\n"
-	make -j"${CORES}" OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
+	make -j"$(getconf _NPROCESSORS_ONLN)" OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
 	mv rpiplay ../rpiplay
 	runme
 }

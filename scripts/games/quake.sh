@@ -92,13 +92,12 @@ install_quake2_data() {
 }
 
 quake2_compile() {
-	CORES=$(nproc --all)
 	echo -e "\nInstalling Dependencies..."
 	sudo apt install -y libsdl2-dev libopenal-dev
 	mkdir -p "$HOME"/sc
 	git clone "$Q2_SC_URL" yquake2 && cd "$_"
 	# TODO Add on Makefile -march=armv7
-	make -j"${CORES}"
+	make -j"$(getconf _NPROCESSORS_ONLN)"
 	echo -e "\nDone!. "
 }
 
@@ -127,7 +126,7 @@ quake2_install() {
 	quake2_high_textures_download
 	generate_icon
 	echo
-	read -p "Do you have an original copy of Quake ][ (y/N)? " response
+	read -p "Do you have an original copy of Quake ][ (If not, a shareware version will be installed) (y/N)?: " response
 	if [[ $response =~ [Yy] ]]; then
 		Q2_PAK_URL=$(extract_url_from_file 5)
 		message_magic_air_copy

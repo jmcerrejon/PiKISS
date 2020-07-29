@@ -24,7 +24,7 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     exit 1
 fi
 
-sudo apt-get update
+sudo apt-get -qq update
 
 # Prompt user to set timezone as necessary.
 sudo dpkg-reconfigure tzdata

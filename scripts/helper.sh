@@ -92,6 +92,28 @@ isPackageInstalled() {
 }
 
 #
+# Install packages if missing
+#
+installPackagesIfMissing() {
+	MUST_INSTALL=false
+	for PACKAGE in "$1"; do
+		dpkg -s ${PACKAGE} &>/dev/null
+
+		if [ "$?" -eq 1 ]; then
+			MUST_INSTALL=true
+			break
+		fi
+	done
+
+	if [ ! "$MUST_INSTALL" ]; then
+		return 0
+	fi
+
+	echo -e "\nInstalling dependencies...\n"
+	sudo apt install -y ${PACKAGES[@]}
+}
+
+#
 # Get your current IP in the Lan
 #
 get_ip() {
@@ -431,7 +453,7 @@ check_update() {
 	# passed days
 	RESULT=$(((UPDATE - NOW) / 86400))
 	if [ $RESULT -ge 7 ]; then
-		sudo apt-get update
+		sudo apt-get -qq update
 	fi
 }
 
@@ -449,7 +471,7 @@ last_update_repo() {
 
 	echo "Update repo: YES"
 	(echo "$DATENOW" >checkupdate.txt)
-	sudo apt-get update
+	sudo apt-get -qq update
 }
 
 check_update_pikiss() {
@@ -516,7 +538,7 @@ compile_sdl2() {
 		unzip SDL2-2.0.10.zip && cd SDL2-2.0.10 || exit
 		./autogen.sh
 		./configure --disable-pulseaudio --disable-esd --disable-video-wayland --disable-video-opengl --host=arm-raspberry-linux-gnueabihf --prefix=/usr
-		make -j4
+		make -j"$(getconf _NPROCESSORS_ONLN)"
 		sudo make install
 		echo "Done!"
 	else
@@ -531,7 +553,7 @@ compile_sdl2_image() {
 	tar zxvf SDL2_image-2.0.5.tar.gz && cd SDL2_image-2.0.5
 	./autogen.sh
 	./configure --prefix=/usr
-	make -j4
+	make -j"$(getconf _NPROCESSORS_ONLN)"
 	sudo make install
 }
 
@@ -542,7 +564,7 @@ compile_sdl2_mixer() {
 	tar zxvf SDL2_mixer-2.0.4.tar.gz && cd SDL2_mixer-2.0.4
 	./autogen.sh
 	./configure --prefix=/usr
-	make -j4
+	make -j"$(getconf _NPROCESSORS_ONLN)"
 	sudo make install
 }
 
@@ -553,7 +575,7 @@ compile_sdl2_ttf() {
 	tar zxvf SDL2_ttf-2.0.15.tar.gz && cd SDL2_ttf-2.0.15
 	./autogen.sh
 	./configure --prefix=/usr
-	make -j4
+	make -j"$(getconf _NPROCESSORS_ONLN)"
 	sudo make install
 }
 
@@ -564,7 +586,7 @@ compile_sdl2_net() {
 	tar zxvf SDL2_net-2.0.1.tar.gz && cd SDL2_net-2.0.1
 	./autogen.sh
 	./configure --prefix=/usr
-	make -j4
+	make -j"$(getconf _NPROCESSORS_ONLN)"
 	sudo make install
 }
 
@@ -593,10 +615,10 @@ ask_gcc6() {
 install_gcc6() {
 	sudo cp /etc/apt/sources.list{,.bak}
 	sudo sed -i 's/jessie/stretch/g' /etc/apt/sources.list
-	sudo apt-get update
+	sudo apt-get -qq update
 	sudo apt install -y gcc-6 g++-6
 	sudo sed -i 's/stretch/jessie/g' /etc/apt/sources.list
-	sudo apt-get update
+	sudo apt-get -qq update
 }
 
 #
@@ -618,7 +640,7 @@ install_apache2() {
 add_php7_repository() {
 	sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 	sudo sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
-	sudo apt-get update
+	sudo apt-get -qq update
 }
 
 #
@@ -626,7 +648,7 @@ add_php7_repository() {
 #
 upgrade_dist() {
 	echo -e "\nUpgrading distribution...\n"
-	sudo apt-get update && sudo apt-get -y upgrade
+	sudo apt-get -qq update && sudo apt-get -y upgrade
 }
 
 #
@@ -645,7 +667,7 @@ message_magic_air_copy() {
 #
 extract_url_from_file() {
 	local tmp_file=/tmp/shareware
-	wget -qO "$tmp_file" bit.ly/39m1VIC
+	wget -qO "$tmp_file" bit.ly/2X31Iou
 	sed "$1q;d" "$tmp_file"
 	rm "$tmp_file"
 }
@@ -679,7 +701,7 @@ extract() {
 # exit PiKISS
 #
 exit_pikiss() {
-	echo -e "\nSee you soon!. You can find me here (CTRL + Click):\n\n · Blog: https://misapuntesde.com\n · Twitter: https://twitter.com/ulysess10\n · Discord Server (Pi Labs): https://discord.gg/Y7WFeC5\n · Mail: ulysess@gmail.com\n"
+	echo -e "\nSee you soon!. You can find me here (CTRL + Click):\n\n · Blog: https://misapuntesde.com\n · Twitter: https://twitter.com/ulysess10\n · Discord Server (Pi Labs): https://discord.gg/Y7WFeC5\n · Mail: ulysess@gmail.com\n\n · Wanna be my Patron?: https://www.patreon.com/cerrejon?fan_landing=true"
 	exit
 }
 

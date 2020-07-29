@@ -142,6 +142,7 @@ smGames() {
 		options=(
 			Back "Back to main menu"
 			Abbaye "L’Abbaye des Morts is a retro puzzle platformer by Locomalito"
+			Arx "Arx Fatalis is a fps RPG set on a world whose sun has failed"
 			Blood "Blood is a fps game developed by Monolith Productions"
 			CaptainS "Save Seville from the evil Torrebruno"
 			Crispy-doom "Crispy to play Doom or Heretic"
@@ -165,6 +166,7 @@ smGames() {
 		case $choice in
 		Back) break ;;
 		Abbaye) ./scripts/games/abbaye.sh ;;
+		Arx) ./scripts/games/arx.sh ;;
 		Blood) ./scripts/games/blood.sh ;;
 		CaptainS) ./scripts/games/captains.sh ;;
 		Crispy-doom) ./scripts/games/cdoom.sh ;;
@@ -237,10 +239,7 @@ smMultimedia() {
 			Back "Back to main menu"
 			Kodi "Kodi is a free media player that is designed to look great on your TV but is just as home on a small screen."
 			Kiosk "Image slideshow"
-		)
-	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
-		options=(
-			Back "Back to main menu"
+			OBS "Free & open source software 4 video recording and streaming"
 		)
 	fi
 
@@ -251,6 +250,7 @@ smMultimedia() {
 		Back) break ;;
 		Kodi) ./scripts/mmedia/xbmc.sh ;;
 		Kiosk) ./scripts/mmedia/kiosk.sh ;;
+		OBS) ./scripts/mmedia/obs.sh ;;
 		esac
 	done
 }

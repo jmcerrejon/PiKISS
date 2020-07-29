@@ -36,7 +36,7 @@ runNow() {
 }
 
 install() {
-	sudo apt-get update
+	sudo apt-get -qq update
 	sudo apt-get install -y kodi
 	sudo usermod -a -G "audio,video,input,dialout,plugdev,tty" $USER
 	sudo addgroup --system input

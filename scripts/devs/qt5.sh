@@ -10,11 +10,10 @@
 #				will need to increase the swap file size, Check the next and include qt-creator with no compiling time https://www.cyberpunk.rs/building-raspberry-pi-gui
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
-check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 clear
+check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 QT5_SC_URL="http://download.qt.io/official_releases/qt/5.15/5.15.0/single/qt-everywhere-src-5.15.0.tar.xz"
-QT5_SC_DIR="qt-everywhere-src-5.15.0"
 INPUT=/tmp/qt5menu.$$
 
 init() {
@@ -24,7 +23,7 @@ init() {
 	sudo chown pi:pi /opt/QT5
 	echo "{ \"device\": \"/dev/dri/card1\" }" >> /opt/QT5/eglfs.json
 
-	sudo apt-get update && sudo apt-get -y upgrade
+	sudo apt-get -qq update && sudo apt-get -y upgrade
 }
 
 install_packages() {
@@ -105,7 +104,6 @@ download_QT5() {
 }
 
 compile_QT5() {
-	CORES=$(nproc --all)
 	echo -e "\nCompile QT with 4 cores. Go for a walk or watch 2 movies...\n"
 
 	cd qt-everywhere-src-*
@@ -131,7 +129,7 @@ compile_QT5() {
 	-prefix /opt/Qt5 \
 	-qpa eglfs
 
-	make -j"${CORES}"
+	make -j"$(getconf _NPROCESSORS_ONLN)"
 }
 
 setup() {

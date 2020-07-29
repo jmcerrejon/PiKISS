@@ -7,7 +7,7 @@
 #
 clear
 
-sudo apt-get update
+sudo apt-get -qq update
 
 read -p "Do you want to dist upgrade now? [y/n] " option
 case "$option" in
