@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **618.3 hours**
+* **620 hours**
 
 ## 💰 Total amount donated by users
 
@@ -62,6 +62,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (29/07/20)
+
+· 👌 IMPROVE: Crispy Doom. Refactor code and uninstall option.
 
 ### (28/07/20)
 
