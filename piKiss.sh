@@ -11,7 +11,7 @@
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-VERSION="v.1.5.0"
+VERSION="v.1.6.0"
 IP=$(get_ip)
 TITLE="PiKISS (Pi Keeping It Simple, Stupid!) ${VERSION} .:. Jose Cerrejon | IP=${IP} ${CPU}| Model=${MODEL}"
 CHK_UPDATE=0
@@ -151,6 +151,7 @@ smGames() {
 			Diablo "Take control of a lone hero battling to rid the world of Diablo"
 			Diablo2 "Diablo 2 Lord of Destruction"
 			Eduke32 "Duke Nukem 3D is a fps game developed by 3D Realms"
+			Hurrican "Jump and shoot game based on the Turrican game series"
 			OpenBor "OpenBOR is the open source continuation of Beats of Rage"
 			Quake "Enhanced client for id Software's Quake ]["
 			Revolt "Re-Volt is a radio control car racing themed video game"
@@ -175,6 +176,7 @@ smGames() {
 		Diablo) ./scripts/games/diablo.sh ;;
 		Diablo2) ./scripts/games/diablo2.sh ;;
 		Eduke32) ./scripts/games/eduke32.sh ;;
+		Hurrican) ./scripts/games/hurrican.sh ;;
 		OpenBor) ./scripts/games/openbor.sh ;;
 		Quake) ./scripts/games/quake.sh ;;
 		Revolt) ./scripts/games/revolt.sh ;;
