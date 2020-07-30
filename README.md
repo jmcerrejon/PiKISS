@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **620 hours**
+* **621,3 hours**
 
 ## 💰 Total amount donated by users
 
@@ -62,6 +62,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (30/07/20)
+
+· 📦 ADD: Games > Hurrican
 
 ### (29/07/20)
 
