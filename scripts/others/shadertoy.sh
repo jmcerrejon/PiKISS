@@ -43,7 +43,7 @@ uninstall() {
 }
 
 if [[ -d ${INSTALL_DIR}/ShaderToy ]]; then
-	echo -e "Scrcpy already installed.\n"
+	echo -e "ShaderToy already installed.\n"
 	uninstall
 	exit 1
 fi
