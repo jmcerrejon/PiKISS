@@ -25,8 +25,8 @@ install() {
 		sudo apt install -y libsndfile1
 	fi
 
-	if ! isPackageInstalled libsdl2; then
-		sudo apt install -y libsdl2
+	if ! isPackageInstalled libsdl2-2.0-0; then
+		sudo apt install -y libsdl2-2.0-0
 	fi
 
 	wget -4 -qO- -O /tmp/mednafen.deb "$URL_FILE" && sudo dpkg --force-all -i /tmp/mednafen.deb && rm /tmp/mednafen.deb
