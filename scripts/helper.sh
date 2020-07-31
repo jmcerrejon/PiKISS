@@ -166,13 +166,12 @@ get_distro_name() {
 # $2 destination directory
 #
 download_and_extract() {
-	if [ ! -d $2 ]; then
-		echo "ERROR: Missing 2nd argument (destination directory) from helper.sh > download_and_extract."
-		read -p "Press [ENTER] to exit."
-		exit 1
-	fi
-	local SUFFIX=?dl=0
-	local FILE=$(basename $1 | sed -e "s/$SUFFIX$//")
+	local SUFFIX
+	local FILE
+	SUFFIX=?dl=0
+	FILE=$(basename $1 | sed -e "s/$SUFFIX$//")
+
+	[ ! -d $2 ] && mkdir -p $2
 	echo -e "\nDownloading...\n"
 	wget -q --show-progress -O "$2"/"$FILE" -c "$1"
 	echo -e "\nExtracting..."
