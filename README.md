@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **621,3 hours**
+* **622 hours**
 
 ## 💰 Total amount donated by users
 
@@ -62,6 +62,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (31/07/20)
+
+· 📦 ADD: Others > ShaderToys for Pi 4 (Render over 100+ OpenGL ES 3.0 shaders)
 
 ### (30/07/20)
 
