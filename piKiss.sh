@@ -406,20 +406,17 @@ smOthers() {
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
-			Scrcpy "Display and control of Android devices connected on USB"
-			RPiPlay "An open-source implementation of an AirPlay mirroring server"
+			Aircrack "Compile Aircrack-NG suite easily"
+			Fixes "Fix some problems with the Raspbian OS"
+			GCC "Install GCC 4.7 on Raspberry Pi"
 			NetTools "MITM Pentesting Opensource Toolkit (Require X)"
 			Part "Check issues & fix SD corruptions"
+			RPiPlay "An open-source implementation of an AirPlay mirroring server"
+			Scrcpy "Display and control of Android devices connected on USB"
 			SDL2 "Compile/Install SDL2 + Libraries"
-			GCC "Install GCC 4.7 on Raspberry Pi"
+			ShaderToy "Render over 100+ OpenGL ES 3.0 shaders"
 			Synergy "Allow you to share keyboard and mouse to computers on LAN"
-			Fixes "Fix some problems with the Raspbian OS"
-			Aircrack "Compile Aircrack-NG suite easily"
 			Uninstall "Uninstall PiKISS :_("
-		)
-	elif [[ ${MODEL} == 'ODROID-C1' ]]; then
-		options=(
-			Back "Back to main menu"
 		)
 	fi
 
@@ -428,16 +425,16 @@ smOthers() {
 	for choice in $choices; do
 		case $choice in
 		Back) break ;;
-		Scrcpy) ./scripts/others/scrcpy.sh ;;
-		RPiPlay) ./scripts/others/rpiplay.sh ;;
+		Aircrack) ./scripts/others/aircrack.sh ;;
+		Fixes) ./scripts/others/fixes.sh ;;
+		GCC) ./scripts/others/gcc47.sh ;;
 		NetTools) ./scripts/others/nettools.sh ;;
 		Part) ./scripts/others/checkpart.sh ;;
+		RPiPlay) ./scripts/others/rpiplay.sh ;;
+		Scrcpy) ./scripts/others/scrcpy.sh ;;
 		SDL2) ./scripts/others/sdl2.sh ;;
-		GCC) ./scripts/others/gcc47.sh ;;
-		WhatsApp) ./scripts/others/whatsapp.sh ;;
+		ShaderToy) ./scripts/others/shadertoy.sh ;;
 		Synergy) ./scripts/others/synergy.sh ;;
-		Fixes) ./scripts/others/fixes.sh ;;
-		Aircrack) ./scripts/others/aircrack.sh ;;
 		Uninstall) uninstall_pikiss ;;
 		esac
 	done
