@@ -153,6 +153,7 @@ smGames() {
 			Eduke32 "Duke Nukem 3D is a fps game developed by 3D Realms"
 			Hurrican "Jump and shoot game based on the Turrican game series"
 			OpenBor "OpenBOR is the open source continuation of Beats of Rage"
+			OpenXCom "Open-source clone of UFO: Enemy Unknown"
 			Quake "Enhanced client for id Software's Quake ]["
 			Revolt "Re-Volt is a radio control car racing themed video game"
 			SMario64 "Super Mario 64 native OpenGL ES"
@@ -178,6 +179,7 @@ smGames() {
 		Eduke32) ./scripts/games/eduke32.sh ;;
 		Hurrican) ./scripts/games/hurrican.sh ;;
 		OpenBor) ./scripts/games/openbor.sh ;;
+		OpenXCom) ./scripts/games/openxcom.sh ;;
 		Quake) ./scripts/games/quake.sh ;;
 		Revolt) ./scripts/games/revolt.sh ;;
 		SMario64) ./scripts/games/smario64.sh ;;
