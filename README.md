@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **625 hours**
+* **627 hours**
 
 ## 💰 Total amount donated by users
 
@@ -68,6 +68,8 @@
 · 📦 ADD: Games > OpenXCom (UFO).
 
 · 👌 IMPROVE: Games > Hurrican (Remove glitches and add language support).
+
+· 👌 IMPROVE: Emulation > Amiberry.
 
 ### (31/07/20)
 
