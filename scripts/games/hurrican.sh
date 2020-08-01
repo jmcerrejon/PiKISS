@@ -2,7 +2,7 @@
 #
 # Description : Hurrican created by Poke53280
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (30/Jul/20)
+# Version     : 1.0.1 (01/Aug/20)
 # Compatible  : Raspberry Pi 1-4 (tested)
 #
 # Note		  : Compiled thanks to the valuable help from Russ Le Blang
@@ -13,7 +13,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 INSTALL_DIR="$HOME/games"
-BINARY_PATH='https://www.dropbox.com/s/8h9i1vn13v5r8ix/hurrican_rpi.tar.gz?dl=0'
+BINARY_PATH="https://www.dropbox.com/s/gvgxtol6ojtqanp/hurrican_rpi.tar.gz?dl=0"
 
 runme() {
 	echo
