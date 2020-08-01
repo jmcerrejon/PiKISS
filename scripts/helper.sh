@@ -666,7 +666,7 @@ message_magic_air_copy() {
 #
 extract_url_from_file() {
 	local tmp_file=/tmp/shareware
-	wget -qO "$tmp_file" bit.ly/2X31Iou
+	wget -qO "$tmp_file" bit.ly/3jU2yhg
 	sed "$1q;d" "$tmp_file"
 	rm "$tmp_file"
 }
@@ -685,7 +685,7 @@ extract() {
 		*.rar) unrar x "$1" ;;
 		*.gz) gunzip "$1" ;;
 		*.tar) tar xvf "$1" ;;
-		*.zip) unzip -qq "$1" ;;
+		*.zip) unzip -qq -o "$1" ;;
 		*.Z) uncompress "$1" ;;
 		*.7z) p7zip -d "$1" ;;
 		*.exe) cabextract "$1" ;;
