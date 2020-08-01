@@ -2,7 +2,7 @@
 #
 # Description : RPiPlay - Airplay mirroring
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (21/Jul/20)
+# Version     : 1.0.1 (01/Aug/20)
 #
 . ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
@@ -85,7 +85,7 @@ compile() {
 	mkdir build && cd "$_"
 	cmake --DCMAKE_CXX_FLAGS="-O3" --DCMAKE_C_FLAGS="-O3" ..
 	echo -e "\n\nCompiling...\n"
-	make -j"$(getconf _NPROCESSORS_ONLN)" OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
+	make -j"$(nproc)" OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
 	mv rpiplay ../rpiplay
 	runme
 }
