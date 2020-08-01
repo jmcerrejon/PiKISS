@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **624 hours**
+* **625 hours**
 
 ## 💰 Total amount donated by users
 
@@ -64,6 +64,8 @@
 ### [ ChangeLog (dd/mm/yy)]
 
 ### (01/08/20)
+
+· 📦 ADD: Games > OpenXCom (UFO).
 
 · 👌 IMPROVE: Games > Hurrican (Remove glitches and add language support).
 
