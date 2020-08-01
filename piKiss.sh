@@ -195,20 +195,20 @@ smEmulators() {
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
 			Back "Back to main menu"
-			Dolphin "Dolphin is a Wii & Gamecube emulator (EXPERIMENTAL)"
-			PSP "PPSSPP can run your PSP games on your RPi in full HD resolution"
-			Mednafen "Portable multi-system emulator (Mednafen)"
-			Genesis "Genesis Megadrive Emulator (picodrive)"
-			Caprice "Amstrad CPC with Caprice32"
-			Snes "SNES Emulator Snes9X 1.60"
-			Mame "Install MAME, Advance MAME and/or MAME4ALL-PI"
-			Speccy "ZX-Spectrum emulator"
-			DOSBox "DOSBox is a MS-DOS emulator"
 			Amiga "Amiberry is an Amiga emulator"
+			Caprice "Amstrad CPC with Caprice32"
+			Dolphin "Dolphin is a Wii & Gamecube emulator (EXPERIMENTAL)"
+			DOSBox "DOSBox is a MS-DOS emulator"
 			Gba "Gameboy Advance (mgba)"
+			Genesis "Genesis Megadrive Emulator (picodrive)"
+			Mednafen "Portable multi-system emulator (Mednafen)"
+			Mame "Install MAME, Advance MAME and/or MAME4ALL-PI"
 			MSX "openMSX"
 			Pifba "Emulates old arcade games using CPS1, CPS2,..."
+			PSP "PPSSPP can run your PSP games on your RPi in full HD resolution"
 			ScummVM "Allow gamers to play point-and-click adventure games"
+			Snes "SNES Emulator Snes9X 1.60"
+			Speccy "ZX-Spectrum emulator"
 		)
 	fi
 
@@ -217,20 +217,20 @@ smEmulators() {
 	for choice in $choices; do
 		case $choice in
 		Back) break ;;
-		Dolphin) ./scripts/emus/dolphin.sh ;;
-		PSP) ./scripts/emus/psp.sh ;;
-		Mednafen) ./scripts/emus/mednafen.sh ;;
-		Genesis) ./scripts/emus/genesis.sh ;;
-		Caprice) ./scripts/emus/caprice.sh ;;
-		Snes) ./scripts/emus/pisnes.sh ;;
-		Mame) ./scripts/emus/mame4allpi.sh ;;
-		Speccy) ./scripts/emus/speccy.sh ;;
 		Amiga) ./scripts/emus/amiga.sh ;;
+		Caprice) ./scripts/emus/caprice.sh ;;
+		Dolphin) ./scripts/emus/dolphin.sh ;;
 		DOSBox) ./scripts/emus/rpix86.sh ;;
 		Gba) ./scripts/emus/gba.sh ;;
+		Genesis) ./scripts/emus/genesis.sh ;;
+		Mednafen) ./scripts/emus/mednafen.sh ;;
+		Mame) ./scripts/emus/mame4allpi.sh ;;
 		MSX) ./scripts/emus/msx.sh ;;
+		PSP) ./scripts/emus/psp.sh ;;
 		Pifba) ./scripts/emus/pifba.sh ;;
 		ScummVM) ./scripts/emus/scummvm.sh ;;
+		Snes) ./scripts/emus/pisnes.sh ;;
+		Speccy) ./scripts/emus/speccy.sh ;;
 		esac
 	done
 }
