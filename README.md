@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **622 hours**
+* **624 hours**
 
 ## 💰 Total amount donated by users
 
@@ -63,13 +63,17 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (01/08/20)
+
+· 👌 IMPROVE: Games > Hurrican (Remove glitches and add language support).
+
 ### (31/07/20)
 
-· 📦 ADD: Others > ShaderToys for Pi 4 (Render over 100+ OpenGL ES 3.0 shaders)
+· 📦 ADD: Others > ShaderToys for Pi 4 (Render over 100+ OpenGL ES 3.0 shaders).
 
 ### (30/07/20)
 
-· 📦 ADD: Games > Hurrican
+· 📦 ADD: Games > Hurrican.
 
 ### (29/07/20)
 
@@ -77,19 +81,19 @@
 
 ### (28/07/20)
 
-· 📦 ADD: Games > Arx Libertatis
+· 📦 ADD: Games > Arx Libertatis.
 
 ### (27/07/20)
 
-· 📦 ADD: Multimedia > Easy compile OBS (Open Broadcaster Software)
+· 📦 ADD: Multimedia > Easy compile OBS (Open Broadcaster Software).
 
 ### (25/07/20)
 
-· 📦 ADD: Internet > Cordless (Discord client from cli)
+· 📦 ADD: Internet > Cordless (Discord client from cli).
 
 ### (24/07/20)
 
-· 📦 ADD: Games > Quake ][
+· 📦 ADD: Games > Quake ][.
 
 ### (23/07/20)
 
