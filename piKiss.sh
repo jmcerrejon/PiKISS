@@ -151,6 +151,7 @@ smGames() {
 			Diablo "Take control of a lone hero battling to rid the world of Diablo"
 			Diablo2 "Diablo 2 Lord of Destruction"
 			Eduke32 "Duke Nukem 3D is a fps game developed by 3D Realms"
+			AVP "Aliens versus Predator is a 1999 SF fps published by Fox Interactive"
 			Hurrican "Jump and shoot game based on the Turrican game series"
 			OpenBor "OpenBOR is the open source continuation of Beats of Rage"
 			OpenXCom "Open-source clone of UFO: Enemy Unknown"
@@ -177,6 +178,7 @@ smGames() {
 		Diablo) ./scripts/games/diablo.sh ;;
 		Diablo2) ./scripts/games/diablo2.sh ;;
 		Eduke32) ./scripts/games/eduke32.sh ;;
+		AVP) ./scripts/games/avp.sh ;;
 		Hurrican) ./scripts/games/hurrican.sh ;;
 		OpenBor) ./scripts/games/openbor.sh ;;
 		OpenXCom) ./scripts/games/openxcom.sh ;;
