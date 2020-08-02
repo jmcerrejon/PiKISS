@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **627 hours**
+* **630 hours**
 
 ## 💰 Total amount donated by users
 
@@ -62,6 +62,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (02/08/20)
+
+· 📦 ADD: Games > Aliens versus Predator (1999 video game).
 
 ### (01/08/20)
 
