@@ -16,10 +16,6 @@ alias part='lsblk'
 alias path='echo -e ${PATH//:/\\n}'
 alias upd='sudo apt-get -qq update'
 alias upgrade='sudo apt-get -qq update && sudo apt-get dist-upgrade && sudo apt-get autoremove'
-alias apts='apt-cache search'
-alias aptsv='apt-cache madison'
-alias apti='sudo apt install'
-alias aptiy='sudo apt install -y'
 alias ll="ls --color -lAGbh --group-directories-first --time-style='+%d %b %Y %H:%M'"
 alias god='sudo -i'
 alias rmr='rm -rf'
@@ -31,6 +27,15 @@ alias nanosources='sudo nano /etc/apt/sources.list'
 alias nanofstab='sudo nano /etc/fstab'
 alias !='sudo'
 alias pk='cd /home/pi/pikiss/ && ./piKiss.sh -nup'
+
+# APT
+alias ar='sudo apt -y autoremove'
+alias au='sudo apt-get -y update'
+alias as='apt-cache search'
+alias asv='apt-cache madison'
+alias asf='apt-file search'
+alias apiy='sudo apt install'
+alias apiy='sudo apt install -y'
 
 # Functions
 

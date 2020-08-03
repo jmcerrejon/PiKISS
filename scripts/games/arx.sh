@@ -2,7 +2,7 @@
 #
 # Description : Arx Libertatis (AKA Arx Fatalis)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (28/Jul/20)
+# Version     : 1.0.1 (03/Aug/20)
 # Compatible  : Raspberry Pi 4 (fail)
 #
 # Help		  : https://wiki.arx-libertatis.org/Downloading_and_Compiling_under_Linux
@@ -16,7 +16,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 INSTALL_DIR="$HOME/games"
 PACKAGES=( libglew-dev )
-PACKAGES_DEV=(  zlib1g-dev libfreetype6-dev libopenal1 libopenal-dev mesa-common-dev libgl1-mesa-dev libboost-dev libepoxy-dev libglm-dev libcppunit-dev libglew-dev libsdl2-dev  )
+PACKAGES_DEV=( zlib1g-dev libfreetype6-dev libopenal1 libopenal-dev mesa-common-dev libgl1-mesa-dev libboost-dev libepoxy-dev libglm-dev libcppunit-dev libglew-dev libsdl2-dev )
 CONFIG_DIR="$HOME/.local/share/arx"
 BINARY_URL="https://www.littlecarnage.com/arx_rpi2.tar.gz"
 SOURCE_CODE_URL="https://github.com/ptitSeb/ArxLibertatis.git"

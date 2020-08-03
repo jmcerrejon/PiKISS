@@ -2,10 +2,11 @@
 #
 # Description : Crispy-Doom ver. 5.8.0 to play DOOM & Heretic
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.6.0 (29/Jul/20)
+# Version     : 1.6.1 (03/Aug/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # HELP        : To compile crispy-doom, follow the instructions at https://github.com/fabiangreffrath/crispy-doom
+# 	          : https://zdoom.org/wiki/Compile_GZDoom_on_Linux
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
@@ -14,12 +15,14 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 WAD_PATH="$HOME/games"
 PACKAGES=(timidity libsdl2-net-2.0-0 libsdl2-net-dev libsdl2-mixer-2.0-0)
 PACKAGES_DEV=(build-essential automake git timidity libsdl2-net-2.0-0 libsdl2-net-dev libsdl2-mixer-dev)
+PACKAGES_DEV_GZ_DOOM=( g++ make cmake libsdl2-dev git zlib1g-dev libbz2-dev libjpeg-dev libfluidsynth-dev libgme-dev libopenal-dev libmpg123-dev libsndfile1-dev libgtk-3-dev timidity nasm libgl1-mesa-dev tar libsdl1.2-dev libglew-dev)
 URL_DOOM="https://www.dropbox.com/s/jy2q3f56qtl3tmu/dc.zip?dl=0"
 URL_HERETIC="https://www.dropbox.com/s/bwnx5707ya6g05w/hc.zip?dl=0"
 URL_HEXEN="https://www.dropbox.com/s/zj127jifcxdq7fa/hec.zip?dl=0"
 URL_STRIFE="https://www.dropbox.com/s/nb6ofa4nlt7juv5/sc.zip?dl=0"
 CRISPY_DOOM="https://www.dropbox.com/s/xampebl70k9ll70/crispy_5-8.0_armhf.deb?dl=0"
 CRISPY_DOOM_SOURCE="https://github.com/fabiangreffrath/crispy-doom.git"
+GZ_DOOM_SOURCE="https://github.com/drfrag666/gzdoom.git"
 # CHOCOLATE_DOOM="https://www.dropbox.com/s/qxxrx6clyrc0e4n/chocolate_3-0_armhf.deb?dl=0" # Future release?
 LICENSE="Complete"
 IS_DOOM_INSTALLED=0
@@ -97,6 +100,15 @@ compile() {
 	echo -e "\nCompiling...\n"
 	make -j"$(getconf _NPROCESSORS_ONLN)"
 	echo -e "\nDone! . Go to $(pwd) to run the binaries or type make install to install the app.\n"
+}
+
+compile_gzdoom() {
+	installPackagesIfMissing "${PACKAGES_DEV_GZ_DOOM[@]}"
+	mkdir -p "$HOME/sc"
+	git clone "$GZ_DOOM_SOURCE" gzdoom && cd "$_"
+	wget -nc http://zdoom.org/files/fmod/fmodapi44464linux.tar.gz && tar -xvzf fmodapi44464linux.tar.gz -C .
+	mkdir -pv build && cd "$_"
+	cmake .. -DNO_FMOD=ON
 }
 
 install() {
