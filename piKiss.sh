@@ -328,59 +328,54 @@ smInternet() {
 smServer() {
 	cmd=(dialog --clear --backtitle "$TITLE" --title "[ Server ]" --menu "Select to configure your distro as a server:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
-	# options working on any board
-	options=(
-		Back "Back to main menu"
-		FTP "Simple FTP Server with vsftpd"
-		Cups "Printer server (cups)"
-	)
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
-		options+=(
+		options=(
+			AdBlock "Turn Raspberry Pi into an Ad blocker"
+			BtSync "Bittorrent Sync as file backup service"
+			Cups "Printer server (cups)"
+			DB "MySQL+PHP5 connector"
+			FTP "Simple FTP Server with vsftpd"
+			FWork "WordPress, Node.js among others"
+			GitServer "Use your RPi as a Git Server"
+			Jenkins "Jenkins is a free and open source automation server"
+			Minidlna "Install/Compile UPnP/DLNA Minidlna"
+			Nagios "Nagios 3 is a network host and service monitoring"
+			OctoPrint "Control your 3D-Printer"
+			OwnCloud "Access your data from all your devices"
+			Smtp "SMTP Config to send e-mail"
+			SMB "Share files with SAMBA"
+			Upd "keep Debian patched with latest security updates"
 			VNCServer "Share Desktop through VNC Server"
 			VPNServer "OpenVPN setup and config thks to pivpn.io"
-			Nagios "Nagios 3 is a network host and service monitoring"
-			AdBlock "Turn Raspberry Pi into ad blocker"
-			Minidlna "Install/Compile UPnP/DLNA Minidlna"
 			Web "Web server+PHP7"
-			Smtp "SMTP Config to send e-mail"
 			WebDAV "WebDAV to share local content with Apache"
-			SMB "Share files with SAMBA"
-			OwnCloud "Access your data from all your devices"
-			GitServer "Use your RPi like a Git Server"
-			FWork "Wordpress, Node.js among others"
-			DB "MySQL+PHP5 connector"
-			Upd "keep Debian patched with latest security updates"
-			BtSync "Bittorrent Sync as file backup service"
 		)
 	fi
-	# last entries
-	options+=(
-		OctoPrint "Control your 3D-Printer"
-	)
 
 	choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
 	for choice in $choices; do
 		case $choice in
 		Back) break ;;
+		AdBlock) ./scripts/server/adblock.sh ;;
+		BtSync) ./scripts/server/bsync.sh ;;
+		Cups) ./scripts/server/printer.sh ;;
+		DB) ./scripts/server/db.sh ;;
+		FTP) ./scripts/server/ftp.sh ;;
+		FWork) ./scripts/server/fwork.sh ;;
+		GitServer) ./scripts/server/gitserver.sh ;;
+		Jenkins) ./scripts/server/jenkins.sh ;;
+		Minidlna) ./scripts/server/mediaserver.sh ;;
+		Nagios) ./scripts/server/nagios.sh ;;
+		OctoPrint) ./scripts/server/octoprint.sh ;;
+		OwnCloud) ./scripts/server/owncloud.sh ;;
+		Smtp) ./scripts/server/smtp.sh ;;
+		SMB) ./scripts/server/fileserver.sh ;;
+		Upd) ./scripts/server/auto-upd.sh ;;
 		VNCServer) ./scripts/server/vncserver.sh ;;
 		VPNServer) ./scripts/server/openvpn.sh ;;
-		Nagios) ./scripts/server/nagios.sh ;;
-		AdBlock) ./scripts/server/adblock.sh ;;
-		Cups) ./scripts/server/printer.sh ;;
-		FTP) ./scripts/server/ftp.sh ;;
-		Minidlna) ./scripts/server/mediaserver.sh ;;
 		Web) ./scripts/server/web.sh ;;
-		Smtp) ./scripts/server/smtp.sh ;;
 		WebDAV) ./scripts/server/webdav.sh ;;
-		SMB) ./scripts/server/fileserver.sh ;;
-		OwnCloud) ./scripts/server/owncloud.sh ;;
-		GitServer) ./scripts/server/gitserver.sh ;;
-		FWork) ./scripts/server/fwork.sh ;;
-		DB) ./scripts/server/db.sh ;;
-		Upd) ./scripts/server/auto-upd.sh ;;
-		BtSync) ./scripts/server/bsync.sh ;;
-		OctoPrint) ./scripts/server/octoprint.sh ;;
 		esac
 	done
 }
