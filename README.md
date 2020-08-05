@@ -63,6 +63,10 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (05/08/20)
+
+· 📦 ADD: Server > Jenkins CI.
+
 ### (02/08/20)
 
 · 📦 ADD: Games > Aliens versus Predator (1999 video game).
