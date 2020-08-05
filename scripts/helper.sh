@@ -161,24 +161,39 @@ get_distro_name() {
 }
 
 #
-# Download a file and extract it
+# Download a file to custom directory
 # $1 url
 # $2 destination directory
 #
-download_and_extract() {
+download_file() {
 	local SUFFIX
 	local FILE
 	SUFFIX=?dl=0
 	FILE=$(basename $1 | sed -e "s/$SUFFIX$//")
 
-	[ ! -d $2 ] && mkdir -p $2
-	echo -e "\nDownloading...\n"
-	wget -q --show-progress -O "$2"/"$FILE" -c "$1"
-	echo -e "\nExtracting..."
-	cd "$2" && extract "$FILE"
-	if [ -e $2/$FILE ]; then
-		rm -f "$2"/"$FILE"
-	fi
+	[ ! -d $2 ] && mkdir -p "$2"
+	echo -e "\nDownloading...\n" && wget -q --show-progress -O "$2"/"$FILE" -c "$1"
+}
+
+#
+# Download a file and extract it
+# $1 url
+# $2 destination directory
+#
+download_and_extract() {
+	download_file "$1" "$2"
+	echo -e "\nExtracting..." && cd "$2" && extract "$FILE"
+	[ -e $2/$FILE ] && rm -f "$2"/"$FILE"
+}
+
+#
+# Download a .deb and install it
+# $1 url
+#
+download_and_install() {
+	download_file "$1" "$2"
+	echo -e "\nInstalling..." && sudo dpkg --force-all -i /tmp/"$FILE"
+	[ -e /tmp/"$FILE" ] && rm -f rm /tmp/"$FILE"
 }
 
 #

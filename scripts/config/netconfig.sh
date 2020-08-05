@@ -189,7 +189,7 @@ else
 fi
 #exit
 # backup, copy file and test connection
-cp $interfacefile{,.bak}
+file_backup "$interfacefile"
 [ -e ./interfaces.pre ] && cp ./interfaces.pre $interfacefile
 [ -e ./wpa_supplicant.conf.pre ] && cp ./wpa_supplicant.conf.pre /etc/wpa_supplicant/wpa_supplicant.conf
 [ -e /etc/init.d/networking ] && sudo /etc/init.d/networking restart
