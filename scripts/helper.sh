@@ -161,15 +161,26 @@ get_distro_name() {
 }
 
 #
-# Download a file to custom directory
-# $1 url
-# $2 destination directory
+# Get the name of a file from url
 #
-download_file() {
-	local SUFFIX
+get_file_name_from_url() {
+    local SUFFIX
 	local FILE
 	SUFFIX=?dl=0
 	FILE=$(basename $1 | sed -e "s/$SUFFIX$//")
+
+    echo "$FILE"
+}
+
+#
+# Download a file to custom directory
+# $1 url
+# $2 destination directory
+# $3 destination directory
+#
+download_file() {
+    local FILE
+	FILE="$(get_file_name_from_url $1)"
 
 	[ ! -d $2 ] && mkdir -p "$2"
 	echo -e "\nDownloading...\n" && wget -q --show-progress -O "$2"/"$FILE" -c "$1"
@@ -181,6 +192,9 @@ download_file() {
 # $2 destination directory
 #
 download_and_extract() {
+    local FILE
+	FILE="$(get_file_name_from_url $1)"
+
 	download_file "$1" "$2"
 	echo -e "\nExtracting..." && cd "$2" && extract "$FILE"
 	[ -e $2/$FILE ] && rm -f "$2"/"$FILE"
@@ -191,6 +205,9 @@ download_and_extract() {
 # $1 url
 #
 download_and_install() {
+    local FILE
+	FILE="$(get_file_name_from_url $1)"
+
 	download_file "$1" "$2"
 	echo -e "\nInstalling..." && sudo dpkg --force-all -i /tmp/"$FILE"
 	[ -e /tmp/"$FILE" ] && rm -f rm /tmp/"$FILE"
