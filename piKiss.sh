@@ -330,6 +330,7 @@ smServer() {
 
 	if [[ ${MODEL} == 'Raspberry Pi' ]]; then
 		options=(
+            Back "Back to main menu"
 			AdBlock "Turn Raspberry Pi into an Ad blocker"
 			BtSync "Bittorrent Sync as file backup service"
 			Cups "Printer server (cups)"
