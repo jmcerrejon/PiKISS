@@ -2,7 +2,7 @@
 #
 # Description : Discord
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (25/Jul/20)
+# Version     : 1.0.2 (06/Agu/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -19,7 +19,7 @@ runme() {
 		exit_message
 	fi
 	read -p "Press [ENTER] to run Cordless..."
-	# chromium-browser "$RETRIEVE_TOKEN_INFO" &
+	chromium-browser "$RETRIEVE_TOKEN_INFO" &>/dev/null
 	clean && sleep 2
 	~/go/bin/cordless
 	exit_message
