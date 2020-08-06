@@ -63,7 +63,7 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
-### (05/08/20)
+### (06/08/20)
 
 · 📦 ADD: Server > Jenkins CI.
 
