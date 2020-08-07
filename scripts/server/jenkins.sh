@@ -2,7 +2,7 @@
 #
 # Description : Jenkins CI
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (06/Aug/20)
+# Version     : 1.0.1 (07/Aug/20)
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
@@ -16,11 +16,9 @@ runme() {
     echo
     read -p "Do you want to open the web browser with url $URL (Y/n)? " response
     if [[ $response =~ [Nn] ]]; then
-        exit_message
         return 0
     fi
     chromium-browser "$URL" &>/dev/null
-    exit_message
 }
 
 # TODO If I remove some of the next files, we can't install it again. Refactor it in the next release.
@@ -74,6 +72,7 @@ post_install() {
     sleep 3
     local KEY
     if sudo test ! -f /var/lib/jenkins/secrets/initialAdminPassword; then
+        echo -e "\n/var/lib/jenkins/secrets/initialAdminPassword not found. Try to reinstall the app again."
         return 0
     fi
     KEY="$(sudo cat /var/lib/jenkins/secrets/initialAdminPassword)"
@@ -105,3 +104,4 @@ read -p "Press [Enter] to continue..."
 echo
 
 install
+exit_message
