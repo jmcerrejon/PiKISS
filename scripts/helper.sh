@@ -759,12 +759,34 @@ uninstall_pikiss() {
 }
 
 #
-# Return if Kernel is 64 bits
+# Return (true) if kernel is 64 bits
 #
-is_64_bits() {
+is_kernel_64_bits() {
     if [ $(uname -m) == "aarch64" ]; then
         true
     else
         false
     fi
+}
+
+#
+# Return (true) if userspace is 64 bits
+#
+is_userspace_64_bits() {
+    if [ $(getconf LONG_BIT) == "64" ]; then
+        true
+    else
+        false
+    fi
+}
+
+install_nspawn_64_if_not_installed() {
+    if is_userspace_64_bits; then
+        echo "nspawn-64 not needed."
+        return 0
+    fi
+    if isPackageInstalled raspbian-nspawn-64; then
+        return 0
+    fi
+    sudo apt install -y raspbian-nspawn-64
 }
