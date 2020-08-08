@@ -13,13 +13,13 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **633 hours**
+* **636 hours**
 
 ## 💰 Total amount donated by users
 
 * $214,96
 
-* I want to thank my two Patreons *David J Leto* and *Charles Paek* for trusting me ❤️
+* I want to thank my patron *David J Leto* for trusting me ❤️
 
 ## 📣 Stay tuned! 
 
@@ -62,6 +62,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (08/08/20)
+
+· 📦 ADD: Emulation > ResidualVM (Cross-platform 3D game interpreter for Monkey4 or The Longest Journey).
 
 ### (06/08/20)
 
