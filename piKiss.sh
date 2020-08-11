@@ -342,7 +342,7 @@ smServer() {
             GitServer "Use your RPi as a Git Server"
             Jenkins "Jenkins is a free and open source automation server"
             Minidlna "Install/Compile UPnP/DLNA Minidlna"
-            Nagios "Nagios 3 is a network host and service monitoring"
+            Nagios "Nagios is a network host and service monitoring"
             OctoPrint "Control your 3D-Printer"
             OwnCloud "Access your data from all your devices"
             Smtp "SMTP Config to send e-mail"
