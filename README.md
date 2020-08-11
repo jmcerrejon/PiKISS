@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **637 hours**
+* **637.3 hours**
 
 ## 💰 Total amount donated by users
 
@@ -64,6 +64,8 @@
 ### [ ChangeLog (dd/mm/yy)]
 
 ### (11/08/20)
+
+· 👌 IMPROVE: Server > Nagios 4.
 
 · 🐛 FIX: Configure > Compile/update Vulkan Mesa driver (EXPERIMENTAL).
 
