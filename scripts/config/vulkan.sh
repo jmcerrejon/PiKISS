@@ -2,7 +2,7 @@
 #
 # Description : Vulkan driver (EXPERIMENTAL)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.3 (11/Aug/20)
+# Version     : 1.0.4 (11/Aug/20)
 # Compatible  : Raspberry Pi 4
 #
 # Info		  : Thks to PI Labs
@@ -10,7 +10,7 @@
 # 			  : https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=276412&start=25#p1678723
 # 			  : https://blogs.igalia.com/apinheiro/2020/06/v3dv-quick-guide-to-build-and-run-some-demos/
 #
-#             : Current build fails with -Dplatforms=x11, wayland
+#             : Current build fails with -Dplatforms=x11,wayland -Dgallium-drivers=zink
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
@@ -93,7 +93,7 @@ compile() {
 		rm -rf "$HOME"/mesa_vulkan/build
 	fi
 
-	meson --prefix /usr -Dplatforms=x11 -Dvulkan-drivers=broadcom -Ddri-drivers= -Dgallium-drivers=v3d,kmsro,vc4,zink -Dbuildtype=release build
+	meson --prefix /usr -Dplatforms=x11 -Dvulkan-drivers=broadcom -Ddri-drivers= -Dgallium-drivers=v3d,kmsro,vc4 -Dbuildtype=release build
 	echo -e "\nCompiling... Estimated time on Raspberry Pi 4 over USB/SSD drive (Not overclocked): ~12 min. \n"
 	ninja -C build -j"$(getconf _NPROCESSORS_ONLN)"
 	install
