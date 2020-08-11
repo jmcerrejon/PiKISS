@@ -2,7 +2,7 @@
 #
 # Description : OBS
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.4 (27/Jul/20)
+# Version     : 1.0.5 (11/Aug/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # HELP		  : https://obsproject.com/forum/threads/obs-raspberry-pi-build-instructions.115739/post-471062
@@ -73,7 +73,7 @@ echo "========================================================="
 echo
 echo " · Tested on Raspberry Pi 4 - 4 Gb"
 echo " · Estimated Time on Raspberry Pi 4 (not overclocked): ~14 minutes"
-echo " · This app can't be uninstalled by PiKISS if you decide to run this script. Use on your own risk."
+echo " · This app can't be uninstalled by PiKISS if you decide to run this script. Use at your own risk."
 echo " · BONUS install: NDI, OBS NDI, OBS Websockets."
 echo " · Main script thanks to venepe from https://obsproject.com/forum"
 echo " · NOTE: Ignore the first run with GPU issue."
