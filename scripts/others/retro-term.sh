@@ -14,7 +14,7 @@ SHORTCUT_PATH="/usr/share/applications/cool-retro-term.desktop"
 
 fix_icon() {
     echo -e "\nFixing shortcut icon..."
-    sudo sed -i 's/Icon=cool-retro-term/Icon=\/usr\/share\/icons\/hicolor\/32x32\/apps\/cool-retro-term.png/g' "SHORTCUT_PATH" "$SHORTCUT_PATH"
+    sudo sed -i 's/Icon=cool-retro-term/Icon=\/usr\/share\/icons\/hicolor\/32x32\/apps\/cool-retro-term.png/g' "$SHORTCUT_PATH"
 }
 
 compile() {
