@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **637.3 hours**
+* **639 hours**
 
 ## 💰 Total amount donated by users
 
@@ -62,6 +62,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (13/08/20)
+
+· 📦 ADD: Others > [cool-retro-term](https://github.com/Swordfish90/cool-retro-term).
 
 ### (11/08/20)
 
