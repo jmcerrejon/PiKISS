@@ -65,7 +65,7 @@
 
 ### (13/08/20)
 
-· 📦 ADD: Others > [cool-retro-term](https://github.com/Swordfish90/cool-retro-term).
+· 📦 ADD: Others > Compile [cool-retro-term](https://github.com/Swordfish90/cool-retro-term).
 
 ### (11/08/20)
 
