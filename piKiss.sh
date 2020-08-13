@@ -409,6 +409,7 @@ smOthers() {
         options=(
             Back "Back to main menu"
             Aircrack "Compile Aircrack-NG suite easily"
+            CoolTerm "Compile a terminal with the look and feel of the old cathode tube screens"
             Fixes "Fix some problems with the Raspbian OS"
             GCC "Install GCC 4.7 on Raspberry Pi"
             NetTools "MITM Pentesting Opensource Toolkit (Require X)"
@@ -428,6 +429,7 @@ smOthers() {
         case $choice in
         Back) break ;;
         Aircrack) ./scripts/others/aircrack.sh ;;
+        CoolTerm) ./scripts/others/retro-term.sh ;;
         Fixes) ./scripts/others/fixes.sh ;;
         GCC) ./scripts/others/gcc47.sh ;;
         NetTools) ./scripts/others/nettools.sh ;;
