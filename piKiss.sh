@@ -390,6 +390,7 @@ smDevs() {
     options=(
         Back "Back to main menu"
         QT5 "Free and open-source widget toolkit for creating graphical UI cross-platform applications"
+        VSCode "Code - OSS (VSCode fork)"
     )
 
     choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
@@ -398,6 +399,7 @@ smDevs() {
         case $choice in
         Back) break ;;
         QT5) ./scripts/devs/qt5.sh ;;
+        VSCode) ./scripts/devs/vscode.sh ;;
         esac
     done
 }
