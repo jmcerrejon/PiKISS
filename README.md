@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **639 hours**
+* **640 hours**
 
 ## 💰 Total amount donated by users
 
@@ -62,6 +62,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (15/08/20)
+
+· 📦 ADD: Devs > Code - OSS (VSCode fork).
 
 ### (13/08/20)
 
