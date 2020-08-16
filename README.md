@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **640 hours**
+* **644 hours**
 
 ## 💰 Total amount donated by users
 
@@ -62,6 +62,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (16/08/20)
+
+· 📦 ADD: Games > Serious Sam The Second Encounter.
 
 ### (15/08/20)
 
