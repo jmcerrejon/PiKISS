@@ -17,7 +17,7 @@
 
 ## 💰 Total amount donated by users
 
-* $214,96
+* $220,96
 
 * I want to thank my patron *David J Leto* for trusting me ❤️
 
