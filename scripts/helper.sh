@@ -686,10 +686,26 @@ upgrade_dist() {
 # Message use the MagicAirCopy® technology
 #
 message_magic_air_copy() {
+    local MESSAGES_LIST
+    MESSAGES_LIST=(
+        "You didn't lend it out?"
+        "Really?!"
+        "What a mess!"
+        "You sure the game is here?"
+        "You sure you bought this game?"
+        "Clean up your room next time"
+        "Dust in the wind, and dust in your room"
+        "This is a dirty job"
+        "I quit!"
+        "Why do you punished me doing this?"
+        "You won't believe what 'other' thing I've found under your bed"
+    )
+    size=${#MESSAGES_LIST[@]}
+    index=$(($RANDOM % $size))
     clear
     echo -e "\nLooking for the copy at your house...\n" && sleep 4
-    echo -e "You didn't lend it out?...\n" && sleep 3
-    echo -e "Found it! (Clean up your room next time)...\n" && sleep 2
+    echo -e "${MESSAGES_LIST[$index]}\n" && sleep 3
+    echo -e "Found it!...\n" && sleep 2
     echo "I'm moving the data files FROM YOUR original copy to destination directory using the technology MagicAirCopy® (｀-´)⊃━☆ﾟ.*･｡ﾟ"
 }
 
