@@ -159,6 +159,7 @@ smGames() {
             Revolt "Re-Volt is a radio control car racing themed video game"
             SMario64 "Super Mario 64 native OpenGL ES"
             Sqrxz4 "Sqrxz 4: Difficult platform game"
+            SSam2 "FPS sequel to SSam where you must to kill all walking monster"
             Xump "Xump: Simple multi-platform puzzler"
         )
     fi
@@ -186,6 +187,7 @@ smGames() {
         Revolt) ./scripts/games/revolt.sh ;;
         SMario64) ./scripts/games/smario64.sh ;;
         Sqrxz4) ./scripts/games/sqrxz4.sh ;;
+        SSam2) ./scripts/games/ssam.sh ;;
         Xump) ./scripts/games/xump.sh ;;
         esac
     done
