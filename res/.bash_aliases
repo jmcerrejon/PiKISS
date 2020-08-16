@@ -44,6 +44,11 @@ mk() {
     mkdir "$1" && cd "$_" || exit
 }
 
+my_checkinstall() {
+    # Config at /etc/checkinstallrc
+    sudo checkinstall --install=no --fstrans=yes -D --pkgname="$1" --pkgversion=1 --pkgrelease="1" --maintainer=ulysess@gmail.com --strip=no --stripso=no --addso=yes -d2 make
+}
+
 search() {
     sudo find / -iname *"$1"*
 }
