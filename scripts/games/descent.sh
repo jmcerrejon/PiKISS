@@ -2,7 +2,7 @@
 #
 # Description : Descent 1 & 2 thks to DXX-Rebirth v0.61.0 0.60.0-beta2-544-g427f45fdd703 compiled on 17/Sep/2019
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.2 (26/Jun/20)
+# Version     : 1.0.3 (17/Aug/20)
 # Compatible  : Raspberry Pi 1-4 (tested on Raspberry Pi 4)
 #
 # HELP	      : https://github.com/dxx-rebirth/dxx-rebirth
@@ -14,7 +14,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 D1X_SHARE_URL='https://www.dxx-rebirth.com/download/dxx/content/descent-pc-shareware.zip'
 D2X_SHARE_URL='https://www.dxx-rebirth.com/download/dxx/content/descent2-pc-demo.zip'
-DXX_URL='https://www.dropbox.com/s/dvtcby2comu5p8u/dxx-rebirth.tar.gz?dl=0'
+DXX_URL='https://misapuntesde.com/rpi_share/dxx-rebirth.tar.gz'
 D1X_HIGH_TEXTURE_URL='https://www.dxx-rebirth.com/download/dxx/res/d1xr-hires.dxa'
 D1X_OGG_URL='https://www.dxx-rebirth.com/download/dxx/res/d1xr-sc55-music.dxa'
 D2X_OGG_URL='https://www.dxx-rebirth.com/download/dxx/res/d2xr-sc55-music.dxa'

@@ -2,7 +2,7 @@
 #
 # Description : Super Mario 64
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (04/Jul/20)
+# Version     : 1.0.1 (17/Aug/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -10,7 +10,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 INSTALL_DIR="$HOME"/games
-GAME_PATH="https://www.dropbox.com/s/69eblvaz8y0ts7w/sm64.tar.gz?dl=0"
+GAME_PATH="https://misapuntesde.com/rpi_share/sm64.tar.gz"
 ROM_PATH="https://s2roms.cc/s3roms/Nintendo%2064/P-T/Super%20Mario%2064%20%28U%29%20%5B%21%5D.zip"
 GITHUB_PATH="https://github.com/sm64pc/sm64ex.git"
 INPUT=/tmp/sm64menu.$$

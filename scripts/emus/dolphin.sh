@@ -2,13 +2,13 @@
 #
 # Description : Dolphin emulator 4.0 (Wii & Gamecube) thks to Kreal (krishenriksen.dk)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (23/Jul/20)
+# Version     : 1.0.1 (17/Aug/20)
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-BINARY_PATH="https://www.dropbox.com/s/wu9n9g1x3hvtjxj/dolphin_rpi_experimental.tar.xz?dl=0"
+BINARY_PATH="https://misapuntesde.com/rpi_share/dolphin_rpi_experimental.tar.xz"
 CURRENT_PATH="${PWD}"
 
 runme() {

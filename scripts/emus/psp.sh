@@ -2,7 +2,7 @@
 #
 # Description : PPSSPP for Raspberry Pi by Pi Labs
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (15/Jul/20)
+# Version     : 1.0.1 (17/Aug/20)
 # Compatible  : Raspberry Pi 3-4
 #
 # Info		  : Silveredge thanks to andrewafy@gmail.com | http://wololo.net/downloads/index.php/download/937
@@ -12,7 +12,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 INSTALL_DIR="$HOME/games"
-URL_FILE="https://www.dropbox.com/s/5mqck407rrspmom/ppsspp_1.9.3-1063.tar.gz?dl=0"
+URL_FILE="https://misapuntesde.com/rpi_share/ppsspp_1.9.3-1063.tar.gz"
 GAME_URL="http://cdn-0.wololo.net/download.php?f=Silveredge.zip"
 
 uninstall() {

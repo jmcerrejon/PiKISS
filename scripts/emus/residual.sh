@@ -2,7 +2,7 @@
 #
 # Description : ResidualVM Engine
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (08/Aug/20)
+# Version     : 1.0.1 (17/Aug/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://wiki.residualvm.org/index.php/Building_ResidualVM
@@ -16,7 +16,7 @@ INSTALL_DIR="$HOME/games"
 COMPILE_DIR="$HOME/sc"
 PACKAGES=( libSDL2-net-2.0-0 libglu1-mesa libglew2.1 )
 PACKAGES_DEV=( libsdl1.2-dev libglew-dev libjpeg-dev libclanlib-dev libmpeg2-4-dev )
-BINARY_PATH="https://www.dropbox.com/s/2pzzic84ivp08s3/residualvm_rpi.tar.gz?dl=0"
+BINARY_PATH="https://archive.org/download/rpi_share/residualvm_rpi.tar.gz"
 SOURCE_PATH="https://github.com/residualvm/residualvm.git"
 
 runme() {

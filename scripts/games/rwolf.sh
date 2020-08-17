@@ -2,7 +2,7 @@
 #
 # Description : Return to Castle Wolfenstein for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.9 (07/Sep/16)
+# Version     : 0.9.1 (17/Aug/20)
 # Compatible  : Raspberry Pi 1, 2 & 3 (tested)
 # TIP         : You need at least 160 GB assigned to GPU
 #
@@ -12,7 +12,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 INSTALL_DIR="$HOME/games"
 URL_FILE="https://github.com/hexameron/RaspberryPiRecipes/archive/master.zip"
 PAK_FILE_SHARE="ftp://ftp.gr.freebsd.org/pub/vendors/idgames/idstuff/wolf/linux/wolfspdemo-linux-1.1b.x86.run"
-PAK_FILE_FULL="https://www.dropbox.com/s/wugt32x7arkjff4/wolfc.zip?dl=0"
+PAK_FILE_FULL="https://archive.org/download/rpi_share/wolfc.zip"
 LICENSE="Complete"
 
 install(){

@@ -2,7 +2,7 @@
 #
 # Description : OpenXcom with the help of user chills340
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (01/Aug/20)
+# Version     : 1.0.1 (17/Aug/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://www.ufopaedia.org/index.php/Compiling_with_CMake_(OpenXcom)
@@ -14,7 +14,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 INSTALL_DIR="$HOME/games"
 PACKAGES=( libsdl-gfx1.2-5 libglu1-mesa libyaml-cpp0.6 )
 PACKAGES_DEV=(build-essential libboost-dev libsdl1.2-dev libsdl-mixer1.2-dev libsdl-image1.2-dev libsdl-gfx1.2-dev libyaml-cpp-dev xmlto)
-BINARY_PATH="https://www.dropbox.com/s/z6ch5jp5zopghrf/openxcom_rpi.tar.gz?dl=0"
+BINARY_PATH="https://misapuntesde.com/rpi_share/openxcom_rpi.tar.gz"
 GITHUB_PATH="https://github.com/SupSuper/OpenXcom.git"
 INPUT=/tmp/openxcom.$$
 

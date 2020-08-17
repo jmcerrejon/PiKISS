@@ -2,7 +2,7 @@
 #
 # Description : ScummVM
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.2 (03/Aug/20)
+# Version     : 1.0.3 (17/Aug/20)
 # Compatible  : Raspberry Pi 1-4 (tested)
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -11,7 +11,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 INSTALL_DIR="$HOME/games"
 PACKAGES=( libSDL2-net-2.0-0 )
-URL_FILE="https://www.dropbox.com/s/edlpjjwintcqb7p/scummvm_2-1.2_armhf.deb?dl=0"
+URL_FILE="https://misapuntesde.com/rpi_share/scummvm_2-1.2_armhf.deb"
 
 install() {
 	installPackagesIfMissing "${PACKAGES[@]}"

@@ -2,7 +2,7 @@
 #
 # Description : Serious Sam The Second Encounter thks to Pi Labs & ptitSeb
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (16/Aug/20)
+# Version     : 1.0.1 (17/Aug/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help        : https://www.raspberrypi.org/forums/viewtopic.php?t=200458
@@ -13,7 +13,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 INSTALL_DIR="$HOME/games"
-BINARY_PATH="https://www.dropbox.com/s/cdzgfz0bx0uss3i/ssam-tse_1.10-669dc91_armhf.tar.xz?dl=0"
+BINARY_PATH="https://misapuntesde.com/rpi_share/ssam-tse_1.10-669dc91_armhf.tar.xz"
 
 runme() {
     echo

@@ -2,7 +2,7 @@
 #
 # Description : Blood
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (19/Jul/20)
+# Version     : 1.0.2 (17/Aug/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://www.techradar.com/how-to/how-to-run-wolfenstein-3d-doom-and-duke-nukem-on-your-raspberry-pi
@@ -12,7 +12,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 INSTALL_DIR="$HOME/games"
-BINARY_PATH="https://www.dropbox.com/s/m0gm85dcwozsly7/blood_r11880.tar.gz?dl=0"
+BINARY_PATH="https://misapuntesde.com/rpi_share/blood_r11880.tar.gz"
 GITHUB_PATH="https://github.com/nukeykt/NBlood.git"
 INPUT=/tmp/blood.$$
 

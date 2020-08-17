@@ -2,7 +2,7 @@
 #
 # Description : Diablo for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.3 (15/Jul/20)
+# Version     : 1.0.4 (17/Aug/20)
 # Compatible  : Raspberry Pi 3-4 (tested)
 #
 # Help		  : https://github.com/diasurgical/devilutionX/
@@ -14,7 +14,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 INSTALL_DIR="$HOME/games"
 BIN_PATH='https://github.com/diasurgical/devilutionX/releases/download/1.0.1/devilutionx-linux-armhf.7z'
-DIABDAT_PATH='https://www.dropbox.com/s/42w96s1i9sahml7/diabdat.mpq?dl=0'
+DIABDAT_PATH='https://archive.org/download/rpi_share/diabdat.mpq'
 ICON="https://misapuntesde.com/res/diablo1.png"
 
 playNow() {

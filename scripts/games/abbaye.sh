@@ -2,7 +2,7 @@
 #
 # Description : Abbaye des Morts v.2.0.0 SDL2
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (18/Jun/20)
+# Version     : 1.0.1 (17/Aug/20)
 # Compatible  : Raspberry Pi 1-3 (?), 4 (tested)
 #
 # Help		  : https://misapuntesde.com/post.php?id=162
@@ -12,7 +12,7 @@
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 clear
 
-BIN_PATH='https://www.dropbox.com/s/w8iz2q3us5eablk/abbaye-des-morts_2-0_armhf.deb?dl=0'
+BIN_PATH="https://misapuntesde.com/rpi_share/abbaye-des-morts_2-0_armhf.deb"
 
 install() {
 	if isPackageInstalled abbaye-for-linux-src; then

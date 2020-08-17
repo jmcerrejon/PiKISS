@@ -2,7 +2,7 @@
 #
 # Description : Quake ][ (I & III is coming)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (25/Jul/20)
+# Version     : 1.0.2 (17/Aug/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help 		  : Quake 1: https://github.com/welford/qurp
@@ -18,10 +18,10 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 INSTALL_DIR="$HOME/games"
 Q2_CONFIG_DIR="$HOME/.yq2"
-Q2_BINARY_URL="https://www.dropbox.com/s/wrqzgicvb3ygmgh/yquake2_bin_arm.tar.gz?dl=0"
+Q2_BINARY_URL="https://misapuntesde.com/rpi_share/yquake2_bin_arm.tar.gz"
 Q2_SC_URL="https://github.com/yquake2/yquake2.git"
-Q2_PAK_URL="https://www.dropbox.com/s/sbr0xwr9wo9been/baseq2s.zip?dl=0"
-Q2_OGG_URL="https://www.dropbox.com/s/z7c8lm8weemf2iy/q2_ogg.zip?dl=0"
+Q2_PAK_URL="https://archive.org/download/rpi_share/baseq2.zip"
+Q2_OGG_URL="https://misapuntesde.com/rpi_share/q2_ogg.zip"
 Q2_HIGH_TEXTURE_PAK_URL="https://deponie.yamagi.org/quake2/texturepack/q2_textures.zip"
 Q2_HIGH_TEXTURE_MODELS_URL="https://deponie.yamagi.org/quake2/texturepack/models.zip"
 # Q1_PAK_URL="https://www.quakeforge.net/files/quake-shareware-1.06.zip"

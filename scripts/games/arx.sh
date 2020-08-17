@@ -2,7 +2,7 @@
 #
 # Description : Arx Libertatis (AKA Arx Fatalis)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (03/Aug/20)
+# Version     : 1.0.2 (17/Aug/20)
 # Compatible  : Raspberry Pi 4 (fail)
 #
 # Help		  : https://wiki.arx-libertatis.org/Downloading_and_Compiling_under_Linux
@@ -21,7 +21,7 @@ CONFIG_DIR="$HOME/.local/share/arx"
 BINARY_URL="https://www.littlecarnage.com/arx_rpi2.tar.gz"
 SOURCE_CODE_URL="https://github.com/ptitSeb/ArxLibertatis.git"
 SOURCE_CODE_OFFICIAL_URL="https://github.com/arx/ArxLibertatis.git" # Doesn't work for now
-DATA_URL="https://www.dropbox.com/s/nhh3lr8irrx3vnm/arx_demo_en.tgz?dl=0"
+DATA_URL="https://archive.org/download/rpi_share/arx_demo_en.tgz"
 ICON_URL="https://github.com/arx/ArxLibertatisData/blob/master/icons/arx-libertatis-32.png?raw=true"
 INPUT=/tmp/arx.$$
 

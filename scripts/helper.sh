@@ -37,7 +37,7 @@ installBox86() {
         return 0
     fi
     echo -e "\n\nInstalling BOX86 lib...\n"
-    local URL_PATH='https://www.dropbox.com/s/eeqip6lkegljmrl/box86.tar.gz?dl=0'
+    local URL_PATH='https://misapuntesde.com/rpi_share/pilabs/box86.tar.gz'
     download_and_extract "$URL_PATH" "$HOME"
 }
 
@@ -47,7 +47,7 @@ installGL4ES() {
         return 0
     fi
     echo -e "\n\nInstalling GL4ES lib...\n"
-    local URL_PATH='https://www.dropbox.com/s/ed2z5su72115bc7/gl4es.tar.gz?dl=0'
+    local URL_PATH='https://misapuntesde.com/rpi_share/pilabs/gl4es.tar.gz'
     download_and_extract "$URL_PATH" "$HOME"
 }
 
@@ -57,12 +57,12 @@ installMesa() {
         return 0
     fi
     echo -e "\n\nInstalling Mesa lib...\n"
-    local URL_PATH='https://www.dropbox.com/s/or0bre2pt4sc1i3/mesa.tar.gz?dl=0'
+    local URL_PATH='https://misapuntesde.com/rpi_share/pilabs/mesa.tar.gz'
     download_and_extract "$URL_PATH" "$HOME"
 }
 
 installMonolibs() {
-    local URL_PATH='https://www.dropbox.com/s/u4dmwnb88sk0la7/monolibs.tar.gz?dl=0'
+    local URL_PATH='https://misapuntesde.com/rpi_share/pilabs/monolibs.tar.gz'
     if [ ! -d /home/pi/monolibs ]; then
         wget -O /home/pi/monolibs.tar.gz "$URL_PATH"
         extract /home/pi/monolibs.tar.gz && rm -

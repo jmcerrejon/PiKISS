@@ -2,7 +2,7 @@
 #
 # Description : Gameboy Advance emulator mgba
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.1 (19/Jun/20)
+# Version     : 1.3.2 (17/Aug/20)
 # Compatible  : Raspberry Pi 1-3 (¿?), 4 (tested)
 #
 # Help        : https://github.com/mgba-emu/mgba/
@@ -12,7 +12,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 clear
 
 INSTALL_DIR="$HOME/games"
-URL_FILE="https://www.dropbox.com/s/r7fuex5dtfpi1u4/mgba_0-90.tar.gz?dl=0"
+URL_FILE="https://misapuntesde.com/rpi_share/mgba_0-90.tar.gz"
 
 install() {
     if [[ -f "$INSTALL_DIR"/mgba/mgba ]]; then

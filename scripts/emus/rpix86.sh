@@ -2,12 +2,12 @@
 #
 # Description : MS-DOS Emulator DOSBox-X
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (18/Jun/20)
+# Version     : 1.0.1 (17/Aug/20)
 #
 clear
 
 INSTALL_DIR="/home/$USER/games"
-URL_FILE="https://www.dropbox.com/s/ltjs2vvbc8u1k05/dosbox-X_0-82.26.tar.gz?dl=0"
+URL_FILE="https://misapuntesde.com/rpi_share/dosbox-X_0-82.26.tar.gz"
 
 if  which $INSTALL_DIR/dosbox >/dev/null ; then
     read -p "Warning!: Dosbox already installed. Press [ENTER] to exit..."

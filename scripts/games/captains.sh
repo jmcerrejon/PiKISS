@@ -2,7 +2,7 @@
 #
 # Description : Capitan Sevilla El Remake (AKA Captain 'S' The Remake)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com) and Salvador (Pi Labs)
-# Version     : 1.0.1 (13/Jul/20)
+# Version     : 1.0.2 (17/Aug/20)
 # Compatible  : Raspberry Pi 3-4 (tested)
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -10,7 +10,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 INSTALL_DIR="$HOME/games"
-URL_FILE="https://www.dropbox.com/s/2005dmat9339znc/captain_s.tar.gz?dl=0"
+URL_FILE="https://misapuntesde.com/rpi_share/captain_s.tar.gz"
 
 playNow() {
 	echo

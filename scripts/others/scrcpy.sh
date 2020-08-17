@@ -2,7 +2,7 @@
 #
 # Description : scrcpy thks to Pi Labs
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (17/Jul/20)
+# Version     : 1.0.1 (17/Aug/20)
 #
 # Help        : https://github.com/Genymobile/scrcpy
 #
@@ -11,7 +11,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 INSTALL_DIR="$HOME"
-BINARY_PATH="https://www.dropbox.com/s/6r3w0bjr96tpct3/scrcpy-1.13.tar.gz?dl=0"
+BINARY_PATH="https://misapuntesde.com/rpi_share/scrcpy-1.13.tar.gz"
 
 remove_files() {
 	sudo rm -rf "$INSTALL_DIR"/scrcpy /usr/local/share/scrcpy ~/.local/share/applications/scrcpy.desktop

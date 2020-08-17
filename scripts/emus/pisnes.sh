@@ -2,7 +2,7 @@
 #
 # Description : Snes9X for Raspberry Pi by Squid
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (16/Jun/20)
+# Version     : 1.0.1 (17/Aug/20)
 # Compatible  : Raspberry Pi 2-4
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -11,7 +11,7 @@ clear
 
 INSTALL_DIR="$HOME/games/snes9x"
 URL_FILE="https://misapuntesde.com/res/snes9x_1-60.tar.gz"
-GAME_URL="https://www.dropbox.com/s/b6tl84p3a17w5ab/UwolQuestForMoney.sfc?dl=0"
+GAME_URL="https://misapuntesde.com/rpi_share/UwolQuestForMoney.sfc"
 
 playgame(){
     read -p "Do you want to play Uwol Quest For Money now? [y/n] " option

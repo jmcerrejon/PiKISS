@@ -2,13 +2,13 @@
 #
 # Description : Portable ZX-Spectrum emulator
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.5.1 (20/Jun/20)
+# Version     : 1.5.2 (17/Aug/20)
 # Compatible  : Raspberry 1-2 (¿?), Raspberry Pi 3-4 (tested)
 #
 clear
 
 INSTALL_DIR="/home/$USER/games/speccy"
-URL_FILE="https://www.dropbox.com/s/uhpryw4su15fck0/unreal_speccy_portable_0.0.86.11.tar.gz?dl=0"
+URL_FILE="https://misapuntesde.com/rpi_share/unreal_speccy_portable_0.0.86.11.tar.gz"
 URL_GAME="https://www.mojontwins.com/juegos/mojon-twins--ninjajar-eng-v1.1.tap"
 
 mkDesktopEntry() {
