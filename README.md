@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **644 hours**
+* **647 hours**
 
 ## 💰 Total amount donated by users
 
@@ -62,6 +62,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (20/08/20)
+
+· 📦 ADD: Games > Spelunky Classic HD
 
 ### (16/08/20)
 
