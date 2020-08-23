@@ -394,6 +394,7 @@ smDevs() {
     options=(
         Back "Back to main menu"
         QT5 "Free and open-source widget toolkit for creating graphical UI cross-platform applications"
+        TIC80 "TIC-80 is a free fantasy computer for making, playing tiny games"
         VSCode "Code - OSS (VSCode fork)"
     )
 
@@ -403,6 +404,7 @@ smDevs() {
         case $choice in
         Back) break ;;
         QT5) ./scripts/devs/qt5.sh ;;
+        TIC80) ./scripts/emus/tic-80.sh ;;
         VSCode) ./scripts/devs/vscode.sh ;;
         esac
     done
@@ -417,7 +419,6 @@ smOthers() {
             Aircrack "Compile Aircrack-NG suite easily"
             CoolTerm "Compile a terminal with the look and feel of the old cathode tube screens"
             Fixes "Fix some problems with the Raspbian OS"
-            GCC "Install GCC 4.7 on Raspberry Pi"
             NetTools "MITM Pentesting Opensource Toolkit (Require X)"
             Part "Check issues & fix SD corruptions"
             RPiPlay "An open-source implementation of an AirPlay mirroring server"
@@ -437,7 +438,6 @@ smOthers() {
         Aircrack) ./scripts/others/aircrack.sh ;;
         CoolTerm) ./scripts/others/retro-term.sh ;;
         Fixes) ./scripts/others/fixes.sh ;;
-        GCC) ./scripts/others/gcc47.sh ;;
         NetTools) ./scripts/others/nettools.sh ;;
         Part) ./scripts/others/checkpart.sh ;;
         RPiPlay) ./scripts/others/rpiplay.sh ;;
