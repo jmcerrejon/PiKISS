@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **647 hours**
+* **652 hours**
 
 ## 💰 Total amount donated by users
 
@@ -63,9 +63,13 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (23/08/20)
+
+· 📦 ADD: Devs > [TIC-80](https://tic80.com/).
+
 ### (20/08/20)
 
-· 📦 ADD: Games > Spelunky Classic HD
+· 📦 ADD: Games > Spelunky Classic HD.
 
 ### (16/08/20)
 
