@@ -404,7 +404,7 @@ smDevs() {
         case $choice in
         Back) break ;;
         QT5) ./scripts/devs/qt5.sh ;;
-        TIC80) ./scripts/emus/tic-80.sh ;;
+        TIC80) ./scripts/devs/tic-80.sh ;;
         VSCode) ./scripts/devs/vscode.sh ;;
         esac
     done

@@ -2,16 +2,13 @@
 #
 # Description : TIC-80 TINY COMPUTER
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (23/Aug/20)
+# Version     : 1.0.1 (24/Aug/20)
 # Compatible  : Raspberry Pi 3-4 (tested)
 # Repository  : https://github.com/nesbox/TIC-80
-#               https://github.com/hpingel/TIC-80.git
 #
 # Help        : ld -lbcm_host --verbose
-#               https://github.com/nesbox/TIC-80/issues/984
-#               https://github.com/nesbox/TIC-80/issues/1017
+#               https://github.com/nesbox/TIC-80/issues/1151
 #               link_directories(/opt/vc/lib) on CMakeLists.txt
-# Missing     : immintrin.h strlcpy _strrev _strlwr itoa _ltoa _stricmp _strnicmp wcslcat wcslcpy sysctlbyname iconv_open alloca dlopen samplerate.h bcm_host brcmegl fcitx/frontend.h
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
@@ -20,7 +17,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 INSTALL_DIR="$HOME/apps"
 BINARY_PATH="https://misapuntesde.com/res/tic-80-0.182-dev_bin.tar.gz"
 GITHUB_PATH="https://github.com/nesbox/TIC-80.git"
-PACKAGES=(libibus-1.0-5 liblua5.3)
+PACKAGES=(libibus-1.0-5 liblua5.3-0)
 PACKAGES_DEV=(cmake libgtk-3-dev libglvnd-dev libglu1-mesa-dev libsdl2-dev zlib1g-dev liblua5.3-dev libgif-dev freeglut3-dev libunwind-dev libbsd0 libaudio-dev)
 
 runme() {
@@ -73,12 +70,29 @@ EOF
 	fi
 }
 
+post_install() {
+    if [ "$(check_is_enabled_kms)" == 0 ]; then
+        return 0
+    fi
+
+    echo -e "\nTIC-80 is not compatible with KMS driver for now.\nDo you want to DISABLE KMS?"
+    read -p "NOTE: Some games need this, but you can enable it later. Type (y/N): " response
+	if [[ $response =~ [Yy] ]]; then
+        set_legacy_driver
+        echo -e "\nDone!. App at $INSTALL_DIR/tic-80 or Go to Menu > Programming > TIC-80"
+        read -p "Press [ENTER] to reboot."
+        sudo reboot
+	fi
+}
+
 install() {
     echo -e "\nInstalling, please wait...\n"
-    sudo apt install -y "${PACKAGES[@]}"
+    installPackagesIfMissing "${PACKAGES[@]}"
     download_and_extract "$BINARY_PATH" "$INSTALL_DIR"
     create_libbcm_host_link
     mkDesktopEntry
+    post_install
+    echo -e "\nDone!. App at $INSTALL_DIR/tic-80 or Go to Menu > Programming > TIC-80"
     runme
 }
 
@@ -96,7 +110,7 @@ compile() {
     echo -e "\nDownloading and compiling, be patience..."
     [ -f ~/sc/TIC-80/build/CMakeFiles/CMakeError.log ] && rm ~/sc/TIC-80/build/CMakeFiles/CMakeError.log
     check_update
-    sudo apt install -y "${PACKAGES_DEV[@]}"
+    installPackagesIfMissing "${PACKAGES_DEV[@]}"
     create_libbcm_host_link
     if [[ ! -d ~/sc/TIC-80 ]]; then
         mkdir -p ~/sc && cd "$_"
@@ -119,7 +133,6 @@ echo "
 TIC-80 for Raspberry Pi
 =======================
 
- · ONLY WORKS on Twister-OS (For now).
  · Version 0.80-1280-dev.
  · There are built-in tools for development: code, sprites, maps & sound editors.
  · More Info: https://tic.computer/learn | https://github.com/nesbox/TIC-80/wiki
