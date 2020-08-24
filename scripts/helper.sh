@@ -3,9 +3,6 @@
 # Description : Helpers functions
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 #
-# Directive to disable the warning:
-# shellcheck disable=SC2034
-#
 
 #
 # Fix libGLESv2.so on Raspbian Stretch
@@ -96,21 +93,16 @@ isPackageInstalled() {
 #
 installPackagesIfMissing() {
     MUST_INSTALL=false
-    for PACKAGE in "$1"; do
-        dpkg -s ${PACKAGE} &>/dev/null
+    if ! dpkg -s "$@" >/dev/null 2>&1; then
+        MUST_INSTALL=true
+    fi
 
-        if [ "$?" -eq 1 ]; then
-            MUST_INSTALL=true
-            break
-        fi
-    done
-
-    if [ ! "$MUST_INSTALL" ]; then
+    if [ "$MUST_INSTALL" == false ]; then
         return 0
     fi
 
     echo -e "\nInstalling dependencies...\n"
-    sudo apt install -y ${PACKAGES[@]}
+    sudo apt install -y "$@"
 }
 
 #
@@ -166,8 +158,8 @@ get_distro_name() {
 get_file_name_from_url() {
     local SUFFIX
     local FILE
-    SUFFIX=?dl=0
-    FILE=$(basename $1 | sed -e "s/$SUFFIX$//")
+    SUFFIX="?dl=0"
+    FILE=$(basename "$1" | sed -e "s/$SUFFIX$//")
 
     echo "$FILE"
 }
@@ -180,10 +172,15 @@ get_file_name_from_url() {
 #
 download_file() {
     local FILE
+    local COMMAND
     FILE="$(get_file_name_from_url $1)"
+    COMMAND="wget"
 
     [ ! -d $2 ] && mkdir -p "$2"
-    echo -e "\nDownloading...\n" && wget -q --show-progress -O "$2"/"$FILE" -c "$1"
+    if [ -w "$2" ]; then
+        COMMAND="sudo wget"
+    fi
+    echo -e "\nDownloading...\n" && ${COMMAND} -q --show-progress -O "$2"/"$FILE" -c "$1"
 }
 
 #
@@ -197,7 +194,7 @@ download_and_extract() {
 
     download_file "$1" "$2"
     echo -e "\nExtracting..." && cd "$2" && extract "$FILE"
-    [ -e $2/$FILE ] && rm -f "$2"/"$FILE"
+    [ -e "$2"/"$FILE" ] && rm -f "$2"/"$FILE"
 }
 
 #
@@ -232,7 +229,7 @@ is_pkg_installed() {
 # Backup a file as user or root
 #
 file_backup() {
-    if [ -f "$1 "]; then
+    if [[ -f "$1" ]]; then
         if [ -w "$(dirname $1)" ]; then
             cp "$1"{,.bak}
         else
@@ -552,7 +549,7 @@ getRaspberryPiNumberModel() {
 #
 install_sdl2() {
     echo "Installing SDL2 from RetroPie, please wait..."
-    mkdir -p $HOME/sc && cd $HOME/sc || exit
+    mkdir -p "$HOME"/sc && cd "$_" || exit
     git clone https://github.com/RetroPie/RetroPie-Setup.git
     cd RetroPie-Setup/ || exit
     sudo ./retropie_packages.sh sdl2 install_bin
@@ -564,7 +561,7 @@ install_sdl2() {
 compile_sdl2() {
     if [ ! -e /usr/include/SDL2 ]; then
         clear && echo "Compiling SDL2, please wait about 5 minutes..."
-        mkdir -p $HOME/sc && cd $HOME/sc || exit
+        mkdir -p "$HOME"/sc && cd "$_" || exit
         wget https://www.libsdl.org/release/SDL2-2.0.10.zip
         unzip SDL2-2.0.10.zip && cd SDL2-2.0.10 || exit
         ./autogen.sh
@@ -579,7 +576,7 @@ compile_sdl2() {
 
 compile_sdl2_image() {
     clear && echo "Compiling SDL2_image, please wait..."
-    cd $HOME/sc || exit
+    cd "$HOME"/sc || exit
     wget https://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.5.tar.gz
     tar zxvf SDL2_image-2.0.5.tar.gz && cd SDL2_image-2.0.5
     ./autogen.sh
@@ -590,7 +587,7 @@ compile_sdl2_image() {
 
 compile_sdl2_mixer() {
     clear && echo "Compiling SDL2_mixer, please wait..."
-    cd $HOME/sc || exit
+    cd "$HOME"/sc || exit
     wget https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-2.0.4.tar.gz
     tar zxvf SDL2_mixer-2.0.4.tar.gz && cd SDL2_mixer-2.0.4
     ./autogen.sh
@@ -601,7 +598,7 @@ compile_sdl2_mixer() {
 
 compile_sdl2_ttf() {
     clear && echo "Compiling SDL2_ttf, please wait..."
-    cd $HOME/sc || exit
+    cd "$HOME"/sc || exit
     wget https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.15.tar.gz
     tar zxvf SDL2_ttf-2.0.15.tar.gz && cd SDL2_ttf-2.0.15
     ./autogen.sh
@@ -612,44 +609,13 @@ compile_sdl2_ttf() {
 
 compile_sdl2_net() {
     clear && echo "Compiling SDL2_net, please wait..."
-    cd $HOME/sc || exit
+    cd "$HOME"/sc || exit
     wget https://www.libsdl.org/projects/SDL_net/release/SDL2_net-2.0.1.tar.gz
     tar zxvf SDL2_net-2.0.1.tar.gz && cd SDL2_net-2.0.1
     ./autogen.sh
     ./configure --prefix=/usr
     makeWithAllCores
     sudo make install
-}
-
-#
-# Install GCC 6 on Jessie
-#
-ask_gcc6() {
-    PKG_OK=$(dpkg-query -W --showformat='${Status}\n' gcc-6 | grep "install ok installed")
-    echo "Checking for somelib: $PKG_OK"
-    if [ "" == "$PKG_OK" ]; then
-        dialog --title "[ GCC 6 for Debian Jessie ]" \
-            --yes-label "Yes. Let's crack on!" \
-            --no-label "Nope" \
-            --yesno "Caution: You could broke your Raspbian distribution. Are you sure you want to install it?. This process takes time." 7 80
-
-        retval=$?
-
-        case $retval in
-        0) install_gcc6 ;;
-        1) exit ;;
-        255) exit ;;
-        esac
-    fi
-}
-
-install_gcc6() {
-    sudo cp /etc/apt/sources.list{,.bak}
-    sudo sed -i 's/jessie/stretch/g' /etc/apt/sources.list
-    sudo apt-get -qq update
-    sudo apt install -y gcc-6 g++-6
-    sudo sed -i 's/stretch/jessie/g' /etc/apt/sources.list
-    sudo apt-get -qq update
 }
 
 #
@@ -756,7 +722,7 @@ exit_pikiss() {
 # Compile with all cores
 #
 makeWithAllCores() {
-    if [ ! -z "$1" ]; then
+    if [ -n "$1" ]; then
         echo -e "$1"
     fi
     make -j"$(nproc)"
@@ -778,7 +744,7 @@ uninstall_pikiss() {
 # Return (true) if kernel is 64 bits
 #
 is_kernel_64_bits() {
-    if [ $(uname -m) == "aarch64" ]; then
+    if [ "$(uname -m)" == "aarch64" ]; then
         true
     else
         false
@@ -789,7 +755,7 @@ is_kernel_64_bits() {
 # Return (true) if userspace is 64 bits
 #
 is_userspace_64_bits() {
-    if [ $(getconf LONG_BIT) == "64" ]; then
+    if [ "$(getconf LONG_BIT)" == "64" ]; then
         true
     else
         false
@@ -805,4 +771,52 @@ install_nspawn_64_if_not_installed() {
         return 0
     fi
     sudo apt install -y raspbian-nspawn-64
+}
+
+#
+# Return (true) if it's enabled KMS on /boot/config.txt
+#
+check_is_enabled_kms() {
+    local BOOTCFG_PATH
+    BOOTCFG_PATH="/boot/config.txt"
+
+    if grep -q "^dtoverlay=" "$BOOTCFG_PATH"; then
+        return 1
+    else
+        return 0
+    fi
+}
+
+#
+# Set the legacy driver and comment dtoverlay parameter
+#
+set_legacy_driver() {
+    local BOOTCFG_PATH
+    BOOTCFG_PATH="/boot/config.txt"
+
+    if grep -q "^dtoverlay=" "$BOOTCFG_PATH"; then
+        echo -e "\nCommenting dtoverlay on $BOOTCFG_PATH...\n"
+        file_backup "$BOOTCFG_PATH"
+        sudo sed -i "s/^dtoverlay=vc4/#dtoverlay=vc4/g" "$BOOTCFG_PATH"
+        echo -e "\nWhen you want to enable KMS again, change the value with sudo raspi-config > Advanced Options > GL Driver.\nYou must to reboot."
+    fi
+}
+
+#
+# Set a new gpu_mem value parameter
+#
+set_GPU_memory() {
+    local BOOTCFG_PATH
+    local GPU_SIZE
+    BOOTCFG_PATH="/boot/config.txt"
+    [ $# -eq 0 ] && GPU_SIZE=128 || GPU_SIZE="$1"
+
+    file_backup "$BOOTCFG_PATH"
+
+    echo -e "\nSetting gpu_mem to $GPU_SIZE MB on $BOOTCFG_PATH...\n"
+    if grep -q "gpu_mem" "$BOOTCFG_PATH"; then
+        sudo sed -i "s/gpu_mem.*/gpu_mem=$GPU_SIZE/g" "$BOOTCFG_PATH"
+    else
+        sudo sed -i "$i gpu_mem=$GPU_SIZE" "$BOOTCFG_PATH"
+    fi
 }
