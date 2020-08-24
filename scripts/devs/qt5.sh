@@ -2,7 +2,7 @@
 #
 # Description : Compile QT5 on Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (24/Jun/20)
+# Version     : 1.0.1 (24/Aug/20)
 # Compatible  : Raspberry Pi 4
 #
 # Thks		  : Based in the script at https://github.com/MarkusIppy/QT5.12.4-raspian-Buster-EGLFS
@@ -23,7 +23,7 @@ init() {
 	sudo chown pi:pi /opt/QT5
 	echo "{ \"device\": \"/dev/dri/card1\" }" >> /opt/QT5/eglfs.json
 
-	sudo apt-get -qq update && sudo apt-get -y upgrade
+	upgrade_dist
 }
 
 install_packages() {
