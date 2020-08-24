@@ -1,1 +1,1 @@
-disable=SC2162
+disable=SC2162,SC2034,SC2088
