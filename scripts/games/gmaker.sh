@@ -2,16 +2,18 @@
 #
 # Description : GameMaker pack games installation
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1 (06/Sep/16)
+# Version     : 1.1.1 (24/Aug/20)
 # Compatible  : Raspberry Pi 1,2 & 3 (tested)
 #
 #
+. ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
+check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 INSTALL_DIR="/home/$USER/games/gmaker/"
 URL_FILE="https://www.yoyogames.com/download/pi/tntbf https://www.yoyogames.com/download/pi/crate https://www.yoyogames.com/download/pi/castilla"
 
-generateIcons(){
+generateIcons() {
     # Maldita castilla
     if [[ ! -e ~/.local/share/applications/castilla.desktop ]]; then
 cat << EOF > ~/.local/share/applications/castilla.desktop
@@ -50,14 +52,14 @@ EOF
     fi
 }
 
-install(){
+install() {
     echo -e "\nInstalling, please wait..."
-    mkdir -p $INSTALL_DIR && cd $_
-    wget $URL_FILE && tar xzvf castilla && tar xzvf tntbf && tar xzvf crate && rm castilla crate tntbf
+    mkdir -p "$INSTALL_DIR" && cd "$_"
+    wget "$URL_FILE" && tar xzvf castilla && tar xzvf tntbf && tar xzvf crate && rm castilla crate tntbf
     echo -e "\nModifying GPU=256 on /boot/config.txt"
     sudo mount -o remount,rw /boot
     sudo cp /boot/config.txt{,.bak}
-    $(grep -q gpu_mem "/boot/config.txt") && sudo sed -i 's/gpu_mem.*/gpu_mem=256/g' /boot/config.txt || sudo sed -i '$i gpu_mem=256' /boot/config.txt
+    set_GPU_memory 256
     echo -e "\nGenerating desktop icons"
     generateIcons
     echo "Done!. To play, Open the Menu > Games from Desktop or go to install path, cd into game and run with ./SuperCrateBox, ./MalditaCastilla or ./TheyNeedToBeFed"
@@ -65,9 +67,12 @@ install(){
     exit
 }
 
-echo "Install GameMaker pack games"
-echo "============================"
-echo -e "More Info: https://yoyogames.com/pi\n\nInstall path: $INSTALL_DIR"
+echo "
+Install GameMaker pack games
+============================
+ · Install path: $INSTALL_DIR
+
+"
 while true; do
     echo " "
     read -p "Proceed? [y/n] " yn
