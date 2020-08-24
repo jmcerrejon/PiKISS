@@ -23,7 +23,6 @@ alias p='ps aux |grep'
 alias n='nano'
 alias nanosources='sudo nano /etc/apt/sources.list'
 alias nanofstab='sudo nano /etc/fstab'
-alias !='sudo'
 alias pk='cd /home/pi/pikiss/ && ./piKiss.sh -nup'
 
 # APT
