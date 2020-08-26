@@ -2,7 +2,7 @@
 #
 # Description : Serious Sam 1 & 2
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.0 (26/Aug/20)
+# Version     : 1.1.1 (26/Aug/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help        : https://www.raspberrypi.org/forums/viewtopic.php?t=200458
@@ -42,6 +42,7 @@ runme_tse() {
 }
 
 remove_files() {
+    [ $# -eq 0 ] && exit 0
     [ -d "$INSTALL_DIR/$1" ] && rm -rf "${INSTALL_DIR:?}/${1}" ~/.local/share/applications/"$1".desktop
 }
 
@@ -159,17 +160,17 @@ read -p "Do you have an original copy of Serious Sam (If not, only the binaries 
 }
 
 if [[ -d "$INSTALL_DIR"/ssam-tfe ]]; then
-    echo -e "Serious Sam The First Encounter already installed.\n"
+    echo -e "\nSerious Sam The First Encounter already installed.\n"
     uninstall ssam-tfe
 fi
 
 if [[ -d "$INSTALL_DIR"/ssam-tse ]]; then
-    echo -e "Serious Sam The Second Encounter already installed.\n"
+    echo -e "\nSerious Sam The Second Encounter already installed.\n"
     uninstall ssam-tse
 fi
 
 if [[ -d "$INSTALL_DIR"/ssam ]]; then
-    echo -e "Serious Sam engine already installed.\n"
+    echo -e "\nSerious Sam engine already installed.\n"
     uninstall ssam
 fi
 
