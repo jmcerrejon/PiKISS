@@ -729,13 +729,30 @@ makeWithAllCores() {
 }
 
 #
+#
 # Uninstall PiKISS
 #
 uninstall_pikiss() {
     clear
+    local PIKISS_SHORTCUT_PATH
+    local PIKISS_PATH
+    PIKISS_SHORTCUT_PATH="$HOME/.local/share/applications/pikiss.desktop"
+    PIKISS_PATH="${PWD}"
+    echo -e "The path to be delete is: $PIKISS_PATH\n"
+
+    if [[ "$PIKISS_PATH" != *piKiss ]]; then
+        echo -e "\nSomething is wrong. I can't uninstall. Contact with me."
+        exit 1
+    fi
+
+    read -p "Is that correct and you want to uninstall PiKISS (Y/n)? " response
+    if [[ $response =~ [Nn] ]]; then
+        return 0
+    fi
+
     echo -e "\nUninstalling..."
-    rm -f "$HOME"/.local/share/applications/pikiss.desktop
-    rm -rf "${PWD}"
+    rm -f  "$PIKISS_SHORTCUT_PATH"
+    rm -rf "$PIKISS_PATH"
     echo -e "\nPiKISS uninstall completed."
     exit_pikiss
 }
