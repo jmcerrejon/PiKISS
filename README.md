@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **661 hours**
+* **663 hours**
 
 ## 💰 Total amount donated by users
 
@@ -62,6 +62,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (27/08/20)
+
+· 📦 ADD: Games > [Open Supaplex](https://github.com/sergiou87/open-supaplex).
 
 ### (26/08/20)
 
