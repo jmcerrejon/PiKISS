@@ -154,6 +154,7 @@ smGames() {
             AVP "Aliens versus Predator is a 1999 SF fps published by Fox Interactive"
             Hurrican "Jump and shoot game based on the Turrican game series"
             OpenBor "OpenBOR is the open source continuation of Beats of Rage"
+            OpenSPlex "OpenSupaplex reimplementation of the original 90's game"
             OpenXCom "Open-source clone of UFO: Enemy Unknown"
             Quake "Enhanced client for id Software's Quake ]["
             Revolt "Re-Volt is a radio control car racing themed video game"
@@ -183,6 +184,7 @@ smGames() {
         AVP) ./scripts/games/avp.sh ;;
         Hurrican) ./scripts/games/hurrican.sh ;;
         OpenBor) ./scripts/games/openbor.sh ;;
+        OpenSPlex) ./scripts/games/supaplex.sh ;;
         OpenXCom) ./scripts/games/openxcom.sh ;;
         Quake) ./scripts/games/quake.sh ;;
         Revolt) ./scripts/games/revolt.sh ;;
