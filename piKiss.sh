@@ -203,21 +203,21 @@ smEmulators() {
     if [[ ${MODEL} == 'Raspberry Pi' ]]; then
         options=(
             Back "Back to main menu"
-            Amiga "Amiberry is an Amiga emulator"
-            Caprice "Amstrad CPC with Caprice32"
-            Dolphin "Dolphin is a Wii & Gamecube emulator (EXPERIMENTAL)"
-            DOSBox "DOSBox is a MS-DOS emulator"
-            Gba "Gameboy Advance (mgba)"
-            Genesis "Genesis Megadrive Emulator (picodrive)"
+            Amiga "Amiga (Amiberry)"
+            AMSTRAD_CPC "Amstrad CPC (Caprice32)"
+            GBA "Game Boy Advance (mGBA)"
+            Sega "Sega Genesis, Megadrive, Mega CD, 32X (PicoDrive)"
+            MAME "Multiple Arcate Machine Emulator (MAME, AdvanceMAME, and/or MAME4ALL-Pi)"
             Mednafen "Portable multi-system emulator (Mednafen)"
-            Mame "Install MAME, Advance MAME and/or MAME4ALL-PI"
-            MSX "openMSX"
-            Pifba "Emulates old arcade games using CPS1, CPS2,..."
-            PSP "PPSSPP can run your PSP games on your RPi in full HD resolution"
-            ResidualVM "Cross-platform 3D game interpreter to play some games"
-            ScummVM "Allow gamers to play point-and-click adventure games"
-            Snes "SNES Emulator Snes9X 1.60"
-            Speccy "ZX-Spectrum emulator"
+            MSDOS "MS-DOS (DOSBox)"
+            MSX "MSX (openMSX)"
+            PiFBA "Emulates old arcade games using MAME ROMS for CPS1, CPS2, and more"
+            PSP "PlayStation Portable (PPSSPP)"
+            ResidualVM "Cross-platform 3D game interpreter to play LucasArts adventure games and more"
+            ScummVM "Emulator for point-and-click adventure games"
+            SNES "Super NES (Snes9X 1.60)"
+            ZX_Spectrum "ZX Spectrum (Speccy)"
+            Wii_GC "[EXPERIMENTAL] Wii & Gamecube (Dolphin)"
         )
     fi
 
@@ -227,20 +227,20 @@ smEmulators() {
         case $choice in
         Back) break ;;
         Amiga) ./scripts/emus/amiga.sh ;;
-        Caprice) ./scripts/emus/caprice.sh ;;
-        Dolphin) ./scripts/emus/dolphin.sh ;;
-        DOSBox) ./scripts/emus/rpix86.sh ;;
-        Gba) ./scripts/emus/gba.sh ;;
-        Genesis) ./scripts/emus/genesis.sh ;;
+        AMSTRAD_CPC) ./scripts/emus/caprice.sh ;;
+        GBA) ./scripts/emus/gba.sh ;;
+        Sega) ./scripts/emus/genesis.sh ;;
+        MAME) ./scripts/emus/mame4allpi.sh ;;
         Mednafen) ./scripts/emus/mednafen.sh ;;
-        Mame) ./scripts/emus/mame4allpi.sh ;;
+        MSDOS) ./scripts/emus/rpix86.sh ;;
         MSX) ./scripts/emus/msx.sh ;;
+        PiFBA) ./scripts/emus/pifba.sh ;;
         PSP) ./scripts/emus/psp.sh ;;
-        Pifba) ./scripts/emus/pifba.sh ;;
         ResidualVM) ./scripts/emus/residual.sh ;;
         ScummVM) ./scripts/emus/scummvm.sh ;;
-        Snes) ./scripts/emus/pisnes.sh ;;
-        Speccy) ./scripts/emus/speccy.sh ;;
+        SNES) ./scripts/emus/pisnes.sh ;;
+        ZX_Spectrum) ./scripts/emus/speccy.sh ;;
+        Wii_GC) ./scripts/emus/dolphin.sh ;;
         esac
     done
 }
