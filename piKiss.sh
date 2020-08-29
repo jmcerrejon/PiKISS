@@ -213,7 +213,7 @@ smEmulators() {
             PiFBA "Emulates old arcade games using MAME ROMS for CPS1, CPS2, and more"
             PSP "PlayStation Portable (PPSSPP)"
             ResidualVM "Cross-platform 3D game interpreter to play LucasArts adventure games and more"
-            ScummVM "Emulator for point-and-click adventure games"
+            ScummVM "Emulator for SCUMM-based point-and-click adventure games"
             Sega "Sega Genesis, Megadrive, Mega CD, 32X (PicoDrive)"
             SNES "Super NES (Snes9X 1.60)"
             Wii_GC "[EXPERIMENTAL] Wii & Gamecube (Dolphin)"
