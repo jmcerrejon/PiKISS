@@ -206,7 +206,6 @@ smEmulators() {
             Amiga "Amiga (Amiberry)"
             AMSTRAD_CPC "Amstrad CPC (Caprice32)"
             GBA "Game Boy Advance (mGBA)"
-            Sega "Sega Genesis, Megadrive, Mega CD, 32X (PicoDrive)"
             MAME "Multiple Arcate Machine Emulator (MAME, AdvanceMAME, and/or MAME4ALL-Pi)"
             Mednafen "Portable multi-system emulator (Mednafen)"
             MSDOS "MS-DOS (DOSBox)"
@@ -215,9 +214,10 @@ smEmulators() {
             PSP "PlayStation Portable (PPSSPP)"
             ResidualVM "Cross-platform 3D game interpreter to play LucasArts adventure games and more"
             ScummVM "Emulator for point-and-click adventure games"
+            Sega "Sega Genesis, Megadrive, Mega CD, 32X (PicoDrive)"
             SNES "Super NES (Snes9X 1.60)"
-            ZX_Spectrum "ZX Spectrum (Speccy)"
             Wii_GC "[EXPERIMENTAL] Wii & Gamecube (Dolphin)"
+            ZX_Spectrum "ZX Spectrum (Speccy)"
         )
     fi
 
@@ -229,7 +229,6 @@ smEmulators() {
         Amiga) ./scripts/emus/amiga.sh ;;
         AMSTRAD_CPC) ./scripts/emus/caprice.sh ;;
         GBA) ./scripts/emus/gba.sh ;;
-        Sega) ./scripts/emus/genesis.sh ;;
         MAME) ./scripts/emus/mame4allpi.sh ;;
         Mednafen) ./scripts/emus/mednafen.sh ;;
         MSDOS) ./scripts/emus/rpix86.sh ;;
@@ -238,9 +237,10 @@ smEmulators() {
         PSP) ./scripts/emus/psp.sh ;;
         ResidualVM) ./scripts/emus/residual.sh ;;
         ScummVM) ./scripts/emus/scummvm.sh ;;
+        Sega) ./scripts/emus/genesis.sh ;;
         SNES) ./scripts/emus/pisnes.sh ;;
-        ZX_Spectrum) ./scripts/emus/speccy.sh ;;
         Wii_GC) ./scripts/emus/dolphin.sh ;;
+        ZX_Spectrum) ./scripts/emus/speccy.sh ;;
         esac
     done
 }
