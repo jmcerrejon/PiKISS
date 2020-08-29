@@ -204,7 +204,7 @@ smEmulators() {
         options=(
             Back "Back to main menu"
             Amiga "Amiga (Amiberry)"
-            AMSTRAD_CPC "Amstrad CPC (Caprice32)"
+            Amstrad_CPC "Amstrad CPC (Caprice32)"
             GBA "Game Boy Advance (mGBA)"
             MAME "Multiple Arcate Machine Emulator (MAME, AdvanceMAME, and/or MAME4ALL-Pi)"
             Mednafen "Portable multi-system emulator (Mednafen)"
@@ -227,7 +227,7 @@ smEmulators() {
         case $choice in
         Back) break ;;
         Amiga) ./scripts/emus/amiga.sh ;;
-        AMSTRAD_CPC) ./scripts/emus/caprice.sh ;;
+        Amstrad_CPC) ./scripts/emus/caprice.sh ;;
         GBA) ./scripts/emus/gba.sh ;;
         MAME) ./scripts/emus/mame4allpi.sh ;;
         Mednafen) ./scripts/emus/mednafen.sh ;;
