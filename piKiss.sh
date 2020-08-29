@@ -203,10 +203,11 @@ smEmulators() {
     if [[ ${MODEL} == 'Raspberry Pi' ]]; then
         options=(
             Back "Back to main menu"
-            Amiga "Amiberry is an Amiga emulator"
-            Caprice "Amstrad CPC with Caprice32"
+            Amiga "Amiberry is the best Amiga emulator"
+            Comm64 "VICE is a Commodore 64 emulator"
             Dolphin "Dolphin is a Wii & Gamecube emulator (EXPERIMENTAL)"
-            DOSBox "DOSBox is a MS-DOS emulator"
+            Amstrad "Amstrad CPC with Caprice32"
+            MSDOS "DOSBox-X is a DOS emulator with GUI"
             Gba "Gameboy Advance (mgba)"
             Genesis "Genesis Megadrive Emulator (picodrive)"
             Mednafen "Portable multi-system emulator (Mednafen)"
@@ -227,9 +228,10 @@ smEmulators() {
         case $choice in
         Back) break ;;
         Amiga) ./scripts/emus/amiga.sh ;;
-        Caprice) ./scripts/emus/caprice.sh ;;
+        Amstrad) ./scripts/emus/caprice.sh ;;
+        Comm64) ./scripts/emus/commodore.sh ;;
         Dolphin) ./scripts/emus/dolphin.sh ;;
-        DOSBox) ./scripts/emus/rpix86.sh ;;
+        MSDOS) ./scripts/emus/rpix86.sh ;;
         Gba) ./scripts/emus/gba.sh ;;
         Genesis) ./scripts/emus/genesis.sh ;;
         Mednafen) ./scripts/emus/mednafen.sh ;;
