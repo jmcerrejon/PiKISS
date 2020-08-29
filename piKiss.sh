@@ -207,7 +207,7 @@ smEmulators() {
             Caprice "Amstrad CPC with Caprice32"
             Dolphin "Dolphin is a Wii & Gamecube emulator (EXPERIMENTAL)"
             DOSBox "DOSBox is a MS-DOS emulator"
-            Gba "Gameboy Advance (mgba)"
+            GBA "Game Boy Advance (mgba)"
             Genesis "Genesis Megadrive Emulator (picodrive)"
             Mednafen "Portable multi-system emulator (Mednafen)"
             Mame "Install MAME, Advance MAME and/or MAME4ALL-PI"
@@ -230,7 +230,7 @@ smEmulators() {
         Caprice) ./scripts/emus/caprice.sh ;;
         Dolphin) ./scripts/emus/dolphin.sh ;;
         DOSBox) ./scripts/emus/rpix86.sh ;;
-        Gba) ./scripts/emus/gba.sh ;;
+        GBA) ./scripts/emus/gba.sh ;;
         Genesis) ./scripts/emus/genesis.sh ;;
         Mednafen) ./scripts/emus/mednafen.sh ;;
         Mame) ./scripts/emus/mame4allpi.sh ;;
