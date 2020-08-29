@@ -459,7 +459,7 @@ while true; do
     cmd=(dialog --clear --backtitle "$TITLE" --title " [ M A I N - M E N U ] " --menu "You can use the UP/DOWN arrow keys, the first letter of the choice as a hot key, or the number keys 1-9 to choose an option:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
     options=(
-        Tweaks "Put your distro to the limit"
+        Tweaks "Push your distro to the limit"
         Games "Install or compile games easily"
         Emulation "Install emulators"
         Info "Info about the Pi or related"
