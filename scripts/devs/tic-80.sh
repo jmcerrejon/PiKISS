@@ -2,7 +2,7 @@
 #
 # Description : TIC-80 TINY COMPUTER
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (24/Aug/20)
+# Version     : 1.0.2 (29/Aug/20)
 # Compatible  : Raspberry Pi 3-4 (tested)
 # Repository  : https://github.com/nesbox/TIC-80
 #
@@ -124,7 +124,7 @@ compile() {
         less ~/sc/TIC-80/build/CMakeFiles/CMakeError.log
         exit 1
     fi
-    makeWithAllCores
+    make_with_all_cores
     read -p "\nDone!. Check directory /bin if all goes OK."
     exit 0
 }

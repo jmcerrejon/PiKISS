@@ -2,7 +2,7 @@
 #
 # Description : ResidualVM Engine
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (17/Aug/20)
+# Version     : 1.0.2 (29/Aug/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://wiki.residualvm.org/index.php/Building_ResidualVM
@@ -96,7 +96,7 @@ compile() {
 	mkdir -p build && cd "$_"
     make clean
 	../configure
-    makeWithAllCores
+    make_with_all_cores
     echo -e "\nDone!. cd $COMPILE_DIR/residualvm/build to get the binary."
     exit_message
 }
