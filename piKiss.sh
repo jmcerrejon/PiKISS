@@ -463,7 +463,7 @@ while true; do
         Games "Install or compile games easily"
         Emulation "Install emulators"
         Info "Info about the Pi or related"
-        Multimedia "Help you to install apps like XBMC"
+        Multimedia "Install apps like XBMC"
         Configure "Installations are piece of cake now"
         Internet "All refered to internet"
         Server "Use your distro as a server"
