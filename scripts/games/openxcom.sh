@@ -2,7 +2,7 @@
 #
 # Description : OpenXcom with the help of user chills340
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (17/Aug/20)
+# Version     : 1.0.2 (29/Aug/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://www.ufopaedia.org/index.php/Compiling_with_CMake_(OpenXcom)
@@ -90,7 +90,7 @@ compile() {
 	git clone "$GITHUB_PATH" openxcom && cd "$_"
 	mkdir build && cd "$_"
 	cmake -DCMAKE_BUILD_TYPE=Release ..
-	makeWithAllCores "\nCompiling..."
+	make_with_all_cores "\nCompiling..."
 	read -p "Do you want to install globally the game (y/N)? " response
 	if [[ $response =~ [Yy] ]]; then
 		sudo make install

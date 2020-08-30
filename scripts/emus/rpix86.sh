@@ -2,9 +2,13 @@
 #
 # Description : MS-DOS Emulator DOSBox-X
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (17/Aug/20)
+# Version     : 1.0.2 (29/Aug/20)
 #
+# Help        : https://krystof.io/dosbox-shaders-comparison-for-modern-dos-retro-gaming/
+#
+. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
+check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 INSTALL_DIR="/home/$USER/games"
 URL_FILE="https://misapuntesde.com/rpi_share/dosbox-X_0-82.26.tar.gz"

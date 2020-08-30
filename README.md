@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **663 hours**
+* **667 hours**
 
 ## 💰 Total amount donated by users
 
@@ -62,6 +62,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (29/08/20)
+
+· 📦 ADD: Emulators > VICE (Commodore 64).
 
 ### (27/08/20)
 
