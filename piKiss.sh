@@ -469,7 +469,7 @@ while true; do
         Configure "Installations are piece of cake now"
         Internet "All refered to internet"
         Server "Use your distro as a server"
-        Devs "Help you for making your own apps"
+        Devs "Tools for making your own apps"
         Others "Scripts with others thematics"
         Exit "Exit to the shell"
     )
