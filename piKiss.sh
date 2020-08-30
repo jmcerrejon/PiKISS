@@ -116,7 +116,7 @@ smTweaks() {
             # Autologin "Set autologin for the pi user"
             Others "CPU performance, disable Ethernet and so on"
             Packages "Programs you don't use (maybe) to free space"
-            Daemons "Disable services useless"
+            Daemons "Disable useless services"
             ZRAM "Enable/Disable ZRAM"
         )
     fi
