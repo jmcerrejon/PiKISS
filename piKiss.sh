@@ -467,7 +467,7 @@ while true; do
         Info "Info about the Pi or related"
         Multimedia "Install apps like XBMC"
         Configure "Installations are piece of cake now"
-        Internet "All refered to internet"
+        Internet "Tweaks related to internet"
         Server "Use your distro as a server"
         Devs "Tools for making your own apps"
         Others "Scripts with others thematics"
