@@ -142,6 +142,7 @@ smGames() {
         options=(
             Back "Back to main menu"
             Abbaye "L’Abbaye des Morts is a retro puzzle platformer by Locomalito"
+            AVP "Aliens versus Predator is a 1999 SF fps published by Fox Interactive"
             Arx "Arx Fatalis is a fps RPG set on a world whose sun has failed"
             Blood "Blood is a fps game developed by Monolith Productions"
             CaptainS "Save Seville from the evil Torrebruno"
@@ -151,8 +152,8 @@ smGames() {
             Diablo "Take control of a lone hero battling to rid the world of Diablo"
             Diablo2 "Diablo 2 Lord of Destruction"
             Eduke32 "Duke Nukem 3D is a fps game developed by 3D Realms"
-            AVP "Aliens versus Predator is a 1999 SF fps published by Fox Interactive"
             Hurrican "Jump and shoot game based on the Turrican game series"
+            Morrowind "The Elder Scrolls III: Morrowind is an open-world RPG"
             OpenBor "OpenBOR is the open source continuation of Beats of Rage"
             OpenSPlex "OpenSupaplex reimplementation of the original 90's game"
             OpenXCom "Open-source clone of UFO: Enemy Unknown"
@@ -172,6 +173,7 @@ smGames() {
         case $choice in
         Back) break ;;
         Abbaye) ./scripts/games/abbaye.sh ;;
+        AVP) ./scripts/games/avp.sh ;;
         Arx) ./scripts/games/arx.sh ;;
         Blood) ./scripts/games/blood.sh ;;
         CaptainS) ./scripts/games/captains.sh ;;
@@ -181,8 +183,8 @@ smGames() {
         Diablo) ./scripts/games/diablo.sh ;;
         Diablo2) ./scripts/games/diablo2.sh ;;
         Eduke32) ./scripts/games/eduke32.sh ;;
-        AVP) ./scripts/games/avp.sh ;;
         Hurrican) ./scripts/games/hurrican.sh ;;
+        Morrowind) ./scripts/games/openmw.sh ;;
         OpenBor) ./scripts/games/openbor.sh ;;
         OpenSPlex) ./scripts/games/supaplex.sh ;;
         OpenXCom) ./scripts/games/openxcom.sh ;;
@@ -423,6 +425,7 @@ smOthers() {
             Aircrack "Compile Aircrack-NG suite easily"
             CoolTerm "Compile a terminal with the look and feel of the old cathode tube screens"
             Fixes "Fix some problems with the Raspbian OS"
+            GL4ES "Compile GL4ES - OpenGL for GLES Hardware"
             NetTools "MITM Pentesting Opensource Toolkit (Require X)"
             Part "Check issues & fix SD corruptions"
             RPiPlay "An open-source implementation of an AirPlay mirroring server"
@@ -442,6 +445,7 @@ smOthers() {
         Aircrack) ./scripts/others/aircrack.sh ;;
         CoolTerm) ./scripts/others/retro-term.sh ;;
         Fixes) ./scripts/others/fixes.sh ;;
+        GL4ES) ./scripts/others/gl4es.sh ;;
         NetTools) ./scripts/others/nettools.sh ;;
         Part) ./scripts/others/checkpart.sh ;;
         RPiPlay) ./scripts/others/rpiplay.sh ;;
