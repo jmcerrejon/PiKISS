@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **667 hours**
+* **671 hours**
 
 ## 💰 Total amount donated by users
 
@@ -63,9 +63,15 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (01/09/20)
+
+· 📦 ADD: Games > The Elder Scroll: Morrowind (*OpenMW*).
+
+· 📦 ADD: Others > Compile GL4ES.
+
 ### (29/08/20)
 
-· 📦 ADD: Emulators > VICE (Commodore 64).
+· 📦 ADD: Emulators > VICE (*Commodore 64*).
 
 ### (27/08/20)
 
