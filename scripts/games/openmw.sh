@@ -2,7 +2,7 @@
 #
 # Description : OpenMW (The Elder Scrolls III: Morrowind engine)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (01/Sep/20)
+# Version     : 1.0.1 (01/Sep/20)
 # Compatible  : Raspberry Pi 3-4
 #
 source ../helper.sh || source ./scripts/helper.sh || source ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -13,6 +13,7 @@ readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES=(libqtgui4 libboost-filesystem1.67.0 libboost-program-options1.67.0 libbullet2.87 libmyguiengine3debian1v5 libunshield0)
 readonly PACKAGES_DEV=(libopenscenegraph-3.4-131 libopenthreads20 libopenscenegraph-3.4-131 libopenscenegraph-3.4-131 libopenscenegraph-3.4-131 libopenscenegraph-3.4-131 libopenscenegraph-3.4-131)
 readonly GITHUB_PATH="svn://svn.code.sf.net/p/openmw-emu/code/tags/v3.4/"
+readonly ES_TRANSLATION_PATH="https://misapuntesde.com/rpi_share/morrowind-es-mod.tar.gz"
 BINARY_PATH="https://archive.org/download/rpi_share/openmw-0.46-rpi.tar.gz"
 
 runme() {
@@ -67,6 +68,12 @@ post_install() {
     local OPENMW_CONFIG
     OPENMW_CONFIG="$INSTALL_DIR/openmw/resources/openmw-config.tar.gz"
 
+    if [[ $(get_keyboard_layout) == "es" ]]; then
+        echo
+        echo "Detected Latin/Spanish user. Applying translation..."
+        download_and_extract "$ES_TRANSLATION_PATH" "$INSTALL_DIR/openmw"
+        OPENMW_CONFIG="$INSTALL_DIR/openmw/Morrowind/openmw-es-settings.tar.gz"
+    fi
     [[ ! -d ~/.config/openmw ]] && tar -xf "$OPENMW_CONFIG" -C ~/.config
 }
 
@@ -98,11 +105,11 @@ OpenMW 0.46.0 for Raspberry Pi
  · Thanks to Salva (Pi Labs) & ptitSeb.
  · More info at https://openmw.org/
  · Wanna the best for this game?. Follow the Morrowind graphics guide at https://wiki.nexusmods.com/index.php/Morrowind_graphics_guide
- · This game uses an embedded Mesa driver inside game's directory with some libraries dependencies.
+ · This game uses an embedded Mesa driver inside game's directory with some library dependencies.
  · Install path: $INSTALL_DIR/openmw
- · PDF Guide and manual on $INSTALL_DIR/openmw/docs
+ · PDF Guide and manual on $INSTALL_DIR/openmw/docs.
  · Total disk space required: ~2,5GB (full).
- · I'll try to get a pack with the best MODs and install it in the future ;)
+ · I'll try to get a pack with the best MODs and install it in the future. ;)
 "
 read -p "Press [ENTER] to continue..."
 
