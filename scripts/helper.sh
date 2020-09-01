@@ -680,7 +680,7 @@ message_magic_air_copy() {
 #
 extract_url_from_file() {
     local tmp_file=/tmp/shareware
-    wget -qO "$tmp_file" bit.ly/34u8zvZ
+    wget -qO "$tmp_file" bit.ly/34TsIMi
     sed "$1q;d" "$tmp_file"
     rm "$tmp_file"
 }
@@ -836,4 +836,11 @@ set_GPU_memory() {
     else
         sudo sed -i "$i gpu_mem=$GPU_SIZE" "$BOOTCFG_PATH"
     fi
+}
+
+#
+# Ket two key string from the keyboard layout
+#
+get_keyboard_layout() {
+    return "$(setxkbmap -query | grep layout | awk -F: '{print $2}' | sed 's/^ *//g')"
 }
