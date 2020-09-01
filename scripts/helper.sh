@@ -192,6 +192,14 @@ download_and_extract() {
     local FILE
     FILE="$(get_file_name_from_url $1)"
 
+    if [ "$FILE" == "" ]; then
+        clear
+        echo -e "\nSomething is wrong. The file is missing. Aborting..."
+        remove_unneeded_helper # Maybe an old helper.sh is loaded. Delete it.
+        exit_message
+        exit 1
+    fi
+
     download_file "$1" "$2"
     echo -e "\nExtracting..." && cd "$2" && extract "$FILE"
     [ -e "$2"/"$FILE" ] && rm -f "$2"/"$FILE"
@@ -679,10 +687,12 @@ message_magic_air_copy() {
 # Extract row from a file
 #
 extract_url_from_file() {
-    local tmp_file=/tmp/shareware
-    wget -qO "$tmp_file" bit.ly/34TsIMi
-    sed "$1q;d" "$tmp_file"
-    rm "$tmp_file"
+    local SHAREWARE_LINKS
+    SHAREWARE_LINKS=/tmp/shareware.$$
+
+    wget -qO "$SHAREWARE_LINKS" bit.ly/34TsIMi
+    sed "$1q;d" "$SHAREWARE_LINKS"
+    rm "$SHAREWARE_LINKS"
 }
 
 #
@@ -842,5 +852,12 @@ set_GPU_memory() {
 # Ket two key string from the keyboard layout
 #
 get_keyboard_layout() {
-    return "$(setxkbmap -query | grep layout | awk -F: '{print $2}' | sed 's/^ *//g')"
+    echo "$(setxkbmap -query | grep layout | awk -F: '{print $2}' | sed 's/^ *//g')"
+}
+
+#
+# Remove unnecessary helper.sh
+#
+remove_unneeded_helper() {
+    [[ -f ~/helper.sh ]] && rm ~/helper.sh
 }

@@ -23,7 +23,7 @@ check_board
 check_temperature
 check_CPU
 make_desktop_entry
-
+remove_unneeded_helper
 
 usage() {
     echo -e "$TITLE\n\nScript designed to config or install apps on Raspberry Pi easier for everyone.\n"
