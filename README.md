@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **671 hours**
+* **674 hours**
 
 ## 💰 Total amount donated by users
 
@@ -62,6 +62,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (07/09/20)
+
+· 📦 ADD: Games > Quake 3 Arena (with Vulkan support, High textures and some tweaks).
 
 ### (01/09/20)
 
