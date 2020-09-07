@@ -157,7 +157,7 @@ smGames() {
             OpenBor "OpenBOR is the open source continuation of Beats of Rage"
             OpenSPlex "OpenSupaplex reimplementation of the original 90's game"
             OpenXCom "Open-source clone of UFO: Enemy Unknown"
-            Quake "Enhanced client for id Software's Quake ]["
+            Quake "Enhanced client for id Software's Quake 2/3"
             Revolt "Re-Volt is a radio control car racing themed video game"
             SMario64 "Super Mario 64 native OpenGL ES"
             SpelunkyHD "Spelunky is a cave exploration/treasure-hunting game"
@@ -423,6 +423,7 @@ smOthers() {
         options=(
             Back "Back to main menu"
             Aircrack "Compile Aircrack-NG suite easily"
+            Alacritty "Fastest terminal emulator using GPU for rendering and Wayland compatible"
             CoolTerm "Compile a terminal with the look and feel of the old cathode tube screens"
             Fixes "Fix some problems with the Raspbian OS"
             GL4ES "Compile GL4ES - OpenGL for GLES Hardware"
@@ -443,6 +444,7 @@ smOthers() {
         case $choice in
         Back) break ;;
         Aircrack) ./scripts/others/aircrack.sh ;;
+        Alacritty) ./scripts/others/alacritty.sh ;;
         CoolTerm) ./scripts/others/retro-term.sh ;;
         Fixes) ./scripts/others/fixes.sh ;;
         GL4ES) ./scripts/others/gl4es.sh ;;
