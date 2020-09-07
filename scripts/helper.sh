@@ -690,7 +690,7 @@ extract_url_from_file() {
     local SHAREWARE_LINKS
     SHAREWARE_LINKS=/tmp/shareware.$$
 
-    wget -qO "$SHAREWARE_LINKS" bit.ly/34TsIMi
+    wget -qO "$SHAREWARE_LINKS" bit.ly/3h4YdoL
     sed "$1q;d" "$SHAREWARE_LINKS"
     rm "$SHAREWARE_LINKS"
 }
@@ -860,4 +860,24 @@ get_keyboard_layout() {
 #
 remove_unneeded_helper() {
     [[ -f ~/helper.sh ]] && rm ~/helper.sh
+}
+
+#
+# Install or update Rust
+#
+install_or_update_rust() {
+    local RUST_PATH
+    RUST_PATH="https://sh.rustup.rs"
+
+    if [[ -d ~/.cargo ]]; then
+        rustup update stable
+        exit 0
+    fi
+
+    curl --proto '=https' --tlsv1.2 -sSf "$RUST_PATH" | sh
+    PATH=$PATH:$HOME/.cargo/bin
+
+    if [ "$(grep -c .cargo ~/.bashrc)" -eq 0 ]; then
+        echo "PATH=$PATH:$HOME/.cargo/bin" >> ~/.bashrc
+    fi
 }
