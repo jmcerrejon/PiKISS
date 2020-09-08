@@ -2,7 +2,7 @@
 #
 # Description : Quake ][, ]I[
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.0 (07/Sep/20)
+# Version     : 1.1.1 (08/Sep/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help 		  : Quake 1: https://github.com/welford/qurp
@@ -25,7 +25,7 @@ readonly Q2_OGG_URL="https://misapuntesde.com/rpi_share/q2_ogg.zip"
 readonly Q2_HIGH_TEXTURE_PAK_URL="https://deponie.yamagi.org/quake2/texturepack/q2_textures.zip"
 readonly Q2_HIGH_TEXTURE_MODELS_URL="https://deponie.yamagi.org/quake2/texturepack/models.zip"readonly 
 Q2_DATA_URL="https://archive.org/download/rpi_share/baseq2.zip"
-readonly Q3_PACKAGES_DEV="libsdl2-dev libxxf86dga-dev libcurl4-openssl-dev"
+readonly Q3_PACKAGES_DEV=(libsdl2-dev libxxf86dga-dev libcurl4-openssl-dev)
 readonly Q3_BINARY_URL="https://misapuntesde.com/rpi_share/quake3-1.32-rpi.tar.gz"
 readonly Q3_SOURCE_CODE_URL="https://github.com/ec-/Quake3e.git"
 Q3_DATA_URL=""
@@ -42,13 +42,13 @@ q2_runme() {
 }
 
 q3_runme() {
-    if [ ! -f "$INSTALL_DIR"/quake3/quake3e ]; then
+    if [ ! -f "$INSTALL_DIR"/quake3/quake3e.sh ]; then
         echo -e "\nFile does not exist.\n· Something is wrong.\n· Try to install again."
     fi
 
     if [ -d "$INSTALL_DIR"/quake3/baseq3 ]; then
         read -p "Press [ENTER] to run the game..."
-        cd "$INSTALL_DIR"/quake3 && ./quake3e
+        cd "$INSTALL_DIR"/quake3 && ./quake3e.sh
     fi
 
     exit_message
@@ -118,7 +118,7 @@ q3_generate_icon() {
         cat <<EOF >~/.local/share/applications/quake3.desktop
 [Desktop Entry]
 Name=Quake ]I[
-Exec=${INSTALL_DIR}/quake3/quake3e
+Exec=${INSTALL_DIR}/quake3/quake3e.sh
 Icon=${INSTALL_DIR}/quake3/icon.png
 Path=${INSTALL_DIR}/quake3/
 Type=Application
@@ -209,7 +209,7 @@ q3_install_binary() {
     echo -e "\n\nInstalling Quake ]I[, please wait...\n"
     download_and_extract "$Q3_BINARY_URL" "$INSTALL_DIR"
     if [ -f "$FILE_CFG_PATH" ]; then
-        mkdir -p "$CFG_DIRECTORY_PATH" && mv "$FILE_CFG_PATH" "$CFG_DIRECTORY_PATH"
+        mkdir -p "$CFG_DIRECTORY_PATH" && cp "$FILE_CFG_PATH" "$CFG_DIRECTORY_PATH"
     fi
 }
 
