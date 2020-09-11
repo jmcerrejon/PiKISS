@@ -18,7 +18,7 @@ CHK_UPDATE=0
 CHK_PIKISS_UPDATE=0
 NOINTERNETCHECK=0
 wHEIGHT=20
-wWIDTH=82
+wWIDTH=90
 check_board
 check_temperature
 check_CPU
@@ -145,6 +145,7 @@ smGames() {
             AVP "Aliens versus Predator is a 1999 SF fps published by Fox Interactive"
             Arx "Arx Fatalis is a fps RPG set on a world whose sun has failed"
             Blood "Blood is a fps game developed by Monolith Productions"
+            BStone "Robert W. Stone III, AKA Blake Stone must eliminate Dr. Pyrus Goldfire"
             CaptainS "Save Seville from the evil Torrebruno"
             Crispy-doom "Crispy to play Doom or Heretic"
             Descent "Descent 1 & 2 Shareware Ed."
@@ -176,6 +177,7 @@ smGames() {
         AVP) ./scripts/games/avp.sh ;;
         Arx) ./scripts/games/arx.sh ;;
         Blood) ./scripts/games/blood.sh ;;
+        BStone) ./scripts/games/bstone.sh ;;
         CaptainS) ./scripts/games/captains.sh ;;
         Crispy-doom) ./scripts/games/cdoom.sh ;;
         Descent) ./scripts/games/descent.sh ;;
