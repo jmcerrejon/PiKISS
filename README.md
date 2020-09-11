@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **674 hours**
+* **678 hours**
 
 ## 💰 Total amount donated by users
 
@@ -62,6 +62,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (11/09/20)
+
+· 📦 ADD: Games > Blake Stone.
 
 ### (07/09/20)
 
