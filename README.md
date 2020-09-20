@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **678 hours**
+* **684 hours**
 
 ## 💰 Total amount donated by users
 
@@ -62,6 +62,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (20/09/20)
+
+· 📦 ADD: Games > Half Life: Source.
 
 ### (11/09/20)
 
