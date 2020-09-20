@@ -2,7 +2,7 @@
 #
 # Description : Bstone: A source port of Blake Stone: Aliens Of Gold and Blake Stone: Planet Strike.
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (11/Sep/20)
+# Version     : 1.0.1 (20/Sep/20)
 # Compatible  : Raspberry Pi 4 (tested on Raspberry Pi 4)
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -21,34 +21,34 @@ readonly CONFIG_DIR="$HOME/.local/share/bibendovsky/bstone"
 runme() {
     local DATA_DIR
     [[ -e ~/.local/share/applications/aog-full.desktop ]] && DATA_DIR="$AOG_FULL_DATA_PATH" || DATA_DIR="$AOG_SHARE_DATA_PATH"
-	read -p "Press [ENTER] to run the game..."
-	cd "$INSTALL_DIR"/bstone && ./bstone --data_dir "$DATA_DIR"
-	echo
-	exit_message
+    read -p "Press [ENTER] to run the game..."
+    cd "$INSTALL_DIR"/bstone && ./bstone --data_dir "$DATA_DIR"
+    echo
+    exit_message
 }
 
 remove_files() {
-	rm -rf "$INSTALL_DIR"/bstone "$CONFIG_DIR" ~/.local/share/applications/aog-full.desktop ~/.local/share/applications/aog-share.desktop ~/.local/share/applications/ps-full.desktop
+    rm -rf "$INSTALL_DIR"/bstone "$CONFIG_DIR" ~/.local/share/applications/aog-full.desktop ~/.local/share/applications/aog-share.desktop ~/.local/share/applications/ps-full.desktop
 }
 
 uninstall() {
-	read -p "Do you want to uninstall Blake Stone (y/N)? " response
-	if [[ $response =~ [Yy] ]]; then
-		remove_files
-		if [[ -e "$INSTALL_DIR"/bstone ]]; then
-			echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
-			exit_message
-		fi
-		echo -e "\nSuccessfully uninstalled."
-		exit_message
-	fi
-	exit_message
+    read -p "Do you want to uninstall Blake Stone (y/N)? " response
+    if [[ $response =~ [Yy] ]]; then
+        remove_files
+        if [[ -e "$INSTALL_DIR"/bstone ]]; then
+            echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
+            exit_message
+        fi
+        echo -e "\nSuccessfully uninstalled."
+        exit_message
+    fi
+    exit_message
 }
 
 if [[ -d "$INSTALL_DIR"/bstone ]]; then
-	echo -e "Blake Stone already installed.\n"
-	uninstall
-	exit 0
+    echo -e "Blake Stone already installed.\n"
+    uninstall
+    exit 0
 fi
 
 generate_icon_AOG_FULL() {
@@ -131,7 +131,7 @@ Install Blake Stone on Raspberry Pi
 ===================================
 
  · Optimized for Raspberry Pi 4.
- · Based in the engine at ${SOURCE_CODE_URL}
+ · Based on engine at ${SOURCE_CODE_URL}
  · NOTE: This engine has a bug. Don't change the video renderer mode.
  · WASD: Movement | Cursor: Rotate | Space: Open | Ctrl: Fire | TAB: HUB
  · Aliens of Gold Maps: https://jalu.ch/misc/bstone/
