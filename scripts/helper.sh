@@ -690,7 +690,7 @@ extract_url_from_file() {
     local SHAREWARE_LINKS
     SHAREWARE_LINKS=/tmp/shareware.$$
 
-    wget -qO "$SHAREWARE_LINKS" bit.ly/3h4YdoL
+    wget -qO "$SHAREWARE_LINKS" bit.ly/2ZVe4Ay
     sed "$1q;d" "$SHAREWARE_LINKS"
     rm "$SHAREWARE_LINKS"
 }
@@ -724,7 +724,7 @@ extract() {
 # exit PiKISS
 #
 exit_pikiss() {
-    echo -e "\nSee you soon!. You can find me here (CTRL + Click):\n\n · Blog: https://misapuntesde.com\n · Twitter: https://twitter.com/ulysess10\n · Discord Server (Pi Labs): https://discord.gg/Y7WFeC5\n · Mail: ulysess@gmail.com\n\n · Wanna be my Patron?: https://www.patreon.com/cerrejon?fan_landing=true"
+    echo -e "\nSee you soon.\nPiKISS is a software maintained by Jose Cerrejon.\nYou can find me here (CTRL + Click):\n\n · PiKISS Repository: https://github.com/jmcerrejon/PiKISS\n · Blog: https://misapuntesde.com\n · Twitter: https://twitter.com/ulysess10\n · Discord Server (Pi Labs): https://discord.gg/Y7WFeC5\n · Mail: ulysess@gmail.com\n\n · Wanna be my Patron?: https://www.patreon.com/cerrejon?fan_landing=true"
     exit
 }
 
