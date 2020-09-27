@@ -690,7 +690,7 @@ extract_url_from_file() {
     local SHAREWARE_LINKS
     SHAREWARE_LINKS=/tmp/shareware.$$
 
-    wget -qO "$SHAREWARE_LINKS" bit.ly/2ZVe4Ay
+    wget -qO "$SHAREWARE_LINKS" bit.ly/36aaerf
     sed "$1q;d" "$SHAREWARE_LINKS"
     rm "$SHAREWARE_LINKS"
 }
