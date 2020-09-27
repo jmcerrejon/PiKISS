@@ -159,7 +159,7 @@ smGames() {
             OpenBor "OpenBOR is the open source continuation of Beats of Rage"
             OpenSPlex "OpenSupaplex reimplementation of the original 90's game"
             OpenXCom "Open-source clone of UFO: Enemy Unknown"
-            Quake "Enhanced client for id Software's Quake 2/3"
+            Quake "Enhanced clients for ID Software's Quake saga"
             Revolt "Re-Volt is a radio control car racing themed video game"
             SMario64 "Super Mario 64 native OpenGL ES"
             SpelunkyHD "Spelunky is a cave exploration/treasure-hunting game"
