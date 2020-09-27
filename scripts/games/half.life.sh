@@ -2,7 +2,7 @@
 #
 # Description : Half Life thks to Salva (Pi Labs)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (27/Sep/20)
+# Version     : 1.0.2 (27/Sep/20)
 # Compatible  : Raspberry Pi (tested)
 # Repository  : https://github.com/ValveSoftware/halflife
 #
@@ -96,7 +96,7 @@ echo "
 Install Half Life on Raspberry Pi
 =================================
 
- · Don't know how the hell remove fps on screen.
+ · If you want to disable fps cap, just open the console (tilde key in game) and type: cl_showfps 0
  · Languages in game: English, Spanish.
  · Based on engine at ${SOURCE_CODE_URL}
 "
