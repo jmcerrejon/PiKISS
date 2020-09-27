@@ -2,8 +2,8 @@
 #
 # Description : Half Life thks to Salva (Pi Labs)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (20/Sep/20)
-# Compatible  : Raspberry Pi 4 (tested)
+# Version     : 1.0.1 (27/Sep/20)
+# Compatible  : Raspberry Pi (tested)
 # Repository  : https://github.com/ValveSoftware/halflife
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -14,7 +14,7 @@ readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES_DEV=(libsdl2-dev)
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/half-life-0.20-bin-rpi.tar.gz"
 readonly HQ_TEXTURE_PACK_URL="https://gamebanana.com/dl/265907"
-readonly SOURCE_CODE_URL="https://github.com/ValveSoftware/halflife.git"
+readonly SOURCE_CODE_URL="https://github.com/FWGS/xash3d"
 readonly ES_TRANSLATION_URL="https://archive.org/download/rpi_share/hl-sp-patch.tar.gz"
 
 runme() {
@@ -94,9 +94,8 @@ install() {
 
 echo "
 Install Half Life on Raspberry Pi
-===================================
+=================================
 
- · Optimized for Raspberry Pi 4.
  · Don't know how the hell remove fps on screen.
  · Languages in game: English, Spanish.
  · Based on engine at ${SOURCE_CODE_URL}
