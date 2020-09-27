@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **684 hours**
+* **688 hours**
 
 ## 💰 Total amount donated by users
 
@@ -63,9 +63,13 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (27/09/20)
+
+· 📦 ADD: Games > Quake.
+
 ### (20/09/20)
 
-· 📦 ADD: Games > Half Life: Source.
+· 📦 ADD: Games > Half Life.
 
 ### (11/09/20)
 
