@@ -2,7 +2,7 @@
 #
 # Description : Half Life thks to Salva (Pi Labs)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.2 (27/Sep/20)
+# Version     : 1.0.3 (29/Sep/20)
 # Compatible  : Raspberry Pi (tested)
 # Repository  : https://github.com/ValveSoftware/halflife
 #
@@ -18,34 +18,34 @@ readonly SOURCE_CODE_URL="https://github.com/FWGS/xash3d"
 readonly ES_TRANSLATION_URL="https://archive.org/download/rpi_share/hl-sp-patch.tar.gz"
 
 runme() {
-	read -p "Press [ENTER] to run the game..."
-	cd "$INSTALL_DIR"/half-life && ./half-life.sh
-	echo
-	exit_message
+    read -p "Press [ENTER] to run the game..."
+    cd "$INSTALL_DIR"/half-life && ./half-life.sh
+    echo
+    exit_message
 }
 
 remove_files() {
-	rm -rf "$INSTALL_DIR"/half-life  ~/.local/share/applications/half-life.desktop
+    rm -rf "$INSTALL_DIR"/half-life  ~/.local/share/applications/half-life.desktop
 }
 
 uninstall() {
-	read -p "Do you want to uninstall Half Life (y/N)? " response
-	if [[ $response =~ [Yy] ]]; then
-		remove_files
-		if [[ -e "$INSTALL_DIR"/half-life ]]; then
-			echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
-			exit_message
-		fi
-		echo -e "\nSuccessfully uninstalled."
-		exit_message
-	fi
-	exit_message
+    read -p "Do you want to uninstall Half Life (y/N)? " response
+    if [[ $response =~ [Yy] ]]; then
+        remove_files
+        if [[ -e "$INSTALL_DIR"/half-life ]]; then
+            echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
+            exit_message
+        fi
+        echo -e "\nSuccessfully uninstalled."
+        exit_message
+    fi
+    exit_message
 }
 
 if [[ -d "$INSTALL_DIR"/half-life ]]; then
-	echo -e "Half Life already installed.\n"
-	uninstall
-	exit 0
+    echo -e "Half Life already installed.\n"
+    uninstall
+    exit 0
 fi
 
 generate_icon() {
