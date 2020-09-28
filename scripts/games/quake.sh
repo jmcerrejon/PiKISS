@@ -5,7 +5,7 @@
 # Version     : 1.2.0 (27/Sep/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
-# Help 		  : Quake 1: https://github.com/welford/qurp | https://steamcommunity.com/sharedfiles/filedetails/?id=119489135 | https://godmodeuser.com/p/8#40
+# Help 		  : Quake 1: | https://godmodeuser.com/p/8#40
 #               QuakeServer: https://www.recantha.co.uk/blog/?p=9962
 #               Darkplaces Quake: https://github.com/petrockblog/RetroPie-Setup/tree/master/scriptmodules/ports
 #               https://swissmacuser.ch/how-you-want-to-run-quake-iii-arena-in-2018-with-high-definition-graphics-120-fps-on-5k-resolution/
@@ -17,10 +17,10 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="$HOME/games"
 readonly Q1_BINARY_URL="https://misapuntesde.com/rpi_share/quakespasm-0.93.2-rpi4-bin.tar.gz"
-readonly Q1_SOURCE_CODE_URL="https://kumisystems.dl.sourceforge.net/project/quakespasm/Source/quakespasm-0.93.2.tgz"
 readonly Q1_SOUNDTRACK_URL="https://www.quaddicted.com/files/music/quake_campaign_soundtrack.zip"
 readonly Q1_SOURCE_CODE_1_URL="https://sourceforge.net/projects/quakespasm/files/Linux/quakespasm-0.93.2_linux.tar.gz/download"
 readonly Q1_SOURCE_CODE_2_VK_URL="https://github.com/Novum/vkQuake.git"
+readonly Q1_PACKAGES=(libogg0 libvorbis0a)
 readonly Q2_CONFIG_DIR="$HOME/.yq2"
 readonly Q2_BINARY_URL="https://misapuntesde.com/rpi_share/yquake2_bin_arm.tar.gz"
 readonly Q2_SOURCE_CODE_URL="https://github.com/yquake2/yquake2.git"
@@ -196,8 +196,18 @@ q1_opengl_compile() {
     echo -e "\nInstalling Dependencies..."
     sudo apt install -y libsdl2-dev libvorbis-dev libmad0-dev
     mkdir -p "$HOME"/sc && cd "$_"
-    download_and_extract "$Q1_SOURCE_CODE_URL" "$HOME"/sc
-    cd quakespasm-0.93.2/Quake
+    download_and_extract "$Q1_SOURCE_CODE_1_URL" "$HOME"/sc
+    cd "$HOME"/sc/quakespasm-0.93.2/Quake
+    make -j"$(getconf _NPROCESSORS_ONLN)" USE_SDL2=1 OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
+    echo -e "\nDone!. "
+}
+
+q1_vulkan_compile() {
+    echo -e "\nInstalling Dependencies..."
+    sudo apt install -y apt-get install git make gcc libsdl2-dev libvulkan-dev libvorbis-dev libmad0-dev
+    mkdir -p "$HOME"/sc && cd "$_"
+    download_and_extract "$Q1_SOURCE_CODE_2_VK_URL" "$HOME"/sc
+    cd "$HOME"/sc/vkQuake/Quake
     make -j"$(getconf _NPROCESSORS_ONLN)" USE_SDL2=1 OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
     echo -e "\nDone!. "
 }
@@ -247,11 +257,12 @@ Quake for Raspberry Pi
  · Check for more improvements changing autoexec.cfg at https://www.celephais.net/fitzquake/#commands
  · OGG/MP3 soundtrack ONLY for full version (in progress).
  · If you want to disable fps cap, just open the console (tilde key in game) and type: SCR_SHOWFPS 0
- · Based on code at ${Q1_SOURCE_CODE_URL}.
+ · Based on code at ${Q1_SOURCE_CODE_1_URL}.
  · Install path: $INSTALL_DIR/quake
 "
     read -p "Press [Enter] to install the game..."
     echo -e "\n\nInstalling Quake, please wait...\n"
+    installPackagesIfMissing "${Q1_PACKAGES[@]}"
     mkdir -p "$INSTALL_DIR"
     q1_install_binary
     # q1_high_textures_download
