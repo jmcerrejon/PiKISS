@@ -13,13 +13,13 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **688 hours**
+* **692 hours**
 
 ## 💰 Total amount donated by users
 
 * $220,96
 
-* I want to thank my patron *David J Leto* for trusting me ❤️
+* I want to thank my patrons *David J Leto and James Carroll* for trusting me ❤️
 
 ## 📣 Stay tuned! 
 
@@ -62,6 +62,12 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (29/09/20)
+
+· 👌 IMPROVE: Games > OpenBor 3.0 (Street of Rage 2X included!).
+
+· 👌 IMPROVE: Others > SDL2 (Enable Vulkan support if compile yourself).
 
 ### (27/09/20)
 
@@ -250,17 +256,17 @@ What some users have said about **PiKISS**:
 
 Just type:
 
-<pre>
-curl -sSL https://git.io/JfAPE | bash
-</pre>
+```sh-session
+$ curl -sSL https://git.io/JfAPE | bash
+```
 
 ## [ Update ]
 
 *PiKISS* check if new scripts are available on remote and update them automatically, but If you want to get the latest version manually, just enter into the directory with cd PiKISS and type:
 
-<pre>
-git pull
-</pre>
+```sh-session
+$ git pull
+```
 
 **NOTE:** If you use another distribution other than *Raspberry OS/TwisterOS*, maybe you need to execute the next command: *git config --global http.sslVerify false*
 
@@ -303,17 +309,17 @@ Lo que algunos usuarios han dicho de **PiKISS**:
 
 Escribe en la terminal lo siguiente:
 
-<pre>
-curl -sSL https://git.io/JfAPE | bash
-</pre>
+```sh-session
+$ curl -sSL https://git.io/JfAPE | bash
+```
 
 ### [ Actualizar ]
 
 *PiKISS* comprueba si hay nuevas actualizaciones en remoto y las actualiza automaticamente, pero si quieres conseguir la última versión de forma manual, teclea en el directorio de *PiKISS*:
 
-<pre>
-git pull
-</pre>
+```sh-session
+$ git pull
+```
 
 **NOTA:** Si usas otra distribución que no sea *Raspberry OS/TwisterOS* en la *Raspberry Pi*, tal vez tengas que ejecutar esta sencencia: *git config --global http.sslVerify false*
 
