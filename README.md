@@ -3,31 +3,21 @@
 ![PiKISS Logo](logo_pikiss_header.png)
 
 <p align="center">
-	<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ulysess%40gmail%2ecom&lc=GB&item_name=PiKISS&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted"><img src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif" /></a>
-	<a href='https://ko-fi.com/cerrejon' target='_blank'><img height="20" src="https://az743702.vo.msecnd.net/cdn/kofi2.png?v=0" alt='Buy Me a Coffee at ko-fi.com' /></a>
-	<a href="https://github.com/jmcerrejon/neighborhood-games/blob/master/LICENSE"><img src="https://img.shields.io/github/license/jmcerrejon/neighborhood-games" alt="npm version"></a>
-	<a href="https://twitter.com/ulysess10"><img src="https://img.shields.io/twitter/follow/ulysess10?style=social" alt="Follow me on Twitter!"></a>
-	<a href="https://github.com/jmcerrejon/PiKISS/search?l=shell"><img src="https://img.shields.io/github/languages/top/jmcerrejon/pikiss" alt="language top"></a>
-	<a href="https://commerce.coinbase.com/checkout/71737f60-2440-488e-b413-f41e706f024b"><img height="20" src="https://estafaonline.com/wp-content/uploads/2019/02/Coinbase-logo.png" alt="Coinbase"></a>
+    <a href="https://github.com/jmcerrejon/neighborhood-games/blob/master/LICENSE"><img src="https://img.shields.io/github/license/jmcerrejon/neighborhood-games" alt="npm version"></a>
+    <a href="https://twitter.com/ulysess10"><img src="https://img.shields.io/twitter/follow/ulysess10?style=social" alt="Follow me on Twitter!"></a>
+    <a href="https://github.com/jmcerrejon/PiKISS/search?l=shell"><img src="https://img.shields.io/github/languages/top/jmcerrejon/pikiss" alt="language top"></a>
 </p>
 
 ## ⏰ Estimated hours of work so far
 
 * **692 hours**
 
-## 💰 Total amount donated by users
-
-* $220,96
-
-* I want to thank my patrons *David J Leto and James Carroll* for trusting me ❤️
 
 ## 📣 Stay tuned! 
 
 * 📬⠀Mail: <ulysess@gmail.com>
 
 * 📖⠀Blog (English & Spanish): [misapuntesde.com](https://misapuntesde.com/)
-
-* 🟠⠀Bitcoin: 32XtfF8eKkWkAGJsHvBsjqsted5NKsGBcv
 
 * 💰⠀Patreon: [patreon.com/cerrejon](https://www.patreon.com/cerrejon?fan_landing=true)
 
@@ -42,6 +32,8 @@
 ## 🤝 Contributors
 
 * [huelvayork](https://github.com/huelvayork)
+
+* **This project is not accepting money or any benefits**.
 
 * Logo: grayduck
 
@@ -274,10 +266,6 @@ $ git pull
 
 **PiKISS** grow up according to users requests or I'll append scripts that I consider necessary, but I call **to the community** to share, improve and help to add new scripts to the existing one. If the project grow, **is up to you**.
 
-### [ DONATE ]
-
-This project has involved many hours thinking, searching, refactoring and testing code. I accept donations due the effort to make new scripts. Donations are not required or expected. Any amount that you feel is appropriate would be appreciated. Simply click on the Donate button at the end of this document. Thank you! :)
-
 ## ESPAÑOL
 
 ## PiKISS para Raspberry Pi: Un puñado de scripts con menú para hacerte la vida más fácil.
@@ -326,9 +314,3 @@ $ git pull
 ### [ ¡AYÚDAME! ]
 
 **PiKISS** crecerá de acuerdo a las peticiones de los usuarios o añadiré los scripts que considere oportunos, pero hago un llamamiento a **toda la comunidad** para compartir, mejorar o agregar nuevos scripts a los ya existentes. Que este proyecto crezca **depende de tí**.
-
-### [ DONACIONES ]
-
-Este proyecto ha supuesto muchas horas de pensar, buscar, refactorizar y testear código. Acepto donaciones por el esfuerzo que supone mantener y hacer nuevos scripts. Las donaciones no se requieren ni las espero. Cualquier cantidad que sientas que es apropiada sería de agradecer. Simplemente haz click en el botón "Donate" al final del documento. ¡Gracias! :)
-
-<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ulysess%40gmail%2ecom&lc=GB&item_name=PiKISS&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted"><img src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif" /></a>
