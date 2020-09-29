@@ -186,7 +186,7 @@ smGames() {
         Diablo) ./scripts/games/diablo.sh ;;
         Diablo2) ./scripts/games/diablo2.sh ;;
         Eduke32) ./scripts/games/eduke32.sh ;;
-        HalfLife) ./scripts/games/half.life.sh ;;
+        HalfLife) ./scripts/games/half-life.sh ;;
         Hurrican) ./scripts/games/hurrican.sh ;;
         Morrowind) ./scripts/games/openmw.sh ;;
         OpenBor) ./scripts/games/openbor.sh ;;
