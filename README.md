@@ -65,9 +65,9 @@
 
 ### (29/09/20)
 
-· 👌 IMPROVE: Games > OpenBor 3.0 (Street of Rage 2X included!).
+· 👌 IMPROVE: Games > OpenBor 3.0 (Streets of Rage 2X included!).
 
-· 👌 IMPROVE: Others > SDL2 (Enable Vulkan support if compile yourself).
+· 👌 IMPROVE: Others > SDL2 (Enable Vulkan support if you compile it yourself).
 
 ### (27/09/20)
 

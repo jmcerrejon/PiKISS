@@ -108,8 +108,9 @@ OpenBOR for Raspberry Pi 4
 
  · Optimized for Raspberry Pi 4.
  · More Info and games: http://www.chronocrash.com/forum/
- · Game included: Street Of Rage 2X thanks to Kratus http://www.chronocrash.com/forum/index.php?action=profile;u=13351
+ · Game included: Streets Of Rage 2X thanks to Kratus http://www.chronocrash.com/forum/index.php?action=profile;u=13351
  · Install path: $INSTALL_DIR/openbor
+ · Some keys: F12 - Menu | 
 "
 read -p "Press [ENTER] to continue..."
 
