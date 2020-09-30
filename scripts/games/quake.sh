@@ -2,7 +2,7 @@
 #
 # Description : Quake I, ][, ]I[
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.0 (27/Sep/20)
+# Version     : 1.3.0 (30/Sep/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help 		  : Quake 1: | https://godmodeuser.com/p/8#40
@@ -31,9 +31,11 @@ readonly Q3_PACKAGES_DEV=(libsdl2-dev libxxf86dga-dev libcurl4-openssl-dev)
 readonly Q3_BINARY_URL="https://misapuntesde.com/rpi_share/quake3-1.32-rpi.tar.gz"
 readonly Q3_SOURCE_CODE_URL="https://github.com/ec-/Quake3e.git"
 Q1_DATA_URL="https://www.quakeforge.net/files/quake-shareware-1.06.zip"
-Q2_DATA_URL="https://archive.org/download/rpi_share/baseq2.zip"
+Q2_DATA_URL=""
 Q3_DATA_URL=""
 INPUT=/tmp/quake.$$
+
+# Quake 1
 
 q1_runme() {
     if [ ! -f "$INSTALL_DIR"/quake/quake ]; then
@@ -42,29 +44,6 @@ q1_runme() {
     fi
     read -p "Press [ENTER] to run the game..."
     cd "$INSTALL_DIR"/quake && ./quake
-    exit_message
-}
-
-q2_runme() {
-    if [ ! -f "$INSTALL_DIR"/yquake2/quake2 ]; then
-        echo -e "\nFile does not exist.\n· Something is wrong.\n· Try to install again."
-        exit_message
-    fi
-    read -p "Press [ENTER] to run the game..."
-    "$INSTALL_DIR"/yquake2/quake2
-    exit_message
-}
-
-q3_runme() {
-    if [ ! -f "$INSTALL_DIR"/quake3/quake3e.sh ]; then
-        echo -e "\nFile does not exist.\n· Something is wrong.\n· Try to install again."
-    fi
-
-    if [ -d "$INSTALL_DIR"/quake3/baseq3 ]; then
-        read -p "Press [ENTER] to run the game..."
-        cd "$INSTALL_DIR"/quake3 && ./quake3e.sh
-    fi
-
     exit_message
 }
 
@@ -78,48 +57,6 @@ q1_check_if_installed() {
     if [[ $response =~ [Yy] ]]; then
         rm -rf "$INSTALL_DIR"/quake ~/.local/share/applications/quake.desktop
         if [[ -e "$INSTALL_DIR"/quake ]]; then
-            echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
-            exit_message
-        fi
-
-        echo -e "\nSuccessfully uninstalled."
-        exit_message
-    fi
-
-    exit_message
-}
-
-q2_check_if_installed() {
-    if [[ ! -d "$INSTALL_DIR"/yquake2 ]]; then
-        return 0
-    fi
-
-    echo
-    read -p "Quake ][ already installed. Do you want to uninstall it (y/N)? " response
-    if [[ $response =~ [Yy] ]]; then
-        rm -rf "$INSTALL_DIR"/yquake2 ~/.local/share/applications/yquake2.desktop "$HOME"/.yq2
-        if [[ -e "$INSTALL_DIR"/yquake2 ]]; then
-            echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
-            exit_message
-        fi
-
-        echo -e "\nSuccessfully uninstalled."
-        exit_message
-    fi
-
-    exit_message
-}
-
-q3_check_if_installed() {
-    if [[ ! -d "$INSTALL_DIR"/quake3 ]]; then
-        return 0
-    fi
-
-    echo
-    read -p "Quake ]I[ already installed. Do you want to uninstall it (y/N)? " response
-    if [[ $response =~ [Yy] ]]; then
-        rm -rf "$INSTALL_DIR"/quake3 ~/.local/share/applications/quake3.desktop ~/.q3a
-        if [[ -e "$INSTALL_DIR"/quake3 ]]; then
             echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
             exit_message
         fi
@@ -149,47 +86,9 @@ EOF
     fi
 }
 
-q2_generate_icon() {
-    echo -e "\nGenerating icon..."
-    if [[ ! -e ~/.local/share/applications/yquake2.desktop ]]; then
-        cat <<EOF >~/.local/share/applications/yquake2.desktop
-[Desktop Entry]
-Name=Quake ][
-Exec=${INSTALL_DIR}/yquake2/quake2
-Icon=${INSTALL_DIR}/yquake2/quake2.svg
-Path=${INSTALL_DIR}/yquake2/
-Type=Application
-Comment=Yamagi Quake II is an enhanced client for id Software's Quake II with focus on offline and coop gameplay.
-Categories=Game;ActionGame;
-EOF
-    fi
-}
-
-q3_generate_icon() {
-    echo -e "\nGenerating icon..."
-    if [[ ! -e ~/.local/share/applications/quake3.desktop ]]; then
-        cat <<EOF >~/.local/share/applications/quake3.desktop
-[Desktop Entry]
-Name=Quake ]I[
-Exec=${INSTALL_DIR}/quake3/quake3e.sh
-Icon=${INSTALL_DIR}/quake3/icon.png
-Path=${INSTALL_DIR}/quake3/
-Type=Application
-Comment=Quake III Arena is a 1999 multiplayer-focused first-person shooter developed by id Software. It is the third game in the Quake series; it differs from previous games by excluding a story-based single-player mode
-Categories=Game;ActionGame;
-EOF
-    fi
-}
-
 q1_install_binary() {
     echo -e "\nInstalling binary files..."
     download_and_extract "$Q1_BINARY_URL" "$INSTALL_DIR"
-}
-
-q2_install_binary() {
-    echo -e "\nInstalling binary files..."
-    download_and_extract "$Q2_BINARY_URL" "$INSTALL_DIR"
-    mv -f "$INSTALL_DIR"/yquake2/.yq2 ~/
 }
 
 q1_opengl_compile() {
@@ -220,7 +119,102 @@ q1_soundtrack_download() {
     download_and_extract "$Q1_SOUNDTRACK_URL" /tmp
     mv /tmp/quake_campaign_soundtrack/id1/music "$HOME"/games/quake/id1
     mv /tmp/quake_campaign_soundtrack/id1/tracklist.cfg "$HOME"/games/quake/id1
-    [[ -d /tmp/quake_campaign_soundtrack/ ]] && rm -rf /tmp/quake_campaign_soundtrack/
+}
+
+q1_magic_air_copy() {
+    echo
+    read -p "Do you have an original copy of Quake (If not, a shareware version will be installed) (y/N)?: " response
+    if [[ $response =~ [Yy] ]]; then
+        Q1_DATA_URL=$(extract_url_from_file 15)
+
+        if ! message_magic_air_copy "$Q1_DATA_URL"; then
+            echo -e "\nShareware version was installed."
+            return 0
+        fi
+        download_and_extract "$Q1_DATA_URL" "$HOME"/quake
+    fi
+}
+
+q1_install() {
+    q1_check_if_installed
+    echo "
+Quake for Raspberry Pi
+======================
+
+ · Optimized for Raspberry Pi 4.
+ · Start at 720p (You can change it).
+ · SDL2 with graphic improvements through autoexec.cfg.
+ · Check for more improvements changing autoexec.cfg at https://www.celephais.net/fitzquake/#commands
+ · OGG/MP3 soundtrack ONLY for full version (in progress).
+ · If you want to disable fps cap, just open the console (tilde key in game) and type: SCR_SHOWFPS 0
+ · Based on code at ${Q1_SOURCE_CODE_1_URL}.
+ · Install path: $INSTALL_DIR/quake
+"
+    read -p "Press [Enter] to install the game..."
+    echo -e "\n\nInstalling Quake, please wait...\n"
+    installPackagesIfMissing "${Q1_PACKAGES[@]}"
+    mkdir -p "$INSTALL_DIR"
+    q1_install_binary
+    q1_soundtrack_download
+    q1_generate_icon
+    q1_magic_air_copy
+    echo -e "\nDone!. You can play typing $INSTALL_DIR/quake/quake or opening the Menu > Games > Quake.\n"
+    q1_runme
+}
+
+# Quake ][
+
+q2_runme() {
+    if [ ! -f "$INSTALL_DIR"/yquake2/quake2 ]; then
+        echo -e "\nFile does not exist.\n· Something is wrong.\n· Try to install again."
+        exit_message
+    fi
+    read -p "Press [ENTER] to run the game..."
+    "$INSTALL_DIR"/yquake2/quake2
+    exit_message
+}
+
+q2_check_if_installed() {
+    if [[ ! -d "$INSTALL_DIR"/yquake2 ]]; then
+        return 0
+    fi
+
+    echo
+    read -p "Quake ][ already installed. Do you want to uninstall it (y/N)? " response
+    if [[ $response =~ [Yy] ]]; then
+        rm -rf "$INSTALL_DIR"/yquake2 ~/.local/share/applications/yquake2.desktop "$HOME"/.yq2
+        if [[ -e "$INSTALL_DIR"/yquake2 ]]; then
+            echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
+            exit_message
+        fi
+
+        echo -e "\nSuccessfully uninstalled."
+        exit_message
+    fi
+
+    exit_message
+}
+
+q2_generate_icon() {
+    echo -e "\nGenerating icon..."
+    if [[ ! -e ~/.local/share/applications/yquake2.desktop ]]; then
+        cat <<EOF >~/.local/share/applications/yquake2.desktop
+[Desktop Entry]
+Name=Quake ][
+Exec=${INSTALL_DIR}/yquake2/quake2
+Icon=${INSTALL_DIR}/yquake2/quake2.svg
+Path=${INSTALL_DIR}/yquake2/
+Type=Application
+Comment=Yamagi Quake II is an enhanced client for id Software's Quake II with focus on offline and coop gameplay.
+Categories=Game;ActionGame;
+EOF
+    fi
+}
+
+q2_install_binary() {
+    echo -e "\nInstalling binary files..."
+    download_and_extract "$Q2_BINARY_URL" "$INSTALL_DIR"
+    cp -rf "$INSTALL_DIR"/yquake2/.yq2 ~/
 }
 
 q2_compile() {
@@ -245,39 +239,18 @@ q2_high_textures_download() {
     download_and_extract "$Q2_HIGH_TEXTURE_MODELS_URL" "$Q2_CONFIG_DIR"/baseq2
 }
 
-q1_install() {
-    q1_check_if_installed
-    echo "
-Quake for Raspberry Pi
-======================
-
- · Optimized for Raspberry Pi 4.
- · Start at 720p (You can change it).
- · SDL2 with graphic improvements through autoexec.cfg.
- · Check for more improvements changing autoexec.cfg at https://www.celephais.net/fitzquake/#commands
- · OGG/MP3 soundtrack ONLY for full version (in progress).
- · If you want to disable fps cap, just open the console (tilde key in game) and type: SCR_SHOWFPS 0
- · Based on code at ${Q1_SOURCE_CODE_1_URL}.
- · Install path: $INSTALL_DIR/quake
-"
-    read -p "Press [Enter] to install the game..."
-    echo -e "\n\nInstalling Quake, please wait...\n"
-    installPackagesIfMissing "${Q1_PACKAGES[@]}"
-    mkdir -p "$INSTALL_DIR"
-    q1_install_binary
-    # q1_high_textures_download
-    q1_generate_icon
+q2_magic_air_copy() {
     echo
-    read -p "Do you have an original copy of Quake (If not, a shareware version will be installed) (y/N)?: " response
+    read -p "Do you have an original copy of Quake ][ (If not, a shareware version will be installed) (y/N)?: " response
     if [[ $response =~ [Yy] ]]; then
-        Q1_DATA_URL=$(extract_url_from_file 15)
-        message_magic_air_copy
-        download_and_extract "$Q1_DATA_URL" "$HOME"/quake
-        q1_soundtrack_download
-    fi
+        Q2_DATA_URL=$(extract_url_from_file 5)
 
-    echo -e "\n\nDone!. You can play typing $INSTALL_DIR/quake/quake or opening the Menu > Games > Quake.\n"
-    q1_runme
+        if ! message_magic_air_copy "$Q2_DATA_URL"; then
+            echo -e "\nNow copy data directory /baseq2 into $INSTALL_DIR/quake."
+            return 0
+        fi
+        download_and_extract "$Q2_DATA_URL" "$Q2_CONFIG_DIR"
+    fi
 }
 
 q2_install() {
@@ -292,36 +265,78 @@ Quake ][ for Raspberry Pi
  · Install path: $INSTALL_DIR/yquake2
 "
     read -p "Press [Enter] to install the game..."
-
     echo -e "\n\nInstalling Quake ][, please wait...\n"
     mkdir -p "$INSTALL_DIR"
     q2_install_binary
     q2_soundtrack_download
     q2_high_textures_download
     q2_generate_icon
-    echo
-    read -p "Do you have an original copy of Quake ][ (If not, a shareware version will be installed) (y/N)?: " response
-    if [[ $response =~ [Yy] ]]; then
-        Q2_DATA_URL=$(extract_url_from_file 5)
-        message_magic_air_copy
-    fi
-
-    download_and_extract "$Q2_DATA_URL" "$Q2_CONFIG_DIR"
-    echo -e "\n\nDone!. You can play typing $INSTALL_DIR/yquake2/quake2 or opening the Menu > Games > Quake ][.\n"
+    q2_magic_air_copy
+    echo -e "\nDone!. You can play typing $INSTALL_DIR/yquake2/quake2 or opening the Menu > Games > Quake ][.\n"
     q2_runme
 }
 
-q3_install_data() {
-    echo
-    read -p "Do you have an original copy of Quake ]I[ (Y/n)?: " response
-    if [[ $response =~ [Nn] ]]; then
-        echo -e "\n\nCopy the data files (baseq3 directory) into $INSTALL_DIR/quake3.\n"
+# Quake ]I[
+
+q3_runme() {
+    if [ ! -f "$INSTALL_DIR"/quake3/quake3e.sh ]; then
+        echo -e "\nFile does not exist.\n· Something is wrong.\n· Try to install again."
+    fi
+
+    if [ -d "$INSTALL_DIR"/quake3/baseq3 ]; then
+        read -p "Press [ENTER] to run the game..."
+        cd "$INSTALL_DIR"/quake3 && ./quake3e.sh
+    fi
+
+    exit_message
+}
+
+q3_check_if_installed() {
+    if [[ ! -d "$INSTALL_DIR"/quake3 ]]; then
         return 0
     fi
 
-    Q3_DATA_URL=$(extract_url_from_file 13)
-    message_magic_air_copy
-    download_and_extract "$Q3_DATA_URL" "$INSTALL_DIR"/quake3
+    echo
+    read -p "Quake ]I[ already installed. Do you want to uninstall it (y/N)? " response
+    if [[ $response =~ [Yy] ]]; then
+        rm -rf "$INSTALL_DIR"/quake3 ~/.local/share/applications/quake3.desktop ~/.q3a
+        if [[ -e "$INSTALL_DIR"/quake3 ]]; then
+            echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
+            exit_message
+        fi
+
+        echo -e "\nSuccessfully uninstalled."
+        exit_message
+    fi
+
+    exit_message
+}
+
+q3_generate_icon() {
+    echo -e "\nGenerating icon..."
+    if [[ ! -e ~/.local/share/applications/quake3.desktop ]]; then
+        cat <<EOF >~/.local/share/applications/quake3.desktop
+[Desktop Entry]
+Name=Quake ]I[
+Exec=${INSTALL_DIR}/quake3/quake3e.sh
+Icon=${INSTALL_DIR}/quake3/icon.png
+Path=${INSTALL_DIR}/quake3/
+Type=Application
+Comment=Quake III Arena is a 1999 multiplayer-focused first-person shooter developed by id Software. It is the third game in the Quake series; it differs from previous games by excluding a story-based single-player mode
+Categories=Game;ActionGame;
+EOF
+    fi
+}
+
+q3_compile() {
+    installPackagesIfMissing "${Q3_PACKAGES_DEV[@]}"
+    mkdir -p ~/sc && cd "$_"
+    echo -e "\nCloning and compiling Quake ]I[...\n"
+    [[ ! -d ~/sc/Quake3e ]] && git clone "$Q3_SOURCE_CODE_URL"
+    cd ~/sc/Quake3e/
+    make -j"$(nproc)" OPTOPT="-march=armv8-a+crc -mtune=cortex-a53" BUILD_SERVER=0 USE_RENDERER_DLOPEN=0 USE_VULKAN=1
+    echo -e "\nDone!. Binary files at build/release-linux-arm"
+    exit_message
 }
 
 q3_install_binary() {
@@ -335,6 +350,21 @@ q3_install_binary() {
     if [ -f "$FILE_CFG_PATH" ]; then
         mkdir -p "$CFG_DIRECTORY_PATH" && cp "$FILE_CFG_PATH" "$CFG_DIRECTORY_PATH"
     fi
+}
+
+q3_magic_air_copy() {
+    echo
+    read -p "Do you have an original copy of Quake ]I[ (y/N)?: " response
+    if [[ $response =~ [Yy] ]]; then
+        Q3_DATA_URL=$(extract_url_from_file 13)
+
+        if ! message_magic_air_copy "$Q3_DATA_URL"; then
+            echo -e "\nNow copy data directory /baseq3 into $INSTALL_DIR/quake3.\n"
+            return 0
+        fi
+        download_and_extract "$Q3_DATA_URL" "$INSTALL_DIR"/quake3
+    fi
+    echo -e "\nNow copy data directory /baseq3 into $INSTALL_DIR/quake3.\n"
 }
 
 q3_install() {
@@ -354,20 +384,9 @@ Quake ]I[ for Raspberry Pi
     read -p "Press [Enter] to install the game..."
     q3_install_binary
     q3_generate_icon
-    q3_install_data
+    q3_magic_air_copy
     echo -e "\nDone!. You can play typing $INSTALL_DIR/quake3/quake3e or opening the Menu > Games > Quake ]I[.\n"
     q3_runme
-}
-
-q3_compile() {
-    installPackagesIfMissing "${Q3_PACKAGES_DEV[@]}"
-    mkdir -p ~/sc && cd "$_"
-    echo -e "\nCloning and compiling Quake ]I[...\n"
-    [[ ! -d ~/sc/Quake3e ]] && git clone "$Q3_SOURCE_CODE_URL"
-    cd ~/sc/Quake3e/
-    make -j"$(nproc)" OPTOPT="-march=armv8-a+crc -mtune=cortex-a53" BUILD_SERVER=0 USE_RENDERER_DLOPEN=0 USE_VULKAN=1
-    echo -e "\nDone!. Binary files at build/release-linux-arm"
-    exit_message
 }
 
 menu() {

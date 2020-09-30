@@ -2,7 +2,7 @@
 #
 # Description : Arx Libertatis (AKA Arx Fatalis)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.3 (01/Sep/20)
+# Version     : 1.0.4 (30/Sep/20)
 # Compatible  : Raspberry Pi 4 (fail)
 #
 # Help        : https://wiki.arx-libertatis.org/Downloading_and_Compiling_under_Linux
@@ -14,15 +14,15 @@
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-INSTALL_DIR="$HOME/games"
-PACKAGES=( libglew-dev )
-PACKAGES_DEV=( zlib1g-dev libfreetype6-dev libopenal1 libopenal-dev mesa-common-dev libgl1-mesa-dev libboost-dev libepoxy-dev libglm-dev libcppunit-dev libglew-dev libsdl2-dev )
-CONFIG_DIR="$HOME/.local/share/arx"
-BINARY_URL="https://www.littlecarnage.com/arx_rpi2.tar.gz"
-SOURCE_CODE_URL="https://github.com/ptitSeb/ArxLibertatis.git"
-SOURCE_CODE_OFFICIAL_URL="https://github.com/arx/ArxLibertatis.git" # Doesn't work for now
-DATA_URL="https://archive.org/download/rpi_share/arx_demo_en.tgz"
-ICON_URL="https://github.com/arx/ArxLibertatisData/blob/master/icons/arx-libertatis-32.png?raw=true"
+readonly INSTALL_DIR="$HOME/games"
+readonly PACKAGES=( libglew-dev )
+readonly PACKAGES_DEV=( zlib1g-dev libfreetype6-dev libopenal1 libopenal-dev mesa-common-dev libgl1-mesa-dev libboost-dev libepoxy-dev libglm-dev libcppunit-dev libglew-dev libsdl2-dev )
+readonly CONFIG_DIR="$HOME/.local/share/arx"
+readonly BINARY_URL="https://www.littlecarnage.com/arx_rpi2.tar.gz"
+readonly SOURCE_CODE_URL="https://github.com/ptitSeb/ArxLibertatis.git"
+readonly SOURCE_CODE_OFFICIAL_URL="https://github.com/arx/ArxLibertatis.git" # Doesn't work for now
+readonly ICON_URL="https://github.com/arx/ArxLibertatisData/blob/master/icons/arx-libertatis-32.png?raw=true"
+DATA_URL="https://srv-file21.gofile.io/downloadStore/srv-store3/NN2Dp2/arx_demo_en.tgz"
 INPUT=/tmp/arx.$$
 
 runme() {
@@ -70,7 +70,7 @@ generate_icon() {
         cat <<EOF >~/.local/share/applications/arx.desktop
 [Desktop Entry]
 Name=Arx Fatalis (AKA Arx Libertatis)
-Exec=/home/pi/games/arx/arx
+Exec=${INSTALL_DIR}/arx/arx
 Icon=${CONFIG_DIR}/arx-libertatis-32.png
 Type=Application
 Comment=Arx Fatalis is set on a world whose sun has failed, forcing the above-ground creatures to take refuge in caverns.
@@ -124,9 +124,6 @@ end_message() {
     runme
 }
 
-download_data_files() {
-    download_and_extract "$DATA_URL" ~
-}
 
 choose_data_files() {
     while true; do
@@ -156,10 +153,13 @@ install() {
     read -p "Do you have an original copy of Arx Fatalis (If not, a Shareware version will be installed) (y/N)?: " response
     if [[ $response =~ [Yy] ]]; then
         choose_data_files
-        message_magic_air_copy
+        if ! message_magic_air_copy "$DATA_URL"; then
+            echo -e "\nNow copy data directory into $INSTALL_DIR/arx."
+            end_message
+        fi
     fi
 
-    download_data_files
+    download_and_extract "$DATA_URL" ~
     end_message
 }
 

@@ -2,7 +2,7 @@
 #
 # Description : Serious Sam 1 & 2
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.1 (26/Aug/20)
+# Version     : 1.2.0 (30/Sep/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help        : https://www.raspberrypi.org/forums/viewtopic.php?t=200458
@@ -12,10 +12,10 @@
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-INSTALL_DIR="$HOME/games"
-BINARY_PATH="https://misapuntesde.com/rpi_share/ssam-bin-1.05-rpi4.tar.gz"
-PACKAGES_DEV=(libsdl2-dev bison flex libogg-dev)
-INPUT=/tmp/ssam.$$
+readonly INSTALL_DIR="$HOME/games"
+readonly PACKAGES_DEV=(libsdl2-dev bison flex libogg-dev)
+readonly BINARY_URL="https://misapuntesde.com/rpi_share/ssam-bin-1.05-rpi4.tar.gz"
+readonly INPUT=/tmp/ssam.$$
 
 runme_tfe() {
     echo
@@ -93,33 +93,49 @@ EOF
 }
 
 fix_libEGL() {
-    if [[ -f /opt/vc/lib/libEGL.so ]]; then
+    if [[ -f /opt/vc/lib/libEGL.so && ! -f $INSTALL_DIR/ssam-tse/Serious-Engine/Bin/libEGL.so ]]; then
         echo -e "\nFixing libEGL.so..."
         touch "$INSTALL_DIR"/ssam-tse/Serious-Engine/Bin/libEGL.so
     fi
 }
 
 install_binaries() {
-    download_and_extract "$BINARY_PATH" "$INSTALL_DIR"
+    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
     echo -e "\nDone!. Now follow the instructions to copy data files from https://github.com/ptitSeb/Serious-Engine"
     exit_message
 }
 
 install_full_tfe() {
-    clear && BINARY_PATH=$(extract_url_from_file 11)
-    message_magic_air_copy
-    download_and_extract "$BINARY_PATH" "$INSTALL_DIR"
+    local DATA_URL
+    DATA_URL=$(extract_url_from_file 11)
+
+    clear
     generate_icon_tfe
-    echo -e "\nDone!. Go to $INSTALL_DIR/ssam-tse/Bin/ssam-tse or go to Menu > Games > Serious Sam The First Encounter."
+    if ! message_magic_air_copy "$DATA_URL"; then
+        echo -e "\nRepeat the process and answer n..."
+        exit_message
+    else
+        download_and_extract "$DATA_URL" "$INSTALL_DIR"
+    fi
+
+    echo -e "\nDone!. Go to $INSTALL_DIR/ssam-tfe/Bin/ssam-tfe or go to Menu > Games > Serious Sam The First Encounter."
     runme_tfe
 }
 
 install_full_tse() {
-    clear && BINARY_PATH=$(extract_url_from_file 10)
-    message_magic_air_copy
-    download_and_extract "$BINARY_PATH" "$INSTALL_DIR"
-    fix_libEGL
+    local DATA_URL
+    DATA_URL=$(extract_url_from_file 10)
+
+    clear
     generate_icon_tse
+    if ! message_magic_air_copy "$DATA_URL"; then
+        echo -e "\nRepeat the process and answer n..."
+        exit_message
+    else
+        download_and_extract "$DATA_URL" "$INSTALL_DIR"
+        fix_libEGL
+    fi
+
     echo -e "\nDone!. Go to $INSTALL_DIR/ssam-tse/ssam-tse.sh or go to Menu > Games > Serious Sam The Second Encounter."
     runme_tse
 }

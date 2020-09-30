@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/bash -ex
 #
 # Description : Half Life thks to Salva (Pi Labs)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.3 (29/Sep/20)
+# Version     : 1.0.3 (30/Sep/20)
 # Compatible  : Raspberry Pi (tested)
 # Repository  : https://github.com/ValveSoftware/halflife
 #
@@ -15,7 +15,7 @@ readonly PACKAGES_DEV=(libsdl2-dev)
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/half-life-0.20-bin-rpi.tar.gz"
 readonly HQ_TEXTURE_PACK_URL="https://gamebanana.com/dl/265907"
 readonly SOURCE_CODE_URL="https://github.com/FWGS/xash3d"
-readonly ES_TRANSLATION_URL="https://archive.org/download/rpi_share/hl-sp-patch.tar.gz"
+readonly ES_TRANSLATION_URL="https://misapuntesde.com/rpi_share/hl-sp-patch.tar.gz"
 
 runme() {
     read -p "Press [ENTER] to run the game..."
@@ -74,19 +74,22 @@ post_install() {
 install() {
     local DATA_URL
     download_and_extract "$BINARY_URL" "$INSTALL_DIR"
+    generate_icon
     echo
     read -p "Do you have an original copy of Half Life (Y/n)?: " response
     if [[ $response =~ [Nn] ]]; then
-        generate_icon
         echo -e "\nDone!. Now copy the /valve directory inside $INSTALL_DIR/half-life"
         exit_message
     fi
 
     DATA_URL=$(extract_url_from_file 14)
+
+    if ! message_magic_air_copy "$DATA_URL"; then
+        echo -e "\nNow copy the /valve directory inside $INSTALL_DIR/half-life"
+        return 0
+    fi
     installPackagesIfMissing p7zip-full
-    message_magic_air_copy
     download_and_extract "$DATA_URL" "$INSTALL_DIR"/half-life
-    generate_icon
     post_install
     echo -e "\nDone!."
     runme

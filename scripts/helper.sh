@@ -193,8 +193,7 @@ download_and_extract() {
     FILE="$(get_file_name_from_url $1)"
 
     if [ "$FILE" == "" ]; then
-        clear
-        echo -e "\nSomething is wrong. The file is missing. Aborting..."
+        echo -e "\nSorry, the file you trying to download is not available."
         remove_unneeded_helper # Maybe an old helper.sh is loaded. Delete it.
         exit_message
         exit 1
@@ -661,6 +660,8 @@ upgrade_dist() {
 #
 message_magic_air_copy() {
     local MESSAGES_LIST
+    local SIZE
+    local INDEX
     MESSAGES_LIST=(
         "You didn't lend it out?"
         "Really?!"
@@ -673,14 +674,31 @@ message_magic_air_copy() {
         "I quit!"
         "Why do you punished me doing this?"
         "You won't believe what 'other' thing I've found under your bed"
+        "It stinks here!"
+        "Take a bucket of water and clean up a little"
+        "Shouldn't you be studying?"
+        "Why don't you go look for it?"
+        "I find it, what do you give me in return?"
+        "Did you fart or does your room smell like this always?"
+        "Oh my gosh!, Oh my gosh!, Oh my gosh!"
+        "Are you really going to be watching while I look for it?"
+        "I foun!... Ah, it's not that"
     )
-    size=${#MESSAGES_LIST[@]}
-    index=$(($RANDOM % $size))
+    SIZE=${#MESSAGES_LIST[@]}
+    INDEX=$(("$RANDOM" % "$SIZE"))
+
     clear
     echo -e "\nLooking for the copy at your house...\n" && sleep 4
-    echo -e "${MESSAGES_LIST[$index]}\n" && sleep 3
-    echo -e "Found it!...\n" && sleep 2
-    echo "I'm moving the data files FROM YOUR original copy to destination directory using the technology MagicAirCopy® (｀-´)⊃━☆ﾟ.*･｡ﾟ"
+    echo -e "${MESSAGES_LIST[$INDEX]}\n" && sleep 3
+
+    if [ -n "$1" ] && ! is_url_broken "$1"; then
+        echo -e "Found it!...\n" && sleep 2
+        echo "I'm moving the data files FROM YOUR original copy to destination directory using the technology MagicAirCopy® (｀-´)⊃━☆ﾟ.*･｡ﾟ"
+        true
+    else
+        echo -e "Data files not found. Anyway, clean your room and remember: Winners don't use drugs..."
+        false
+    fi
 }
 
 #
@@ -688,9 +706,17 @@ message_magic_air_copy() {
 #
 extract_url_from_file() {
     local SHAREWARE_LINKS
+    local SHAREWARE_LOCAL_PATH
     SHAREWARE_LINKS=/tmp/shareware.$$
+    # TODO Get in the next the path for piKISS
+    SHAREWARE_LOCAL_PATH="${HOME}/piKiss/res/magic-air-copy-pikiss.txt"
 
-    wget -qO "$SHAREWARE_LINKS" bit.ly/36aaerf
+    if [ -f "$SHAREWARE_LOCAL_PATH" ]; then
+        echo -e "\nLocal data file found!...\n\n"
+        cp "$SHAREWARE_LOCAL_PATH" $SHAREWARE_LINKS
+    else
+        wget -qO "$SHAREWARE_LINKS" https://url_to_shareware_links
+    fi
     sed "$1q;d" "$SHAREWARE_LINKS"
     rm "$SHAREWARE_LINKS"
 }
@@ -724,7 +750,7 @@ extract() {
 # exit PiKISS
 #
 exit_pikiss() {
-    echo -e "\nSee you soon.\nPiKISS is a software maintained by Jose Cerrejon.\nYou can find me here (CTRL + Click):\n\n · PiKISS Repository: https://github.com/jmcerrejon/PiKISS\n · Blog: https://misapuntesde.com\n · Twitter: https://twitter.com/ulysess10\n · Discord Server (Pi Labs): https://discord.gg/Y7WFeC5\n · Mail: ulysess@gmail.com\n\n · Wanna be my Patron?: https://www.patreon.com/cerrejon?fan_landing=true"
+    echo -e "\nSee you soon.\nPiKISS is a software maintained by Jose Cerrejon.\nYou can find me here (CTRL + Click):\n\n · PiKISS Repository: https://github.com/jmcerrejon/PiKISS\n · Blog: https://misapuntesde.com\n · Twitter: https://twitter.com/ulysess10\n · Discord Server (Pi Labs): https://discord.gg/Y7WFeC5\n · Mail: ulysess@gmail.com\n"
     exit
 }
 
@@ -879,5 +905,24 @@ install_or_update_rust() {
 
     if [ "$(grep -c .cargo ~/.bashrc)" -eq 0 ]; then
         echo "PATH=$PATH:$HOME/.cargo/bin" >> ~/.bashrc
+    fi
+}
+
+#
+# Return boolean if url is not online
+#
+is_url_broken() {
+    local URL
+
+    if ! isPackageInstalled httpie; then
+        sudo apt-get install -qq httpie < /dev/null > /dev/null
+    fi
+    # URL=$(curl -I "$1" 2>&1 | awk '/HTTP\// {print $2}') | Method 1
+    URL=$(http --verify=no -h "$1" | awk 'NR==1' | awk '{print $2}')
+
+    if [ "$URL" != 200 ]; then
+        true
+    else
+        false
     fi
 }

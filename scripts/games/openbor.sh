@@ -20,7 +20,7 @@ PACKAGES=(libsdl-gfx1.2-5 libpng12-0)
 PACKAGES_DEV=(libsdl2-gfx-dev libvorbisidec-dev libvpx-dev libogg-dev libsdl2-gfx-1.0-0 libvorbisidec1)
 BINARY_URL="https://misapuntesde.com/rpi_share/openbor_by_ulysess.tar.gz"
 GITHUB_URL="https://github.com/crcerror/OpenBOR-Raspberry"
-DATA_URL="https://archive.org/download/rpi_share/SOR2X_V2.1.pak"
+DATA_URL="https://srv-file21.gofile.io/downloadStore/srv-store2/BeALLP/SOR2X_V2.1.pak"
 
 runme() {
     read -p "Press [ENTER] to run the game..."

@@ -2,7 +2,7 @@
 #
 # Description : Diablo 2 Exp. Spanish for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.1 (30/Aug/20)
+# Version     : 1.1.2 (30/Sep/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Info		  : Thks to PI Labs and Notaz
@@ -13,11 +13,12 @@
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-INSTALL_DIR="$HOME/games"
-SCRIPT_PATH="$HOME/games/diablo2/diablo2.sh"
-BINARY_PATH="https://notaz.gp2x.de/misc/starec/libd2game_sa_arm.exe.so.xz"
-INPUT=/tmp/diablo2.$$
-PIKISS_PATH=$(pwd)
+readonly INSTALL_DIR="$HOME/games"
+readonly SCRIPT_PATH="$HOME/games/diablo2/diablo2.sh"
+readonly BINARY_PATH="https://notaz.gp2x.de/misc/starec/libd2game_sa_arm.exe.so.xz"
+readonly INPUT=/tmp/diablo2.$$
+readonly PIKISS_PATH=$(pwd)
+DATA_URL=""
 
 remove_files() {
     rm -rf "$INSTALL_DIR"/diablo2 ~/.local/share/applications/diablo2.desktop
@@ -77,9 +78,13 @@ end_message() {
 }
 
 download_data_files() {
-    message_magic_air_copy
+    if ! message_magic_air_copy "$DATA_URL"; then
+        echo -e "\nNow copy data directory into $INSTALL_DIR/diablo2."
+        end_message
+        return 0
+    fi
     mkdir -p "$INSTALL_DIR" && cd "$_"
-    download_and_extract "$D2_PATH" "$INSTALL_DIR"
+    download_and_extract "$DATA_URL" "$INSTALL_DIR"
     end_message
 }
 
@@ -95,8 +100,8 @@ choose_data_files() {
         menuitem=$(<"${INPUT}")
 
         case $menuitem in
-        English) clear && D2_PATH=$(extract_url_from_file 2) && download_data_files ;;
-        Spanish) clear && D2_PATH=$(extract_url_from_file 3) && download_data_files ;;
+        English) clear && DATA_URL=$(extract_url_from_file 2) && download_data_files ;;
+        Spanish) clear && DATA_URL=$(extract_url_from_file 3) && download_data_files ;;
         Exit) remove_files && clear && exit_message ;;
         esac
     done
