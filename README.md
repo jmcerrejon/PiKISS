@@ -10,8 +10,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **692 hours**
-
+* **702 hours**
 
 ## 📣 Stay tuned! 
 
@@ -33,9 +32,9 @@
 
 * [huelvayork](https://github.com/huelvayork)
 
-* **This project is not accepting money or any benefits**.
-
 * Logo: grayduck
+
+* **This project is not accepting money or any benefits**.
 
 ## 🎥 Check what **PiKISS** can do for you on my Youtube's channel:
 
@@ -252,6 +251,14 @@ Just type:
 $ curl -sSL https://git.io/JfAPE | bash
 ```
 
+## [ Data Files 🚨 ]
+
+Honestly, I just want everything to work without having to fight with the command line. The project has grown a lot, and the games I own and had hosted on the internet, can't be there because of *Copyright*. I don't understand how a game that is older than 15 years old in some cases, has these so restrictive laws in some countries. Someone should do something about it.
+
+**My solution to keep this project working is the following**: If you have copies saved for your use in the cloud with some service that allows direct download, copy those links in the file ``` res/magic-air-copy-pikiss.txt ```. You have an example of the order they should follow in *res/magic-air-copy-pikiss.example*. *PiKISS* will read the links in that file and install it for you when is required. Compatible and tested hosters: *dropbox.com, archive.org*.
+
+You can share this file *magic-air-copy-pikiss.txt* with your brother/sister if you paid half price for the game and if the laws of your country allow it.
+
 ## [ Update ]
 
 *PiKISS* check if new scripts are available on remote and update them automatically, but If you want to get the latest version manually, just enter into the directory with cd PiKISS and type:
@@ -300,6 +307,14 @@ Escribe en la terminal lo siguiente:
 ```sh-session
 $ curl -sSL https://git.io/JfAPE | bash
 ```
+
+## [ Ficheros de datos 🚨 ]
+
+Sinceramente, lo único que quiero es que todo funcione sin tener que pelearme con la línea de comandos. El proyecto ha crecido mucho, y los juegos que yo poseo y que tenía alojados en internet, no pueden estar allí por motivos de *Copyright*. No entiendo como un juego que tiene más de 15 años en algunos casos, tienen estas leyes tan restrictivas en algunos países. Alguien debería hacer algo al respecto.
+
+**Mi solución para que este proyecto siga funcionando es la siguiente**: Si tienes copias guardadas para tu uso en la nube con algún servicio que permita descarga directa, copia dichos enlaces en el fichero ``` res/magic-air-copy-pikiss.txt ```. Tienes un ejemplo del orden que deben seguir en *res/magic-air-copy-pikiss.example*. *PiKISS* leerá los enlaces de ese fichero y te instalará el que necesite cuando proceda. Hosters testeados y compatible: *dropbox.com, archive.org*.
+
+Este fichero *magic-air-copy-pikiss.txt* lo puedes compartir con tu herman@ si pagásteis a medias el juego y si las leyes de tu país lo permiten.
 
 ### [ Actualizar ]
 
