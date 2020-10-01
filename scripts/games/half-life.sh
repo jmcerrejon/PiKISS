@@ -2,7 +2,7 @@
 #
 # Description : Half Life thks to Salva (Pi Labs)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.5 (01/Oct/20)
+# Version     : 1.0.6 (01/Oct/20)
 # Compatible  : Raspberry Pi (tested)
 # Repository  : https://github.com/ValveSoftware/halflife
 #
@@ -64,11 +64,17 @@ EOF
 }
 
 post_install() {
-    if [[ $(get_keyboard_layout) == "es" ]]; then
+    if [[ -f $INSTALL_DIR/half-life/config.cfg ]] && [[ -d $INSTALL_DIR/half-life/valve ]]; then
         echo
-        echo "Detected Latin/Spanish user. Applying translation..."
-        download_and_extract "$ES_TRANSLATION_URL" "$INSTALL_DIR/half-life"
+        echo "Copying tweaked config.cfg..."
+        cp -f "$INSTALL_DIR"/half-life/config.cfg "$INSTALL_DIR"/half-life/valve
     fi
+
+    # if [[ $(get_keyboard_layout) == "es" ]]; then
+    #     echo
+    #     echo "Detected Latin/Spanish user. Applying translation..."
+    #     download_and_extract "$ES_TRANSLATION_URL" "$INSTALL_DIR/half-life"
+    # fi
 }
 
 install() {
@@ -99,7 +105,6 @@ echo "
 Install Half Life on Raspberry Pi
 =================================
 
- · Languages in game: English, Spanish.
  · Based on engine at ${SOURCE_CODE_URL}
 "
 read -p "Press [ENTER] to go back to the menu..."
