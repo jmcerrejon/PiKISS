@@ -13,7 +13,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
-readonly BINARY_PATH=$(extract_url_from_file 9)
+readonly BINARY_URL=$(extract_url_from_file 9)
 
 runme() {
     echo
@@ -77,7 +77,7 @@ post_install() {
 
 install() {
     echo -e "\nInstalling Aliens versus Predator (1999 video game), please wait..."
-    download_and_extract "$BINARY_PATH" "$INSTALL_DIR"
+    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
     post_install
     generate_icon
     echo

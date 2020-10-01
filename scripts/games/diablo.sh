@@ -2,7 +2,7 @@
 #
 # Description : Diablo for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.5 (30/Sep/20)
+# Version     : 1.1.0 (01/Oct/20)
 # Compatible  : Raspberry Pi 3-4 (tested)
 #
 # Help		  : https://github.com/diasurgical/devilutionX/
@@ -12,12 +12,13 @@
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-INSTALL_DIR="$HOME/games"
-BIN_PATH="https://github.com/diasurgical/devilutionX/releases/download/1.0.1/devilutionx-linux-armhf.7z"
-DIABDAT_URL="https://srv-file21.gofile.io/downloadStore/srv-store3/ZKoaMh/diabdat.mpq"
-ICON="https://misapuntesde.com/res/diablo1.png"
+readonly INSTALL_DIR="$HOME/games"
+readonly PACKAGES_DEV=(p7zip libsdl2-ttf-2.0-0 libsdl2-mixer-2.0-0)
+readonly BINARY_PATH="https://github.com/diasurgical/devilutionX/releases/download/1.0.1/devilutionx-linux-armhf.7z"
+readonly DATA_URL=$(extract_url_from_file 17)
+readonly ICON="https://misapuntesde.com/res/diablo1.png"
 
-playNow() {
+runme() {
     echo
     read -p "Do you want to play Diablo1 now? [y/n] " option
     case "$option" in
@@ -27,10 +28,14 @@ playNow() {
     exit_message
 }
 
+remove_files() {
+    rm -rf "$INSTALL_DIR"/diablo1 ~/.local/share/applications/diablo1.desktop ~/.local/share/diasurgical
+}
+
 uninstall() {
     read -p "Do you want to uninstall Diablo 1 (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
-        rm -rf "$INSTALL_DIR"/diablo1 ~/.local/share/applications/diablo1.desktop ~/.local/share/diasurgical
+        remove_files
         if [[ -e "$INSTALL_DIR"/diablo1 ]]; then
             echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
             exit_message
@@ -38,7 +43,7 @@ uninstall() {
         echo -e "\nSuccessfully uninstalled."
         exit_message
     fi
-    playNow
+    runme
 }
 
 if [[ -d "$INSTALL_DIR"/diablo1 ]]; then
@@ -47,15 +52,15 @@ if [[ -d "$INSTALL_DIR"/diablo1 ]]; then
     exit 1
 fi
 
-generateIconDiablo1() {
+generate_icon() {
     echo -e "\n\nGenerating icon..."
     wget -qO- -O "$INSTALL_DIR"/diablo1/diablo1.png "$ICON"
     if [[ ! -e ~/.local/share/applications/diablo1.desktop ]]; then
         cat <<EOF >~/.local/share/applications/diablo1.desktop
 [Desktop Entry]
 Name=Diablo 1
-Exec=/home/pi/games/diablo1/devilutionx
-Icon=/home/pi/games/diablo1/diablo1.png
+Exec=${INSTALL_DIR}/diablo1/devilutionx
+Icon=${INSTALL_DIR}/diablo1/diablo1.png
 Type=Application
 Comment=Set in the fictional Kingdom of Khanduras in the mortal realm, Diablo makes the player take control of a lone hero battling to rid the world of Diablo
 Categories=Game;ActionGame;
@@ -63,27 +68,13 @@ EOF
     fi
 }
 
-installDependencies() {
-    if ! isPackageInstalled p7zip; then
-        sudo apt install -y p7zip
-    fi
-    if ! isPackageInstalled libsdl2-ttf-2.0-0; then
-        sudo apt install -y libsdl2-ttf-2.0-0
-    fi
-    if ! isPackageInstalled libsdl2-mixer-2.0-0; then
-        sudo apt install -y libsdl2-mixer-2.0-0
-    fi
-}
-
 install() {
     echo -e "\nInstalling Diablo 1, please wait...\n"
-    installDependencies
+    installPackagesIfMissing "${PACKAGES[@]}"
 
-    mkdir -p "$INSTALL_DIR" && cd "$_"
-    wget -qO devilutionx-linux-armhf.7z "$BIN_PATH"
-    p7zip -d devilutionx-linux-armhf.7z
-    mv devilutionx-linux-armhf diablo1 && cd "$_"
-    generateIconDiablo1
+    download_and_extract "$BINARY_PATH" "$INSTALL_DIR"
+    mv "$INSTALL_DIR"/devilutionx-linux-armhf "$INSTALL_DIR"/diablo1
+    generate_icon
     echo
     read -p "Do you have an original copy of Diablo 1 (Y/n)? " response
     if [[ $response =~ [Nn] ]]; then
@@ -91,10 +82,15 @@ install() {
         return 1
     fi
 
+    if ! message_magic_air_copy "$DATA_URL"; then
+        echo -e "\nNow copy diabdat.mpq into $INSTALL_DIR/diablo1."
+        exit_message
+    fi
+
     echo -e "\nDownloading diabdat.mpq, please wait..."
-    wget -qO diabdat.mpq "$DIABDAT_URL"
-    echo -e "\nDone!. type /usr/games/diablo1/devilutionx to Play or go to Menu > Games > Diablo1 (if proceed).\n"
+    download_file "$DATA_URL" "$INSTALL_DIR"/diablo1
+    echo -e "\nDone!. type $INSTALL_DIR/diablo1 to Play or go to Menu > Games > Diablo1 (if proceed).\n"
 }
 
 install
-playNow
+runme

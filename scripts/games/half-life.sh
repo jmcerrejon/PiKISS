@@ -1,8 +1,8 @@
-#!/bin/bash -ex
+#!/bin/bash
 #
 # Description : Half Life thks to Salva (Pi Labs)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.3 (30/Sep/20)
+# Version     : 1.0.4 (01/Oct/20)
 # Compatible  : Raspberry Pi (tested)
 # Repository  : https://github.com/ValveSoftware/halflife
 #
