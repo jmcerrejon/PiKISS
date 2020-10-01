@@ -10,7 +10,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **702 hours**
+* **703 hours**
 
 ## 📣 Stay tuned! 
 
@@ -59,6 +59,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (01/10/20)
+
+· 👌 REFACTOR: Games > Diablo 1, Half Life, Alien Vs Predator.
 
 ### (29/09/20)
 
@@ -145,82 +149,6 @@
 · 👌 IMPROVE: Games > Hurrican (Remove glitches and add language support).
 
 · 👌 IMPROVE: Emulation > Amiberry.
-
-### (31/07/20)
-
-· 📦 ADD: Others > ShaderToys for Pi 4 (Render over 100+ OpenGL ES 3.0 shaders).
-
-### (30/07/20)
-
-· 📦 ADD: Games > Hurrican.
-
-### (29/07/20)
-
-· 👌 IMPROVE: Crispy Doom. Refactor code and uninstall option.
-
-### (28/07/20)
-
-· 📦 ADD: Games > Arx Libertatis.
-
-### (27/07/20)
-
-· 📦 ADD: Multimedia > Easy compile OBS (Open Broadcaster Software).
-
-### (25/07/20)
-
-· 📦 ADD: Internet > Cordless (Discord client from cli).
-
-### (24/07/20)
-
-· 📦 ADD: Games > Quake ][.
-
-### (23/07/20)
-
-· 📦 ADD: Emulation > Dolphin (Gamecube & Wii emulator. Wii not supported yet) (EXPERIMENTAL).
-
-· 🐛 FIX: Games > OpenBOR and Xump.
-
-### (22/07/20)
-
-· 📦 ADD: PiKISS try to update automatically.
-
-· 📦 ADD: Others > Uninstall *PiKISS* 😢.
-
-· 👌 IMPROVE: Others > *SDL2* binary 2.0.13 or compile 2.0.12.
-
-### (21/07/20)
-
-· 📦 ADD: Others > *Airplay* mirroring for *iDevices*.
-
-### (19/07/20)
-
-· 📦 ADD: Games > Blood.
-
-### (17/07/20)
-
-· 📦 ADD: Other > Scrcpy 1.13 (Mirror Android devices on Raspberry Pi OS/Twister OS).
-
-· 👌 IMPROVE: Games > Eduke32.
-
-· 👌 IMPROVE: Games > Diablo 2.
-
-### (15/07/20)
-
-· 📦 ADD: Emulation > PPSSPP v1.9.3-1063 (PSP Emulator).
-
-· 👌 IMPROVE: Vulkan compilation is compatible with Twister OS 🌪. Diablo 1.
-
-### (14/07/20)
-
-· 📦 ADD: Configure > Compile/update Vulkan Mesa driver (EXPERIMENTAL).
-
-### (13/07/20)
-
-· 📦 ADD: Games > Captain 'S' The Remake (AKA Capitan Sevilla).
-
-· 👌 IMPROVE: Multimedia > Kodi 18.7.
-
-· ❌ REMOVE: Airplay.
 
 ...
 
