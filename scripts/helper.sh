@@ -712,7 +712,6 @@ extract_url_from_file() {
     SHAREWARE_LOCAL_PATH="${HOME}/piKiss/res/magic-air-copy-pikiss.txt"
 
     if [ -f "$SHAREWARE_LOCAL_PATH" ]; then
-        echo -e "\nLocal data file found!...\n\n"
         cp "$SHAREWARE_LOCAL_PATH" $SHAREWARE_LINKS
     else
         wget -qO "$SHAREWARE_LINKS" https://url_to_shareware_links
