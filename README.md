@@ -62,7 +62,7 @@
 
 ### (01/10/20)
 
-· 👌 REFACTOR: Games > Diablo 1, Half Life, Alien Vs Predator.
+· 👌 REFACTOR: Games > Diablo 1, Half Life (disabled fps caps & fps max:150 fps), Alien Vs Predator.
 
 ### (29/09/20)
 
