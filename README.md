@@ -10,7 +10,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **703 hours**
+* **704 hours**
 
 ## 📣 Stay tuned! 
 
@@ -59,6 +59,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (02/10/20)
+
+· 🐛 FIX: Games > Half Life (add *Steam* data files support).
 
 ### (01/10/20)
 
