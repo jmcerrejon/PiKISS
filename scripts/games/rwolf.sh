@@ -2,7 +2,7 @@
 #
 # Description : Return to Castle Wolfenstein for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.9.1 (17/Aug/20)
+# Version     : 0.9.2 (02/Oct/20)
 # Compatible  : Raspberry Pi 1, 2 & 3 (tested)
 # TIP         : You need at least 160 GB assigned to GPU
 #
@@ -57,7 +57,7 @@ install(){
 dialog --title     "[ Return to Castle Wolfenstein. PAK License ]" \
          --yes-label "Shareware (112MB)" \
          --no-label  "Complete (646MB)" \
-         --yesno     "Choose what type of PAK files do you want to install. NOTE: For complete version, you must be the owner of the original game (in some countries)" 7 55
+         --yesno     "Choose what type of PAK files do you want to install. NOTE: For complete version, you must be the owner of the online game (in some countries)" 7 55
 
     retval=$?
 

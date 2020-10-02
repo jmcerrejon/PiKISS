@@ -2,7 +2,7 @@
 #
 # Description : Serious Sam 1 & 2
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.0 (30/Sep/20)
+# Version     : 1.2.1 (02/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help        : https://www.raspberrypi.org/forums/viewtopic.php?t=200458
@@ -167,7 +167,7 @@ Install Serious Sam 1 or 2
  · Optimized for Raspberry Pi 4.
  · I want to thanks Pi Labs & ptitSeb for the help.
 "
-read -p "Do you have an original copy of Serious Sam (If not, only the binaries will be installed) (Y/n)?: " response
+read -p "Do you have an online copy of Serious Sam (If not, only the binaries will be installed) (Y/n)?: " response
     if [[ $response =~ [Nn] ]]; then
         install_binaries
     fi

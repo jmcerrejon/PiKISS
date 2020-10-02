@@ -2,7 +2,7 @@
 #
 # Description : Diablo 2 Exp. Spanish for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.2 (30/Sep/20)
+# Version     : 1.1.3 (02/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Info		  : Thks to PI Labs and Notaz
@@ -114,7 +114,7 @@ install() {
     copy_run_script
     generate_icon
     echo
-    read -p "Do you have an original copy of Diablo 2 (Y/n)? " response
+    read -p "Do you have an online copy of Diablo 2 (Y/n)? " response
     if [[ $response =~ [Nn] ]]; then
         download_binaries
         echo -e "\nDone. Please, copy Diablo2 file games inside $INSTALL_DIR/diablo2"

@@ -2,7 +2,7 @@
 #
 # Description : OpenXcom with the help of user chills340
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.0 (30/Sep/20)
+# Version     : 1.1.1 (02/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://www.ufopaedia.org/index.php/Compiling_with_CMake_(OpenXcom)
@@ -112,7 +112,7 @@ install() {
     download_binaries
     generate_icon
     echo
-    read -p "Do you have an original copy of X-Com:Enemy Unknow (y/N)? " response
+    read -p "Do you have an online copy of X-Com:Enemy Unknow (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
         download_data_files "$INSTALL_DIR/openxcom"
         end_message

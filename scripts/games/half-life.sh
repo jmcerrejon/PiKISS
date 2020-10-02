@@ -2,7 +2,7 @@
 #
 # Description : Half Life thks to Salva (Pi Labs)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.6 (01/Oct/20)
+# Version     : 1.0.7 (02/Oct/20)
 # Compatible  : Raspberry Pi (tested)
 # Repository  : https://github.com/ValveSoftware/halflife
 #
@@ -82,7 +82,7 @@ install() {
     download_and_extract "$BINARY_URL" "$INSTALL_DIR"
     generate_icon
     echo
-    read -p "Do you have an original copy of Half Life (Y/n)?: " response
+    read -p "Do you have an online copy of Half Life (Y/n)?: " response
     if [[ $response =~ [Nn] ]]; then
         echo -e "\nDone!. Now copy the /valve directory inside $INSTALL_DIR/half-life"
         exit_message

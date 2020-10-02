@@ -2,7 +2,7 @@
 #
 # Description : Quake I, ][, ]I[
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.0 (30/Sep/20)
+# Version     : 1.3.1 (02/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help 		  : Quake 1: | https://godmodeuser.com/p/8#40
@@ -123,7 +123,7 @@ q1_soundtrack_download() {
 
 q1_magic_air_copy() {
     echo
-    read -p "Do you have an original copy of Quake (If not, a shareware version will be installed) (y/N)?: " response
+    read -p "Do you have an online copy of Quake (If not, a shareware version will be installed) (y/N)?: " response
     if [[ $response =~ [Yy] ]]; then
         Q1_DATA_URL=$(extract_url_from_file 15)
 
@@ -241,7 +241,7 @@ q2_high_textures_download() {
 
 q2_magic_air_copy() {
     echo
-    read -p "Do you have an original copy of Quake ][ (If not, a shareware version will be installed) (y/N)?: " response
+    read -p "Do you have an online copy of Quake ][ (If not, a shareware version will be installed) (y/N)?: " response
     if [[ $response =~ [Yy] ]]; then
         Q2_DATA_URL=$(extract_url_from_file 5)
 
@@ -354,7 +354,7 @@ q3_install_binary() {
 
 q3_magic_air_copy() {
     echo
-    read -p "Do you have an original copy of Quake ]I[ (y/N)?: " response
+    read -p "Do you have an online copy of Quake ]I[ (y/N)?: " response
     if [[ $response =~ [Yy] ]]; then
         Q3_DATA_URL=$(extract_url_from_file 13)
 

@@ -2,7 +2,7 @@
 #
 # Description : OpenMW (The Elder Scrolls III: Morrowind engine)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.3 (30/Sep/20)
+# Version     : 1.0.4 (02/Oct/20)
 # Compatible  : Raspberry Pi 3-4
 #
 source ../helper.sh || source ./scripts/helper.sh || source ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -87,7 +87,7 @@ install() {
     installPackagesIfMissing "${PACKAGES[@]}"
     clear
     echo
-    read -p "Do you have an original copy of The Elder Scroll III: Morrowind (If not, only OpenMW binaries will be installed) (y/N)?: " response
+    read -p "Do you have an online copy of The Elder Scroll III: Morrowind (If not, only OpenMW binaries will be installed) (y/N)?: " response
     if [[ $response =~ [Yy] ]]; then
         DATA_URL="$(extract_url_from_file 12)"
         

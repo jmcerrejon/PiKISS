@@ -2,7 +2,7 @@
 #
 # Description : Dune 2
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.1 (26/Jun/20)
+# Version     : 1.3.2 (02/Oct/20)
 # Compatible  : Raspberry Pi 1-4 (tested)
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -45,12 +45,12 @@ askDownloadDataFiles() {
 		--title     "[ Download Dune 2 Abandonware ]" \
 		--yes-label "Yes" \
 		--no-label  "No" \
-		--yesno     "You need the original .PAK files from the original game. Do you want to download? (In some countries the laws may consider it pirate software)" 7 55
+		--yesno     "You need the online .PAK files from the online game. Do you want to download? (In some countries the laws may consider it pirate software)" 7 55
 	retval=$?
 
 	case $retval in
 		0) echo -e "Installing...\n"; downloadData; return 0 ;;
-		1) clear ; echo --e "\nPlease copy into ~/.config/dunelegacy/data all the .PAK files from the original game. " ; return 0 ;;
+		1) clear ; echo --e "\nPlease copy into ~/.config/dunelegacy/data all the .PAK files from the online game. " ; return 0 ;;
 	esac
 }
 

@@ -2,7 +2,7 @@
 #
 # Description : Blood
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.3 (30/Sep/20)
+# Version     : 1.0.4 (02/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://www.techradar.com/how-to/how-to-run-wolfenstein-3d-doom-and-duke-nukem-on-your-raspberry-pi
@@ -107,7 +107,7 @@ install() {
     download_binaries
     generate_icon
     echo
-    read -p "Do you have an original copy of Blood (y/N)? " response
+    read -p "Do you have an online copy of Blood (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
         DATA_URL=$(extract_url_from_file 4)
             if ! message_magic_air_copy "$DATA_URL"; then

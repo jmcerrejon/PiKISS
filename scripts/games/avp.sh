@@ -2,7 +2,7 @@
 #
 # Description : Aliens versus Predator
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (02/Aug/20)
+# Version     : 1.0.2 (02/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://www.raspberrypi.org/forums/viewtopic.php?t=100152
@@ -72,7 +72,7 @@ post_install() {
         return 0
     fi
 
-    mv "$INSTALL_DIR"/avp/.avp "$HOME"
+    cp -f "$INSTALL_DIR"/avp/.avp "$HOME"
 }
 
 install() {
@@ -81,7 +81,7 @@ install() {
     post_install
     generate_icon
     echo
-    read -p "Do you have an original copy of Aliens versus Predator (1999 video game) (y/N)?: " response
+    read -p "Do you have an online copy of Aliens versus Predator (1999 video game) (y/N)?: " response
     if [[ $response =~ [Nn] ]]; then
         rm -rf "$INSTALL_DIR"/avp/avp_huds "$INSTALL_DIR"/avp/avp_rifs "$INSTALL_DIR"/avp/fastfile
         echo -e "\nCopy your files with lowew case on $INSTALL_DIR/avp, cd into the game directory and type ./avp -f (f for full screen)"

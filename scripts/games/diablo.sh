@@ -2,7 +2,7 @@
 #
 # Description : Diablo for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.0 (01/Oct/20)
+# Version     : 1.1.1 (02/Oct/20)
 # Compatible  : Raspberry Pi 3-4 (tested)
 #
 # Help		  : https://github.com/diasurgical/devilutionX/
@@ -76,7 +76,7 @@ install() {
     mv "$INSTALL_DIR"/devilutionx-linux-armhf "$INSTALL_DIR"/diablo1
     generate_icon
     echo
-    read -p "Do you have an original copy of Diablo 1 (Y/n)? " response
+    read -p "Do you have an online copy of Diablo 1 (Y/n)? " response
     if [[ $response =~ [Nn] ]]; then
         echo -e "\nPlease, copy diabdat.mpq inside $INSTALL_DIR/diablo1"
         return 1

@@ -2,7 +2,7 @@
 #
 # Description : Arx Libertatis (AKA Arx Fatalis)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.4 (30/Sep/20)
+# Version     : 1.0.5 (02/Oct/20)
 # Compatible  : Raspberry Pi 4 (fail)
 #
 # Help        : https://wiki.arx-libertatis.org/Downloading_and_Compiling_under_Linux
@@ -150,7 +150,7 @@ install() {
     install_binaries
     generate_icon
     echo
-    read -p "Do you have an original copy of Arx Fatalis (If not, a Shareware version will be installed) (y/N)?: " response
+    read -p "Do you have an online copy of Arx Fatalis (If not, a Shareware version will be installed) (y/N)?: " response
     if [[ $response =~ [Yy] ]]; then
         choose_data_files
         if ! message_magic_air_copy "$DATA_URL"; then
