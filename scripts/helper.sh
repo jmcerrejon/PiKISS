@@ -29,39 +29,50 @@ fixlibGLES() {
 # PI LABS Libraries
 #
 installBox86() {
+    local BINARY_URL
+    BINARY_URL="https://misapuntesde.com/rpi_share/pilabs/box86.tar.gz"
+
     if [ -d ~/box86 ]; then
         echo -e "~/box86 is already installed, skipping..."
         return 0
     fi
-    echo -e "\n\nInstalling BOX86 lib...\n"
-    local URL_PATH='https://misapuntesde.com/rpi_share/pilabs/box86.tar.gz'
-    download_and_extract "$URL_PATH" "$HOME"
+
+    echo -e "\n\nInstalling Box86..."
+    download_and_extract "$BINARY_URL" "$HOME"
 }
 
 installGL4ES() {
+    local BINARY_URL
+    BINARY_URL="https://misapuntesde.com/rpi_share/pilabs/gl4es.tar.gz"
+
     if [ -d ~/gl4es ]; then
         echo -e "~/gl4es is already installed, skipping..."
         return 0
     fi
+
     echo -e "\n\nInstalling GL4ES lib...\n"
-    local URL_PATH='https://misapuntesde.com/rpi_share/pilabs/gl4es.tar.gz'
-    download_and_extract "$URL_PATH" "$HOME"
+    download_and_extract "$BINARY_URL" "$HOME"
 }
 
 installMesa() {
+    local BINARY_URL
+    BINARY_URL="https://misapuntesde.com/rpi_share/pilabs/mesa.tar.gz"
+
     if [ -d ~/mesa ]; then
         echo -e "~/mesa is already installed, skipping..."
         return 0
     fi
+
     echo -e "\n\nInstalling Mesa lib...\n"
-    local URL_PATH='https://misapuntesde.com/rpi_share/pilabs/mesa.tar.gz'
-    download_and_extract "$URL_PATH" "$HOME"
+    download_and_extract "$BINARY_URL" "$HOME"
 }
 
 installMonolibs() {
-    local URL_PATH='https://misapuntesde.com/rpi_share/pilabs/monolibs.tar.gz'
+    local BINARY_URL
+    BINARY_URL="https://misapuntesde.com/rpi_share/pilabs/monolibs.tar.gz"
+
     if [ ! -d /home/pi/monolibs ]; then
-        wget -O /home/pi/monolibs.tar.gz "$URL_PATH"
+        wget -O /home/pi/monolibs.tar.gz "$BINARY_URL"
         extract /home/pi/monolibs.tar.gz && rm -
     fi
 }
@@ -749,7 +760,7 @@ extract() {
 # exit PiKISS
 #
 exit_pikiss() {
-    echo -e "\nSee you soon.\nPiKISS is a software maintained by Jose Cerrejon.\nYou can find me here (CTRL + Click):\n\n · PiKISS Repository: https://github.com/jmcerrejon/PiKISS\n · Blog: https://misapuntesde.com\n · Twitter: https://twitter.com/ulysess10\n · Discord Server (Pi Labs): https://discord.gg/Y7WFeC5\n · Mail: ulysess@gmail.com\n"
+    echo -e "\nSee you soon.\nPiKISS is a software maintained by Jose Cerrejon.\nYou can find me here (CTRL + Click):\n\n · PiKISS Repository: https://github.com/jmcerrejon/PiKISS\n · Blog: https://misapuntesde.com\n · Twitter: https://twitter.com/ulysess10\n · Discord Server (Pi Labs): https://discord.gg/Y7WFeC5\n · Mail: ulysess@gmail.com\n\n · Wanna be my Patron?: https://www.patreon.com/cerrejon?fan_landing=true"
     exit
 }
 
