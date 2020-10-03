@@ -22,8 +22,8 @@ readonly BINARY_URL="https://www.littlecarnage.com/arx_rpi2.tar.gz"
 readonly SOURCE_CODE_URL="https://github.com/ptitSeb/ArxLibertatis.git"
 readonly SOURCE_CODE_OFFICIAL_URL="https://github.com/arx/ArxLibertatis.git" # Doesn't work for now
 readonly ICON_URL="https://github.com/arx/ArxLibertatisData/blob/master/icons/arx-libertatis-32.png?raw=true"
+readonly INPUT=/tmp/arx.$$
 DATA_URL="https://srv-file21.gofile.io/downloadStore/srv-store3/NN2Dp2/arx_demo_en.tgz"
-INPUT=/tmp/arx.$$
 
 runme() {
     if [ ! -f "$INSTALL_DIR"/arx/arx ]; then
