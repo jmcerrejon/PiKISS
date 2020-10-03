@@ -2,10 +2,9 @@
 #
 # Description : OpenBOR
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.0 (29/Sep/20)
+# Version     : 1.4.1 (03/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 # Repository  : https://github.com/crcerror/OpenBOR-63xx-RetroPie-openbeta
-# Help		  : https://www.raspberrypi.org/forums/viewtopic.php?f=78&t=26859&start=25
 # Help		  : https://www.raspberrypi.org/forums/viewtopic.php?f=78&t=26859&start=25
 #             : https://retropie.org.uk/forum/topic/19326/openbor-6xxx-openbeta-testphase
 #             : https://misapuntesde.com/post.php?id=567
@@ -53,7 +52,7 @@ if [[ -d "$INSTALL_DIR"/openbor ]]; then
     exit 0
 fi
 
-mkDesktopEntry() {
+generate_icon() {
     if [[ ! -e ~/.local/share/applications/openbor.desktop ]]; then
         cat <<EOF >~/.local/share/applications/openbor.desktop
 [Desktop Entry]
@@ -86,7 +85,7 @@ install() {
     download_and_extract "$BINARY_URL" "$INSTALL_DIR"
     # download_data_files
     path_libsdl_gfx
-    mkDesktopEntry
+    generate_icon
     echo -e "\nDone!."
     runme
 }
