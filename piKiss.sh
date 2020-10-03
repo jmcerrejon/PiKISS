@@ -324,6 +324,7 @@ smInternet() {
         options=(
             Back "Back to main menu"
             Cordless "Discord client that aims to have a low memory footprint"
+            Zoom "i386 version of software platform used for teleconferencing using Box86"
             # Plowshare "Direct download from hosters like uploaded,..."
             # Browser "Web browser"
             # Downmp3 "Download mp3 from GrooveShark"
@@ -339,6 +340,7 @@ smInternet() {
         Plowshare) ./scripts/inet/ddown.sh ;;
         Browser) ./scripts/inet/browser.sh ;;
         Downmp3) ./scripts/inet/dwnmp3.sh ;;
+        Zoom) ./scripts/inet/zoom.sh ;;
         esac
     done
 }
