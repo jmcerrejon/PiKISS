@@ -210,6 +210,7 @@ smEmulators() {
         options=(
             Back "Back to main menu"
             Amiga "Amiberry is the best Amiga emulator"
+            Box86 "Lets you run x86 Linux programs on non-x86 Linux"
             Comm64 "VICE is a Commodore 64 emulator"
             Dolphin "Dolphin is a Wii & Gamecube emulator (EXPERIMENTAL)"
             Amstrad "Amstrad CPC with Caprice32"
@@ -234,6 +235,7 @@ smEmulators() {
         case $choice in
         Back) break ;;
         Amiga) ./scripts/emus/amiga.sh ;;
+        Box86) ./scripts/emus/box86.sh ;;
         Amstrad) ./scripts/emus/caprice.sh ;;
         Comm64) ./scripts/emus/commodore.sh ;;
         Dolphin) ./scripts/emus/dolphin.sh ;;
