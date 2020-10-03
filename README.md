@@ -10,7 +10,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **705 hours**
+* **707 hours**
 
 ## 📣 Stay tuned! 
 
@@ -57,6 +57,8 @@
 ### [ ChangeLog (dd/mm/yy)]
 
 ### (03/10/20)
+
+· 📦 ADD: Internet > Zoom using Box86.
 
 · 📦 ADD: Emulation > Box86 for Raspberrry Pi 2-4.
 
