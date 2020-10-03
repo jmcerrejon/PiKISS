@@ -2,7 +2,7 @@
 #
 # Description : Box86
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (03/Oct/20)
+# Version     : 1.0.1 (03/Oct/20)
 # Compatible  : Raspberry Pi 2-4 (tested)
 # Repository  : https://github.com/ptitSeb/box86
 #
@@ -16,8 +16,15 @@ readonly SOURCE_PATH="https://github.com/ptitSeb/box86.git"
 readonly INPUT=/tmp/box86.$$
 
 end_message() {
-    echo -e "\nDone!. box86 binary copied to $INSTALL_DIR/box86"
+    echo -e "\nDone!. box86 installed on system. Just type box86 <binary_app>"
     exit_message
+}
+
+install() {
+    installBox86
+    cd "$INSTALL_DIR"/build
+    sudo make install
+    end_message
 }
 
 compile() {
@@ -34,7 +41,7 @@ compile() {
     mkdir -p build && cd "$_"
     cmake .. -DRPI${PI_VERSION_NUMBER}=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo
     make_with_all_cores
-    [ -f $INSTALL_DIR/build/box86 ] && cp -f "$INSTALL_DIR"/build/box86 "$INSTALL_DIR"
+    sudo make install
     end_message
 }
 
@@ -50,7 +57,7 @@ menu() {
         menuitem=$(<"${INPUT}")
 
         case $menuitem in
-        Binary) clear && installBox86 && end_message ;;
+        Binary) clear && install && return 0 ;;
         Source) clear && compile && return 0 ;;
         Exit) exit 0 ;;
         esac
