@@ -2,7 +2,7 @@
 #
 # Description : Box86
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (03/Oct/20)
+# Version     : 1.0.2 (03/Oct/20)
 # Compatible  : Raspberry Pi 2-4 (tested)
 # Repository  : https://github.com/ptitSeb/box86
 #
@@ -22,8 +22,6 @@ end_message() {
 
 install() {
     installBox86
-    cd "$INSTALL_DIR"/build
-    sudo make install
     end_message
 }
 
