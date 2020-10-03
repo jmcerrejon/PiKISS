@@ -10,7 +10,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **704 hours**
+* **705 hours**
 
 ## 📣 Stay tuned! 
 
@@ -40,11 +40,7 @@
 
 * [youtube.com > PIKISS](https://www.youtube.com/playlist?list=PLXhElW3ALmWh8p0mn1ZECawkKyF8QzNNP)
 
-
-
 # 🚨🚨 Read the new info about Data Files below 🚨🚨
-
-
 
 ## ENGLISH
 
@@ -59,6 +55,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (03/10/20)
+
+· 📦 ADD: Emulation > Box86 for Raspberrry Pi 2-4.
 
 ### (02/10/20)
 
