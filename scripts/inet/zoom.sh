@@ -11,7 +11,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/apps"
-readonly PACKAGES=( libxcb-xtest0 )
+readonly PACKAGES=( libxcb-xtest0 cmake )
 readonly BINARY_URL="https://d11yldzmag5yn.cloudfront.net/prod/5.3.469451.0927/zoom_i686.tar.xz"
 readonly BOX86_PATH="/usr/local/bin/box86"
 
@@ -81,10 +81,10 @@ chmod +x "$INSTALL_DIR"/zoom/zoom-rpi.sh
 install() {
     echo -e "\nInstalling, please wait..."
     installPackagesIfMissing "${PACKAGES[@]}"
-    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
     if [ ! -f $BOX86_PATH ]; then
         installBox86
     fi
+    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
     make_run_script
     generate_icon
     echo -e "\nDone!. Type $INSTALL_DIR/zoom/zoom-rpi.sh or Go to Menu > Internet > Zoom.\n"

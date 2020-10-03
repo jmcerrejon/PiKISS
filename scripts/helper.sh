@@ -29,8 +29,8 @@ fixlibGLES() {
 # PI LABS Libraries
 #
 installBox86() {
-    local BINARY_URL
-    BINARY_URL="https://misapuntesde.com/rpi_share/pilabs/box86.tar.gz"
+    local BINARY_URL_BOX86
+    BINARY_URL_BOX86="https://misapuntesde.com/rpi_share/pilabs/box86.tar.gz"
 
     if [ -f /usr/local/bin/box86 ]; then
         echo -e "~/box86 is already installed, skipping..."
@@ -38,7 +38,7 @@ installBox86() {
     fi
 
     echo -e "\n\nInstalling Box86..."
-    download_and_extract "$BINARY_URL" "$HOME"
+    download_and_extract "$BINARY_URL_BOX86" "$HOME"
     cd "$HOME"/box86/build
     sudo make install
 }
