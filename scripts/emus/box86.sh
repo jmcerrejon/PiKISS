@@ -42,9 +42,9 @@ if [[ -f /usr/local/bin/box86 ]]; then
     read -p "Box86 already installed. Do you want to update it (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
         compile_box86
-    else
-        exit_message
     fi
+
+    exit_message
 fi
 
 menu

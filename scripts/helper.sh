@@ -28,19 +28,47 @@ fixlibGLES() {
 #
 # PI LABS Libraries
 #
-installBox86() {
-    local BINARY_URL_BOX86
-    BINARY_URL_BOX86="https://misapuntesde.com/rpi_share/pilabs/box86.tar.gz"
+compile_box86() {
+    local PI_VERSION_NUMBER
+    local SOURCE_PATH
 
-    if [ -f /usr/local/bin/box86 ]; then
-        echo -e "~/box86 is already installed, skipping..."
-        return 0
+    PI_VERSION_NUMBER=$(getRaspberryPiNumberModel)
+    SOURCE_PATH="https://github.com/ptitSeb/box86.git"
+
+    install_packages_if_missing cmake
+    cd
+    if [[ ! -d "$HOME"/box86 ]]; then
+        git clone "$SOURCE_PATH" box86 && cd "$_"
+    else
+        echo -e "\nUpdating the repo if proceed,...\n"
+        cd ~/box86 && git pull
+        rm -rf build
+    fi
+    mkdir -p build && cd "$_"
+    cmake .. -DRPI${PI_VERSION_NUMBER}=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    make_with_all_cores
+    sudo make install
+    echo -e "\nBox86 compiled and has been installed.\n"
+}
+
+install_box86() {
+    local BINARY_BOX86_URL
+    BINARY_BOX86_URL="https://misapuntesde.com/rpi_share/pilabs/box86.tar.gz"
+
+    if [[ -f /usr/local/bin/box86 ]]; then
+        read -p "Box86 already installed. Do you want to update it (Y/n)? " response
+        if [[ $response =~ [Nn] ]]; then
+            return 0
+        fi
+
+        compile_box86
     fi
 
     echo -e "\n\nInstalling Box86..."
-    download_and_extract "$BINARY_URL_BOX86" "$HOME"
+    download_and_extract "$BINARY_BOX86_URL" "$HOME"
     cd "$HOME"/box86/build
     sudo make install
+    echo -e "\nBox86 has been installed.\n"
 }
 
 installGL4ES() {
@@ -104,7 +132,7 @@ isPackageInstalled() {
 #
 # Install packages if missing
 #
-installPackagesIfMissing() {
+install_packages_if_missing() {
     MUST_INSTALL=false
     if ! dpkg -s "$@" >/dev/null 2>&1; then
         MUST_INSTALL=true
@@ -228,21 +256,6 @@ download_and_install() {
     download_file "$1" "$2"
     echo -e "\nInstalling..." && sudo dpkg --force-all -i /tmp/"$FILE"
     [ -e /tmp/"$FILE" ] && rm -f rm /tmp/"$FILE"
-}
-
-#
-# Check if a package is installed in the system
-#
-is_pkg_installed() {
-    dpkg -s "$1" &>/dev/null
-
-    if [ "$?" -eq 0 ]; then
-        echo "Package  is installed!"
-        return 0
-    else
-        echo "Package  is NOT installed!"
-        return 1
-    fi
 }
 
 #
