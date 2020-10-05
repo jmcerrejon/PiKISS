@@ -2,7 +2,7 @@
 #
 # Description : Half Life thks to Salva (Pi Labs)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.7 (02/Oct/20)
+# Version     : 1.0.8 (05/Oct/20)
 # Compatible  : Raspberry Pi (tested)
 # Repository  : https://github.com/ValveSoftware/halflife
 #
@@ -94,7 +94,7 @@ install() {
         echo -e "\nNow copy the /valve directory inside $INSTALL_DIR/half-life"
         return 0
     fi
-    installPackagesIfMissing p7zip-full
+    install_packages_if_missing p7zip-full
     download_and_extract "$DATA_URL" "$INSTALL_DIR"/half-life
     post_install
     echo -e "\nDone!."

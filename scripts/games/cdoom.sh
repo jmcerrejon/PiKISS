@@ -2,7 +2,7 @@
 #
 # Description : Crispy-Doom ver. 5.8.0 to play DOOM & Heretic
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.6.4 (02/Oct/20)
+# Version     : 1.6.5 (05/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # HELP        : To compile crispy-doom, follow the instructions at https://github.com/fabiangreffrath/crispy-doom
@@ -92,7 +92,7 @@ share_version() {
 }
 
 compile() {
-    installPackagesIfMissing "${PACKAGES_DEV[@]}"
+    install_packages_if_missing "${PACKAGES_DEV[@]}"
     cd "$WAD_PATH"
     git clone "$CRISPY_DOOM_SOURCE" crispy-doom && cd "$_"
     sudo apt build-dep crispy-doom
@@ -104,7 +104,7 @@ compile() {
 }
 
 compile_gzdoom() {
-    installPackagesIfMissing "${PACKAGES_DEV_GZ_DOOM[@]}"
+    install_packages_if_missing "${PACKAGES_DEV_GZ_DOOM[@]}"
     mkdir -p "$HOME/sc"
     git clone "$GZ_DOOM_SOURCE" gzdoom && cd "$_"
     wget -nc http://zdoom.org/files/fmod/fmodapi44464linux.tar.gz && tar -xvzf fmodapi44464linux.tar.gz -C .
@@ -114,7 +114,7 @@ compile_gzdoom() {
 
 install() {
     [ ! -d "$HOME"/games ] && mkdir -p "$HOME"/games
-    installPackagesIfMissing "${PACKAGES[@]}"
+    install_packages_if_missing "${PACKAGES[@]}"
     wget -O "$HOME"/crispy-doom.deb "$CRISPY_DOOM"
     sudo dpkg -i "$HOME"/crispy-doom.deb
     rm "$HOME"/crispy-doom.deb

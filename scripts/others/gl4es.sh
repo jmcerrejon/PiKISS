@@ -2,7 +2,7 @@
 #
 # Description : GL4ES from ptitSeb
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (01/Sep/20)
+# Version     : 1.0.1 (05/Oct/20)
 # Compatible  : Raspberry Pi 1-4
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -14,7 +14,7 @@ readonly PACKAGES_DEV=(libx11-dev)
 readonly GITHUB_PATH="https://github.com/ptitSeb/gl4es.git"
 
 compile() {
-    installPackagesIfMissing "${PACKAGES_DEV[@]}"
+    install_packages_if_missing "${PACKAGES_DEV[@]}"
 
     mkdir -p "$HOME"/sc && cd "$_"
     if [[ ! -d "$COMPILE_PATH" ]]; then

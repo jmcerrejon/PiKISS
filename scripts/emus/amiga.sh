@@ -2,7 +2,7 @@
 #
 # Description : Amiberry Amiga emulator
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.5.0 (01/Aug/20)
+# Version     : 1.5.1 (05/Oct/20)
 # Compatible  : Raspberry Pi 1-4
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -98,7 +98,7 @@ end_message() {
 }
 
 compile() {
-	installPackagesIfMissing "${PACKAGES_DEV[@]}"
+	install_packages_if_missing "${PACKAGES_DEV[@]}"
 	mkdir -p "$HOME"/sc && cd "$_"
 	echo "Cloning and compiling repo..."
 	git clone "$GITHUB_PATH" amiberry && cd "$_"
@@ -122,7 +122,7 @@ install() {
 	echo " · TIP: F12 = Menu."
 	echo
 	read -p "Press [ENTER] to continue..."
-	installPackagesIfMissing "${PACKAGES[@]}"
+	install_packages_if_missing "${PACKAGES[@]}"
 	download_and_extract "$AMIBERRY_BIN" "$INSTALL_DIR"/amiberry
 	chmod +x "$INSTALL_DIR"/amiberry/amiberry
 	post_install

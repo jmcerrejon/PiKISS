@@ -2,7 +2,7 @@
 #
 # Description : Jenkins CI
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (07/Aug/20)
+# Version     : 1.0.2 (05/Oct/20)
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
@@ -56,7 +56,7 @@ fi
 
 install_dependencies() {
     sudo apt-get update
-    installPackagesIfMissing "${PACKAGES[@]}"
+    install_packages_if_missing "${PACKAGES[@]}"
     java --version
     sleep 3
     if [[ ! -f /etc/apt/sources.list.d/jenkins.list ]]; then

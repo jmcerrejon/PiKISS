@@ -2,7 +2,7 @@
 #
 # Description : Zoom (using Box86)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.2 (03/Oct/20)
+# Version     : 1.0.3 (05/Oct/20)
 # Compatible  : Raspberry Pi 2-4 (tested)
 # Repository  : https://github.com/ptitSeb/box86
 #
@@ -80,7 +80,7 @@ chmod +x "$INSTALL_DIR"/zoom/zoom-rpi.sh
 
 install() {
     echo -e "\nInstalling, please wait..."
-    installPackagesIfMissing "${PACKAGES[@]}"
+    install_packages_if_missing "${PACKAGES[@]}"
     if [ ! -f $BOX86_PATH ]; then
         installBox86
     fi

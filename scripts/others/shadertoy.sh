@@ -2,7 +2,7 @@
 #
 # Description : ShaderToy
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (31/Jul/20)
+# Version     : 1.0.1 (05/Oct/20)
 #
 # Help        : https://github.com/Genymobile/scrcpy
 #
@@ -69,7 +69,7 @@ download_binaries() {
 }
 
 install() {
-	installPackagesIfMissing "${PACKAGES[@]}"
+	install_packages_if_missing "${PACKAGES[@]}"
 	download_binaries
 	chmod +x "$INSTALL_DIR/ShaderToy/ShaderToy"
 	generate_icon

@@ -2,7 +2,7 @@
 #
 # Description : OpenXcom with the help of user chills340
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.1 (02/Oct/20)
+# Version     : 1.1.2 (05/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://www.ufopaedia.org/index.php/Compiling_with_CMake_(OpenXcom)
@@ -88,7 +88,7 @@ end_message() {
 }
 
 compile() {
-    installPackagesIfMissing "${PACKAGES_DEV[@]}"
+    install_packages_if_missing "${PACKAGES_DEV[@]}"
     mkdir -p "$HOME/sc" && cd "$_"
     git clone "$GITHUB_URL" openxcom && cd "$_"
     mkdir build && cd "$_"
@@ -108,7 +108,7 @@ download_binaries() {
 }
 
 install() {
-    installPackagesIfMissing "${PACKAGES[@]}"
+    install_packages_if_missing "${PACKAGES[@]}"
     download_binaries
     generate_icon
     echo

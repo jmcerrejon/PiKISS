@@ -2,7 +2,7 @@
 #
 # Description : Discord
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.3 (24/Agu/20)
+# Version     : 1.0.4 (05/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -79,7 +79,7 @@ install_go() {
 
 install() {
     echo -e "\n\nInstalling Cordless, please wait..."
-    installPackagesIfMissing "${PACKAGES[@]}"
+    install_packages_if_missing "${PACKAGES[@]}"
     install_go
     echo -e "\nDownloading Cordless...\n"
     export GO111MODULE=on && /usr/local/go/bin/go get -u "$SOURCE_CODE_URL"

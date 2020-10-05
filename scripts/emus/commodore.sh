@@ -2,7 +2,7 @@
 #
 # Description : VICE Commodore 64
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (28/Aug/20)
+# Version     : 1.0.1 (05/Oct/20)
 # Compatible  : Raspberry Pi 4
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -68,7 +68,7 @@ end_message() {
 }
 
 compile() {
-    installPackagesIfMissing "${PACKAGES_DEV[@]}"
+    install_packages_if_missing "${PACKAGES_DEV[@]}"
     mkdir -p ~/sc && cd "$_"
     echo "Cloning and compiling repo..."
     [[ ! -d ~/sc/v3.4 ]] && svn checkout "$SUBVERSION_PATH"

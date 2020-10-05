@@ -2,7 +2,7 @@
 #
 # Description : Bstone: A source port of Blake Stone: Aliens Of Gold and Blake Stone: Planet Strike.
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.3 (02/Oct/20)
+# Version     : 1.0.4 (05/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested on Raspberry Pi 4)
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -93,7 +93,7 @@ EOF
 }
 
 compile() {
-    installPackagesIfMissing "${PACKAGES_DEV[@]}"
+    install_packages_if_missing "${PACKAGES_DEV[@]}"
     mkdir -p ~/sc && cd "$_"
     echo -e "\nCloning and compiling...\n"
     [[ ! -d ~/sc/bstone ]] && git clone "$SOURCE_CODE_URL"

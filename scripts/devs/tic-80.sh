@@ -2,7 +2,7 @@
 #
 # Description : TIC-80 TINY COMPUTER
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.2 (29/Aug/20)
+# Version     : 1.0.3 (05/Oct/20)
 # Compatible  : Raspberry Pi 3-4 (tested)
 # Repository  : https://github.com/nesbox/TIC-80
 #
@@ -87,7 +87,7 @@ post_install() {
 
 install() {
     echo -e "\nInstalling, please wait...\n"
-    installPackagesIfMissing "${PACKAGES[@]}"
+    install_packages_if_missing "${PACKAGES[@]}"
     download_and_extract "$BINARY_PATH" "$INSTALL_DIR"
     create_libbcm_host_link
     mkDesktopEntry
@@ -110,7 +110,7 @@ compile() {
     echo -e "\nDownloading and compiling, be patience..."
     [ -f ~/sc/TIC-80/build/CMakeFiles/CMakeError.log ] && rm ~/sc/TIC-80/build/CMakeFiles/CMakeError.log
     check_update
-    installPackagesIfMissing "${PACKAGES_DEV[@]}"
+    install_packages_if_missing "${PACKAGES_DEV[@]}"
     create_libbcm_host_link
     if [[ ! -d ~/sc/TIC-80 ]]; then
         mkdir -p ~/sc && cd "$_"

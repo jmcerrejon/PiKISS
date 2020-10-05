@@ -2,7 +2,7 @@
 #
 # Description : Box86
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.2 (03/Oct/20)
+# Version     : 1.0.3 (05/Oct/20)
 # Compatible  : Raspberry Pi 2-4 (tested)
 # Repository  : https://github.com/ptitSeb/box86
 #
@@ -12,35 +12,11 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="$HOME/box86"
 readonly PACKAGES_DEV=( cmake )
-readonly SOURCE_PATH="https://github.com/ptitSeb/box86.git"
 readonly INPUT=/tmp/box86.$$
 
 end_message() {
-    echo -e "\nDone!. box86 installed on system. Just type box86 <binary_app>"
+    echo -e "\nDone!. Box86 on your system!. Just type box86 <binary_app>"
     exit_message
-}
-
-install() {
-    installBox86
-    end_message
-}
-
-compile() {
-    local PI_VERSION_NUMBER
-    PI_VERSION_NUMBER=$(getRaspberryPiNumberModel)
-
-    echo -e "Compiling, please wait...\n"
-    installPackagesIfMissing "${PACKAGES_DEV[@]}"
-    cd
-    if [ ! -d "$INSTALL_DIR" ]; then
-        git clone "$SOURCE_PATH" box86
-    fi
-    cd ~/box86
-    mkdir -p build && cd "$_"
-    cmake .. -DRPI${PI_VERSION_NUMBER}=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo
-    make_with_all_cores
-    sudo make install
-    end_message
 }
 
 menu() {
@@ -55,21 +31,21 @@ menu() {
         menuitem=$(<"${INPUT}")
 
         case $menuitem in
-        Binary) clear && install && return 0 ;;
-        Source) clear && compile && return 0 ;;
+        Binary) clear && install_box86 && return 0 ;;
+        Source) clear && compile_box86 && return 0 ;;
         Exit) exit 0 ;;
         esac
     done
 }
 
-if [[ -d "$INSTALL_DIR" ]]; then
+if [[ -f /usr/local/bin/box86 ]]; then
     read -p "Box86 already installed. Do you want to update it (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
-        rm -rf "$INSTALL_DIR"/build "$INSTALL_DIR"/box86
-        compile
+        compile_box86
     else
         exit_message
     fi
 fi
 
 menu
+end_message

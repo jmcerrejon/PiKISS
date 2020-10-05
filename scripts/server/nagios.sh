@@ -2,7 +2,7 @@
 #
 # Description : Install Nagios4
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (11/Aug/20)
+# Version     : 1.0.1 (05/Oct/20)
 # Compatible  : Raspberry Pi 1-4 (tested)
 #
 # TODO        : compile from source. Check https://pimylifeup.com/raspberry-pi-nagios/
@@ -33,7 +33,7 @@ install() {
     sudo apt-get -qq update
     sudo apt -y full-upgrade
     sudo dpkg-reconfigure tzdata
-    installPackagesIfMissing "${PACKAGES[@]}"
+    install_packages_if_missing "${PACKAGES[@]}"
 }
 
 echo "Install Nagios 4"

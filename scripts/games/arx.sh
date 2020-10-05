@@ -2,7 +2,7 @@
 #
 # Description : Arx Libertatis (AKA Arx Fatalis)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.5 (02/Oct/20)
+# Version     : 1.0.6 (05/Oct/20)
 # Compatible  : Raspberry Pi 4 (fail)
 #
 # Help        : https://wiki.arx-libertatis.org/Downloading_and_Compiling_under_Linux
@@ -97,7 +97,7 @@ fix_libGLEW1.7() {
 }
 
 compile() {
-    installPackagesIfMissing "${PACKAGES_DEV[@]}"
+    install_packages_if_missing "${PACKAGES_DEV[@]}"
     fix_libndi
     mkdir -p ~/sc && cd "$_"
     git clone "$SOURCE_CODE_URL" arx && cd "$_"
@@ -124,7 +124,6 @@ end_message() {
     runme
 }
 
-
 choose_data_files() {
     while true; do
         dialog --clear \
@@ -146,7 +145,7 @@ choose_data_files() {
 
 install() {
     mkdir -p "$INSTALL_DIR"
-    installPackagesIfMissing "${PACKAGES[@]}"
+    install_packages_if_missing "${PACKAGES[@]}"
     install_binaries
     generate_icon
     echo

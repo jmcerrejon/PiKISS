@@ -2,7 +2,7 @@
 #
 # Description : Quake I, ][, ]I[
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.1 (02/Oct/20)
+# Version     : 1.3.2 (05/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help 		  : Quake 1: | https://godmodeuser.com/p/8#40
@@ -152,7 +152,7 @@ Quake for Raspberry Pi
 "
     read -p "Press [Enter] to install the game..."
     echo -e "\n\nInstalling Quake, please wait...\n"
-    installPackagesIfMissing "${Q1_PACKAGES[@]}"
+    install_packages_if_missing "${Q1_PACKAGES[@]}"
     mkdir -p "$INSTALL_DIR"
     q1_install_binary
     q1_soundtrack_download
@@ -329,7 +329,7 @@ EOF
 }
 
 q3_compile() {
-    installPackagesIfMissing "${Q3_PACKAGES_DEV[@]}"
+    install_packages_if_missing "${Q3_PACKAGES_DEV[@]}"
     mkdir -p ~/sc && cd "$_"
     echo -e "\nCloning and compiling Quake ]I[...\n"
     [[ ! -d ~/sc/Quake3e ]] && git clone "$Q3_SOURCE_CODE_URL"

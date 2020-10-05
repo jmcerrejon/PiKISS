@@ -2,7 +2,7 @@
 #
 # Description : Open Supaplex
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (27/Aug/20)
+# Version     : 1.0.1 (05/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 # Repository  : https://github.com/sergiou87/open-supaplex
 #
@@ -68,7 +68,7 @@ EOF
 }
 
 install() {
-    installPackagesIfMissing "${PACKAGES[@]}"
+    install_packages_if_missing "${PACKAGES[@]}"
     download_and_extract "$BINARY_PATH" "$INSTALL_DIR"
     echo -e "\nType in a terminal $INSTALL_DIR/opensupaplex/opensupaplex.sh or go to Menu > Games > Open Supaplex."
 }

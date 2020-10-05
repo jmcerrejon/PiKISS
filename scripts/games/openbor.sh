@@ -2,7 +2,7 @@
 #
 # Description : OpenBOR
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.1 (03/Oct/20)
+# Version     : 1.4.2 (05/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 # Repository  : https://github.com/crcerror/OpenBOR-63xx-RetroPie-openbeta
 # Help		  : https://www.raspberrypi.org/forums/viewtopic.php?f=78&t=26859&start=25
@@ -81,7 +81,7 @@ download_data_files() {
 
 install() {
     echo -e "\nInstalling Openbor, please wait..."
-    installPackagesIfMissing "${PACKAGES[@]}"
+    install_packages_if_missing "${PACKAGES[@]}"
     download_and_extract "$BINARY_URL" "$INSTALL_DIR"
     # download_data_files
     path_libsdl_gfx
@@ -91,7 +91,7 @@ install() {
 }
 
 compile() {
-    installPackagesIfMissing "${PACKAGES_DEV[@]}"
+    install_packages_if_missing "${PACKAGES_DEV[@]}"
     mkdir -p ~/sc && cd "$_"
     echo "Cloning and compiling repo..."
     [[ ! -d ~/sc/openbor ]] && git clone "$GITHUB_URL"

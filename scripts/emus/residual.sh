@@ -2,7 +2,7 @@
 #
 # Description : ResidualVM Engine
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.3 (30/Sep/20)
+# Version     : 1.0.4 (05/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://wiki.residualvm.org/index.php/Building_ResidualVM
@@ -75,7 +75,7 @@ install() {
     local CFG_DIR
     CFG_DIR="$HOME/.config/residualvm"
     echo -e "\nInstalling, please wait..."
-    installPackagesIfMissing "${PACKAGES[@]}"
+    install_packages_if_missing "${PACKAGES[@]}"
     download_and_extract "$BINARY_PATH" "$INSTALL_DIR"
     if [ ! -d "$CFG_DIR" ]; then
         mkdir -p "$CFG_DIR"
@@ -87,7 +87,7 @@ install() {
 
 compile() {
     echo -e "Compiling, please wait...\n"
-    installPackagesIfMissing "${PACKAGES_DEV[@]}"
+    install_packages_if_missing "${PACKAGES_DEV[@]}"
     mkdir -p "$COMPILE_DIR" && cd "$_"
     if [ ! -d ~/sc/residualvm ]; then
         git clone "$SOURCE_PATH" residualvm
