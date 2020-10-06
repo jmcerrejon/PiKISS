@@ -56,6 +56,10 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (06/10/20)
+
+· 🐛 FIX: Games > Openbor.
+
 ### (03/10/20)
 
 · 📦 ADD: Internet > Zoom using Box86.
