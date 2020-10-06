@@ -56,6 +56,7 @@ install_box86() {
     BINARY_BOX86_URL="https://misapuntesde.com/rpi_share/pilabs/box86.tar.gz"
 
     if [[ -f /usr/local/bin/box86 ]]; then
+        echo
         read -p "Box86 already installed. Do you want to update it (Y/n)? " response
         if [[ $response =~ [Nn] ]]; then
             return 0
