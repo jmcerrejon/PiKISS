@@ -2,7 +2,7 @@
 #
 # Description : Zoom (using Box86)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.3 (05/Oct/20)
+# Version     : 1.0.4 (06/Oct/20)
 # Compatible  : Raspberry Pi 2-4 (tested)
 # Repository  : https://github.com/ptitSeb/box86
 #
@@ -11,7 +11,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/apps"
-readonly PACKAGES=( libxcb-xtest0 cmake )
+readonly PACKAGES=( libxcb-xtest0 cmake libxcb-xfixes0 )
 readonly BINARY_URL="https://d11yldzmag5yn.cloudfront.net/prod/5.3.469451.0927/zoom_i686.tar.xz"
 readonly BOX86_PATH="/usr/local/bin/box86"
 
@@ -81,9 +81,7 @@ chmod +x "$INSTALL_DIR"/zoom/zoom-rpi.sh
 install() {
     echo -e "\nInstalling, please wait..."
     install_packages_if_missing "${PACKAGES[@]}"
-    if [ ! -f $BOX86_PATH ]; then
-        installBox86
-    fi
+    install_box86
     download_and_extract "$BINARY_URL" "$INSTALL_DIR"
     make_run_script
     generate_icon
