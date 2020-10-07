@@ -2,7 +2,7 @@
 #
 # Description : OpenMW (The Elder Scrolls III: Morrowind engine)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.5 (05/Oct/20)
+# Version     : 1.0.6 (07/Oct/20)
 # Compatible  : Raspberry Pi 3-4
 #
 source ../helper.sh || source ./scripts/helper.sh || source ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -14,7 +14,7 @@ readonly PACKAGES=(libqtgui4 libboost-filesystem1.67.0 libboost-program-options1
 readonly PACKAGES_DEV=(libopenscenegraph-3.4-131 libopenthreads20 libopenscenegraph-3.4-131 libopenscenegraph-3.4-131 libopenscenegraph-3.4-131 libopenscenegraph-3.4-131 libopenscenegraph-3.4-131)
 readonly GITHUB_PATH="svn://svn.code.sf.net/p/openmw-emu/code/tags/v3.4/"
 readonly ES_TRANSLATION_URL="https://misapuntesde.com/rpi_share/morrowind-es-mod.tar.gz"
-BINARY_URL="https://archive.org/download/rpi_share/openmw-0.46-rpi.tar.gz"
+BINARY_URL="https://www.dropbox.com/s/lcnej4jvzunstz9/openmw-0.46-rpi.tar.gz?dl=0"
 DATA_URL=""
 
 runme() {

@@ -65,6 +65,10 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (07/10/20)
+
+· 🐛 FIX: Games > Openmw.
+
 ### (06/10/20)
 
 · 🐛 FIX: Internet > Zoom on Twister OS.
