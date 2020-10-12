@@ -952,3 +952,7 @@ is_url_broken() {
         false
     fi
 }
+
+install_script_message() {
+    echo -e "PiKISS installs..."
+}
