@@ -13,11 +13,11 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **708 hours**
+* **711 hours**
 
 ## 💰 Total amount donated by users
 
-* $220,96
+* $263,33.
 
 * I want to thank my patrons *James Carroll, David J Leto, Mike A. Torevell and Rodney Hester* for trusting me ❤️
 
@@ -64,6 +64,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (12/10/20)
+
+· 👌 IMPROVE: Devs > Change OSSCode with native VSCode 32 or 64 bits.
 
 ### (07/10/20)
 
@@ -116,64 +120,6 @@
 · 📦 ADD: Games > The Elder Scroll: Morrowind (*OpenMW*).
 
 · 📦 ADD: Others > Compile GL4ES.
-
-### (29/08/20)
-
-· 📦 ADD: Emulators > VICE (*Commodore 64*).
-
-### (27/08/20)
-
-· 📦 ADD: Games > [Open Supaplex](https://github.com/sergiou87/open-supaplex).
-
-### (26/08/20)
-
-· 📦 ADD: Games > Serious Sam The First Encounter.
-
-### (23/08/20)
-
-· 📦 ADD: Devs > [TIC-80](https://tic80.com/).
-
-### (20/08/20)
-
-· 📦 ADD: Games > Spelunky Classic HD.
-
-### (16/08/20)
-
-· 📦 ADD: Games > Serious Sam The Second Encounter.
-
-### (15/08/20)
-
-· 📦 ADD: Devs > Code - OSS (VSCode fork).
-
-### (13/08/20)
-
-· 📦 ADD: Others > Compile [cool-retro-term](https://github.com/Swordfish90/cool-retro-term).
-
-### (11/08/20)
-
-· 👌 IMPROVE: Server > Nagios 4.
-
-· 🐛 FIX: Configure > Compile/update Vulkan Mesa driver (EXPERIMENTAL).
-
-### (08/08/20)
-
-· 📦 ADD: Emulation > ResidualVM (Cross-platform 3D game interpreter for Monkey4 or The Longest Journey).
-
-### (06/08/20)
-
-· 📦 ADD: Server > Jenkins CI.
-
-### (02/08/20)
-
-· 📦 ADD: Games > Aliens versus Predator (1999 video game).
-
-### (01/08/20)
-
-· 📦 ADD: Games > OpenXCom (UFO).
-
-· 👌 IMPROVE: Games > Hurrican (Remove glitches and add language support).
-
-· 👌 IMPROVE: Emulation > Amiberry.
 
 ...
 
