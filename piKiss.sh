@@ -409,7 +409,7 @@ smDevs() {
         Back "Back to main menu"
         QT5 "Free and open-source widget toolkit for creating graphical UI cross-platform applications"
         TIC80 "TIC-80 is a free fantasy computer for making, playing tiny games"
-        VSCode "Code - OSS (VSCode fork)"
+        VSCode "Lightweight but powerful source code editor which runs on your desktop"
     )
 
     choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
