@@ -285,7 +285,7 @@ smConfigure() {
     if [[ ${MODEL} == 'Raspberry Pi' ]]; then
         options=(
             Back "Back to main menu"
-            Vulkan "Compile/update Vulkan Mesa driver (EXPERIMENTAL)"
+            Vulkan "Compile/update Vulkan Mesa driver"
             RaspNet "Configure Raspbian Net Install distro"
             SSIDCfg "Configure SSID (WPA/WPA2 with PSK)"
             Joypad "Configure WII, XBox360 controller"
