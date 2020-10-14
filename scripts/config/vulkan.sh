@@ -2,7 +2,7 @@
 #
 # Description : Vulkan driver
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.0 (14/Oct/20)
+# Version     : 1.1.1 (14/Oct/20)
 # Compatible  : Raspberry Pi 4
 #
 # Info        : Thks to PI Labs
@@ -92,7 +92,7 @@ compile() {
         rm -rf "$HOME"/mesa_vulkan/build
     fi
 
-    meson --prefix /usr -D gles1=disabled -D gles2=enabled -D platforms=x11,wayland -Dvulkan-drivers=broadcom -Ddri-drivers= -Dgallium-drivers=v3d,kmsro,vc4,zink,virgl -Dbuildtype=release build
+    meson --prefix /usr -Dgles1=disabled -Dgles2=enabled -Dplatforms=x11,wayland -Dvulkan-drivers=broadcom -Ddri-drivers= -Dgallium-drivers=v3d,kmsro,vc4,zink,virgl -Dbuildtype=release -Dc_args='-mcpu=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard' -Dcpp_args='-mcpu=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard' build
     echo -e "\nCompiling... Estimated time on Raspberry Pi 4 over USB/SSD drive (Not overclocked): ~12 min. \n"
     ninja -C build -j"$(nproc)"
     install
