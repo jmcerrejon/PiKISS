@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **711 hours**
+* **713 hours**
 
 ## 💰 Total amount donated by users
 
@@ -64,6 +64,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (14/10/20)
+
+· 👌 IMPROVE: Configure > Compile/update Vulkan Mesa driver.
 
 ### (12/10/20)
 
