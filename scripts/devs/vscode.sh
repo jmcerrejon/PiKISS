@@ -2,7 +2,7 @@
 #
 # Description : VSCode
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.1 (15/OCT/20)
+# Version     : 1.1.2 (15/OCT/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -117,6 +117,7 @@ install() {
     echo -e "\nVSCode installed!. Go to Menu > Programming > Visual Studio Code or type code on terminal."
 }
 
+install_script_message
 echo "
 VSCode for Raspberry Pi
 =======================
@@ -128,6 +129,5 @@ VSCode for Raspberry Pi
 "
 read -p "Press [Enter] to continue..."
 
-install_script_message
 install
 runme
