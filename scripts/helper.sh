@@ -213,16 +213,24 @@ get_file_name_from_url() {
 # $3 destination directory
 #
 download_file() {
-    local FILE
+    local DATA_URL
     local COMMAND
-    FILE="$(get_file_name_from_url $1)"
+    local FILE
+
+    DATA_URL=$1
     COMMAND="wget"
 
-    [ ! -d $2 ] && mkdir -p "$2"
-    if [ -w "$2" ]; then
-        COMMAND="sudo wget"
+    if [[ $DATA_URL == https://anonfiles.com* ]]; then
+        DATA_URL=https://cdn$(curl -s $1 | grep -Po '(?<=https://cdn).*(?=">)')
     fi
-    echo -e "\nDownloading...\n" && ${COMMAND} -q --show-progress -O "$2"/"$FILE" -c "$1"
+
+    FILE="$(get_file_name_from_url $DATA_URL)"
+
+    [ ! -d $2 ] && mkdir -p "$2"
+    [ ! -w "$2" ] && COMMAND="sudo wget"
+
+    echo -e "\nDownloading...\n"
+    ${COMMAND} -q --show-progress -O "$2"/"$FILE" -c "$DATA_URL"
 }
 
 #
@@ -719,7 +727,7 @@ message_magic_air_copy() {
     echo -e "${MESSAGES_LIST[$INDEX]}\n" && sleep 3
 
     if [ -n "$1" ] && ! is_url_broken "$1"; then
-        echo -e "Found it!...\n" && sleep 2
+        echo -e "Found it!...\n"
         echo "I'm moving the data files FROM YOUR original copy to destination directory using the technology MagicAirCopy® (｀-´)⊃━☆ﾟ.*･｡ﾟ"
         true
     else
