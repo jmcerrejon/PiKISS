@@ -199,38 +199,49 @@ get_distro_name() {
 #
 get_file_name_from_url() {
     local SUFFIX
-    local FILE
+    local FILE_NAME
     SUFFIX="?dl=0"
-    FILE=$(basename "$1" | sed -e "s/$SUFFIX$//")
+    FILE_NAME=$(basename "$1" | sed -e "s/$SUFFIX$//")
 
-    echo "$FILE"
+    if [ "$FILE_NAME" == "" ]; then
+        echo -e "\nSorry, the file you trying to download is not available."
+        remove_unneeded_helper # Maybe an old helper.sh is loaded. Delete it.
+        exit_message
+        exit 1
+    fi
+
+    echo "$FILE_NAME"
+}
+
+#
+# Get a valid url if hosters change it constantly
+#
+get_valid_url() {
+    local DATA_URL
+    DATA_URL=$1
+
+    if [[ $DATA_URL == https://anonfiles.com* ]]; then
+        DATA_URL=https://cdn$(curl -s $1 | grep -Po '(?<=https://cdn).*(?=">)')
+    fi
+
+    echo "$DATA_URL"
 }
 
 #
 # Download a file to custom directory
 # $1 url
 # $2 destination directory
-# $3 destination directory
 #
 download_file() {
     local DATA_URL
-    local COMMAND
-    local FILE
+    local DESTINATION_DIR
+    local FILE_NAME
+    
+    DATA_URL=$(get_valid_url $1)
+    DESTINATION_DIR="$2"
+    FILE_NAME="$(get_file_name_from_url $DATA_URL)"
 
-    DATA_URL=$1
-    COMMAND="wget"
-
-    if [[ $DATA_URL == https://anonfiles.com* ]]; then
-        DATA_URL=https://cdn$(curl -s $1 | grep -Po '(?<=https://cdn).*(?=">)')
-    fi
-
-    FILE="$(get_file_name_from_url $DATA_URL)"
-
-    [ ! -d $2 ] && mkdir -p "$2"
-    [ ! -w "$2" ] && COMMAND="sudo wget"
-
-    echo -e "\nDownloading...\n"
-    ${COMMAND} -q --show-progress -O "$2"/"$FILE" -c "$DATA_URL"
+    use_data_from "$DATA_URL" "$DESTINATION_DIR" "$FILE_NAME"
 }
 
 #
@@ -239,19 +250,54 @@ download_file() {
 # $2 destination directory
 #
 download_and_extract() {
-    local FILE
-    FILE="$(get_file_name_from_url $1)"
+    local DATA_URL
+    local DESTINATION_DIR
+    local FILE_NAME
 
-    if [ "$FILE" == "" ]; then
-        echo -e "\nSorry, the file you trying to download is not available."
-        remove_unneeded_helper # Maybe an old helper.sh is loaded. Delete it.
+    DATA_URL=$(get_valid_url $1)
+    DESTINATION_DIR="$2"
+    FILE_NAME="$(get_file_name_from_url $DATA_URL)"
+
+    use_data_from "$DATA_URL" "$DESTINATION_DIR" "$FILE_NAME"
+
+    if [ ! -e "$DESTINATION_DIR/$FILE_NAME" ]; then
+        echo -e "\nSomething is wrong, aborting..."
         exit_message
         exit 1
     fi
 
-    download_file "$1" "$2"
-    echo -e "\nExtracting..." && cd "$2" && extract "$FILE"
-    [ -e "$2"/"$FILE" ] && rm -f "$2"/"$FILE"
+    echo -e "\nExtracting..." && cd "$DESTINATION_DIR" && extract "$FILE_NAME"
+    rm -f "$DESTINATION_DIR"/"$FILE_NAME"
+}
+
+#
+# Download a file from URLs OR copy from local filesystem (file/directory)
+# NOTE: The name of the function is a crap. Ideas? :)
+# $1 url/local or file/directory
+# $2 destination directory
+# $3 file name
+#
+use_data_from() {
+    local DATA_URL
+    local DESTINATION_DIR
+    local FILE_NAME
+    local COMMAND
+    
+    DATA_URL="$1"
+    DESTINATION_DIR="$2"
+    FILE_NAME="$3"
+    COMMAND="wget"
+
+    [ ! -d $DESTINATION_DIR ] && mkdir -p "$DESTINATION_DIR"
+
+    if [[ $DATA_URL == http* ]]; then
+        [ ! -w "$DESTINATION_DIR" ] && COMMAND="sudo wget"
+        echo -e "\nDownloading...\n"
+        ${COMMAND} -q --show-progress -O "$DESTINATION_DIR"/"$FILE_NAME" -c "$DATA_URL"
+    elif [[ -e "$DATA_DIR" ]]; then
+        echo -e "\nCopying from local storage...\n"
+        cp "$DATA_URL" "$DESTINATION_DIR"
+    fi
 }
 
 #
@@ -962,5 +1008,5 @@ is_url_broken() {
 }
 
 install_script_message() {
-    echo -e "PiKISS installs..."
+    echo -e "PiKISS installs...\n"
 }
