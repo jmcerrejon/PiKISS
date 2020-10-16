@@ -72,7 +72,7 @@ post_install() {
         return 0
     fi
 
-    cp -f "$INSTALL_DIR"/avp/.avp "$HOME"
+    [[ ! -d "$INSTALL_DIR"/avp/.avp ]] && cp -rf "$INSTALL_DIR"/avp/.avp "$HOME"
 }
 
 install() {
