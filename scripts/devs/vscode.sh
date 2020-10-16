@@ -2,7 +2,7 @@
 #
 # Description : VSCode
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.0 (12/OCT/20)
+# Version     : 1.1.1 (15/OCT/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -65,6 +65,7 @@ install_essential_extensions_pack() {
     code --install-extension liamhammett.inline-parameters
     code --install-extension christian-kohler.path-intellisense
     code --install-extension foxundermoon.shell-format
+    code --install-extension mads-hartmann.bash-ide-vscode
     code --install-extension timonwong.shellcheck
     code --install-extension tabnine.tabnine-vscode
     code --install-extension glavin001.unibeautify-vscode
@@ -89,6 +90,7 @@ post_install() {
  · Path Intellisense (christian-kohler.path-intellisense).
  · shell-format (foxundermoon.shell-format).
  · shellcheck (timonwong.shellcheck).
+ · Bash IDE (mads-hartmann.bash-ide-vscode).
  · TabNine (tabnine.tabnine-vscode).
  · Unibeautify - Universal Formatter (glavin001.unibeautify-vscode).
 "
