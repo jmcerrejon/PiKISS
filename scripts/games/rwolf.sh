@@ -2,70 +2,112 @@
 #
 # Description : Return to Castle Wolfenstein for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.9.2 (02/Oct/20)
-# Compatible  : Raspberry Pi 1, 2 & 3 (tested)
-# TIP         : You need at least 160 GB assigned to GPU
+# Version     : 1.3.2 (17/Oct/20)
+# Compatible  : Raspberry Pi 3-4 (tested)
 #
-. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+source ../helper.sh || source ./scripts/helper.sh || source ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 INSTALL_DIR="$HOME/games"
-URL_FILE="https://github.com/hexameron/RaspberryPiRecipes/archive/master.zip"
-PAK_FILE_SHARE="ftp://ftp.gr.freebsd.org/pub/vendors/idgames/idstuff/wolf/linux/wolfspdemo-linux-1.1b.x86.run"
-PAK_FILE_FULL="https://archive.org/download/rpi_share/wolfc.zip"
-LICENSE="Complete"
+#PAK_FILE_SHARE="ftp://ftp.gr.freebsd.org/pub/vendors/idgames/idstuff/wolf/linux/wolfspdemo-linux-1.1b.x86.run"
+BINARY_URL="https://misapuntesde.com/rpi_share/rtcw_bin-rpi.tar.gz"
+DATA_URL=""
 
-install(){
-    mkdir -p $INSTALL_DIR && cd $_
-    wget -qO- -O tmp.zip $URL_FILE && unzip -qq -o tmp.zip  && rm tmp.zip
-    mv $INSTALL_DIR/RaspberryPiRecipes-master/ $INSTALL_DIR/RWolfenstein
-
-    if [[ $LICENSE == 'Shareware' ]]; then
-        wget -O $HOME/wolf.run $PAK_FILE_SHARE
-        cd $HOME
-        tail -n +175 wolf.run | tar -xz demomain/pak0.pk3
-        if [ $(uname -m) == 'armv7l' ]; then
-            mv demomain/pak0.pk3 $INSTALL_DIR/RWolfenstein/armv7/RTCW/pak0.pk3
-        else
-            mv demomain/pak0.pk3 $INSTALL_DIR/RWolfenstein/armv6/RTCW/pak0.pk3
-        fi
-
-        rm -r wolf.run demomain
-    else
-        wget -4 -O /tmp/pak_files.zip $PAK_FILE_FULL
-        if [ $(uname -m) == 'armv7l' ]; then
-            unzip -qq -o /tmp/pak_files.zip -d $INSTALL_DIR/RWolfenstein/armv7/RTCW
-        else
-            unzip -qq -o /tmp/pak_files.zip -d $INSTALL_DIR/RWolfenstein/armv6/RTCW
-        fi
+runme() {
+    if [ ! -f "$INSTALL_DIR/rtcw/Main/pak0.pk3" ]; then
+        exit_message
     fi
-
-    echo -e "\nModifying GPU=160 on /boot/config.txt"
-    sudo mount -o remount,rw /boot
-    $(grep -q gpu_mem "/boot/config.txt") && sudo sed -i 's/gpu_mem.*/gpu_mem=160/g' /boot/config.txt || sudo sed -i '$i gpu_mem=160' /boot/config.txt
-    sudo cp /boot/config.txt{,.bak} && sudo sh -c 'echo "gpu_mem=160" >> /boot/config.txt'
-    if [ $(uname -m) == 'armv7l' ]; then
-        echo -e "\nDone!.\n\n· I changed the GPU memory to 160, please reboot. To play go to $INSTALL_DIR/RWolfenstein/armv7/RTCW and type: ./wolfsp.exe\n· If you get a black screen on Terminal, try to run on desktop environment.\n\nEnjoy!\n"
-    else
-        echo -e "\nDone!.\n\n· I changed the GPU memory to 160, please reboot. To play go to $INSTALL_DIR/RWolfenstein/armv6/RTCW and type: ./wolfsp.arm\n· If you get a black screen on Terminal, try to run on desktop environment.\n\nEnjoy!\n"
+    if [ ! -f "$INSTALL_DIR/rtcw/iowolfsp.arm" ]; then
+        echo -e "\nFile does not exist.\n· Something is wrong.\n· Try to install again."
+        exit_message
     fi
-
-    read -p "Press [Enter] to continue..."
-    exit
+    read -p "Press [ENTER] to run..."
+    cd "$INSTALL_DIR"/rtcw && ./iowolfsp.arm
+    exit_message
 }
 
-dialog --title     "[ Return to Castle Wolfenstein. PAK License ]" \
-         --yes-label "Shareware (112MB)" \
-         --no-label  "Complete (646MB)" \
-         --yesno     "Choose what type of PAK files do you want to install. NOTE: For complete version, you must be the owner of the online game (in some countries)" 7 55
+remove_files() {
+    [[ -d "$INSTALL_DIR"/rtcw ]] && rm -rf "$INSTALL_DIR"/rtcw ~/.wolf ~/.local/share/applications/rtcw.desktop
+}
 
-    retval=$?
+uninstall() {
+    read -p "Do you want to uninstall Return to Castle Wolfenstein (y/N)? " response
+    if [[ $response =~ [Yy] ]]; then
+        remove_files
+        if [[ -e "$INSTALL_DIR"/rtcw ]]; then
+            echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
+            exit_message
+        fi
+        echo -e "\nSuccessfully uninstalled."
+        exit_message
+    fi
+    exit_message
+}
 
-    case $retval in
-    0)   LICENSE="Shareware" ;;
-    255) exit ;;
-    esac
+if [[ -e $INSTALL_DIR/rtcw ]]; then
+    echo -e "Return to Castle Wolfenstein already installed.\n"
+    uninstall
+fi
 
-clear
-echo -e "Return to Castle Wolfenstein. LICENSE: $LICENSE \n================================================\n\nMore Info: https://www.raspberrypi.org/forums/viewtopic.php?f=78&t=14975\n\nInstall path: $INSTALL_DIR/RWolfenstein\n\nInstalling, please wait...\n"
+generate_icon() {
+    echo -e "\nGenerating icon..."
+    if [[ ! -e ~/.local/share/applications/rtcw.desktop ]]; then
+        cat <<EOF >~/.local/share/applications/rtcw.desktop
+[Desktop Entry]
+Name=Return to Castle Wolfenstein
+Exec=${INSTALL_DIR}/rtcw/iowolfsp.arm
+Path=${INSTALL_DIR}/rtcw/
+Icon=${INSTALL_DIR}/rtcw/icon.png
+Type=Application
+Comment=The dark reich's closing in. The time to act is now. Evil prevails when good men do nothing.
+Categories=Game;
+EOF
+    fi
+}
+
+end_message() {
+    echo -e "\nDone!. You can play typing $INSTALL_DIR/rtcw/iowolfsp.arm for single player or ./iowolfmp.arm for multiplayer or opening the Menu > Games > Return to Castle Wolfenstein.\n"
+    runme
+}
+
+# get_demo_data_files() {
+#     wget -O $HOME/wolf.run $PAK_FILE_SHARE
+#     cd $HOME
+#     tail -n +175 wolf.run | tar -xz demomain/pak0.pk3
+#     rm -r wolf.run demomain
+# }
+
+install() {
+    local DATA_URL
+    clear
+    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
+    generate_icon
+    echo
+    read -p "Do you have an online copy of Return to Castle Wolfenstein (y/N)?: " response
+    if [[ $response =~ [Yy] ]]; then
+        DATA_URL="$(extract_url_from_file 18)"
+        
+        if ! message_magic_air_copy "$DATA_URL"; then
+            echo -e "\nOverwrite /Main directory with new files into $INSTALL_DIR/rtcw.\n\nInstalling binaries..."
+        else
+            download_and_extract "$DATA_URL" "$INSTALL_DIR"/rtcw
+        fi
+    else
+        echo -e "\nOverwrite /Main directory with new files into $INSTALL_DIR/rtcw.\n\nInstalling binaries..."
+    fi
+    end_message
+}
+
+install_script_message
+echo "
+Return to Castle Wolfenstein for Raspberry Pi
+=============================================
+
+ · Install path: $INSTALL_DIR/rtcw
+ · PDF with default keys: $INSTALL_DIR/rtcw/quick_reference_card.pdf.
+ · Total disk space required: 19 MB (binaries) + ~750 MB (full data).
+"
+read -p "Press [ENTER] to continue..."
+
 install

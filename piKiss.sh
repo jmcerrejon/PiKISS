@@ -160,6 +160,7 @@ smGames() {
             OpenSPlex "OpenSupaplex reimplementation of the original 90's game"
             OpenXCom "Open-source clone of UFO: Enemy Unknown"
             Quake "Enhanced clients for ID Software's Quake saga"
+            ReturnC "The dark reich's closing in. The time to act is now"
             Revolt "Re-Volt is a radio control car racing themed video game"
             SMario64 "Super Mario 64 native OpenGL ES"
             SpelunkyHD "Spelunky is a cave exploration/treasure-hunting game"
@@ -193,6 +194,7 @@ smGames() {
         OpenSPlex) ./scripts/games/supaplex.sh ;;
         OpenXCom) ./scripts/games/openxcom.sh ;;
         Quake) ./scripts/games/quake.sh ;;
+        ReturnC) ./scripts/games/rwolf.sh ;;
         Revolt) ./scripts/games/revolt.sh ;;
         SMario64) ./scripts/games/smario64.sh ;;
         SpelunkyHD) ./scripts/games/spelunky.sh ;;
