@@ -13,13 +13,15 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **716 hours**
+* **720 hours**
 
 ## 💰 Total amount donated by users
 
-* $263,33.
+* $275,06.
 
 * I want to thank my patrons *James Carroll, David J Leto, Mike A. Torevell and Rodney Hester* for trusting me ❤️
+
+* Others users who helped me with donations are: danoga.
 
 ## 📣 Stay tuned! 
 
@@ -64,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (17/10/20)
+
+· 📦 ADD: Games > Return to Castle Wolfenstein.
 
 ### (14/10/20)
 
