@@ -2,12 +2,11 @@
 #
 # Description : Arx Libertatis (AKA Arx Fatalis)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.6 (05/Oct/20)
+# Version     : 1.0.7 (17/Oct/20)
 # Compatible  : Raspberry Pi 4 (fail)
 #
 # Help        : https://wiki.arx-libertatis.org/Downloading_and_Compiling_under_Linux
-# For fans    : https://www.reddit.com/r/ArxFatalis/
-# Issue       : ../sysdeps/unix/sysv/linux/read.c: No such file or directory
+# For fans    : https://www.reddit.com/r/ArxFatalis/ | https://www.moddb.com/mods/arx-neuralis/downloads/arx-neuralis
 #
 
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
