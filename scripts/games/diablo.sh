@@ -2,7 +2,7 @@
 #
 # Description : Diablo for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.3 (05/Oct/20)
+# Version     : 1.1.4 (19/Oct/20)
 # Compatible  : Raspberry Pi 3-4 (tested)
 #
 # Help		  : https://github.com/diasurgical/devilutionX/
@@ -15,7 +15,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES=(p7zip libsdl2-ttf-2.0-0 libsdl2-mixer-2.0-0)
 readonly BINARY_PATH="https://github.com/diasurgical/devilutionX/releases/download/1.0.1/devilutionx-linux-armhf.7z"
-readonly DATA_URL=$(extract_url_from_file 17)
+readonly DIABLO1_DATA_URL=$(extract_url_from_file 17)
 readonly ICON="https://misapuntesde.com/res/diablo1.png"
 
 runme() {
@@ -82,15 +82,16 @@ install() {
         return 1
     fi
 
-    if ! message_magic_air_copy "$DATA_URL"; then
+    if ! message_magic_air_copy "$DIABLO1_DATA_URL"; then
         echo -e "\nNow copy diabdat.mpq into $INSTALL_DIR/diablo1."
         exit_message
     fi
 
     echo -e "\nDownloading diabdat.mpq, please wait..."
-    download_file "$DATA_URL" "$INSTALL_DIR"/diablo1
+    download_file "$DIABLO1_DATA_URL" "$INSTALL_DIR"/diablo1
     echo -e "\nDone!. type $INSTALL_DIR/diablo1 to Play or go to Menu > Games > Diablo1 (if proceed).\n"
 }
 
+install_script_message
 install
 runme
