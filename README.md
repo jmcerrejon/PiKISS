@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **720 hours**
+* **720,1 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (19/10/20)
+
+· 🐛 FIX: GAMES > Diablo 1.
 
 ### (17/10/20)
 
