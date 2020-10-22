@@ -218,10 +218,16 @@ get_file_name_from_url() {
 #
 get_valid_url() {
     local DATA_URL
+    local TEMP_DATA_URL
     DATA_URL=$1
 
     if [[ $DATA_URL == https://anonfiles.com* ]]; then
         DATA_URL=https://cdn$(curl -s $1 | grep -Po '(?<=https://cdn).*(?=">)')
+    fi
+
+    if [[ $DATA_URL == https://e.pcloud.link* ]]; then
+        TEMP_DATA_URL=$(curl -s $1 | grep -m 1 -Po '(?<="downloadlink": ").*(?=",)')
+        DATA_URL="${TEMP_DATA_URL//\\/}"
     fi
 
     echo "$DATA_URL"
@@ -282,22 +288,34 @@ use_data_from() {
     local DESTINATION_DIR
     local FILE_NAME
     local COMMAND
-    
+    local DOWNLOAD_MANAGER
+
     DATA_URL="$1"
     DESTINATION_DIR="$2"
     FILE_NAME="$3"
-    COMMAND="wget"
+    DOWNLOAD_MANAGER="wget"
+    COMMAND=$(set_download_manager $DOWNLOAD_MANAGER)
 
     [ ! -d $DESTINATION_DIR ] && mkdir -p "$DESTINATION_DIR"
 
     if [[ $DATA_URL == http* ]]; then
-        [ ! -w "$DESTINATION_DIR" ] && COMMAND="sudo wget"
+        [ ! -w "$DESTINATION_DIR" ] && COMMAND="sudo $COMMAND"
         echo -e "\nDownloading...\n"
-        ${COMMAND} -q --show-progress -O "$DESTINATION_DIR"/"$FILE_NAME" -c "$DATA_URL"
+        cd "$DESTINATION_DIR"
+        ${COMMAND} "$FILE_NAME" -c "$DATA_URL"
     elif [[ -e "$DATA_DIR" ]]; then
         echo -e "\nCopying from local storage...\n"
         cp "$DATA_URL" "$DESTINATION_DIR"
     fi
+}
+
+set_download_manager() {
+    if [[ $1 == "aria2c"  ]]; then
+        install_packages_if_missing aria2
+        echo "aria2c -x16 --max-tries=0 --check-certificate=false --file-allocation=none -o"
+    fi
+
+    echo "wget -q --show-progress -O"
 }
 
 #
