@@ -197,7 +197,7 @@ get_distro_name() {
 #
 # Get the name of a file from url
 #
-get_file_name_from_url() {
+get_file_name_from_path() {
     local SUFFIX
     local FILE_NAME
     SUFFIX="?dl=0"
@@ -216,17 +216,17 @@ get_file_name_from_url() {
 #
 # Get a valid url if hosters change it constantly
 #
-get_valid_url() {
+get_valid_path() {
     local DATA_URL
     local TEMP_DATA_URL
     DATA_URL=$1
 
     if [[ $DATA_URL == https://anonfiles.com* ]]; then
-        DATA_URL=https://cdn$(curl -s $1 | grep -Po '(?<=https://cdn).*(?=">)')
+        DATA_URL=https://cdn$(curl -s "$1" | grep -Po '(?<=https://cdn).*(?=">)')
     fi
 
     if [[ $DATA_URL == https://e.pcloud.link* ]]; then
-        TEMP_DATA_URL=$(curl -s $1 | grep -m 1 -Po '(?<="downloadlink": ").*(?=",)')
+        TEMP_DATA_URL=$(curl -s "$1" | grep -m 1 -Po '(?<="downloadlink": ").*(?=",)')
         DATA_URL="${TEMP_DATA_URL//\\/}"
     fi
 
@@ -243,9 +243,9 @@ download_file() {
     local DESTINATION_DIR
     local FILE_NAME
     
-    DATA_URL=$(get_valid_url $1)
+    DATA_URL=$(get_valid_path "$1")
     DESTINATION_DIR="$2"
-    FILE_NAME="$(get_file_name_from_url $DATA_URL)"
+    FILE_NAME=$(get_file_name_from_path "$DATA_URL")
 
     use_data_from "$DATA_URL" "$DESTINATION_DIR" "$FILE_NAME"
 }
@@ -260,9 +260,9 @@ download_and_extract() {
     local DESTINATION_DIR
     local FILE_NAME
 
-    DATA_URL=$(get_valid_url $1)
+    DATA_URL=$(get_valid_path "$1")
     DESTINATION_DIR="$2"
-    FILE_NAME="$(get_file_name_from_url $DATA_URL)"
+    FILE_NAME=$(get_file_name_from_path "$DATA_URL")
 
     use_data_from "$DATA_URL" "$DESTINATION_DIR" "$FILE_NAME"
 
@@ -272,8 +272,15 @@ download_and_extract() {
         exit 1
     fi
 
-    echo -e "\nExtracting..." && cd "$DESTINATION_DIR" && extract "$FILE_NAME"
-    rm -f "$DESTINATION_DIR"/"$FILE_NAME"
+    if [[ ! -d $DATA_URL ]]; then
+        echo -e "\nExtracting..."
+        cd "$DESTINATION_DIR"
+        extract "$FILE_NAME"
+    fi
+
+    if is_URL "$DATA_URL"; then
+        rm -f "$DESTINATION_DIR"/"$FILE_NAME"
+    fi
 }
 
 #
@@ -296,21 +303,22 @@ use_data_from() {
     DOWNLOAD_MANAGER="wget"
     COMMAND=$(set_download_manager $DOWNLOAD_MANAGER)
 
-    [ ! -d $DESTINATION_DIR ] && mkdir -p "$DESTINATION_DIR"
+    [ ! -d "$DESTINATION_DIR" ] && mkdir -p "$DESTINATION_DIR"
 
     if [[ $DATA_URL == http* ]]; then
         [ ! -w "$DESTINATION_DIR" ] && COMMAND="sudo $COMMAND"
         echo -e "\nDownloading...\n"
         cd "$DESTINATION_DIR"
         ${COMMAND} "$FILE_NAME" -c "$DATA_URL"
-    elif [[ -e "$DATA_DIR" ]]; then
+    elif [[ -e "$DATA_URL" ]]; then
+        # TODO Refactor. We don't need to copy if it's a local file or directory
         echo -e "\nCopying from local storage...\n"
-        cp "$DATA_URL" "$DESTINATION_DIR"
+        cp -ur "$DATA_URL" "$DESTINATION_DIR"
     fi
 }
 
 set_download_manager() {
-    if [[ $1 == "aria2c"  ]]; then
+    if [[ $1 == 'aria2c'  ]]; then
         install_packages_if_missing aria2
         echo "aria2c -x16 --max-tries=0 --check-certificate=false --file-allocation=none -o"
     fi
@@ -324,7 +332,7 @@ set_download_manager() {
 #
 download_and_install() {
     local FILE
-    FILE="$(get_file_name_from_url $1)"
+    FILE=$(get_file_name_from_path "$1")
 
     download_file "$1" "$2"
     echo -e "\nInstalling..." && sudo dpkg --force-all -i /tmp/"$FILE"
@@ -336,7 +344,7 @@ download_and_install() {
 #
 file_backup() {
     if [[ -f "$1" ]]; then
-        if [ -w "$(dirname $1)" ]; then
+        if [[ -w $(dirname "$1") ]]; then
             cp "$1"{,.bak}
         else
             sudo cp "$1"{,.bak}
@@ -787,10 +795,10 @@ message_magic_air_copy() {
     INDEX=$(("$RANDOM" % "$SIZE"))
 
     clear
-    echo -e "\nLooking for the copy at your house...\n" && sleep 4
-    echo -e "${MESSAGES_LIST[$INDEX]}\n" && sleep 3
+    echo -e "\nLooking for the copy at your house...\n" && sleep 3
+    echo -e "${MESSAGES_LIST[$INDEX]}\n" && sleep 2
 
-    if [ -n "$1" ] && ! is_url_broken "$1"; then
+    if [ -n "$1" ] && ! is_URL_broken "$1"; then
         echo -e "Found it!...\n"
         echo "I'm moving the data files FROM YOUR original copy to destination directory using the technology MagicAirCopy® (｀-´)⊃━☆ﾟ.*･｡ﾟ"
         true
@@ -803,20 +811,17 @@ message_magic_air_copy() {
 #
 # Extract row from a file
 #
-extract_url_from_file() {
-    local SHAREWARE_LINKS
-    local SHAREWARE_LOCAL_PATH
-    SHAREWARE_LINKS=/tmp/shareware.$$
+extract_path_from_file() {
+    local MAGIC_FILE_PATH
     # TODO Get in the next the path for piKISS
-    SHAREWARE_LOCAL_PATH="${HOME}/piKiss/res/magic-air-copy-pikiss.txt"
+    MAGIC_FILE_PATH="${HOME}/piKiss/res/magic-air-copy-pikiss.txt"
 
-    if [ -f "$SHAREWARE_LOCAL_PATH" ]; then
-        cp "$SHAREWARE_LOCAL_PATH" $SHAREWARE_LINKS
-    else
-        wget -qO "$SHAREWARE_LINKS" https://url_to_shareware_links
+    if [[ ! -f $MAGIC_FILE_PATH ]]; then
+        echo -e "\nFile $MAGIC_FILE_PATH not found. You know what to do."
+        exit 1
     fi
-    sed "$1q;d" "$SHAREWARE_LINKS"
-    rm "$SHAREWARE_LINKS"
+
+    grep "$1=" "$MAGIC_FILE_PATH" | awk -F "$1=" '{print $2}'
 }
 
 #
@@ -1009,7 +1014,7 @@ install_or_update_rust() {
 #
 # Return boolean if url is not online
 #
-is_url_broken() {
+is_URL_broken() {
     local URL
 
     if ! isPackageInstalled httpie; then
@@ -1026,5 +1031,16 @@ is_url_broken() {
 }
 
 install_script_message() {
-    echo -e "PiKISS installs...\n"
+    echo -e "PiKISS is going to install this software for you ;)\n"
+}
+
+#
+# Return true if is a URL
+#
+is_URL() {
+    if [[ $1 == "http://" ]] || [[ $1 == "https://" ]]; then
+        true
+    else
+        false
+    fi
 }

@@ -1,16 +1,35 @@
-DUKE
-DIABLO2_EN
-DIABLO2_ES
-BLOOD_FULL
-QUAKE2
-ARX_FULL_ES
-ARX_FULL_EN
-UFO
-AVP_RPI
-SSAM_TSE
-SSAM_TFE
-OPENMW
-QUAKE3
-HALF-LIFE
-QUAKE1
-DIABLO1
+# RULES
+# =====
+#
+# - Rename this file to magic-air-copy-pikiss.txt, modify it with your datas and make a backup in a safe place ;)
+# - PiKISS will copy in the right directory the datas you have inside this file.
+# - Set in each variable the correct URL/path to your data files.
+# - You can mix them, so QUAKE_3 could be a URL, DIABLO_1 a directory,...
+# - Some variables have suffixes. _EN/_ES means the language(_EN for English, _ES for Spanish). You can't add more, so don't try DIABLO2_FR ;)
+# - You can sort the list, but it's better to keep all of them, so don't remove any.
+#
+# Possible values:
+#
+# - BLANK: You don't have this game.                     | Example: HALF-LIFE=
+# - URL: Pointing to data files in any hoster you own.   | Example: HALF-LIFE=https://my.hoster.com/half-life-data.tar.gz
+# - File: A file compressed with any compression method. | Example: HALF-LIFE=/home/pi/my_data_files/half-life-data.7z
+# - Directory: Path to data directory.                   | Example: HALF-LIFE=/media/pi/MY_EXTERNAL_HDD/games/half-life/valve
+#
+ARX_DEMO_EN=https://e.pcloud.link/publink/show?code=XZOsaZFJFHKEmMiHQtMyFw7ESWemvYz8xV
+ARX_FULL_EN=
+ARX_FULL_ES=
+AVP_RPI=
+BLOOD_FULL=
+DIABLO_1=
+DIABLO2_EN=
+DIABLO2_ES=
+DUKE_ATOM=
+HALF_LIFE=
+OPENMW_FULL=
+QUAKE_1=
+QUAKE_2=
+QUAKE_3=
+RTC_WOLFENSTEIN=
+SSAM_TFE=
+SSAM_TSE=
+UFO_ENEMY_UNKNOWN=
