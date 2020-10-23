@@ -2,7 +2,7 @@
 #
 # Description : Bstone: A source port of Blake Stone: Aliens Of Gold and Blake Stone: Planet Strike.
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.4 (05/Oct/20)
+# Version     : 1.0.5 (23/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested on Raspberry Pi 4)
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -110,7 +110,7 @@ install() {
     [[ ! -d "$CONFIG_DIR" ]] && mkdir -p "$CONFIG_DIR"
     cp "$INSTALL_DIR"/bstone/bstone_config.txt "$CONFIG_DIR"
     echo
-    read -p "Do you have an online copy of Blake Stone: Aliens of Gold & Blake Stone: Planet Strike (If not, Shareware of Aliens of Gold will be installed) (Y/n)?: " response
+    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Blake Stone: Aliens of Gold & Blake Stone: Planet Strike (If not, Shareware of Aliens of Gold will be installed) (Y/n)?: " response
     if [[ $response =~ [Nn] ]]; then
         # Yes, I know. It's a little bit tricky. Who cares? ;)
         rm -rf "$INSTALL_DIR"/bstone/data-full

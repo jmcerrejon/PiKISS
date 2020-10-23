@@ -2,7 +2,7 @@
 #
 # Description : OpenMW (The Elder Scrolls III: Morrowind engine)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.6 (07/Oct/20)
+# Version     : 1.0.7 (23/Oct/20)
 # Compatible  : Raspberry Pi 3-4
 #
 source ../helper.sh || source ./scripts/helper.sh || source ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -14,6 +14,7 @@ readonly PACKAGES=(libqtgui4 libboost-filesystem1.67.0 libboost-program-options1
 readonly PACKAGES_DEV=(libopenscenegraph-3.4-131 libopenthreads20 libopenscenegraph-3.4-131 libopenscenegraph-3.4-131 libopenscenegraph-3.4-131 libopenscenegraph-3.4-131 libopenscenegraph-3.4-131)
 readonly GITHUB_PATH="svn://svn.code.sf.net/p/openmw-emu/code/tags/v3.4/"
 readonly ES_TRANSLATION_URL="https://misapuntesde.com/rpi_share/morrowind-es-mod.tar.gz"
+readonly VAR_DATA_NAME="OPENMW_FULL"
 BINARY_URL="https://www.dropbox.com/s/lcnej4jvzunstz9/openmw-0.46-rpi.tar.gz?dl=0"
 DATA_URL=""
 
@@ -87,9 +88,9 @@ install() {
     install_packages_if_missing "${PACKAGES[@]}"
     clear
     echo
-    read -p "Do you have an online copy of The Elder Scroll III: Morrowind (If not, only OpenMW binaries will be installed) (y/N)?: " response
+    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for The Elder Scroll III: Morrowind (If not, only OpenMW binaries will be installed) (y/N)?: " response
     if [[ $response =~ [Yy] ]]; then
-        DATA_URL="$(extract_url_from_file 12)"
+        DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
         
         if ! message_magic_air_copy "$DATA_URL"; then
             echo -e "\nCopy data directory into $INSTALL_DIR/openmw.\n\nInstalling engine..."
@@ -104,6 +105,7 @@ install() {
     end_message
 }
 
+install_script_message
 echo "
 OpenMW 0.46.0 for Raspberry Pi
 ==============================

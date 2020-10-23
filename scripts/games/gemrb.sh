@@ -101,7 +101,7 @@ install() {
     download_binaries
     generate_icon
     echo
-    read -p "Do you have an online copy of Baldur's Gate (y/N)? " response
+    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Baldur's Gate (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
         download_data_files "$INSTALL_DIR/gemrb"
         end_message

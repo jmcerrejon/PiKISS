@@ -2,8 +2,8 @@
 #
 # Description : Arx Libertatis (AKA Arx Fatalis)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.7 (17/Oct/20)
-# Compatible  : Raspberry Pi 4 (fail)
+# Version     : 1.0.8 (23/Oct/20)
+# Compatible  : Raspberry Pi 4 (tested)
 #
 # Help        : https://wiki.arx-libertatis.org/Downloading_and_Compiling_under_Linux
 # For fans    : https://www.reddit.com/r/ArxFatalis/ | https://www.moddb.com/mods/arx-neuralis/downloads/arx-neuralis
@@ -21,6 +21,8 @@ readonly BINARY_URL="https://www.littlecarnage.com/arx_rpi2.tar.gz"
 readonly SOURCE_CODE_URL="https://github.com/ptitSeb/ArxLibertatis.git"
 readonly SOURCE_CODE_OFFICIAL_URL="https://github.com/arx/ArxLibertatis.git" # Doesn't work for now
 readonly ICON_URL="https://github.com/arx/ArxLibertatisData/blob/master/icons/arx-libertatis-32.png?raw=true"
+readonly VAR_DATA_NAME_EN="ARX_FULL_EN"
+readonly VAR_DATA_NAME_ES="ARX_FULL_ES"
 readonly INPUT=/tmp/arx.$$
 DATA_URL="https://srv-file21.gofile.io/downloadStore/srv-store3/NN2Dp2/arx_demo_en.tgz"
 
@@ -36,7 +38,6 @@ runme() {
 }
 
 remove_files() {
-    # TODO Remove files installed with sudo make install (maybe if I make a .deb dpkg, easier)
     rm -rf ~/.local/share/applications/arx.desktop ~/.local/share/arx "$CONFIG_DIR"/arx-libertatis-32.png \
         "$INSTALL_DIR"/arx /usr/local/share/blender/scripts/addons/arx /usr/local/share/games/arx
 }
@@ -135,8 +136,8 @@ choose_data_files() {
         menuitem=$(<"${INPUT}")
 
         case $menuitem in
-        English) clear && DATA_URL=$(extract_url_from_file 7) && return 0 ;;
-        Spanish) clear && DATA_URL=$(extract_url_from_file 6) && return 0 ;;
+        English) clear && DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_EN") && return 0 ;;
+        Spanish) clear && DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_ES") && return 0 ;;
         Exit) clear ;;
         esac
     done
@@ -148,7 +149,7 @@ install() {
     install_binaries
     generate_icon
     echo
-    read -p "Do you have an online copy of Arx Fatalis (If not, a Shareware version will be installed) (y/N)?: " response
+    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Arx Fatalis (If not, a Shareware version will be installed) (y/N)?: " response
     if [[ $response =~ [Yy] ]]; then
         choose_data_files
         if ! message_magic_air_copy "$DATA_URL"; then
@@ -161,13 +162,13 @@ install() {
     end_message
 }
 
-echo "Install Arx Libertatis (Port of Arx Fatalis)"
-echo "============================================"
-echo
-echo " · Install path: $INSTALL_DIR/arx"
-echo " · NOTE: It's NOT the latest compiled from source. This binary proceed from https://www.littlecarnage.com/"
-echo " · I've tried to compile Arx Libertatis for 3 days with no success. I'll try it (or ptitSeb) in a long time."
-echo
+install_script_message
+echo "Install Arx Libertatis (Port of Arx Fatalis)
+============================================
+ · Install path: $INSTALL_DIR/arx
+ · NOTE: It's NOT the latest compiled from source. This binary proceed from https://www.littlecarnage.com/
+ · I've tried to compile Arx Libertatis for 3 days with no success. I'll try it (or ptitSeb) in a long time.
+"
 read -p "Press [Enter] to continue..."
 
 install

@@ -2,7 +2,7 @@
 #
 # Description : Quake I, ][, ]I[
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.2 (05/Oct/20)
+# Version     : 1.3.2 (22/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help 		  : Quake 1: | https://godmodeuser.com/p/8#40
@@ -30,6 +30,9 @@ readonly Q2_HIGH_TEXTURE_MODELS_URL="https://deponie.yamagi.org/quake2/texturepa
 readonly Q3_PACKAGES_DEV=(libsdl2-dev libxxf86dga-dev libcurl4-openssl-dev)
 readonly Q3_BINARY_URL="https://misapuntesde.com/rpi_share/quake3-1.32-rpi.tar.gz"
 readonly Q3_SOURCE_CODE_URL="https://github.com/ec-/Quake3e.git"
+readonly VAR_DATA_NAME_1="QUAKE_1"
+readonly VAR_DATA_NAME_2="QUAKE_2"
+readonly VAR_DATA_NAME_3="QUAKE_3"
 Q1_DATA_URL="https://www.quakeforge.net/files/quake-shareware-1.06.zip"
 Q2_DATA_URL=""
 Q3_DATA_URL=""
@@ -123,9 +126,9 @@ q1_soundtrack_download() {
 
 q1_magic_air_copy() {
     echo
-    read -p "Do you have an online copy of Quake (If not, a shareware version will be installed) (y/N)?: " response
+    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Quake (If not, a shareware version will be installed) (y/N)?: " response
     if [[ $response =~ [Yy] ]]; then
-        Q1_DATA_URL=$(extract_url_from_file 15)
+        Q1_DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_1")
 
         if ! message_magic_air_copy "$Q1_DATA_URL"; then
             echo -e "\nShareware version was installed."
@@ -137,6 +140,7 @@ q1_magic_air_copy() {
 
 q1_install() {
     q1_check_if_installed
+    install_script_message
     echo "
 Quake for Raspberry Pi
 ======================
@@ -241,9 +245,9 @@ q2_high_textures_download() {
 
 q2_magic_air_copy() {
     echo
-    read -p "Do you have an online copy of Quake ][ (If not, a shareware version will be installed) (y/N)?: " response
+    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Quake ][ (If not, a shareware version will be installed) (y/N)?: " response
     if [[ $response =~ [Yy] ]]; then
-        Q2_DATA_URL=$(extract_url_from_file 5)
+        Q2_DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_2")
 
         if ! message_magic_air_copy "$Q2_DATA_URL"; then
             echo -e "\nNow copy data directory /baseq2 into $INSTALL_DIR/quake."
@@ -255,6 +259,7 @@ q2_magic_air_copy() {
 
 q2_install() {
     q2_check_if_installed
+    install_script_message
     echo "
 Quake ][ for Raspberry Pi
 =========================
@@ -354,21 +359,23 @@ q3_install_binary() {
 
 q3_magic_air_copy() {
     echo
-    read -p "Do you have an online copy of Quake ]I[ (y/N)?: " response
+    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Quake ]I[ (y/N)?: " response
     if [[ $response =~ [Yy] ]]; then
-        Q3_DATA_URL=$(extract_url_from_file 13)
+        Q3_DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_3")
 
         if ! message_magic_air_copy "$Q3_DATA_URL"; then
             echo -e "\nNow copy data directory /baseq3 into $INSTALL_DIR/quake3.\n"
             return 0
         fi
         download_and_extract "$Q3_DATA_URL" "$INSTALL_DIR"/quake3
+    else
+        echo -e "\nNow copy data directory /baseq3 into $INSTALL_DIR/quake3.\n"
     fi
-    echo -e "\nNow copy data directory /baseq3 into $INSTALL_DIR/quake3.\n"
 }
 
 q3_install() {
     q3_check_if_installed
+    install_script_message
     echo "
 Quake ]I[ for Raspberry Pi
 ==========================

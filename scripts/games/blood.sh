@@ -2,7 +2,7 @@
 #
 # Description : Blood
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.4 (02/Oct/20)
+# Version     : 1.0.5 (22/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://www.techradar.com/how-to/how-to-run-wolfenstein-3d-doom-and-duke-nukem-on-your-raspberry-pi
@@ -11,9 +11,10 @@
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-INSTALL_DIR="$HOME/games"
-BINARY_PATH="https://misapuntesde.com/rpi_share/blood_r11880.tar.gz"
-GITHUB_PATH="https://github.com/nukeykt/NBlood.git"
+readonly INSTALL_DIR="$HOME/games"
+readonly BINARY_PATH="https://misapuntesde.com/rpi_share/blood_r11880.tar.gz"
+readonly GITHUB_PATH="https://github.com/nukeykt/NBlood.git"
+readonly VAR_DATA_NAME="BLOOD_FULL"
 INPUT=/tmp/blood.$$
 
 runme() {
@@ -102,14 +103,15 @@ download_binaries() {
 }
 
 install() {
+    install_script_message
     echo -e "\n\nInstalling, please wait..."
     mkdir -p "$INSTALL_DIR" && cd "$_"
     download_binaries
     generate_icon
     echo
-    read -p "Do you have an online copy of Blood (y/N)? " response
+    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Blood (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
-        DATA_URL=$(extract_url_from_file 4)
+        DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
             if ! message_magic_air_copy "$DATA_URL"; then
         echo -e "\nNow copy data directory into $INSTALL_DIR/blood."
         return 0

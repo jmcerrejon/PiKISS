@@ -2,7 +2,7 @@
 #
 # Description : Aliens versus Predator
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.2 (02/Oct/20)
+# Version     : 1.0.2 (23/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://www.raspberrypi.org/forums/viewtopic.php?t=100152
@@ -13,7 +13,8 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
-readonly BINARY_URL=$(extract_url_from_file 9)
+readonly VAR_DATA_NAME="AVP_RPI"
+readonly BINARY_URL=$(extract_path_from_file "$VAR_DATA_NAME")
 
 runme() {
     echo
@@ -81,7 +82,7 @@ install() {
     post_install
     generate_icon
     echo
-    read -p "Do you have an online copy of Aliens versus Predator (1999 video game) (y/N)?: " response
+    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Aliens versus Predator (1999 video game) (y/N)?: " response
     if [[ $response =~ [Nn] ]]; then
         rm -rf "$INSTALL_DIR"/avp/avp_huds "$INSTALL_DIR"/avp/avp_rifs "$INSTALL_DIR"/avp/fastfile
         echo -e "\nCopy your files with lowew case on $INSTALL_DIR/avp, cd into the game directory and type ./avp -f (f for full screen)"
@@ -91,6 +92,8 @@ install() {
         runme
     fi
 }
+
+install_script_message
 
 echo "Install Aliens versus Predator"
 echo "=============================="

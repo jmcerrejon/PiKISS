@@ -2,7 +2,7 @@
 #
 # Description : Half Life thks to Salva (Pi Labs)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.8 (05/Oct/20)
+# Version     : 1.0.9 (23/Oct/20)
 # Compatible  : Raspberry Pi (tested)
 # Repository  : https://github.com/ValveSoftware/halflife
 #
@@ -16,6 +16,7 @@ readonly BINARY_URL="https://misapuntesde.com/rpi_share/half-life-0.20-bin-rpi.t
 readonly HQ_TEXTURE_PACK_URL="https://gamebanana.com/dl/265907"
 readonly SOURCE_CODE_URL="https://github.com/FWGS/xash3d"
 readonly ES_TRANSLATION_URL="https://misapuntesde.com/rpi_share/hl-sp-patch.tar.gz"
+readonly VAR_DATA_NAME="HALF_LIFE"
 
 runme() {
     read -p "Press [ENTER] to run the game..."
@@ -82,13 +83,13 @@ install() {
     download_and_extract "$BINARY_URL" "$INSTALL_DIR"
     generate_icon
     echo
-    read -p "Do you have an online copy of Half Life (Y/n)?: " response
+    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Half Life (Y/n)?: " response
     if [[ $response =~ [Nn] ]]; then
         echo -e "\nDone!. Now copy the /valve directory inside $INSTALL_DIR/half-life"
         exit_message
     fi
 
-    DATA_URL=$(extract_url_from_file 14)
+    DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
 
     if ! message_magic_air_copy "$DATA_URL"; then
         echo -e "\nNow copy the /valve directory inside $INSTALL_DIR/half-life"
@@ -101,6 +102,7 @@ install() {
     runme
 }
 
+install_script_message
 echo "
 Install Half Life on Raspberry Pi
 =================================

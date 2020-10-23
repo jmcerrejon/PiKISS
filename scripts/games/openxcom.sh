@@ -2,7 +2,7 @@
 #
 # Description : OpenXcom with the help of user chills340
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.2 (05/Oct/20)
+# Version     : 1.1.3 (22/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://www.ufopaedia.org/index.php/Compiling_with_CMake_(OpenXcom)
@@ -16,6 +16,7 @@ readonly PACKAGES=( libsdl-gfx1.2-5 libglu1-mesa libyaml-cpp0.6 )
 readonly PACKAGES_DEV=(build-essential libboost-dev libsdl1.2-dev libsdl-mixer1.2-dev libsdl-image1.2-dev libsdl-gfx1.2-dev libyaml-cpp-dev xmlto)
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/openxcom_rpi.tar.gz"
 readonly GITHUB_URL="https://github.com/SupSuper/OpenXcom.git"
+readonly VAR_DATA_NAME="UFO_ENEMY_UNKNOWN"
 readonly INPUT=/tmp/openxcom.$$
 
 runme() {
@@ -71,7 +72,7 @@ EOF
 
 download_data_files() {
     local DATA_URL
-    DATA_URL=$(extract_url_from_file 8)
+    DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
 
     if ! message_magic_air_copy "$DATA_URL"; then
         echo -e "\nNow copy data directory into $INSTALL_DIR/openxcom."
@@ -108,11 +109,12 @@ download_binaries() {
 }
 
 install() {
+    install_script_message
     install_packages_if_missing "${PACKAGES[@]}"
     download_binaries
     generate_icon
     echo
-    read -p "Do you have an online copy of X-Com:Enemy Unknow (y/N)? " response
+    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for X-Com:Enemy Unknow (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
         download_data_files "$INSTALL_DIR/openxcom"
         end_message

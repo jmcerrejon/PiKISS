@@ -2,7 +2,7 @@
 #
 # Description : Serious Sam 1 & 2
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.1 (02/Oct/20)
+# Version     : 1.2.2 (22/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help        : https://www.raspberrypi.org/forums/viewtopic.php?t=200458
@@ -15,6 +15,9 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES_DEV=(libsdl2-dev bison flex libogg-dev)
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/ssam-bin-1.05-rpi4.tar.gz"
+readonly INPUT=/tmp/ssam.$$
+readonly VAR_DATA_NAME_1="SSAM_TFE"
+readonly VAR_DATA_NAME_2="SSAM_TSE"
 readonly INPUT=/tmp/ssam.$$
 
 runme_tfe() {
@@ -107,7 +110,7 @@ install_binaries() {
 
 install_full_tfe() {
     local DATA_URL
-    DATA_URL=$(extract_url_from_file 11)
+    DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_1")
 
     clear
     generate_icon_tfe
@@ -124,7 +127,7 @@ install_full_tfe() {
 
 install_full_tse() {
     local DATA_URL
-    DATA_URL=$(extract_url_from_file 10)
+    DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_2")
 
     clear
     generate_icon_tse
@@ -167,7 +170,7 @@ Install Serious Sam 1 or 2
  · Optimized for Raspberry Pi 4.
  · I want to thanks Pi Labs & ptitSeb for the help.
 "
-read -p "Do you have an online copy of Serious Sam (If not, only the binaries will be installed) (Y/n)?: " response
+read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Serious Sam (If not, only the binaries will be installed) (Y/n)?: " response
     if [[ $response =~ [Nn] ]]; then
         install_binaries
     fi
@@ -190,4 +193,5 @@ if [[ -d "$INSTALL_DIR"/ssam ]]; then
     uninstall ssam
 fi
 
+install_script_message
 install

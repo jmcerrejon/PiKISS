@@ -2,7 +2,7 @@
 #
 # Description : Crispy-Doom ver. 5.8.0 to play DOOM & Heretic
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.6.5 (05/Oct/20)
+# Version     : 1.6.6 (23/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # HELP        : To compile crispy-doom, follow the instructions at https://github.com/fabiangreffrath/crispy-doom
@@ -124,7 +124,7 @@ install() {
 menu() {
     clear
     echo
-    read -p "Do you have an online copy of Doom/Heretic (If not, a Shareware version will be installed) (Y/n)?: " response
+    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Doom/Heretic (If not, a Shareware version will be installed) (Y/n)?: " response
     if [[ $response =~ [Nn] ]]; then
         share_version
         LICENSE="Shareware"

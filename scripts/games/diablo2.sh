@@ -2,7 +2,7 @@
 #
 # Description : Diablo 2 Exp. Spanish for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.3 (02/Oct/20)
+# Version     : 1.1.4 (23/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Info		  : Thks to PI Labs and Notaz
@@ -16,6 +16,8 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 readonly INSTALL_DIR="$HOME/games"
 readonly SCRIPT_PATH="$HOME/games/diablo2/diablo2.sh"
 readonly BINARY_PATH="https://notaz.gp2x.de/misc/starec/libd2game_sa_arm.exe.so.xz"
+readonly VAR_DATA_NAME_EN="DIABLO2_EN"
+readonly VAR_DATA_NAME_ES="DIABLO2_ES"
 readonly INPUT=/tmp/diablo2.$$
 readonly PIKISS_PATH=$(pwd)
 DATA_URL=""
@@ -100,8 +102,8 @@ choose_data_files() {
         menuitem=$(<"${INPUT}")
 
         case $menuitem in
-        English) clear && DATA_URL=$(extract_url_from_file 2) && download_data_files ;;
-        Spanish) clear && DATA_URL=$(extract_url_from_file 3) && download_data_files ;;
+        English) clear && DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_EN") && download_data_files ;;
+        Spanish) clear && DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_ES") && download_data_files ;;
         Exit) remove_files && clear && exit_message ;;
         esac
     done
@@ -114,7 +116,7 @@ install() {
     copy_run_script
     generate_icon
     echo
-    read -p "Do you have an online copy of Diablo 2 (Y/n)? " response
+    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Diablo 2 (Y/n)? " response
     if [[ $response =~ [Nn] ]]; then
         download_binaries
         echo -e "\nDone. Please, copy Diablo2 file games inside $INSTALL_DIR/diablo2"
@@ -135,13 +137,14 @@ if [[ -d "$INSTALL_DIR"/diablo2 ]]; then
     exit 1
 fi
 
-echo "Install Diablo 2 thks to Notaz"
-echo -e "==============================\n"
-echo " · Languages: English, Spanish."
-echo " · Install path: $INSTALL_DIR/diablo2"
-echo " · The process can takes ~25 minutes"
-echo " · NOTE: Only runs on Raspberry Pi 4."
-echo
+install_script_message
+echo "Install Diablo 2 thks to Notaz
+==============================
+ · Languages: English, Spanish.
+ · Install path: $INSTALL_DIR/diablo2
+ · NOTE: Only runs on Raspberry Pi 4
+"
+
 read -p "Press [Enter] to continue..."
 
 install

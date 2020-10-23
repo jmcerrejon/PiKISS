@@ -2,7 +2,7 @@
 #
 # Description : Duke Nukem 3D
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.4 (02/Oct/20)
+# Version     : 1.0.5 (22/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://www.techradar.com/how-to/how-to-run-wolfenstein-3d-doom-and-duke-nukem-on-your-raspberry-pi
@@ -13,9 +13,10 @@
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-INSTALL_DIR="$HOME"/games
-GAME_PATH="https://misapuntesde.com/rpi_share/eduke32.tar.gz"
-GITHUB_PATH="https://voidpoint.io/terminx/eduke32.git"
+readonly INSTALL_DIR="$HOME/games"
+readonly GAME_PATH="https://misapuntesde.com/rpi_share/eduke32.tar.gz"
+readonly GITHUB_PATH="https://voidpoint.io/terminx/eduke32.git"
+readonly VAR_DATA_NAME="DUKE_ATOM"
 DATA_URL="http://hendricks266.duke4.net/files/3dduke13_data.7z"
 INPUT=/tmp/eduke32.$$
 
@@ -105,14 +106,15 @@ download_binaries() {
 }
 
 install() {
+    install_script_message
     echo -e "\n\nInstalling, please wait..."
     mkdir -p "$INSTALL_DIR" && cd "$_"
     download_binaries
     generate_icon
     echo
-    read -p "Do you have an online copy of Duke Nukem Atomic Edition (If not, a shareware version will be installed) (y/N)?: " response
+    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Duke Nukem Atomic Edition (If not, a shareware version will be installed) (y/N)?: " response
     if [[ $response =~ [Yy] ]]; then
-        DATA_URL=$(extract_url_from_file 1)
+        DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
 
         if ! message_magic_air_copy "$DATA_URL"; then
             echo -e "\nNow copy data directory into $INSTALL_DIR/eduke32."

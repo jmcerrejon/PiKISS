@@ -2,16 +2,19 @@
 #
 # Description : Return to Castle Wolfenstein for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.2 (17/Oct/20)
+# Version     : 1.3.3 (22/Oct/20)
 # Compatible  : Raspberry Pi 3-4 (tested)
+# Repository  : https://github.com/iortcw/iortcw
+# Extras      : https://www.moddb.com/mods/rtcw-venom-mod/downloads/rtcw-venom-mod-v60
 #
 source ../helper.sh || source ./scripts/helper.sh || source ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-INSTALL_DIR="$HOME/games"
-#PAK_FILE_SHARE="ftp://ftp.gr.freebsd.org/pub/vendors/idgames/idstuff/wolf/linux/wolfspdemo-linux-1.1b.x86.run"
-BINARY_URL="https://misapuntesde.com/rpi_share/rtcw_bin-rpi.tar.gz"
+readonly INSTALL_DIR="$HOME/games"
+readonly BINARY_URL="https://misapuntesde.com/rpi_share/rtcw_bin-rpi.tar.gz"
+readonly ES_TRANSLATION_URL="https://e.pcloud.link/publink/show?code=XZtsaZowc9yL8zi4Rzk3FY77uq0YYAbFok"
+readonly VAR_DATA_NAME="RTC_WOLFENSTEIN"
 DATA_URL=""
 
 runme() {
@@ -71,12 +74,6 @@ end_message() {
     runme
 }
 
-# get_demo_data_files() {
-#     wget -O $HOME/wolf.run $PAK_FILE_SHARE
-#     cd $HOME
-#     tail -n +175 wolf.run | tar -xz demomain/pak0.pk3
-#     rm -r wolf.run demomain
-# }
 
 install() {
     local DATA_URL
@@ -84,18 +81,16 @@ install() {
     download_and_extract "$BINARY_URL" "$INSTALL_DIR"
     generate_icon
     echo
-    read -p "Do you have an online copy of Return to Castle Wolfenstein (y/N)?: " response
+    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Return to Castle Wolfenstein (y/N)?: " response
     if [[ $response =~ [Yy] ]]; then
-        DATA_URL="$(extract_url_from_file 18)"
-        
-        if ! message_magic_air_copy "$DATA_URL"; then
-            echo -e "\nOverwrite /Main directory with new files into $INSTALL_DIR/rtcw.\n\nInstalling binaries..."
-        else
+        DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
+
+        if message_magic_air_copy "$DATA_URL"; then
             download_and_extract "$DATA_URL" "$INSTALL_DIR"/rtcw
+            end_message
         fi
-    else
-        echo -e "\nOverwrite /Main directory with new files into $INSTALL_DIR/rtcw.\n\nInstalling binaries..."
     fi
+    echo -e "\nOverwrite /Main directory with new files into $INSTALL_DIR/rtcw.\n\nInstalling binaries..."
     end_message
 }
 

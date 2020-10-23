@@ -2,7 +2,7 @@
 #
 # Description : Diablo for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.4 (19/Oct/20)
+# Version     : 1.1.5 (23/Oct/20)
 # Compatible  : Raspberry Pi 3-4 (tested)
 #
 # Help		  : https://github.com/diasurgical/devilutionX/
@@ -15,7 +15,8 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES=(p7zip libsdl2-ttf-2.0-0 libsdl2-mixer-2.0-0)
 readonly BINARY_PATH="https://github.com/diasurgical/devilutionX/releases/download/1.0.1/devilutionx-linux-armhf.7z"
-readonly DIABLO1_DATA_URL=$(extract_url_from_file 17)
+readonly VAR_DATA_NAME="DIABLO_1"
+readonly DIABLO1_DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
 readonly ICON="https://misapuntesde.com/res/diablo1.png"
 
 runme() {
@@ -76,7 +77,7 @@ install() {
     mv "$INSTALL_DIR"/devilutionx-linux-armhf "$INSTALL_DIR"/diablo1
     generate_icon
     echo
-    read -p "Do you have an online copy of Diablo 1 (Y/n)? " response
+    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Diablo 1 (Y/n)? " response
     if [[ $response =~ [Nn] ]]; then
         echo -e "\nPlease, copy diabdat.mpq inside $INSTALL_DIR/diablo1"
         return 1
