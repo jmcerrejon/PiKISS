@@ -13,7 +13,7 @@
 # - BLANK: You don't have this game.                     | Example: HALF-LIFE=
 # - URL: Pointing to data files in any hoster you own.   | Example: HALF-LIFE=https://my.hoster.com/half-life-data.tar.gz
 # - File: A file compressed with any compression method. | Example: HALF-LIFE=/home/pi/my_data_files/half-life-data.7z
-# - Directory: Path to data directory.                   | Example: HALF-LIFE=/media/pi/MY_EXTERNAL_HDD/games/half-life/valve
+# - Directory: Path to the data directory.               | Example: HALF-LIFE=/media/pi/MY_EXTERNAL_HDD/games/half-life/valve
 #
 ARX_DEMO_EN=https://e.pcloud.link/publink/show?code=XZOsaZFJFHKEmMiHQtMyFw7ESWemvYz8xV
 ARX_FULL_EN=
