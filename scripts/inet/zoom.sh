@@ -2,8 +2,8 @@
 #
 # Description : Zoom (using Box86)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.4 (06/Oct/20)
-# Compatible  : Raspberry Pi 2-4 (tested)
+# Version     : 1.0.5 (24/Oct/20)
+# Compatible  : Raspberry Pi 3-4 (tested)
 # Repository  : https://github.com/ptitSeb/box86
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -89,11 +89,13 @@ install() {
     runme
 }
 
+install_script_message
 echo "
 Zoom for Raspberry Pi
 =====================
 
  · Using Box86 thanks to ptitSeb (https://github.com/ptitSeb/box86).
+ · Some features may not be available.
 "
 
 install
