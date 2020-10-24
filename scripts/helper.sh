@@ -275,6 +275,7 @@ download_and_extract() {
     if [[ ! -d $DATA_URL ]]; then
         echo -e "\nExtracting..."
         cd "$DESTINATION_DIR"
+        # TODO Refactor: extract should have a second argument "$DESTINATION_DIR" and remove copying local file at function use_data_from
         extract "$FILE_NAME"
     fi
 
@@ -798,7 +799,8 @@ message_magic_air_copy() {
     echo -e "\nLooking for the copy at your house...\n" && sleep 3
     echo -e "${MESSAGES_LIST[$INDEX]}\n" && sleep 2
 
-    if [ -n "$1" ] && ! is_URL_broken "$1"; then
+    if [ -n "$1" ]; then
+        # TODO Check if it's an url or a file, and if it's an url, check it available: ! is_URL_down "$1"; then
         echo -e "Found it!...\n"
         echo "I'm moving the data files FROM YOUR original copy to destination directory using the technology MagicAirCopy® (｀-´)⊃━☆ﾟ.*･｡ﾟ"
         true
@@ -981,7 +983,7 @@ set_GPU_memory() {
 # Ket two key string from the keyboard layout
 #
 get_keyboard_layout() {
-    echo "$(setxkbmap -query | grep layout | awk -F: '{print $2}' | sed 's/^ *//g')"
+    setxkbmap -query | grep layout | awk -F: '{print $2}' | sed 's/^ *//g'
 }
 
 #
@@ -1014,13 +1016,12 @@ install_or_update_rust() {
 #
 # Return boolean if url is not online
 #
-is_URL_broken() {
+is_URL_down() {
     local URL
 
     if ! isPackageInstalled httpie; then
         sudo apt-get install -qq httpie < /dev/null > /dev/null
     fi
-    # URL=$(curl -I "$1" 2>&1 | awk '/HTTP\// {print $2}') | Method 1
     URL=$(http --verify=no -h "$1" | awk 'NR==1' | awk '{print $2}')
 
     if [ "$URL" != 200 ]; then
@@ -1038,7 +1039,7 @@ install_script_message() {
 # Return true if is a URL
 #
 is_URL() {
-    if [[ $1 == "http://" ]] || [[ $1 == "https://" ]]; then
+    if [[ $1 == http://* ]] || [[ $1 == https://* ]]; then
         true
     else
         false
