@@ -2,7 +2,7 @@
 #
 # Description : Zoom (using Box86)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.5 (24/Oct/20)
+# Version     : 1.0.6 (25/Oct/20)
 # Compatible  : Raspberry Pi 3-4 (tested)
 # Repository  : https://github.com/ptitSeb/box86
 #
@@ -81,7 +81,9 @@ chmod +x "$INSTALL_DIR"/zoom/zoom-rpi.sh
 install() {
     echo -e "\nInstalling, please wait..."
     install_packages_if_missing "${PACKAGES[@]}"
-    install_box86
+    if [[ ! -f /usr/local/bin/twistver ]]; then
+        install_box86
+    fi
     download_and_extract "$BINARY_URL" "$INSTALL_DIR"
     make_run_script
     generate_icon
