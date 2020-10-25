@@ -2,7 +2,7 @@
 #
 # Description : Box86
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.3 (05/Oct/20)
+# Version     : 1.0.4 (25/Oct/20)
 # Compatible  : Raspberry Pi 2-4 (tested)
 # Repository  : https://github.com/ptitSeb/box86
 #
@@ -12,7 +12,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="$HOME/box86"
 readonly PACKAGES_DEV=( cmake )
-readonly INPUT=/tmp/box86.$$
+INPUT=/tmp/box86.$$
 
 end_message() {
     echo -e "\nDone!. Box86 on your system!. Just type box86 <binary_app>"

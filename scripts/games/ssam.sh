@@ -2,7 +2,7 @@
 #
 # Description : Serious Sam 1 & 2
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.2 (22/Oct/20)
+# Version     : 1.2.3 (25/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help        : https://www.raspberrypi.org/forums/viewtopic.php?t=200458
@@ -15,10 +15,9 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES_DEV=(libsdl2-dev bison flex libogg-dev)
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/ssam-bin-1.05-rpi4.tar.gz"
-readonly INPUT=/tmp/ssam.$$
 readonly VAR_DATA_NAME_1="SSAM_TFE"
 readonly VAR_DATA_NAME_2="SSAM_TSE"
-readonly INPUT=/tmp/ssam.$$
+INPUT=/tmp/ssam.$$
 
 runme_tfe() {
     echo

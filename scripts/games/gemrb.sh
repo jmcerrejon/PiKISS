@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# Description : GemRB
+# Description : GemRB (EXPERIMENTAL)
 # Version     : 0.8.7
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (08/Oct/20)
+# Version     : 1.0.1 (25/Oct/20)
 # Compatible  : Raspberry Pi 4
 # Repository  : https://github.com/gemrb/gemrb
 # Help        : https://github.com/gemrb/gemrb/blob/master/INSTALL
@@ -19,7 +19,7 @@ readonly PACKAGES_DEV=(cmake libsdl2-dev libvorbis-dev libopenal-dev libsdl2-mix
 readonly BINARY_URL=""
 readonly SOURCE_CODE_URL="https://github.com/gemrb/gemrb"
 readonly DATA_URL="http://download.fileplanet.com/ftp1/052006/bg2_fullinstall.zip?st=81cKF352XL2lgN76khYOcQ&e=1602242280"
-readonly INPUT=/tmp/temp.$$
+INPUT=/tmp/temp.$$
 
 runme() {
     if [ ! -f "$INSTALL_DIR"/gemrb ]; then

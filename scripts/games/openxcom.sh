@@ -2,7 +2,7 @@
 #
 # Description : OpenXcom with the help of user chills340
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.3 (22/Oct/20)
+# Version     : 1.1.4 (25/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://www.ufopaedia.org/index.php/Compiling_with_CMake_(OpenXcom)
@@ -17,7 +17,7 @@ readonly PACKAGES_DEV=(build-essential libboost-dev libsdl1.2-dev libsdl-mixer1.
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/openxcom_rpi.tar.gz"
 readonly GITHUB_URL="https://github.com/SupSuper/OpenXcom.git"
 readonly VAR_DATA_NAME="UFO_ENEMY_UNKNOWN"
-readonly INPUT=/tmp/openxcom.$$
+INPUT=/tmp/openxcom.$$
 
 runme() {
     if [ ! -f "$INSTALL_DIR"/openxcom/openxcom ]; then

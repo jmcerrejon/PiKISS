@@ -2,7 +2,7 @@
 #
 # Description : Diablo 2 Exp. Spanish for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.4 (23/Oct/20)
+# Version     : 1.1.5 (25/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Info		  : Thks to PI Labs and Notaz
@@ -18,8 +18,8 @@ readonly SCRIPT_PATH="$HOME/games/diablo2/diablo2.sh"
 readonly BINARY_PATH="https://notaz.gp2x.de/misc/starec/libd2game_sa_arm.exe.so.xz"
 readonly VAR_DATA_NAME_EN="DIABLO2_EN"
 readonly VAR_DATA_NAME_ES="DIABLO2_ES"
-readonly INPUT=/tmp/diablo2.$$
 readonly PIKISS_PATH=$(pwd)
+INPUT=/tmp/diablo2.$$
 DATA_URL=""
 
 remove_files() {
