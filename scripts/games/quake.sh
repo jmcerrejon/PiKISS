@@ -2,7 +2,7 @@
 #
 # Description : Quake I, ][, ]I[
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.2 (22/Oct/20)
+# Version     : 1.3.3 (30/Oct/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help 		  : Quake 1: | https://godmodeuser.com/p/8#40
@@ -34,7 +34,7 @@ readonly VAR_DATA_NAME_1="QUAKE_1"
 readonly VAR_DATA_NAME_2="QUAKE_2"
 readonly VAR_DATA_NAME_3="QUAKE_3"
 Q1_DATA_URL="https://www.quakeforge.net/files/quake-shareware-1.06.zip"
-Q2_DATA_URL=""
+Q2_DATA_URL="https://misapuntesde.com/rpi_share/baseq2_share.tar.gz"
 Q3_DATA_URL=""
 INPUT=/tmp/quake.$$
 
@@ -126,16 +126,16 @@ q1_soundtrack_download() {
 
 q1_magic_air_copy() {
     echo
-    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Quake (If not, a shareware version will be installed) (y/N)?: " response
+    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Quake (If not, shareware version will be installed) (y/N)?: " response
     if [[ $response =~ [Yy] ]]; then
         Q1_DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_1")
 
         if ! message_magic_air_copy "$Q1_DATA_URL"; then
-            echo -e "\nShareware version was installed."
+            echo -e "\nFile not found."
             return 0
         fi
-        download_and_extract "$Q1_DATA_URL" "$HOME"/quake
     fi
+    download_and_extract "$Q1_DATA_URL" "$HOME"/quake
 }
 
 q1_install() {
@@ -245,16 +245,16 @@ q2_high_textures_download() {
 
 q2_magic_air_copy() {
     echo
-    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Quake ][ (If not, a shareware version will be installed) (y/N)?: " response
+    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Quake ][ (If not, shareware version will be installed) (y/N)?: " response
     if [[ $response =~ [Yy] ]]; then
         Q2_DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_2")
 
         if ! message_magic_air_copy "$Q2_DATA_URL"; then
-            echo -e "\nNow copy data directory /baseq2 into $INSTALL_DIR/quake."
+            echo -e "\nFile not found. Copy directory /baseq2 inside $INSTALL_DIR/yquake2"
             return 0
         fi
-        download_and_extract "$Q2_DATA_URL" "$Q2_CONFIG_DIR"
     fi
+        download_and_extract "$Q2_DATA_URL" "$Q2_CONFIG_DIR"
 }
 
 q2_install() {
