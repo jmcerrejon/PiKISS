@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **731 hours**
+* **734 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (03/11/20)
+
+· 👌 IMPROVE: Emulators > mGBA Game Boy Advance Emulator.
 
 ### (24/10/20)
 
