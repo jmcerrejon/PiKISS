@@ -1032,7 +1032,7 @@ is_URL_down() {
 }
 
 install_script_message() {
-    echo -e "PiKISS is going to install this software for you ;)\n"
+    echo -e "PiKISS is going to install this software for you ;)"
 }
 
 #
