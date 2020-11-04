@@ -2,7 +2,7 @@
 #
 # Description : Update bootloader
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (04/Nov/20)
+# Version     : 1.0.1 (04/Nov/20)
 #
 # Help        : https://www.jeffgeerling.com/blog/2020/im-booting-my-raspberry-pi-4-usb-ssd
 #             : https://gist.github.com/atomicstack/9c43e452c4b7cefb37c1e78f65b0b1fa
@@ -12,25 +12,64 @@
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 clear
 
-install() {
-    echo -e "\nUpgrading your distro...\n"
-    sudo apt-get -qq update && sudo apt-get dist-upgrade
+RPI_NUMBER=$(getRaspberryPiNumberModel)
+CURRENT_BOOT_DATETIME="$(vcgencmd bootloader_version | head -n 1)"
+FILE=""
+
+if [[ $RPI_NUMBER -ne 4 ]]; then
+    echo "Sorry. This SBC is not a Raspberry Pi 4. Aborting..."
+    exit_message
+fi
+
+pick_file() {
+    echo "
+· Remember: Your current bootloader datetime is: $CURRENT_BOOT_DATETIME
+· Choose in the next dialog the latest bootloader file.
+· Use TAB to move between window sections and SPACE to select the file.
+"
+    read -p "Press [ENTER] to choose the file..."
+    FILE=$(dialog --title "Choose a file" --stdout --title " Please choose a file to use " --fselect /lib/firmware/raspberrypi/bootloader/stable/ 14 65)
+
+    if [[ ! -f $FILE ]]; then
+        echo "$FILE is not a valid file. Aborting."
+        exit_message
+    fi
+}
+
+copy_boot_files() {
     mkdir -p ~/bootfiles && cd "$_"
 
-    echo -e "\nDownloading boot files...\n"
+    echo -e "\nGetting the Pi 4 to USB boot...\n"
     wget $( wget -q --show-progress -O - https://github.com/raspberrypi/firmware/tree/master/boot | perl -nE 'chomp; next unless /[.](elf|dat)/; s/.*href="([^"]+)".*/$1/; s/blob/raw/; say qq{https://github.com$_}' )
-
-    # change your firmware preference to stable
-    echo -e "\nChanging firmware to stable if proceed...\n"
-    sudo sed -i 's/critical/stable/g' /etc/default/rpi-eeprom-update
 
     # copy the .elf and .dat files to your /boot directory
     echo -e "\nCopying firmware to /boot...\n"
     sudo cp -f *.elf /boot/
     sudo cp -f *.dat /boot/
+}
+
+install() {
+    # Upgrade your distro
+    upgrade
+    
+    # change your firmware preference to stable
+    echo -e "\nChanging firmware to stable if proceed..."
+    sudo sed -i 's/critical/stable/g' /etc/default/rpi-eeprom-update
+    echo -e "Done."
+
+    pick_file
+
+    clear
+    echo -e "Using the file $FILE to upgrade the bootloader."
+    read -p "Do you want to continue with the process (Y/n)? " response
+    if [[ $response =~ [Nn] ]]; then
+        exit_message
+    fi
 
     echo -e "\nRunning rpi-eeprom-update\n"
-    sudo rpi-eeprom-update
+    sudo rpi-eeprom-update -d -f "$FILE"
+
+    copy_boot_files
 
     echo -e "\nCheck what is your SATA bridge...\n"
     sudo lsusb
@@ -44,7 +83,13 @@ install() {
 }
 
 install_script_message
-echo
+echo "
+Install bootloader EEPROM for Raspberry Pi 4
+============================================
+
+ · Your current boot datetime: $CURRENT_BOOT_DATETIME
+ · Check the release notes here: https://github.com/raspberrypi/rpi-eeprom/blob/master/firmware/release-notes.md
+"
 read -p "Do you want to update your bootloader files (y/N)? " response
 if [[ $response =~ [Yy] ]]; then
     install
