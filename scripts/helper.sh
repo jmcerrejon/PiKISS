@@ -1045,3 +1045,9 @@ is_URL() {
         false
     fi
 }
+
+cmd_reboot() {
+    echo
+    read -p "Now the system is going to reboot. Press [ENTER] to reboot..."
+    sudo reboot
+}

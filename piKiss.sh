@@ -436,6 +436,7 @@ smOthers() {
             Back "Back to main menu"
             Aircrack "Compile Aircrack-NG suite easily"
             Alacritty "Fastest terminal emulator using GPU for rendering and Wayland compatible"
+            BootLoader "Update your RPi boot loader"
             CoolTerm "Compile a terminal with the look and feel of the old cathode tube screens"
             Fixes "Fix some problems with the Raspbian OS"
             GL4ES "Compile GL4ES - OpenGL for GLES Hardware"
@@ -457,6 +458,7 @@ smOthers() {
         Back) break ;;
         Aircrack) ./scripts/others/aircrack.sh ;;
         Alacritty) ./scripts/others/alacritty.sh ;;
+        BootLoader) ./scripts/others/update-bootloader.sh ;;
         CoolTerm) ./scripts/others/retro-term.sh ;;
         Fixes) ./scripts/others/fixes.sh ;;
         GL4ES) ./scripts/others/gl4es.sh ;;
