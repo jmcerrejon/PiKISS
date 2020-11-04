@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **734 hours**
+* **734.3 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (04/11/20)
+
+· 👌 IMPROVE: Server > Pi-Hole (Ad-Blocker).
 
 ### (03/11/20)
 
