@@ -20,11 +20,11 @@ echo "
 Pi-Hole
 =======
 
- · Turn Raspberry Pi into a network-wide ad blocker.
- · When ask you about Upstream DNS, I recommend you Cloudflare.
+ · Turn Raspberry Pi into a network-wide adblocker.
+ · When asking you about Upstream DNS, I recommend you Cloudflare.
  · For log levels, check https://docs.pi-hole.net/ftldns/privacylevels/
  · If you want to change the password, type: pihole -a -p
- · The Pi-hole is free, but powered by your donations: https://pi-hole.net/donate/
+ · The Pi-hole is free but powered by your donations: https://pi-hole.net/donate/
 "
 read -p 'Press [ENTER] to continue...'
 
