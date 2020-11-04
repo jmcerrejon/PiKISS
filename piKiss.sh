@@ -166,6 +166,7 @@ smGames() {
             SpelunkyHD "Spelunky is a cave exploration/treasure-hunting game"
             Sqrxz4 "Sqrxz 4: Difficult platform game"
             SSam12 "Serious Sam I & II. Kill all walking monster"
+            StarCraft "Expansion pack for the real-time strategy video game StarCraft"
             Xump "Xump: Simple multi-platform puzzler"
         )
     fi
@@ -200,6 +201,7 @@ smGames() {
         SpelunkyHD) ./scripts/games/spelunky.sh ;;
         Sqrxz4) ./scripts/games/sqrxz4.sh ;;
         SSam12) ./scripts/games/ssam.sh ;;
+        StarCraft) ./scripts/games/starcraft.sh ;;
         Xump) ./scripts/games/xump.sh ;;
         esac
     done
@@ -353,7 +355,7 @@ smServer() {
     if [[ ${MODEL} == 'Raspberry Pi' ]]; then
         options=(
             Back "Back to main menu"
-            AdBlock "Turn Raspberry Pi into an Ad blocker"
+            AdBlock "Turn Raspberry Pi into an Ad blocker with Pi-Hole"
             BtSync "Bittorrent Sync as file backup service"
             Cups "Printer server (cups)"
             DB "MySQL+PHP5 connector"
