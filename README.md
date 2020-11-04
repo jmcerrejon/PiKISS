@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **734.3 hours**
+* **735 hours**
 
 ## 💰 Total amount donated by users
 
@@ -68,6 +68,8 @@
 ### [ ChangeLog (dd/mm/yy)]
 
 ### (04/11/20)
+
+· 📦 ADD: Others > Upgrade your boot loader.
 
 · 👌 IMPROVE: Server > Pi-Hole (Ad-Blocker).
 
