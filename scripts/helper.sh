@@ -1051,3 +1051,8 @@ cmd_reboot() {
     read -p "Now the system is going to reboot. Press [ENTER] to reboot..."
     sudo reboot
 }
+
+upgrade() {
+    echo -e "\nUpgrading your distro...\n"
+    sudo apt-get -qq update && sudo apt-get -y dist-upgrade
+}
