@@ -2,7 +2,7 @@
 #
 # Description : StarCraft Brood War
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (05/Nov/20)
+# Version     : 1.0.1 (05/Nov/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 
@@ -52,6 +52,7 @@ generate_icon() {
 Name=StarCraft Brood War
 Exec=${INSTALL_DIR}/starcraft/starcraft.sh
 Icon=${INSTALL_DIR}/starcraft/icon.png
+Path=${INSTALL_DIR}/starcraft/
 Type=Application
 Comment=StarCraft: Brood War is the expansion pack for the military science fiction real-time strategy video game StarCraft.
 Categories=Game;ActionGame;
