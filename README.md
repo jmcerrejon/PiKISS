@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **735 hours**
+* **741 hours**
 
 ## 💰 Total amount donated by users
 
@@ -67,9 +67,15 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (05/11/20)
+
+· 📦 ADD: Games > StarCraft + Brood War expansion.
+
+· 👌 IMPROVE: Emulators > Box86.
+
 ### (04/11/20)
 
-· 📦 ADD: Others > Upgrade your boot loader.
+· 📦 ADD: Others > Upgrade your boot loader on Raspberry Pi 4.
 
 · 👌 IMPROVE: Server > Pi-Hole (Ad-Blocker).
 
