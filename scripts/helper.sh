@@ -25,6 +25,24 @@ fixlibGLES() {
     fi
 }
 
+box86_check_if_latest_version_is_installed() {
+    local BOX86_PATH
+    local BOX86_VERSION
+    local GIT_VERSION
+
+    # If Box86 is not installed, skip the process
+    command -v box86 >/dev/null 2>&1 || return 0
+
+    BOX86_PATH=$(whereis box86 | awk '{print $2}')
+    BOX86_VERSION=$("$BOX86_PATH" -v | awk '{print $5}')
+    GIT_VERSION=$(git rev-parse HEAD | cut -c 1-8)
+
+    if [[ $BOX86_VERSION = "$GIT_VERSION" ]]; then 
+        echo -e "\nYour box86 is already updated!.\n"
+        exit_message
+    fi
+}
+
 #
 # PI LABS Libraries
 #
@@ -32,23 +50,29 @@ compile_box86() {
     local PI_VERSION_NUMBER
     local SOURCE_PATH
 
+    INSTALL_DIR="$HOME/box86"
     PI_VERSION_NUMBER=$(getRaspberryPiNumberModel)
     SOURCE_PATH="https://github.com/ptitSeb/box86.git"
 
     install_packages_if_missing cmake
-    cd
-    if [[ ! -d "$HOME"/box86 ]]; then
-        git clone "$SOURCE_PATH" box86 && cd "$_"
+
+    if [[ ! -d "$INSTALL_DIR" ]]; then
+        git clone "$SOURCE_PATH" "$INSTALL_DIR" && cd "$_"
     else
         echo -e "\nUpdating the repo if proceed,...\n"
-        cd ~/box86 && git pull
-        rm -rf build
+        cd "$INSTALL_DIR" && git pull
+        [[ -d "$INSTALL_DIR"/build ]] && rm -rf "$INSTALL_DIR"/build
     fi
+
+    box86_check_if_latest_version_is_installed
+
     mkdir -p build && cd "$_"
-    cmake .. -DRPI${PI_VERSION_NUMBER}=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    echo -e "\nCompiling, please wait...\n"
+    cmake .. -DRPI"${PI_VERSION_NUMBER}"=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo
     make_with_all_cores
+    echo -e "\nCompilation done. Installing...\n"
     sudo make install
-    echo -e "\nBox86 compiled and has been installed.\n"
+    echo -e "\nBox successfully installed.\n"
 }
 
 install_box86() {
@@ -655,7 +679,7 @@ function is_missing_dialog_pkg() {
 }
 
 getRaspberryPiNumberModel() {
-    echo $(cat /proc/device-tree/model | awk '{print $3}')
+    < /proc/device-tree/model awk '{print $3}'
 }
 
 #
@@ -866,7 +890,8 @@ make_with_all_cores() {
     if [ -n "$1" ]; then
         echo -e "$1"
     fi
-    make -j"$(nproc)"
+    time make -j"$(nproc)"
+    echo
 }
 
 #
