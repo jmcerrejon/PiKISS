@@ -154,6 +154,7 @@ smGames() {
             Diablo2 "Diablo 2 Lord of Destruction"
             Eduke32 "Duke Nukem 3D is a fps game developed by 3D Realms"
             HalfLife "Gordon Freeman must exit Black Mesa after it's invaded by aliens"
+            Heroes2 "Free implementation of Heroes of Might and Magic II engine"
             Hurrican "Jump and shoot game based on the Turrican game series"
             Morrowind "The Elder Scrolls III: Morrowind is an open-world RPG"
             OpenBor "OpenBOR is the open source continuation of Beats of Rage"
@@ -189,6 +190,7 @@ smGames() {
         Diablo2) ./scripts/games/diablo2.sh ;;
         Eduke32) ./scripts/games/eduke32.sh ;;
         HalfLife) ./scripts/games/half-life.sh ;;
+        Heroes2) ./scripts/games/fheroes2.sh ;;
         Hurrican) ./scripts/games/hurrican.sh ;;
         Morrowind) ./scripts/games/openmw.sh ;;
         OpenBor) ./scripts/games/openbor.sh ;;
