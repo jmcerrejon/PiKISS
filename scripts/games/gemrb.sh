@@ -79,7 +79,7 @@ end_message() {
 compile() {
     install_packages_if_missing "${PACKAGES_DEV[@]}"
     mkdir -p "$HOME/sc" && cd "$_"
-    git clone "SOURCE_CODE_URL" gemrb && "$_"
+    git clone "$SOURCE_CODE_URL" gemrb && "$_"
     mkdir build && cd "$_"
     cmake .. -DSDL_BACKEND=SDL2 -DCMAKE_BUILD_TYPE=Release -DOPENGL_BACKEND=GLES -DDISABLE_WERROR=1
     make_with_all_cores "\nCompiling..."
