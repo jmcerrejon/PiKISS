@@ -2,7 +2,7 @@
 #
 # Description : Vulkan driver
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.1 (14/Oct/20)
+# Version     : 1.1.2 (06/Nov/20)
 # Compatible  : Raspberry Pi 4
 #
 # Info        : Thks to PI Labs
@@ -15,7 +15,9 @@
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-SOURCE_CODE_URL="git://anongit.freedesktop.org/mesa/mesa"
+readonly INSTALL_DIR="$HOME/mesa_vulkan"
+readonly SOURCE_CODE_URL="git://anongit.freedesktop.org/mesa/mesa"
+readonly PI_VERSION_NUMBER=$(< /proc/device-tree/model awk '{print $3}')
 
 install() {
     echo -e "\nInstalling,...\n"
@@ -24,12 +26,6 @@ install() {
     echo
     glxinfo -B
     echo "Done."
-}
-
-binary_only() {
-    echo -e "\nInstalling deps...\n"
-    sudo apt install -y ninja-build
-    install
 }
 
 install_meson() {
@@ -72,6 +68,8 @@ update_repo() {
 }
 
 compile() {
+    local EXTRA_PARAM
+
     if [[ -d "$HOME"/mesa_vulkan ]]; then
         echo
         read -p "Directory exists. Do you want to update the repo & compile it again (y/N)? " response
@@ -88,13 +86,15 @@ compile() {
         clone_repo
     fi
 
-    if [[ -d "$HOME"/mesa_vulkan/build ]]; then
-        rm -rf "$HOME"/mesa_vulkan/build
+    [[ -d "$INSTALL_DIR"/build ]] && rm -rf "$INSTALL_DIR"/build
+
+    if [[ $PI_VERSION_NUMBER -eq 4 ]]; then
+        EXTRA_PARAM="-mcpu=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard"
     fi
 
     meson --prefix /usr -Dgles1=disabled -Dgles2=enabled -Dplatforms=x11,wayland -Dvulkan-drivers=broadcom -Ddri-drivers= -Dgallium-drivers=v3d,kmsro,vc4,zink,virgl -Dbuildtype=release -Dc_args='-mcpu=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard' -Dcpp_args='-mcpu=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard' build
     echo -e "\nCompiling... Estimated time on Raspberry Pi 4 over USB/SSD drive (Not overclocked): ~12 min. \n"
-    ninja -C build -j"$(nproc)"
+    time ninja -C build -j"$(nproc)"
     install
 }
 

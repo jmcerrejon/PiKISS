@@ -2,7 +2,7 @@
 #
 # Description : TIC-80 TINY COMPUTER
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.3 (05/Oct/20)
+# Version     : 1.0.4 (09/Nov/20)
 # Compatible  : Raspberry Pi 3-4 (tested)
 # Repository  : https://github.com/nesbox/TIC-80
 #
@@ -22,42 +22,42 @@ PACKAGES_DEV=(cmake libgtk-3-dev libglvnd-dev libglu1-mesa-dev libsdl2-dev zlib1
 
 runme() {
     if [ ! -f "$INSTALL_DIR/tic-80/tic80" ]; then
-		echo -e "\nFile does not exist.\n· Something is wrong.\n· Try to install again."
-		exit_message
-	fi
+        echo -e "\nFile does not exist.\n· Something is wrong.\n· Try to install again."
+        exit_message
+    fi
     echo
-	read -p "Press [ENTER] to run..."
-	cd "$INSTALL_DIR"/tic-80 && ./tic80
-	exit_message
+    read -p "Press [ENTER] to run..."
+    cd "$INSTALL_DIR"/tic-80 && ./tic80
+    exit_message
 }
 
 remove_files() {
-	rm -rf "$INSTALL_DIR"/tic-80 ~/.local/share/com.nesbox.tic
+    rm -rf "$INSTALL_DIR"/tic-80 ~/.local/share/com.nesbox.tic
 }
 
 uninstall() {
-	read -p "Do you want to uninstall TIC-80 (y/N)? " response
-	if [[ $response =~ [Yy] ]]; then
-		remove_files
-		if [[ -e $INSTALL_DIR/tic-80/tic80 ]]; then
-			echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
-			exit_message
-		fi
-		echo -e "\nSuccessfully uninstalled."
-		exit_message
-	fi
-	exit_message
+    read -p "Do you want to uninstall TIC-80 (y/N)? " response
+    if [[ $response =~ [Yy] ]]; then
+        remove_files
+        if [[ -e $INSTALL_DIR/tic-80/tic80 ]]; then
+            echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
+            exit_message
+        fi
+        echo -e "\nSuccessfully uninstalled."
+        exit_message
+    fi
+    exit_message
 }
 
 if [[ -e $INSTALL_DIR/tic-80/tic80 ]]; then
-	echo -e "TIC-80 already installed.\n"
-	uninstall
+    echo -e "TIC-80 already installed.\n"
+    uninstall
 fi
 
-mkDesktopEntry() {
+generate_icon() {
     echo -e "\nCreating shortcut icon..."
-	if [[ ! -e ~/.local/share/applications/tic-80.desktop ]]; then
-		cat <<EOF >~/.local/share/applications/tic-80.desktop
+    if [[ ! -e ~/.local/share/applications/tic-80.desktop ]]; then
+        cat <<EOF >~/.local/share/applications/tic-80.desktop
 [Desktop Entry]
 Name=TIC-80
 Exec=${INSTALL_DIR}/tic-80/tic80
@@ -67,7 +67,7 @@ Type=Application
 Comment=TIC-80 is a tiny computer which you can use to make, play, and share tiny games.
 Categories=Development;IDE;
 EOF
-	fi
+    fi
 }
 
 post_install() {
@@ -77,12 +77,12 @@ post_install() {
 
     echo -e "\nTIC-80 is not compatible with KMS driver for now.\nDo you want to DISABLE KMS?"
     read -p "NOTE: Some games need this, but you can enable it later. Type (y/N): " response
-	if [[ $response =~ [Yy] ]]; then
+    if [[ $response =~ [Yy] ]]; then
         set_legacy_driver
         echo -e "\nDone!. App at $INSTALL_DIR/tic-80 or Go to Menu > Programming > TIC-80"
         read -p "Press [ENTER] to reboot."
         sudo reboot
-	fi
+    fi
 }
 
 install() {
@@ -90,7 +90,7 @@ install() {
     install_packages_if_missing "${PACKAGES[@]}"
     download_and_extract "$BINARY_PATH" "$INSTALL_DIR"
     create_libbcm_host_link
-    mkDesktopEntry
+    generate_icon
     post_install
     echo -e "\nDone!. App at $INSTALL_DIR/tic-80 or Go to Menu > Programming > TIC-80"
     runme
