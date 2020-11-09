@@ -17,11 +17,11 @@
 
 ## 💰 Total amount donated by users
 
-* $275,06.
+* $286,88.
 
 * I want to thank my patrons *James Carroll, David J Leto, Mike A. Torevell and Rodney Hester* for trusting me ❤️
 
-* Others users who helped me with donations are: danoga.
+* Others users who helped me with donations are: ...danoga, Roman Borowinski.
 
 ## 📣 Stay tuned! 
 
@@ -69,7 +69,7 @@
 
 ### (09/11/20)
 
-· 📦 ADD: Others > Alacrity (Fastest terminal emulator in existence).
+· 📦 ADD: Others > Alacritty (Fastest terminal emulator in existence).
 
 ### (07/11/20)
 
