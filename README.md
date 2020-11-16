@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **751 hours**
+* **755 hours**
 
 ## 💰 Total amount donated by users
 
