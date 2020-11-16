@@ -2,7 +2,7 @@
 #
 # Description : Half Life thks to Salva (Pi Labs)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.9 (23/Oct/20)
+# Version     : 1.0.10 (12/Nov/20)
 # Compatible  : Raspberry Pi (tested)
 # Repository  : https://github.com/ValveSoftware/halflife
 #
@@ -109,6 +109,6 @@ Install Half Life on Raspberry Pi
 
  · Based on engine at ${SOURCE_CODE_URL}
 "
-read -p "Press [ENTER] to go back to the menu..."
+read -p "Press [ENTER] to continue..."
 
 install
