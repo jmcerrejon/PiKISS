@@ -2,7 +2,7 @@
 #
 # Description : Vulkan driver
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.2 (06/Nov/20)
+# Version     : 1.1.3 (21/Nov/20)
 # Compatible  : Raspberry Pi 4
 #
 # Info        : Thks to PI Labs
@@ -92,7 +92,9 @@ compile() {
         EXTRA_PARAM="-mcpu=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard"
     fi
 
-    meson --prefix /usr -Dgles1=disabled -Dgles2=enabled -Dplatforms=x11,wayland -Dvulkan-drivers=broadcom -Ddri-drivers= -Dgallium-drivers=v3d,kmsro,vc4,zink,virgl -Dbuildtype=release -Dc_args='-mcpu=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard' -Dcpp_args='-mcpu=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard' build
+    # Check in a future the next params for better performance. It seems it's failing due some incompatible params.
+    # ... -Dgallium-drivers=v3d,kmsro,vc4,zink,virgl 
+    meson --prefix /usr -Dgles1=disabled -Dgles2=enabled -Dplatforms=x11 -Dvulkan-drivers=broadcom -Ddri-drivers= -Dgallium-drivers=v3d,kmsro,vc4,virgl -Dbuildtype=release -Dc_args="$EXTRA_PARAM" -Dcpp_args="$EXTRA_PARAM" build
     echo -e "\nCompiling... Estimated time on Raspberry Pi 4 over USB/SSD drive (Not overclocked): ~12 min. \n"
     time ninja -C build -j"$(nproc)"
     install
