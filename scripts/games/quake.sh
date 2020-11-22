@@ -2,7 +2,7 @@
 #
 # Description : Quake I, ][, ]I[
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.3 (30/Oct/20)
+# Version     : 1.3.4 (21/Nov/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help 		  : Quake 1: | https://godmodeuser.com/p/8#40
@@ -400,7 +400,7 @@ menu() {
     while true; do
         dialog --clear \
             --title "[ Quake for Raspberry Pi ]" \
-            --menu "Choose language:" 11 100 3 \
+            --menu "Choose game:" 11 100 3 \
             Quake1 "Ranger travels across alternate dimensions to stop an enemy code-named 'Quake'" \
             Quake2 "It is not a direct sequel to Quake. The player is given mission-based objectives" \
             Quake3 "1999 multiplayer-focused fps that no have a story-based single-player mode" \
