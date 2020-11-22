@@ -3,7 +3,7 @@
 # Description : GemRB (EXPERIMENTAL)
 # Version     : 0.8.7
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (25/Oct/20)
+# Version     : 1.0.2 (18/Nov/20)
 # Compatible  : Raspberry Pi 4
 # Repository  : https://github.com/gemrb/gemrb
 # Help        : https://github.com/gemrb/gemrb/blob/master/INSTALL
@@ -82,7 +82,7 @@ compile() {
     git clone "$SOURCE_CODE_URL" gemrb && "$_"
     mkdir build && cd "$_"
     cmake .. -DSDL_BACKEND=SDL2 -DCMAKE_BUILD_TYPE=Release -DOPENGL_BACKEND=GLES -DDISABLE_WERROR=1
-    make_with_all_cores "\nCompiling..."
+    make_with_all_cores
     read -p "Do you want to install globally the app (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
         sudo make install
