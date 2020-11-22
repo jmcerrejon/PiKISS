@@ -887,10 +887,14 @@ exit_pikiss() {
 # Compile with all cores
 #
 make_with_all_cores() {
-    if [ -n "$1" ]; then
-        echo -e "$1"
-    fi
-    time make -j"$(nproc)"
+    echo -e "\n Compiling..."
+
+    if [ "$(uname -m)" == 'armv7l' ]; then
+		time make -j"$(nproc)" OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
+	else
+		time make -j"$(nproc)" PLATFORM=rpi1
+	fi
+
     echo
 }
 
