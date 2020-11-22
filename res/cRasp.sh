@@ -2,7 +2,7 @@
 #
 # Description : Personal script to make my custom Raspberry Pi OS
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.2 (15/Jul/20)
+# Version     : 1.3.3 (22/Nov/20)
 # Compatible  : Raspberry Pi 1-4 (tested)
 #
 clear
@@ -15,7 +15,7 @@ y*) sudo apt-get dist-upgrade -y ;;
 esac
 
 echo -e "\nInstalling some packages...\n"
-sudo apt-get install -y mc htop apt-file sshfs dialog cmake exfat-fuse exfat-utils checkinstall
+sudo apt-get install -y mc htop apt-file sshfs dialog cmake exfat-fuse exfat-utils checkinstall p7zip-full
 sudo apt-get -y autoremove
 
 echo -e "\nAdding useful alias...\n"
