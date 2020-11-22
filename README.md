@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **755 hours**
+* **764 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,14 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (21/11/20)
+
+· 📦 ADD: Games > StepMania.
+
+· 📦 ADD: Emulators > Redream (Sega Dreamcast).
+
+· 📦 ADD: Emulators > Bsnes (SuperNES).
 
 ### (09/11/20)
 
