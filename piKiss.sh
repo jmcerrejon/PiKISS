@@ -11,7 +11,7 @@
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-VERSION="v.1.7.1"
+VERSION="v.1.7.2"
 IP=$(get_ip)
 TITLE="PiKISS (Pi Keeping It Simple, Stupid!) ${VERSION} .:. Jose Cerrejon | IP=${IP} ${CPU}| Model=${MODEL}"
 CHK_UPDATE=0
@@ -168,6 +168,7 @@ smGames() {
             Sqrxz4 "Sqrxz 4: Difficult platform game"
             SSam12 "Serious Sam I & II. Kill all walking monster"
             StarCraft "Expansion pack for the real-time strategy video game StarCraft"
+            StepMania "StepMania is a free dance and rhythm game"
             Xump "Xump: Simple multi-platform puzzler"
         )
     fi
@@ -204,6 +205,7 @@ smGames() {
         Sqrxz4) ./scripts/games/sqrxz4.sh ;;
         SSam12) ./scripts/games/ssam.sh ;;
         StarCraft) ./scripts/games/starcraft.sh ;;
+        StepMania) ./scripts/games/stepmania.sh ;;
         Xump) ./scripts/games/xump.sh ;;
         esac
     done
@@ -229,8 +231,9 @@ smEmulators() {
             Pifba "Emulates old arcade games using CPS1, CPS2,..."
             PSP "PPSSPP can run your PSP games on your RPi in full HD resolution"
             ResidualVM "Cross-platform 3D game interpreter to play some games"
+            Redream "Redream is a Dreamcast emulator"
             ScummVM "Allow gamers to play point-and-click adventure games"
-            Snes "SNES Emulator Snes9X 1.60"
+            Snes "SNES Emulator Snes9X or Bsnes"
             Speccy "ZX-Spectrum emulator"
         )
     fi
@@ -254,8 +257,9 @@ smEmulators() {
         PSP) ./scripts/emus/psp.sh ;;
         Pifba) ./scripts/emus/pifba.sh ;;
         ResidualVM) ./scripts/emus/residual.sh ;;
+        Redream) ./scripts/emus/dc.sh ;;
         ScummVM) ./scripts/emus/scummvm.sh ;;
-        Snes) ./scripts/emus/pisnes.sh ;;
+        Snes) ./scripts/emus/snes.sh ;;
         Speccy) ./scripts/emus/speccy.sh ;;
         esac
     done
