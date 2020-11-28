@@ -158,6 +158,7 @@ smGames() {
             Hurrican "Jump and shoot game based on the Turrican game series"
             Morrowind "The Elder Scrolls III: Morrowind is an open-world RPG"
             OpenBor "OpenBOR is the open source continuation of Beats of Rage"
+            OpenClaw "Platform 2D Captain Claw (1997) reimplementation"
             OpenSPlex "OpenSupaplex reimplementation of the original 90's game"
             OpenXCom "Open-source clone of UFO: Enemy Unknown"
             Quake "Enhanced clients for ID Software's Quake saga"
@@ -195,6 +196,7 @@ smGames() {
         Hurrican) ./scripts/games/hurrican.sh ;;
         Morrowind) ./scripts/games/openmw.sh ;;
         OpenBor) ./scripts/games/openbor.sh ;;
+        OpenClaw) ./scripts/games/openclaw.sh ;;
         OpenSPlex) ./scripts/games/supaplex.sh ;;
         OpenXCom) ./scripts/games/openxcom.sh ;;
         Quake) ./scripts/games/quake.sh ;;
