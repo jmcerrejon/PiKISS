@@ -13,15 +13,15 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **764 hours**
+* **767 hours**
 
 ## 💰 Total amount donated by users
 
 * $286,88.
 
-* I want to thank my patrons *James Carroll, David J Leto, Mike A. Torevell and Rodney Hester* for trusting me ❤️
+* I want to thank my patrons *James Carroll, David J Leto and Rodney Hester* for trusting me ❤️
 
-* Others users who helped me with donations are: ...danoga, Roman Borowinski.
+* Others users who helped me with donations are: ...danoga, Roman Borowinski, Lenny Tua.
 
 ## 📣 Stay tuned! 
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (28/11/20)
+
+· 📦 ADD: Games > Open Claw (Platform 2D Captain Claw (1997) reimplementation).
 
 ### (21/11/20)
 
