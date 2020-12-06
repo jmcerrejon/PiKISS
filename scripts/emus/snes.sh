@@ -2,10 +2,10 @@
 #
 # Description : Snes9X and BSNes
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.0 (22/Nov/20)
+# Version     : 1.1.1 (30/Nov/20)
 # Compatible  : Raspberry Pi 2-4
 # Repository  : https://github.com/snes9xgit/snes9x
-#             : https://github.com/bsnes-emu/bsnes
+#             : https://github.com/bsnes-emu/bsnes | Try https://github.com/vanfanel/bsnes-mercury
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
