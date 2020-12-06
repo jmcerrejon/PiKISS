@@ -2,7 +2,7 @@
 #
 # Description : Open Claw
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (28/Nov/20)
+# Version     : 1.0.1 (28/Nov/20)
 # Compatible  : Raspberry Pi 4
 # Repository  : https://github.com/pjasicek/OpenClaw
 #
@@ -92,7 +92,6 @@ install() {
     download_and_extract "$BINARY_URL" "$INSTALL_DIR"
     download_file "$DATA_GAME_URL" "$INSTALL_DIR/openclaw"
     generate_icon
-    # Magic Air Copy
     end_message
 }
 
