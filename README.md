@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **767 hours**
+* **770 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (06/12/20)
+
+· 📦 ADD: Games > Temptations (Retro platform game).
 
 ### (28/11/20)
 
