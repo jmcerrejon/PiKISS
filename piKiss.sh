@@ -170,6 +170,7 @@ smGames() {
             SSam12 "Serious Sam I & II. Kill all walking monster"
             StarCraft "Expansion pack for the real-time strategy video game StarCraft"
             StepMania "StepMania is a free dance and rhythm game"
+            Temptations "Platform game made exclusively for MSX computers"
             Xump "Xump: Simple multi-platform puzzler"
         )
     fi
@@ -208,6 +209,7 @@ smGames() {
         SSam12) ./scripts/games/ssam.sh ;;
         StarCraft) ./scripts/games/starcraft.sh ;;
         StepMania) ./scripts/games/stepmania.sh ;;
+        Temptations) ./scripts/games/temptations.sh ;;
         Xump) ./scripts/games/xump.sh ;;
         esac
     done
