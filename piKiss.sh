@@ -277,6 +277,7 @@ smMultimedia() {
             Back "Back to main menu"
             Kodi "Kodi is a free media player that is designed to look great on your TV but is just as home on a small screen."
             Kiosk "Image slideshow"
+            Moonlight "Moonlight PC is an open source implementation of NVIDIA's GameStream"
             OBS "Free & open source software 4 video recording and streaming"
         )
     fi
@@ -288,6 +289,7 @@ smMultimedia() {
         Back) break ;;
         Kodi) ./scripts/mmedia/xbmc.sh ;;
         Kiosk) ./scripts/mmedia/kiosk.sh ;;
+        Moonlight) ./scripts/mmedia/moonlight-qt.sh ;;
         OBS) ./scripts/mmedia/obs.sh ;;
         esac
     done
