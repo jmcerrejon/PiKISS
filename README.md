@@ -13,15 +13,15 @@
 
 ## ⏰ Estimated hours of work so far
 
-* **770 hours**
+* **780 hours**
 
 ## 💰 Total amount donated by users
 
 * $286,88.
 
-* I want to thank my patrons *James Carroll, David J Leto and Rodney Hester* for trusting me ❤️
+* I want to thank my patrons *James Carroll, David J Leto, Rodney Hester, Matthew Michink & Mathew Gracie* for trusting me ❤️
 
-* Others users who helped me with donations are: ...danoga, Roman Borowinski, Lenny Tua.
+* Others users who helped me with donations are: *Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter*
 
 ## 📣 Stay tuned! 
 
@@ -66,6 +66,12 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (13/12/20)
+
+· 📦 ADD: Multimedia > Moonlight (Open source implementation of NVIDIA's GameStream).
+
+· 👌 IMPROVE: Others > SDL2.
 
 ### (06/12/20)
 
