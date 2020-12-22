@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **782 hours**
+-   **784.3 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (22/12/20)
+
+· 👌 IMPROVE: Games > Diablo I binaries upgraded to 1.1.0.
 
 ### (15/12/20)
 
