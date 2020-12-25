@@ -19,12 +19,12 @@ readonly DATA_GAME_WEBSITE="https://thelettervsixtim.es/makeandplay"
 readonly SOURCE_CODE_URL="https://github.com/TerryCavanagh/VVVVVV"
 
 runme() {
-    if [ ! -f "$INSTALL_DIR"/vvvvvv/vvvvvv ]; then
+    if [ ! -f "$INSTALL_DIR"/vvvvvv/vvvvvv.sh ]; then
         echo -e "\nFile does not exist.\n· Something is wrong.\n· Try to install again."
         exit_message
     fi
     read -p "Press [ENTER] to run..."
-    cd "$INSTALL_DIR"/vvvvvv && ./vvvvvv
+    cd "$INSTALL_DIR"/vvvvvv && ./vvvvvv.sh
     exit_message
 }
 
@@ -86,7 +86,7 @@ compile() {
 }
 
 post_install() {
-    # clear
+    clear
     echo -e "\nThis game is under VVVVV Source Code License v1.0.\nI can download the neccesary public data.zip file for you."
     read -p "(Y)es, do it | (n)o, I prefer to download it by myself? (Y/n) " response
     if [[ $response =~ [Nn] ]]; then
@@ -104,7 +104,6 @@ post_install() {
 install() {
     install_packages_if_missing "${PACKAGES[@]}"
     download_and_extract "$BINARY_URL" "$INSTALL_DIR"
-    download_file "$DATA_GAME_URL" "$INSTALL_DIR/vvvvvv"
     generate_icon
     post_install
 }
