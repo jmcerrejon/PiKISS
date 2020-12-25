@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **784.3 hours**
+-   **787 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (25/12/20)
+
+· 📦 ADD: Games > VVVVVV (Instead of jumping, you need to reverse gravity).
 
 ### (22/12/20)
 
