@@ -171,6 +171,7 @@ smGames() {
             StarCraft "Expansion pack for the real-time strategy video game StarCraft"
             StepMania "StepMania is a free dance and rhythm game"
             Temptations "Platform game made exclusively for MSX computers"
+            VVVVVV "Minimalist platformer: instead of jumping, you need to reverse gravity"
             Xump "Xump: Simple multi-platform puzzler"
         )
     fi
@@ -210,6 +211,7 @@ smGames() {
         StarCraft) ./scripts/games/starcraft.sh ;;
         StepMania) ./scripts/games/stepmania.sh ;;
         Temptations) ./scripts/games/temptations.sh ;;
+        VVVVVV) ./scripts/games/vvvvvv.sh ;;
         Xump) ./scripts/games/xump.sh ;;
         esac
     done

@@ -2,7 +2,7 @@
 #
 # Description : VVVVVV (WIP)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0
+# Version     : 1.0.0 (25/12/20)
 # Compatible  : Raspberry Pi 4
 # Repository  : https://github.com/TerryCavanagh/VVVVVV
 #
@@ -13,8 +13,9 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES=(libsdl2-mixer-2.0-0)
 readonly PACKAGES_DEV=(libsdl2-dev libsdl2-mixer-dev)
-readonly BINARY_URL=""
+readonly BINARY_URL="https://misapuntesde.com/rpi_share/vvvvvv-2.3dev-rpi.tar.gz"
 readonly DATA_GAME_URL="https://thelettervsixtim.es/makeandplay/data.zip"
+readonly DATA_GAME_WEBSITE="https://thelettervsixtim.es/makeandplay"
 readonly SOURCE_CODE_URL="https://github.com/TerryCavanagh/VVVVVV"
 
 runme() {
@@ -57,8 +58,8 @@ generate_icon() {
 [Desktop Entry]
 Name=VVVVVV
 Type=Application
-Comment=
-Exec=${INSTALL_DIR}/vvvvvv/vvvvvv
+Comment=Smart, minimalist platformer with one simple but brilliant twist: instead of jumping, you need to reverse gravity.
+Exec=${INSTALL_DIR}/vvvvvv/vvvvvv.sh
 Icon=${INSTALL_DIR}/vvvvvv/icon.png
 Path=${INSTALL_DIR}/vvvvvv/
 Terminal=false
@@ -68,11 +69,12 @@ EOF
 }
 
 end_message() {
-    echo -e "\n\nDone!. You can play typing $INSTALL_DIR/vvvvvv/vvvvvv or opening the Menu > Games > VVVVVV."
-    runme
+    echo -e "\n\nDone!. You can play typing $INSTALL_DIR/vvvvvv/vvvvvv.sh or opening the Menu > Games > VVVVVV."
 }
 
 compile() {
+    # Raspberry Pi OS has an issue with the lib libSDL2-2-0-so-0. You need to compile it manually,
+    # Then include it with the binary and run with LD_LIBRARY_PATH=./ ./VVVVVV
     install_packages_if_missing "${PACKAGES_DEV[@]}"
     mkdir -p "$HOME/sc" && cd "$_" || return
     git clone "$SOURCE_CODE_URL" vvvvvv && cd vvvvvv/desktop_version || return
@@ -83,24 +85,40 @@ compile() {
     exit_message
 }
 
+post_install() {
+    # clear
+    echo -e "\nThis game is under VVVVV Source Code License v1.0.\nI can download the neccesary public data.zip file for you."
+    read -p "(Y)es, do it | (n)o, I prefer to download it by myself? (Y/n) " response
+    if [[ $response =~ [Nn] ]]; then
+        chromium-browser "$DATA_GAME_WEBSITE" &>/dev/null
+        echo -e "Download and copy the file data.zip inside $INSTALL_DIR/vvvvvv"
+        end_message
+        exit_message
+    fi
+
+    download_file "$DATA_GAME_URL" "$INSTALL_DIR/vvvvvv"
+    end_message
+    runme
+}
+
 install() {
     install_packages_if_missing "${PACKAGES[@]}"
     download_and_extract "$BINARY_URL" "$INSTALL_DIR"
     download_file "$DATA_GAME_URL" "$INSTALL_DIR/vvvvvv"
     generate_icon
-    end_message
+    post_install
 }
 
 install_script_message
 echo "
-VVVVVV for Raspberry Pi
-=======================
+VVVVVV: Make and Play edition for Raspberry Pi
+==============================================
 
  · Optimized for Raspberry Pi 4.
- · https://thelettervsixtim.es/makeandplay/
- · Current resolution 1280x720, but you can change it editing config.xml
+ · VVVVVV Source Code License v1.0. https://thelettervsixtim.es/makeandplay/
+ · If you enjoy the game, please consider purchasing a copy at http://thelettervsixtim.es
  · KEYS: Cursors=Movement | Space=Change gravity | Alt+ENTER=Full screen | Enter=Map
 "
 read -p "Press [Enter] to continue..."
 
-compile
+install
