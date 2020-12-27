@@ -2,7 +2,7 @@
 #
 # Description : StarCraft Brood War
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (05/Nov/20)
+# Version     : 1.0.2 (27/Dec/20)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 
@@ -12,7 +12,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="$HOME/games"
 readonly SCRIPT_PATH="$HOME/games/starcraft/starcraft.sh"
-readonly BINARY_PATH="https://e.pcloud.link/publink/show?code=XZI077ZTIB4XOiUzMfcT6Tu27oSobWqo4a7"
+readonly BINARY_PATH="https://archive.org/download/starcraft-rpi.7z/starcraft-rpi.7z"
 readonly PACKAGES=(wine p7zip-full)
 
 runme() {

@@ -2,7 +2,7 @@
 #
 # Description : Return to Castle Wolfenstein for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.3 (22/Oct/20)
+# Version     : 1.3.4 (27/Dec/20)
 # Compatible  : Raspberry Pi 3-4 (tested)
 # Repository  : https://github.com/iortcw/iortcw
 # Extras      : https://www.moddb.com/mods/rtcw-venom-mod/downloads/rtcw-venom-mod-v60
@@ -13,7 +13,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="$HOME/games"
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/rtcw_bin-rpi.tar.gz"
-readonly ES_TRANSLATION_URL="https://e.pcloud.link/publink/show?code=XZtsaZowc9yL8zi4Rzk3FY77uq0YYAbFok"
+readonly ES_TRANSLATION_URL="https://archive.org/download/rtrc_es_translation.7z/rtrc_es_translation.7z"
 readonly VAR_DATA_NAME="RTC_WOLFENSTEIN"
 DATA_URL=""
 
@@ -73,7 +73,6 @@ end_message() {
     echo -e "\nDone!. You can play typing $INSTALL_DIR/rtcw/iowolfsp.arm for single player or ./iowolfmp.arm for multiplayer or opening the Menu > Games > Return to Castle Wolfenstein.\n"
     runme
 }
-
 
 install() {
     local DATA_URL
