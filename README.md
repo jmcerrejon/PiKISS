@@ -67,6 +67,10 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (27/12/20)
+
+· 🐛 FIX: Links broken for StarCraft, StepMania, OpenMW and OpenBOR.
+
 ### (25/12/20)
 
 · 📦 ADD: Games > VVVVVV (Instead of jumping, you need to reverse gravity).
