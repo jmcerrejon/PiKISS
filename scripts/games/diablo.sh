@@ -2,7 +2,7 @@
 #
 # Description : Diablo for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.6 (22/Dec/20)
+# Version     : 1.1.7 (03/Jan/21)
 # Compatible  : Raspberry Pi 3-4 (tested)
 #
 # Help		  : https://github.com/diasurgical/devilutionX/
@@ -79,12 +79,12 @@ install() {
     echo
     read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Diablo 1 (Y/n)? " response
     if [[ $response =~ [Nn] ]]; then
-        echo -e "\nPlease, copy diabdat.mpq inside $INSTALL_DIR/diablo1"
+        echo -e "\nPlease, copy diabdat.mpq (must be in lowercase) inside $INSTALL_DIR/diablo1"
         return 1
     fi
 
     if ! message_magic_air_copy "$DIABLO1_DATA_URL"; then
-        echo -e "\nNow copy diabdat.mpq into $INSTALL_DIR/diablo1."
+        echo -e "\nNow copy diabdat.mpq (must be in lowercase) into $INSTALL_DIR/diablo1."
         exit_message
     fi
 
