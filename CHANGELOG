@@ -1,3 +1,14 @@
+(03/01/21)
+==========
+
+· 🐛 FIX: Games > AVP, Diablo.
+
+· 👌 IMPROVE: Others > RPiPlay, Gl4ES, scrcpy.
+
+· 👌 IMPROVE: Games > Blood, Eduke32, SMario64
+
+· 👌 IMPROVE: Emulators > PSP, ResidualVM. Refactor code. Change /home/pi -> $HOME.
+
 (27/12/20)
 ==========
 

@@ -13,15 +13,15 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **787 hours**
+-   **792 hours**
 
 ## 💰 Total amount donated by users
 
--   $286,88.
+-   $400,98.
 
 -   I want to thank my patrons _James Carroll, David J Leto, Rodney Hester, Matthew Michink & Mathew Gracie_ for trusting me ❤️
 
--   Others users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter_
+-   Others users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz_
 
 ## 📣 Stay tuned!
 
@@ -66,6 +66,16 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (03/01/21)
+
+· 🐛 FIX: Games > AVP, Diablo.
+
+· 👌 IMPROVE: Others > RPiPlay, Gl4ES, scrcpy.
+
+· 👌 IMPROVE: Games > Blood, Eduke32, SMario64
+
+· 👌 IMPROVE: Emulators > PSP, ResidualVM. Refactor code. Change /home/pi -> $HOME.
 
 ### (27/12/20)
 
