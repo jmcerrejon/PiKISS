@@ -11,7 +11,7 @@
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-VERSION="v.1.7.2"
+VERSION="v.1.7.3"
 IP=$(get_ip)
 TITLE="PiKISS (Pi Keeping It Simple, Stupid!) ${VERSION} .:. Jose Cerrejon | IP=${IP} ${CPU}| Model=${MODEL}"
 CHK_UPDATE=0
@@ -254,7 +254,7 @@ smEmulators() {
         Amstrad) ./scripts/emus/caprice.sh ;;
         Comm64) ./scripts/emus/commodore.sh ;;
         Dolphin) ./scripts/emus/dolphin.sh ;;
-        MSDOS) ./scripts/emus/rpix86.sh ;;
+        MSDOS) ./scripts/emus/msdos.sh ;;
         Gba) ./scripts/emus/gba.sh ;;
         Genesis) ./scripts/emus/genesis.sh ;;
         Mednafen) ./scripts/emus/mednafen.sh ;;
