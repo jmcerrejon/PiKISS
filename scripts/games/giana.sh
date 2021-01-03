@@ -2,64 +2,73 @@
 #
 # Description : Giana's Return
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (07/Sep/16)
-# Compatible  : Raspberry Pi 1, 2 & 3 (tested)
+# Version     : 1.0.1 (03/Jan/21)
+# Compatible  : NOT WORKING ON Raspberry Pi 4 (tested)
 #
+. ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
+check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-INSTALL_DIR="/home/$USER/games/giana/"
-URL_FILE="https://www.retroguru.com/gianas-return/gianas-return-v.latest-raspberrypi.zip"
 
-if  which $INSTALL_DIR/xump_rpi >/dev/null ; then
-    read -p "Warning!: Giana already installed. Press [ENTER] to exit..."
-    exit
-fi
+readonly INSTALL_DIR="$HOME/games"
+readonly BINARY_FILE="https://www.retroguru.com/gianas-return/gianas-return-v.latest-raspberrypi.zip"
 
-validate_url(){
-    if [[ `wget -S --spider $1 2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then echo "true"; fi
+remove_files() {
+    sudo rm -rf "$INSTALL_DIR/gianas" ~/.local/share/applications/gianas.desktop
 }
 
-generateIcon(){
-    if [[ ! -e ~/.local/share/applications/Giana.desktop ]]; then
-cat << EOF > ~/.local/share/applications/Giana.desktop
+uninstall() {
+    read -p "Do you want to uninstall Giana's Return (y/N)? " response
+    if [[ $response =~ [Yy] ]]; then
+        remove_files
+        if [[ -e "$INSTALL_DIR"/scrcpy ]]; then
+            echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
+            exit_message
+        fi
+        echo -e "\nSuccessfully uninstalled."
+        exit_message
+    fi
+    exit_message
+}
+
+if [[ -d $INSTALL_DIR/gianas ]]; then
+    echo -e "Giana's Return already installed.\n"
+    uninstall
+    exit 1
+fi
+
+generate_icon() {
+    echo "Generating icon..."
+    if [[ ! -e ~/.local/share/applications/gianas.desktop ]]; then
+cat << EOF > ~/.local/share/applications/gianas.desktop
 [Desktop Entry]
 Name=Giana Return
-Exec=/home/pi/games/giana/giana_rpi
+Exec=${PWD}/giana/giana_rpi
+Path=${PWD}/giana/
 Icon=terminal
 Type=Application
 Comment=Evil Swampy and his followers have stolen the magic ruby, which made it once possible for Giana and Maria to return from their dream
 Categories=Game;ActionGame;
-Path=/home/pi/games/giana/
 EOF
     fi
 }
 
-install(){
-    if [[ $(validate_url $URL_FILE) != "true" ]] ; then
-        read -p "Sorry, the game is not available here: $URL_FILE. Visit the website to download it manually."
-        exit
-    else
-        mkdir -p $INSTALL_DIR && cd $INSTALL_DIR
-        wget -O /tmp/temp.zip $URL_FILE && unzip -o /tmp/temp.zip -d $INSTALL_DIR && rm /tmp/temp.zip
-        chmod +x giana_rpi
-        echo "Generating icon..."
-        generateIcon
-        echo -e "Done!. To play, on Desktop go to Menu > Games or via terminal, go to $INSTALL_DIR and type: ./giana_rpi\n\nEnjoy!"
-    fi
-    read -p "Press [Enter] to continue..."
-    exit
+install() {
+    mkdir -p "$INSTALL_DIR" && cd "$_" || exit 1
+    download_and_extract "$BINARY_FILE" "$INSTALL_DIR/gianas"
+    chmod +x "$INSTALL_DIR/gianas/giana_rpi"
+    generate_icon
+    echo -e "Done!. To play, on Desktop go to Menu > Games or via terminal, go to $INSTALL_DIR and type: ./giana_rpi\n\nEnjoy!"
+    exit_message
 }
 
-echo "Install Giana's Return (Raspberry Pi version)"
-echo "============================================="
-echo -e "More Info: https://www.gianas-return.de/\n\nInstall path: $INSTALL_DIR"
-while true; do
-    echo " "
-    read -p "Proceed? [y/n] " yn
-    case $yn in
-    [Yy]* ) echo "Installing, please wait..." && install;;
-    [Nn]* ) exit;;
-    [Ee]* ) exit;;
-    * ) echo "Please answer (y)es, (n)o or (e)xit.";;
-    esac
-done
+install_script_message
+echo "
+Install Giana's Return (Raspberry Pi version)
+=============================================
+
+· More Info: https://www.gianas-return.de
+· Install path: $INSTALL_DIR/gianas
+"
+
+install

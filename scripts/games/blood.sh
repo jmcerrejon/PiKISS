@@ -2,7 +2,7 @@
 #
 # Description : Blood
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.5 (22/Oct/20)
+# Version     : 1.0.6 (03/Jan/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://www.techradar.com/how-to/how-to-run-wolfenstein-3d-doom-and-duke-nukem-on-your-raspberry-pi
@@ -12,8 +12,9 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
-readonly BINARY_PATH="https://misapuntesde.com/rpi_share/blood_r11880.tar.gz"
-readonly GITHUB_PATH="https://github.com/nukeykt/NBlood.git"
+readonly BINARY_URL="https://misapuntesde.com/rpi_share/blood_r12112.tar.gz"
+readonly PACKAGES_DEV=(build-essential nasm libgl1-mesa-dev libglu1-mesa-dev libsdl1.2-dev libsdl-mixer1.2-dev libsdl2-dev libsdl2-mixer-dev flac libflac-dev libvorbis-dev libvpx-dev libgtk2.0-dev freepats)
+readonly SOURCE_CODE_URL="https://github.com/nukeykt/NBlood.git"
 readonly VAR_DATA_NAME="BLOOD_FULL"
 INPUT=/tmp/blood.$$
 
@@ -56,18 +57,18 @@ generate_icon() {
         cat <<EOF >~/.local/share/applications/blood.desktop
 [Desktop Entry]
 Name=Blood
-Exec=/home/pi/games/blood/nblood
-Icon=/home/pi/games/blood/icon.png
+Exec=${PWD}/blood/nblood
+Icon=${PWD}/blood/blood.png
+Path=${PWD}/blood/
 Type=Application
 Comment=Blood is a fps game.The game follows the story of Caleb, an undead early 20th century gunfighter seeking revenge against the dark god Tchernobog.
 Categories=Game;ActionGame;
-Path=/home/pi/games/blood/
 EOF
     fi
 }
 
 download_data_files() {
-    cd "$INSTALL_DIR"/blood
+    cd "$INSTALL_DIR/blood" || exit 1
     download_and_extract "$DATA_URL" "$INSTALL_DIR"
 }
 
@@ -86,10 +87,10 @@ fix_path() {
 
 compile() {
     echo -e "\nInstalling dependencies (if proceed)...\n"
-    sudo apt-get install -y build-essential nasm libgl1-mesa-dev libglu1-mesa-dev libsdl1.2-dev libsdl-mixer1.2-dev libsdl2-dev libsdl2-mixer-dev flac libflac-dev libvorbis-dev libvpx-dev libgtk2.0-dev freepats
-    cd "$INSTALL_DIR"
+    install_packages_if_missing "${PACKAGES_DEV[@]}"
+    mkdir -p "$HOME/sc" || exit 1
     echo
-    git clone "$GITHUB_PATH" blood && cd "$_"
+    git clone "$SOURCE_CODE_URL" blood && cd "$_" || exit 1
     fix_path
     echo -e "\n\nCompiling... Estimated time on RPi 4: <5 min.\n"
     make -j"$(nproc)" WITHOUT_GTK=1 POLYMER=1 USE_LIBVPX=0 HAVE_FLAC=0 OPTLEVEL=3 LTO=0 RENDERTYPESDL=1 HAVE_JWZGLES=1 USE_OPENGL=1 OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
@@ -99,13 +100,13 @@ compile() {
 
 download_binaries() {
     echo -e "\nInstalling binary files..."
-    download_and_extract "$BINARY_PATH" "$INSTALL_DIR"
+    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
 }
 
 install() {
     install_script_message
     echo -e "\n\nInstalling, please wait..."
-    mkdir -p "$INSTALL_DIR" && cd "$_"
+    mkdir -p "$INSTALL_DIR" && cd "$_" || exit 1
     download_binaries
     generate_icon
     echo
@@ -130,7 +131,7 @@ menu() {
         dialog --clear \
             --title "[ Blood ]" \
             --menu "Select from the list:" 11 68 3 \
-            INSTALL "Binary (Recommended)" \
+            INSTALL "Binary compiled 03/Jan/21 (Recommended)" \
             COMPILE "Latest from source code. Estimated time: 5 minutes." \
             Exit "Exit" 2>"${INPUT}"
 

@@ -61,9 +61,9 @@ generate_icon() {
         cat <<EOF >~/.local/share/applications/residualvm.desktop
 [Desktop Entry]
 Name=ResidualVM
-Exec=/home/pi/games/residualvm/residualvm
-Icon=/home/pi/games/residualvm/residualvm.ico
-Path=/home/pi/games/residualvm/
+Exec=${PWD}/residualvm/residualvm
+Icon=${PWD}/residualvm/residualvm.ico
+Path=${PWD}/residualvm/
 Type=Application
 Comment=ResidualVM is a cross-platform 3D game interpreter which allows you to play Lua-based 3D adventures
 Categories=Game;ActionGame;
@@ -88,12 +88,12 @@ install() {
 compile() {
     echo -e "Compiling, please wait...\n"
     install_packages_if_missing "${PACKAGES_DEV[@]}"
-    mkdir -p "$COMPILE_DIR" && cd "$_"
+    mkdir -p "$COMPILE_DIR" && cd "$_" || exit 1
     if [ ! -d ~/sc/residualvm ]; then
         git clone "$SOURCE_PATH" residualvm
     fi
-    cd ~/sc/residualvm
-    mkdir -p build && cd "$_"
+    cd ~/sc/residualvm || exit 1
+    mkdir -p build && cd "$_" || exit 1
     make clean
     ../configure
     make_with_all_cores

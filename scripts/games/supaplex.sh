@@ -2,7 +2,7 @@
 #
 # Description : Open Supaplex
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (05/Oct/20)
+# Version     : 1.0.2 (03/Jan/21)
 # Compatible  : Raspberry Pi 4 (tested)
 # Repository  : https://github.com/sergiou87/open-supaplex
 #
@@ -57,9 +57,9 @@ generate_icon() {
         cat <<EOF >~/.local/share/applications/opensupaplex.desktop
 [Desktop Entry]
 Name=Open Supaplex
-Exec=/home/pi/games/open-supaplex/opensupaplex.sh
-Icon=/home/pi/games/open-supaplex/icon.png
-Path=/home/pi/games/open-supaplex/
+Exec=${PWD}/open-supaplex/opensupaplex.sh
+Icon=${PWD}/open-supaplex/icon.png
+Path=${PWD}/open-supaplex/
 Type=Application
 Comment=Supaplex is a game made in the early nineties.
 Categories=Game;
@@ -70,9 +70,12 @@ EOF
 install() {
     install_packages_if_missing "${PACKAGES[@]}"
     download_and_extract "$BINARY_PATH" "$INSTALL_DIR"
+    generate_icon
     echo -e "\nType in a terminal $INSTALL_DIR/opensupaplex/opensupaplex.sh or go to Menu > Games > Open Supaplex."
+    runme
 }
 
+install_script_message
 echo "
 Open Supaplex
 =============
@@ -84,5 +87,3 @@ Open Supaplex
 read -p "Press [Enter] to continue..."
 
 install
-generate_icon
-runme

@@ -2,7 +2,7 @@
 #
 # Description : Duke Nukem 3D
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.5 (22/Oct/20)
+# Version     : 1.0.6 (03/Jan/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://www.techradar.com/how-to/how-to-run-wolfenstein-3d-doom-and-duke-nukem-on-your-raspberry-pi
@@ -14,8 +14,10 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
-readonly GAME_PATH="https://misapuntesde.com/rpi_share/eduke32.tar.gz"
-readonly GITHUB_PATH="https://voidpoint.io/terminx/eduke32.git"
+readonly BINARY_URL="https://misapuntesde.com/rpi_share/eduke32.tar.gz"
+readonly PACKAGES=(p7zip)
+readonly PACKAGES_DEV=(build-essential nasm libgl1-mesa-dev libglu1-mesa-dev libsdl1.2-dev libsdl-mixer1.2-dev libsdl2-dev libsdl2-mixer-dev flac libflac-dev libvorbis-dev libvpx-dev libgtk2.0-dev freepats)
+readonly SOURCE_CODE_URL="https://voidpoint.io/terminx/eduke32.git"
 readonly VAR_DATA_NAME="DUKE_ATOM"
 DATA_URL="http://hendricks266.duke4.net/files/3dduke13_data.7z"
 INPUT=/tmp/eduke32.$$
@@ -56,21 +58,19 @@ generate_icon() {
         cat <<EOF >~/.local/share/applications/eduke32.desktop
 [Desktop Entry]
 Name=Duke Nukem 3D
-Exec=/home/pi/games/eduke32/eduke32
-Icon=/home/pi/games/eduke32/icon.png
+Exec=${PWD}/eduke32/eduke32
+Icon=${PWD}/eduke32/icon.png
 Type=Application
 Comment=Duke Nukem 3D is fps game developed by 3D Realms in 1996.
 Categories=Game;ActionGame;
-Path=/home/pi/games/eduke32/
+Path=${PWD}/eduke32/
 EOF
     fi
 }
 
 download_data_files() {
-    cd "$INSTALL_DIR"/eduke32
-    if ! isPackageInstalled p7zip; then
-        sudo apt install -y p7zip
-    fi
+    cd "$INSTALL_DIR/eduke32" || exit 1
+    install_packages_if_missing "${PACKAGES[@]}"
     download_and_extract "$DATA_URL" "$INSTALL_DIR"/eduke32
 }
 
@@ -89,9 +89,9 @@ fix_path() {
 
 compile() {
     echo -e "\nInstalling dependencies (if proceed)...\n"
-    sudo apt-get install -y build-essential nasm libgl1-mesa-dev libglu1-mesa-dev libsdl1.2-dev libsdl-mixer1.2-dev libsdl2-dev libsdl2-mixer-dev flac libflac-dev libvorbis-dev libvpx-dev libgtk2.0-dev freepats
-    cd "$INSTALL_DIR"
-    git clone "$GITHUB_PATH" eduke32 && cd "$_"
+    install_packages_if_missing "${PACKAGES_DEV[@]}"
+    cd "$INSTALL_DIR" || exit 1
+    git clone "$SOURCE_CODE_URL" eduke32 && cd "$_" || exit 1
     fix_path
     echo -e "\n\nCompiling... Estimated time on RPi 4: <5 min.\n"
     make -j"$(nproc)" WITHOUT_GTK=1 POLYMER=1 USE_LIBVPX=0 HAVE_FLAC=0 OPTLEVEL=3 LTO=0 RENDERTYPESDL=1 HAVE_JWZGLES=1 USE_OPENGL=1 OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
@@ -102,13 +102,13 @@ compile() {
 
 download_binaries() {
     echo -e "\nInstalling binary files..."
-    download_and_extract "$GAME_PATH" "$INSTALL_DIR"
+    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
 }
 
 install() {
     install_script_message
     echo -e "\n\nInstalling, please wait..."
-    mkdir -p "$INSTALL_DIR" && cd "$_"
+    mkdir -p "$INSTALL_DIR" && cd "$_" || exit 1
     download_binaries
     generate_icon
     echo
@@ -132,7 +132,7 @@ menu() {
         dialog --clear \
             --title "[ Duke Nukem 3D ]" \
             --menu "Select from the list:" 11 68 3 \
-            INSTALL "Binary (Recommended)" \
+            INSTALL "Binary compiled 03/Jan/21 (Recommended)" \
             COMPILE "Latest from source code. Estimated time: 5 minutes." \
             Exit "Exit" 2>"${INPUT}"
 

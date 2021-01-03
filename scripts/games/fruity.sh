@@ -2,52 +2,44 @@
 #
 # Description : Fruit'Y
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (14/Jan/18)
-# Compatible  : Raspberry Pi 1, 2 & 3 (tested)
+# Version     : 1.0.1 (03/Jan/21)
+# Compatible  : NOT WORKING ON Raspberry Pi 4 (tested)
 #
+. ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
+check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-INSTALL_DIR="/home/$USER/games/fruity_rpi/"
-URL_FILE="https://www.retroguru.com/fruity/fruity-v.latest-raspberrypi.zip"
+readonly INSTALL_DIR="$HOME/games/"
+readonly BINARY_URL="https://www.retroguru.com/fruity/fruity-v.latest-raspberrypi.zip"
 
 if  which $INSTALL_DIR/fruity_rpi >/dev/null ; then
     read -p "Warning!: Fruit'Y already installed. Press [ENTER] to exit..."
     exit
 fi
 
-validate_url(){
-    if [[ `wget -S --spider $1 2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then echo "true"; fi
-}
-
-generateIcon(){
+generate_icon() {
+    echo "Generating icon..."
     if [[ ! -e ~/.local/share/applications/Fruity.desktop ]]; then
 cat << EOF > ~/.local/share/applications/Fruity.desktop
 [Desktop Entry]
 Name=Fruity
-Exec=/home/pi/games/fruity_rpi/fruity_rpi
+Exec=${PWD}/fruity_rpi/fruity_rpi
 Icon=terminal
 Type=Application
 Comment=Playing with edibles is heavily inspired by the Kaiko classic Gem'X
 Categories=Game;ActionGame;
-Path=/home/pi/games/fruity_rpi/
+Path=${PWD}/fruity_rpi/
 EOF
     fi
 }
 
-install(){
-    if [[ $(validate_url $URL_FILE) != "true" ]] ; then
-        read -p "Sorry, the game is not available here: $URL_FILE. Visit the website to download it manually."
-        exit
-    else
-        mkdir -p $INSTALL_DIR && cd $INSTALL_DIR
-        wget -O /tmp/temp.zip $URL_FILE && unzip -o /tmp/temp.zip -d /home/$USER/games/ && rm /tmp/temp.zip
-        chmod +x fruity_rpi
-        echo "Generating icon..."
-        generateIcon
-        echo -e "Done!. To play, on Desktop go to Menu > Games or via terminal, go to $INSTALL_DIR and type: ./fruity_rpi\n\nEnjoy!"
-    fi
-    read -p "Press [Enter] to continue..."
-    exit
+install() {
+    mkdir -p "$INSTALL_DIR" && cd "$_" || exit 1
+    download_and_extract "$BINARY_FILE" "$INSTALL_DIR/fruity"
+    chmod +x fruity_rpi
+    generate_icon
+    echo -e "Done!. To play, on Desktop go to Menu > Games or via terminal, go to $INSTALL_DIR and type: ./fruity_rpi\n\nEnjoy!"
+    exit_message
 }
 
 echo "Install Fruit'Y (Raspberry Pi version)"

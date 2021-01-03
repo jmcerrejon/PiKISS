@@ -47,8 +47,8 @@ generate_icon() {
         cat <<EOF >~/.local/share/applications/diablo2.desktop
 [Desktop Entry]
 Name=Diablo 2 Lord of Destruction
-Exec=/home/pi/games/diablo2/diablo2.sh
-Icon=/home/pi/games/diablo2/diabloII.png
+Exec=${PWD}/diablo2/diablo2.sh
+Icon=${PWD}/diablo2/diabloII.png
 Type=Application
 Comment=Set in the fictional Kingdom of Khanduras in the mortal realm, Diablo makes the player take control of a lone hero battling to rid the world of Diablo
 Categories=Game;ActionGame;
@@ -85,7 +85,7 @@ download_data_files() {
         end_message
         return 0
     fi
-    mkdir -p "$INSTALL_DIR" && cd "$_"
+    mkdir -p "$INSTALL_DIR" && cd "$_" || exit 1
     download_and_extract "$DATA_URL" "$INSTALL_DIR"
     end_message
 }
@@ -138,7 +138,8 @@ if [[ -d "$INSTALL_DIR"/diablo2 ]]; then
 fi
 
 install_script_message
-echo "Install Diablo 2 thks to Notaz
+echo "
+Install Diablo 2 thks to Notaz
 ==============================
  · Languages: English, Spanish.
  · Install path: $INSTALL_DIR/diablo2
