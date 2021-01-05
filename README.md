@@ -13,15 +13,15 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **792 hours**
+-   **794 hours**
 
 ## 💰 Total amount donated by users
 
--   $400,98.
+-   $405,89.
 
 -   I want to thank my patrons _James Carroll, David J Leto, Rodney Hester, Matthew Michink & Mathew Gracie_ for trusting me ❤️
 
--   Others users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz_
+-   Others users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania_
 
 ## 📣 Stay tuned!
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (05/01/21)
+
+· 🐛 FIX: Games > Captain S shortcut.
 
 ### (03/01/21)
 
@@ -225,7 +229,11 @@ Don't despair. **PiKISS** has come to help you...
 
 ---
 
-**PiKISS** _(Pi Keeping It Simple, Stupid!)_ are _scripts (Bash)_ for _Raspberry Pi_ boards (_Raspberry PI OS Desktop_ mainly, [TwisterOS](https://raspbian-x.com/) and _Debian_ derivates, all of them in _32 bits versions_), which has a menu that will allow you to install some applications or configure files automatically as easy as possible.
+**PiKISS** _(Pi Keeping It Simple, Stupid!)_ are _scripts (Bash)_ for _Raspberry Pi_ boards which has a menu that will allow you to install some applications or configure files automatically as easy as possible. The ideal stage is:
+
+* _Raspberry PI OS Desktop_ mainly, [TwisterOS](https://raspbian-x.com/) and _Debian_ derivates with 32 bits.
+
+* User _pi_ or another user with sudo priviledges.
 
 The idea is to offer facilities to manage your operating system, selecting an option in a menu and answer [Yes/No]. If you need to check dependencies, install an app, modify a script at boot, add a line to a file or download other, **PiKISS** will do it for you.
 
