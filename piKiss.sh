@@ -341,7 +341,6 @@ smInternet() {
     if [[ ${MODEL} == 'Raspberry Pi' ]]; then
         options=(
             Back "Back to main menu"
-            Cordless "Discord client that aims to have a low memory footprint"
             Whatscli "Allow users to use WhatsApp via cli"
             Zoom "i386 version of software platform used for teleconferencing using Box86"
             # Plowshare "Direct download from hosters like uploaded,..."
@@ -355,7 +354,6 @@ smInternet() {
     for choice in $choices; do
         case $choice in
         Back) break ;;
-        Cordless) ./scripts/inet/discord.sh ;;
         Plowshare) ./scripts/inet/ddown.sh ;;
         Browser) ./scripts/inet/browser.sh ;;
         Downmp3) ./scripts/inet/dwnmp3.sh ;;
