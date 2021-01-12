@@ -67,6 +67,10 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (12/01/21)
+
+· ❌ REMOVE: Internet > Cordless (not maintained anymore).
+
 ### (05/01/21)
 
 · 🐛 FIX: Games > Captain S shortcut.
