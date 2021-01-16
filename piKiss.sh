@@ -147,7 +147,7 @@ smGames() {
             Blood "Blood is a fps game developed by Monolith Productions"
             BStone "Robert W. Stone III, AKA Blake Stone must eliminate Dr. Pyrus Goldfire"
             CaptainS "Save Seville from the evil Torrebruno"
-            Crispy-doom "Crispy to play Doom or Heretic"
+            Doom_engine "Zendronum or Crispy engine to play Doom, Heretic, Hexen..."
             Descent "Descent 1 & 2 Shareware Ed."
             Dune2 "Dune 2 Legacy"
             Diablo "Take control of a lone hero battling to rid the world of Diablo"
@@ -187,7 +187,7 @@ smGames() {
         Blood) ./scripts/games/blood.sh ;;
         BStone) ./scripts/games/bstone.sh ;;
         CaptainS) ./scripts/games/captains.sh ;;
-        Crispy-doom) ./scripts/games/cdoom.sh ;;
+        Doom_engine) ./scripts/games/cdoom.sh ;;
         Descent) ./scripts/games/descent.sh ;;
         Dune2) ./scripts/games/dune2.sh ;;
         Diablo) ./scripts/games/diablo.sh ;;
