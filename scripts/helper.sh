@@ -7,6 +7,8 @@
 #
 # Fix libGLESv2.so on Raspbian Stretch
 #
+readonly PIKISS_DIR=$(PWD)
+
 fixlibGLES() {
     if [ ! -f /usr/lib/libEGL.so ]; then
         sudo ln -s /usr/lib/arm-linux-gnueabihf/libEGL.so.1.1.0 /usr/lib/libEGL.so
@@ -37,7 +39,7 @@ box86_check_if_latest_version_is_installed() {
     BOX86_VERSION=$("$BOX86_PATH" -v | awk '{print $5}')
     GIT_VERSION=$(git rev-parse HEAD | cut -c 1-8)
 
-    if [[ $BOX86_VERSION = "$GIT_VERSION" ]]; then 
+    if [[ $BOX86_VERSION = "$GIT_VERSION" ]]; then
         echo -e "\nYour box86 is already updated!.\n"
         exit_message
     fi
@@ -126,9 +128,9 @@ installMonolibs() {
     local BINARY_URL
     BINARY_URL="https://misapuntesde.com/rpi_share/pilabs/monolibs.tar.gz"
 
-    if [ ! -d /home/pi/monolibs ]; then
-        wget -O /home/pi/monolibs.tar.gz "$BINARY_URL"
-        extract /home/pi/monolibs.tar.gz && rm -
+    if [[ ! -d $HOME/monolibs ]]; then
+        wget -O "$HOME/monolibs.tar.gz" "$BINARY_URL"
+        extract "$HOME/monolibs.tar.gz" && rm -
     fi
 }
 
@@ -266,7 +268,7 @@ download_file() {
     local DATA_URL
     local DESTINATION_DIR
     local FILE_NAME
-    
+
     DATA_URL=$(get_valid_path "$1")
     DESTINATION_DIR="$2"
     FILE_NAME=$(get_file_name_from_path "$DATA_URL")
@@ -298,7 +300,7 @@ download_and_extract() {
 
     if [[ ! -d $DATA_URL ]]; then
         echo -e "\nExtracting..."
-        cd "$DESTINATION_DIR"
+        cd "$DESTINATION_DIR" || exit 1
         # TODO Refactor: extract should have a second argument "$DESTINATION_DIR" and remove copying local file at function use_data_from
         extract "$FILE_NAME"
     fi
@@ -333,7 +335,7 @@ use_data_from() {
     if [[ $DATA_URL == http* ]]; then
         [ ! -w "$DESTINATION_DIR" ] && COMMAND="sudo $COMMAND"
         echo -e "\nDownloading...\n"
-        cd "$DESTINATION_DIR"
+        cd "$DESTINATION_DIR" || exit 1
         ${COMMAND} "$FILE_NAME" -c "$DATA_URL"
     elif [[ -e "$DATA_URL" ]]; then
         # TODO Refactor. We don't need to copy if it's a local file or directory
@@ -343,7 +345,7 @@ use_data_from() {
 }
 
 set_download_manager() {
-    if [[ $1 == 'aria2c'  ]]; then
+    if [[ $1 == 'aria2c' ]]; then
         install_packages_if_missing aria2
         echo "aria2c -x16 --max-tries=0 --check-certificate=false --file-allocation=none -o"
     fi
@@ -359,7 +361,7 @@ download_and_install() {
     local FILE
     FILE=$(get_file_name_from_path "$1")
 
-    download_file "$1" "$2"
+    download_file "$1" /tmp
     echo -e "\nInstalling..." && sudo dpkg --force-all -i /tmp/"$FILE"
     [ -e /tmp/"$FILE" ] && rm -f rm /tmp/"$FILE"
 }
@@ -679,7 +681,7 @@ function is_missing_dialog_pkg() {
 }
 
 getRaspberryPiNumberModel() {
-    < /proc/device-tree/model awk '{print $3}'
+    awk </proc/device-tree/model '{print $3}'
 }
 
 #
@@ -839,11 +841,10 @@ message_magic_air_copy() {
 #
 extract_path_from_file() {
     local MAGIC_FILE_PATH
-    # TODO Get in the next the path for piKISS
-    MAGIC_FILE_PATH="${HOME}/piKiss/res/magic-air-copy-pikiss.txt"
+    MAGIC_FILE_PATH="${PIKISS_DIR}/res/magic-air-copy-pikiss.txt"
 
     if [[ ! -f $MAGIC_FILE_PATH ]]; then
-        echo -e "\nFile $MAGIC_FILE_PATH not found. You know what to do."
+        echo ""
         exit 1
     fi
 
@@ -890,10 +891,10 @@ make_with_all_cores() {
     echo -e "\n Compiling..."
 
     if [ "$(uname -m)" == 'armv7l' ]; then
-		time make -j"$(nproc)" OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
-	else
-		time make -j"$(nproc)" PLATFORM=rpi1
-	fi
+        time make -j"$(nproc)" OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
+    else
+        time make -j"$(nproc)" PLATFORM=rpi1
+    fi
 
     echo
 }
@@ -921,7 +922,7 @@ uninstall_pikiss() {
     fi
 
     echo -e "\nUninstalling..."
-    rm -f  "$PIKISS_SHORTCUT_PATH"
+    rm -f "$PIKISS_SHORTCUT_PATH"
     rm -rf "$PIKISS_PATH"
     echo -e "\nPiKISS uninstall completed."
     exit_pikiss
@@ -1038,7 +1039,7 @@ install_or_update_rust() {
     PATH=$PATH:$HOME/.cargo/bin
 
     if [ "$(grep -c .cargo ~/.bashrc)" -eq 0 ]; then
-        echo "PATH=$PATH:$HOME/.cargo/bin" >> ~/.bashrc
+        echo "PATH=$PATH:$HOME/.cargo/bin" >>~/.bashrc
     fi
 }
 
@@ -1049,7 +1050,7 @@ is_URL_down() {
     local URL
 
     if ! isPackageInstalled httpie; then
-        sudo apt-get install -qq httpie < /dev/null > /dev/null
+        sudo apt-get install -qq httpie </dev/null >/dev/null
     fi
     URL=$(http --verify=no -h "$1" | awk 'NR==1' | awk '{print $2}')
 
@@ -1084,4 +1085,11 @@ cmd_reboot() {
 upgrade() {
     echo -e "\nUpgrading your distro...\n"
     sudo apt-get -qq update && sudo apt-get -y dist-upgrade
+}
+
+make_install_compiled_app() {
+    read -p "Do you want to install it? (y/N) " response
+    if [[ $response =~ [Yy] ]]; then
+        sudo make install
+    fi
 }
