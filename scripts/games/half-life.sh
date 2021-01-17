@@ -2,7 +2,7 @@
 #
 # Description : Half Life thks to Salva (Pi Labs)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.10 (12/Nov/20)
+# Version     : 1.0.11 (16/Jan/21)
 # Compatible  : Raspberry Pi (tested)
 # Repository  : https://github.com/ValveSoftware/halflife
 #
@@ -26,7 +26,7 @@ runme() {
 }
 
 remove_files() {
-    rm -rf "$INSTALL_DIR"/half-life  ~/.local/share/applications/half-life.desktop
+    rm -rf "$INSTALL_DIR"/half-life ~/.local/share/applications/half-life.desktop
 }
 
 uninstall() {
@@ -51,7 +51,7 @@ fi
 
 generate_icon() {
     if [[ ! -e ~/.local/share/applications/half-life.desktop ]]; then
-cat << EOF > ~/.local/share/applications/half-life.desktop
+        cat <<EOF >~/.local/share/applications/half-life.desktop
 [Desktop Entry]
 Name=Half Life
 Exec=${INSTALL_DIR}/half-life/half-life.sh
@@ -108,6 +108,8 @@ Install Half Life on Raspberry Pi
 =================================
 
  · Based on engine at ${SOURCE_CODE_URL}
+ · Remember to copy your /valve directory inside $INSTALL_DIR/half-life
+ · To play, when installed use Menu > Games > Half-Life or $INSTALL_DIR/half-life/half-life.sh
 "
 read -p "Press [ENTER] to continue..."
 
