@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **794 hours**
+-   **798 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (17/01/21)
+
+· 📦 ADD: Games > Zendronum to play Doom + Heretic + Hexen + Strife. Shareware included.
 
 ### (12/01/21)
 
@@ -149,78 +153,6 @@
 
 · 👌 IMPROVE: Emulators > mGBA Game Boy Advance Emulator.
 
-### (24/10/20)
-
-· 👌 IMPROVE: GAMES > MagicAirCopy® now supports local files/directories.
-
-### (19/10/20)
-
-· 🐛 FIX: GAMES > Diablo 1.
-
-### (17/10/20)
-
-· 📦 ADD: Games > Return to Castle Wolfenstein.
-
-### (14/10/20)
-
-· 👌 IMPROVE: Configure > Compile/update Vulkan Mesa driver.
-
-### (12/10/20)
-
-· 👌 IMPROVE: Devs > Change OSSCode with native VSCode 32 or 64 bits.
-
-### (07/10/20)
-
-· 🐛 FIX: Games > Openmw.
-
-### (06/10/20)
-
-· 🐛 FIX: Internet > Zoom on Twister OS.
-
-· 🐛 FIX: Games > Openbor.
-
-### (03/10/20)
-
-· 📦 ADD: Internet > Zoom using Box86.
-
-· 📦 ADD: Emulation > Box86 for Raspberrry Pi 2-4.
-
-### (02/10/20)
-
-· 🐛 FIX: Games > Half Life (add _Steam_ data files support).
-
-### (01/10/20)
-
-· 👌 REFACTOR: Games > Diablo 1, Half Life (disabled fps caps & fps max:150 fps), Alien Vs Predator.
-
-### (29/09/20)
-
-· 👌 IMPROVE: Games > OpenBor 3.0 (Streets of Rage 2X included!).
-
-· 👌 IMPROVE: Others > SDL2 (Enable Vulkan support if you compile it yourself).
-
-### (27/09/20)
-
-· 📦 ADD: Games > Quake.
-
-### (20/09/20)
-
-· 📦 ADD: Games > Half Life.
-
-### (11/09/20)
-
-· 📦 ADD: Games > Blake Stone.
-
-### (07/09/20)
-
-· 📦 ADD: Games > Quake 3 Arena (with Vulkan support, High textures and some tweaks).
-
-### (01/09/20)
-
-· 📦 ADD: Games > The Elder Scroll: Morrowind (_OpenMW_).
-
-· 📦 ADD: Others > Compile GL4ES.
-
 ...
 
 To see the full list of changes, read the [CHANGELOG](./CHANGELOG)
@@ -235,9 +167,9 @@ Don't despair. **PiKISS** has come to help you...
 
 **PiKISS** _(Pi Keeping It Simple, Stupid!)_ are _scripts (Bash)_ for _Raspberry Pi_ boards which has a menu that will allow you to install some applications or configure files automatically as easy as possible. The ideal stage is:
 
-* _Raspberry PI OS Desktop_ mainly, [TwisterOS](https://raspbian-x.com/) and _Debian_ derivates with 32 bits.
+-   _Raspberry PI OS Desktop_ mainly, [TwisterOS](https://raspbian-x.com/) and _Debian_ derivates with 32 bits.
 
-* User _pi_ or another user with sudo priviledges.
+-   User _pi_ or another user with sudo priviledges.
 
 The idea is to offer facilities to manage your operating system, selecting an option in a menu and answer [Yes/No]. If you need to check dependencies, install an app, modify a script at boot, add a line to a file or download other, **PiKISS** will do it for you.
 
@@ -263,7 +195,7 @@ $ curl -sSL https://git.io/JfAPE | bash
 
 ## [ Data Files 🚨 ]
 
-Honestly, I just want everything to work without having to fight with the command line. The project has grown a lot, and the games I own and had hosted on the internet, can't be there because of _Copyright_. I don't understand how a game that is older than 15 years old in some cases, has these so restrictive laws in some countries. Someone should do something about it.
+Honestly, I just want let you with all the work done without having to fight with the command line. The project has grown a lot, and the games I own and had hosted on the internet, can't be there because of _Copyright_. I don't understand how a game that is older than 15 years old in some cases, has these so restrictive laws in some countries. Someone should do something about it.
 
 **My solution to keep this project working is the following**: If you have copies saved for your use, just copy those links/paths in a file at `res/magic-air-copy-pikiss.txt`. You have an example of this file with instrucctions at [./res/magic-air-copy-pikiss.example](./res/magic-air-copy-pikiss.example). _PiKISS_ will read the links/files/directories in that file and install it for you when is required. Compatible and tested hosters: _dropbox.com, archive.org, anonfiles.com, pcloud.com_.
 
