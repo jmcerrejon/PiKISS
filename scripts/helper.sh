@@ -3,11 +3,11 @@
 # Description : Helpers functions
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 #
+readonly PIKISS_DIR=$(PWD)
 
 #
 # Fix libGLESv2.so on Raspbian Stretch
 #
-readonly PIKISS_DIR=$(PWD)
 
 fixlibGLES() {
     if [ ! -f /usr/lib/libEGL.so ]; then
@@ -59,7 +59,7 @@ compile_box86() {
     install_packages_if_missing cmake
 
     if [[ ! -d "$INSTALL_DIR" ]]; then
-        git clone "$SOURCE_PATH" "$INSTALL_DIR" && cd "$_"
+        git clone "$SOURCE_PATH" "$INSTALL_DIR" && cd "$_" || exit 1
     else
         echo -e "\nUpdating the repo if proceed,...\n"
         cd "$INSTALL_DIR" && git pull
@@ -68,7 +68,7 @@ compile_box86() {
 
     box86_check_if_latest_version_is_installed
 
-    mkdir -p build && cd "$_"
+    mkdir -p build && cd "$_" || exit 1
     echo -e "\nCompiling, please wait...\n"
     cmake .. -DRPI"${PI_VERSION_NUMBER}"=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo
     make_with_all_cores
@@ -93,7 +93,7 @@ install_box86() {
 
     echo -e "\n\nInstalling Box86..."
     download_and_extract "$BINARY_BOX86_URL" "$HOME"
-    cd "$HOME"/box86/build
+    cd "$HOME"/box86/build || exit 1
     sudo make install
     echo -e "\nBox86 has been installed.\n"
 }
@@ -648,8 +648,9 @@ check_update_pikiss() {
         return 1
     fi
     git fetch
-    local IS_UP_TO_DATE=$(git diff --name-only origin/master)
-    if [[ "$IS_UP_TO_DATE" ]]; then
+    local IS_UP_TO_DATE
+    IS_UP_TO_DATE=$(git diff --name-only origin/master)
+    if [[ $IS_UP_TO_DATE ]]; then
         echo -e "\n New version available!\n\n · Installing updates...\n"
         git fetch --all
         git reset --hard origin/master
@@ -719,7 +720,7 @@ compile_sdl2_image() {
     clear && echo "Compiling SDL2_image, please wait..."
     cd "$HOME"/sc || exit
     wget https://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.5.tar.gz
-    tar zxvf SDL2_image-2.0.5.tar.gz && cd SDL2_image-2.0.5
+    tar zxvf SDL2_image-2.0.5.tar.gz && cd SDL2_image-2.0.5 || exit 1
     ./autogen.sh
     ./configure --prefix=/usr
     make_with_all_cores
@@ -730,7 +731,7 @@ compile_sdl2_mixer() {
     clear && echo "Compiling SDL2_mixer, please wait..."
     cd "$HOME"/sc || exit
     wget https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-2.0.4.tar.gz
-    tar zxvf SDL2_mixer-2.0.4.tar.gz && cd SDL2_mixer-2.0.4
+    tar zxvf SDL2_mixer-2.0.4.tar.gz && cd SDL2_mixer-2.0.4 || exit 1
     ./autogen.sh
     ./configure --prefix=/usr
     make_with_all_cores
@@ -741,7 +742,7 @@ compile_sdl2_ttf() {
     clear && echo "Compiling SDL2_ttf, please wait..."
     cd "$HOME"/sc || exit
     wget https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.15.tar.gz
-    tar zxvf SDL2_ttf-2.0.15.tar.gz && cd SDL2_ttf-2.0.15
+    tar zxvf SDL2_ttf-2.0.15.tar.gz && cd SDL2_ttf-2.0.15 || exit 1
     ./autogen.sh
     ./configure --prefix=/usr
     make_with_all_cores
@@ -752,7 +753,7 @@ compile_sdl2_net() {
     clear && echo "Compiling SDL2_net, please wait..."
     cd "$HOME"/sc || exit
     wget https://www.libsdl.org/projects/SDL_net/release/SDL2_net-2.0.1.tar.gz
-    tar zxvf SDL2_net-2.0.1.tar.gz && cd SDL2_net-2.0.1
+    tar zxvf SDL2_net-2.0.1.tar.gz && cd SDL2_net-2.0.1 || exit 1
     ./autogen.sh
     ./configure --prefix=/usr
     make_with_all_cores
