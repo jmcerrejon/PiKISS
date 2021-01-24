@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **798 hours**
+-   **801 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (24/01/21)
+
+· 📦 ADD: Multimedia > Jellyfin (Stream media to any device from your own server).
 
 ### (17/01/21)
 
