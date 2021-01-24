@@ -277,6 +277,7 @@ smMultimedia() {
     if [[ ${MODEL} == 'Raspberry Pi' ]]; then
         options=(
             Back "Back to main menu"
+            JELLYFIN "Stream media to any device from your own server"
             Kodi "Kodi is a free media player that is designed to look great on your TV but is just as home on a small screen."
             Kiosk "Image slideshow"
             Moonlight "Moonlight PC is an open source implementation of NVIDIA's GameStream"
@@ -289,6 +290,7 @@ smMultimedia() {
     for choice in $choices; do
         case $choice in
         Back) break ;;
+        JELLYFIN) ./scripts/mmedia/jellyfin.sh ;;
         Kodi) ./scripts/mmedia/xbmc.sh ;;
         Kiosk) ./scripts/mmedia/kiosk.sh ;;
         Moonlight) ./scripts/mmedia/moonlight-qt.sh ;;
