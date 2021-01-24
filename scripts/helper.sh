@@ -3,7 +3,7 @@
 # Description : Helpers functions
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 #
-readonly PIKISS_DIR=$(PWD)
+readonly PIKISS_DIR=$PWD
 
 #
 # Fix libGLESv2.so on Raspbian Stretch
@@ -376,7 +376,7 @@ file_backup() {
         else
             sudo cp "$1"{,.bak}
         fi
-        echo "Backed up the file at: $1.bak"
+        echo -e "\nBacked up the file at: $1.bak"
     fi
 }
 
@@ -1006,7 +1006,7 @@ set_GPU_memory() {
     if grep -q "gpu_mem" "$BOOTCFG_PATH"; then
         sudo sed -i "s/gpu_mem.*/gpu_mem=$GPU_SIZE/g" "$BOOTCFG_PATH"
     else
-        sudo sed -i "$i gpu_mem=$GPU_SIZE" "$BOOTCFG_PATH"
+        sudo -- bash -c "echo 'gpu_mem=$GPU_SIZE' >> $BOOTCFG_PATH"
     fi
 }
 
