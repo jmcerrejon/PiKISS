@@ -1094,3 +1094,26 @@ make_install_compiled_app() {
         sudo make install
     fi
 }
+
+install_backports() {
+    if [[ -e /etc/apt/sources.list.d/debian-backports.list ]]; then
+        return 0
+    fi
+    echo -e "\nInstalling buster-backports...\n"
+    echo 'deb https://deb.debian.org/debian buster-backports main contrib non-free' | sudo tee -a /etc/apt/sources.list.d/debian-backports.list
+    gpg --recv-keys --keyserver ipv4.pool.sks-keyservers.net 04EE7237B7D453EC
+    gpg --recv-keys --keyserver ipv4.pool.sks-keyservers.net 648ACFD622F3D138
+    gpg --export 04EE7237B7D453EC | sudo apt-key add -
+    gpg --export 648ACFD622F3D138 | sudo apt-key add -
+    sudo apt-get update
+}
+
+remove_backports() {
+    local backport_path
+    backport_path=/etc/apt/sources.list.d/debian-backports.list
+
+    echo -e "\Removing buster-backports...\n"
+    if [[ -e $backport_path ]]; then
+        sudo rm "$backport_path"
+    fi
+}
