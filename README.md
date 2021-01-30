@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **801 hours**
+-   **804 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (30/01/21)
+
+· 📦 ADD: Server > Remote Desktop with Nomachine, xRDP and VNC Server.
 
 ### (24/01/21)
 
@@ -120,42 +124,6 @@
 ### (06/12/20)
 
 · 📦 ADD: Games > Temptations (Retro platform game).
-
-### (28/11/20)
-
-· 📦 ADD: Games > Open Claw (Platform 2D Captain Claw (1997) reimplementation).
-
-### (21/11/20)
-
-· 📦 ADD: Games > StepMania.
-
-· 📦 ADD: Emulators > Redream (Sega Dreamcast).
-
-· 📦 ADD: Emulators > Bsnes (SuperNES).
-
-### (09/11/20)
-
-· 📦 ADD: Others > Alacritty (Fastest terminal emulator in existence).
-
-### (07/11/20)
-
-· 📦 ADD: Games > fheroes2 (Heroes of Might and Magic II engine).
-
-### (05/11/20)
-
-· 📦 ADD: Games > StarCraft + Brood War expansion.
-
-· 👌 IMPROVE: Emulators > Box86.
-
-### (04/11/20)
-
-· 📦 ADD: Others > Upgrade your boot loader on Raspberry Pi 4.
-
-· 👌 IMPROVE: Server > Pi-Hole (Ad-Blocker).
-
-### (03/11/20)
-
-· 👌 IMPROVE: Emulators > mGBA Game Boy Advance Emulator.
 
 ...
 
