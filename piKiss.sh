@@ -383,10 +383,10 @@ smServer() {
             Nagios "Nagios is a network host and service monitoring"
             OctoPrint "Control your 3D-Printer"
             OwnCloud "Access your data from all your devices"
+            RDesktop "Connect to your Raspberry Pi throught VNC,..."
             Smtp "SMTP Config to send e-mail"
             SMB "Share files with SAMBA"
             Upd "keep Debian patched with latest security updates"
-            VNCServer "Share Desktop through VNC Server"
             VPNServer "OpenVPN setup and config thks to pivpn.io"
             Web "Web server+PHP7"
             WebDAV "WebDAV to share local content with Apache"
@@ -410,10 +410,10 @@ smServer() {
         Nagios) ./scripts/server/nagios.sh ;;
         OctoPrint) ./scripts/server/octoprint.sh ;;
         OwnCloud) ./scripts/server/owncloud.sh ;;
+        RDesktop) ./scripts/server/rdesktop.sh ;;
         Smtp) ./scripts/server/smtp.sh ;;
         SMB) ./scripts/server/fileserver.sh ;;
         Upd) ./scripts/server/auto-upd.sh ;;
-        VNCServer) ./scripts/server/vncserver.sh ;;
         VPNServer) ./scripts/server/openvpn.sh ;;
         Web) ./scripts/server/web.sh ;;
         WebDAV) ./scripts/server/webdav.sh ;;
