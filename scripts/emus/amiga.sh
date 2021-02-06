@@ -2,7 +2,7 @@
 #
 # Description : Amiberry Amiga emulator
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.5.1 (05/Oct/20)
+# Version     : 1.5.2 (06/Feb/21)
 # Compatible  : Raspberry Pi 1-4
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -10,10 +10,11 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 INSTALL_DIR="$HOME/games"
+AMIBERRY_VERSION="v3.3"
 PACKAGES=(libsdl2-image-2.0-0 libsdl2-ttf-2.0-0)
 PACKAGES_DEV=(libsdl2-dev libguichan-dev libsdl2-ttf2.0-dev libsdl-gfx1.2-dev libxml2-dev libflac-dev libmpg123-dev)
 RPI_MODEL=$(getRaspberryPiNumberModel)
-AMIBERRY_BIN="https://github.com/midwan/amiberry/releases/download/v3.1.3.1/amiberry-rpi${RPI_MODEL}-sdl2-v3.1.3.1.zip"
+AMIBERRY_BIN="https://github.com/midwan/amiberry/releases/download/${AMIBERRY_VERSION}/amiberry-${AMIBERRY_VERSION}-rpi${RPI_MODEL}-sdl2-32bit.zip"
 GITHUB_PATH="https://github.com/midwan/amiberry.git"
 KICK_FILE="https://misapuntesde.com/res/Amiga_roms.zip"
 GAME="https://www.emuparadise.me/GameBase%20Amiga/Games/T/Turrican.zip"
@@ -54,7 +55,7 @@ if [[ -e $INSTALL_DIR/amiberry/amiberry ]]; then
 fi
 
 post_install() {
-    echo -e "\nPost install process. Just a moment...\n"
+    echo -e "\nPost install process. Just a moment..."
     cat <<EOF >"$INSTALL_DIR"/amiberry/amiberry.sh
 #!/bin/bash
 cd ${HOME}/games/amiberry && ./amiberry
@@ -99,9 +100,9 @@ end_message() {
 
 compile() {
     install_packages_if_missing "${PACKAGES_DEV[@]}"
-    mkdir -p "$HOME"/sc && cd "$_"
+    mkdir -p "$HOME"/sc && cd "$_" || exit 1
     echo "Cloning and compiling repo..."
-    git clone "$GITHUB_PATH" amiberry && cd "$_"
+    git clone "$GITHUB_PATH" amiberry && cd "$_" || exit 1
     if [ "$(uname -m)" == 'armv7l' ]; then
         make -j"$(nproc)" OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
     else
@@ -113,39 +114,23 @@ compile() {
 }
 
 install() {
-    echo "Amiberry for Raspberry Pi"
-    echo "========================="
-    echo
-    echo " · More Info: https://github.com/midwan/amiberry"
-    echo " · Kickstar ROMs & Turrican included."
-    echo " · Install path: $INSTALL_DIR/amiberry"
-    echo " · TIP: F12 = Menu."
-    echo
-    read -p "Press [ENTER] to continue..."
     install_packages_if_missing "${PACKAGES[@]}"
-    download_and_extract "$AMIBERRY_BIN" "$INSTALL_DIR"/amiberry
-    chmod +x "$INSTALL_DIR"/amiberry/amiberry
+    download_and_extract "$AMIBERRY_BIN" "$INSTALL_DIR"
+    mv amiberry-rpi4-sdl2-32bit amiberry
+    # chmod +x "$INSTALL_DIR"/amiberry/amiberry
     post_install
 }
 
-menu() {
-
-    while true; do
-        dialog --clear \
-            --title "[ Amiberry Amiga emulator for Raspberry Pi ]" \
-            --menu "Select from the list:" 11 65 3 \
-            INSTALL "Amiberry binary (Recommended)" \
-            COMPILE "Compile Amiberry (latest). Time: ~22 minutes." \
-            Exit "Exit" 2>"${INPUT}"
-
-        menuitem=$(<"${INPUT}")
-
-        case $menuitem in
-        INSTALL) clear && install ;;
-        COMPILE) clear && compile ;;
-        Exit) exit ;;
-        esac
-    done
-}
+install_script_message
+echo "
+Amiberry for Raspberry Pi
+=========================
+ · Version ${AMIBERRY_VERSION}
+ · More Info: https://github.com/midwan/amiberry
+ · Kickstar ROMs & Turrican included.
+ · Install path: $INSTALL_DIR/amiberry
+ · TIP: F12 = Menu.
+"
+read -p "Press [ENTER] to continue..."
 
 install
