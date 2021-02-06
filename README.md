@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **804 hours**
+-   **806 hours**
 
 ## 💰 Total amount donated by users
 
@@ -21,7 +21,7 @@
 
 -   I want to thank my patrons _James Carroll, David J Leto, Rodney Hester, Matthew Michink & Mathew Gracie_ for trusting me ❤️
 
--   Others users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania_
+-   Others users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze_
 
 ## 📣 Stay tuned!
 
@@ -66,6 +66,12 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (06/02/21)
+
+· 👌 IMPROVE: Amiberry.
+
+· 👌 IMPROVE: Tweaks > Packages > Remove Microsoft VSCode source list (You can safely install it with PiKISS later 😉).
 
 ### (30/01/21)
 
