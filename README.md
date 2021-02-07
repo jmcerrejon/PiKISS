@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **806 hours**
+-   **809 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (07/02/21)
+
+· 📦 ADD: Emulators > Duckstation - PlayStation 1, aka. PSX Emulator.
 
 ### (06/02/21)
 
@@ -143,7 +147,7 @@ Don't despair. **PiKISS** has come to help you...
 
 ---
 
-**PiKISS** _(Pi Keeping It Simple, Stupid!)_ are _scripts (Bash)_ for _Raspberry Pi_ boards which has a menu that will allow you to install some applications or configure files automatically as easy as possible. The ideal stage is:
+**PiKISS** _(Pi Keeping It Simple, Stupid!)_ are _scripts (Bash)_ for _Raspberry Pi 4_ boards which has a menu that will allow you to install some applications or configure files automatically as easy as possible. The ideal stage is:
 
 -   _Raspberry PI OS Desktop_ mainly, [TwisterOS](https://raspbian-x.com/) and _Debian_ derivates with 32 bits.
 
@@ -205,7 +209,7 @@ No desesperéis. Ha llegado **PiKISS** para ayudarte...
 
 ---
 
-**PiKISS** _(Pi Keeping It Simple, Stupid!, "Pi manteniéndolo sencillo, ¡Estúpido!")_ son unos _scripts en Bash_ para placas _Raspberry Pi_ (_Raspberry PI OS Desktop_, [TwisterOS](https://raspbian-x.com/) y derivados _Debian_ todas ellas en versiones de _32 bits_), que cuenta con un menú que te va a permitir instalar algunas aplicaciones o configurar ficheros de forma automática de la manera más fácil posible. **Su misión: Simplificar la instalación de software en _Raspberry Pi_ o en _ODROID-C1_ y mantenerla.**
+**PiKISS** _(Pi Keeping It Simple, Stupid!, "Pi manteniéndolo sencillo, ¡Estúpido!")_ son unos _scripts en Bash_ para placas _Raspberry Pi 4_ (_Raspberry PI OS Desktop_, [TwisterOS](https://raspbian-x.com/) y derivados _Debian_ todas ellas en versiones de _32 bits_), que cuenta con un menú que te va a permitir instalar algunas aplicaciones o configurar ficheros de forma automática de la manera más fácil posible. **Su misión: Simplificar la instalación de software en _Raspberry Pi_.**
 
 La idea es ofrecer facilidades para manejar tu distribución y que las instalaciones sean tan sencillas como seleccionar una opción en un menú y contestar [Si/No]. Si alguna conlleva algo más que instalar, por ejemplo modificar un script en el arranque, añadir una línea a un fichero, descargar otros ficheros, comprobar dependencias, **PiKISS** lo hará por ti.
 
