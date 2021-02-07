@@ -2,7 +2,7 @@
 #
 # Description : Remove packages
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.8 (06/Feb/21)
+# Version     : 1.2.9 (06/Feb/21)
 # Compatible  : Raspberry Pi 1-4 (tested)
 #
 clear
@@ -75,8 +75,8 @@ pkgs_RPi() {
     fi
 
     # alsa?, wavs, ogg?
-    read -p "Delete all related with sound? (audio support, VLC) (y/n) " option
     echo
+    read -p "Delete all related with sound? (audio support, VLC) (y/n) " option
     case "$option" in
     y*) sudo apt remove -y "sudo dpkg --get-selections | grep -v 'deinstall' | grep sound | sed s/install//" ;;
     esac
