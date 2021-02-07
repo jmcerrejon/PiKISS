@@ -223,7 +223,7 @@ smEmulators() {
     if [[ ${MODEL} == 'Raspberry Pi' ]]; then
         options=(
             Back "Back to main menu"
-            Amiga "Amiberry is the best Amiga emulator"
+            Amiberry "Best Amiga emulator"
             Box86 "Lets you run x86 Linux programs on non-x86 Linux"
             Comm64 "VICE is a Commodore 64 emulator"
             Dolphin "Dolphin is a Wii & Gamecube emulator (EXPERIMENTAL)"
@@ -235,12 +235,13 @@ smEmulators() {
             Mame "Install MAME, Advance MAME and/or MAME4ALL-PI"
             MSX "openMSX"
             Pifba "Emulates old arcade games using CPS1, CPS2,..."
+            PS1 "DuckStation - PlayStation 1, aka. PSX Emulator"
             PSP "PPSSPP can run your PSP games on your RPi in full HD resolution"
             ResidualVM "Cross-platform 3D game interpreter to play some games"
             Redream "Redream is a Dreamcast emulator"
             ScummVM "Allow gamers to play point-and-click adventure games"
             Snes "SNES Emulator Snes9X or Bsnes"
-            Speccy "ZX-Spectrum emulator"
+            ZX-Spectrum "Speccy is a ZX-Spectrum emulator"
         )
     fi
 
@@ -249,7 +250,7 @@ smEmulators() {
     for choice in $choices; do
         case $choice in
         Back) break ;;
-        Amiga) ./scripts/emus/amiga.sh ;;
+        Amiberry) ./scripts/emus/amiga.sh ;;
         Box86) ./scripts/emus/box86.sh ;;
         Amstrad) ./scripts/emus/caprice.sh ;;
         Comm64) ./scripts/emus/commodore.sh ;;
@@ -260,13 +261,14 @@ smEmulators() {
         Mednafen) ./scripts/emus/mednafen.sh ;;
         Mame) ./scripts/emus/mame4allpi.sh ;;
         MSX) ./scripts/emus/msx.sh ;;
+        PS1) ./scripts/emus/psx.sh ;;
         PSP) ./scripts/emus/psp.sh ;;
         Pifba) ./scripts/emus/pifba.sh ;;
         ResidualVM) ./scripts/emus/residual.sh ;;
         Redream) ./scripts/emus/dc.sh ;;
         ScummVM) ./scripts/emus/scummvm.sh ;;
         Snes) ./scripts/emus/snes.sh ;;
-        Speccy) ./scripts/emus/speccy.sh ;;
+        ZX-Spectrum) ./scripts/emus/speccy.sh ;;
         esac
     done
 }
