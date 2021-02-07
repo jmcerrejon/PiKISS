@@ -12,7 +12,7 @@
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 clear
 
-RPI_NUMBER=$(getRaspberryPiNumberModel)
+RPI_NUMBER=$(get_raspberry_pi_model_number)
 CURRENT_BOOT_DATETIME="$(vcgencmd bootloader_version | head -n 1)"
 FILE=""
 
@@ -40,7 +40,7 @@ copy_boot_files() {
     mkdir -p ~/bootfiles && cd "$_"
 
     echo -e "\nGetting the Pi 4 to USB boot...\n"
-    wget $( wget -q --show-progress -O - https://github.com/raspberrypi/firmware/tree/master/boot | perl -nE 'chomp; next unless /[.](elf|dat)/; s/.*href="([^"]+)".*/$1/; s/blob/raw/; say qq{https://github.com$_}' )
+    wget $(wget -q --show-progress -O - https://github.com/raspberrypi/firmware/tree/master/boot | perl -nE 'chomp; next unless /[.](elf|dat)/; s/.*href="([^"]+)".*/$1/; s/blob/raw/; say qq{https://github.com$_}')
 
     # copy the .elf and .dat files to your /boot directory
     echo -e "\nCopying firmware to /boot...\n"
@@ -51,7 +51,7 @@ copy_boot_files() {
 install() {
     # Upgrade your distro
     upgrade
-    
+
     # change your firmware preference to stable
     echo -e "\nChanging firmware to stable if proceed..."
     sudo sed -i 's/critical/stable/g' /etc/default/rpi-eeprom-update

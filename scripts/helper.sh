@@ -53,7 +53,7 @@ compile_box86() {
     local SOURCE_PATH
 
     INSTALL_DIR="$HOME/box86"
-    PI_VERSION_NUMBER=$(getRaspberryPiNumberModel)
+    PI_VERSION_NUMBER=$(get_raspberry_pi_model_number)
     SOURCE_PATH="https://github.com/ptitSeb/box86.git"
 
     install_packages_if_missing cmake
@@ -681,7 +681,7 @@ function is_missing_dialog_pkg() {
     fi
 }
 
-getRaspberryPiNumberModel() {
+get_raspberry_pi_model_number() {
     awk </proc/device-tree/model '{print $3}'
 }
 
