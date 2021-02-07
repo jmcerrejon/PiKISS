@@ -9,7 +9,7 @@ readonly PIKISS_DIR=$PWD
 # Fix libGLESv2.so on Raspbian Stretch
 #
 
-fixlibGLES() {
+fix_libGLES() {
     if [ ! -f /usr/lib/libEGL.so ]; then
         sudo ln -s /usr/lib/arm-linux-gnueabihf/libEGL.so.1.1.0 /usr/lib/libEGL.so
     fi
@@ -96,19 +96,6 @@ install_box86() {
     cd "$HOME"/box86/build || exit 1
     sudo make install
     echo -e "\nBox86 has been installed.\n"
-}
-
-installGL4ES() {
-    local BINARY_URL
-    BINARY_URL="https://misapuntesde.com/rpi_share/pilabs/gl4es.tar.gz"
-
-    if [ -d ~/gl4es ]; then
-        echo -e "~/gl4es is already installed, skipping..."
-        return 0
-    fi
-
-    echo -e "\n\nInstalling GL4ES lib...\n"
-    download_and_extract "$BINARY_URL" "$HOME"
 }
 
 installMesa() {
@@ -682,19 +669,7 @@ function is_missing_dialog_pkg() {
 }
 
 get_raspberry_pi_model_number() {
-    awk </proc/device-tree/model '{print $3}'
-}
-
-#
-# Install SDL2 from RetroPie
-# NOTE: It has a bug with ScummVM
-#
-install_sdl2() {
-    echo "Installing SDL2 from RetroPie, please wait..."
-    mkdir -p "$HOME"/sc && cd "$_" || exit
-    git clone https://github.com/RetroPie/RetroPie-Setup.git
-    cd RetroPie-Setup/ || exit
-    sudo ./retropie_packages.sh sdl2 install_bin
+    awk </proc/device-tree/model '{print $3}' | head -c 1
 }
 
 #
