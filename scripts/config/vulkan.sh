@@ -51,7 +51,7 @@ install_full_deps() {
         libvulkan-dev ninja-build libvulkan1 python-mako \
         libdrm-dev libxshmfence-dev libxxf86vm-dev libwayland-dev \
         python3-mako wayland-protocols libwayland-egl-backend-dev \
-        cmake libassimp-dev
+        cmake libassimp-dev python3-pip
     install_meson
 }
 
