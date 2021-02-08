@@ -2,7 +2,7 @@
 #
 # Description : MS-DOS Emulator DOSBox-X
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.0 (26/Dec/20)
+# Version     : 1.1.1 (08/Feb/21)
 #
 # Help        : https://github.com/joncampbell123/dosbox-x/blob/master/README.source-code-description
 #             : https://krystof.io/dosbox-shaders-comparison-for-modern-dos-retro-gaming/
@@ -18,6 +18,7 @@ readonly DATA_URL="https://misapuntesde.com/res/jill-of-the-jungle-the-complete-
 readonly SOURCE_CODE_URL="https://github.com/joncampbell123/dosbox-x"
 
 runme() {
+    echo
     if [ ! -f "$INSTALL_DIR/dosbox/dosbox-x" ]; then
         echo -e "\nFile does not exist.\n· Something is wrong.\n· Try to install again."
         exit_message
@@ -65,13 +66,8 @@ EOF
     fi
 }
 
-extra() {
-    echo -e "\nInstalling Jill of the Jungle..."
-    mkdir -p "$INSTALL_DIR/dosbox/dos/jill" && cd "$_" || return
-    download_and_extract "$DATA_URL" "$INSTALL_DIR/dosbox/dos/jill"
-}
-
 compile() {
+    [[ -e $HOME/sc/dosbox-x ]] && rm -rf "$HOME/sc/dosbox-x"
     install_packages_if_missing "${PACKAGES_DEV[@]}"
     mkdir -p "$HOME/sc" && cd "$_" || return
     git clone "$SOURCE_CODE_URL" dosbox-x && cd "$_" || return
@@ -83,20 +79,25 @@ compile() {
 }
 
 post_install() {
-    mkdir -p $HOME/.dosbox && cp ./res/dosbox-0.82.26.conf $HOME/.dosbox/dosbox-0.82.26.conf
+    [[ ! -d $HOME/.dosbox ]] && mkdir -p "$HOME/.dosbox"
+    cp "$PIKISS_DIR/./res/dosbox-0.82.26.conf" "$HOME/.dosbox/"
+    echo
     read -p "EXTRA!: Do you want to download Jill of The Jungle Trilogy to play with DOSBox-X? [y/N] " response
     if [[ $response =~ [Yy] ]]; then
-        extra
+        echo -e "\nInstalling Jill of the Jungle..."
+        mkdir -p "$INSTALL_DIR/dosbox/dos/jill" && cd "$_" || return
+        download_and_extract "$DATA_URL" "$INSTALL_DIR/dosbox/dos/jill"
     fi
     runme
 }
 
 install() {
+    echo -e "Installing...\n"
     mkdir -p "$INSTALL_DIR" && cd "$_" || exit 1
     wget -qO- -O tmp.tar.gz $BINARY_URL && tar -xzvf tmp.tar.gz && rm tmp.tar.gz
     mkdir -p "$INSTALL_DIR/dosbox/dos"
-    post_install
     make_desktop_entry
+    post_install
     echo -e "\nDone!. Put your games inside $INSTALL_DIR/dosbox/dos. To play, go to $INSTALL_DIR/dosbox and type: ./dosbox-x\n"
 }
 
