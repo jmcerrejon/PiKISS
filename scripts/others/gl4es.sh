@@ -28,7 +28,11 @@ compile() {
         rm -r build
     fi
     mkdir build && cd "$_" || exit 1
-    cmake .. -DBCMHOST=1 -DCMAKE_BUILD_TYPE=RELEASE
+    if [ "$(dpkg -l | awk '/mesa0/ {print }'|wc -l)" -ge 1 ]; then
+        cmake .. -DBCMHOST=1 -DCMAKE_BUILD_TYPE=RELEASE
+    else
+        cmake .. -DODROID=1 -DCMAKE_BUILD_TYPE=RELEASE
+    fi
     make_with_all_cores
     echo -e "\nDone!. You can found the library at $COMPILE_PATH/lib"
     exit_message
