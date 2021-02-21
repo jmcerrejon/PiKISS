@@ -13,13 +13,13 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **809 hours**
+-   **813 hours**
 
 ## 💰 Total amount donated by users
 
 -   $405,89.
 
--   I want to thank my patrons _James Carroll, David J Leto, Rodney Hester, Matthew Michink & Mathew Gracie_ for trusting me ❤️
+-   I want to thank my patrons _James Carroll, David J Leto, Rodney Hester, Matthew Michink, Mathew Gracie & cxgr_ for trusting me ❤️
 
 -   Others users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze_
 
@@ -66,6 +66,14 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (21/02/21)
+
+· 👌 IMPROVE: New versin 1.8.0. New compiled versions of Blood, DOSBox-X 0.83. Refactor code.
+
+· 👌 IMPROVE: MagicAirCopy®. Now detect automatically if you have the file _res/magic-air-copy-pikiss.txt_ to use it.
+
+· 🐛 FIX: Games > Arx Fatalis & Quake 1 (shareware files missing).
 
 ### (07/02/21)
 

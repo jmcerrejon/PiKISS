@@ -1,3 +1,12 @@
+(21/02/21)
+==========
+
+· 👌 IMPROVE: New versin 1.8.0. New compiled versions of Blood, DOSBox-X 0.83. Refactor code.
+
+· 👌 IMPROVE: MagicAirCopy®. Now detect automatically if you have the file _res/magic-air-copy-pikiss.txt_ to use it.
+
+· 🐛 FIX: Games > Arx Fatalis & Quake 1 (shareware files missing).
+
 (07/02/21)
 ==========
 
