@@ -4,6 +4,7 @@
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 #
 readonly PIKISS_DIR=$PWD
+readonly PIKISS_MAGIC_AIR_COPY=$PIKISS_DIR/res/magic-air-copy-pikiss.txt
 
 #
 # Fix libGLESv2.so on Raspbian Stretch
@@ -267,6 +268,8 @@ download_file() {
 # Download a file and extract it
 # $1 url
 # $2 destination directory
+#
+# TODO Install uncompressor pkg if not installed (Ex. if you have .7z file, install p7zip-full)
 #
 download_and_extract() {
     local DATA_URL
@@ -765,51 +768,33 @@ upgrade_dist() {
     sudo apt-get -qq update && sudo apt-get -y upgrade
 }
 
+exists_magic_file() {
+    if [[ -e $PIKISS_MAGIC_AIR_COPY ]]; then
+        true
+    else
+        false
+    fi
+}
+
 #
 # Message use the MagicAirCopy® technology
 #
 message_magic_air_copy() {
-    local MESSAGES_LIST
-    local SIZE
-    local INDEX
-    MESSAGES_LIST=(
-        "You didn't lend it out?"
-        "Really?!"
-        "What a mess!"
-        "You sure the game is here?"
-        "You sure you bought this game?"
-        "Clean up your room next time"
-        "Dust in the wind, and dust in your room"
-        "This is a dirty job"
-        "I quit!"
-        "Why do you punished me doing this?"
-        "You won't believe what 'other' thing I've found under your bed"
-        "It stinks here!"
-        "Take a bucket of water and clean up a little"
-        "Shouldn't you be studying?"
-        "Why don't you go look for it?"
-        "I find it, what do you give me in return?"
-        "Did you fart or does your room smell like this always?"
-        "Oh my gosh!, Oh my gosh!, Oh my gosh!"
-        "Are you really going to be watching while I look for it?"
-        "I foun!... Ah, it's not that"
-    )
-    SIZE=${#MESSAGES_LIST[@]}
-    INDEX=$(("$RANDOM" % "$SIZE"))
-
-    clear
-    echo -e "\nLooking for the copy at your house...\n" && sleep 3
-    echo -e "${MESSAGES_LIST[$INDEX]}\n" && sleep 2
-
-    if [ -n "$1" ]; then
-        # TODO Check if it's an url or a file, and if it's an url, check it available: ! is_URL_down "$1"; then
-        echo -e "Found it!...\n"
-        echo "I'm moving the data files FROM YOUR original copy to destination directory using the technology MagicAirCopy® (｀-´)⊃━☆ﾟ.*･｡ﾟ"
-        true
-    else
-        echo -e "Data files not found. Anyway, clean your room and remember: Winners don't use drugs..."
+    if ! exists_magic_file; then
+        echo -e "\nFile $PIKISS_MAGIC_AIR_COPY not found..."
         false
+        return
     fi
+
+    if is_URL "$1" && is_URL_down "$1"; then
+        echo -e "\nData files not found. Check if $1 exist and it's a valid hoster..."
+        false
+        return
+    fi
+
+    echo -e "\nFound res/magic-air-copy-pikiss.txt...\n"
+    echo "I'm trying to move the data files FROM YOUR original copy to destination directory using the technology MagicAirCopy® (｀-´)⊃━☆ﾟ.*･｡ﾟ"
+    true
 }
 
 #
