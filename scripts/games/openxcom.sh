@@ -2,7 +2,7 @@
 #
 # Description : OpenXcom with the help of user chills340
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.5 (18/Nov/20)
+# Version     : 1.1.6 (21/Feb/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://www.ufopaedia.org/index.php/Compiling_with_CMake_(OpenXcom)
@@ -12,10 +12,10 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
-readonly PACKAGES=( libsdl-gfx1.2-5 libglu1-mesa libyaml-cpp0.6 )
+readonly PACKAGES=(libsdl-gfx1.2-5 libglu1-mesa libyaml-cpp0.6)
 readonly PACKAGES_DEV=(build-essential libboost-dev libsdl1.2-dev libsdl-mixer1.2-dev libsdl-image1.2-dev libsdl-gfx1.2-dev libyaml-cpp-dev xmlto)
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/openxcom_rpi.tar.gz"
-readonly GITHUB_URL="https://github.com/SupSuper/OpenXcom.git"
+readonly SOURCE_CODE_URL="https://github.com/SupSuper/OpenXcom.git"
 readonly VAR_DATA_NAME="UFO_ENEMY_UNKNOWN"
 INPUT=/tmp/openxcom.$$
 
@@ -73,26 +73,18 @@ EOF
 download_data_files() {
     local DATA_URL
     DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
-
-    if ! message_magic_air_copy "$DATA_URL"; then
-        echo -e "\nNow copy data directory into $INSTALL_DIR/openxcom."
-        return 0
-    fi
+    message_magic_air_copy
     # TODO Fix the next Operation not permitted
     download_and_extract "$DATA_URL" /tmp
-    cd /tmp/X-Com\ -\ UFO\ Enemy\ Unknown/
-    mv ufo UFO && mv -f UFO "$1" && cd "$_"
-}
-
-end_message() {
-    echo -e "\n\nDone!. You can play typing $INSTALL_DIR/openxcom/openxcom or opening the Menu > Games > OpenXcom.\n"
+    cd /tmp/X-Com\ -\ UFO\ Enemy\ Unknown/ || exit 1
+    mv ufo UFO && mv -f UFO "$INSTALL_DIR/openxcom" && cd "$_" || exit 1
 }
 
 compile() {
     install_packages_if_missing "${PACKAGES_DEV[@]}"
-    mkdir -p "$HOME/sc" && cd "$_"
-    git clone "$GITHUB_URL" openxcom && cd "$_"
-    mkdir build && cd "$_"
+    mkdir -p "$HOME/sc" && cd "$_" || exit 1
+    git clone "$SOURCE_CODE_URL" openxcom && cd "$_" || exit 1
+    mkdir build && cd "$_" || exit 1
     cmake -DCMAKE_BUILD_TYPE=Release ..
     make_with_all_cores
     read -p "Do you want to install globally the game (y/N)? " response
@@ -103,46 +95,34 @@ compile() {
     exit_message
 }
 
-download_binaries() {
-    echo -e "\nInstalling binary files..."
-    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
+end_message() {
+    echo -e "\nDone!. You can play typing $INSTALL_DIR/openxcom/openxcom or opening the Menu > Games > OpenXcom."
 }
 
 install() {
-    install_script_message
     install_packages_if_missing "${PACKAGES[@]}"
-    download_binaries
+    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
     generate_icon
-    echo
-    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for X-Com:Enemy Unknow (y/N)? " response
-    if [[ $response =~ [Yy] ]]; then
-        download_data_files "$INSTALL_DIR/openxcom"
+    if ! exists_magic_file; then
+        echo -e "\nCopy the data files inside $INSTALL_DIR/openxcom/UFO."
         end_message
-        runme
+        exit_message
     fi
 
-    echo -e "\nCopy the data files inside $INSTALL_DIR/openxcom/UFO."
+    download_data_files
     end_message
-    exit_message
+    runme
 }
 
-menu() {
-    while true; do
-        dialog --clear \
-            --title "[ OpenXcom ]" \
-            --menu "Select from the list:" 11 70 3 \
-            INSTALL "Binary (Recommended)" \
-            COMPILE "Latest from source code. Estimated time Rpi 4: ~10 min." \
-            Exit "Exit" 2>"${INPUT}"
+install_script_message
+echo "
+OpenXCom on Raspberry Pi
+========================
 
-        menuitem=$(<"${INPUT}")
+ · Based on engine at ${SOURCE_CODE_URL}
+ · REMEMBER YOU NEED A LEGAL COPY OF THE GAME and copy game directory inside $INSTALL_DIR/openxcom
+ · To play, when installed use Menu > Games > OpenXcom or $INSTALL_DIR/openxcom/openxcom
+"
+read -p "Press [ENTER] to continue..."
 
-        case $menuitem in
-        INSTALL) clear && install ;;
-        COMPILE) clear && compile ;;
-        Exit) exit ;;
-        esac
-    done
-}
-
-menu
+install

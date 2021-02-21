@@ -2,7 +2,7 @@
 #
 # Description : Diablo for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.7 (03/Jan/21)
+# Version     : 1.1.8 (21/Feb/21)
 # Compatible  : Raspberry Pi 3-4 (tested)
 #
 # Help		  : https://github.com/diasurgical/devilutionX/
@@ -54,7 +54,7 @@ if [[ -d "$INSTALL_DIR"/diablo1 ]]; then
 fi
 
 generate_icon() {
-    echo -e "\n\nGenerating icon..."
+    echo -e "\nGenerating icon..."
     wget -qO- -O "$INSTALL_DIR"/diablo1/diablo1.png "$ICON"
     if [[ ! -e ~/.local/share/applications/diablo1.desktop ]]; then
         cat <<EOF >~/.local/share/applications/diablo1.desktop
@@ -70,29 +70,22 @@ EOF
 }
 
 install() {
-    echo -e "\nInstalling Diablo 1, please wait...\n"
+    echo -e "\nInstalling Diablo 1, please wait..."
     install_packages_if_missing "${PACKAGES[@]}"
 
     download_and_extract "$BINARY_PATH" "$INSTALL_DIR"
     mv "$INSTALL_DIR"/devilutionx-linux-armhf "$INSTALL_DIR"/diablo1
     generate_icon
-    echo
-    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Diablo 1 (Y/n)? " response
-    if [[ $response =~ [Nn] ]]; then
-        echo -e "\nPlease, copy diabdat.mpq (must be in lowercase) inside $INSTALL_DIR/diablo1"
-        return 1
-    fi
 
-    if ! message_magic_air_copy "$DIABLO1_DATA_URL"; then
+    if ! exists_magic_file; then
         echo -e "\nNow copy diabdat.mpq (must be in lowercase) into $INSTALL_DIR/diablo1."
         exit_message
     fi
 
-    echo -e "\nDownloading diabdat.mpq, please wait..."
     download_file "$DIABLO1_DATA_URL" "$INSTALL_DIR"/diablo1
     echo -e "\nDone!. type $INSTALL_DIR/diablo1 to Play or go to Menu > Games > Diablo1 (if proceed).\n"
+    runme
 }
 
 install_script_message
 install
-runme

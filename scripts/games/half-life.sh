@@ -2,7 +2,7 @@
 #
 # Description : Half Life thks to Salva (Pi Labs)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.11 (16/Jan/21)
+# Version     : 1.0.12 (21/Feb/21)
 # Compatible  : Raspberry Pi (tested)
 # Repository  : https://github.com/ValveSoftware/halflife
 #
@@ -78,25 +78,23 @@ post_install() {
     # fi
 }
 
+download_data_files() {
+    DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
+    message_magic_air_copy
+    download_and_extract "$DATA_URL" "$INSTALL_DIR"/half-life
+}
+
 install() {
     local DATA_URL
     download_and_extract "$BINARY_URL" "$INSTALL_DIR"
     generate_icon
-    echo
-    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Half Life (Y/n)?: " response
-    if [[ $response =~ [Nn] ]]; then
-        echo -e "\nDone!. Now copy the /valve directory inside $INSTALL_DIR/half-life"
+
+    if ! exists_magic_file; then
+        echo -e "\nNow copy the /valve directory inside $INSTALL_DIR/half-life and enjoy :)"
         exit_message
     fi
 
-    DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
-
-    if ! message_magic_air_copy "$DATA_URL"; then
-        echo -e "\nNow copy the /valve directory inside $INSTALL_DIR/half-life"
-        return 0
-    fi
-    install_packages_if_missing p7zip-full
-    download_and_extract "$DATA_URL" "$INSTALL_DIR"/half-life
+    download_data_files
     post_install
     echo -e "\nDone!."
     runme
@@ -108,7 +106,7 @@ Install Half Life on Raspberry Pi
 =================================
 
  · Based on engine at ${SOURCE_CODE_URL}
- · Remember to copy your /valve directory inside $INSTALL_DIR/half-life
+ · REMEMBER YOU NEED A LEGAL COPY OF THE GAME and copy /valve directory inside $INSTALL_DIR/half-life
  · To play, when installed use Menu > Games > Half-Life or $INSTALL_DIR/half-life/half-life.sh
 "
 read -p "Press [ENTER] to continue..."

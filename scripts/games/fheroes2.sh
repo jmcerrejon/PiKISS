@@ -2,7 +2,7 @@
 #
 # Description : fheroes2
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (07/Nov/20)
+# Version     : 1.0.1 (21/Feb/21)
 # Compatible  : Raspberry Pi 4
 # Repository  : https://github.com/ihhub/fheroes2
 #
@@ -15,7 +15,7 @@ readonly PACKAGES=(fluidr3mono-gm-soundfont fluid-soundfont-gm libsdl2-mixer-2.0
 readonly PACKAGES_DEV=(libsdl2-dev libsdl2-ttf-dev libsdl2-mixer-dev libsdl2-image-dev gettext)
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/fheroes2_0.83_rpi.tar.gz"
 readonly SOURCE_CODE_URL="https://github.com/ihhub/fheroes2"
-readonly VAR_DATA_NAME="HEROES2"
+readonly VAR_DATA_NAME="HEROES_2"
 INPUT=/tmp/temp.$$
 
 runme() {
@@ -70,12 +70,12 @@ EOF
 }
 
 end_message() {
-    echo -e "\n\nDone!. You can play typing $INSTALL_DIR/fheroes2/fheroes2 or opening the Menu > Games > Heroes of Might and Magic II engine (fheroes2).\n"
+    echo -e "\nDone!. You can play typing $INSTALL_DIR/fheroes2/fheroes2 or opening the Menu > Games > Heroes of Might and Magic II engine (fheroes2).\n"
 }
 
 compile() {
     install_packages_if_missing "${PACKAGES_DEV[@]}"
-    mkdir -p "$HOME/sc" && cd "$_"
+    mkdir -p "$HOME/sc" && cd "$_" || exit 1
     git clone "$SOURCE_CODE_URL" fheroes2 && "$_"
     time export WITH_SDL2="ON" make -j"$(nproc)"
     echo
@@ -89,8 +89,14 @@ compile() {
 
 get_demo() {
     echo -e "\nInstalling demo files...\n"
-    cd "$INSTALL_DIR/fheroes2/script/demo"
+    cd "$INSTALL_DIR/fheroes2/script/demo" || exit 1
     ./demo_linux.sh
+}
+
+download_data_files() {
+    DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
+    message_magic_air_copy
+    download_and_extract "$DATA_URL" "$INSTALL_DIR/fheroes2"
 }
 
 install() {
@@ -98,20 +104,13 @@ install() {
     install_packages_if_missing "${PACKAGES[@]}"
     download_and_extract "$BINARY_URL" "$INSTALL_DIR"
     generate_icon
-    echo -e "\nDo you have data files set on the file res/magic-air-copy-pikiss.txt for Heroes of Might and Magic II?"
-    read -p "(If not, demo version will be installed) (y/N)? " response
-    if [[ $response =~ [Yy] ]]; then
-        DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
-
-        if ! message_magic_air_copy "$DATA_URL"; then
-            echo -e "\nNow copy data directory into $INSTALL_DIR/fheroes2."
-            return 0
-        fi
-        download_and_extract "$DATA_URL" "$INSTALL_DIR/fheroes2"
-    else
+    if ! exists_magic_file; then
         get_demo
+        end_message
+        runme
     fi
 
+    download_data_files
     end_message
     runme
 }
@@ -124,6 +123,7 @@ Heroes of Might and Magic II engine (fheroes2) for Raspberry Pi
  · Free implementation of Heroes of Might and Magic II engine.
  · F4: Full screen.
  · Still in heavy development, but playable.
+ · If you don't provide game data files inside res/magic-air-copy-pikiss.txt, demo will be installed.
 "
 read -p "Press [Enter] to continue..."
 

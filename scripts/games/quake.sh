@@ -2,7 +2,7 @@
 #
 # Description : Quake I, ][, ]I[
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.4 (21/Nov/20)
+# Version     : 1.3.5 (21/Feb/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help 		  : Quake 1: | https://godmodeuser.com/p/8#40
@@ -26,14 +26,14 @@ readonly Q2_BINARY_URL="https://misapuntesde.com/rpi_share/yquake2_bin_arm.tar.g
 readonly Q2_SOURCE_CODE_URL="https://github.com/yquake2/yquake2.git"
 readonly Q2_OGG_URL="https://misapuntesde.com/rpi_share/q2_ogg.zip"
 readonly Q2_HIGH_TEXTURE_PAK_URL="https://deponie.yamagi.org/quake2/texturepack/q2_textures.zip"
-readonly Q2_HIGH_TEXTURE_MODELS_URL="https://deponie.yamagi.org/quake2/texturepack/models.zip"readonly 
+readonly Q2_HIGH_TEXTURE_MODELS_URL="https://deponie.yamagi.org/quake2/texturepack/models.zip"readonly
 readonly Q3_PACKAGES_DEV=(libsdl2-dev libxxf86dga-dev libcurl4-openssl-dev)
 readonly Q3_BINARY_URL="https://misapuntesde.com/rpi_share/quake3-1.32-rpi.tar.gz"
 readonly Q3_SOURCE_CODE_URL="https://github.com/ec-/Quake3e.git"
 readonly VAR_DATA_NAME_1="QUAKE_1"
 readonly VAR_DATA_NAME_2="QUAKE_2"
 readonly VAR_DATA_NAME_3="QUAKE_3"
-Q1_DATA_URL="https://www.quakeforge.net/files/quake-shareware-1.06.zip"
+Q1_DATA_URL="https://image.dosgamesarchive.com/games/quake106.zip"
 Q2_DATA_URL="https://misapuntesde.com/rpi_share/baseq2_share.tar.gz"
 Q3_DATA_URL=""
 INPUT=/tmp/quake.$$
@@ -97,9 +97,9 @@ q1_install_binary() {
 q1_opengl_compile() {
     echo -e "\nInstalling Dependencies..."
     sudo apt install -y libsdl2-dev libvorbis-dev libmad0-dev
-    mkdir -p "$HOME"/sc && cd "$_"
+    mkdir -p "$HOME"/sc && cd "$_" || exit 1
     download_and_extract "$Q1_SOURCE_CODE_1_URL" "$HOME"/sc
-    cd "$HOME"/sc/quakespasm-0.93.2/Quake
+    cd "$HOME"/sc/quakespasm-0.93.2/Quake || exit 1
     make -j"$(getconf _NPROCESSORS_ONLN)" USE_SDL2=1 OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
     echo -e "\nDone!. "
 }
@@ -107,9 +107,9 @@ q1_opengl_compile() {
 q1_vulkan_compile() {
     echo -e "\nInstalling Dependencies..."
     sudo apt install -y apt-get install git make gcc libsdl2-dev libvulkan-dev libvorbis-dev libmad0-dev
-    mkdir -p "$HOME"/sc && cd "$_"
+    mkdir -p "$HOME"/sc && cd "$_" || exit 1
     download_and_extract "$Q1_SOURCE_CODE_2_VK_URL" "$HOME"/sc
-    cd "$HOME"/sc/vkQuake/Quake
+    cd "$HOME"/sc/vkQuake/Quake || exit 1
     make -j"$(getconf _NPROCESSORS_ONLN)" USE_SDL2=1 OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
     echo -e "\nDone!. "
 }
@@ -125,15 +125,9 @@ q1_soundtrack_download() {
 }
 
 q1_magic_air_copy() {
-    echo
-    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Quake (If not, shareware version will be installed) (y/N)?: " response
-    if [[ $response =~ [Yy] ]]; then
+    if exists_magic_file; then
         Q1_DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_1")
-
-        if ! message_magic_air_copy "$Q1_DATA_URL"; then
-            echo -e "\nFile not found."
-            return 0
-        fi
+        message_magic_air_copy
     fi
     download_and_extract "$Q1_DATA_URL" "$HOME"/quake
 }
@@ -146,12 +140,13 @@ Quake for Raspberry Pi
 ======================
 
  · Optimized for Raspberry Pi 4.
+ · Based on code at ${Q1_SOURCE_CODE_1_URL}.
+ · If you don't provide game data file inside res/magic-air-copy-pikiss.txt, shareware version will be installed.
  · Start at 720p (You can change it).
  · SDL2 with graphic improvements through autoexec.cfg.
  · Check for more improvements changing autoexec.cfg at https://www.celephais.net/fitzquake/#commands
  · OGG/MP3 soundtrack ONLY for full version (in progress).
  · If you want to disable fps cap, just open the console (tilde key in game) and type: SCR_SHOWFPS 0
- · Based on code at ${Q1_SOURCE_CODE_1_URL}.
  · Install path: $INSTALL_DIR/quake
 "
     read -p "Press [Enter] to install the game..."
@@ -225,7 +220,7 @@ q2_compile() {
     echo -e "\nInstalling Dependencies..."
     sudo apt install -y libsdl2-dev libopenal-dev
     mkdir -p "$HOME"/sc
-    git clone "$Q2_SOURCE_CODE_URL" yquake2 && cd "$_"
+    git clone "$Q2_SOURCE_CODE_URL" yquake2 && cd "$_" || exit 1
     # TODO Add on Makefile -march=armv7
     make -j"$(getconf _NPROCESSORS_ONLN)"
     echo -e "\nDone!. "
@@ -244,17 +239,11 @@ q2_high_textures_download() {
 }
 
 q2_magic_air_copy() {
-    echo
-    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Quake ][ (If not, shareware version will be installed) (y/N)?: " response
-    if [[ $response =~ [Yy] ]]; then
+    if exists_magic_file; then
         Q2_DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_2")
-
-        if ! message_magic_air_copy "$Q2_DATA_URL"; then
-            echo -e "\nFile not found. Copy directory /baseq2 inside $INSTALL_DIR/yquake2"
-            return 0
-        fi
+        message_magic_air_copy
     fi
-        download_and_extract "$Q2_DATA_URL" "$Q2_CONFIG_DIR"
+    download_and_extract "$Q2_DATA_URL" "$Q2_CONFIG_DIR"
 }
 
 q2_install() {
@@ -268,6 +257,7 @@ Quake ][ for Raspberry Pi
  · High textures.
  · OGG soundtrack.
  · Install path: $INSTALL_DIR/yquake2
+ · If you don't provide game data file inside res/magic-air-copy-pikiss.txt, shareware version will be installed.
 "
     read -p "Press [Enter] to install the game..."
     echo -e "\n\nInstalling Quake ][, please wait...\n"
@@ -335,10 +325,10 @@ EOF
 
 q3_compile() {
     install_packages_if_missing "${Q3_PACKAGES_DEV[@]}"
-    mkdir -p ~/sc && cd "$_"
+    mkdir -p ~/sc && cd "$_" || exit 1
     echo -e "\nCloning and compiling Quake ]I[...\n"
     [[ ! -d ~/sc/Quake3e ]] && git clone "$Q3_SOURCE_CODE_URL"
-    cd ~/sc/Quake3e/
+    cd ~/sc/Quake3e/ || exit 1
     make -j"$(nproc)" OPTOPT="-march=armv8-a+crc -mtune=cortex-a53" BUILD_SERVER=0 USE_RENDERER_DLOPEN=0 USE_VULKAN=1
     echo -e "\nDone!. Binary files at build/release-linux-arm"
     exit_message
@@ -358,19 +348,13 @@ q3_install_binary() {
 }
 
 q3_magic_air_copy() {
-    echo
-    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Quake ]I[ (y/N)?: " response
-    if [[ $response =~ [Yy] ]]; then
-        Q3_DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_3")
-
-        if ! message_magic_air_copy "$Q3_DATA_URL"; then
-            echo -e "\nNow copy data directory /baseq3 into $INSTALL_DIR/quake3.\n"
-            return 0
-        fi
-        download_and_extract "$Q3_DATA_URL" "$INSTALL_DIR"/quake3
-    else
-        echo -e "\nNow copy data directory /baseq3 into $INSTALL_DIR/quake3.\n"
+    if ! exists_magic_file; then
+        echo -e "\nNow copy data directory /baseq3 into $INSTALL_DIR/quake3 and enjoy :)"
+        exit_message
     fi
+    Q3_DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_3")
+    message_magic_air_copy
+    download_and_extract "$Q3_DATA_URL" "$INSTALL_DIR"/quake3
 }
 
 q3_install() {
@@ -386,6 +370,7 @@ Quake ]I[ for Raspberry Pi
  · High quality textures thanks to https://www.moddb.com/mods/high-quality-quake/downloads/hqq-high-quality-quake-v37-test
  · Config file at ~/.q3a/baseq3/q3config.cfg
  · Install path: $INSTALL_DIR/quake3
+ · REMEMBER YOU NEED A LEGAL COPY OF THE GAME and copy /baseq3 directory inside $INSTALL_DIR/quake3
  · NOTE: It uses your OS resolution, even if you change it on config file.
 "
     read -p "Press [Enter] to install the game..."

@@ -2,7 +2,7 @@
 #
 # Description : Blood
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.6 (03/Jan/21)
+# Version     : 1.0.7 (20/Feb/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://www.techradar.com/how-to/how-to-run-wolfenstein-3d-doom-and-duke-nukem-on-your-raspberry-pi
@@ -16,7 +16,6 @@ readonly BINARY_URL="https://misapuntesde.com/rpi_share/blood_r12112.tar.gz"
 readonly PACKAGES_DEV=(build-essential nasm libgl1-mesa-dev libglu1-mesa-dev libsdl1.2-dev libsdl-mixer1.2-dev libsdl2-dev libsdl2-mixer-dev flac libflac-dev libvorbis-dev libvpx-dev libgtk2.0-dev freepats)
 readonly SOURCE_CODE_URL="https://github.com/nukeykt/NBlood.git"
 readonly VAR_DATA_NAME="BLOOD_FULL"
-INPUT=/tmp/blood.$$
 
 runme() {
     if [ ! -f "$INSTALL_DIR"/blood/nblood ]; then
@@ -67,16 +66,6 @@ EOF
     fi
 }
 
-download_data_files() {
-    cd "$INSTALL_DIR/blood" || exit 1
-    download_and_extract "$DATA_URL" "$INSTALL_DIR"
-}
-
-end_message() {
-    echo -e "\n\nDone!. You can play typing $INSTALL_DIR/blood/blood or opening the Menu > Games > Blood.\n"
-    runme
-}
-
 # Check https://github.com/nukeykt/NBlood/issues/332
 fix_path() {
     echo -e "Fixing code...\n" && sleep 3
@@ -88,7 +77,7 @@ fix_path() {
 compile() {
     echo -e "\nInstalling dependencies (if proceed)...\n"
     install_packages_if_missing "${PACKAGES_DEV[@]}"
-    mkdir -p "$HOME/sc" || exit 1
+    mkdir -p "$HOME/sc" && cd "$_" || exit 1
     echo
     git clone "$SOURCE_CODE_URL" blood && cd "$_" || exit 1
     fix_path
@@ -98,51 +87,26 @@ compile() {
     exit_message
 }
 
-download_binaries() {
-    echo -e "\nInstalling binary files..."
-    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
+download_data_files() {
+    DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
+    message_magic_air_copy
+    download_and_extract "$DATA_URL" "$INSTALL_DIR/blood"
 }
 
 install() {
     install_script_message
-    echo -e "\n\nInstalling, please wait..."
+    echo -e "\n\nInstalling Blood, please wait..."
     mkdir -p "$INSTALL_DIR" && cd "$_" || exit 1
-    download_binaries
+    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
     generate_icon
-    echo
-    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Blood (y/N)? " response
-    if [[ $response =~ [Yy] ]]; then
-        DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
-            if ! message_magic_air_copy "$DATA_URL"; then
-        echo -e "\nNow copy data directory into $INSTALL_DIR/blood."
-        return 0
-    fi 
+    if exists_magic_file; then
         download_data_files
-        end_message
+        echo -e "\n\nDone!. You can play typing $INSTALL_DIR/blood/blood or opening the Menu > Games > Blood.\n"
+        runme
     fi
 
-    echo -e "\nDone. Copy the data files inside $INSTALL_DIR/blood."
-    echo -e "\nYou can play typing $INSTALL_DIR/blood/nblood or opening the Menu > Games > Blood."
+    echo -e "\nDone. Copy the data files inside $INSTALL_DIR/blood and then, you can play typing $INSTALL_DIR/blood/nblood or opening the Menu > Games > Blood"
     exit_message
 }
 
-menu() {
-    while true; do
-        dialog --clear \
-            --title "[ Blood ]" \
-            --menu "Select from the list:" 11 68 3 \
-            INSTALL "Binary compiled 03/Jan/21 (Recommended)" \
-            COMPILE "Latest from source code. Estimated time: 5 minutes." \
-            Exit "Exit" 2>"${INPUT}"
-
-        menuitem=$(<"${INPUT}")
-
-        case $menuitem in
-        INSTALL) clear && install ;;
-        COMPILE) clear && compile ;;
-        Exit) exit ;;
-        esac
-    done
-}
-
-menu
+install

@@ -2,7 +2,7 @@
 #
 # Description : Bstone: A source port of Blake Stone: Aliens Of Gold and Blake Stone: Planet Strike.
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.5 (23/Oct/20)
+# Version     : 1.0.6 (21/Feb/21)
 # Compatible  : Raspberry Pi 4 (tested on Raspberry Pi 4)
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -53,7 +53,7 @@ fi
 
 generate_icon_AOG_FULL() {
     if [[ ! -e ~/.local/share/applications/aog-full.desktop ]]; then
-cat << EOF > ~/.local/share/applications/aog-full.desktop
+        cat <<EOF >~/.local/share/applications/aog-full.desktop
 [Desktop Entry]
 Name=Blake Stone Aliens of Gold (Full)
 Exec=${INSTALL_DIR}/bstone/bstone --data_dir ${AOG_FULL_DATA_PATH}
@@ -66,7 +66,7 @@ EOF
 }
 generate_icon_AOG_SHARE() {
     if [[ ! -e ~/.local/share/applications/aog-share.desktop ]]; then
-cat << EOF > ~/.local/share/applications/aog-share.desktop
+        cat <<EOF >~/.local/share/applications/aog-share.desktop
 [Desktop Entry]
 Name=Blake Stone Aliens of Gold (Shareware)
 Exec=${INSTALL_DIR}/bstone/bstone --data_dir ${AOG_SHARE_DATA_PATH}
@@ -80,7 +80,7 @@ EOF
 
 generate_icon_PS_FULL() {
     if [[ ! -e ~/.local/share/applications/ps-full.desktop ]]; then
-cat << EOF > ~/.local/share/applications/ps-full.desktop
+        cat <<EOF >~/.local/share/applications/ps-full.desktop
 [Desktop Entry]
 Name=Blake Stone Planet Strike (Full)
 Exec=${INSTALL_DIR}/bstone/bstone --data_dir ${PS_FULL_DATA_PATH}
@@ -94,12 +94,12 @@ EOF
 
 compile() {
     install_packages_if_missing "${PACKAGES_DEV[@]}"
-    mkdir -p ~/sc && cd "$_"
+    mkdir -p ~/sc && cd "$_" || exit 1
     echo -e "\nCloning and compiling...\n"
     [[ ! -d ~/sc/bstone ]] && git clone "$SOURCE_CODE_URL"
-    cd ~/sc/bstone/
-    mkdir -p build && cd "$_"
-    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=~/bstone-1.1.12/build/install ../src
+    cd ~/sc/bstone/ || exit 1
+    mkdir -p build
+    cmake ../src -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=~/sc/bstone/build/install -DBSTONE_USE_PCH=ON -DBSTONE_USE_STATIC_LINKING=ON -DBSTONE_USE_MULTI_PROCESS_COMPILATION=ON
     make -j"$(nproc)" OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
     echo -e "\nDone!."
     exit_message
@@ -109,17 +109,14 @@ install() {
     download_and_extract "$BINARY_URL" "$INSTALL_DIR"
     [[ ! -d "$CONFIG_DIR" ]] && mkdir -p "$CONFIG_DIR"
     cp "$INSTALL_DIR"/bstone/bstone_config.txt "$CONFIG_DIR"
-    echo
-    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Blake Stone: Aliens of Gold & Blake Stone: Planet Strike (If not, Shareware of Aliens of Gold will be installed) (Y/n)?: " response
-    if [[ $response =~ [Nn] ]]; then
-        # Yes, I know. It's a little bit tricky. Who cares? ;)
+
+    if ! exists_magic_file; then
         rm -rf "$INSTALL_DIR"/bstone/data-full
         generate_icon_AOG_SHARE
         echo -e "\nDone!."
-        runme 
+        runme
     fi
 
-    message_magic_air_copy "$BINARY_URL"
     generate_icon_AOG_FULL
     generate_icon_PS_FULL
     echo -e "\nDone!."

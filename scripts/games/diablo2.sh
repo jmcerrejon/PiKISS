@@ -2,7 +2,7 @@
 #
 # Description : Diablo 2 Exp. Spanish for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.5 (25/Oct/20)
+# Version     : 1.1.6 (21/Feb/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Info		  : Thks to PI Labs and Notaz
@@ -80,10 +80,9 @@ end_message() {
 }
 
 download_data_files() {
-    if ! message_magic_air_copy "$DATA_URL"; then
+    if ! exists_magic_file; then
         echo -e "\nNow copy data directory into $INSTALL_DIR/diablo2."
         end_message
-        return 0
     fi
     mkdir -p "$INSTALL_DIR" && cd "$_" || exit 1
     download_and_extract "$DATA_URL" "$INSTALL_DIR"

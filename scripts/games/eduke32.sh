@@ -2,7 +2,7 @@
 #
 # Description : Duke Nukem 3D
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.6 (03/Jan/21)
+# Version     : 1.0.7 (21/Feb/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://www.techradar.com/how-to/how-to-run-wolfenstein-3d-doom-and-duke-nukem-on-your-raspberry-pi
@@ -74,11 +74,6 @@ download_data_files() {
     download_and_extract "$DATA_URL" "$INSTALL_DIR"/eduke32
 }
 
-end_message() {
-    echo -e "\n\nDone!. You can play typing $INSTALL_DIR/eduke32/eduke32 or opening the Menu > Games > Duke Nukem 3D.\n"
-    runme
-}
-
 # Check https://github.com/nukeykt/NBlood/issues/332
 fix_path() {
     echo -e "\nFixing code...\n" && sleep 3
@@ -101,49 +96,24 @@ compile() {
 }
 
 download_binaries() {
-    echo -e "\nInstalling binary files..."
+    echo -e "\nInstalling binary files. If you don't provide game data file inside res/magic-air-copy-pikiss.txt, shareware version will be installed."
     download_and_extract "$BINARY_URL" "$INSTALL_DIR"
 }
 
 install() {
-    install_script_message
-    echo -e "\n\nInstalling, please wait..."
+    echo -e "\n\nInstalling EDuke32, please wait..."
     mkdir -p "$INSTALL_DIR" && cd "$_" || exit 1
     download_binaries
     generate_icon
-    echo
-    read -p "Do you have data files set on the file res/magic-air-copy-pikiss.txt for Duke Nukem Atomic Edition (If not, a shareware version will be installed) (y/N)?: " response
-    if [[ $response =~ [Yy] ]]; then
+    if exists_magic_file; then
         DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
-
-        if ! message_magic_air_copy "$DATA_URL"; then
-            echo -e "\nNow copy data directory into $INSTALL_DIR/eduke32."
-            end_message
-            return 0
-        fi
+        message_magic_air_copy
     fi
 
     download_data_files
-    end_message
+    echo -e "\nDone!. You can play typing $INSTALL_DIR/eduke32/eduke32 or opening the Menu > Games > Duke Nukem 3D.\n"
+    runme
 }
 
-menu() {
-    while true; do
-        dialog --clear \
-            --title "[ Duke Nukem 3D ]" \
-            --menu "Select from the list:" 11 68 3 \
-            INSTALL "Binary compiled 03/Jan/21 (Recommended)" \
-            COMPILE "Latest from source code. Estimated time: 5 minutes." \
-            Exit "Exit" 2>"${INPUT}"
-
-        menuitem=$(<"${INPUT}")
-
-        case $menuitem in
-        INSTALL) clear && install ;;
-        COMPILE) clear && compile ;;
-        Exit) exit ;;
-        esac
-    done
-}
-
-menu
+install_script_message
+install
