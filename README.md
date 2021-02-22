@@ -67,9 +67,15 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (22/02/21)
+
+· 👌 IMPROVE: New relases: RPiplay 1.2 (Airplay mirror). Scrcopy (Android mirror 1.17).
+
+· 👌 IMPROVE: Tweaks > Remove Packages > Remove Snap daemon.
+
 ### (21/02/21)
 
-· 👌 IMPROVE: New versin 1.8.0. New compiled versions of Blood, DOSBox-X 0.83. Refactor code.
+· 👌 IMPROVE: New version 1.8.0. New compiled versions of Blood, DOSBox-X 0.83. Refactor code.
 
 · 👌 IMPROVE: MagicAirCopy®. Now detect automatically if you have the file _res/magic-air-copy-pikiss.txt_ to use it.
 
