@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **813 hours**
+-   **815 hours**
 
 ## 💰 Total amount donated by users
 
@@ -67,9 +67,15 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (22/02/21)
+
+· 👌 IMPROVE: New relases: RPiplay 1.2 (Airplay mirror). Scrcpy 1.17 (Android mirror).
+
+· 👌 IMPROVE: Tweaks > Remove Packages > Remove Snap daemon.
+
 ### (21/02/21)
 
-· 👌 IMPROVE: New versin 1.8.0. New compiled versions of Blood, DOSBox-X 0.83. Refactor code.
+· 👌 IMPROVE: New version 1.8.0. New compiled versions of Blood, DOSBox-X 0.83. Refactor code.
 
 · 👌 IMPROVE: MagicAirCopy®. Now detect automatically if you have the file _res/magic-air-copy-pikiss.txt_ to use it.
 
