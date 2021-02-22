@@ -2,7 +2,7 @@
 #
 # Description : RPiPlay - Airplay mirroring
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.0 (03/Jan/21)
+# Version     : 1.1.1 (22/Feb/21)
 #
 . ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
@@ -83,12 +83,11 @@ end_message() {
 compile() {
     echo -e "\nInstalling dependencies (if proceed)...\n"
     install_packages_if_missing "${PACKAGES_DEV[@]}"
-    sudo apt install -y
-    cd "$INSTALL_DIR" || exit 1
+    mkdir -p ~/sc && cd "$_" || exit 1
     git clone "$SOURCE_CODE_URL" rpiplay && cd "$_" || exit 1
     mkdir build && cd "$_" || exit 1
     cmake --DCMAKE_CXX_FLAGS="-O3" --DCMAKE_C_FLAGS="-O3" ..
-    echo -e "\n\nCompiling...\n"
+    echo -e "\nCompiling at ~/sc/rpiplay, please wait..."
     make_with_all_cores
     mv rpiplay ../rpiplay
     end_message
@@ -96,7 +95,6 @@ compile() {
 }
 
 install() {
-    install_script_message
     echo -e "\nInstalling dependencies (if proceed)...\n"
     install_packages_if_missing "${PACKAGES[@]}"
     download_binaries
@@ -106,23 +104,5 @@ install() {
     runme
 }
 
-menu() {
-    while true; do
-        dialog --clear \
-            --title "[ RPiPlay ]" \
-            --menu "Select from the list:" 11 68 3 \
-            INSTALL "Binary (Recommended)" \
-            COMPILE "Latest from source code. Estimated time on RPi 4: ~3 minutes." \
-            Exit "Exit" 2>"${INPUT}"
-
-        menuitem=$(<"${INPUT}")
-
-        case $menuitem in
-        INSTALL) clear && install ;;
-        COMPILE) clear && compile ;;
-        Exit) exit ;;
-        esac
-    done
-}
-
-menu
+install_script_message
+install
