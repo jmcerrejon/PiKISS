@@ -2,7 +2,7 @@
 #
 # Description : Vulkan driver
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.0 (15/Dec/20)
+# Version     : 1.2.1 (22/Feb/21)
 # Compatible  : Raspberry Pi 4
 #
 # Info        : Thks to PI Labs
@@ -26,14 +26,6 @@ install() {
     echo
     glxinfo -B
     echo "Done."
-}
-
-install_meson() {
-    sudo apt-get remove -y meson
-    echo -e "\nChecking if meson is installed...\n"
-    if ! pip3 list | grep -F meson &>/dev/null; then
-        sudo pip3 install meson --force-reinstall
-    fi
 }
 
 install_full_deps() {
