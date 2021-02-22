@@ -2,7 +2,7 @@
 #
 # Description : Remove packages
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.9 (06/Feb/21)
+# Version     : 1.2.10 (22/Feb/21)
 # Compatible  : Raspberry Pi 1-4 (tested)
 #
 clear
@@ -71,6 +71,14 @@ pkgs_RPi() {
         read -p "Remove LibreOffice? (Free 310 MB) (y/n) " option
         case "$option" in
         y*) sudo apt-get remove -y "sudo dpkg --get-selections | grep -v 'deinstall' | grep libreoffice | sed s/install//" ;;
+        esac
+    fi
+
+    if isPackageInstalled snapd; then
+        echo
+        read -p "Remove Snap daemon (You can remove it if don't use Snap Apps)? (y/n) " option
+        case "$option" in
+        y*) sudo apt-get remove -y snapd ;;
         esac
     fi
 
