@@ -2,7 +2,7 @@
 #
 # Description : Zoom (using Box86)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.6 (25/Oct/20)
+# Version     : 1.0.7 (28/Feb/21)
 # Compatible  : Raspberry Pi 3-4 (tested)
 # Repository  : https://github.com/ptitSeb/box86
 #
@@ -11,8 +11,8 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/apps"
-readonly PACKAGES=( libxcb-xtest0 cmake libxcb-xfixes0 )
-readonly BINARY_URL="https://d11yldzmag5yn.cloudfront.net/prod/5.3.469451.0927/zoom_i686.tar.xz"
+readonly PACKAGES=(libxcb-xtest0 cmake libxcb-xfixes0)
+readonly BINARY_URL="https://zoom.us/client/5.4.53391.1108/zoom_i686.tar.xz"
 readonly BOX86_PATH="/usr/local/bin/box86"
 
 runme() {
@@ -66,7 +66,7 @@ EOF
 
 make_run_script() {
     echo -e "\nMaking a cool script called zoom-rpi.sh..."
-    cat <<EOF >${INSTALL_DIR}/zoom/zoom-rpi.sh
+    cat <<EOF >"${INSTALL_DIR}/zoom/zoom-rpi.sh"
 #!/bin/bash
 if [ ! -f /usr/local/bin/box86 ]; then
     echo "Box86 missing, please install"
@@ -74,9 +74,8 @@ if [ ! -f /usr/local/bin/box86 ]; then
 fi
 box86 zoom
 EOF
-chmod +x "$INSTALL_DIR"/zoom/zoom-rpi.sh
+    chmod +x "$INSTALL_DIR"/zoom/zoom-rpi.sh
 }
-
 
 install() {
     echo -e "\nInstalling, please wait..."
