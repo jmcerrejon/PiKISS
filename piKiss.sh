@@ -431,7 +431,7 @@ smDevs() {
         Back "Back to main menu"
         QT5 "Free and open-source widget toolkit for creating graphical UI cross-platform applications"
         TIC80 "TIC-80 is a free fantasy computer for making, playing tiny games"
-        VSCode "Lightweight but powerful source code editor which runs on your desktop"
+        VSCode/ium "Lightweight but powerful source code editor which runs on your desktop"
     )
 
     choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
@@ -441,7 +441,7 @@ smDevs() {
         Back) break ;;
         QT5) ./scripts/devs/qt5.sh ;;
         TIC80) ./scripts/devs/tic-80.sh ;;
-        VSCode) ./scripts/devs/vscode.sh ;;
+        VSCode/ium) ./scripts/devs/vscode.sh ;;
         esac
     done
 }
