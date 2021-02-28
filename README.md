@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **815 hours**
+-   **817 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (28/02/21)
+
+· 👌 IMPROVE: Devs > Install VSCode or VSCodium (same with no telemetry).
 
 ### (22/02/21)
 
@@ -193,7 +197,7 @@ $ curl -sSL https://git.io/JfAPE | bash
 
 Honestly, I just want let you with all the work done without having to fight with the command line. The project has grown a lot, and the games I own and had hosted on the internet, can't be there because of _Copyright_. I don't understand how a game that is older than 15 years old in some cases, has these so restrictive laws in some countries. Someone should do something about it.
 
-**My solution to keep this project working is the following**: If you have copies saved for your use, just copy those links/paths in a file at `res/magic-air-copy-pikiss.txt`. You have an example of this file with instrucctions at [./res/magic-air-copy-pikiss.example](./res/magic-air-copy-pikiss.example). _PiKISS_ will read the links/files/directories in that file and install it for you when is required. Compatible and tested hosters: _dropbox.com, archive.org, anonfiles.com, pcloud.com_.
+**My solution to keep this project working is the following**: If you have copies saved for your use, just copy those links/paths in a file at `res/magic-air-copy-pikiss.txt`. You have an example of this file with instructions at [./res/magic-air-copy-pikiss.example](./res/magic-air-copy-pikiss.example). _PiKISS_ will read the links/files/directories in that file and install it for you when is required. Compatible and tested hosters: _dropbox.com, archive.org, anonfiles.com, pcloud.com_.
 
 You can share this file _magic-air-copy-pikiss.txt_ with your brother/sister if you paid half price for the game and if the laws of your country allow it.
 
