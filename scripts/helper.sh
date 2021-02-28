@@ -29,15 +29,15 @@ fix_libGLES() {
 }
 
 box86_check_if_latest_version_is_installed() {
-    local BOX86_PATH
+    local BOX86_FINAL_PATH
     local BOX86_VERSION
     local GIT_VERSION
 
     # If Box86 is not installed, skip the process
     command -v box86 >/dev/null 2>&1 || return 0
 
-    BOX86_PATH=$(whereis box86 | awk '{print $2}')
-    BOX86_VERSION=$("$BOX86_PATH" -v | awk '{print $5}')
+    BOX86_FINAL_PATH=$(whereis box86 | awk '{print $2}')
+    BOX86_VERSION=$("$BOX86_FINAL_PATH" -v | awk '{print $5}')
     GIT_VERSION=$(git rev-parse HEAD | cut -c 1-8)
 
     if [[ $BOX86_VERSION = "$GIT_VERSION" ]]; then
@@ -53,18 +53,18 @@ compile_box86() {
     local PI_VERSION_NUMBER
     local SOURCE_PATH
 
-    INSTALL_DIR="$HOME/box86"
+    INSTALL_DIRECTORY="$HOME/box86"
     PI_VERSION_NUMBER=$(get_raspberry_pi_model_number)
     SOURCE_PATH="https://github.com/ptitSeb/box86.git"
 
     install_packages_if_missing cmake
 
-    if [[ ! -d "$INSTALL_DIR" ]]; then
-        git clone "$SOURCE_PATH" "$INSTALL_DIR" && cd "$_" || exit 1
+    if [[ ! -d "$INSTALL_DIRECTORY" ]]; then
+        git clone "$SOURCE_PATH" "$INSTALL_DIRECTORY" && cd "$_" || exit 1
     else
         echo -e "\nUpdating the repo if proceed,...\n"
-        cd "$INSTALL_DIR" && git pull
-        [[ -d "$INSTALL_DIR"/build ]] && rm -rf "$INSTALL_DIR"/build
+        cd "$INSTALL_DIRECTORY" && git pull
+        [[ -d "$INSTALL_DIRECTORY"/build ]] && rm -rf "$INSTALL_DIRECTORY"/build
     fi
 
     box86_check_if_latest_version_is_installed
