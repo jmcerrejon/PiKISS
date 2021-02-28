@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **817 hours**
+-   **819 hours**
 
 ## 💰 Total amount donated by users
 
@@ -70,6 +70,10 @@
 ### (28/02/21)
 
 · 👌 IMPROVE: Devs > Install VSCode or VSCodium (same with no telemetry).
+
+· 👌 IMPROVE: Internet > Zoom updated to release 5.4.2 (53391.1108).
+
+· 🐛 FIX: Internet > Zoom.
 
 ### (22/02/21)
 
