@@ -2,7 +2,7 @@
 #
 # Description : Remove packages
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.10 (22/Feb/21)
+# Version     : 1.2.11 (05/Mar/21)
 # Compatible  : Raspberry Pi 1-4 (tested)
 #
 clear
@@ -95,7 +95,7 @@ pkgs_RPi() {
     y*) sudo apt remove -y libraspberrypi-doc manpages ;;
     esac
 
-    sudo apt-get autoremove -y && sudo apt-get clean
+    sudo apt-get -y autoremove --purge && sudo apt-get clean
     clear
     df -h | grep 'root\|Avail'
     echo "Have a nice day and don't blame me!."
