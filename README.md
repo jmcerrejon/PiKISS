@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **819 hours**
+-   **820 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,12 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (05/03/21)
+
+· 📦 ADD: Games > Prince Of Persia (full).
+
+· 👌 IMPROVE: Tweaks > Others > Add/Remove Swap.
 
 ### (28/02/21)
 
