@@ -15,10 +15,44 @@ clear
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-SDLess_Rpi() {
-    sudo cp /etc/fstab{,.bak}
-    sudo sh -c 'echo "proc            /proc               proc    defaults          0   0\n/dev/mmcblk0p1  /boot               vfat    ro,noatime        0   2\n/dev/mmcblk0p2  /                   ext4    defaults,noatime  0   1\nnone            /var/run        tmpfs   size=1M,noatime       0   0\nnone            /var/log        tmpfs   size=1M,noatime       0   0" > /etc/fstab'
-    sudo dphys-swapfile swapoff && sudo dphys-swapfile uninstall && sudo update-rc.d dphys-swapfile remove
+remove_swap() {
+    echo -e "Removing Swap..."
+    sudo dphys-swapfile swapoff
+    sudo dphys-swapfile uninstall
+    sudo update-rc.d dphys-swapfile remove
+    sudo rm -f /var/swap
+    if [[ -e /var/swap ]]; then
+        echo "Something is wrong. Aborting..."
+        return 1
+    fi
+    echo -e "Done!"
+}
+
+enable_trim() {
+    echo "
+Enable TRIM mode on SSD
+=======================
+
+· This script is in a very early stage (Alpha), so run it at your risk.
+· Run this script attaching only ONE SSD device.
+"
+    read -p "Are you sure? (Y/n) " response
+    if [[ $response =~ [Nn] ]]; then
+        commands here
+    fi
+    local has_trim_enabled
+    local MAX_LBA_COUNT
+    local UNMAP_LBPU
+
+    sudo apt install -y sg3-utils
+
+    MAX_LBA_COUNT=$(sudo sg_vpd -p bl /dev/sda | grep 'Maximum unmap LBA count' | awk '{print $5}')
+    UNMAP_LBPU=$(sudo sg_vpd -p lbpv /dev/sda | grep 'Unmap command supported (LBPU)' | awk '{print $5}')
+
+    if [[ MAX_LBA_COUNT -eq 0 || UNMAP_LBPU -eq 0 ]]; then
+        echo "Sorry, you can't enable TRIM. Reason: Maximum unmap LBA count or LBPU = 0"
+        exit_message
+    fi
 }
 
 overclock() {
@@ -130,6 +164,14 @@ read -p "Agree (y/n)? " option
 case "$option" in
 y*) sudo dpkg-reconfigure dash ;;
 esac
+
+if [[ -e /var/swap ]]; then
+    echo -e "\nRemove swapfile"
+    read -p "Agree (y/n)? " option
+    case "$option" in
+    y*) remove_swap ;;
+    esac
+fi
 
 echo -e "\nEnable a 512MB swapfile"
 read -p "Agree (y/n)? " option
