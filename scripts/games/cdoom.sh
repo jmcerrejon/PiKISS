@@ -2,7 +2,7 @@
 #
 # Description : Zandronum and Crispy-Doom
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 2.0.0 (17/Jan/21)
+# Version     : 2.0.1 (05/Mar/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # HELP        : To compile crispy-doom, follow the instructions at https://github.com/fabiangreffrath/crispy-doom
@@ -185,7 +185,7 @@ compile_zandronum() {
     if [[ $response =~ [Yy] ]]; then
         sudo make install
     fi
-    echo -e "\nDone!. Check the code at $HOME/sc/MY_APP."
+    echo -e "\nDone!. Check the code at $HOME/sc/zandronum"
     exit_message
 }
 
