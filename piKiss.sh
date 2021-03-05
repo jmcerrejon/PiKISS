@@ -161,6 +161,7 @@ smGames() {
             OpenClaw "Platform 2D Captain Claw (1997) reimplementation"
             OpenSPlex "OpenSupaplex reimplementation of the original 90's game"
             OpenXCom "Open-source clone of UFO: Enemy Unknown"
+            Prince "port/conversion of the DOS game Prince of Persia"
             Quake "Enhanced clients for ID Software's Quake saga"
             ReturnC "The dark reich's closing in. The time to act is now"
             Revolt "Re-Volt is a radio control car racing themed video game"
@@ -201,6 +202,7 @@ smGames() {
         OpenClaw) ./scripts/games/openclaw.sh ;;
         OpenSPlex) ./scripts/games/supaplex.sh ;;
         OpenXCom) ./scripts/games/openxcom.sh ;;
+        Prince) ./scripts/games/princeofp.sh ;;
         Quake) ./scripts/games/quake.sh ;;
         ReturnC) ./scripts/games/rwolf.sh ;;
         Revolt) ./scripts/games/revolt.sh ;;
