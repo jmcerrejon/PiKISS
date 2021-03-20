@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **820 hours**
+-   **825 hours**
 
 ## 💰 Total amount donated by users
 
@@ -21,7 +21,7 @@
 
 -   I want to thank my patrons _James Carroll, David J Leto, Rodney Hester, Matthew Michink, Mathew Gracie & cxgr_ for trusting me ❤️
 
--   Others users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze_
+-   Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze_
 
 ## 📣 Stay tuned!
 
@@ -41,7 +41,7 @@
 
 ## 🤝 Contributors
 
--   [huelvayork](https://github.com/huelvayork)
+-   [huelvayork](https://github.com/huelvayork), [mayavera](https://github.com/mayavera), [CleanMachine1](https://github.com/CleanMachine1).
 
 -   Logo: grayduck
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (20/03/21)
+
+· 📦 ADD: Games > Grand Theft Auto III.
 
 ### (05/03/21)
 

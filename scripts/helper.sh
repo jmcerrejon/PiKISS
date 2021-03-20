@@ -352,7 +352,7 @@ download_and_install() {
     FILE=$(get_file_name_from_path "$1")
 
     download_file "$1" /tmp
-    echo -e "\nInstalling..." && sudo dpkg --force-all -i /tmp/"$FILE"
+    echo -e "\nInstalling necessary custom package..." && sudo dpkg --force-all -i /tmp/"$FILE"
     [ -e /tmp/"$FILE" ] && rm -f rm /tmp/"$FILE"
 }
 
@@ -786,13 +786,19 @@ message_magic_air_copy() {
         return
     fi
 
-    if is_URL "$1" && is_URL_down "$1"; then
-        echo -e "\nData files not found. Check if $1 exist and it's a valid hoster..."
+    if [[ $1 == "" ]]; then
+        echo -e "\nNo game data files found for this game/app inside the file $PIKISS_MAGIC_AIR_COPY.."
         false
         return
     fi
 
-    echo -e "\nFound res/magic-air-copy-pikiss.txt...\n"
+    if is_URL "$1" && is_URL_down "$1"; then
+        echo -e "\nData files not found. Check if $1 exists and it's a valid file/dir/hoster..."
+        false
+        return
+    fi
+
+    echo -e "\nFound $PIKISS_MAGIC_AIR_COPY...\n"
     echo "I'm trying to move the data files FROM YOUR original copy to destination directory using the technology MagicAirCopy® (｀-´)⊃━☆ﾟ.*･｡ﾟ"
     true
 }
