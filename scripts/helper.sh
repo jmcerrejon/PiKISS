@@ -352,7 +352,7 @@ download_and_install() {
     FILE=$(get_file_name_from_path "$1")
 
     download_file "$1" /tmp
-    echo -e "\nInstalling..." && sudo dpkg --force-all -i /tmp/"$FILE"
+    echo -e "\nInstalling neccesary custom package..." && sudo dpkg --force-all -i /tmp/"$FILE"
     [ -e /tmp/"$FILE" ] && rm -f rm /tmp/"$FILE"
 }
 
