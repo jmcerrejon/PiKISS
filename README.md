@@ -169,13 +169,15 @@ To see the full list of changes, read the [CHANGELOG](./CHANGELOG)
 
 ## [ Introducing PiKISS ]
 
-Install an application on Linux is not a complex task. Sometimes just type _sudo apt install_ and get the application installed with all its dependencies. But... What if we need to install more than one app such as a web server or it requires many steps to complete the install process?, Is it not in the official repositories?, What if you want to get rid of input commands?. Please, an easy way to set up my WIFI network!.
+Installing an application on Linux is not a complex task. Sometimes you just type _sudo apt install_ and get the application installed with all of its dependencies. But... What if we need to install more than one app such as a web server or it requires many steps to complete the install process? Is it not in the official repositories? What if you want to get rid of input commands? 
+
+"Please, make an easy way to set up my WIFI network!"
 
 Don't despair. **PiKISS** has come to help you...
 
 ---
 
-**PiKISS** _(Pi Keeping It Simple, Stupid!)_ are _scripts (Bash)_ for _Raspberry Pi 4_ boards which has a menu that will allow you to install some applications or configure files automatically as easy as possible. The ideal stage is:
+**PiKISS** _(Pi Keeping It Simple, Stupid!)_ is made with _scripts (Bash)_ for _Raspberry Pi 4_ boards which has a menu that will allow you to install some applications or configure files automatically as easy as possible. The ideal stage is:
 
 -   _Raspberry PI OS Desktop_ mainly, [TwisterOS](https://raspbian-x.com/) and _Debian_ derivates with 32 bits.
 
@@ -183,7 +185,7 @@ Don't despair. **PiKISS** has come to help you...
 
 The idea is to offer facilities to manage your operating system, selecting an option in a menu and answer [Yes/No]. If you need to check dependencies, install an app, modify a script at boot, add a line to a file or download other, **PiKISS** will do it for you.
 
-I include not only the ability to install, but also compile programs. Do you have problems when compiling your favorite emulator?, Have you forgotten to modify a line in the source code and now you have to recompile again for 4 hours?. Laugh your now all this with **PiKISS**.
+I included not only the ability to install, but also compile programs. Do you have problems when compiling your favorite emulator? Have you forgotten to modify a line in the source code and now you have to recompile again for 4 hours?. Laugh with **PiKISS**.
 
 What some users have said about **PiKISS**:
 
@@ -205,7 +207,7 @@ $ curl -sSL https://git.io/JfAPE | bash
 
 ## [ Data Files 🚨 ]
 
-Honestly, I just want let you with all the work done without having to fight with the command line. The project has grown a lot, and the games I own and had hosted on the internet, can't be there because of _Copyright_. I don't understand how a game that is older than 15 years old in some cases, has these so restrictive laws in some countries. Someone should do something about it.
+Honestly, I just want to let you get everything done without having to fight with the command line. The project has grown a lot, and the games I own and have been hosted on the internet, can't be there because of _Copyright_. I don't understand how a game that is older than 15 years old in some cases, has these so restrictive laws in some countries. Someone should do something about it.
 
 **My solution to keep this project working is the following**: If you have copies saved for your use, just copy those links/paths in a file at `res/magic-air-copy-pikiss.txt`. You have an example of this file with instructions at [./res/magic-air-copy-pikiss.example](./res/magic-air-copy-pikiss.example). _PiKISS_ will read the links/files/directories in that file and install it for you when is required. Compatible and tested hosters: _dropbox.com, archive.org, anonfiles.com, pcloud.com_.
 
@@ -213,7 +215,7 @@ You can share this file _magic-air-copy-pikiss.txt_ with your brother/sister if 
 
 ## [ Update ]
 
-_PiKISS_ check if new scripts are available on remote and update them automatically, but If you want to get the latest version manually, just enter into the directory with cd PiKISS and type:
+_PiKISS_ checks if new scripts are available on remote and updates them automatically, but if you want to get the latest version manually, just enter into the directory with cd PiKISS and type:
 
 ```sh-session
 $ git pull
@@ -223,7 +225,7 @@ $ git pull
 
 ### [ HELP ME! ]
 
-**PiKISS** grow up according to users requests or I'll append scripts that I consider necessary, but I call **to the community** to share, improve and help to add new scripts to the existing one. If the project grow, **is up to you**.
+**PiKISS** grows up according to users requests or I'll append scripts that I consider necessary, but I call **to the community** to share, improve and help to add new scripts to the existing one. If the project grow, **is up to you**.
 
 ## ESPAÑOL
 
