@@ -2,7 +2,7 @@
 #
 # Description : Personal script to make my custom Raspberry Pi OS
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.3 (22/Nov/20)
+# Version     : 1.3.4 (20/Mar/21)
 # Compatible  : Raspberry Pi 1-4 (tested)
 #
 clear
@@ -23,20 +23,20 @@ echo -e "\nAdding useful alias...\n"
 cp ./.bash_aliases "$HOME"/.bash_aliases
 
 disableSwap() {
-	# Disable partition "swap"
-	sudo dphys-swapfile swapoff
-	sudo dphys-swapfile uninstall
-	sudo update-rc.d dphys-swapfile remove
+    # Disable partition "swap"
+    sudo dphys-swapfile swapoff
+    sudo dphys-swapfile uninstall
+    sudo update-rc.d dphys-swapfile remove
 }
 
 read -p "Do you want to disable SWAP? [y/n] " option
 case "$option" in
-	y*) disableSwap ;;
+y*) disableSwap ;;
 esac
 
 enableZRAM() {
-	echo -e "\nEnabling ZRAM...\n"
-	cat <<\EOF >/tmp/zram
+    echo -e "\nEnabling ZRAM...\n"
+    cat <<\EOF >/tmp/zram
 #!/bin/bash
 
 CORES=$(nproc --all)
@@ -51,18 +51,18 @@ while [ ${CORE} -lt ${CORES} ]; do
   (( CORE += 1 ))
 done
 EOF
-	chmod +x /tmp/zram
-	sudo mv /tmp/zram /etc/zram
-	sudo /etc/zram
-	if [ "$(grep -c zram /etc/rc.local)" -eq 0 ]; then
-		sudo sed -i 's_^exit 0$_/etc/zram\nexit 0_' /etc/rc.local
-	fi
+    chmod +x /tmp/zram
+    sudo mv /tmp/zram /etc/zram
+    sudo /etc/zram
+    if [ "$(grep -c zram /etc/rc.local)" -eq 0 ]; then
+        sudo sed -i 's_^exit 0$_/etc/zram\nexit 0_' /etc/rc.local
+    fi
 }
 
 echo
 read -p "Do you want to enable ZRAM? [y/n] " option
 case "$option" in
-	y*) enableZRAM ;;
+y*) enableZRAM ;;
 esac
 
 # Automatic fsck on start
@@ -72,7 +72,7 @@ esac
 echo -e "\nRunning apt-file update...\n"
 sudo apt-file update
 echo -e "\nmkdir pikiss for test using sshfs...\n"
-mkdir "$HOME"/pikiss
+[[ ! -d "$HOME/pikiss" ]] && mkdir "$HOME/pikiss"
 
 echo -e "\nThe system is going to reboot in 5 seconds. Pray...\n"
 sleep 5
