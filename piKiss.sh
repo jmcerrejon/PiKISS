@@ -153,6 +153,7 @@ smGames() {
             Diablo "Take control of a lone hero battling to rid the world of Diablo"
             Diablo2 "Diablo 2 Lord of Destruction"
             Eduke32 "Duke Nukem 3D is a fps game developed by 3D Realms"
+            GTA "GTA III is a open world video game part of the Grand Theft Auto franchise"
             HalfLife "Gordon Freeman must exit Black Mesa after it's invaded by aliens"
             Heroes2 "Free implementation of Heroes of Might and Magic II engine"
             Hurrican "Jump and shoot game based on the Turrican game series"
@@ -194,6 +195,7 @@ smGames() {
         Diablo) ./scripts/games/diablo.sh ;;
         Diablo2) ./scripts/games/diablo2.sh ;;
         Eduke32) ./scripts/games/eduke32.sh ;;
+        GTA) ./scripts/games/gta.sh ;;
         HalfLife) ./scripts/games/half-life.sh ;;
         Heroes2) ./scripts/games/fheroes2.sh ;;
         Hurrican) ./scripts/games/hurrican.sh ;;
