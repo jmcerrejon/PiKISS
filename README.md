@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **827 hours**
+-   **828 hours**
 
 ## 💰 Total amount donated by users
 
@@ -175,7 +175,7 @@ To see the full list of changes, read the [CHANGELOG](./CHANGELOG)
 
 ## [ Introducing PiKISS ]
 
-Installing an application on Linux is not a complex task. Sometimes you just type _sudo apt install_ and get the application installed with all of its dependencies. But... What if we need to install more than one app such as a web server or it requires many steps to complete the install process? Is it not in the official repositories? What if you want to get rid of input commands? 
+Installing an application on Linux is not a complex task. Sometimes you just type _sudo apt install_ and get the application installed with all of its dependencies. But... What if we need to install more than one app such as a web server or it requires many steps to complete the install process? Is it not in the official repositories? What if you want to get rid of input commands?
 
 "Please, make an easy way to set up my WIFI network!"
 
