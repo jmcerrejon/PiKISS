@@ -153,7 +153,7 @@ smGames() {
             Diablo "Take control of a lone hero battling to rid the world of Diablo"
             Diablo2 "Diablo 2 Lord of Destruction"
             Eduke32 "Duke Nukem 3D is a fps game developed by 3D Realms"
-            GTA "GTA III is a open world video game part of the Grand Theft Auto franchise"
+            GTA "GTA III/Vice City are open worlds video games part of the GTA franchise"
             HalfLife "Gordon Freeman must exit Black Mesa after it's invaded by aliens"
             Heroes2 "Free implementation of Heroes of Might and Magic II engine"
             Hurrican "Jump and shoot game based on the Turrican game series"

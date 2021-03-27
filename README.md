@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **825 hours**
+-   **827 hours**
 
 ## 💰 Total amount donated by users
 
@@ -45,8 +45,6 @@
 
 -   Logo: grayduck
 
--   **This project is not accepting money or any benefits**.
-
 ## 🎥 Check what **PiKISS** can do for you on my Youtube's channel:
 
 -   [youtube.com > PIKISS](https://www.youtube.com/playlist?list=PLXhElW3ALmWh8p0mn1ZECawkKyF8QzNNP)
@@ -66,6 +64,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (27/03/21)
+
+· 📦 ADD: Games > Grand Theft Auto Vice City.
 
 ### (20/03/21)
 
