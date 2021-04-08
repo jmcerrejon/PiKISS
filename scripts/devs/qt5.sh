@@ -69,7 +69,7 @@ install_packages() {
         echo " "
         read -p "Do you need Database support (PostgreSQL, MySQL)? [y/n] " yn
         case $yn in
-            [Yy]* ) apt-get install -y libpq-dev libmariadbclient-dev && break;;
+            [Yy]* ) sudo apt-get install -y libpq-dev libmariadbclient-dev && break;;
             [Nn]* ) break;;
             * ) echo "Please answer (y)es or (n)o.";;
         esac
@@ -79,7 +79,7 @@ install_packages() {
         echo " "
         read -p "Do you need X11 support? [y/n] " yn
         case $yn in
-            [Yy]* ) apt-get install -y libx11-dev libxcb1-dev libxkbcommon-x11-dev libx11-xcb-dev libxext-dev && break;;
+            [Yy]* ) sudo apt-get install -y libx11-dev libxcb1-dev libxkbcommon-x11-dev libx11-xcb-dev libxext-dev && break;;
             [Nn]* ) break;;
             * ) echo "Please answer (y)es or (n)o.";;
         esac
@@ -89,7 +89,7 @@ install_packages() {
         echo " "
         read -p "Do you want experimental VC4 driver instead of Broadcom EGL binary-blobs? [y/n] " yn
         case $yn in
-            [Yy]* ) apt-get install -y libgles2-mesa-dev libgbm-dev && break;;
+            [Yy]* ) sudo apt-get install -y libgles2-mesa-dev libgbm-dev && break;;
             [Nn]* ) break;;
             * ) echo "Please answer (y)es or (n)o.";;
         esac
