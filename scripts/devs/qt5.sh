@@ -39,8 +39,8 @@ install_packages() {
         echo " "
         read -p "Do you need bluetooth library support? [y/n] " yn
         case $yn in
-            [Yy]* ) sudo apt-get install -y bluez libbluetooth-dev;;
-            [Nn]* ) ;;
+            [Yy]* ) sudo apt-get install -y bluez libbluetooth-dev && break;;
+            [Nn]* ) break;;
             * ) echo "Please answer (y)es or (n)o.";;
         esac
     done
@@ -49,8 +49,8 @@ install_packages() {
         echo " "
         read -p "Do you need gstreamer library for Multimedia support? [y/n] " yn
         case $yn in
-            [Yy]* ) sudo apt-get install -y libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly gstreamer1.0-plugins-bad libgstreamer-plugins-bad1.0-dev gstreamer1.0-pulseaudio gstreamer1.0-tools gstreamer1.0-alsa ;;
-            [Nn]* ) ;;
+            [Yy]* ) sudo apt-get install -y libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly gstreamer1.0-plugins-bad libgstreamer-plugins-bad1.0-dev gstreamer1.0-pulseaudio gstreamer1.0-tools gstreamer1.0-alsa && break;;
+            [Nn]* ) break;;
             * ) echo "Please answer (y)es or (n)o.";;
         esac
     done
@@ -59,8 +59,8 @@ install_packages() {
         echo " "
         read -p "Do you need audio support? [y/n] " yn
         case $yn in
-            [Yy]* ) sudo apt-get install -y libasound2-dev ;;
-            [Nn]* ) ;;
+            [Yy]* ) sudo apt-get install -y libasound2-dev && break;;
+            [Nn]* ) break;;
             * ) echo "Please answer (y)es or (n)o.";;
         esac
     done
@@ -69,8 +69,8 @@ install_packages() {
         echo " "
         read -p "Do you need Database support (PostgreSQL, MySQL)? [y/n] " yn
         case $yn in
-            [Yy]* ) apt-get install -y libpq-dev libmariadbclient-dev ;;
-            [Nn]* ) ;;
+            [Yy]* ) apt-get install -y libpq-dev libmariadbclient-dev && break;;
+            [Nn]* ) break;;
             * ) echo "Please answer (y)es or (n)o.";;
         esac
     done
@@ -79,8 +79,8 @@ install_packages() {
         echo " "
         read -p "Do you need X11 support? [y/n] " yn
         case $yn in
-            [Yy]* ) apt-get install -y libx11-dev libxcb1-dev libxkbcommon-x11-dev libx11-xcb-dev libxext-dev ;;
-            [Nn]* ) ;;
+            [Yy]* ) apt-get install -y libx11-dev libxcb1-dev libxkbcommon-x11-dev libx11-xcb-dev libxext-dev && break;;
+            [Nn]* ) break;;
             * ) echo "Please answer (y)es or (n)o.";;
         esac
     done
@@ -89,8 +89,8 @@ install_packages() {
         echo " "
         read -p "Do you want experimental VC4 driver instead of Broadcom EGL binary-blobs? [y/n] " yn
         case $yn in
-            [Yy]* ) apt-get install -y libgles2-mesa-dev libgbm-dev ;;
-            [Nn]* ) ;;
+            [Yy]* ) apt-get install -y libgles2-mesa-dev libgbm-dev && break;;
+            [Nn]* ) break;;
             * ) echo "Please answer (y)es or (n)o.";;
         esac
     done
