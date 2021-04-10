@@ -2,7 +2,7 @@
 #
 # Description : Other tweaks yes/no answer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.1 (05/Jul/20)
+# Version     : 1.4.2 (10/Apr/21)
 # Compatible  : Raspberry Pi 1-4 (tested)
 #
 # Help        · https://www.raspberrypi.org/forums/viewtopic.php?f=31&t=11642
@@ -189,15 +189,6 @@ echo -e "\nReplace Deadline Scheduler with NOOP Scheduler (NOOP scheduler is bes
 read -p "Agree (y/n)? " option
 case "$option" in
 y*) sudo sed -i 's/deadline/noop/g' /boot/cmdline.txt ;;
-esac
-
-echo -e "\nReplace mirrordirector.raspbian.org (sometimes down) with mirror.ox.ac.uk ?"
-read -p "Agree (y/n)? " option
-case "$option" in
-y*)
-    sudo sed -i "/mirrordirector.raspbian.org/s/^/#/" /etc/apt/sources.list
-    sudo sed -i "1 s|^|deb https://mirror.ox.ac.uk/sites/archive.raspbian.org/archive/raspbian stretch main contrib non-free rpi\n|" /etc/apt/sources.list
-    ;;
 esac
 
 read -p "Have a nice day and don't blame me!. Press [Enter] to continue..."
