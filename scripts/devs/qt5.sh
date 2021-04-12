@@ -2,7 +2,7 @@
 #
 # Description : Compile QT5 on Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.4 (10/Apr/21)
+# Version     : 1.0.4 (11/Apr/21)
 # Compatible  : Raspberry Pi 4
 #
 # TODO		  : Ask for install and remove sources. Check if install_packages is OK, pi with less then 2 GB ram
@@ -130,6 +130,7 @@ setup_mkspecs() {
 }
 
 compile_menu() {
+    install_script_message
     echo "
 Compile QT 5
 ============
@@ -164,6 +165,7 @@ Compile QT 5
 }
 
 install_from_repo() {
+    install_script_message
     sudo apt install -y qtbase5-dev qt5-qmake qtchooser
     read -p "Done. Press [ENTER] to come back to the menu..."
     exit
