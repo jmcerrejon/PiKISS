@@ -13,15 +13,15 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **828 hours**
+-   **832 hours**
 
 ## 💰 Total amount donated by users
 
--   $405,89.
+-   $417,99.
 
 -   I want to thank my patrons _James Carroll, David J Leto, Rodney Hester, Matthew Michink, Mathew Gracie & cxgr_ for trusting me ❤️
 
--   Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze_
+-   Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes_
 
 ## 📣 Stay tuned!
 
@@ -64,6 +64,12 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (17/04/21)
+
+· 👌 IMPROVE: Devs > QT5 compile version 5.15.2.
+
+· 👌 IMPROVE: Games > DXX-Regirth (AKA Descent)
 
 ### (27/03/21)
 
