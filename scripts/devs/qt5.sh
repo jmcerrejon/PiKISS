@@ -82,7 +82,7 @@ download_QT5() {
 
 compile_QT5() {
     echo -e "\nCompile QT with 4 cores. Go for a walk or watch 2 movies...\n"
-
+    download_QT5
     cd "$HOME/qt-everywhere-src-5.15.2" || exit 1
     PKG_CONFIG_LIBDIR=/usr/lib/arm-linux-gnueabihf/pkgconfig:/usr/share/pkgconfig \
         ../qt-everywhere-src-5.15.2/configure -platform linux-rpi-g++ \
