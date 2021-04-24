@@ -2,7 +2,7 @@
 #
 # Description : Redream Sega Dreamcast emulator
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (21/Nov/20)
+# Version     : 1.0.1 (24/Apr/21)
 # Compatible  : Raspberry Pi 1-3 (¿?), 4 (tested)
 # Website     : https://redream.io/
 #
@@ -11,7 +11,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 clear
 
 readonly INSTALL_DIR="$HOME/games"
-readonly BINARY_URL="https://misapuntesde.com/rpi_share/redream.aarch32-raspberry-linux-v1.5.0-405-g1325fc9.tar.gz"
+readonly BINARY_URL="https://misapuntesde.com/rpi_share/redream.aarch32-raspberry-linux-v1.5.0-868-g05b9cbe.tar.gz"
 readonly DATA_GAME_URL="http://volgarr.rkd.zone/VolgarrDC_2015-10-15.zip"
 
 runme() {
