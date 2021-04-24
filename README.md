@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **832 hours**
+-   **836 hours**
 
 ## 💰 Total amount donated by users
 
@@ -64,6 +64,12 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (24/04/21)
+
+· 👌 IMPROVE: Emulators > Redream (Sega Dreamcast).
+
+· 👌 IMPROVE: Devs > Qt5.15.2 LTS with OpenGL support.
 
 ### (17/04/21)
 
@@ -116,64 +122,6 @@
 · 👌 IMPROVE: Amiberry.
 
 · 👌 IMPROVE: Tweaks > Packages > Remove Microsoft VSCode source list (You can safely install it with PiKISS later 😉).
-
-### (30/01/21)
-
-· 📦 ADD: Server > Remote Desktop with Nomachine, xRDP and VNC Server.
-
-### (24/01/21)
-
-· 📦 ADD: Multimedia > Jellyfin (Stream media to any device from your own server).
-
-### (17/01/21)
-
-· 📦 ADD: Games > Zendronum to play Doom + Heretic + Hexen + Strife. Shareware included.
-
-### (12/01/21)
-
-· ❌ REMOVE: Internet > Cordless (not maintained anymore).
-
-### (05/01/21)
-
-· 🐛 FIX: Games > Captain S shortcut.
-
-### (03/01/21)
-
-· 🐛 FIX: Games > AVP, Diablo.
-
-· 👌 IMPROVE: Others > RPiPlay, Gl4ES, scrcpy.
-
-· 👌 IMPROVE: Games > Blood, Eduke32, SMario64
-
-· 👌 IMPROVE: Emulators > PSP, ResidualVM. Refactor code. Change /home/pi -> $HOME.
-
-### (27/12/20)
-
-· 🐛 FIX: Links broken for StarCraft, StepMania, OpenMW and OpenBOR.
-
-### (25/12/20)
-
-· 📦 ADD: Games > VVVVVV (Instead of jumping, you need to reverse gravity).
-
-### (22/12/20)
-
-· 👌 IMPROVE: Games > Diablo I binaries upgraded to 1.1.0.
-
-### (15/12/20)
-
-· 📦 ADD: Internet > Whatscli (Allow users to use WhatsApp via cli).
-
-· 👌 IMPROVE: Configure > Vulkan frozen on version 20.3.0 due some users reported problems with latest 21.0.0.
-
-### (13/12/20)
-
-· 📦 ADD: Multimedia > Moonlight (Open source implementation of NVIDIA's GameStream).
-
-· 👌 IMPROVE: Others > SDL2.
-
-### (06/12/20)
-
-· 📦 ADD: Games > Temptations (Retro platform game).
 
 ...
 
