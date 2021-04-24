@@ -2,11 +2,9 @@
 #
 # Description : Compile QT5 on Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.4 (11/Apr/21)
+# Version     : 1.0.6 (24/Apr/21)
 # Compatible  : Raspberry Pi 4
 #
-# TODO		  : Ask for install and remove sources. Check if install_packages is OK, pi with less then 2 GB ram
-#				will need to increase the swap file size.
 # Links       : https://www.cyberpunk.rs/building-raspberry-pi-gui
 # Links       : https://www.interelectronix.com/qt-on-the-raspberry-pi-4.html
 #
@@ -15,15 +13,55 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 QT5_SC_URL="https://download.qt.io/official_releases/qt/5.15/5.15.2/single/qt-everywhere-src-5.15.2.tar.xz"
+QT5_PKG_URL="https://github.com/koendv/qt5-opengl-raspberrypi/releases/download/v5.15.2-1/qt5-opengl-dev_5.15.2_armhf.deb"
+QT5_CREATOR_PKG_URL="https://github.com/koendv/qt5-opengl-raspberrypi/releases/download/v5.15.2-1/qt5-opengl-qtcreator_4.14.1_armhf.deb"
 RPI_CONFIGURATION_URL="https://github.com/oniongarlic/qt-raspberrypi-configuration"
 INPUT=/tmp/qt5menu.$$
 
+uninstall_qt5() {
+    if [[ ! -e /opt/QT5 ]]; then
+        return 0
+    fi
+    echo "Warning!: Qt 5.15.2 already installed."
+    echo
+    read -p "Do you want to uninstall Qt 5.15.2 (y/N)? " response
+    if [[ $response =~ [Yy] ]]; then
+        [[ -d /opt/QT5 ]] && sudo rm -rf /opt/QT5
+        if [[ -e /usr/lib/qt5.15.2 ]]; then
+            echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
+            exit_message
+        fi
+        echo -e "\nSuccessfully uninstalled."
+        exit_message
+    fi
+    exit_message
+}
+
+uninstall_qt5_opengl() {
+    if [[ ! -e /usr/lib/qt5.15.2 ]]; then
+        return 0
+    fi
+    echo "Warning!: Qt 5.15.2 already installed."
+    echo
+    read -p "Do you want to uninstall Qt 5.15.2 (y/N)? " response
+    if [[ $response =~ [Yy] ]]; then
+        [[ -d /usr/lib/qt5.15.2 ]] && sudo dpkg -r qt5-opengl-dev qt5-opengl-qtcreator && sudo rm -rf /usr/lib/qt5.15.2
+        if [[ -e /usr/lib/qt5.15.2 ]]; then
+            echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
+            exit_message
+        fi
+        echo -e "\nSuccessfully uninstalled."
+        exit_message
+    fi
+    exit_message
+}
+
 init() {
     echo
-    sudo gpasswd -a pi render
+    sudo gpasswd -a "$USER" render
 
     [[ ! -d /opt/QT5 ]] && sudo mkdir /opt/QT5
-    sudo chown pi:pi /opt/QT5
+    sudo chown "$USER":"$USER" /opt/QT5
     echo "{ \"device\": \"/dev/dri/card1\" }" >>/opt/QT5/eglfs.json
 
     upgrade_dist
@@ -113,9 +151,19 @@ setup() {
     if grep -q 'export LD_LIBRARY_PATH=/opt/QT5/lib' "$HOME"/.bashrc; then
         return 0
     fi
-    echo "AddING enviroment variables to bashrc..."
-    echo 'export LD_LIBRARY_PATH=/opt/QT5/lib' >>"$HOME"/.bashrc
-    echo 'export PATH=/opt/QT5/bin:$PATH' >>"$HOME"/.bashrc
+    echo "Adding enviroment variables to bashrc..."
+    echo "export LD_LIBRARY_PATH=/opt/QT5/lib" >>"$HOME/.bashrc"
+    echo 'export PATH=/opt/QT5/bin:$PATH' >>"$HOME/.bashrc"
+    source "$HOME"/.bashrc
+}
+
+setup2() {
+    if grep -q 'export LD_LIBRARY_PATH=/usr/lib/qt5.15.2/lib' "$HOME"/.bashrc; then
+        return 0
+    fi
+    echo "Adding enviroment variables to bashrc..."
+    echo "export LD_LIBRARY_PATH=/usr/lib/qt5.15.2/lib" >>"$HOME/.bashrc"
+    echo 'export PATH=/usr/lib/qt5.15.2/bin:$PATH' >>"$HOME/.bashrc"
     source "$HOME"/.bashrc
 }
 
@@ -130,6 +178,7 @@ setup_mkspecs() {
 }
 
 compile_menu() {
+    uninstall_qt5
     install_script_message
     echo "
 Compile QT 5
@@ -137,7 +186,7 @@ Compile QT 5
 
 · This script compiles QT5 ready for Raspberry Pi 4.
 · If you want qtwebengine, remove the -skip qtwebengine line inside this script.
-· Make your you have enough space on device.
+· Make your you have enough space on the device.
 · Qt source archive: 560MB, Unpacked Qt Sources: 3.7GB, Build result: ~830MB, Install size: ~232MB (Depends on configuration options and enabled features)
 · This process can take about ~6 hours to compile on Rpi 4.
 · If you use a Pi with less than 2 GB RAM, then you will need to increase the swap file size.
@@ -150,9 +199,9 @@ Compile QT 5
         read -p "Proceed? [y/n] " yn
         case $yn in
         [Yy]*)
-            #init
-            #install_packages
-            #download_QT5
+            init
+            install_packages
+            download_QT5
             setup
             setup_mkspecs
             compile_QT5 && echo -e "\nDone!. Just type sudo make install"
@@ -171,21 +220,50 @@ install_from_repo() {
     exit
 }
 
+install2() {
+    uninstall_qt5_opengl
+    install_script_message
+    echo "
+Qt5.15.2 LTS with OpenGL for Raspberry
+======================================
+
+· All credits goes to http://www.kdvelectronics.eu/
+· This installs Qt5 on /usr/lib/qt5.15.2
+· It also creates the qtchooser configuration file /usr/share/qtchooser/qt5.15.2-opengl.conf
+· Repo at: https://github.com/koendv/qt5-opengl-raspberrypi
+
+Installing, please wait...
+"
+    download_and_install "$QT5_PKG_URL"
+    echo
+    read -p "Do you want to install Qt-creator 4.14.1? (y/N) " response
+    if [[ $response =~ [Yy] ]]; then
+        download_and_install "$QT5_CREATOR_PKG_URL"
+        echo -e "\nRestart or log out from the session to get the icon on Menu > Programming > QT Creator."
+    fi
+    exit_message
+}
+
 menu() {
     while true; do
         dialog --clear \
             --title "[ Qt5 Library ]" \
-            --menu "Select from the list:" 11 68 3 \
-            Install "5.11 binary and get qmake command OTB." \
-            Compile "5.15.2 LTS from source code. Estimated time: 4-6 hours." \
+            --menu "Select from the list:" 12 70 4 \
+            5.11 "Binary and get qmake command" \
+            5.15.2 "LTS with OpenGL for Raspberry thks to koendv" \
+            Compile "5.15.2 LTS from source code. Estimated time: 4-6 hours" \
             Exit "Exit" 2>"${INPUT}"
 
         menuitem=$(<"${INPUT}")
 
         case $menuitem in
-        Install)
+        5.11)
             clear
             install_from_repo
+            ;;
+        5.15.2)
+            clear
+            install2
             ;;
         Compile)
             clear
