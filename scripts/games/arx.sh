@@ -167,7 +167,7 @@ echo "
 Install Arx Libertatis (Port of Arx Fatalis)
 ============================================
  · Install path: $INSTALL_DIR/arx
- · If it's not provided a game data files inside $PIKISS_MAGIC_AIR_COPY, a shareware version will be installed.
+ · If it's not provided a game data files inside $PIKISS_MAGIC_AIR_COPY_PATH, a shareware version will be installed.
  · NOTE: It's NOT the latest compiled from source. This binary comes from https://www.littlecarnage.com/
 "
 read -p "Press [Enter] to continue..."

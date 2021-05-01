@@ -4,7 +4,7 @@
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 #
 readonly PIKISS_DIR=$PWD
-readonly PIKISS_MAGIC_AIR_COPY=$PIKISS_DIR/res/magic-air-copy-pikiss.txt
+readonly PIKISS_MAGIC_AIR_COPY_PATH=$PIKISS_DIR/res/magic-air-copy-pikiss.txt
 
 #
 # Fix libGLESv2.so on Raspbian Stretch
@@ -135,9 +135,7 @@ getSystemLocale() {
 # Check if a package is installed or not
 #
 isPackageInstalled() {
-    dpkg -s "$1" &>/dev/null
-
-    if [ "$?" -eq 0 ]; then
+    if dpkg -s "$1" &>/dev/null; then
         true
     else
         false
@@ -769,7 +767,7 @@ upgrade_dist() {
 }
 
 exists_magic_file() {
-    if [[ -e $PIKISS_MAGIC_AIR_COPY ]]; then
+    if [[ -e $PIKISS_MAGIC_AIR_COPY_PATH ]]; then
         true
     else
         false
@@ -781,13 +779,13 @@ exists_magic_file() {
 #
 message_magic_air_copy() {
     if ! exists_magic_file; then
-        echo -e "\nFile $PIKISS_MAGIC_AIR_COPY not found..."
+        echo -e "\nFile $PIKISS_MAGIC_AIR_COPY_PATH not found..."
         false
         return
     fi
 
     if [[ $1 == "" ]]; then
-        echo -e "\nNo game data files found for this game/app inside the file $PIKISS_MAGIC_AIR_COPY.."
+        echo -e "\nNo game data files found for this game/app inside the file $PIKISS_MAGIC_AIR_COPY_PATH.."
         false
         return
     fi
@@ -798,7 +796,7 @@ message_magic_air_copy() {
         return
     fi
 
-    echo -e "\nFound $PIKISS_MAGIC_AIR_COPY...\n"
+    echo -e "\nFound $PIKISS_MAGIC_AIR_COPY_PATH...\n"
     echo "I'm trying to move the data files FROM YOUR original copy to destination directory using the technology MagicAirCopy® (｀-´)⊃━☆ﾟ.*･｡ﾟ"
     true
 }
