@@ -227,7 +227,7 @@ smEmulators() {
     if [[ ${MODEL} == 'Raspberry Pi' ]]; then
         options=(
             Back "Back to main menu"
-            Amiberry "Best Amiga emulator"
+            Amiga "Amiberry is the best Amiga emulator"
             Box86 "Lets you run x86 Linux programs on non-x86 Linux"
             Comm64 "VICE is a Commodore 64 emulator"
             Dolphin "Dolphin is a Wii & Gamecube emulator (EXPERIMENTAL)"
@@ -237,7 +237,8 @@ smEmulators() {
             Genesis "Genesis Megadrive Emulator (picodrive)"
             Mednafen "Portable multi-system emulator (Mednafen)"
             Mame "Install MAME, Advance MAME and/or MAME4ALL-PI"
-            MSX "openMSX"
+            MSX "OpenMSX"
+            NES "Nestopia UE is an accurate NES emulator"
             Pifba "Emulates old arcade games using CPS1, CPS2,..."
             PS1 "DuckStation - PlayStation 1, aka. PSX Emulator"
             PSP "PPSSPP can run your PSP games on your RPi in full HD resolution"
@@ -254,7 +255,7 @@ smEmulators() {
     for choice in $choices; do
         case $choice in
         Back) break ;;
-        Amiberry) ./scripts/emus/amiga.sh ;;
+        Amiga) ./scripts/emus/amiga.sh ;;
         Box86) ./scripts/emus/box86.sh ;;
         Amstrad) ./scripts/emus/caprice.sh ;;
         Comm64) ./scripts/emus/commodore.sh ;;
@@ -265,6 +266,7 @@ smEmulators() {
         Mednafen) ./scripts/emus/mednafen.sh ;;
         Mame) ./scripts/emus/mame4allpi.sh ;;
         MSX) ./scripts/emus/msx.sh ;;
+        NES) ./scripts/emus/nes.sh ;;
         PS1) ./scripts/emus/psx.sh ;;
         PSP) ./scripts/emus/psp.sh ;;
         Pifba) ./scripts/emus/pifba.sh ;;
