@@ -2,7 +2,7 @@
 #
 # Description : Super Mario 64
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.0 (03/Jan/21)
+# Version     : 1.1.1 (01/May/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -31,7 +31,7 @@ uninstall() {
     read -p "Do you want to uninstall Super Mario 64 (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
         remove_files
-        if [[ -e "$INSTALL_DIR"/scrcpy ]]; then
+        if [[ -e "$INSTALL_DIR"/sm64 ]]; then
             echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
             exit_message
         fi
