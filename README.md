@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **836 hours**
+-   **838 hours**
 
 ## 💰 Total amount donated by users
 
@@ -64,6 +64,12 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (01/04/21)
+
+· 📦 ADD: Emulators > Nestopia UE (NES emulator).
+
+· 🐛 FIX: Games > Smario64 (Uninstall process).
 
 ### (24/04/21)
 
