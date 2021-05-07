@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# Description : scrcpy
+# Description : Scrcpy
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.0 (22/Feb/21)
+# Version     : 1.1.1 (08/May/21)
 #
 . ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
@@ -56,19 +56,13 @@ EOF
     fi
 }
 
-download_prebuild_server() {
-    echo -e "\nDownloading prebuild server..."
-    [[ -e ~/sc/scrcpy ]] && cd ~/sc/scrcpy || exit 1
-    wget -q -c "$PREBUILD_SERVER_URL"
-}
-
 compile() {
     echo -e "\nInstalling dependencies (if proceed)..."
     install_packages_if_missing "${PACKAGES_DEV[@]}"
     install_meson
     mkdir -p ~/sc && cd "$_" || exit 1
     git clone "$SOURCE_CODE_URL" scrcpy && cd "$_" || exit 1
-    download_prebuild_server
+    download_file "$PREBUILD_SERVER_URL" ~/sc/scrcpy
     meson build --buildtype release --strip -Db_lto=true -Dprebuilt_server=scrcpy-server-v1.17
     ninja -Cbuild
     if [[ ! -e ~/sc/scrcpy/build/app/scrcpy ]]; then
@@ -84,9 +78,11 @@ install() {
     install_packages_if_missing "${PACKAGES[@]}"
     echo -e "\nInstalling binary files..."
     download_and_extract "$BINARY_URL" "$INSTALL_DIR"
-    sudo mkdir -p /usr/local/share/scrcpy
-    # TODO I think the next file is not neccessary. Remove if nobody has issues not including this
-    # sudo cp -f "$INSTALL_DIR/scrcpy/scrcpy-server" /usr/local/share/scrcpy/scrcpy-server
+    # Server
+    sudo mkdir -p /usr/local/share/scrcpy || exit 0
+    download_file "$PREBUILD_SERVER_URL" "$INSTALL_DIR/scrcpy"
+    sudo mv "$INSTALL_DIR/scrcpy/scrcpy-server-v1.17" /usr/local/share/scrcpy/scrcpy-server
+    chmod +x /usr/local/share/scrcpy/scrcpy-server
     generate_icon
     echo -e "\nDone. Type $INSTALL_DIR/scrcpy/android.sh or go to Menu > System Tools > Scrcpy."
     exit_message
