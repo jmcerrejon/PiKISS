@@ -73,6 +73,8 @@
 
 · 🐛 FIX: Server > VPNServer.
 
+· 🐛 FIX: Others > Scrcpy (Missing scrcpy-server).
+
 · ❌ REMOVE: Emulators > Advanced MAME (Obsolete).
 
 ### (01/04/21)
