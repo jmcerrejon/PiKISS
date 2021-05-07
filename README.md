@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **838 hours**
+-   **841 hours**
 
 ## 💰 Total amount donated by users
 
@@ -64,6 +64,16 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (07/05/21)
+
+· 📦 ADD: Emulators > MAME (Add Mame 0.230).
+
+· 👌 IMPROVE: Server > Auto update Debian Buster.
+
+· 🐛 FIX: Server > VPNServer.
+
+· ❌ REMOVE: Emulators > Advanced MAME (Obsolete).
 
 ### (01/04/21)
 

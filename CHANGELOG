@@ -1,3 +1,14 @@
+(07/05/21)
+==========
+
+· 📦 ADD: Emulators > MAME (Add Mame 0.230).
+
+· 👌 IMPROVE: Server > Auto update Debian Buster.
+
+· 🐛 FIX: Server > VPNServer.
+
+· ❌ REMOVE: Emulators > Advanced MAME (Obsolete).
+
 (01/04/21)
 ==========
 
