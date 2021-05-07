@@ -236,7 +236,7 @@ smEmulators() {
             Gba "Gameboy Advance (mgba)"
             Genesis "Genesis Megadrive Emulator (picodrive)"
             Mednafen "Portable multi-system emulator (Mednafen)"
-            Mame "Install MAME, Advance MAME and/or MAME4ALL-PI"
+            Mame "Install MAME 0.230, Advance MAME or MAME4ALL-PI"
             MSX "OpenMSX"
             NES "Nestopia UE is an accurate NES emulator"
             Pifba "Emulates old arcade games using CPS1, CPS2,..."
@@ -380,7 +380,6 @@ smServer() {
         options=(
             Back "Back to main menu"
             AdBlock "Turn Raspberry Pi into an Ad blocker with Pi-Hole"
-            BtSync "Bittorrent Sync as file backup service"
             Cups "Printer server (cups)"
             DB "MySQL+PHP5 connector"
             FTP "Simple FTP Server with vsftpd"
@@ -395,7 +394,7 @@ smServer() {
             Smtp "SMTP Config to send e-mail"
             SMB "Share files with SAMBA"
             Upd "keep Debian patched with latest security updates"
-            VPNServer "OpenVPN setup and config thks to pivpn.io"
+            VPNServer "OpenVPN setup and config thanks to pivpn.io"
             Web "Web server+PHP7"
             WebDAV "WebDAV to share local content with Apache"
         )
@@ -407,7 +406,6 @@ smServer() {
         case $choice in
         Back) break ;;
         AdBlock) ./scripts/server/adblock.sh ;;
-        BtSync) ./scripts/server/bsync.sh ;;
         Cups) ./scripts/server/printer.sh ;;
         DB) ./scripts/server/db.sh ;;
         FTP) ./scripts/server/ftp.sh ;;
