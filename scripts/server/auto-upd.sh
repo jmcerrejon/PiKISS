@@ -12,12 +12,12 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 sudo apt install -y unattended-upgrades apt-listchanges bsd-mailx
 # file /etc/apt/apt.conf.d/50unattended-upgrades
-#      "o=Raspbian,n=jessie";
+#      "o=Raspbian,n=buster";
 #      "o=Raspbian,a=stable";
 
 file_backup /etc/apt/apt.conf.d/50unattended-upgrades
 
-sudo sed -i 's/\/\/      "o=Raspbian,n=jessie";/      "o=Raspbian,n=jessie";/ig' /etc/apt/apt.conf.d/50unattended-upgrades
+sudo sed -i 's/\/\/      "o=Raspbian,n=buster";/      "o=Raspbian,n=buster";/ig' /etc/apt/apt.conf.d/50unattended-upgrades
 sudo sed -i 's/\/\/Unattended-Upgrade::Mail "root";/Unattended-Upgrade::Mail "pi";/ig' /etc/apt/apt.conf.d/50unattended-upgrades
 
 sudo dpkg-reconfigure -plow unattended-upgrades -u
@@ -31,8 +31,8 @@ dialog --inputbox "Enter your e-mail:" 8 40 2>"${OUTPUT}"
 respose=$?
 
 case $respose in
-  0) sudo sed -i "s/email_address=root/email_address=$(<$OUTPUT)/ig" /etc/apt/listchanges.conf ;;
-  1 | 255) echo "Cancelled." ;;
+0) sudo sed -i "s/email_address=root/email_address=$(<$OUTPUT)/ig" /etc/apt/listchanges.conf ;;
+1 | 255) echo "Cancelled." ;;
 esac
 
 rm "$OUTPUT"
