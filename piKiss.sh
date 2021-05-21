@@ -470,6 +470,7 @@ smOthers() {
             ShaderToy "Render over 100+ OpenGL ES 3.0 shaders"
             Synergy "Allow you to share keyboard and mouse to computers on LAN"
             Uninstall "Uninstall PiKISS :_("
+            WineX86 "Install Wine X86 + Box86"
         )
     fi
 
@@ -492,6 +493,7 @@ smOthers() {
         ShaderToy) ./scripts/others/shadertoy.sh ;;
         Synergy) ./scripts/others/synergy.sh ;;
         Uninstall) uninstall_pikiss ;;
+        WineX86) ./scripts/others/wine86.sh ;;
         esac
     done
 }

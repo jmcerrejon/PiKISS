@@ -37,12 +37,13 @@ box86_check_if_latest_version_is_installed() {
     command -v box86 >/dev/null 2>&1 || return 0
 
     BOX86_FINAL_PATH=$(whereis box86 | awk '{print $2}')
-    BOX86_VERSION=$("$BOX86_FINAL_PATH" -v | awk '{print $5}')
-    GIT_VERSION=$(git rev-parse HEAD | cut -c 1-8)
+    BOX86_VERSION=$("$BOX86_FINAL_PATH" -v | tail -n +2 | awk '{print $5}')
+    GIT_VERSION=$(cd "$HOME/box86" && git rev-parse HEAD | cut -c 1-8)
 
     if [[ $BOX86_VERSION = "$GIT_VERSION" ]]; then
-        echo -e "\nYour box86 is already updated!.\n"
-        exit_message
+        true
+    else
+        false
     fi
 }
 
@@ -60,6 +61,7 @@ compile_box86() {
     install_packages_if_missing cmake
 
     if [[ ! -d "$INSTALL_DIRECTORY" ]]; then
+        echo
         git clone "$SOURCE_PATH" "$INSTALL_DIRECTORY" && cd "$_" || exit 1
     else
         echo -e "\nUpdating the repo if proceed,...\n"
@@ -67,7 +69,10 @@ compile_box86() {
         [[ -d "$INSTALL_DIRECTORY"/build ]] && rm -rf "$INSTALL_DIRECTORY"/build
     fi
 
-    box86_check_if_latest_version_is_installed
+    if box86_check_if_latest_version_is_installed; then
+        echo -e "\nYour box86 is already updated. Skipping...\n"
+        return 0
+    fi
 
     mkdir -p build && cd "$_" || exit 1
     echo -e "\nCompiling, please wait...\n"
@@ -97,6 +102,58 @@ install_box86() {
     cd "$HOME"/box86/build || exit 1
     sudo make install
     echo -e "\nBox86 has been installed.\n"
+}
+
+# https://github.com/ptitSeb/box86/blob/master/docs/X86WINE.md
+install_winex86() {
+    local WINE_PKG_I386
+    local WINE_PKG
+    local DEBIAN_F_PKGS_URL
+    WINE_PKG_I386="https://dl.winehq.org/wine-builds/debian/dists/buster/main/binary-i386/wine-devel-i386_6.8~buster-1_i386.deb"
+    WINE_PKG="https://dl.winehq.org/wine-builds/debian/dists/buster/main/binary-i386/wine-devel_6.8~buster-1_i386.deb"
+    DEBIAN_F_PKGS_URL="http://ftp.us.debian.org/debian/pool/main/f/faudio/"
+
+    cd || exit 1
+
+    echo -e "Backing old wine versions to ~/wine-old and /usr/local/bin/wine*old...\n"
+    sudo rm -rf ~/wine-old ~/.wine-old /usr/local/bin/wine-old /usr/local/bin/wineboot-old /usr/local/bin/winecfg-old /usr/local/bin/wineserver-old
+    [[ -d ~/wine ]] && sudo mv ~/wine ~/wine-old
+    [[ -d ~/.wine ]] && sudo mv ~/.wine ~/.wine-old
+    [[ -e /usr/local/bin/wine ]] && sudo mv /usr/local/bin/wine /usr/local/bin/wine-old
+    [[ -e /usr/local/bin/wineboot ]] && sudo mv /usr/local/bin/wineboot /usr/local/bin/wineboot-old
+    [[ -e /usr/local/bin/winecfg ]] && sudo mv /usr/local/bin/winecfg /usr/local/bin/winecfg-old
+    [[ -e /usr/local/bin/wineserver ]] && sudo mv /usr/local/bin/wineserver /usr/local/bin/wineserver-old
+
+    echo -e "Downloading...\n"
+    wget -q -O wine_devel.deb "$WINE_PKG_I386"
+    wget -q -O wine.deb "$WINE_PKG"
+    wget -q -r -l1 -np -nd -A "libfaudio0_*~bpo10+1_i386.deb" "$DEBIAN_F_PKGS_URL"
+
+    echo -e "Extract,clean & installing files/pkgs...\n"
+    dpkg-deb -x ./wine_devel.deb wine-installer
+    dpkg-deb -x ./wine.deb wine-installer
+    dpkg-deb -xv ./libfaudio0_*~bpo10+1_i386.deb libfaudio
+
+    mv ./wine-installer/opt/wine* ~/wine
+    sudo cp -TRv libfaudio/usr/ /usr/
+    rm -rf wine*.deb wine-installer libfaudio0_*~bpo10+1_i386.deb libfaudio
+    #sudo rm /usr/local/bin/wine /usr/local/bin/wineboot /usr/local/bin/winecfg /usr/local/bin/wineserver
+
+    echo -e "Generating shortcuts at /usr/local/bin/wine*...\n"
+    echo -e '#!/bin/bash\nsetarch linux32 -L '"$HOME/wine/bin/wine "'"$@"' | sudo tee -a /usr/local/bin/wine >/dev/null
+    if ! is_kernel_64_bits; then
+        sudo rm /usr/local/bin/wine
+        sudo ln -s ~/wine/bin/wine /usr/local/bin/wine
+    fi
+    sudo ln -s ~/wine/bin/wineboot /usr/local/bin/wineboot
+    sudo ln -s ~/wine/bin/winecfg /usr/local/bin/winecfg
+    sudo ln -s ~/wine/bin/wineserver /usr/local/bin/wineserver
+    sudo chmod +x /usr/local/bin/wine /usr/local/bin/wineboot /usr/local/bin/winecfg /usr/local/bin/wineserver
+
+    echo -e "Installing some essential components for you...\n"
+    sudo DEBIAN_FRONTEND=noninteractive apt-get install -qq libstb0 </dev/null >/dev/null
+
+    wine wineboot
 }
 
 installMesa() {
