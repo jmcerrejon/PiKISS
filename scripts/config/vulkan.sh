@@ -2,7 +2,7 @@
 #
 # Description : Vulkan driver
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.1 (22/Feb/21)
+# Version     : 1.2.2 (08/May/21)
 # Compatible  : Raspberry Pi 4
 #
 # Info        : Thks to PI Labs
@@ -43,7 +43,7 @@ install_full_deps() {
         libvulkan-dev ninja-build libvulkan1 python-mako \
         libdrm-dev libxshmfence-dev libxxf86vm-dev libwayland-dev \
         python3-mako wayland-protocols libwayland-egl-backend-dev \
-        cmake libassimp-dev
+        cmake libassimp-dev python3-pip
     install_meson
 }
 
