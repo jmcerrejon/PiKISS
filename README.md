@@ -13,13 +13,13 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **841 hours**
+-   **845 hours**
 
 ## 💰 Total amount donated by users
 
--   $417,99.
+-   $709,88.
 
--   I want to thank my patrons _James Carroll, David J Leto, Rodney Hester, Matthew Michink, Mathew Gracie & cxgr_ for trusting me ❤️
+-   I want to thank my patrons _James Carroll, David J Leto, Rodney Hester, Matthew Michink, Mathew Gracie, cxgr & Nguyên Hồ_ for trusting me ❤️
 
 -   Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes_
 
@@ -49,8 +49,6 @@
 
 -   [youtube.com > PIKISS](https://www.youtube.com/playlist?list=PLXhElW3ALmWh8p0mn1ZECawkKyF8QzNNP)
 
-# 🚨🚨 Read the new info about Data Files below 🚨🚨
-
 ## ENGLISH
 
 ### [ Screenshots ]
@@ -64,6 +62,14 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (21/05/21)
+
+#### Welcome to my new Patron Nguyên Hồ! ❤️
+
+· 📦 ADD: Others > Winex86 + Box86.
+
+· 🐛 FIX: Emulators > Box86.
 
 ### (07/05/21)
 
