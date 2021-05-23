@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **845 hours**
+-   **846 hours**
 
 ## 💰 Total amount donated by users
 
@@ -62,6 +62,12 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (23/05/21)
+
+· 👌 IMPROVE: Others > Winex86 + Box86 + Winetricks. Add option for uninstall Wine.
+
+· 🐛 FIX: Emulators > Box86.
 
 ### (21/05/21)
 
@@ -114,38 +120,6 @@
 · 📦 ADD: Games > Prince Of Persia (full).
 
 · 👌 IMPROVE: Tweaks > Others > Add/Remove Swap.
-
-### (28/02/21)
-
-· 👌 IMPROVE: Devs > Install VSCode or VSCodium (same with no telemetry).
-
-· 👌 IMPROVE: Internet > Zoom updated to release 5.4.2 (53391.1108).
-
-· 🐛 FIX: Internet > Zoom.
-
-### (22/02/21)
-
-· 👌 IMPROVE: New relases: RPiplay 1.2 (Airplay mirror). Scrcopy (Android mirror 1.17).
-
-· 👌 IMPROVE: Tweaks > Remove Packages > Remove Snap daemon.
-
-### (21/02/21)
-
-· 👌 IMPROVE: New version 1.8.0. New compiled versions of Blood, DOSBox-X 0.83. Refactor code.
-
-· 👌 IMPROVE: MagicAirCopy®. Now detect automatically if you have the file _res/magic-air-copy-pikiss.txt_ to use it.
-
-· 🐛 FIX: Games > Arx Fatalis & Quake 1 (shareware files missing).
-
-### (07/02/21)
-
-· 📦 ADD: Emulators > Duckstation - PlayStation 1, aka. PSX Emulator.
-
-### (06/02/21)
-
-· 👌 IMPROVE: Amiberry.
-
-· 👌 IMPROVE: Tweaks > Packages > Remove Microsoft VSCode source list (You can safely install it with PiKISS later 😉).
 
 ...
 
