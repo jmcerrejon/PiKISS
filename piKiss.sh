@@ -156,6 +156,7 @@ smGames() {
             GTA "GTA III/Vice City are open worlds video games part of the GTA franchise"
             HalfLife "Gordon Freeman must exit Black Mesa after it's invaded by aliens"
             Heroes2 "Free implementation of Heroes of Might and Magic II engine"
+            Hermes "Jump'n' Run game with plenty of bad taste humour."
             Hurrican "Jump and shoot game based on the Turrican game series"
             Morrowind "The Elder Scrolls III: Morrowind is an open-world RPG"
             OpenBor "OpenBOR is the open source continuation of Beats of Rage"
@@ -198,6 +199,7 @@ smGames() {
         GTA) ./scripts/games/gta.sh ;;
         HalfLife) ./scripts/games/half-life.sh ;;
         Heroes2) ./scripts/games/fheroes2.sh ;;
+        Hermes) ./scripts/games/hermes.sh ;;
         Hurrican) ./scripts/games/hurrican.sh ;;
         Morrowind) ./scripts/games/openmw.sh ;;
         OpenBor) ./scripts/games/openbor.sh ;;
