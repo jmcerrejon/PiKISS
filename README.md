@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **846 hours**
+-   **847 hours**
 
 ## 💰 Total amount donated by users
 
@@ -64,6 +64,8 @@
 ### [ ChangeLog (dd/mm/yy)]
 
 ### (23/05/21)
+
+· 📦 ADD: Games > Hermes.
 
 · 👌 IMPROVE: Others > Winex86 + Box86 + Winetricks. Add option for uninstall Wine.
 
