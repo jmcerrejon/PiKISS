@@ -37,7 +37,7 @@ box86_check_if_latest_version_is_installed() {
     command -v box86 >/dev/null 2>&1 || return 0
 
     BOX86_FINAL_PATH=$(whereis box86 | awk '{print $2}')
-    BOX86_VERSION=$("$BOX86_FINAL_PATH" -v | tail -n +2 | awk '{print $5}')
+    BOX86_VERSION=$("$BOX86_FINAL_PATH" -v | awk '{print $5}')
     GIT_VERSION=$(cd "$HOME/box86" && git rev-parse HEAD | cut -c 1-8)
 
     if [[ $BOX86_VERSION = "$GIT_VERSION" ]]; then
@@ -104,14 +104,36 @@ install_box86() {
     echo -e "\nBox86 has been installed.\n"
 }
 
+generate_icon_winetricks() {
+    if [[ ! -e /usr/local/bin/winetricks ]]; then
+        return 0
+    fi
+
+    echo -e "\nGenerating icon...\n"
+    if [[ ! -e ~/.local/share/applications/winetricks.desktop ]]; then
+        cat <<EOF >~/.local/share/applications/winetricks.desktop
+[Desktop Entry]
+Name=Winetricks
+Comment=Work around problems and install applications under Wine
+Exec=env BOX86_NOBANNER=1 winetricks --gui
+Terminal=false
+Icon=B13E_wscript.0
+Type=Application
+Categories=Utility;
+EOF
+    fi
+}
+
 # https://github.com/ptitSeb/box86/blob/master/docs/X86WINE.md
 install_winex86() {
     local WINE_PKG_I386
     local WINE_PKG
     local DEBIAN_F_PKGS_URL
+    local WINETRICKS_URL
     WINE_PKG_I386="https://dl.winehq.org/wine-builds/debian/dists/buster/main/binary-i386/wine-devel-i386_6.8~buster-1_i386.deb"
     WINE_PKG="https://dl.winehq.org/wine-builds/debian/dists/buster/main/binary-i386/wine-devel_6.8~buster-1_i386.deb"
     DEBIAN_F_PKGS_URL="http://ftp.us.debian.org/debian/pool/main/f/faudio/"
+    WINETRICKS_URL="https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks"
 
     cd || exit 1
 
@@ -139,19 +161,24 @@ install_winex86() {
     rm -rf wine*.deb wine-installer libfaudio0_*~bpo10+1_i386.deb libfaudio
     #sudo rm /usr/local/bin/wine /usr/local/bin/wineboot /usr/local/bin/winecfg /usr/local/bin/wineserver
 
-    echo -e "Generating shortcuts at /usr/local/bin/wine*...\n"
+    echo -e "\nGenerating shortcuts at /usr/local/bin/wine*...\n"
     echo -e '#!/bin/bash\nsetarch linux32 -L '"$HOME/wine/bin/wine "'"$@"' | sudo tee -a /usr/local/bin/wine >/dev/null
     if ! is_kernel_64_bits; then
         sudo rm /usr/local/bin/wine
-        sudo ln -s ~/wine/bin/wine /usr/local/bin/wine
+        sudo ln -f -s ~/wine/bin/wine /usr/local/bin/wine
     fi
-    sudo ln -s ~/wine/bin/wineboot /usr/local/bin/wineboot
-    sudo ln -s ~/wine/bin/winecfg /usr/local/bin/winecfg
-    sudo ln -s ~/wine/bin/wineserver /usr/local/bin/wineserver
+    sudo ln -f -s ~/wine/bin/wineboot /usr/local/bin/wineboot
+    sudo ln -f -s ~/wine/bin/winecfg /usr/local/bin/winecfg
+    sudo ln -f -s ~/wine/bin/wineserver /usr/local/bin/wineserver
     sudo chmod +x /usr/local/bin/wine /usr/local/bin/wineboot /usr/local/bin/winecfg /usr/local/bin/wineserver
 
-    echo -e "Installing some essential components for you...\n"
-    sudo DEBIAN_FRONTEND=noninteractive apt-get install -qq libstb0 </dev/null >/dev/null
+    echo -e "Installing some essential components for you..."
+    sudo DEBIAN_FRONTEND=noninteractive apt-get install -qq libstb0 cabextract </dev/null >/dev/null
+
+    wget -q "$WINETRICKS_URL"
+    sudo chmod +x winetricks
+    sudo mv winetricks /usr/local/bin/
+    generate_icon_winetricks
 
     wine wineboot
 }
@@ -1145,4 +1172,50 @@ install_meson() {
         isPackageInstalled meson && sudo apt-get remove -y meson
         sudo pip3 install meson --force-reinstall
     fi
+}
+
+install_nginx() {
+    local PACKAGES
+    PACKAGES=(ngninx)
+
+    check_update
+    install_packages_if_missing "${PACKAGES[@]}"
+    sudo usermod -aG www-data "$USER"
+    sudo chown -R "$USER":www-data /var/www/
+    service nginx restart
+}
+
+install_mysql() {
+    local PACKAGES
+    PACKAGES=(mysql-server mysql-client)
+
+    echo -e "Installing MySQL 5.7..."
+    install_packages_if_missing "${PACKAGES[@]}"
+    #echo -e "Optimizing..."
+    # query_cache_size = 8M
+    read -p "Do you want to add the current user $USER? (y/N) " response
+    if [[ $response =~ [Yy] ]]; then
+        mysql -e -uroot "CREATE USER '${USER}'@'%' IDENTIFIED BY 'Foexyz77!'; GRANT ALL PRIVILEGES ON * . * TO '${USER}'@'%'; FLUSH PRIVILEGES;"
+    fi
+    echo -e "Secure DB..."
+    sudo mysql_secure_installation
+    sudo service mysql restart
+    echo -e "\nDone!."
+}
+
+install_php() {
+    local PACKAGES
+    PACKAGES=(software-properties-common php7.4-fpm php7.4-mysql php7.4-mbstring php7.4-xml php7.4-bcmath php7.4-cli php7.4-gd php7.4-curl)
+
+    echo -e "Installing Packages for PHP 7.4..."
+    install_packages_if_missing "${PACKAGES[@]}"
+    systemctl status php7.4-fpm
+
+    # Install composer
+    sudo curl -s https://getcomposer.org/installer | php
+    sudo mv composer.phar /usr/local/bin/composer
+}
+
+generate_random_password() {
+    echo "$(openssl rand -base64 12)"
 }
