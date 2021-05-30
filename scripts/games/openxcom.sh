@@ -2,7 +2,7 @@
 #
 # Description : OpenXcom with the help of user chills340
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.6 (21/Feb/21)
+# Version     : 1.1.7 (21/Feb/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://www.ufopaedia.org/index.php/Compiling_with_CMake_(OpenXcom)
@@ -20,17 +20,18 @@ readonly VAR_DATA_NAME="UFO_ENEMY_UNKNOWN"
 INPUT=/tmp/openxcom.$$
 
 runme() {
-    if [ ! -f "$INSTALL_DIR"/openxcom/openxcom ]; then
-        echo -e "\nFile does not exist.\n· Something is wrong.\n· Try to install again."
+    echo
+    if [[ ! -f $INSTALL_DIR/openxcom/openxcom ]]; then
+        echo -e "File does not exist.\n· Something is wrong.\n· Try to install again."
         exit_message
     fi
     read -p "Press [ENTER] to run the game..."
-    cd "$INSTALL_DIR"/openxcom && ./openxcom
+    cd "$INSTALL_DIR/openxcom" && ./openxcom
     exit_message
 }
 
 remove_files() {
-    rm -rf "$INSTALL_DIR"/openxcom ~/.local/share/applications/openxcom.desktop ~/.config/openxcom
+    rm -rf "$INSTALL_DIR/openxcom" ~/.local/share/applications/openxcom.desktop ~/.config/openxcom
 }
 
 uninstall() {
@@ -47,7 +48,7 @@ uninstall() {
     exit_message
 }
 
-if [[ -d "$INSTALL_DIR"/openxcom ]]; then
+if [[ -d $INSTALL_DIR/openxcom ]]; then
     echo -e "openxcom already installed.\n"
     uninstall
 fi
@@ -73,11 +74,12 @@ EOF
 download_data_files() {
     local DATA_URL
     DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
-    message_magic_air_copy
-    # TODO Fix the next Operation not permitted
-    download_and_extract "$DATA_URL" /tmp
-    cd /tmp/X-Com\ -\ UFO\ Enemy\ Unknown/ || exit 1
-    mv ufo UFO && mv -f UFO "$INSTALL_DIR/openxcom" && cd "$_" || exit 1
+    message_magic_air_copy "$DATA_URL"
+    download_and_extract "$DATA_URL" "$INSTALL_DIR/openxcom"
+    if [[ -e "$INSTALL_DIR/openxcom/X-Com - UFO Enemy Unknown/" ]]; then
+        cd "$INSTALL_DIR/openxcom/X-Com - UFO Enemy Unknown/" || exit 1
+        mv ufo UFO && mv -f UFO "$INSTALL_DIR/openxcom" && cd "$_" || exit 1
+    fi
 }
 
 compile() {
@@ -120,6 +122,7 @@ OpenXCom on Raspberry Pi
 ========================
 
  · Based on engine at ${SOURCE_CODE_URL}
+ · The Game data directory must to be in UPPERCASE, so copy it to the destination path $INSTALL_DIR/openxcom/UFO
  · REMEMBER YOU NEED A LEGAL COPY OF THE GAME and copy game directory inside $INSTALL_DIR/openxcom
  · To play, when installed use Menu > Games > OpenXcom or $INSTALL_DIR/openxcom/openxcom
 "
