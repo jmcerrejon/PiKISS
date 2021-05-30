@@ -2,11 +2,11 @@
 # =====
 #
 # - Rename this file to magic-air-copy-pikiss.txt, modify it with your datas and make a backup in a safe place ;)
-# - PiKISS will copy in the right directory the datas you have inside this file.
+# - PiKISS will copy in the right directory the data you have inside this file.
 # - Set in each variable the correct URL/path to your data files.
 # - You can mix them, so QUAKE_3 could be a URL, DIABLO_1 a directory,...
 # - Some variables have suffixes. _EN/_ES means the language(_EN for English, _ES for Spanish). You can't add more, so don't try DIABLO2_FR ;)
-# - You can sort the list, but it's better to keep all of them, so don't remove any.
+# - Avoid spaces in the directory/file names.
 #
 # Possible values:
 #
@@ -24,6 +24,8 @@ DIABLO_1=
 DIABLO2_EN=
 DIABLO2_ES=
 DUKE_ATOM=
+GTA_3=
+GTA_VC=
 HALF_LIFE=
 HEROES_2=
 OPENMW_FULL=
@@ -35,5 +37,3 @@ SSAM_TFE=
 SSAM_TSE=
 UFO_ENEMY_UNKNOWN=
 WADS=
-GTA_3=
-GTA_VC=
