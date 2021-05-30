@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **847 hours**
+-   **851 hours**
 
 ## 💰 Total amount donated by users
 
@@ -62,6 +62,12 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (30/05/21)
+
+· 🐛 FIX: Games > OpenXCOM.
+
+· 👌 IMPROVE: MagicAirCopy®.
 
 ### (23/05/21)
 
