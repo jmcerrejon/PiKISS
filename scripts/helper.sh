@@ -897,7 +897,7 @@ extract_path_from_file() {
         exit 1
     fi
 
-    grep "$1=" "$MAGIC_FILE_PATH" | awk -F "$1=" '{print $2}'
+    grep ^"$1=" "$MAGIC_FILE_PATH" | awk -F "$1=" '{print $2}'
 }
 
 #
