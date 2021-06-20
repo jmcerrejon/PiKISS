@@ -2,7 +2,7 @@
 #
 # Description : Diablo 2 Exp. Spanish for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.6 (21/Feb/21)
+# Version     : 1.1.7 (20/Jun/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Info		  : Thks to PI Labs and Notaz
@@ -145,6 +145,6 @@ Install Diablo 2 thks to Notaz
  · NOTE: Only runs on Raspberry Pi 4
 "
 
-read -p "Press [Enter] to continue..."
+read -p "Press [Enter] to continue or [CTRL]+C to abort..."
 
 install
