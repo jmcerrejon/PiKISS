@@ -2,7 +2,7 @@
 #
 # Description : Fruit'Y
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (03/Jan/21)
+# Version     : 1.0.2 (20/Jun/21)
 # Compatible  : NOT WORKING ON Raspberry Pi 4 (tested)
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -35,13 +35,14 @@ EOF
 
 install() {
     mkdir -p "$INSTALL_DIR" && cd "$_" || exit 1
-    download_and_extract "$BINARY_FILE" "$INSTALL_DIR/fruity"
+    download_and_extract "$BINARY_URL" "$INSTALL_DIR/fruity"
     chmod +x fruity_rpi
     generate_icon
     echo -e "Done!. To play, on Desktop go to Menu > Games or via terminal, go to $INSTALL_DIR and type: ./fruity_rpi\n\nEnjoy!"
     exit_message
 }
 
+install_script_message
 echo "Install Fruit'Y (Raspberry Pi version)"
 echo "======================================"
 echo -e "More Info: https://www.retroguru.com/fruity/\n\nInstall path: $INSTALL_DIR"

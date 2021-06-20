@@ -2,7 +2,7 @@
 #
 # Description : Sqrxz4 game installation
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.0 (03/Jan/21)
+# Version     : 1.1.1 (20/Jun/21)
 # Compatible  : Raspberry Pi 1, 2 & 3 (tested)
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -10,7 +10,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
-readonly BINARY_FILE="https://www.retroguru.com/sqrxz4/sqrxz4-v.latest-raspberrypi.zip"
+readonly BINARY_URL="https://www.retroguru.com/sqrxz4/sqrxz4-v.latest-raspberrypi.zip"
 
 remove_files() {
     sudo rm -rf "$INSTALL_DIR/sqrxz4" ~/.local/share/applications/sqrxz4.desktop
@@ -54,7 +54,7 @@ EOF
 
 install() {
     mkdir -p "$INSTALL_DIR" && cd "$_" || exit 1
-    download_and_extract "$BINARY_FILE" "$INSTALL_DIR/sqrxz4"
+    download_and_extract "$BINARY_URL" "$INSTALL_DIR/sqrxz4"
     generate_icon
     echo -e "Done!. To play, on Desktop go to Menu > Games or via terminal, go to $INSTALL_DIR and type: ./sqrxz4_rpi\n\nEnjoy!"
     read -p "Press [Enter] to continue..."
