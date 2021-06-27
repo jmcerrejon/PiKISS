@@ -13,15 +13,15 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **851 hours**
+-   **859 hours**
 
 ## 💰 Total amount donated by users
 
 -   $709,88.
 
--   I want to thank my patrons _James Carroll, David J Leto, Rodney Hester, Matthew Michink, Mathew Gracie, cxgr & Nguyên Hồ_ for trusting me ❤️
+-   I want to thank my patrons _James Carroll, David J Leto, Rodney Hester, Matthew Michink, Mathew Gracie & cxgr_ for trusting me ❤️
 
--   Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes_
+-   Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez_
 
 ## 📣 Stay tuned!
 
@@ -62,6 +62,12 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (27/06/21)
+
+· 📦 ADD: Games > GemRB (Baldur's Gate and other RPG games).
+
+· 👌 IMPROVE: Grand Theft Auto III, Grand Theft Auto Vice City.
 
 ### (30/05/21)
 
@@ -168,7 +174,7 @@ What some users have said about **PiKISS**:
 Just type:
 
 ```sh-session
-$ curl -sSL https://git.io/JfAPE | bash
+curl -sSL https://git.io/JfAPE | bash
 ```
 
 ## [ Data Files 🚨 ]
@@ -226,7 +232,7 @@ _"¿Ya no tengo que pelearme con la terminal?. Cállate y coge mi dinero!"_ - Tr
 Escribe en la terminal lo siguiente:
 
 ```sh-session
-$ curl -sSL https://git.io/JfAPE | bash
+curl -sSL https://git.io/JfAPE | bash
 ```
 
 ## [ Ficheros de datos 🚨 ]
