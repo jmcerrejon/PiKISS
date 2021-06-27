@@ -2,7 +2,7 @@
 #
 # Description : Amiberry Amiga emulator
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.5.3 (07/Feb/21)
+# Version     : 1.5.4 (07/Feb/21)
 # Compatible  : Raspberry Pi 1-4
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -12,7 +12,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 INSTALL_DIR="$HOME/games"
 AMIBERRY_VERSION="v3.3"
 PACKAGES=(libsdl2-image-2.0-0 libsdl2-ttf-2.0-0)
-PACKAGES_DEV=(libsdl2-dev libguichan-dev libsdl2-ttf2.0-dev libsdl-gfx1.2-dev libxml2-dev libflac-dev libmpg123-dev)
+PACKAGES_DEV=(libsdl2-dev libguichan-dev libsdl2-ttf-dev libsdl-gfx1.2-dev libxml2-dev libflac-dev libmpg123-dev)
 RPI_MODEL=$(get_raspberry_pi_model_number)
 AMIBERRY_BIN="https://github.com/midwan/amiberry/releases/download/${AMIBERRY_VERSION}/amiberry-${AMIBERRY_VERSION}-rpi${RPI_MODEL}-sdl2-32bit.zip"
 GITHUB_PATH="https://github.com/midwan/amiberry.git"
