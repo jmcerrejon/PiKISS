@@ -154,6 +154,7 @@ smGames() {
             Diablo2 "Diablo 2 Lord of Destruction"
             Eduke32 "Duke Nukem 3D is a fps game developed by 3D Realms"
             GTA "GTA III/Vice City are open worlds video games part of the GTA franchise"
+            GemRB "Engine for games like Baldur's Gate"
             HalfLife "Gordon Freeman must exit Black Mesa after it's invaded by aliens"
             Heroes2 "Free implementation of Heroes of Might and Magic II engine"
             Hermes "Jump'n' Run game with plenty of bad taste humour."
@@ -197,6 +198,7 @@ smGames() {
         Diablo2) ./scripts/games/diablo2.sh ;;
         Eduke32) ./scripts/games/eduke32.sh ;;
         GTA) ./scripts/games/gta.sh ;;
+        GemRB) ./scripts/games/gemrb.sh ;;
         HalfLife) ./scripts/games/half-life.sh ;;
         Heroes2) ./scripts/games/fheroes2.sh ;;
         Hermes) ./scripts/games/hermes.sh ;;
