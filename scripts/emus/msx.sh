@@ -1,107 +1,127 @@
 #!/bin/bash
 #
-# Description : OpenMSX emulator
+# Description : OpenMSX emulator v 17.0
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.3 (19/Jun/20)
-# Compatible  : Raspberry Pi 1-2 (¿?), 3-4 (tested)
+# Version     : 1.4.0 (11/Jul/21)
+# Compatible  : Raspberry Pi 1-3 (¿?), 4 (tested)
 #
-# CREDITS     : I want to thanks to *Patrick (VampierMSX)* from **OpenMSX Team**.
 #
+# shellcheck disable=SC1091
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 clear
 
-SC_OPENMSX="https://github.com/openMSX/openMSX/releases/download/RELEASE_0_15_0/openmsx-0.15.0.tar.gz"
-BIN_OPENMSX="https://misapuntesde.com/res/openmsx_0.15.0-1_armhf.deb"
-BINARY="openmsx_0.15.0-1_armhf.deb"
-INSTALL_DIR="$HOME/games"
-SETTINGS_URL="https://raw.githubusercontent.com/jmcerrejon/PiKISS/master/res/settings.xml"
-# ROM game Thanks to msx.ebsoft.fr
-ROM_PATH="http://msx.ebsoft.fr/uridium/ccount/click.php?id=uridium"
-SYSTEMROMS_URL="http://www.msxarchive.nl/pub/msx/emulator/openMSX/systemroms.zip"
-SYSTEMROMS="$HOME/.openMSX/share/systemroms"
-INPUT=/tmp/msxmenu.$$
+readonly INSTALL_DIR="$HOME/games"
+readonly PACKAGES=(libglew2.1 libsdl2-ttf-2.0-0)
+readonly PACKAGES_DEV=(libsdl2-dev libsdl2-ttf-dev libglew-dev libao-dev libogg-dev libtheora-dev libxml2-dev libvorbis-dev tcl-dev g++-4.8)
+readonly SOURCE_CODE_URL="https://github.com/openMSX/openMSX/releases/download/RELEASE_17_0/openmsx-17.0.tar.gz"
+readonly BINARY_URL="https://misapuntesde.com/rpi_share/openmsx_0.17_armhf.tar.gz"
+readonly SETTINGS_URL="https://raw.githubusercontent.com/jmcerrejon/PiKISS/master/res/settings.xml"
+readonly ROM_GAME_URL="http://www.retroworks.es/upload/Mutants%20from%20the%20deep.zip"
+readonly SYSTEMROMS_URL="http://www.msxarchive.nl/pub/msx/emulator/openMSX/systemroms.zip"
+readonly SYSTEMROMS="$HOME/.openMSX/share/systemroms"
 
-downloadGame() {
-	echo -e "\nInstalling Uridium at $INSTALL_DIR/msx/uridium48...\n"
-	mkdir -p "$INSTALL_DIR"/msx && cd "$_"
-	wget -qO "$INSTALL_DIR"/msx/uridium.zip "$ROM_PATH"
-	unzip -q -o "$INSTALL_DIR"/msx/uridium.zip && rm "$INSTALL_DIR"/msx/uridium.zip && rm -rf "$INSTALL_DIR"/msx/__MACOSX
-
-	playgame
-}
-
-playgame() {
-    if [[ -f "$INSTALL_DIR"/msx/uridium48/URDIUM48.rom ]]; then
-        read -p "Do you want to play uridium now? [y/n] " option
+runme() {
+    echo
+    if [[ -f "$HOME/.openMSX/share/software/Mutants from the deep.rom" ]]; then
+        read -p "Do you want to play Mutants from the Deep now? [y/n] " option
         case "$option" in
-            y*) cd "$INSTALL_DIR"/msx/uridium48 && openmsx URDIUM48.rom ;;
+        y*) cd "$INSTALL_DIR"/openMSX/bin/ && ./openmsx "$HOME/.openMSX/share/software/Mutants from the deep.rom" ;;
         esac
     fi
 }
 
-install() {
-	# We have on Raspbian Buster the latest version, so it's not needed to download from my repo. Let the code commented for future release.
-	# cd $HOME && wget $BIN_OPENMSX &&  sudo dpkg -i $BINARY &&  rm $BINARY
-	# if isPackageInstalled openmsx; then
-	# 	read -p "OpenMSX is already installed!. Press [Enter] to go back to the menu..."
-	# 	return 0
-    # fi
-
-	echo -e "\nInstalling, please wait...\n"
-
-	sudo apt install -y openmsx
-
-	postinstall
+uninstall() {
+    read -p "Do you want to uninstall OpenMSX (y/N)? " response
+    if [[ $response =~ [Yy] ]]; then
+        sudo rm -rf "$INSTALL_DIR"/openMSX ~/.openMSX ~/.local/share/applications/openmsx.desktop
+        if [[ -e "$INSTALL_DIR"/openMSX ]]; then
+            echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
+            exit_message
+        fi
+        echo -e "\nSuccessfully uninstalled."
+        exit_message
+    fi
+    exit_message
 }
 
-postinstall() {
-	echo -e "\nInstalling ROM BiOS for maximum compatibility...\n"
-	mkdir -p "$HOME"/.openMSX/share/ && cd "$_"
-	wget -q "$SETTINGS_URL" "$HOME"/.openMSX/share/settings.xml
-	wget -q "$SYSTEMROMS_URL" && unzip -q -o systemroms.zip && rm systemroms.zip
+if [[ -d "$INSTALL_DIR"/openMSX ]]; then
+    echo -e "OpenMSX already installed.\n"
+    uninstall
+    exit 1
+fi
 
-	downloadGame
-
-	echo -e "\n· You can play a game installed at $INSTALL_DIR/msx\n· You have at your disposal all System ROMs BIOS at: ~/.openMSX/share/systemroms\n· If you want openMSX to find MSX software referred to from replays or savestates,\nyou get from your friends, copy that MSX software to ~/.openMSX/share/software\n"
-	read -p "Press [ENTER] to come back to the menu..."
-	exit
+generate_icon() {
+    echo -e "\nGenerating icon..."
+    if [[ ! -e ~/.local/share/applications/openmsx.desktop ]]; then
+        cat <<EOF >~/.local/share/applications/openmsx.desktop
+[Desktop Entry]
+Name=OpenMSX
+Exec=${INSTALL_DIR}/openMSX/bin/openmsx
+Icon=${INSTALL_DIR}/openMSX/logo.ico
+Path=${INSTALL_DIR}/openMSX
+Type=Application
+Comment=OpenMSX is an emulator for the MSX home computer system. Its goal is to emulate all aspects of the MSX with 100% accuracy: perfection in emulation.
+Categories=Game;
+EOF
+    fi
 }
 
 compile() {
-	echo "Installing dependencies..."
-	sudo apt-get install -y libsdl1.2-dev libsdl-ttf2.0-dev libglew-dev libao-dev libogg-dev libtheora-dev libxml2-dev libvorbis-dev tcl-dev gcc-4.8 g++-4.8
-	clear
-	echo "Downloading and compiling OpenMSX, be patience..."
-	mkdir -p "$INSTALL_DIR" && cd "$INSTALL_DIR"
-	wget -qO openmsx_sc.tar.gz $SC_OPENMSX
-	tar xzvf openmsx_sc.tar.gz && rm openmsx_sc.tar.gz
-	cd openmsx*
-	./configure
-	make
-	sudo make install
-
-	postinstall
+    install_packages_if_missing "${PACKAGES_DEV[@]}"
+    echo "Downloading and compiling OpenMSX, be patience..."
+    mkdir -p "$HOME/sc" && cd "$_" || exit 1
+    download_and_extract "$SOURCE_CODE_URL" "$HOME/sc"
+    cd openmsx* || exit 1
+    ./configure
+    make_with_all_cores
+    read -p "Do you want to install it globally (y/N)? " response
+    if [[ $response =~ [Yy] ]]; then
+        sudo make install
+    fi
+    read -p "Do you want to install some extras (system ROMs,...) (y/N)? " response
+    if [[ $response =~ [Yy] ]]; then
+        postinstall
+    fi
 }
 
-menu() {
-	while true
-	do
-		dialog --clear   \
-			--title     "[ openMSX emulator ]" \
-			--menu      "Select from the list:" 11 68 3 \
-			INSTALL   "0.15.0 binary (Recommended)" \
-			COMPILE   "latest from source code. Estimated time: 50 minutes." \
-			Exit    "Exit" 2>"${INPUT}"
-
-		menuitem=$(<"${INPUT}")
-
-		case $menuitem in
-			INSTALL) clear ; install ;;
-			COMPILE) clear ; compile ;;
-			Exit) exit ;;
-		esac
-	done
+download_game() {
+    echo -e "\nDownloading game..."
+    download_and_extract "$ROM_GAME_URL" "$HOME/.openMSX/share/software"
 }
 
-menu
+postinstall() {
+    echo -e "\nInstalling ROM BiOS for maximum compatibility..."
+    download_and_extract "$SYSTEMROMS_URL" "$SYSTEMROMS/.openMSX"
+    wget -q "$SETTINGS_URL" "$HOME"/.openMSX/share/settings.xml
+
+    download_game
+    runme
+}
+
+install() {
+    install_packages_if_missing "${PACKAGES[@]}"
+    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
+    cd "$INSTALL_DIR/openMSX" || exit 1
+    [[ ! -d $HOME/.openMSX ]] && mkdir -p "$HOME/.openMSX" || exit 1
+    mv share "$HOME/.openMSX"
+    generate_icon
+    postinstall
+    exit_message
+}
+
+install_script_message
+echo "
+OpenMSX 0.17
+============
+
+· More Info: http://openmsx.org/
+· Tweaked settings.
+· Extra: System ROMs.
+· Game included (Thanks to @Locomalito): Terror From The Deep.
+· Get more games at https://www.msxdev.org/
+· If you want openMSX to find MSX software referred to from replays or savestates you get from your friends, copy that MSX software to ~/.openMSX/share/software
+· Install path: $INSTALL_DIR/openmsx
+"
+
+install
