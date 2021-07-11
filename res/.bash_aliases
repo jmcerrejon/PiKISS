@@ -37,6 +37,7 @@ alias asf='apt-file search'
 alias apiy='sudo apt install'
 alias apiy='sudo apt install -y'
 alias abdp='sudo apt-get build-dep'
+alias dep='dpkg-depcheck -d ./configure' # Check dependencies from a source code dir using file ./configure
 
 # Functions
 
