@@ -168,7 +168,7 @@ smGames() {
             Quake "Enhanced clients for ID Software's Quake saga"
             ReturnC "The dark reich's closing in. The time to act is now"
             Revolt "Re-Volt is a radio control car racing themed video game"
-            SMario64 "Super Mario 64 native OpenGL ES"
+            SMario64 "Super Mario 64 EX native OpenGL ES"
             SpelunkyHD "Spelunky is a cave exploration/treasure-hunting game"
             Sqrxz4 "Sqrxz 4: Difficult platform game"
             SSam12 "Serious Sam I & II. Kill all walking monster"
