@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# Description : Super Mario 64
+# Description : Super Mario 64 EX
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.1 (01/May/21)
+# Version     : 1.2.0 (17/Jul/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -11,10 +11,9 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES_DEV=(libaudiofile-dev libglew-dev libsdl2-dev)
-readonly BINARY_URL="https://misapuntesde.com/rpi_share/sm64.tar.gz"
+readonly BINARY_URL="https://misapuntesde.com/rpi_share/sm64ex-rpi.tar.gz"
 readonly ROM_URL="https://s2roms.cc/s3roms/Nintendo%2064/P-T/Super%20Mario%2064%20%28U%29%20%5B%21%5D.zip"
-readonly SOURCE_CODE_URL="https://github.com/sm64pc/sm64ex"
-INPUT=/tmp/sm64menu.$$
+readonly SOURCE_CODE_URL="https://github.com/foxhound311/sm64ex"
 
 runme() {
     read -p "Press [ENTER] to run the game..."
@@ -28,7 +27,7 @@ remove_files() {
 }
 
 uninstall() {
-    read -p "Do you want to uninstall Super Mario 64 (y/N)? " response
+    read -p "Do you want to uninstall Super Mario 64 port EX (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
         remove_files
         if [[ -e "$INSTALL_DIR"/sm64 ]]; then
@@ -42,7 +41,7 @@ uninstall() {
 }
 
 if [[ -d "$INSTALL_DIR"/sm64 ]]; then
-    echo -e "Super Mario 64 already installed.\n"
+    echo -e "Super Mario 64 port EX already installed.\n"
     uninstall
     exit 1
 fi
@@ -52,7 +51,7 @@ generate_icon() {
     if [[ ! -e ~/.local/share/applications/sm64.desktop ]]; then
         cat <<EOF >~/.local/share/applications/sm64.desktop
 [Desktop Entry]
-Name=Super Mario 64
+Name=Super Mario 64 port EX
 Exec=${PWD}/sm64/sm64
 Icon=${PWD}/sm64/icon.jpg
 Path=${PWD}/sm64
@@ -66,12 +65,13 @@ EOF
 compile() {
     install_packages_if_missing "${PACKAGES_DEV[@]}"
     mkdir -p "$HOME/sc" && cd "$_" || exit 1
+    [[ -d $HOME/sc/mario64 ]] && rm -rf "$HOME/sc/mario64"
     git clone "$SOURCE_CODE_URL" mario64 && cd "$_" || exit 1
     wget -O ./sm64.zip --no-check-certificate "$ROM_URL"
     unzip sm64.zip && rm sm64.zip
     mv Super\ Mario\ 64\ \(U\)\ \[\!\].z64 baserom.us.z64
     echo -e "\n\nCompiling... Estimated time on RPi 4: < 5 min.\n"
-    make TARGET_RPI=1 -j4
+    make -j"$(nproc)" OPTOPT="-march=armv8-a+crc -mtune=cortex-a53" TARGET_RPI=1 BETTERCAMERA=1 NODRAWINGDISTANCE=1 TEXTURE_FIX=1 EXT_OPTIONS_MENU=1 EXTERNAL_DATA=1
     cd build/us_pc || exit 1
     echo -e "\n\nDone! ALT+ENTER full-screen | SPACE Select | WSAD for move | Arrows for camera, [KL,.] for actions.\n"
     read -p "Press [ENTER] to run the game."
@@ -92,29 +92,14 @@ install() {
     runme
 }
 
-menu() {
-    while true; do
-        dialog --clear \
-            --title "[ Super Mario 64 ]" \
-            --menu "Select from the list:" 11 68 3 \
-            INSTALL "binary compiled 03/Jan/21 (Recommended)" \
-            COMPILE "latest from source code. Estimated time: 5 minutes." \
-            Exit "Exit" 2>"${INPUT}"
+install_script_message
+echo "
+Super Mario 64 port EX for Raspberry Pi
+=======================================
 
-        menuitem=$(<"${INPUT}")
+ · Thanks @foxhound311.
+ · HD Mario, HD bowser and you ride a Mario kart instead of a turtle when you grab a star.
+"
+read -p "Press [Enter] to continue..."
 
-        case $menuitem in
-        INSTALL)
-            clear
-            install
-            ;;
-        COMPILE)
-            clear
-            compile
-            ;;
-        Exit) exit ;;
-        esac
-    done
-}
-
-menu
+install
