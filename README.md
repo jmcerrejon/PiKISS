@@ -13,11 +13,13 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **864 hours**
+-   **866 hours**
 
 ## 💰 Total amount donated by users
 
 -   $709,88.
+
+-   I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd) & [ptitSeb](https://github.com/ptitSeb).
 
 -   I want to thank my patrons _James Carroll, David J Leto, Rodney Hester, Matthew Michink, Mathew Gracie & cxgr_ for trusting me ❤️
 
@@ -62,6 +64,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (24/07/21)
+
+· 📦 ADD: Games > Heroes of Might & Magic III (VCMI engine).
 
 ### (17/07/21)
 
