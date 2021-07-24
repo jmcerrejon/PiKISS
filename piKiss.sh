@@ -157,6 +157,7 @@ smGames() {
             GemRB "Engine for games like Baldur's Gate"
             HalfLife "Gordon Freeman must exit Black Mesa after it's invaded by aliens"
             Heroes2 "Free implementation of Heroes of Might and Magic II engine"
+            Heroes3 "Open-source engine for Heroes of Might and Magic III"
             Hermes "Jump'n' Run game with plenty of bad taste humour."
             Hurrican "Jump and shoot game based on the Turrican game series"
             Morrowind "The Elder Scrolls III: Morrowind is an open-world RPG"
@@ -200,7 +201,8 @@ smGames() {
         GTA) ./scripts/games/gta.sh ;;
         GemRB) ./scripts/games/gemrb.sh ;;
         HalfLife) ./scripts/games/half-life.sh ;;
-        Heroes2) ./scripts/games/fheroes2.sh ;;
+        Heroes2) ./scripts/games/heroes2.sh ;;
+        Heroes3) ./scripts/games/heroes3.sh ;;
         Hermes) ./scripts/games/hermes.sh ;;
         Hurrican) ./scripts/games/hurrican.sh ;;
         Morrowind) ./scripts/games/openmw.sh ;;
