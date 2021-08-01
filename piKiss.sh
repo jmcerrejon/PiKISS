@@ -249,6 +249,7 @@ smEmulators() {
             PS1 "DuckStation - PlayStation 1, aka. PSX Emulator"
             PSP "PPSSPP can run your PSP games on your RPi in full HD resolution"
             ResidualVM "Cross-platform 3D game interpreter to play some games"
+            RetroArch "Open source frontend for emulators & game/video engines"
             Redream "Redream is a Dreamcast emulator"
             ScummVM "Allow gamers to play point-and-click adventure games"
             Snes "SNES Emulator Snes9X or Bsnes"
@@ -277,6 +278,7 @@ smEmulators() {
         PSP) ./scripts/emus/psp.sh ;;
         Pifba) ./scripts/emus/pifba.sh ;;
         ResidualVM) ./scripts/emus/residual.sh ;;
+        RetroArch) ./scripts/emus/retroarch.sh ;;
         Redream) ./scripts/emus/dc.sh ;;
         ScummVM) ./scripts/emus/scummvm.sh ;;
         Snes) ./scripts/emus/snes.sh ;;
