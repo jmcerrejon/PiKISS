@@ -1,4 +1,4 @@
-# PiKISS for Raspberry Pi: A bunch of scripts with menu to make your life easier.
+# PiKISS For Raspberry Pi: A Bunch Of Scripts With Menu To Make Your Life Easier
 
 ![PiKISS Logo](logo_pikiss_header.png)
 
@@ -13,43 +13,43 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **866 hours**
+- **872 hours**
 
 ## 💰 Total amount donated by users
 
--   $709,88.
+- $709,88.
 
--   I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd) & [ptitSeb](https://github.com/ptitSeb).
+- I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd) & [ptitSeb](https://github.com/ptitSeb).
 
--   I want to thank my patrons _James Carroll, David J Leto, Rodney Hester, Matthew Michink, Mathew Gracie & cxgr_ for trusting me ❤️
+- I want to thank my patrons _James Carroll, David J Leto, Rodney Hester, Matthew Michink, Mathew Gracie & cxgr_ for trusting me ❤️
 
--   Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy_
+- Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy_
 
 ## 📣 Stay tuned!
 
--   📬⠀Mail: <ulysess@gmail.com>
+- 📬⠀Mail: <ulysess@gmail.com>
 
--   📖⠀Blog (English & Spanish): [misapuntesde.com](https://misapuntesde.com/)
+- 📖⠀Blog (English & Spanish): [misapuntesde.com](https://misapuntesde.com/)
 
--   💰⠀Patreon: [patreon.com/cerrejon](https://www.patreon.com/cerrejon?fan_landing=true)
+- 💰⠀Patreon: [patreon.com/cerrejon](https://www.patreon.com/cerrejon?fan_landing=true)
 
--   🐦⠀Twitter: [@ulysess10](https://twitter.com/ulysess10)
+- 🐦⠀Twitter: [@ulysess10](https://twitter.com/ulysess10)
 
--   👾⠀Discord for suggestions & support [thanks to Pi Labs](https://discord.gg/Y7WFeC5)
+- 👾⠀Discord for suggestions & support [thanks to Pi Labs](https://discord.gg/Y7WFeC5)
 
--   👨🏻‍💻⠀LinkedIn: [es.linkedin.com/in/jmcerrejon](https://es.linkedin.com/in/jmcerrejon/)
+- 👨🏻‍💻⠀LinkedIn: [es.linkedin.com/in/jmcerrejon](https://es.linkedin.com/in/jmcerrejon/)
 
--   📣⠀Mewe (Spanish): [mewe.com](https://mewe.com/group/5c6bbed8f0e71669f228c457)
+- 📣⠀Mewe (Spanish): [mewe.com](https://mewe.com/group/5c6bbed8f0e71669f228c457)
 
 ## 🤝 Contributors
 
--   [huelvayork](https://github.com/huelvayork), [mayavera](https://github.com/mayavera), [CleanMachine1](https://github.com/CleanMachine1).
+- [huelvayork](https://github.com/huelvayork), [mayavera](https://github.com/mayavera), [CleanMachine1](https://github.com/CleanMachine1).
 
--   Logo: grayduck
+- Logo: grayduck
 
 ## 🎥 Check what **PiKISS** can do for you on my Youtube's channel:
 
--   [youtube.com > PIKISS](https://www.youtube.com/playlist?list=PLXhElW3ALmWh8p0mn1ZECawkKyF8QzNNP)
+- [youtube.com > PIKISS](https://www.youtube.com/playlist?list=PLXhElW3ALmWh8p0mn1ZECawkKyF8QzNNP)
 
 ## ENGLISH
 
@@ -64,6 +64,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (01/08/21)
+
+· 📦 ADD: Emulators > RetroArch 1.9.7-1 + Extras.
 
 ### (24/07/21)
 
@@ -165,9 +169,9 @@ Don't despair. **PiKISS** has come to help you...
 
 **PiKISS** _(Pi Keeping It Simple, Stupid!)_ is made with _scripts (Bash)_ for _Raspberry Pi 4_ boards which has a menu that will allow you to install some applications or configure files automatically as easy as possible. The ideal stage is:
 
--   _Raspberry PI OS Desktop_ mainly, [TwisterOS](https://raspbian-x.com/) and _Debian_ derivates with 32 bits.
+- _Raspberry PI OS Desktop_ mainly, [TwisterOS](https://raspbian-x.com/) and _Debian_ derivates with 32 bits.
 
--   User _pi_ or another user with sudo priviledges.
+- User _pi_ or another user with sudo priviledges.
 
 The idea is to offer facilities to manage your operating system, selecting an option in a menu and answer [Yes/No]. If you need to check dependencies, install an app, modify a script at boot, add a line to a file or download other, **PiKISS** will do it for you.
 
@@ -175,11 +179,11 @@ I included not only the ability to install, but also compile programs. Do you ha
 
 What some users have said about **PiKISS**:
 
--   _"It could have happened to me!"_
+- _"It could have happened to me!"_
 
--   _"That's silly! (I'm going to install it as soon as I get home)"_
+- _"That's silly! (I'm going to install it as soon as I get home)"_
 
--   _"I don't need to fight with the terminal anymore? Shut up and take my money!."_ - Easy, it's free.
+- _"I don't need to fight with the terminal anymore? Shut up and take my money!."_ - Easy, it's free.
 
 **NOTE:** 100% Free of viruses and Trojans. Not available in stores. The author of **PiKISS** is not responsible if you get bored with your _Raspberry Pi_ because everything is too easy. Online until I wish or _Internet_ is destroyed.
 
