@@ -13,17 +13,17 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **872 hours**
+- **875 hours**
 
 ## 💰 Total amount donated by users
 
-- $709,88.
+- $718,32
 
 - I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd) & [ptitSeb](https://github.com/ptitSeb).
 
 - I want to thank my patrons _James Carroll, David J Leto, Rodney Hester, Matthew Michink, Mathew Gracie & cxgr_ for trusting me ❤️
 
-- Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy_
+- Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy, Jonathan Hodges_
 
 ## 📣 Stay tuned!
 
@@ -65,6 +65,10 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (07/08/21)
+
+· 📦 ADD: Internet > SyncTERM (Telnet/SSH/BBS).
+
 ### (01/08/21)
 
 · 📦 ADD: Emulators > RetroArch 1.9.7-1 + Extras.
@@ -79,7 +83,7 @@
 
 ### (11/07/21)
 
-· 👌 IMPROVE: Emulation > openMSX ver. 0.17.
+· 👌 IMPROVE: Emulation > openMSX version 0.17.
 
 ### (27/06/21)
 
