@@ -47,8 +47,8 @@ generate_icon() {
         cat <<EOF >~/.local/share/applications/diablo2.desktop
 [Desktop Entry]
 Name=Diablo 2 Lord of Destruction
-Exec=${PWD}/diablo2/diablo2.sh
-Icon=${PWD}/diablo2/diabloII.png
+Exec=${INSTALL_DIR}/diablo2/diablo2.sh
+Icon=${INSTALL_DIR}/diablo2/diabloII.png
 Type=Application
 Comment=Set in the fictional Kingdom of Khanduras in the mortal realm, Diablo makes the player take control of a lone hero battling to rid the world of Diablo
 Categories=Game;ActionGame;
