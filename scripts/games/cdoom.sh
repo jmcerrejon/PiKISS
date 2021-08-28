@@ -2,7 +2,7 @@
 #
 # Description : Zandronum and Crispy-Doom
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 2.0.1 (05/Mar/21)
+# Version     : 2.0.2 (28/Aug/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # HELP        : To compile crispy-doom, follow the instructions at https://github.com/fabiangreffrath/crispy-doom
@@ -20,8 +20,9 @@ readonly PACKAGES_DEV=(g++ make cmake libsdl2-dev git zlib1g-dev libbz2-dev libj
 readonly ZANDRONUM_BINARY_URL="https://misapuntesde.com/rpi_share/zandronum-rpi.tar.gz"
 readonly ZANDRONUM_SOURCE_CODE_URL="https://github.com/ptitSeb/zandronum"
 readonly CRISPY_DOOM_PKG_URL="https://misapuntesde.com/rpi_share/crispy_5-8.0_armhf.deb"
-readonly CRISPY_DOOM_SOURCE="https://github.com/fabiangreffrath/crispy-doom.git"
-readonly GZ_DOOM_SOURCE="https://github.com/drfrag666/gzdoom.git"
+readonly CRISPY_DOOM_SOURCE="https://github.com/fabiangreffrath/crispy-doom"
+readonly GZ_DOOM_SOURCE="https://github.com/coelckers/gzdoom"
+readonly ZMUSIC_SOURCE="https://github.com/coelckers/ZMusic.git"
 readonly # CHOCOLATE_DOOM="https://misapuntesde.com/rpi_share/chocolate_3-0_armhf.deb" # Future release?
 readonly VAR_DATA_NAME="WADS"
 DATA_URL="https://misapuntesde.com/rpi_share/wads-shareware.tar.gz"
@@ -79,7 +80,7 @@ uninstall_zandronum() {
 }
 
 download_data_files() {
-    echo -e "\nInstalling data files (Shareware WADs)..."
+    echo -e "\nInstalling data files..."
     if [[ $(extract_path_from_file "$VAR_DATA_NAME") != '' ]]; then
         DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
     fi
@@ -146,13 +147,24 @@ install_crispy() {
     exit_message
 }
 
+compile_zmusic() {
+    mkdir -p "$HOME/sc" && cd "$_" || exit 1
+    git clone "$ZMUSIC_SOURCE" ZMusic && cd "$_" || exit 1
+    mkdir -pv build && cd "$_" || exit 1
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$(pwd)/../build_install" ..
+    make install
+}
+
 compile_gzdoom() {
+    compile_zmusic
     install_packages_if_missing "${PACKAGES_DEV_GZ_DOOM[@]}"
     mkdir -p "$HOME/sc" && cd "$_" || exit 1
     git clone "$GZ_DOOM_SOURCE" gzdoom && cd "$_" || exit 1
     wget -nc http://zdoom.org/files/fmod/fmodapi44464linux.tar.gz && tar -xvzf fmodapi44464linux.tar.gz -C .
     mkdir -pv build && cd "$_" || exit 1
-    cmake .. -DNO_FMOD=ON
+    cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo -DC_INCLUDE_PATH="$HOME/sc/ZMusic/build_install/lib/" -DZMUSIC_INCLUDE_DIR=="$HOME/sc/ZMusic/build_install/include/" -DCMAKE_CXX_FLAGS="$HOME/sc/ZMusic/build_install/include/"
+    make_with_all_cores
+    printf "\nDone. If GZDoom complains you do not have any IWADs set up, make sure that you have your IWAD files placed in the same directory as GZDoom, in ~/.config/gzdoom/, DOOMWADDIR, or /usr/local/share/. Alternatively, you can edit ~/.config/gzdoom/gzdoom.ini or ~/ config/gzdoom/zdoom.ini to set the path for your IWADs."
 }
 
 generate_icon_zandronum() {
@@ -167,7 +179,7 @@ Comment=Zandronum is a multiplayer oriented port, based off Skulltag, for Doom I
 Exec=${INSTALL_DIR}/zandronum/zandronum
 Icon=${INSTALL_DIR}/zandronum/icon.png
 Path=${INSTALL_DIR}/zandronum/
-Terminal=false
+Terminal=true
 Categories=Game;
 EOF
     fi
