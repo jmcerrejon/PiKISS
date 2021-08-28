@@ -71,6 +71,8 @@
 
 · 👌 IMPROVE: Emulators > RetroArch 1.9.8-1.
 
+· 🐛 FIX: Games > Zandronum.
+
 ### (07/08/21)
 
 · 📦 ADD: Internet > SyncTERM (Telnet/SSH/BBS).
