@@ -2,7 +2,7 @@
 #
 # Description : RetroArch
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (01/Aug/21)
+# Version     : 1.0.2 (28/Aug/21)
 #
 # Help        : Thanks @foxhound311 for compile all cores and binary files
 #
@@ -12,7 +12,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="/usr/local/bin"
 readonly CONFIG_PATH="$HOME/.config/retroarch"
-readonly BINARY_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_1.9.7-1_armhf.deb"
+readonly BINARY_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_1.9.8-1_armhf.deb"
 readonly CONFIG_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch_config.tar.gz"
 readonly CORES_URL="https://misapuntesde.com/rpi_share/retroarch/libretro_cores.tar.gz"
 readonly BIOS_URL="https://misapuntesde.com/rpi_share/retroarch/libretro_bios.tar.gz"
@@ -140,9 +140,10 @@ RetroArch
 · Version 1.9.7-1.
 · It works on 32/64 bits OS.
 · Can be used with GLES or Vulkan drivers.
-· All cores optimized and binaries optimized for Raspberry Pi 4.
-· Thanks @foxhound311 for compile all cores and binary files, he put so much work into it :)
+· All cores and binaries optimized for Raspberry Pi 4.
 · Cores are the most updated versions. Anyway, online updater is disabled.
+· Thanks @foxhound311 for compile all cores and binary files, he put so much work into it :)
+· KEYS: F=Full screen | F1=Quick menu | F2=Save game | F3=Show FPS | F4=Load game | F5=Desktop menu | F6/F7=Choose save slot | F8=Save screenshot
 "
 
 install

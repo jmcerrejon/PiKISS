@@ -183,12 +183,12 @@ install_winex86() {
     wine wineboot
 }
 
-installMesa() {
+install_mesa() {
     local BINARY_URL
     BINARY_URL="https://misapuntesde.com/rpi_share/pilabs/mesa.tar.gz"
 
     if [ -d ~/mesa ]; then
-        echo -e "~/mesa is already installed, skipping..."
+        echo -e "\n~/mesa is already installed, skipping..."
         return 0
     fi
 
