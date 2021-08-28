@@ -73,6 +73,8 @@
 
 · 🐛 FIX: Games > Zandronum.
 
+· 🐛 FIX: Emulators > mGBA.
+
 ### (07/08/21)
 
 · 📦 ADD: Internet > SyncTERM (Telnet/SSH/BBS).
