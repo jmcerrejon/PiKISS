@@ -2,17 +2,18 @@
 #
 # Description : Gameboy Advance emulator mgba
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.0 (03/Nov/20)
+# Version     : 1.5.1 (28/Aug/21)
 # Compatible  : Raspberry Pi 1-3 (¿?), 4 (tested)
 # Repository  : https://github.com/mgba-emu/mgba.git
+# TODO        : Wait for the fix at https://github.com/mgba-emu/mgba/issues/1081
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 clear
 
 readonly INSTALL_DIR="$HOME/games"
-readonly PACKAGES=( ffmpeg libglu1-mesa libzip4 qtmultimedia5-dev)
-readonly PACKAGES_DEV=( cmake libsdl2-dev ffmpeg libnewlib-dev libzip-dev libedit-dev freebsd-glue libsqlite3-dev libelf-dev libepoxy-dev libpng-dev libavcodec-dev libavresample-dev libminizip-dev libavfilter-dev qtmultimedia5-dev qt5-qmake qt5-default qtdeclarative5-dev qttools5-dev)
+readonly PACKAGES=(ffmpeg libglu1-mesa libzip4 qtmultimedia5-dev libqt5multimedia5 libqt5opengl5)
+readonly PACKAGES_DEV=(qtbase5-dev-tools qtbase5-dev cmake libsdl2-dev ffmpeg libnewlib-dev libzip-dev libedit-dev freebsd-glue libsqlite3-dev libelf-dev libepoxy-dev libpng-dev libavcodec-dev libavresample-dev libminizip-dev libavfilter-dev qtmultimedia5-dev qt5-qmake qt5-default qtdeclarative5-dev qttools5-dev)
 readonly SOURCE_CODE_URL="https://github.com/mgba-emu/mgba.git"
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/mgba_0.90-rpi.tar.gz"
 
@@ -61,17 +62,17 @@ Exec=${INSTALL_DIR}/mgba/bin/mgba-qt
 Icon=${INSTALL_DIR}/mgba/share/icons/hicolor/128x128/apps/mgba.png
 Type=Application
 Comment=mGBA is an emulator for running Game Boy Advance games. It aims to be faster and more accurate than many existing Game Boy Advance emulators
-Categories=Game;
+Categories=Game;Emulator;
 EOF
     fi
 }
 
 compile() {
     install_packages_if_missing "${PACKAGES_DEV[@]}"
-    mkdir -p "$HOME/sc" && cd "$_"
-    git clone "$SOURCE_CODE_URL" mgba && cd "$_"
-    mkdir build && cd "$_"
-    CFLAGS="-fsigned-char -marm -march=armv8-a+crc -mtune=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard" CXXFLAGS="-fsigned-char" cmake .. -Dbuildtype=release -DCMAKE_INSTALL_PREFIX:PATH=~/games/mgba -DUSE_DEBUGGERS=OFF -DBUILD_STATIC=ON -DBUILD_SHARED=OFF
+    mkdir -p "$HOME/sc" && cd "$_" || exit 1
+    git clone "$SOURCE_CODE_URL" mgba && cd "$_" || exit 1
+    mkdir build && cd "$_" || exit 1
+    CFLAGS="-fsigned-char -marm -march=armv8-a+crc -mtune=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard" CXXFLAGS="-fsigned-char" cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX:PATH=~/games/mgba -DUSE_DEBUGGERS=OFF -DBUILD_STATIC=ON -DBUILD_SHARED=OFF
     make_with_all_cores
 }
 
@@ -104,4 +105,5 @@ Gameboy Advance Emulator (mgba)
  · Keys: A: X | B: Z | L: A | R: S | Start: Enter | Select: Backspace | ALT+F4: Close
 "
 read -p "Press [ENTER] to continue..."
+
 install
