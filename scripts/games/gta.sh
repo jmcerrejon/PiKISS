@@ -2,7 +2,7 @@
 #
 # Description : GTA thks to foxhound311
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.0 (27/Mar/21)
+# Version     : 1.1.1 (10/Sep/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -56,10 +56,10 @@ Name=Grand Theft Auto III
 Version=1.0
 Type=Application
 Comment=Grand Theft Auto III is a 2001 open-world video game that is the third main entry of the Grand Theft Auto franchise.
-Exec=${INSTALL_DIR}/GTAIII/re3
+Exec=${INSTALL_DIR}/GTAIII/re3.sh
 Icon=${INSTALL_DIR}/GTAIII/gta3.ico
 Path=${INSTALL_DIR}/GTAIII/
-Terminal=false
+Terminal=true
 Categories=Game;
 EOF
     fi
@@ -101,7 +101,7 @@ Grand Theft Auto III for Raspberry Pi
     download_and_extract "$GTA3_BINARY_URL" "$INSTALL_DIR"
     generate_icon_gta3
     if exists_magic_file && download_data_files_gta3; then
-        echo -e "\n\nDone!. You can play typing $INSTALL_DIR/GTAIII/re3 or opening the Menu > Games > Grand Theft Auto III.\n"
+        echo -e "\n\nDone!. You can play typing $INSTALL_DIR/GTAIII/re3.sh or opening the Menu > Games > Grand Theft Auto III.\n"
         runme_gta3
     else
         echo -e "\nCopy all the data files from your copy inside $INSTALL_DIR/GTAIII.\n\nYou can play typing $INSTALL_DIR/GTAIII/re3 or opening the Menu > Games > Grand Theft Auto III."
@@ -147,10 +147,10 @@ Name=Grand Theft Auto Vice City
 Version=1.0
 Type=Application
 Comment=Grand Theft Auto VC is a 2002 open-world video game that takes place in the middle of the 80's in a fictional place called Vice City.
-Exec=${INSTALL_DIR}/GTAVC/reVC
+Exec=${INSTALL_DIR}/GTAVC/reVC.sh
 Icon=${INSTALL_DIR}/GTAVC/gtavc.ico
 Path=${INSTALL_DIR}/GTAVC/
-Terminal=false
+Terminal=true
 Categories=Game;
 EOF
     fi
@@ -186,7 +186,7 @@ Grand Theft Auto Vice City for Raspberry Pi
     download_and_extract "$GTAVC_BINARY_URL" "$INSTALL_DIR"
     generate_icon_gtavc
     if exists_magic_file && download_data_files_gtavc; then
-        echo -e "\n\nDone!. You can play typing $INSTALL_DIR/GTAVC/reVC or opening the Menu > Games > Grand Theft Auto Vice City.\n"
+        echo -e "\n\nDone!. You can play typing $INSTALL_DIR/GTAVC/reVC.sh or opening the Menu > Games > Grand Theft Auto Vice City.\n"
         runme_gtavc
     else
         echo -e "\nCopy all the data files from your copy inside $INSTALL_DIR/GTAVC.\n\nYou can play typing $INSTALL_DIR/GTAVC/reVC or opening the Menu > Games > Grand Theft Auto Vice City."
