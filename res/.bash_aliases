@@ -25,6 +25,7 @@ alias nanosources='sudo nano /etc/apt/sources.list'
 alias nanofstab='sudo nano /etc/fstab'
 alias pk='cd /home/pi/pikiss/ && ./piKiss.sh -nup'
 alias 7zc='7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on file-rpi.7z'
+alias mkfr='find ./ -print > files_required.txt'
 
 # APT
 alias au='sudo apt-get -qq -y update'
