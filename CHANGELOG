@@ -1,5 +1,10 @@
-(28/08/21)
-==========
+# (10/09/21)
+
+· 👌 IMPROVE: Games > Grand Theft Auto III.
+
+· 👌 IMPROVE: Games > Grand Theft Auto Vice City.
+
+# (28/08/21)
 
 · 👌 IMPROVE: Games > Diablo 2.
 
@@ -9,47 +14,39 @@
 
 · 🐛 FIX: Emulators > mGBA.
 
-(07/08/21)
-==========
+# (07/08/21)
 
 · 📦 ADD: Internet > SyncTERM (Telnet/SSH/BBS).
 
-(01/08/21)
-==========
+# (01/08/21)
 
 · 📦 ADD: Emulators > RetroArch 1.9.7-1 + Extras
 
-(24/07/21)
-==========
+# (24/07/21)
 
 · 📦 ADD: Games > Heroes of Might & Magic III (VCMI engine).
 
-(17/07/21)
-==========
+# (17/07/21)
 
 · 👌 IMPROVE: Games > Super Mario 64 EX (HQ textures for Mario/Bowser and +).
 
-(11/07/21)
-==========
+# (11/07/21)
 
 · 👌 IMPROVE: Emulation > openMSX ver. 0.17.
 
-(27/06/21)
-==========
+# (27/06/21)
 
 · 📦 ADD: Games > GemRB (Baldur's Gate and other RPG games).
 
 · 👌 IMPROVE: Grand Theft Auto III, Grand Theft Auto Vice City.
 
-(30/05/21)
-==========
+# (30/05/21)
 
 · 🐛 FIX: Games > OpenXCOM.
 
 · 👌 IMPROVE: MagicAirCopy®.
 
-(23/05/21)
-==========
+# (23/05/21)
 
 · 📦 ADD: Games > Hermes.
 
@@ -57,15 +54,13 @@
 
 · 🐛 FIX: Emulators > Box86.
 
-(21/05/21)
-==========
+# (21/05/21)
 
 · 📦 ADD: Others > Winex86 + Box86.
 
 · 🐛 FIX: Emulators > Box86.
 
-(07/05/21)
-==========
+# (07/05/21)
 
 · 📦 ADD: Emulators > MAME (Add Mame 0.230).
 
@@ -77,46 +72,39 @@
 
 · ❌ REMOVE: Emulators > Advanced MAME (Obsolete).
 
-(01/04/21)
-==========
+# (01/04/21)
 
 · 📦 ADD: Emulators > Nestopia UE (NES emulator).
 
 · 🐛 FIX: Games > Smario64 (Uninstall process).
 
-(24/04/21)
-==========
+# (24/04/21)
 
 · 👌 IMPROVE: Emulators > Redream (Sega Dreamcast).
 
 · 👌 IMPROVE: Devs > Qt5.15.2 LTS with OpenGL support.
 
-(17/04/21)
-==========
+# (17/04/21)
 
 · 👌 IMPROVE: Devs > QT5 compile version 5.15.2.
 
 · 👌 IMPROVE: Games > DXX-Regirth (AKA Descent)
 
-(27/03/21)
-==========
+# (27/03/21)
 
 · 📦 ADD: Games > Grand Theft Auto Vice City.
 
-(20/03/21)
-==========
+# (20/03/21)
 
 · 📦 ADD: Games > Grand Theft Auto III.
 
-(05/03/21)
-==========
+# (05/03/21)
 
 · 📦 ADD: Games > Prince Of Persia (full).
 
 · 👌 IMPROVE: Tweaks > Others > Add/Remove Swap.
 
-(28/02/21)
-==========
+# (28/02/21)
 
 · 👌 IMPROVE: Devs > Install VSCode or VSCodium (same with no telemetry).
 
@@ -124,15 +112,13 @@
 
 · 🐛 FIX: Internet > Zoom.
 
-(22/02/21)
-==========
+# (22/02/21)
 
 · 👌 IMPROVE: New relases: RPiplay 1.2 (Airplay mirror). Scrcopy (Android mirror 1.17).
 
 · 👌 IMPROVE: Tweaks > Remove Packages > Remove Snap daemon.
 
-(21/02/21)
-==========
+# (21/02/21)
 
 · 👌 IMPROVE: New versin 1.8.0. New compiled versions of Blood, DOSBox-X 0.83. Refactor code.
 
@@ -140,45 +126,37 @@
 
 · 🐛 FIX: Games > Arx Fatalis & Quake 1 (shareware files missing).
 
-(07/02/21)
-==========
+# (07/02/21)
 
 · 📦 ADD: Emulators > Duckstation - PlayStation 1, aka. PSX Emulator.
 
-(06/02/21)
-==========
+# (06/02/21)
 
 · 👌 IMPROVE: Amiberry.
 
 · 👌 IMPROVE: Tweaks > Packages > Remove Microsoft VSCode source list (You can safely install it with PiKISS later 😉).
 
-(30/01/21)
-==========
+# (30/01/21)
 
 · 📦 ADD: Server > Remote Desktop with Nomachine, xRDP and VNC Server.
 
-(24/01/21)
-==========
+# (24/01/21)
 
 · 📦 ADD: Multimedia > Jellyfin (Stream media to any device from your own server).
 
-(17/01/21)
-==========
+# (17/01/21)
 
 · 📦 ADD: Games > Zendronum to play Doom + Heretic + Hexen + Strife. Shareware included.
 
-(12/01/21)
-==========
+# (12/01/21)
 
 · ❌ REMOVE: Internet > Cordless (not maintained anymore).
 
-(05/01/21)
-==========
+# (05/01/21)
 
 · 🐛 FIX: Games > Captain S shortcut.
 
-(03/01/21)
-==========
+# (03/01/21)
 
 · 🐛 FIX: Games > AVP, Diablo.
 
@@ -188,47 +166,39 @@
 
 · 👌 IMPROVE: Emulators > PSP, ResidualVM. Refactor code. Change /home/pi -> $HOME.
 
-(27/12/20)
-==========
+# (27/12/20)
 
 · 🐛 FIX: Links broken for StarCraft, StepMania, OpenMW and OpenBOR.
 
-(25/12/20)
-==========
+# (25/12/20)
 
 · 📦 ADD: Games > VVVVVV (Instead of jumping, you need to reverse gravity).
 
-(22/12/20)
-==========
+# (22/12/20)
 
 · 👌 IMPROVE: Games > Diablo I binaries upgraded to 1.1.0.
 
-(15/12/20)
-==========
+# (15/12/20)
 
 · 📦 ADD: Internet > Whatscli (Allow users to use WhatsApp via cli).
 
 · 👌 IMPROVE: Configure > Vulkan frozen on version 20.3.0 due some users reported problems with latest 21.0.0.
 
-(13/12/20)
-==========
+# (13/12/20)
 
 · 📦 ADD: Multimedia > Moonlight (Open source implementation of NVIDIA's GameStream).
 
 · 👌 IMPROVE: Others > SDL2.
 
-(06/12/20)
-==========
+# (06/12/20)
 
 · 📦 ADD: Games > Temptations (Retro platform game).
 
-(28/11/20)
-==========
+# (28/11/20)
 
 · 📦 ADD: Games > Open Claw (Platform 2D Captain Claw (1997) reimplementation).
 
-(22/11/20)
-==========
+# (22/11/20)
 
 · 📦 ADD: Games > StepMania.
 
@@ -236,177 +206,145 @@
 
 · 📦 ADD: Emulators > Bsnes (SuperNES).
 
-(09/11/20)
-==========
+# (09/11/20)
 
 · 📦 ADD: Others > Alacritty (Fastest terminal emulator in existence).
 
-(07/11/20)
-==========
+# (07/11/20)
 
 · 📦 ADD: Games > fheroes2 (Heroes of Might and Magic II engine)
 
-(05/11/20)
-==========
+# (05/11/20)
 
 · 📦 ADD: Games > StarCraft + Brood War expansion.
 
 · 👌 IMPROVE: Emulators > Box86.
 
-(04/11/20)
-==========
+# (04/11/20)
 
 · 📦 ADD: Others > Upgrade your boot loader on Raspberry Pi 4.
 
 · 👌 IMPROVE: Server > Pi-Hole (Ad-Blocker).
 
-(03/11/20)
-==========
+# (03/11/20)
 
 · 👌 IMPROVE: Emulators > mGBA Game Boy Advance Emulator.
 
-(24/10/20)
-==========
+# (24/10/20)
 
 · 👌 IMPROVE: GAMES > MagicAirCopy® with support for local dir/files.
 
-(19/10/20)
-==========
+# (19/10/20)
 
 · 🐛 FIX: GAMES > Diablo 1.
 
-(17/10/20)
-==========
+# (17/10/20)
 
 · 📦 ADD: Games > Return to Castle Wolfenstein.
 
-(14/10/20)
-==========
+# (14/10/20)
 
 · 👌 IMPROVE: Configure > Compile/update Vulkan Mesa driver.
 
-(12/10/20)
-==========
+# (12/10/20)
 
 · 👌 IMPROVE: Devs > Change OSSCode with native VSCode 32 or 64 bits.
 
-(07/10/20)
-==========
+# (07/10/20)
 
 · 🐛 FIX: Games > Openmw.
 
-(06/10/20)
-==========
+# (06/10/20)
 
 · 🐛 FIX: Internet > Zoom on Twister OS.
 
 · 🐛 FIX: Games > Openbor.
 
-(03/10/20)
-==========
+# (03/10/20)
 
 · 📦 ADD: Internet > Zoom using Box86.
 
 · 📦 ADD: Emulation > Box86 for Raspberrry Pi 2-4.
 
-(29/09/20)
-==========
+# (29/09/20)
 
 · 👌 IMPROVE: Games > OpenBor 3.0 (Street of Rage 2X included!).
 
 · 👌 IMPROVE: Others > SDL2 (Enable Vulkan support if compile yourself).
 
-(27/09/20)
-==========
+# (27/09/20)
 
 · 📦 ADD: Games > Quake.
 
-(20/09/20)
-==========
+# (20/09/20)
 
 · 📦 ADD: Games > Half Life.
 
-(11/09/20)
-==========
+# (11/09/20)
 
 · 📦 ADD: Games > Blake Stone.
 
-(07/09/20)
-==========
+# (07/09/20)
 
 · 📦 ADD: Games > Quake 3 Arena (with Vulkan support, High textures and some tweaks).
 
-(01/09/20)
-==========
+# (01/09/20)
 
 · 📦 ADD: Games > The Elder Scroll: Morrowind (OpenMW).
 
 · 📦 ADD: Others > Compile GL4ES.
 
-(29/08/20)
-==========
+# (29/08/20)
 
 · 📦 ADD: Emulators > VICE (Commodore 64).
 
-(27/08/20)
-==========
+# (27/08/20)
 
 · 📦 ADD: Games > Open Supaplex.
 
-(26/08/20)
-==========
+# (26/08/20)
 
 · 📦 ADD: Games > Serious Sam The First Encounter.
 
-(23/08/20)
-==========
+# (23/08/20)
 
 · 📦 ADD: Devs > TIC-80.
 
-(20/08/20)
-==========
+# (20/08/20)
 
 · 📦 ADD: Games > Spelunky Classic HD.
 
-(16/08/20)
-==========
+# (16/08/20)
 
 · 📦 ADD: Games > Serious Sam The Second Encounter.
 
-(15/08/20)
-==========
+# (15/08/20)
 
 · 📦 ADD: Devs > Code - OSS (VSCode fork).
 
-(13/08/20)
-==========
+# (13/08/20)
 
 · 📦 ADD: Others > Compile cool-retro-term.
 
-(11/08/20)
-==========
+# (11/08/20)
 
 · 👌 IMPROVE: Server > Nagios 4.
 
 · 🐛 FIX: Configure > Compile/update Vulkan Mesa driver (EXPERIMENTAL).
 
-(08/08/20)
-==========
+# (08/08/20)
 
 · 📦 ADD: Emulation > ResidualVM (Cross-platform 3D game interpreter for Monkey4 or The Longest Journey).
 
-(06/08/20)
-==========
+# (06/08/20)
 
 · 📦 ADD: Server > Jenkins CI.
 
-(02/08/20)
-==========
+# (02/08/20)
 
 · 📦 ADD: Games > Aliens versus Predator (1999 video game).
 
-(01/08/20)
-==========
+# (01/08/20)
 
 · 📦 ADD: Games > OpenXCom (UFO).
 
@@ -414,50 +352,41 @@
 
 · 👌 IMPROVE: Emulation > Amiberry.
 
-(31/07/20)
-==========
+# (31/07/20)
 
 · 📦 ADD: Others > ShaderToys for Pi 4 (Render over 100+ OpenGL ES 3.0 shaders).
 
-(30/07/20)
-==========
+# (30/07/20)
 
 · 📦 ADD: Games > Hurrican.
 
-(29/07/20)
-==========
+# (29/07/20)
 
 · 👌 IMPROVE: Crispy Doom. Refactor code and uninstall option.
 
-(28/07/20)
-==========
+# (28/07/20)
 
 · 📦 ADD: Games > Arx Libertatis.
 
-(27/07/20)
-==========
+# (27/07/20)
 
 📦 ADD: Multimedia > Easy compile OBS (Open Broadcaster Software).
 
-(25/07/20)
-==========
+# (25/07/20)
 
 · 📦 ADD: Internet > Cordless (Discord client from cli).
 
-(24/07/20)
-==========
+# (24/07/20)
 
 · 📦 ADD: Games > Quake ][.
 
-(23/07/20)
-==========
+# (23/07/20)
 
 · 📦 ADD: Emulation > Dolphin (Gamecube emulator. Wii not supported yet) (EXPERIMENTAL).
 
 · 🐛 FIX: Games > OpenBOR and Xump.
 
-(22/07/20)
-==========
+# (22/07/20)
 
 · 📦 ADD: PiKISS try to update automatically.
 
@@ -465,18 +394,15 @@
 
 · 👌 IMPROVE: Others > SDL2 binary 2.0.13 or compile 2.0.12.
 
-(21/07/20)
-==========
+# (21/07/20)
 
 · 📦 ADD: Others > Airplay mirroring for iDevices.
 
-(19/07/20)
-==========
+# (19/07/20)
 
 · 📦 ADD: Games > Blood.
 
-(17/07/20)
-==========
+# (17/07/20)
 
 · 📦 ADD: Other > Scrcpy 1.13 (Mirror Android devices on Raspberry Pi OS/Twister OS).
 
@@ -484,20 +410,17 @@
 
 · 👌 IMPROVE: Games > Diablo 2.
 
-(15/07/20)
-==========
+# (15/07/20)
 
 · 📦 ADD: Emulation > PPSSPP v1.9.3-1063 (PSP Emulator).
 
 · 👌 IMPROVE: Vulkan compilation is compatible with Twister OS 🌪. Diablo 1.
 
-(14/07/20)
-==========
+# (14/07/20)
 
 · 📦 ADD: Configure > Compile/update Vulkan Mesa driver (EXPERIMENTAL).
 
-(13/07/20)
-==========
+# (13/07/20)
 
 · 📦 ADD: Games > Captain 'S' The Remake (AKA Capitan Sevilla).
 
@@ -505,25 +428,21 @@
 
 · ❌ REMOVE: Airplay.
 
-(10/07/20)
-==========
+# (10/07/20)
 
 · 👌 IMPROVE: Games > Crispy-Doom.
 
-(09/07/20)
-==========
+# (09/07/20)
 
 · 👌 IMPROVE: Webmin.
 
-(08/07/20)
-==========
+# (08/07/20)
 
 · 🐛 FIX: PiKISS menu option takes time to appear.
 
 · 🐛 FIX: Diablo 2.
 
-(07/07/20)
-==========
+# (07/07/20)
 
 · 📦 ADD: Tweaks > ZRAM.
 
@@ -531,37 +450,31 @@
 
 · 👌 IMPROVE: Compile with cores according to the RPi Model.
 
-(05/07/20)
-==========
+# (05/07/20)
 
 · 📦 ADD: Games > Super Mario 64 native OpenGL ES.
 
 · 👌 IMPROVE: Install process & new menu icon.
 
-(03/07/20)
-==========
+# (03/07/20)
 
 · 👌 IMPROVE: Diablo 2. Now run in full screen (800x600).
 
 · 🐛 FIX: Diablo 2.
 
-(28/06/20)
-==========
+# (28/06/20)
 
 · 🐛 FIX: Mednafen, Tweaks, Crispy-Doom.
 
-(24/06/20)
-==========
+# (24/06/20)
 
 · 📦 ADD: Developer section and QT5 script.
 
-(20/06/20)
-==========
+# (20/06/20)
 
 · 👌 IMPROVE: Unreal Speccy Portable (ZX-Spectrum).
 
-(19/06/20)
-==========
+# (19/06/20)
 
 · 📦 ADD: mGBA v0.90, Mednafen 1.24.3, ScummVM 2.1.2.
 
@@ -569,8 +482,7 @@
 
 · ❌ REMOVE: DPRCZ/gpsp, PC-Engine.
 
-(18/06/20)
-==========
+# (18/06/20)
 
 · 📦 ADD: Abbaye des Morts v2.0.0.
 
@@ -578,94 +490,77 @@
 
 · ❌ REMOVE: rpix86, 8086tiny, UAE4ARM.
 
-(17/06/20)
-==========
+# (17/06/20)
 
 · 👌 IMPROVE: MAME.
 
-(16/06/20)
-==========
+# (16/06/20)
 
 · 👌 IMPROVE: SuperNES emulator (Snes9X 1.60).
 
-(15/06/20)
-==========
+# (15/06/20)
 
 · 👌 IMPROVE: Caprice32 (Amstrad).
 
 · ❌ REMOVE: piKiss.sh > GMaker, RWolf, Giana & Fruity (Not supported anymore).
 
-(12/06/20)
-==========
+# (12/06/20)
 
 · 🐛 FIX: Doom, Heretic. Removed Hexen, Strife (check Crispy-doom Github issue).
 
 · 👌 IMPROVE: Helper now install Box86, GL4ES, Mesa or Mono libs when is needed.
 
-(08/06/20)
-==========
+# (08/06/20)
 
 · 🐛 FIX: Diablo 1.
 
-(02/04/20)
-==========
+# (02/04/20)
 
 · Updated Spectrum emulator unrealspeccy to 0.86.11
 
-(08/03/20)
-==========
+# (08/03/20)
 
 · Fix Games > Revolt.
 
-(07/03/20)
-==========
+# (07/03/20)
 
 · Update Games > Crispy Doom.
 
-(16/11/19)
-==========
+# (16/11/19)
 
 · Add Games > Diablo 2 LOD Spanish Ed.
 
-(02/10/19)
-==========
+# (02/10/19)
 
 · Add Games > Diablo 1
 
-(27/09/19)
-==========
+# (27/09/19)
 
 · Add Games > Revolt for Raspberry Pi.
 
 · Make openMSX script compatible with Raspbian Buster.
 
-(17/09/19)
-==========
+# (17/09/19)
 
 · Fix Descent for Raspberry Pi 4.
 
-(16/09/19)
-==========
+# (16/09/19)
 
 · Fix Dune 2.
 
-(14/09/19)
-==========
+# (14/09/19)
 
 · Update Remove packages & others script.
 
-(24/01/19)
-==========
+# (24/01/19)
 
 · Updated DXX-Rebirth to version 0.60.100
 
-(18/01/19)
-==========
+# (18/01/19)
 
 · Updated webmin, removepkg & others script.
 
-(14/01/18)
-==========
+# (14/01/18)
 
 · Updated Games/Dune Legacy to 0.96.4
 
@@ -673,8 +568,7 @@
 
 · Added Games > Fruit'Y
 
-(13/01/18)
-==========
+# (13/01/18)
 
 · Fixed issue with Tweaks/others script
 
@@ -684,30 +578,25 @@
 
 · Fixed Tweaks/services
 
-(22/10/17)
-==========
+# (22/10/17)
 
 · Added Emulation > OpenMSX 0.14
 
-(13/08/17)
-==========
+# (13/08/17)
 
 · Added Server > Octoprint
 
-(25/07/17)
-==========
+# (25/07/17)
 
 · Added Server > Bittorrent Sync alternatives
 
-(24/07/17)
-==========
+# (24/07/17)
 
 · Updated and improved Server > Owncloud 10.0.2
 
 · New helper's functions
 
-(21/07/17)
-==========
+# (21/07/17)
 
 · PIKISS reach version 1.0!
 
@@ -717,148 +606,121 @@
 
 · Added Server > Auto update
 
-(10/07/17)
-==========
+# (10/07/17)
 
 · Updated Server > Frameworks
 
-(09/07/17)
-==========
+# (09/07/17)
 
 · Updated Server > Web Server+PHP7
 
-(09/03/17)
-==========
+# (09/03/17)
 
 · Added Emus > Advance MAME 3.4
 
 · Added Emus > MAME 0.183
 
-(02/10/16)
-==========
+# (02/10/16)
 
 · Added Emus > OpenMSX 0.13.0
 
-(13/09/16)
-==========
+# (13/09/16)
 
 · Added Games > Giana's return, ScummVM. Updated Spectrum emulator unrealspeccy to 0.0.69.1
 
-(12/09/16)
-==========
+# (12/09/16)
 
-·  Fix issues and improve config, inet, other, server, tweaks sections. Raspberry Pi 3 ready.
+· Fix issues and improve config, inet, other, server, tweaks sections. Raspberry Pi 3 ready.
 
-(08/09/16)
-==========
+# (08/09/16)
 
 · Fix issues and improve games, Emulation, info, mmedia sections. Raspberry Pi 3 ready.
 · Added Xump game.
 · Remove Minecraft script.
 
-(07/09/16)
-==========
+# (07/09/16)
 
 · Fix issues and improve games/emulator section. Raspberry Pi 3 ready.
 
-(06/09/16)
-==========
+# (06/09/16)
 
 · Fix issues and improve games section. Raspberry Pi 3 ready.
 
-(05/09/16)
-==========
+# (05/09/16)
 
 · Fix issues and improve tweaks section. Raspberry Pi 3 ready.
 
-(17/08/16)
-==========
+# (17/08/16)
 
 · Fix issue with link to the new lib-gfx.1.5 library.
 
-(04/05/16)
-==========
+# (04/05/16)
 
 · Added Let's Encrypt on web server
 
-(18/04/16)
-==========
+# (18/04/16)
 
 · Added desktop icons to MAME, Speccy
 
-(29/03/16)
-==========
+# (29/03/16)
 
 · Added server > VNCServer
 
-(25/02/16)
-==========
+# (25/02/16)
 
 · Added games > Game Maker games
 
-(26/05/15)
-==========
+# (26/05/15)
 
 · Added server > Nagios
 
 · Added Info > Webmin
 
-(23/05/15)
-==========
+# (23/05/15)
 
 · Added games > OpenBor for Raspberry Pi, Debian Jessie
 
-(19/05/15)
-==========
+# (19/05/15)
 
 · Added game Arx Fatalis for Raspberry Pi 2, ODROID and Debian Jessie
 
-(09/05/15)
-==========
+# (09/05/15)
 
 · Added server > Ad Blocker
 
-(21/04/15)
-==========
+# (21/04/15)
 
 · Added others > ramlog
 
 · Uddated tweaks > others.sh (Install package fuck)
 
-(18/04/15)
-==========
+# (18/04/15)
 
 · Added Emus > Picodrive & Caprice for Raspberry Pi 2 (Amstrad emulator)
 
-(17/04/15)
-==========
+# (17/04/15)
 
 · Updated SDL2, Spectrum emulator
 
-(05/04/15)
-==========
+# (05/04/15)
 
 · Added Others > NetTools - MITM Pentesting Opensource Toolkit
 
-(21/03/15)
-==========
+# (21/03/15)
 
 · Updated Emulation > Mame
 
-(19/03/15)
-==========
+# (19/03/15)
 
 · Updated Games > Return to Castle Wolfenstein
 
-(17/03/15)
-==========
+# (17/03/15)
 
 · Added Games > Descent 1 & 2 (Shareware)
 
 · Update Emus > PiSNES
 
-(16/03/15)
-==========
+# (16/03/15)
 
 · ODROID: Games > Quake 2
 
@@ -866,20 +728,17 @@
 
 · Updated Tweaks > Others
 
-(14/03/15)
-==========
+# (14/03/15)
 
 · Enhaced Games > Crispy-Doom
 
 · ODROID: Games > Crispy-Doom
 
-(12/03/15)
-==========
+# (12/03/15)
 
 · Added Server > Install vsftpd (FTP) Server
 
-(11/03/15)
-==========
+# (11/03/15)
 
 · ODROID: Added Tweaks > others script
 
@@ -889,28 +748,23 @@
 
 · Added Server > Install vsftpd (FTP) Server
 
-(09/03/15)
-==========
+# (09/03/15)
 
 · ODROID: Added Tweaks > autologin script
 
-(08/03/15)
-==========
+# (08/03/15)
 
 · piKiss.sh refactorized
 
-(11/01/15)
-==========
+# (11/01/15)
 
 · Updated ownCloud to 7.0.4
 
-(11/01/15)
-==========
+# (11/01/15)
 
 · Added Info > Lynis (security auditing tool)
 
-(29/12/14)
-==========
+# (29/12/14)
 
 · Update Tweaks > other & removepkg scripts
 
@@ -920,186 +774,154 @@
 
 · Update Info > check last images, test inet scripts
 
-(08/12/14)
-==========
+# (08/12/14)
 
 · Update Server > NGINX (latest compile) web server
 
-(06/12/14)
-==========
+# (06/12/14)
 
 · Update Emulation > UAE4ALL ver 2.5.3.2
 
-(25/11/14)
-==========
+# (25/11/14)
 
 · Update Emulation > Final Burn Alpha 2x for Raspberry Pi (4 players)
 
-(24/11/14)
-==========
+# (24/11/14)
 
 · Updated Emulation > openMSX 0.11.0
 
-(04/11/14)
-==========
+# (04/11/14)
 
 · Updated Tweaks > Added improvement on others.sh
 
-(02/11/14)
-==========
+# (02/11/14)
 
 · Updated Server > Git Server
 
-(08/10/14)
-==========
+# (08/10/14)
 
 · Updated Server > MiniDLNA to 1.1.4
 
-(07/10/14)
-==========
+# (07/10/14)
 
 · Added Info > Tinymembench
 
-(29/09/14)
-==========
+# (29/09/14)
 
 · Added Info > Test Internet bandwidth
 
-(27/09/14)
-==========
+# (27/09/14)
 
 · Added Emula > MSX
 
 · Added Others > Check SD partition
 
-(16/09/14)
-==========
+# (16/09/14)
 
 · Added Other > Synergy
 
-(9/09/14)
-=========
+# (9/09/14)
 
 · Added Other > Fix problems with Raspbian OS
 
-(4/09/14)
-=========
+# (4/09/14)
 
 · Added Info > SD Benchmark
 
-(25/08/14)
-==========
+# (25/08/14)
 
 · Added Emulation > UAE4ALL 0.5
 
-(14/08/14)
-==========
+# (14/08/14)
 
 · Added Emulation > UAE4ALL 0.3 RC4
 
 · Added Server > ownCloud 7.0.1 with NginX and SSL
 
-(13/08/14)
-==========
+# (13/08/14)
 
 · Added Server > Samba Config to share directory
 
-(11/08/14)
-==========
+# (11/08/14)
 
 · Added Server > Web Server > Nginx
 
-(11/08/14)
-==========
+# (11/08/14)
 
 · Added Config > SSID Configurator
 
-(06/08/14)
-==========
+# (06/08/14)
 
 · Aircrack script fixed!
 
-(30/07/14)
-==========
+# (30/07/14)
 
 · Config > backup
 
-(04/07/14)
-==========
+# (04/07/14)
 
 · Added Others > Install GCC 4.7 on Raspberry Pi
 
-(03/07/14)
-==========
+# (03/07/14)
 
 · Added Server > smtp mail config
 
-(01/07/14)
-==========
+# (01/07/14)
 
 · Added Emulation > Uae4all2 (Amiga)
 
-(27/06/14)
-==========
+# (27/06/14)
 
 · Added Internet > Epiphany Web Browser
 · Added Emulation > Gameboy Advance + ROM (Watman), PCEngine + ROM (Reflectron)
 
-(26/06/14)
-==========
+# (26/06/14)
 
 · Added server > minidlna (1.1.3 or latest)
 
-(25/06/14)
-==========
+# (25/06/14)
 
 · Adding compatibility with raspbian-ua-netinst (https://github.com/debian-pi/raspbian-ua-netinst)
 
-(24/06/14)
-==========
+# (24/06/14)
 
 · Updated check_lastmod_img, crispy-doom, Quake 2, MAME4ALL
 
-(18/06/14)
-==========
+# (18/06/14)
 
 · Multimedia > TVPlayer
 · Server > fwork: Ghost, Wordpress (uncomplete)
 
-(13/06/14)
-==========
+# (13/06/14)
 
 · Server > fwork: Node.js
 
-(11/06/14)
-==========
+# (11/06/14)
 
 · Add Config > Bluetooth keyboard
 
-(08/06/14)
-==========
+# (08/06/14)
 
 · Updated check_lastmod_img
 · Added Emulation > UAE4Armiga4Pi
 · Added Games > Return to Castle Wolfenstein (demo)
 
-1st release (29/05/14)
-======================
+# 1st release (29/05/14)
 
-· Configure Menu  : Joypad, Netcfg
+· Configure Menu : Joypad, Netcfg
 
-· Emulation Menu  : mame4allpi, pifba, pisnes, rpix86, speccy
+· Emulation Menu : mame4allpi, pifba, pisnes, rpix86, speccy
 
-· Games Menu      : Crispy Doom, Dune2, MineCraft, Quake2, Sqrxz4
+· Games Menu : Crispy Doom, Dune2, MineCraft, Quake2, Sqrxz4
 
-· Internet Menu   : plowshare, mp3downloader
+· Internet Menu : plowshare, mp3downloader
 
-· Info Menu       : benchmark, check last imgs, CPU temp, weather, web monitor
+· Info Menu : benchmark, check last imgs, CPU temp, weather, web monitor
 
 · Multimedia Menu : AirPlay (rPlay), Kiosk mode, xbmc
 
-· Server Menu     : DB, Printer, Web, Webdav for Apache
+· Server Menu : DB, Printer, Web, Webdav for Apache
 
-· Tweaks Menu     : Autologin, others, Remove packages, Disable services
+· Tweaks Menu : Autologin, others, Remove packages, Disable services
 
-· Others Menu     : Aircrack, SDL2, WhatApp
+· Others Menu : Aircrack, SDL2, WhatApp

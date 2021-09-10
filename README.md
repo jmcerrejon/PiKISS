@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **877 hours**
+- **881 hours**
 
 ## 💰 Total amount donated by users
 
@@ -64,6 +64,12 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (10/09/21)
+
+· 👌 IMPROVE: Games > Grand Theft Auto III.
+
+· 👌 IMPROVE: Games > Grand Theft Auto Vice City.
 
 ### (28/08/21)
 
