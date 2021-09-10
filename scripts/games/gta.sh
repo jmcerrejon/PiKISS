@@ -2,7 +2,7 @@
 #
 # Description : GTA thks to foxhound311
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.1 (10/Sep/21)
+# Version     : 1.1.2 (10/Sep/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -104,7 +104,7 @@ Grand Theft Auto III for Raspberry Pi
         echo -e "\n\nDone!. You can play typing $INSTALL_DIR/GTAIII/re3.sh or opening the Menu > Games > Grand Theft Auto III.\n"
         runme_gta3
     else
-        echo -e "\nCopy all the data files from your copy inside $INSTALL_DIR/GTAIII.\n\nYou can play typing $INSTALL_DIR/GTAIII/re3 or opening the Menu > Games > Grand Theft Auto III."
+        echo -e "\nCopy all the data files from your copy inside $INSTALL_DIR/GTAIII.\n\nYou can play typing $INSTALL_DIR/GTAIII/re3.sh or opening the Menu > Games > Grand Theft Auto III."
         exit_message
     fi
 }
@@ -189,7 +189,7 @@ Grand Theft Auto Vice City for Raspberry Pi
         echo -e "\n\nDone!. You can play typing $INSTALL_DIR/GTAVC/reVC.sh or opening the Menu > Games > Grand Theft Auto Vice City.\n"
         runme_gtavc
     else
-        echo -e "\nCopy all the data files from your copy inside $INSTALL_DIR/GTAVC.\n\nYou can play typing $INSTALL_DIR/GTAVC/reVC or opening the Menu > Games > Grand Theft Auto Vice City."
+        echo -e "\nCopy all the data files from your copy inside $INSTALL_DIR/GTAVC.\n\nYou can play typing $INSTALL_DIR/GTAVC/reVC.sh or opening the Menu > Games > Grand Theft Auto Vice City."
         exit_message
     fi
 }
