@@ -2,7 +2,7 @@
 #
 # Description : Diablo for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.8 (21/Feb/21)
+# Version     : 1.1.9 (18/Sep/21)
 # Compatible  : Raspberry Pi 3-4 (tested)
 #
 # Help		  : https://github.com/diasurgical/devilutionX/
@@ -14,7 +14,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES=(p7zip libsdl2-ttf-2.0-0 libsdl2-mixer-2.0-0)
-readonly BINARY_PATH="https://github.com/diasurgical/devilutionX/releases/download/1.1.0/devilutionx-linux-armhf.7z"
+readonly BINARY_PATH="https://github.com/diasurgical/devilutionX/releases/download/1.2.1/devilutionx-linux-armhf.tar.xz"
 readonly VAR_DATA_NAME="DIABLO_1"
 readonly DIABLO1_DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
 readonly ICON="https://misapuntesde.com/res/diablo1.png"
