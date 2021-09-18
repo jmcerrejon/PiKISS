@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **881 hours**
+- **882 hours**
 
 ## 💰 Total amount donated by users
 
@@ -64,6 +64,12 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (18/09/21)
+
+· 📦 ADD: Games > Shadow Warrior.
+
+· 👌 IMPROVE: Games > Diablo (Add Hellfire support).
 
 ### (10/09/21)
 
