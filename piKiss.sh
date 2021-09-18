@@ -169,6 +169,7 @@ smGames() {
             Quake "Enhanced clients for ID Software's Quake saga"
             ReturnC "The dark reich's closing in. The time to act is now"
             Revolt "Re-Volt is a radio control car racing themed video game"
+            SWarrior "FPS developed by 3D Realms and released on 1997 by GT Interactive"
             SMario64 "Super Mario 64 EX native OpenGL ES"
             SpelunkyHD "Spelunky is a cave exploration/treasure-hunting game"
             Sqrxz4 "Sqrxz 4: Difficult platform game"
@@ -214,6 +215,7 @@ smGames() {
         Quake) ./scripts/games/quake.sh ;;
         ReturnC) ./scripts/games/rwolf.sh ;;
         Revolt) ./scripts/games/revolt.sh ;;
+        SWarrior) ./scripts/games/swarrior.sh ;;
         SMario64) ./scripts/games/smario64.sh ;;
         SpelunkyHD) ./scripts/games/spelunky.sh ;;
         Sqrxz4) ./scripts/games/sqrxz4.sh ;;
