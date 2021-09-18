@@ -2,7 +2,7 @@
 #
 # Description : Shadow Warrior
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (18/Sep/21)
+# Version     : 1.0.1 (18/Sep/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -29,7 +29,7 @@ runme() {
 }
 
 remove_files() {
-    rm -rf "$INSTALL_DIR"/swarrior ~/.jfsw ~/.local/share/applications/swarrior.desktop
+    rm -rf "$INSTALL_DIR"/swarrior ~/.jwsw ~/.local/share/applications/swarrior.desktop
 }
 
 uninstall() {
