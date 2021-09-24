@@ -2,7 +2,7 @@
 #
 # Description : Easy install PiKISS
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.3 (20/Mar/21)
+# Version     : 1.0.4 (24/Sep/21)
 #
 clear
 
@@ -18,7 +18,7 @@ make_desktop_entry() {
 
 if [[ -d "$INSTALL_DIR/piKiss" ]]; then
     cd "$INSTALL_DIR/piKiss" && ./piKiss.sh
-    exit
+    exit 0
 fi
 
 install() {
