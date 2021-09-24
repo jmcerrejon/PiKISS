@@ -2,7 +2,7 @@
 #
 # Description : Zandronum and Crispy-Doom
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 2.0.2 (28/Aug/21)
+# Version     : 2.0.3 (24/Sep/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # HELP        : To compile crispy-doom, follow the instructions at https://github.com/fabiangreffrath/crispy-doom
@@ -188,7 +188,7 @@ EOF
 compile_zandronum() {
     install_packages_if_missing "${PACKAGES_DEV[@]}"
     mkdir -p "$HOME/sc" && cd "$_" || exit 1
-    git clone --recursive "$GITHUB_URL" zandronum && cd "$_" || exit 1
+    git clone --recursive "$ZANDRONUM_SOURCE_CODE_URL" zandronum && cd "$_" || exit 1
     mkdir build && cd "$_" || exit 1
     # TODO Returning valid CFLAGS for different RPi, Check https://github.com/ptitSeb/zandronum/blob/master/CMakeLists.txt
     CFLAGS="-fsigned-char -marm -march=armv8-a+crc -mtune=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard" CXXFLAGS="-fsigned-char" cmake .. -DNO_FMOD=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo -Wno-dev
