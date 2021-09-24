@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **882 hours**
+- **882.30 hours**
 
 ## 💰 Total amount donated by users
 
@@ -64,6 +64,12 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (24/09/21)
+
+· 🐛 FIX: Games > Zandronum (compile source code path).
+
+· 🐛 FIX: Install return value.
 
 ### (18/09/21)
 
