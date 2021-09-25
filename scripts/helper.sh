@@ -56,7 +56,7 @@ compile_box86() {
 
     INSTALL_DIRECTORY="$HOME/box86"
     PI_VERSION_NUMBER=$(get_raspberry_pi_model_number)
-    SOURCE_PATH="https://github.com/ptitSeb/box86.git"
+    SOURCE_PATH="https://github.com/ptitSeb/box86"
 
     install_packages_if_missing cmake
 
@@ -69,9 +69,11 @@ compile_box86() {
         [[ -d "$INSTALL_DIRECTORY"/build ]] && rm -rf "$INSTALL_DIRECTORY"/build
     fi
 
-    if box86_check_if_latest_version_is_installed; then
-        echo -e "\nYour box86 is already updated. Skipping...\n"
-        return 0
+    if [[ -f /usr/local/bin/box86 ]]; then
+        if box86_check_if_latest_version_is_installed; then
+            echo -e "\nYour box86 is already updated. Skipping...\n"
+            return 0
+        fi
     fi
 
     mkdir -p build && cd "$_" || exit 1
@@ -101,7 +103,9 @@ install_box86() {
     download_and_extract "$BINARY_BOX86_URL" "$HOME"
     cd "$HOME"/box86/build || exit 1
     sudo make install
-    echo -e "\nBox86 has been installed.\n"
+    echo
+    box86 -v
+    echo -e "\nBox86 has been installed."
 }
 
 generate_icon_winetricks() {
@@ -1137,6 +1141,7 @@ upgrade() {
 }
 
 make_install_compiled_app() {
+    echo
     read -p "Do you want to install it? (y/N) " response
     if [[ $response =~ [Yy] ]]; then
         sudo make install
