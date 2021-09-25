@@ -1,3 +1,9 @@
+# (25/09/21)
+
+· 🐛 FIX issue 117: already up to date and It is not installed. Refactor code.
+
+· 👌 IMPROVE: Refactor code call to make_install_compiled_app
+
 # (24/09/21)
 
 · 🐛 FIX: Games > Zandronum (compile source code path).

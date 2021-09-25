@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **882.30 hours**
+- **884 hours**
 
 ## 💰 Total amount donated by users
 
@@ -64,6 +64,12 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (25/09/21)
+
+· 🐛 FIX issue [#117](https://github.com/jmcerrejon/PiKISS/issues/117): already up to date and It's not installed. Refactor code.
+
+· 👌 IMPROVE: Refactor code call to make_install_compiled_app
 
 ### (24/09/21)
 
