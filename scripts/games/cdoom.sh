@@ -2,7 +2,7 @@
 #
 # Description : Zandronum and Crispy-Doom
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 2.0.3 (24/Sep/21)
+# Version     : 2.0.4 (25/Sep/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # HELP        : To compile crispy-doom, follow the instructions at https://github.com/fabiangreffrath/crispy-doom
@@ -193,10 +193,7 @@ compile_zandronum() {
     # TODO Returning valid CFLAGS for different RPi, Check https://github.com/ptitSeb/zandronum/blob/master/CMakeLists.txt
     CFLAGS="-fsigned-char -marm -march=armv8-a+crc -mtune=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard" CXXFLAGS="-fsigned-char" cmake .. -DNO_FMOD=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo -Wno-dev
     make_with_all_cores "\nCompiling..."
-    read -p "Do you want to install globally (y/N)? " response
-    if [[ $response =~ [Yy] ]]; then
-        sudo make install
-    fi
+    make_install_compiled_app
     echo -e "\nDone!. Check the code at $HOME/sc/zandronum"
     exit_message
 }

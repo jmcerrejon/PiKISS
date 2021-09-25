@@ -2,7 +2,7 @@
 #
 # Description : Prince Of Persia
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (05/Mar/21)
+# Version     : 1.0.1 (25/Sep/21)
 # Compatible  : Raspberry Pi 4 (tested)
 # Repository  : https://github.com/NagyD/SDLPoP
 #
@@ -72,10 +72,7 @@ compile() {
     mkdir -p "$HOME/sc" && cd "$_" || exit 1
     git clone "$GITHUB_URL" prince && cd "$_"/src || exit 1
     make_with_all_cores "\nCompiling..."
-    read -p "Do you want to install globally the app (y/N)? " response
-    if [[ $response =~ [Yy] ]]; then
-        sudo make install
-    fi
+    make_install_compiled_app
     echo -e "\nDone!. Check the code at $HOME/sc/prince"
     exit_message
 }

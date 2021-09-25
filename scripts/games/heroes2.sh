@@ -2,7 +2,7 @@
 #
 # Description : fheroes2
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (21/Feb/21)
+# Version     : 1.0.2 (25/Sep/21)
 # Compatible  : Raspberry Pi 4
 # Repository  : https://github.com/ihhub/fheroes2
 #
@@ -78,11 +78,7 @@ compile() {
     mkdir -p "$HOME/sc" && cd "$_" || exit 1
     git clone "$SOURCE_CODE_URL" fheroes2 && "$_"
     time export WITH_SDL2="ON" make -j"$(nproc)"
-    echo
-    read -p "Do you want to install globally the app (y/N)? " response
-    if [[ $response =~ [Yy] ]]; then
-        sudo make install
-    fi
+    make_install_compiled_app
     echo -e "\nDone!. Check the code at $HOME/sc/fheroes2."
     exit_message
 }

@@ -2,7 +2,7 @@
 #
 # Description : OpenMSX emulator v 17.0
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.0 (11/Jul/21)
+# Version     : 1.4.1 (25/Sep/21)
 # Compatible  : Raspberry Pi 1-3 (¿?), 4 (tested)
 #
 #
@@ -75,10 +75,7 @@ compile() {
     cd openmsx* || exit 1
     ./configure
     make_with_all_cores
-    read -p "Do you want to install it globally (y/N)? " response
-    if [[ $response =~ [Yy] ]]; then
-        sudo make install
-    fi
+    make_install_compiled_app
     read -p "Do you want to install some extras (system ROMs,...) (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
         postinstall

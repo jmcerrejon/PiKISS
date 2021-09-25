@@ -2,7 +2,7 @@
 #
 # Description : Syncterm (BBS)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (07/08/21)
+# Version     : 1.0.1 (25/Sep/21)
 # Compatible  : Raspberry Pi 4 (tested)
 # Repository  : http://syncterm.bbsdev.net/ | https://gitlab.synchro.net/main/sbbs
 # Help        : https://www.askapache.com/online-tools/figlet-ascii/
@@ -80,10 +80,7 @@ compile() {
     cd syncterm-20210806/src/syncterm || exit 1
     st_path=$(pwd | sed 's/\/syncterm$//g')
     make SRC_ROOT="$st_path"
-    read -p "Do you want to install globally the app (y/N)? " response
-    if [[ $response =~ [Yy] ]]; then
-        sudo make install
-    fi
+    make_install_compiled_app
     echo -e "\nDone!. Check the code at $HOME/sc/syncterm."
     exit_message
 }

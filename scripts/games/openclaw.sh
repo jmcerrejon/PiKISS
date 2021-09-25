@@ -2,7 +2,7 @@
 #
 # Description : Open Claw
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (28/Nov/20)
+# Version     : 1.0.2 (25/Sep/21)
 # Compatible  : Raspberry Pi 4
 # Repository  : https://github.com/pjasicek/OpenClaw
 #
@@ -79,10 +79,7 @@ compile() {
     mkdir build && cd "$_" || return
     cmake -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=RelWithDebInfo .. && cmake ..
     make_with_all_cores
-    read -p "Do you want to install globally the app (y/N)? " response
-    if [[ $response =~ [Yy] ]]; then
-        sudo make install
-    fi
+    make_install_compiled_app
     echo -e "\nDone!. Check the code at $HOME/sc/openclaw/Build_Release"
     exit_message
 }

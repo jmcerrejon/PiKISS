@@ -2,7 +2,7 @@
 #
 # Description : StepMania
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (27/Dec/20)
+# Version     : 1.0.2 (25/Sep/21)
 # Compatible  : Raspberry Pi 4
 # Repository  : https://github.com/stepmania/stepmania
 # Help        : https://github.com/SpottyMatt/raspbian-stepmania-deb
@@ -82,10 +82,7 @@ compile() {
     mkdir build && cd "$_" || return
     cmake -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=RelWithDebInfo -DWITH_CRASH_HANDLER=OFF .. && cmake ..
     make_with_all_cores
-    read -p "Do you want to install globally the app (y/N)? " response
-    if [[ $response =~ [Yy] ]]; then
-        sudo make install
-    fi
+    make_install_compiled_app
     echo -e "\nDone!. Check the code at $HOME/sc/stepmania."
     exit_message
 }
