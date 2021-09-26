@@ -873,7 +873,7 @@ message_magic_air_copy() {
     fi
 
     if [[ $1 == "" ]]; then
-        echo -e "\nNo game data files found for this game/app inside the file $PIKISS_MAGIC_AIR_COPY_PATH.."
+        echo -e "\nNo game data files found for this game/app inside the file $PIKISS_MAGIC_AIR_COPY_PATH."
         false
         return
     fi
