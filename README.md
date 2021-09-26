@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **884 hours**
+- **886 hours**
 
 ## 💰 Total amount donated by users
 
@@ -65,11 +65,15 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (26/09/21)
+
+· 📦 ADD: Games > OpenRCT2 (RollerCoaster Tycoon 2).
+
 ### (25/09/21)
 
 · 🐛 FIX issue [#117](https://github.com/jmcerrejon/PiKISS/issues/117): already up to date and It's not installed. Refactor code.
 
-· 👌 IMPROVE: Refactor code call to make_install_compiled_app
+· 👌 IMPROVE: Refactor code call to make_install_compiled_app.
 
 ### (24/09/21)
 
