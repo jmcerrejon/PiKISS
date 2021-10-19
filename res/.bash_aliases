@@ -20,6 +20,7 @@ alias god='sudo -i'
 alias rmr='rm -rf'
 alias shutd='sudo shutdown -P now'
 alias reboot='sudo shutdown -r now'
+alias restart='reboot'
 alias p='ps aux |grep'
 alias n='nano'
 alias nanosources='sudo nano /etc/apt/sources.list'
@@ -27,21 +28,29 @@ alias nanofstab='sudo nano /etc/fstab'
 alias pk='cd /home/pi/pikiss/ && ./piKiss.sh -nup'
 alias 7zc='7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on file-rpi.7z'
 alias mkfr='find ./ -print > files_required.txt'
+alias open_ports='sudo ss -ltnp'
 
 # APT
 alias au='sudo apt-get -qq -y update'
-alias ar='sudo apt -y autoremove'
+alias ar='sudo apt -y autoremove && sudo apt autoclean'
 alias aup='au && sudo apt -y dist-upgrade && ar'
 alias afup='au && sudo apt -y full-upgrade && ar'
 alias as='apt-cache search'
 alias asv='apt-cache madison'
 alias asf='apt-file search'
-alias apiy='sudo apt install'
 alias apiy='sudo apt install -y'
 alias abdp='sudo apt-get build-dep'
 alias dep='dpkg-depcheck -d ./configure' # Check dependencies from a source code dir using file ./configure
 
 # Functions
+
+ip() {
+    hostname -I | awk '{print $1}'
+}
+
+is_installed() {
+    sudo dpkg -l | grep "$1"
+}
 
 mk() {
     mkdir "$1" && cd "$_" || exit
