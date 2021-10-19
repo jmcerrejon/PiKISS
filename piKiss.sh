@@ -400,6 +400,7 @@ smServer() {
             FWork "WordPress, Node.js among others"
             GitServer "Use your RPi as a Git Server"
             Jenkins "Jenkins is a free and open source automation server"
+            LEMP "Stack stands for Linux+NGinx+MariaDB+PHP"
             Minidlna "Install/Compile UPnP/DLNA Minidlna"
             Nagios "Nagios is a network host and service monitoring"
             OctoPrint "Control your 3D-Printer"
@@ -426,6 +427,7 @@ smServer() {
         FWork) ./scripts/server/fwork.sh ;;
         GitServer) ./scripts/server/gitserver.sh ;;
         Jenkins) ./scripts/server/jenkins.sh ;;
+        LEMP) ./scripts/server/lemp.sh ;;
         Minidlna) ./scripts/server/mediaserver.sh ;;
         Nagios) ./scripts/server/nagios.sh ;;
         OctoPrint) ./scripts/server/octoprint.sh ;;
