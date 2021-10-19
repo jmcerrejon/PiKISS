@@ -2,7 +2,7 @@
 #
 # Description : Remove packages
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.11 (05/Mar/21)
+# Version     : 1.2.12 (18/Oct/21)
 # Compatible  : Raspberry Pi 1-4 (tested)
 #
 clear
@@ -13,7 +13,16 @@ df -h | grep 'root\|Avail'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 pkgs_RPi() {
-    echo -e "\nRemove packages\n===============\n"
+    echo -e "
+Remove packages
+===============
+
+· NOTE: This changes can't be undone by PiKISS once applied. Use it at your own risk.
+"
+    read -p "Do you want to continue? (Y/n) " response
+    if [[ $response =~ [Nn] ]]; then
+        exit_message
+    fi
 
     if [[ -e /etc/apt/sources.list.d/vscode.list ]]; then
         echo -e "If privacy matter to you, you can always try the project VSCodium that remove telemetry and keep your privacy. Take a look at\nhttps://github.com/VSCodium/vscodium/releases/latest\n"
@@ -23,7 +32,7 @@ pkgs_RPi() {
         esac
     fi
 
-    # Maybe another method. This is so destructive!
+    # TODO Maybe another method. This is so destructive!
     echo
     read -p "Mmm!, Desktop environment (Warning, this is so destructive!)? (y/n) " option
     case "$option" in
@@ -38,7 +47,7 @@ pkgs_RPi() {
     case "$option" in
     y*)
         sudo apt remove -y "sudo dpkg --get-selections | grep '\-dev' | sed s/install//"
-        sudo apt-get remove -y geany
+        sudo apt-get remove -y geany thonny
         ;;
     esac
 
@@ -93,6 +102,12 @@ pkgs_RPi() {
     read -p "Other unneeded packages:  libraspberrypi-doc, manpages. (Free 39.3 MB) (y/n) " option
     case "$option" in
     y*) sudo apt remove -y libraspberrypi-doc manpages ;;
+    esac
+
+    echo
+    read -p "You don't use a printer, so remove all cups packages (y/n) " option
+    case "$option" in
+    y*) sudo apt remove -y cups* ;;
     esac
 
     sudo apt-get -y autoremove --purge && sudo apt-get clean
