@@ -395,7 +395,7 @@ smServer() {
             Back "Back to main menu"
             AdBlock "Turn Raspberry Pi into an Ad blocker with Pi-Hole"
             Cups "Printer server (cups)"
-            DB "MySQL+PHP5 connector"
+            DB "Install MariaDB"
             FTP "Simple FTP Server with vsftpd"
             FWork "WordPress, Node.js among others"
             GitServer "Use your RPi as a Git Server"
