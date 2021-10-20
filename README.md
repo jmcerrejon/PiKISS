@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **886 hours**
+- **896 hours**
 
 ## 💰 Total amount donated by users
 
@@ -64,6 +64,14 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (18/10/21)
+
+· 📦 ADD: Server > Database MariaDB (MySQL fork).
+
+· 📦 ADD: Server > LEMP stack (Linux + Nginx Light v1.43 + MariaDB v10.3 + PHP v7.4 or v8.1).
+
+· 👌 IMPROVE: Server > Frameworks (WordPress, Node, Ghost).
 
 ### (26/09/21)
 
