@@ -2,7 +2,7 @@
 #
 # Description : Install Web Server + php7
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (10/Jul/17)
+# Version     : 1.0.1 (20/Oct/21)
 #
 # TODO
 #             · Cherekee: https://www.drentsoft.com/linux-experiments/2014-01-03/quickest-way-to-install-cherokee-web-server/
@@ -18,7 +18,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 tempfile=$(mktemp)
 nginx_url='https://nginx.org/download/nginx-1.12.0.tar.gz'
 
-nginx_ssl(){
+nginx_ssl() {
   nginx
   git clone https://github.com/letsencrypt/letsencrypt letsencrypt && cd $_ || exit
   ./letsencrypt-auto --help
@@ -27,8 +27,8 @@ nginx_ssl(){
   sudo $HOME/.local/share/letsencrypt/bin/letsencrypt certonly --webroot -w /var/www/html -d "$(<'${tempfile}')" -d www."$(<'${DOMAIN}')"
 }
 
-apache(){
-  add_php7_repository
+apache() {
+  add_php_repository
   clear
   echo "Installing Apache+PHP7..."
   sudo addgroup www-data
@@ -42,19 +42,19 @@ apache(){
   echo "<?php phpinfo(); ?>" | sudo tee /var/www/html/phpinfo.php
 }
 
-monkey(){
+monkey() {
   HOST="$(hostname -I)"
   dialog --backtitle "PiKISS" \
-  --title     "[ SSL ]" \
-  --yes-label "Yes" \
-  --no-label  "No" \
-  --yesno     "Do you want SSL support?\nPress [ESC] to Cancel." 7 55
+    --title "[ SSL ]" \
+    --yes-label "Yes" \
+    --no-label "No" \
+    --yesno "Do you want SSL support?\nPress [ESC] to Cancel." 7 55
 
   retval=$?
 
   case $retval in
-    0) local SSL_ENABLED="" ;;
-    1) local SSL_ENABLED="monkey-polarssl libpolarssl0" ;;
+  0) local SSL_ENABLED="" ;;
+  1) local SSL_ENABLED="monkey-polarssl libpolarssl0" ;;
   esac
 
   echo -e "deb https://packages.monkey-project.com/primates_pi primates_pi main" | sudo tee -a /etc/apt/sources.list
@@ -64,14 +64,13 @@ monkey(){
   read -p "Done!. Press [Enter] to continue..."
 }
 
-nginx(){
+nginx() {
   PACKAGES="nginx php7-common php7-mysql php7-xmlrpc php7-cgi php7-curl php7-gd php7-cli php7-fpm php-apc php7-dev php7-mcrypt"
-  add_php7_repository
+  add_php_repository
   sudo apt-get install -y $PACKAGES
 }
 
-
-build_nginx(){
+build_nginx() {
   clear
   echo -e "Compiling NGINX with SSL, SPDY support, Automatic compression of static files & Decompression on the fly of compressed responses. Please wait...\n\n"
   cd $HOME || exit
@@ -84,26 +83,25 @@ build_nginx(){
   sudo make install
 }
 
-while true
-do
+while true; do
   dialog --backtitle "PiKISS" \
-  --title 	"[ Install Web Server ]" --clear \
-  --menu  	"Pick one:" 15 55 6 \
-  Apache  	"Apache" \
-  Monkey        "Monkey HTTP" \
-  NGINX         "Nginx ()" \
-  NGINX_SSL     "Nginx with Let's Encrypt (Not tested)" \
-  NGINX_BUILD  	"Nginx (compile version 1.12.0)" \
-  Exit        	"Exit" 2>"${tempfile}"
+    --title "[ Install Web Server ]" --clear \
+    --menu "Pick one:" 15 55 6 \
+    Apache "Apache" \
+    Monkey "Monkey HTTP" \
+    NGINX "Nginx ()" \
+    NGINX_SSL "Nginx with Let's Encrypt (Not tested)" \
+    NGINX_BUILD "Nginx (compile version 1.12.0)" \
+    Exit "Exit" 2>"${tempfile}"
 
   menuitem=$(<"${tempfile}")
 
   case $menuitem in
-    Apache) apache ;;
-    Monkey) monkey ;;
-    NGINX) nginx ;;
-    NGINX_SSL) nginx_ssl ;;
-    NGINX_BUILD) build_nginx ;;
-    Exit) exit ;;
+  Apache) apache ;;
+  Monkey) monkey ;;
+  NGINX) nginx ;;
+  NGINX_SSL) nginx_ssl ;;
+  NGINX_BUILD) build_nginx ;;
+  Exit) exit ;;
   esac
 done
