@@ -234,17 +234,7 @@ isPackageInstalled() {
 # Install packages if missing
 #
 install_packages_if_missing() {
-    MUST_INSTALL=false
-    if ! dpkg -s "$@" >/dev/null 2>&1; then
-        MUST_INSTALL=true
-    fi
-
-    if [ "$MUST_INSTALL" == false ]; then
-        return 0
-    fi
-
-    echo -e "\nInstalling dependencies...\n"
-    sudo apt install -y "$@"
+    check_dependencies "$@"
 }
 
 #
@@ -477,6 +467,8 @@ php_file_max_size() {
 # Intall Node.js (all versions)
 #
 install_node() {
+    local NODE_VERSION
+
     if which node >/dev/null; then
         read -p "Warning!: Node.js already installed (Version $(node -v)). Do you want to uninstall it (y/n)?: " option
         case "$option" in
@@ -487,13 +479,15 @@ install_node() {
         n*) return ;;
         esac
     fi
-    NODE_VERSION="12"
+
     cd ~ || exit
     if [[ -z "$1" ]]; then
-        read -p "Type the Node.js version you want to install (14, 13, 12, 11, 10), followed by [ENTER]: " NODE_VERSION
+        read -p "Type the Node.js version you want to install: 16, 15, 14 (recommended), 13, ...10, followed by [ENTER]: " NODE_VERSION
+    else
+        NODE_VERSION="$1"
     fi
 
-    curl -sL https://deb.nodesource.com/setup_${NODE_VERSION}.x | sudo -E bash -
+    curl -sL https://deb.nodesource.com/setup_"${NODE_VERSION}".x | sudo -E bash -
     echo -e "\nInstalling Node.js and dependencies, please wait...\n"
     sudo apt install -y nodejs build-essential libssl-dev libx11-dev
     echo -e "\nReboot or logout to use it."
@@ -674,16 +668,10 @@ package_check() {
 }
 
 check_dependencies() {
-    INSTALLER_DEPS="$@"
+    INSTALLER_DEPS=("$@")
     for i in "${INSTALLER_DEPS[@]}"; do
-        echo -n ":::    Checking for $i..."
-        package_check ${i} >/dev/null
-        if ! [ $? -eq 0 ]; then
-            echo -n " Not found! Installing...\n"
+        if ! package_check "$i" -eq 0 >/dev/null; then
             sudo apt install -y "$i"
-            echo " done!"
-        else
-            echo " already installed!"
         fi
     done
 }
@@ -692,12 +680,13 @@ check_dependencies() {
 # Check last time 'apt-get update' and run it if has passed 7 days
 #
 check_update() {
-    NOW=$(date -d "2016-09-10 11:14:32" +%s)
-    UPDATE=$(stat -c %y /var/cache/apt/ | awk '{print $1,$2}' | date -d $? +%s)
-    # UPDATE=$(stat -c %y /var/cache/apt/ | awk '{print $1,$2}' | date -d $? +%s)
-    # passed days
-    RESULT=$(((UPDATE - NOW) / 86400))
-    if [ $RESULT -ge 7 ]; then
+    local A_WEEK_IN_SECONDS
+    A_WEEK_IN_SECONDS=604800
+    NOW=$(date +%s)
+    LAST_UPDATE_AT=$(stat -c %y /var/cache/apt/ | awk '{print $1,$2}' | date -d $? +%s)
+    RESULT=$((NOW - LAST_UPDATE_AT))
+
+    if [[ $RESULT -ge $A_WEEK_IN_SECONDS ]]; then
         sudo apt-get -qq update
     fi
 }
@@ -838,9 +827,12 @@ install_apache2() {
 }
 
 #
-# Add php7 repository
+# Add latest php repository
 #
-add_php7_repository() {
+add_php_repository() {
+    if [[ -e /etc/apt/sources.list.d/php.list ]]; then
+        return 0
+    fi
     sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
     sudo sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
     sudo apt-get -qq update
@@ -1181,46 +1173,128 @@ install_meson() {
 
 install_nginx() {
     local PACKAGES
-    PACKAGES=(ngninx)
+    local DEFAULT_NGINX_SITES_AVAILABLE_DIR
+    local NGINX_DEFAULT_SITE_PATH
+    local PHP_VERSION
+    PHP_VERSION=$(get_PHP_minor_version)
+    DEFAULT_NGINX_SITES_AVAILABLE_DIR="/etc/nginx/sites-available/"
+    NGINX_DEFAULT_SITE_PATH="/etc/nginx/sites-available/default"
+    PACKAGES=(nginx-light)
 
     check_update
     install_packages_if_missing "${PACKAGES[@]}"
     sudo usermod -aG www-data "$USER"
     sudo chown -R "$USER":www-data /var/www/
-    service nginx restart
+    echo -e "\nWARNING: Setting up writable the directory $DEFAULT_NGINX_SITES_AVAILABLE_DIR by $USER. Take it into account If you are going to expose the Pi for serve sites on the internet."
+    sudo chown -R "$USER":www-data "$DEFAULT_NGINX_SITES_AVAILABLE_DIR"
+    # Give PHP support
+    sudo sed -i "s/index index.html/index index.php index.html/" "$NGINX_DEFAULT_SITE_PATH"
+    sudo sed -i "s/^[[:blank:]]#*[[:blank:]]*include snippets/                include snippets/" "$NGINX_DEFAULT_SITE_PATH"
+    # sudo sed -i "s/^[[:blank:]]#*[[:blank:]]*fastcgi_pass/                fastcgi_pass/" "$NGINX_DEFAULT_SITE_PATH"
+    # sudo sed -i "s/php7.3-fpm.sock/php${PHP_VERSION}-fpm.sock/" "$NGINX_DEFAULT_SITE_PATH"
+    sudo service "php${PHP_VERSION}-fpm" restart
+    sudo systemctl restart nginx
 }
 
-install_mysql() {
-    local PACKAGES
-    PACKAGES=(mysql-server mysql-client)
+# INFO Not tested
+letsencrypt() {
+    sudo add-apt-repository ppa:certbot/certbot
+    sudo apt install python-certbot-nginx
 
-    echo -e "Installing MySQL 5.7..."
-    install_packages_if_missing "${PACKAGES[@]}"
-    #echo -e "Optimizing..."
-    # query_cache_size = 8M
-    read -p "Do you want to add the current user $USER? (y/N) " response
-    if [[ $response =~ [Yy] ]]; then
-        mysql -e -uroot "CREATE USER '${USER}'@'%' IDENTIFIED BY 'Foexyz77!'; GRANT ALL PRIVILEGES ON * . * TO '${USER}'@'%'; FLUSH PRIVILEGES;"
+    sudo certbot --nginx -d "$1".com -d www."$1".com
+}
+
+uninstall_mariadb() {
+    local DB_BIN_PATH
+    local PACKAGES
+    DB_BIN_PATH="/usr/bin/mysql"
+    PACKAGES=(mariadb-server* mariadb-client*)
+
+    if [[ ! -e $DB_BIN_PATH ]]; then
+        return 0
     fi
-    echo -e "Secure DB..."
+
+    echo
+    read -p "MariaDB is already installed. Do you want to uninstall it? (Y/n) " response
+    if [[ $response =~ [Nn] ]]; then
+        return 0
+    fi
+
+    sudo systemctl stop mysql
+    sudo apt remove -y --purge "${PACKAGES[@]}"
+}
+
+# INFO We can't install MySQL from official repository
+install_mariadb() {
+    local RANDOM_USER_PASSWORD
+    local PACKAGES
+    PACKAGES=(mariadb-server mariadb-client)
+
+    echo -e "\nInstalling MariaDB...\n"
+    install_packages_if_missing "${PACKAGES[@]}"
+    sudo systemctl start mariadb
+    sudo systemctl enable mariadb
+    echo -e "Securing DB..."
     sudo mysql_secure_installation
+    echo
+    read -p "Do you want to add the current user $USER to MariaDB (recommended)? (y/N) " response
+    if [[ $response =~ [Yy] ]]; then
+        RANDOM_USER_PASSWORD=$(openssl rand -base64 10)
+        echo -e "\nYou user password (write it down in a safe place): ${RANDOM_USER_PASSWORD}\n"
+        sudo mysql -e "CREATE USER '${USER}'@'%' IDENTIFIED BY '${RANDOM_USER_PASSWORD}'; GRANT ALL PRIVILEGES ON *.* TO '${USER}'@'%'; FLUSH PRIVILEGES;"
+    fi
     sudo service mysql restart
-    echo -e "\nDone!."
+}
+
+get_PHP_minor_version() {
+    if which php >/dev/null; then
+        php -v | head -n 1 | cut -d " " -f 2 | cut -f1-2 -d"."
+    fi
 }
 
 install_php() {
-    local PACKAGES
-    PACKAGES=(software-properties-common php7.4-fpm php7.4-mysql php7.4-mbstring php7.4-xml php7.4-bcmath php7.4-cli php7.4-gd php7.4-curl)
+    COMMON_PACKAGES_7=(software-properties-common php7.4-fpm php7.4-mysql php7.4-mbstring php7.4-xml php7.4-bcmath php7.4-cli php7.4-gd php7.4-curl php7.4-common)
+    COMMON_PACKAGES_8=(software-properties-common php8.1-fpm php8.1-mysql php8.1-mbstring php8.1-xml php8.1-bcmath php8.1-cli php8.1-gd php8.1-curl php8.1-common)
 
-    echo -e "Installing Packages for PHP 7.4..."
-    install_packages_if_missing "${PACKAGES[@]}"
-    systemctl status php7.4-fpm
+    add_php_repository
+
+    if [[ -z "$1" ]]; then
+        read -p "Choose PHP version 7.4 (stable) or 8.1 (latest)? (7/8) " response
+        if [[ $response =~ [7] ]]; then
+            echo -e "\nInstalling Packages for PHP 7.4..."
+            sudo apt install -y "${COMMON_PACKAGES_7[@]}"
+        else
+            echo -e "\nInstalling Packages for PHP 8.1..."
+            sudo apt install -y "${COMMON_PACKAGES_8[@]}"
+        fi
+    else
+        sudo apt install -y "${COMMON_PACKAGES_7[@]}"
+    fi
 
     # Install composer
+    if [[ -e /usr/local/bin/composer ]]; then
+        return 0
+    fi
+    echo -e "\nInstalling Composer..."
+    cd /tmp || exit 1
     sudo curl -s https://getcomposer.org/installer | php
-    sudo mv composer.phar /usr/local/bin/composer
+    sudo mv "/tmp/composer.phar" /usr/local/bin/composer
 }
 
 generate_random_password() {
-    echo "$(openssl rand -base64 12)"
+    openssl rand -base64 12
+}
+
+# Thks to https://gist.github.com/lukechilds/a83e1d7127b78fef38c2914c4ececc3c
+get_latest_release() {
+    curl --silent "https://api.github.com/repos/$1/releases/latest" |
+        grep '"name":' |
+        sed -E 's/.*"([^"]+)".*/\1/'
+}
+
+open_default_browser() {
+    if which chromium-browser >/dev/null; then
+        echo -e "\nOpening Browser with site: $1..."
+        chromium-browser "$1" &>/dev/null &
+    fi
 }
