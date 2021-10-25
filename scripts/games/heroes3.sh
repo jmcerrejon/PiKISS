@@ -2,7 +2,7 @@
 #
 # Description : VCMI. Open-source engine for Heroes of Might and Magic III
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (24/Jul/21)
+# Version     : 1.0.1 (25/Oct/21)
 # Compatible  : Raspberry Pi 4
 # Repository  : https://github.com/vcmi/vcmi
 #
@@ -90,7 +90,7 @@ download_data_files() {
 
 install_mm3() {
     install_script_message
-echo "
+    echo "
 Heroes of Might and Magic III engine (vcmi) for Raspberry Pi
 ============================================================
 
@@ -100,12 +100,12 @@ Heroes of Might and Magic III engine (vcmi) for Raspberry Pi
  · You need to supply for full game experience the directories /Data, /Maps & /Mp3 into $INSTALL_DIR/heroes3
  · If you don't provide game data files inside res/magic-air-copy-pikiss.txt, demo will be installed.
 "
-read -p "Press [Enter] to continue..."
+    read -p "Press [Enter] to continue..."
 
     install_packages_if_missing "${PACKAGES_MM3[@]}"
     download_and_extract "$BINARY_MM3_URL" "$INSTALL_DIR"
     generate_icon_mm3
-    if exists_magic_file && download_data_files_gtavc; then
+    if exists_magic_file && download_data_files; then
         download_data_files
         end_message_mm3
         runme_mm3
