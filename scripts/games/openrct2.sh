@@ -2,7 +2,7 @@
 #
 # Description : OpenRCT2
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (26/Sep/21)
+# Version     : 1.0.1 (25/Oct/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -11,8 +11,8 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="$HOME/games"
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/openrct2-rpi.tar.gz"
-readonly PACKAGES=(libbenchmark1 libduktape203)
-readonly PACKAGES_DEV=(cmake libsdl2-dev libicu-dev gcc pkg-config libspeex-dev libspeexdsp-dev libcurl4-openssl-dev libcrypto++-dev libfontconfig1-dev libfreetype6-dev libpng-dev libssl-dev libzip-dev build-essential make duktape-dev libbenchmark-dev)
+readonly PACKAGES=(libbenchmark1 libduktape203 libzip4)
+readonly PACKAGES_DEV=(cmake libsdl2-dev libicu-dev gcc pkg-config libspeex-dev libspeexdsp-dev libcurl4-openssl-dev libcrypto++-dev libfontconfig1-dev libfreetype6-dev libpng-dev libssl-dev libzip-dev build-essential make duktape-dev libbenchmark-dev libzip4)
 readonly SOURCE_CODE_URL="https://github.com/OpenRCT2/OpenRCT2"
 readonly VAR_DATA_NAME="RCT2"
 DATA_URL="https://openrct2.org/files/demo/RollerCoasterTycoon2TTP_EN.zip"
