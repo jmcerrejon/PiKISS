@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **896 hours**
+- **896.2 hours**
 
 ## 💰 Total amount donated by users
 
@@ -64,6 +64,12 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (25/10/21)
+
+· 🐛 FIX: Games > OpenRCT2 ([issue #121](https://github.com/jmcerrejon/PiKISS/issues/121)).
+
+· 🐛 FIX: Games > Heroes 3 ([issue #120](https://github.com/jmcerrejon/PiKISS/issues/120)).
 
 ### (18/10/21)
 
@@ -171,43 +177,13 @@
 
 · ❌ REMOVE: Emulators > Advanced MAME (Obsolete).
 
-### (01/04/21)
-
-· 📦 ADD: Emulators > Nestopia UE (NES emulator).
-
-· 🐛 FIX: Games > Smario64 (Uninstall process).
-
-### (24/04/21)
-
-· 👌 IMPROVE: Emulators > Redream (Sega Dreamcast).
-
-· 👌 IMPROVE: Devs > Qt5.15.2 LTS with OpenGL support.
-
-### (17/04/21)
-
-· 👌 IMPROVE: Devs > QT5 compile version 5.15.2.
-
-· 👌 IMPROVE: Games > DXX-Regirth (AKA Descent)
-
-### (27/03/21)
-
-· 📦 ADD: Games > Grand Theft Auto Vice City.
-
-### (20/03/21)
-
-· 📦 ADD: Games > Grand Theft Auto III.
-
-### (05/03/21)
-
-· 📦 ADD: Games > Prince Of Persia (full).
-
-· 👌 IMPROVE: Tweaks > Others > Add/Remove Swap.
-
 ...
 
 To see the full list of changes, read the [CHANGELOG](./CHANGELOG)
 
 ## [ Introducing PiKISS ]
+
+### _"Everything that can be automated, should be automated."_
 
 Installing an application on Linux is not a complex task. Sometimes you just type _sudo apt install_ and get the application installed with all of its dependencies. But... What if we need to install more than one app such as a web server or it requires many steps to complete the install process? Is it not in the official repositories? What if you want to get rid of input commands?
 
@@ -272,6 +248,8 @@ $ git pull
 ## PiKISS para Raspberry Pi: Un puñado de scripts con menú para hacerte la vida más fácil.
 
 ### [ Presentando PiKISS ]
+
+### _"Todo lo que pueda ser automatizado, debería estar automatizado."_
 
 Instalar una aplicación en Linux no es complejo. A veces basta con un _sudo apt install_ y tendrás la aplicación con todas sus dependencias. Pero, ¿Y si tenemos que instalar más de una app como por ejemplo en un servidor web o necesita varios pasos para completar el proceso de instalación?, ¿Y si no está en los repositorios oficiales?, ¿Y si no quieres teclear? ¡Por favor, una manera fácil de instalar mi red WIFI!.
 
