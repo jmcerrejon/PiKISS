@@ -2,7 +2,7 @@
 #
 # Description : RetroArch
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.2 (28/Aug/21)
+# Version     : 1.0.3 (26/Oct/21)
 #
 # Help        : Thanks @foxhound311 for compile all cores and binary files
 #
@@ -12,7 +12,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="/usr/local/bin"
 readonly CONFIG_PATH="$HOME/.config/retroarch"
-readonly BINARY_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_1.9.8-1_armhf.deb"
+readonly BINARY_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_1.9.12-1_armhf.deb"
 readonly CONFIG_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch_config.tar.gz"
 readonly CORES_URL="https://misapuntesde.com/rpi_share/retroarch/libretro_cores.tar.gz"
 readonly BIOS_URL="https://misapuntesde.com/rpi_share/retroarch/libretro_bios.tar.gz"
@@ -36,7 +36,7 @@ runme() {
 uninstall() {
     read -p "Do you want to uninstall RetroArch (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
-        [[ -d $CONFIG_PATH ]] && rm -rf  "$CONFIG_PATH"
+        [[ -d $CONFIG_PATH ]] && rm -rf "$CONFIG_PATH"
         sudo apt remove -y retroarch-rpi4
         if [[ -e $INSTALL_DIR/retroarch ]]; then
             echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
@@ -137,7 +137,7 @@ echo "
 RetroArch
 =========
 
-· Version 1.9.7-1.
+· Version 1.9.12-1.
 · It works on 32/64 bits OS.
 · Can be used with GLES or Vulkan drivers.
 · All cores and binaries optimized for Raspberry Pi 4.
