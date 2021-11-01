@@ -2,32 +2,54 @@
 #
 # Description : Install Printer Server (cups)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.9 (12/Sep/16)
+# Version     : 1.0.0 (1/Nov/21)
 #
-# IMPROVEMENT · Uninstall option if cups is detected
-#
-clear
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
+clear
 
-check_update
+readonly PACKAGES=(cups)
+IP=$(get_ip)
+CUPS_PATH="/usr/lib/cups"
 
-USER=$(whoami)
-IP=$(hostname -I)
+uninstall() {
+    read -p "Cups already installed. Do you want to uninstall? (Y/n) " response
+    if [[ $response =~ [Nn] ]]; then
+        exit_message
+    fi
 
-allow_remote_machines(){
+    sudo apt-get purge -y cups
+    sudo apt-get autoremove -y
+    sudo apt-get autoclean
+    sudo apt-get clean
+    echo -e "\nDone."
+    exit_message
+}
+
+if [[ -e $CUPS_PATH ]]; then
+    uninstall
+fi
+
+allow_remote_machines() {
+    echo
+    read -p "Do you want to allow server admin from remote machines (y/n): " response
+    if [[ $response =~ [Nn] ]]; then
+        return 0
+    fi
+
     sudo cupsctl --remote-any --remote-admin --share-printers --user-cancel-any
     sudo service cups restart
 }
 
-echo -e "Installing cups (74.4 MB aprox.)\n================================\n"
-INSTALLER_DEPS=( cups )
-check_dependencies $INSTALLER_DEPS
-sudo usermod -a -G lpadmin $USER
+install() {
+    echo -e "\nInstalling cups (74.4 MB aprox.)\n================================\n"
 
-read -p "Do you want to allow server admin from remote machines (y/n)?" option
-case "$option" in
-    y*) allow_remote_machines ;;
-esac
+    install_packages_if_missing "${PACKAGES[@]}"
+    sudo usermod -a -G lpadmin "$USER"
+    allow_remote_machines
+    echo -e "\nDone!. Now you can browser to http://$IP:631"
+}
 
-read -p "Done!. Now you can browser to https://$IP:631 Press [Enter] to continue..."
+install_script_message
+install
+exit_message
