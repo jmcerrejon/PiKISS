@@ -2,7 +2,7 @@
 #
 # Description : Other tweaks yes/no answer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.2 (10/Apr/21)
+# Version     : 1.4.3 (11/Nov/21)
 # Compatible  : Raspberry Pi 1-4 (tested)
 #
 # Help        · https://www.raspberrypi.org/forums/viewtopic.php?f=31&t=11642
@@ -183,12 +183,6 @@ echo -e "\nOptimize /mount with defaults,noatime,nodiratime"
 read -p "Agree (y/n)? " option
 case "$option" in
 y*) sudo sed -i 's/defaults,noatime/defaults,noatime,nodiratime/g' /etc/fstab ;;
-esac
-
-echo -e "\nReplace Deadline Scheduler with NOOP Scheduler (NOOP scheduler is best used with solid state devices such as flash memory)."
-read -p "Agree (y/n)? " option
-case "$option" in
-y*) sudo sed -i 's/deadline/noop/g' /boot/cmdline.txt ;;
 esac
 
 read -p "Have a nice day and don't blame me!. Press [Enter] to continue..."
