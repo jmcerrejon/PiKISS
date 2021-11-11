@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **896.3 hours**
+- **898.1 hours**
 
 ## 💰 Total amount donated by users
 
@@ -21,7 +21,7 @@
 
 - I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd) & [ptitSeb](https://github.com/ptitSeb).
 
-- I want to thank my patrons _James Carroll, Rodney Hester, Matthew Michink, Mathew Gracie, cxgr & Tomás Delgado_ for trusting me ❤️
+- I want to thank my patrons _James Carroll, Rodney Hester, Matthew Michink, Mathew Gracie, cxgr, Tomás Delgado & Jay Edwards_ for trusting me ❤️
 
 - Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy, Jonathan Hodges, Mattias True_
 
@@ -64,6 +64,16 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (11/11/21)
+
+· 👌 IMPROVE: Games > Update Diablo (ver. 1.3.0).
+
+· ❌ REMOVE: Tweaks > Others > NOOP Scheduler (Not available anymore).
+
+### (1/11/21)
+
+· 👌 IMPROVE: Server > CUPs (Printer driver).
 
 ### (26/10/21)
 
