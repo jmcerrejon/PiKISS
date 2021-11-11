@@ -2,8 +2,10 @@
 #
 # Description : Install REmote desktop apps
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (30/Jan/21)
+# Version     : 1.0.1 (11/Nov/21)
 # Compatible  : Raspberry Pi 4 (tested)
+#
+# NOTE        : Removed Nomachine, it's not working on bullseye atm.
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
@@ -11,8 +13,6 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="$HOME/apps"
 readonly PACKAGES_VNC=(x11vnc vnc-java)
-readonly NOMACHINE_BINARY_NAME="nomachine_7.0.211_1_armhf.deb"
-readonly NOMACHINE_BINARY_URL="https://download.nomachine.com/download/7.0/Raspberry/$NOMACHINE_BINARY_NAME"
 readonly INPUT=/tmp/temp.$$
 
 # VNC
@@ -88,39 +88,10 @@ install_xrdp() {
     uninstall_xrdp
     install_script_message
     install_backports
-    sudo apt -y -t buster-backports install xrdp
+    sudo apt install -y xrdp
     sudo service xrdp restart
     remove_backports
     echo -e "\n\nDone!. On Windows you can use Remote Desktop | On macOS, search on App Store Microsoft Remote Desktop"
-    exit_message
-}
-
-# NoMachine
-
-uninstall_nomachine() {
-    if [[ ! -e /usr/NX ]]; then
-        return 0
-    fi
-    read -p "Do you want to uninstall Nomachine (y/N)? " response
-    if [[ $response =~ [Yy] ]]; then
-        sudo apt remove -y nomachine && sudo rm -rf /usr/NX /home/pi/.nx /media/nomachine
-        if [[ -e /usr/NX ]]; then
-            echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
-            exit_message
-        fi
-        echo -e "\nSuccessfully uninstalled."
-        exit_message
-    fi
-    exit_message
-}
-
-install_nomachine() {
-    uninstall_nomachine
-    install_script_message
-    echo -e "\nInstaling Nomachine, be patience...\n"
-    download_file "$NOMACHINE_BINARY_URL" "/tmp"
-    sudo dpkg -i "$NOMACHINE_BINARY_NAME"
-    echo -e "\n\nDone!. Download the client at https://www.nomachine.com/ and enjoy!"
     exit_message
 }
 
@@ -129,7 +100,6 @@ menu() {
         dialog --clear \
             --title "[ Remote Desktop Apps ]" \
             --menu "Select from the list:" 11 70 3 \
-            NOMACHINE "Only RPi 4.Fastest and highest quality remote desktop (Recommended)" \
             XRDP "Remote desktop server based on the Remote Desktop Protocol (RDP)" \
             VNC "VNC Server from official repositories" \
             Exit "Exit" 2>"${INPUT}"
@@ -137,7 +107,6 @@ menu() {
         menuitem=$(<"${INPUT}")
 
         case $menuitem in
-        NOMACHINE) clear && install_nomachine ;;
         XRDP) clear && install_xrdp ;;
         VNC) clear && install_vnc ;;
         Exit) exit ;;
