@@ -11,7 +11,7 @@
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-VERSION="v.1.8.2"
+VERSION="v.1.9.0"
 IP=$(get_ip)
 TITLE="PiKISS (Pi Keeping It Simple, Stupid!) ${VERSION} .:. Jose Cerrejon | IP=${IP} ${CPU}| Model=${MODEL}"
 CHK_UPDATE=0
@@ -475,7 +475,6 @@ smOthers() {
             Aircrack "Compile Aircrack-NG suite easily"
             Alacritty "Fastest terminal emulator using GPU for rendering and Wayland compatible"
             BootLoader "Update your RPi boot loader"
-            CoolTerm "Compile a terminal with the look and feel of the old cathode tube screens"
             Fixes "Fix some problems with the Raspbian OS"
             GL4ES "Compile GL4ES - OpenGL for GLES Hardware"
             NetTools "MITM Pentesting Opensource Toolkit (Require X)"
@@ -498,7 +497,6 @@ smOthers() {
         Aircrack) ./scripts/others/aircrack.sh ;;
         Alacritty) ./scripts/others/alacritty.sh ;;
         BootLoader) ./scripts/others/update-bootloader.sh ;;
-        CoolTerm) ./scripts/others/retro-term.sh ;;
         Fixes) ./scripts/others/fixes.sh ;;
         GL4ES) ./scripts/others/gl4es.sh ;;
         NetTools) ./scripts/others/nettools.sh ;;
