@@ -936,9 +936,9 @@ make_with_all_cores() {
     echo -e "\n Compiling..."
 
     if [ "$(uname -m)" == 'armv7l' ]; then
-        time make -j"$(nproc)" OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
+        time make -j"$(nproc)" OPTOPT="-fsigned-char -marm -march=armv8-a+crc -mtune=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard" "$@"
     else
-        time make -j"$(nproc)" PLATFORM=rpi1
+        time make -j"$(nproc)" "$@"
     fi
 
     echo
@@ -1297,4 +1297,8 @@ open_default_browser() {
         echo -e "\nOpening Browser with site: $1..."
         chromium-browser "$1" &>/dev/null &
     fi
+}
+
+get_codename() {
+    lsb_release -sc
 }
