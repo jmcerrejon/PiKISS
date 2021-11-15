@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **903 hours**
+- **904.3 hours**
 
 ## 💰 Total amount donated by users
 
@@ -67,11 +67,13 @@
 
 ### (15/11/21)
 
-· ❌ REMOVE: Others > Cool Retro Term (Added on Bullseye's repository).
+· 👌 IMPROVE: Emulators > Update & new binary compiled DOSBox to 0.83.20 (Compatible with Bullseye).
 
 · 👌 IMPROVE: Change compile parameter for cortex-a72 on some scripts.
 
 · 🐛 FIX: Games > Quake > Quake ][ URL texture pack & typo.
+
+· ❌ REMOVE: Others > Cool Retro Term (Added on Bullseye's repository).
 
 ### (12/11/21)
 
