@@ -2,7 +2,7 @@
 #
 # Description : OpenBOR
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.6 (27/Dec/20)
+# Version     : 1.4.7 (15/Nov/21)
 # Compatible  : Raspberry Pi 4 (tested)
 # Repository  : https://github.com/crcerror/OpenBOR-63xx-RetroPie-openbeta
 # Help		  : https://www.raspberrypi.org/forums/viewtopic.php?f=78&t=26859&start=25
@@ -92,12 +92,12 @@ install() {
 
 compile() {
     install_packages_if_missing "${PACKAGES_DEV[@]}"
-    mkdir -p ~/sc && cd "$_"
+    mkdir -p ~/sc && cd "$_" || exit
     echo "Cloning and compiling repo..."
     [[ ! -d ~/sc/openbor ]] && git clone "$GITHUB_URL"
     make clean-all BUILD_PANDORA=1
     patch -p0 -i ./patch/latest_build.diff
-    make -j"$(getconf _NPROCESSORS_ONLN)" BUILD_PANDORA=1 PNDDEV=/usr OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
+    make_with_all_cores BUILD_PANDORA=1 PNDDEV=/usr
     echo -e "\nDone!"
 }
 

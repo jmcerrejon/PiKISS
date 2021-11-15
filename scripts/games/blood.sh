@@ -2,7 +2,7 @@
 #
 # Description : Blood
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.7 (20/Feb/21)
+# Version     : 1.0.8 (15/Nov/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://www.techradar.com/how-to/how-to-run-wolfenstein-3d-doom-and-duke-nukem-on-your-raspberry-pi
@@ -82,7 +82,7 @@ compile() {
     git clone "$SOURCE_CODE_URL" blood && cd "$_" || exit 1
     fix_path
     echo -e "\n\nCompiling... Estimated time on RPi 4: <5 min.\n"
-    make -j"$(nproc)" WITHOUT_GTK=1 POLYMER=1 USE_LIBVPX=0 HAVE_FLAC=0 OPTLEVEL=3 LTO=0 RENDERTYPESDL=1 HAVE_JWZGLES=1 USE_OPENGL=1 OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
+    make_with_all_cores WITHOUT_GTK=1 POLYMER=1 USE_LIBVPX=0 HAVE_FLAC=0 OPTLEVEL=3 LTO=0 RENDERTYPESDL=1 HAVE_JWZGLES=1 USE_OPENGL=1
     echo -e "\nDone. Copy the data files inside $INSTALL_DIR/blood. You can play typing $INSTALL_DIR/blood/nblood"
     exit_message
 }

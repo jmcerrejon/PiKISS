@@ -2,7 +2,7 @@
 #
 # Description : VICE Commodore 64
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (05/Oct/20)
+# Version     : 1.0.2 (14/Nov/21)
 # Compatible  : Raspberry Pi 4
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -76,7 +76,7 @@ compile() {
     make distclean
     ./autogen.sh
     ./configure --prefix="$INSTALL_DIR"/vice --enable-sdlui2 --without-oss --disable-ethernet --disable-catweasel --without-pulse --enable-x64 -–with-x -–without-resid -–disable-midi --disable-rs232 --disable-ipv6
-    make_with_all_cores "-march=armv8-a+crc -mtune=cortex-a53"
+    make_with_all_cores
     echo -e "\nDone!. Get the ROMs and check the directory $HOME/sc/v3.4/vice/src"
     exit_message
 }

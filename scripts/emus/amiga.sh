@@ -2,7 +2,7 @@
 #
 # Description : Amiberry Amiga emulator
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.5.4 (07/Feb/21)
+# Version     : 1.5.5 (14/Nov/21)
 # Compatible  : Raspberry Pi 1-4
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -103,11 +103,7 @@ compile() {
     mkdir -p "$HOME"/sc && cd "$_" || exit 1
     echo "Cloning and compiling repo..."
     git clone "$GITHUB_PATH" amiberry && cd "$_" || exit 1
-    if [ "$(uname -m)" == 'armv7l' ]; then
-        make -j"$(nproc)" OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
-    else
-        make -j"$(nproc)" PLATFORM=rpi1
-    fi
+    make_with_all_cores
     downloadKICK
     echo -e "\nDone!. Compiled path: $HOME/sc/amiberry"
     exit_message
