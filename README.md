@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **898.1 hours**
+- **903 hours**
 
 ## 💰 Total amount donated by users
 
@@ -64,6 +64,20 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (15/11/21)
+
+· ❌ REMOVE: Others > Cool Retro Term (Added on Bullseye's repository).
+
+· 👌 IMPROVE: Change compile parameter for cortex-a72 on some scripts.
+
+· 🐛 FIX: Games > Quake > Quake ][ URL texture pack & typo.
+
+### (12/11/21)
+
+· 👌 IMPROVE: Server > Remote desktop > xRDP.
+
+· ❌ REMOVE: Server > Remote desktop > Nomachine (It's not compatible with bullseye).
 
 ### (11/11/21)
 
