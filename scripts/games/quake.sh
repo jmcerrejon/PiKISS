@@ -2,7 +2,7 @@
 #
 # Description : Quake I, ][, ]I[
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.5 (21/Feb/21)
+# Version     : 1.3.6 (15/Nov/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help 		  : Quake 1: | https://godmodeuser.com/p/8#40
@@ -25,8 +25,8 @@ readonly Q2_CONFIG_DIR="$HOME/.yq2"
 readonly Q2_BINARY_URL="https://misapuntesde.com/rpi_share/yquake2_bin_arm.tar.gz"
 readonly Q2_SOURCE_CODE_URL="https://github.com/yquake2/yquake2.git"
 readonly Q2_OGG_URL="https://misapuntesde.com/rpi_share/q2_ogg.zip"
-readonly Q2_HIGH_TEXTURE_PAK_URL="https://deponie.yamagi.org/quake2/texturepack/q2_textures.zip"
-readonly Q2_HIGH_TEXTURE_MODELS_URL="https://deponie.yamagi.org/quake2/texturepack/models.zip"readonly
+readonly Q2_HIGH_TEXTURE_PAK_URL="https://deponie.yamagi.org/quake2/texturepack/textures.zip"
+readonly Q2_HIGH_TEXTURE_MODELS_URL="https://deponie.yamagi.org/quake2/texturepack/models.zip"
 readonly Q3_PACKAGES_DEV=(libsdl2-dev libxxf86dga-dev libcurl4-openssl-dev)
 readonly Q3_BINARY_URL="https://misapuntesde.com/rpi_share/quake3-1.32-rpi.tar.gz"
 readonly Q3_SOURCE_CODE_URL="https://github.com/ec-/Quake3e.git"
@@ -100,7 +100,7 @@ q1_opengl_compile() {
     mkdir -p "$HOME"/sc && cd "$_" || exit 1
     download_and_extract "$Q1_SOURCE_CODE_1_URL" "$HOME"/sc
     cd "$HOME"/sc/quakespasm-0.93.2/Quake || exit 1
-    make -j"$(getconf _NPROCESSORS_ONLN)" USE_SDL2=1 OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
+    make_with_all_cores USE_SDL2=1
     echo -e "\nDone!. "
 }
 
@@ -110,7 +110,7 @@ q1_vulkan_compile() {
     mkdir -p "$HOME"/sc && cd "$_" || exit 1
     download_and_extract "$Q1_SOURCE_CODE_2_VK_URL" "$HOME"/sc
     cd "$HOME"/sc/vkQuake/Quake || exit 1
-    make -j"$(getconf _NPROCESSORS_ONLN)" USE_SDL2=1 OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
+    make_with_all_cores USE_SDL2=1
     echo -e "\nDone!. "
 }
 
@@ -222,7 +222,7 @@ q2_compile() {
     mkdir -p "$HOME"/sc
     git clone "$Q2_SOURCE_CODE_URL" yquake2 && cd "$_" || exit 1
     # TODO Add on Makefile -march=armv7
-    make -j"$(getconf _NPROCESSORS_ONLN)"
+    make -j"$(nproc)"
     echo -e "\nDone!. "
 }
 
@@ -329,7 +329,7 @@ q3_compile() {
     echo -e "\nCloning and compiling Quake ]I[...\n"
     [[ ! -d ~/sc/Quake3e ]] && git clone "$Q3_SOURCE_CODE_URL"
     cd ~/sc/Quake3e/ || exit 1
-    make -j"$(nproc)" OPTOPT="-march=armv8-a+crc -mtune=cortex-a53" BUILD_SERVER=0 USE_RENDERER_DLOPEN=0 USE_VULKAN=1
+    make -j"$(nproc)" OPTOPT="-march=armv8-a+crc -mtune=cortex-a72" BUILD_SERVER=0 USE_RENDERER_DLOPEN=0 USE_VULKAN=1
     echo -e "\nDone!. Binary files at build/release-linux-arm"
     exit_message
 }
