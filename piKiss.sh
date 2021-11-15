@@ -520,7 +520,7 @@ while true; do
 
     options=(
         Tweaks "Push your distro to the limit"
-        Games "Install or compile games easily"
+        Games "Install games easily"
         Emulation "Install emulators"
         Info "Info about the Pi or related"
         Multimedia "Install apps like XBMC"
