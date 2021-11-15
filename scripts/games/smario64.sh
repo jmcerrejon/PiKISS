@@ -2,7 +2,7 @@
 #
 # Description : Super Mario 64 EX
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.0 (17/Jul/21)
+# Version     : 1.2.1 (14/Nov/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -71,7 +71,7 @@ compile() {
     unzip sm64.zip && rm sm64.zip
     mv Super\ Mario\ 64\ \(U\)\ \[\!\].z64 baserom.us.z64
     echo -e "\n\nCompiling... Estimated time on RPi 4: < 5 min.\n"
-    make -j"$(nproc)" OPTOPT="-march=armv8-a+crc -mtune=cortex-a53" TARGET_RPI=1 BETTERCAMERA=1 NODRAWINGDISTANCE=1 TEXTURE_FIX=1 EXT_OPTIONS_MENU=1 EXTERNAL_DATA=1
+    make_with_all_cores TARGET_RPI=1 BETTERCAMERA=1 NODRAWINGDISTANCE=1 TEXTURE_FIX=1 EXT_OPTIONS_MENU=1 EXTERNAL_DATA=1
     cd build/us_pc || exit 1
     echo -e "\n\nDone! ALT+ENTER full-screen | SPACE Select | WSAD for move | Arrows for camera, [KL,.] for actions.\n"
     read -p "Press [ENTER] to run the game."

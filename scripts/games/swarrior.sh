@@ -2,7 +2,7 @@
 #
 # Description : Shadow Warrior
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (18/Sep/21)
+# Version     : 1.0.2 (14/Nov/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -73,7 +73,7 @@ compile() {
     cd "$INSTALL_DIR" || exit 1
     git clone "$SOURCE_CODE_URL" swarrior && cd "$_" || exit 1
     git submodule update --init
-    time make -j"$(nproc)" RELEASE=1 USE_POLYMOST=1 USE_OPENGL=USE_GLES2 WITHOUT_GTK=1 OPTOPT="-march=armv8-a+crc -mtune=cortex-a53"
+    make_with_all_cores RELEASE=1 USE_POLYMOST=1 USE_OPENGL=USE_GLES2 WITHOUT_GTK=1
     echo -e "\nDone. Copy the game data files and run ./sw" || exit 0
 }
 
