@@ -2,9 +2,9 @@
 #
 # Description : MS-DOS Emulator DOSBox-X
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.0 (08/Feb/21)
+# Version     : 1.3.0 (15/Nov/21)
 #
-# Help        : https://github.com/joncampbell123/dosbox-x/blob/master/README.source-code-description
+# Help        : https://github.com/joncampbell123/dosbox-x/blob/master/BUILD.md
 #             : https://krystof.io/dosbox-shaders-comparison-for-modern-dos-retro-gaming/
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -13,8 +13,8 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="$HOME/games"
 readonly DOSLIB_PATH="$HOME/sc/doslib/tool/linker/linux-host"
-readonly PACKAGES_DEV=(nasm libncurses5-dev)
-readonly BINARY_URL="https://misapuntesde.com/rpi_share/dosbox-X-rpi_0-83.11.tar.gz"
+readonly PACKAGES_DEV=(sudo apt install automake gcc g++ make libncurses-dev nasm libsdl-net1.2-dev libsdl2-net-dev libpcap-dev libslirp-dev fluidsynth libfluidsynth-dev libavdevice58 libavformat-dev libavcodec-dev libavcodec-extra libavcodec-extra58 libswscale-dev libfreetype-dev libxkbfile-dev libxrandr-dev)
+readonly BINARY_URL="https://misapuntesde.com/rpi_share/dosbox-X-rpi_0-83.20.tar.gz"
 readonly GAME_DATA_URL="https://misapuntesde.com/res/jill-of-the-jungle-the-complete-trilogy.zip"
 readonly SOURCE_CODE_URL="https://github.com/joncampbell123/dosbox-x"
 readonly SOURCE_CODE_DOSLIB_URL="https://github.com/joncampbell123/doslib"
@@ -82,10 +82,10 @@ compile() {
     mkdir -p "$HOME/sc" && cd "$_" || return
     git clone "$SOURCE_CODE_URL" dosbox-x && cd "$_" || return
     PATH=$PATH:$DOSLIB_PATH ./autogen.sh
-    PATH=$PATH:$DOSLIB_PATH ./configure --enable-core-inline --enable-debug=heavy --prefix="$HOME/sc/dosbox-x/bin" --enable-sdl2 --enable-silent-rules --enable-scaler-full-line --disable-dependency-tracking --disable-sdl2test --disable-alsatest --disable-printer --disable-screenshots --host=arm-raspberry-linux-gnueabihf || exit 1
+    PATH=$PATH:$DOSLIB_PATH ./configure --enable-core-inline --enable-debug=heavy --prefix="$HOME/sc/dosbox-x/bin" --enable-sdl2 --enable-silent-rules --enable-scaler-full-line --disable-dependency-tracking --disable-sdl2test --disable-alsatest --disable-printer --disable-screenshots --disable-avcodec --host=arm-raspberry-linux-gnueabihf || exit 1
     echo -e "\nCompiling... It can takes ~14 minutes on RPi 4."
     make_with_all_cores
-    echo -e "\nDone!. Check the code at $HOME/sc/dosbox-x"
+    echo -e "\nDone!. Check the code at $HOME/sc/dosbox-x/src"
     exit_message
 }
 
@@ -117,9 +117,10 @@ echo "
 DOSBox-X MS-DOS Emulator
 ========================
 
+· Version 0.83.20 (15/Nov/21).
 · More Info: $SOURCE_CODE_URL
 · Put your games into: $INSTALL_DIR/dosbox/dos
-· Crediting and many thanks to its author Jonathan Campbell
+· Many thanks to Jonathan Campbell.
 "
 
 install
