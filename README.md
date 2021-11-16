@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **904.3 hours**
+- **905 hours**
 
 ## 💰 Total amount donated by users
 
@@ -64,6 +64,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (16/11/21)
+
+· 🐛 FIX: Configure > Vulkan. FIX missing deps on Bullseye.
 
 ### (15/11/21)
 
