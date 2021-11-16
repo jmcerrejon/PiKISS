@@ -1302,3 +1302,11 @@ open_default_browser() {
 get_codename() {
     lsb_release -sc
 }
+
+get_pi_version_number() {
+    if [[ $MODEL != 'Raspberry Pi' ]]; then
+        return
+    fi
+
+    awk </proc/device-tree/model '{print $3}'
+}
