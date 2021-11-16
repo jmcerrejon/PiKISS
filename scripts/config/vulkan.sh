@@ -2,7 +2,7 @@
 #
 # Description : Vulkan driver
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.2 (08/May/21)
+# Version     : 1.3.0 (16/Nov/21)
 # Compatible  : Raspberry Pi 4
 #
 # Info        : Thks to PI Labs
@@ -16,8 +16,9 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/mesa_vulkan"
-readonly SOURCE_CODE_URL="https://gitlab.freedesktop.org/mesa/mesa/-/tree/20.3"
-readonly PI_VERSION_NUMBER=$(awk </proc/device-tree/model '{print $3}')
+readonly BRANCH_VERSION="21.3"
+readonly SOURCE_CODE_URL="https://gitlab.freedesktop.org/mesa/mesa/-/tree/$BRANCH_VERSION"
+readonly PI_VERSION_NUMBER=$(get_pi_version_number)
 
 install() {
     echo -e "\nInstalling,...\n"
@@ -40,7 +41,7 @@ install_full_deps() {
         libx11-xcb-dev libxext-dev libxdamage-dev libxfixes-dev \
         libva-dev x11proto-randr-dev x11proto-present-dev \
         libclc-dev libelf-dev git build-essential mesa-utils \
-        libvulkan-dev ninja-build libvulkan1 python-mako \
+        libvulkan-dev ninja-build libvulkan1 python3-mako \
         libdrm-dev libxshmfence-dev libxxf86vm-dev libwayland-dev \
         python3-mako wayland-protocols libwayland-egl-backend-dev \
         cmake libassimp-dev python3-pip
@@ -75,6 +76,11 @@ compile() {
 }
 
 install_script_message
+echo -e "\nVulkan installation.\n"
+read -p "This process can't be undone. Continue? (Y/n) " response
+if [[ $response =~ [Nn] ]]; then
+    exit_message
+fi
 upgrade_dist
 compile
 exit_message
