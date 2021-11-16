@@ -13,7 +13,9 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 VERSION="v.1.9.0"
 IP=$(get_ip)
-TITLE="PiKISS (Pi Keeping It Simple, Stupid!) ${VERSION} .:. Jose Cerrejon | IP=${IP} ${CPU}| Model=${MODEL}"
+PI_VERSION_NUMBER=$(get_pi_version_number)
+check_CPU
+TITLE="PiKISS (Pi Keeping It Simple, Stupid!) ${VERSION} .:. Jose Cerrejon | IP=${IP} ${CPU}| Model=${MODEL} ${PI_VERSION_NUMBER}"
 CHK_UPDATE=0
 CHK_PIKISS_UPDATE=0
 NOINTERNETCHECK=0
@@ -21,7 +23,6 @@ wHEIGHT=20
 wWIDTH=90
 check_board
 check_temperature
-check_CPU
 make_desktop_entry
 remove_unneeded_helper
 
