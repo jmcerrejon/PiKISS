@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **905 hours**
+- **906 hours**
 
 ## 💰 Total amount donated by users
 
@@ -65,7 +65,15 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (20/11/21)
+
+· 👌 IMPROVE: Emulators > RetroArch 1.9.13.2-1.
+
+· 🐛 FIX: Configure > Vulkan.
+
 ### (16/11/21)
+
+· 👌 IMPROVE: Emulators > Update & new binary compiled DOSBox to 0.83.20 (Compatible with Bullseye).
 
 · 🐛 FIX: Configure > Vulkan. FIX missing deps on Bullseye.
 
