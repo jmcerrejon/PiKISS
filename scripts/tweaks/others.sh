@@ -2,7 +2,7 @@
 #
 # Description : Other tweaks yes/no answer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.3 (11/Nov/21)
+# Version     : 1.4.4 (20/Nov/21)
 # Compatible  : Raspberry Pi 1-4 (tested)
 #
 # Help        · https://www.raspberrypi.org/forums/viewtopic.php?f=31&t=11642
@@ -185,4 +185,11 @@ case "$option" in
 y*) sudo sed -i 's/defaults,noatime/defaults,noatime,nodiratime/g' /etc/fstab ;;
 esac
 
+echo -e "\nReduce shutdown timeout for a stop job running to 5 seconds."
+read -p "Agree (y/n)? " option
+case "$option" in
+y*) sudo sed -i 's/#DefaultTimeoutStopSec=90s/DefaultTimeoutStopSec=5s/g' /etc/systemd/system.conf ;;
+esac
+
+echo
 read -p "Have a nice day and don't blame me!. Press [Enter] to continue..."
