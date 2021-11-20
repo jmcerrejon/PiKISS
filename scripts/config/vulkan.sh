@@ -16,7 +16,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/mesa_vulkan"
-readonly BRANCH_VERSION="21.3"
+readonly BRANCH_VERSION="20.3"
 readonly SOURCE_CODE_URL="https://gitlab.freedesktop.org/mesa/mesa.git"
 readonly PI_VERSION_NUMBER=$(get_pi_version_number)
 
