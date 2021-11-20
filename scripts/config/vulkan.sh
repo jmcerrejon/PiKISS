@@ -2,7 +2,7 @@
 #
 # Description : Vulkan driver
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.0 (16/Nov/21)
+# Version     : 1.3.1 (20/Nov/21)
 # Compatible  : Raspberry Pi 4
 #
 # Info        : Thks to PI Labs
@@ -17,7 +17,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="$HOME/mesa_vulkan"
 readonly BRANCH_VERSION="21.3"
-readonly SOURCE_CODE_URL="https://gitlab.freedesktop.org/mesa/mesa/-/tree/$BRANCH_VERSION"
+readonly SOURCE_CODE_URL="https://gitlab.freedesktop.org/mesa/mesa.git"
 readonly PI_VERSION_NUMBER=$(get_pi_version_number)
 
 install() {
@@ -51,7 +51,7 @@ install_full_deps() {
 clone_repo() {
     echo -e "\nCloning mesa repo...\n"
     cd || exit
-    git clone -b 20.3 https://gitlab.freedesktop.org/mesa/mesa.git "$INSTALL_DIR" && cd "$_" || exit
+    git clone -b "$BRANCH_VERSION" "$SOURCE_CODE_URL" "$INSTALL_DIR" && cd "$_" || exit
 }
 
 compile() {
@@ -67,16 +67,16 @@ compile() {
         EXTRA_PARAM="-mcpu=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard"
     fi
 
-    # Check in a future the next params for better performance. It seems it's failing due some incompatible params.
+    # TODO Check in a future the next params for better performance. It seems it's failing due some incompatible params.
     # ... -Dgallium-drivers=v3d,kmsro,vc4,zink,virgl
     meson --prefix /usr -Dgles1=disabled -Dgles2=enabled -Dplatforms=x11 -Dvulkan-drivers=broadcom -Ddri-drivers= -Dgallium-drivers=v3d,kmsro,vc4,virgl -Dbuildtype=release -Dc_args="$EXTRA_PARAM" -Dcpp_args="$EXTRA_PARAM" build
-    echo -e "\nCompiling... Estimated time on Raspberry Pi 4 over USB/SSD drive (Not overclocked): ~12 min. \n"
+    echo -e "\nCompiling... \n"
     time ninja -C build -j"$(nproc)"
     install
 }
 
 install_script_message
-echo -e "\nVulkan installation.\n"
+echo -e "\n· This script compile Vulkan Branch $BRANCH_VERSION.\n· Estimated time on Raspberry Pi 4 over USB/SSD drive (Not overclocked): ~12 min.\n"
 read -p "This process can't be undone. Continue? (Y/n) " response
 if [[ $response =~ [Nn] ]]; then
     exit_message
