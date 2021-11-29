@@ -11,7 +11,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
-readonly PACKAGES_DEV=(cmake ninja-build libsdl2-dev pkg-config qtbase5-dev qtbase5-private-dev qtbase5-dev-tools qttools5-dev)
+readonly PACKAGES_DEV=(cmake ninja-build libsdl2-dev libxrandr-dev  pkg-config qtbase5-dev qtbase5-private-dev qtbase5-dev-tools qttools5-dev libevdev-dev libwayland-dev libwayland-egl-dev extra-cmake-modules libcurl4-gnutls-dev libgbm-dev libdrm-dev)
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/duckstation-rpi.tar.gz"
 readonly GAME_DATA_URL="https://archive.org/download/magic-castle-2021-01-feb/Magic_Castle_2021_01_feb.chd"
 readonly BIOS_URL="http://185.232.52.56/biosfiles/psx-playstation-bios-scph1001-bin.zip"
