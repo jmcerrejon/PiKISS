@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **908 hours**
+- **909 hours**
 
 ## 💰 Total amount donated by users
 
@@ -21,7 +21,7 @@
 
 - I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd) & [ptitSeb](https://github.com/ptitSeb).
 
-- I want to thank my patrons _James Carroll, Rodney Hester, Matthew Michink, Mathew Gracie, cxgr, Tomás Delgado & Jay Edwards_ for trusting me ❤️
+- I want to thank my patrons _James Carroll, Mathew Gracie, Matthew Michink, Rodney Hester, cxgr, Tomás Delgado & Jay Edwards_ for trusting me ❤️
 
 - Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy, Jonathan Hodges, Mattias True_
 
@@ -68,6 +68,8 @@
 ### (04/12/21)
 
 · 🐛 FIX: Emulators > PSX missing deps.
+
+· 🐛 FIX: Games > Serious Sam.
 
 ### (20/11/21)
 
