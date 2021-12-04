@@ -2,7 +2,7 @@
 #
 # Description : Blood
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.8 (15/Nov/21)
+# Version     : 1.0.9 (04/Dec/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://www.techradar.com/how-to/how-to-run-wolfenstein-3d-doom-and-duke-nukem-on-your-raspberry-pi
@@ -89,7 +89,7 @@ compile() {
 
 download_data_files() {
     DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
-    message_magic_air_copy
+    message_magic_air_copy "$VAR_DATA_NAME"
     download_and_extract "$DATA_URL" "$INSTALL_DIR/blood"
 }
 

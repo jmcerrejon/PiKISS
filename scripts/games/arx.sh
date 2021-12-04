@@ -2,7 +2,7 @@
 #
 # Description : Arx Libertatis (AKA Arx Fatalis)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.10 (14/Feb/21)
+# Version     : 1.0.11 (04/Dec/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help        : https://wiki.arx-libertatis.org/Downloading_and_Compiling_under_Linux
@@ -149,7 +149,7 @@ download_data_files() {
     if exists_magic_file; then
         choose_data_files
     fi
-    message_magic_air_copy
+    message_magic_air_copy "$VAR_DATA_NAME_EN"
     download_and_extract "$DATA_URL" ~
 }
 

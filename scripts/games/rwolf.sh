@@ -2,7 +2,7 @@
 #
 # Description : Return to Castle Wolfenstein for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.5 (21/Feb/21)
+# Version     : 1.3.6 (04/Dec/21)
 # Compatible  : Raspberry Pi 3-4 (tested)
 # Repository  : https://github.com/iortcw/iortcw
 # Extras      : https://www.moddb.com/mods/rtcw-venom-mod/downloads/rtcw-venom-mod-v60
@@ -75,7 +75,7 @@ end_message() {
 download_data_files() {
     local DATA_URL
     DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
-    message_magic_air_copy
+    message_magic_air_copy "$VAR_DATA_NAME"
     download_and_extract "$DATA_URL" "$INSTALL_DIR"/rtcw
 }
 

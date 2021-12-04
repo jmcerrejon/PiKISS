@@ -127,7 +127,7 @@ q1_soundtrack_download() {
 q1_magic_air_copy() {
     if exists_magic_file; then
         Q1_DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_1")
-        message_magic_air_copy
+        message_magic_air_copy "$VAR_DATA_NAME_1"
     fi
     download_and_extract "$Q1_DATA_URL" "$HOME"/quake
 }
@@ -241,7 +241,7 @@ q2_high_textures_download() {
 q2_magic_air_copy() {
     if exists_magic_file; then
         Q2_DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_2")
-        message_magic_air_copy
+        message_magic_air_copy "$VAR_DATA_NAME_2"
     fi
     download_and_extract "$Q2_DATA_URL" "$Q2_CONFIG_DIR"
 }
@@ -353,7 +353,7 @@ q3_magic_air_copy() {
         exit_message
     fi
     Q3_DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_3")
-    message_magic_air_copy
+    message_magic_air_copy "$VAR_DATA_NAME_3"
     download_and_extract "$Q3_DATA_URL" "$INSTALL_DIR"/quake3
 }
 

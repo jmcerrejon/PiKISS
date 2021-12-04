@@ -2,7 +2,7 @@
 #
 # Description : fheroes2
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.2 (25/Sep/21)
+# Version     : 1.0.3 (04/Dec/21)
 # Compatible  : Raspberry Pi 4
 # Repository  : https://github.com/ihhub/fheroes2
 #
@@ -91,7 +91,7 @@ get_demo() {
 
 download_data_files() {
     DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
-    message_magic_air_copy
+    message_magic_air_copy "$VAR_DATA_NAME"
     download_and_extract "$DATA_URL" "$INSTALL_DIR/fheroes2"
 }
 

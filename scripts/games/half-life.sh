@@ -2,7 +2,7 @@
 #
 # Description : Half Life thks to Salva (Pi Labs)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.12 (21/Feb/21)
+# Version     : 1.0.13 (04/Dec/21)
 # Compatible  : Raspberry Pi (tested)
 # Repository  : https://github.com/ValveSoftware/halflife
 #
@@ -80,7 +80,7 @@ post_install() {
 
 download_data_files() {
     DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
-    message_magic_air_copy
+    message_magic_air_copy "$VAR_DATA_NAME"
     download_and_extract "$DATA_URL" "$INSTALL_DIR"/half-life
 }
 
