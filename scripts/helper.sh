@@ -718,8 +718,8 @@ check_update_pikiss() {
     if [[ $IS_UP_TO_DATE ]]; then
         echo -e "\n New version available!\n\n · Installing updates...\n"
         git fetch --all
-        git reset --hard origin/master --no-rebase
-        git pull origin master
+        git reset --hard origin/master
+        git pull origin master --ff-only
         echo
         echo -e "PiKISS is up to date!. \n\nYou need to run the program again.\n"
         read -p "Press [ENTER] to exit."
