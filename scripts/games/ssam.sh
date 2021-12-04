@@ -2,7 +2,7 @@
 #
 # Description : Serious Sam 1 & 2
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.5 (04/Dec/21)
+# Version     : 1.2.6 (04/Dec/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help        : https://www.raspberrypi.org/forums/viewtopic.php?t=200458
@@ -118,7 +118,7 @@ fix_libEGL() {
 install_full_tfe() {
     local DATA_URL
     DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_1")
-    message_magic_air_copy
+    message_magic_air_copy "$VAR_DATA_NAME_1"
     download_and_extract "$DATA_URL" "$INSTALL_DIR"
     echo -e "\nDone!. Go to $INSTALL_DIR/ssam-tfe/Bin/ssam-tfe or go to Menu > Games > Serious Sam The First Encounter."
     runme_tfe
@@ -127,7 +127,7 @@ install_full_tfe() {
 install_full_tse() {
     local DATA_URL
     DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_2")
-    message_magic_air_copy
+    message_magic_air_copy "$VAR_DATA_NAME_2"
     download_and_extract "$DATA_URL" "$INSTALL_DIR"
     fix_libEGL
     echo -e "\nDone!. Go to $INSTALL_DIR/ssam-tse/ssam-tse.sh or go to Menu > Games > Serious Sam The Second Encounter."
