@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **906 hours**
+- **908 hours**
 
 ## 💰 Total amount donated by users
 
@@ -65,11 +65,17 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (04/12/21)
+
+· 🐛 FIX: Emulators > PSX missing deps.
+
 ### (20/11/21)
 
 · 👌 IMPROVE: Emulators > RetroArch 1.9.13.2-1.
 
 · 🐛 FIX: Configure > Vulkan.
+
+· 👌 IMPROVE: Tweaks > Others >Add reduce stop job running tweak.
 
 ### (16/11/21)
 
