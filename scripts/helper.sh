@@ -719,7 +719,7 @@ check_update_pikiss() {
         echo -e "\n New version available!\n\n · Installing updates...\n"
         git fetch --all
         git reset --hard origin/master
-        git pull origin master --ff-only
+        git pull --ff-only origin master
         echo
         echo -e "PiKISS is up to date!. \n\nYou need to run the program again.\n"
         read -p "Press [ENTER] to exit."
