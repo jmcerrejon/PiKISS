@@ -2,7 +2,7 @@
 #
 # Description : Serious Sam 1 & 2
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.4 (14/Feb/21)
+# Version     : 1.2.5 (04/Dec/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help        : https://www.raspberrypi.org/forums/viewtopic.php?t=200458
@@ -45,7 +45,7 @@ runme_tse() {
 
 remove_files() {
     [ $# -eq 0 ] && exit 0
-    [ -d "$INSTALL_DIR/$1" ] && rm -rf "${INSTALL_DIR:?}/${1}" ~/.local/share/applications/"$1".desktop
+    [ -d "$INSTALL_DIR/$1" ] && rm -rf "${INSTALL_DIR:?}/${1}" ~/.local/share/applications/"$1".desktop ~/.local/share/applications/ssam-tfe.desktop ~/.local/share/applications/ssam-tse.desktop
 }
 
 uninstall() {
@@ -77,13 +77,13 @@ if [[ -d "$INSTALL_DIR"/ssam ]]; then
 fi
 
 generate_icon_tfe() {
-    echo -e "\nGenerating icon..."
+    echo -e "\nGenerating icon Serious Sam The First Encounter..."
     if [[ ! -e ~/.local/share/applications/ssam-tfe.desktop ]]; then
         cat <<EOF >~/.local/share/applications/ssam-tfe.desktop
 [Desktop Entry]
 Name=Serious Sam The First Encounter
 Exec=${INSTALL_DIR}/ssam-tfe/Bin/ssam-tfe
-Icon=${INSTALL_DIR}/ssam-tfe/ssam-tfe.png
+Icon=${INSTALL_DIR}/ssam/ssam-tfe.png
 Path=${INSTALL_DIR}/ssam-tfe/Bin
 Type=Application
 Comment=Sam Serious Stone is chosen to use the Time-Lock in hopes that he will defeat Mental and change the course of history...
@@ -93,13 +93,13 @@ EOF
 }
 
 generate_icon_tse() {
-    echo -e "\nGenerating icon..."
+    echo -e "\nGenerating icon Serious Sam The Second Encounter"
     if [[ ! -e ~/.local/share/applications/ssam-tse.desktop ]]; then
         cat <<EOF >~/.local/share/applications/ssam-tse.desktop
 [Desktop Entry]
 Name=Serious Sam The Second Encounter
 Exec=${INSTALL_DIR}/ssam-tse/ssam-tse.sh
-Icon=${INSTALL_DIR}/ssam-tse/ssam-tse.png
+Icon=${INSTALL_DIR}/ssam/ssam-tse.png
 Path=${INSTALL_DIR}/ssam-tse/Serious-Engine/Bin
 Type=Application
 Comment=After the events of The First Encounter, Serious Sam is seen traveling through space in the SSS Centerprice...
@@ -120,7 +120,6 @@ install_full_tfe() {
     DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_1")
     message_magic_air_copy
     download_and_extract "$DATA_URL" "$INSTALL_DIR"
-    generate_icon_tfe
     echo -e "\nDone!. Go to $INSTALL_DIR/ssam-tfe/Bin/ssam-tfe or go to Menu > Games > Serious Sam The First Encounter."
     runme_tfe
 }
@@ -131,7 +130,6 @@ install_full_tse() {
     message_magic_air_copy
     download_and_extract "$DATA_URL" "$INSTALL_DIR"
     fix_libEGL
-    generate_icon_tse
     echo -e "\nDone!. Go to $INSTALL_DIR/ssam-tse/ssam-tse.sh or go to Menu > Games > Serious Sam The Second Encounter."
     runme_tse
 }
@@ -157,6 +155,8 @@ choose_data_files() {
 
 install() {
     download_and_extract "$BINARY_URL" "$INSTALL_DIR"
+    generate_icon_tfe
+    generate_icon_tse
     if exists_magic_file; then
         choose_data_files
     fi
