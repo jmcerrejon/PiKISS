@@ -721,7 +721,7 @@ check_update_pikiss() {
         git reset --hard origin/master
         git pull --ff-only origin master
         echo
-        echo -e "PiKISS is up to date!. \n\nYou need to run the program again.\n"
+        echo -e "You need to run the program again.\n"
         read -p "Press [ENTER] to exit."
         exit 1
     fi
