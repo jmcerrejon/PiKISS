@@ -2,7 +2,7 @@
 #
 # Description : Duckstation - Fast PlayStation 1 emulator for PC and Android
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (07/Feb/21)
+# Version     : 1.0.1 (07/Dec/21)
 # Compatible  : Raspberry Pi 4 (tested)
 # Repository  : https://github.com/stenzek/duckstation
 #
@@ -11,12 +11,11 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
-readonly PACKAGES_DEV=(cmake ninja-build libsdl2-dev libxrandr-dev  pkg-config qtbase5-dev qtbase5-private-dev qtbase5-dev-tools qttools5-dev libevdev-dev libwayland-dev libwayland-egl-dev extra-cmake-modules libcurl4-gnutls-dev libgbm-dev libdrm-dev)
+readonly PACKAGES_DEV=(cmake ninja-build libsdl2-dev libxrandr-dev pkg-config qtbase5-dev qtbase5-private-dev qtbase5-dev-tools qttools5-dev libevdev-dev libwayland-dev libwayland-egl-dev extra-cmake-modules libcurl4-gnutls-dev libgbm-dev libdrm-dev)
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/duckstation-rpi.tar.gz"
 readonly GAME_DATA_URL="https://archive.org/download/magic-castle-2021-01-feb/Magic_Castle_2021_01_feb.chd"
-readonly BIOS_URL="http://185.232.52.56/biosfiles/psx-playstation-bios-scph1001-bin.zip"
+readonly BIOS_URL="https://dl.hexrom.com/rom/psx-bios-SCPH1001-hexrom_com.zip"
 readonly SOURCE_CODE_URL="https://github.com/stenzek/duckstation"
-readonly INPUT=/tmp/temp.$$
 
 runme() {
     if [ ! -f "$INSTALL_DIR/duckstation/duckstation-qt" ]; then
@@ -123,23 +122,4 @@ Duckstation for Raspberry Pi
     runme
 }
 
-menu() {
-    while true; do
-        dialog --clear \
-            --title "[ Duckstation - PS1 Emulator ]" \
-            --menu "Select from the list:" 11 70 3 \
-            INSTALL "Binary (Recommended)" \
-            COMPILE "Latest from source code." \
-            Exit "Exit" 2>"${INPUT}"
-
-        menuitem=$(<"${INPUT}")
-
-        case $menuitem in
-        INSTALL) clear && install ;;
-        COMPILE) clear && compile ;;
-        Exit) exit ;;
-        esac
-    done
-}
-
-menu
+install
