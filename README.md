@@ -13,11 +13,11 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **909 hours**
+- **910 hours**
 
 ## 💰 Total amount donated by users
 
-- $730,04
+- $1286,67
 
 - I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd) & [ptitSeb](https://github.com/ptitSeb).
 
@@ -64,6 +64,12 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (07/12/21)
+
+· 👌 IMPROVE: Emulators > Duckstation (PSX).
+
+· 🐛 FIX: Emulators > PSX missing BiOS URL.
 
 ### (04/12/21)
 
