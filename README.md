@@ -17,13 +17,13 @@
 
 ## 💰 Total amount donated by users
 
-- $1286,67
+- $1386,67
 
 - I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd) & [ptitSeb](https://github.com/ptitSeb).
 
-- I want to thank my patrons _James Carroll, Mathew Gracie, Matthew Michink, Rodney Hester, cxgr, Tomás Delgado & Jay Edwards_ for trusting me ❤️
+- I want to thank my patrons _James Carroll, Mathew Gracie, Matthew Michink, Rodney Hester, cxgr, Tomás Delgado, Jay Edwards & Bo Martin_ for trusting me ❤️
 
-- Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy, Jonathan Hodges, Mattias True_
+- Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy, Jonathan Hodges, Mattias True, Sara J Shireman Anderson_
 
 ## 📣 Stay tuned!
 
@@ -64,6 +64,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (11/12/21)
+
+· 👌 IMPROVE: Emulators > RetroArch 1.9.14-1 + update cores.
 
 ### (07/12/21)
 
