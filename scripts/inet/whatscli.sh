@@ -2,7 +2,7 @@
 #
 # Description : Whatscli
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (15/Dec/20)
+# Version     : 1.0.1 (15/Dec/21)
 # Compatible  : Raspberry Pi 1-4
 # Repository  : https://github.com/normen/whatscli
 #
@@ -11,7 +11,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/apps"
-readonly BINARY_URL="https://github.com/normen/whatscli/releases/download/v1.0.5/whatscli-v1.0.5-raspberrypi.zip"
+readonly BINARY_URL="https://github.com/normen/whatscli/releases/download/v1.0.11/whatscli-v1.0.11-raspberrypi.zip"
 readonly SOURCE_PATH="https://github.com/normen/whatscli"
 readonly PIKISS_PATH="$PWD"
 
