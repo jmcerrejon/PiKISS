@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/bash -x
 #
 # Description : Duckstation - Fast PlayStation 1 emulator for PC and Android
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (07/Dec/21)
+# Version     : 1.0.2 (16/Dec/21)
 # Compatible  : Raspberry Pi 4 (tested)
 # Repository  : https://github.com/stenzek/duckstation
 #
@@ -12,10 +12,11 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES_DEV=(cmake ninja-build libsdl2-dev libxrandr-dev pkg-config qtbase5-dev qtbase5-private-dev qtbase5-dev-tools qttools5-dev libevdev-dev libwayland-dev libwayland-egl-dev extra-cmake-modules libcurl4-gnutls-dev libgbm-dev libdrm-dev)
-readonly BINARY_URL="https://misapuntesde.com/rpi_share/duckstation-rpi.tar.gz"
 readonly GAME_DATA_URL="https://archive.org/download/magic-castle-2021-01-feb/Magic_Castle_2021_01_feb.chd"
 readonly BIOS_URL="https://dl.hexrom.com/rom/psx-bios-SCPH1001-hexrom_com.zip"
 readonly SOURCE_CODE_URL="https://github.com/stenzek/duckstation"
+readonly BINARY_URL_BUSTER="https://misapuntesde.com/rpi_share/duckstation-rpi-buster.tar.gz"
+BINARY_URL="https://misapuntesde.com/rpi_share/duckstation-rpi.tar.gz"
 
 runme() {
     if [ ! -f "$INSTALL_DIR/duckstation/duckstation-qt" ]; then
@@ -82,7 +83,14 @@ compile() {
 }
 
 download_binaries() {
+    local CODENAME
+    CODENAME=$(get_codename)
+
     echo -e "\nInstalling binary files..."
+    if [[ "$CODENAME" == "buster" ]]; then
+        echo -e "\nDetected Buster code name..."
+        BINARY_URL="$BINARY_URL_BUSTER"
+    fi
     download_and_extract "$BINARY_URL" "$INSTALL_DIR"
 }
 
