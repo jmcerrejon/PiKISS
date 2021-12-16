@@ -1304,7 +1304,7 @@ get_codename() {
 }
 
 get_pi_version_number() {
-    if [[ $MODEL!='Raspberry Pi' ]]; then
+    if [[ $MODEL != 'Raspberry Pi' ]]; then
         return
     fi
 
