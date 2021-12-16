@@ -1304,9 +1304,23 @@ get_codename() {
 }
 
 get_pi_version_number() {
-    if [[ $MODEL != 'Raspberry Pi' ]]; then
+    if [[ $MODEL!='Raspberry Pi' ]]; then
         return
     fi
 
     awk </proc/device-tree/model '{print $3}'
+}
+
+open_file_explorer() {
+    if [[ -e /usr/bin/nautilus ]]; then
+        nautilus "$1" &>/dev/null &
+    elif [[ -e /usr/bin/thunar ]]; then
+        thunar "$1" &>/dev/null &
+    elif [[ -e /usr/bin/pcmanfm ]]; then
+        pcmanfm "$1" &>/dev/null &
+    elif [[ -e /usr/bin/nemo ]]; then
+        nemo "$1" &>/dev/null &
+    elif [[ -e /usr/bin/dolphin ]]; then
+        dolphin "$1" &>/dev/null &
+    fi
 }
