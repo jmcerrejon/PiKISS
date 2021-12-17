@@ -2,7 +2,7 @@
 #
 # Description : Arx Libertatis (AKA Arx Fatalis)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.11 (04/Dec/21)
+# Version     : 1.0.11 (17/Dec/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help        : https://wiki.arx-libertatis.org/Downloading_and_Compiling_under_Linux
@@ -21,10 +21,9 @@ readonly BINARY_URL="https://www.littlecarnage.com/arx_rpi2.tar.gz"
 readonly SOURCE_CODE_URL="https://github.com/ptitSeb/ArxLibertatis.git"
 readonly SOURCE_CODE_OFFICIAL_URL="https://github.com/arx/ArxLibertatis.git" # Doesn't work for now
 readonly ICON_URL="https://github.com/arx/ArxLibertatisData/blob/master/icons/arx-libertatis-32.png?raw=true"
-readonly VAR_DATA_NAME_EN="ARX_FULL_EN"
-readonly VAR_DATA_NAME_ES="ARX_FULL_ES"
+readonly VAR_DATA_NAME="ARX_FATALIS"
+DATA_URL="https://e.pcloud.link/publink/show?code=XZOsaZFJFHKEmMiHQtMyFw7ESWemvYz8xV"
 INPUT=/tmp/arx.$$
-DATA_URL="https://vnunnari.fr/public_html/pikiss/arx_demo_en.tgz"
 
 runme() {
     if [ ! -f "$INSTALL_DIR"/arx/arx ]; then
@@ -124,30 +123,9 @@ end_message() {
     runme
 }
 
-choose_data_files() {
-    while true; do
-        dialog --clear \
-            --title "[ Arx Libertatis Data files ]" \
-            --menu "Choose language:" 11 68 4 \
-            English "Install the game with English text and voices." \
-            Spanish "Install the game with Spanish text and voices." \
-            Shareware "Continue with Shareware version" \
-            Exit "Abort and return to the main menu" 2>"${INPUT}"
-
-        menuitem=$(<"${INPUT}")
-
-        case $menuitem in
-        English) clear && DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_EN") && return 0 ;;
-        Spanish) clear && DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_ES") && return 0 ;;
-        Shareware) clear && return 0 ;;
-        Exit) clear && exit_message ;;
-        esac
-    done
-}
-
 download_data_files() {
     if exists_magic_file; then
-        choose_data_files
+        DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
     fi
     message_magic_air_copy "$VAR_DATA_NAME_EN"
     download_and_extract "$DATA_URL" ~
@@ -167,7 +145,7 @@ echo "
 Install Arx Libertatis (Port of Arx Fatalis)
 ============================================
  · Install path: $INSTALL_DIR/arx
- · If it's not provided a game data files inside $PIKISS_MAGIC_AIR_COPY_PATH, a shareware version will be installed.
+ · Demo version will be installed If it's not provided the game data files path in $PIKISS_MAGIC_AIR_COPY_PATH.
  · NOTE: It's NOT the latest compiled from source. This binary comes from https://www.littlecarnage.com/
 "
 read -p "Press [Enter] to continue..."
