@@ -2,7 +2,7 @@
 #
 # Description : Aliens versus Predator
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.3 (03/Jan/21)
+# Version     : 1.0.4 (17/Dec/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://www.raspberrypi.org/forums/viewtopic.php?t=100152
@@ -13,7 +13,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
-readonly BINARY_URL="https://vnunnari.fr/public_html/pikiss/avp_rpi.tar.gz"
+readonly BINARY_URL="https://e.pcloud.link/publink/show?code=XZAsaZyuPOGu08DYJk0ksHVDDYgmGAoTcV"
 
 runme() {
     echo
