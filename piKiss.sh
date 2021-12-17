@@ -164,6 +164,7 @@ smGames() {
             Morrowind "The Elder Scrolls III: Morrowind is an open-world RPG"
             OpenBor "OpenBOR is the open source continuation of Beats of Rage"
             OpenClaw "Platform 2D Captain Claw (1997) reimplementation"
+            OpenJK "Engine for Star Wars Jedi Knight: Jedi Academy (SP & MP)"
             OpenRCT2 "Open Source re-implementation of RollerCoaster Tycoon 2"
             OpenSPlex "OpenSupaplex reimplementation of the original 90's game"
             OpenXCom "Open-source clone of UFO: Enemy Unknown"
@@ -211,6 +212,7 @@ smGames() {
         Morrowind) ./scripts/games/openmw.sh ;;
         OpenBor) ./scripts/games/openbor.sh ;;
         OpenClaw) ./scripts/games/openclaw.sh ;;
+        OpenJK) ./scripts/games/openjk.sh ;;
         OpenRCT2) ./scripts/games/openrct2.sh ;;
         OpenSPlex) ./scripts/games/supaplex.sh ;;
         OpenXCom) ./scripts/games/openxcom.sh ;;
