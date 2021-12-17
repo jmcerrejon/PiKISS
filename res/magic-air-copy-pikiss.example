@@ -5,7 +5,6 @@
 # - PiKISS will copy in the right directory the data you have inside this file.
 # - Set in each variable the correct URL/path to your data files.
 # - You can mix them, so QUAKE_3 could be a URL, DIABLO_1 a directory,...
-# - Some variables have suffixes. _EN/_ES means the language(_EN for English, _ES for Spanish). You can't add more, so don't try DIABLO2_FR ;)
 # - Avoid spaces in the directory/file names.
 #
 # Possible values:
@@ -15,9 +14,7 @@
 # - File: A file compressed with any compression method. | Example: HALF-LIFE=/home/pi/my_data_files/half-life-data.7z
 # - Directory: Path to the data directory.               | Example: HALF-LIFE=/media/pi/MY_EXTERNAL_HDD/games/half-life/valve
 #
-ARX_DEMO_EN=https://e.pcloud.link/publink/show?code=XZOsaZFJFHKEmMiHQtMyFw7ESWemvYz8xV
-ARX_FULL_EN=
-ARX_FULL_ES=
+ARX_FATALIS=
 AVP_RPI=
 BLOOD_FULL=
 DIABLO_1=
