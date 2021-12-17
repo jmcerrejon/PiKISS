@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **910 hours**
+- **920 hours**
 
 ## 💰 Total amount donated by users
 
@@ -65,9 +65,21 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (17/12/21)
+
+· 📦 ADD: Games > OpenJK (Jedi Knight: Jedi Academy).
+
+· 👌 IMPROVE: Internet > Whatscli v1.0.11 (A cli interface for whatsapp).
+
+· 👌 IMPROVE: Emulators > Duckstation (PSX) now compatible with Buster & Twister OS.
+
+· 🐛 FIX: Games > Arx Libertatis > Broken link. Remove menu for choose version.
+
+· 🐛 FIX: Games > Alien Vs Predator > Broken link.
+
 ### (11/12/21)
 
-· 👌 IMPROVE: Emulators > RetroArch 1.9.14-1 + update cores.
+· 👌 IMPROVE: Emulators > RetroArch v1.9.14-1 + update cores.
 
 ### (07/12/21)
 
@@ -139,104 +151,6 @@
 
 · 👌 IMPROVE: Server > Frameworks (WordPress, Node, Ghost).
 
-### (26/09/21)
-
-· 📦 ADD: Games > OpenRCT2 (RollerCoaster Tycoon 2).
-
-### (25/09/21)
-
-· 🐛 FIX issue [#117](https://github.com/jmcerrejon/PiKISS/issues/117): already up to date and It's not installed. Refactor code.
-
-· 👌 IMPROVE: Refactor code call to make_install_compiled_app.
-
-### (24/09/21)
-
-· 🐛 FIX: Games > Zandronum (compile source code path).
-
-· 🐛 FIX: Install return value.
-
-### (18/09/21)
-
-· 📦 ADD: Games > Shadow Warrior.
-
-· 👌 IMPROVE: Games > Diablo (Add Hellfire support).
-
-### (10/09/21)
-
-· 👌 IMPROVE: Games > Grand Theft Auto III.
-
-· 👌 IMPROVE: Games > Grand Theft Auto Vice City.
-
-### (28/08/21)
-
-· 👌 IMPROVE: Games > Diablo 2.
-
-· 👌 IMPROVE: Emulators > RetroArch 1.9.8-1.
-
-· 🐛 FIX: Games > Zandronum.
-
-· 🐛 FIX: Emulators > mGBA.
-
-### (07/08/21)
-
-· 📦 ADD: Internet > SyncTERM (Telnet/SSH/BBS).
-
-### (01/08/21)
-
-· 📦 ADD: Emulators > RetroArch 1.9.7-1 + Extras.
-
-### (24/07/21)
-
-· 📦 ADD: Games > Heroes of Might & Magic III (VCMI engine).
-
-### (17/07/21)
-
-· 👌 IMPROVE: Games > Super Mario 64 EX (HQ textures for Mario/Bowser and +).
-
-### (11/07/21)
-
-· 👌 IMPROVE: Emulation > openMSX version 0.17.
-
-### (27/06/21)
-
-· 📦 ADD: Games > GemRB (Baldur's Gate and other RPG games).
-
-· 👌 IMPROVE: Grand Theft Auto III, Grand Theft Auto Vice City.
-
-### (30/05/21)
-
-· 🐛 FIX: Games > OpenXCOM.
-
-· 👌 IMPROVE: MagicAirCopy®.
-
-### (23/05/21)
-
-· 📦 ADD: Games > Hermes.
-
-· 👌 IMPROVE: Others > Winex86 + Box86 + Winetricks. Add option for uninstall Wine.
-
-· 🐛 FIX: Emulators > Box86.
-
-### (21/05/21)
-
-#### Welcome to my new Patron Nguyên Hồ! ❤️
-
-· 📦 ADD: Others > Winex86 + Box86.
-
-· 🐛 FIX: Emulators > Box86.
-
-### (07/05/21)
-
-· 📦 ADD: Emulators > MAME (Add Mame 0.230).
-
-· 👌 IMPROVE: Server > Auto update Debian Buster.
-
-· 🐛 FIX: Server > VPNServer.
-
-· 🐛 FIX: Others > Scrcpy (Missing scrcpy-server).
-
-· ❌ REMOVE: Emulators > Advanced MAME (Obsolete).
-
 ...
 
 To see the full list of changes, read the [CHANGELOG](./CHANGELOG)
@@ -255,7 +169,7 @@ Don't despair. **PiKISS** has come to help you...
 
 **PiKISS** _(Pi Keeping It Simple, Stupid!)_ is made with _scripts (Bash)_ for _Raspberry Pi 4_ boards which has a menu that will allow you to install some applications or configure files automatically as easy as possible. The ideal stage is:
 
-- _Raspberry PI OS Desktop_ mainly, [TwisterOS](https://twisteros.com/) and _Debian_ derivates with 32 bits.
+- _Raspberry PI OS Desktop_ Bullseye 32 bits.
 
 - User _pi_ or another user with sudo priviledges.
 
@@ -317,7 +231,7 @@ No desesperéis. Ha llegado **PiKISS** para ayudarte...
 
 ---
 
-**PiKISS** _(Pi Keeping It Simple, Stupid!, "Pi manteniéndolo sencillo, ¡Estúpido!")_ son unos _scripts en Bash_ para placas _Raspberry Pi 4_ (_Raspberry PI OS Desktop_, [TwisterOS](https://twisteros.com/) y derivados _Debian_ todas ellas en versiones de _32 bits_), que cuenta con un menú que te va a permitir instalar algunas aplicaciones o configurar ficheros de forma automática de la manera más fácil posible. **Su misión: Simplificar la instalación de software en _Raspberry Pi_.**
+**PiKISS** _(Pi Keeping It Simple, Stupid!, "Pi manteniéndolo sencillo, ¡Estúpido!")_ son unos _scripts en Bash_ para placas _Raspberry Pi 4_ y testeado en _Raspberry PI OS Desktop_ Bullseye 32 bits, que cuenta con un menú que te va a permitir instalar algunas aplicaciones o configurar ficheros de forma automática de la manera más fácil posible. **Su misión: Simplificar la instalación de software en _Raspberry Pi_.**
 
 La idea es ofrecer facilidades para manejar tu distribución y que las instalaciones sean tan sencillas como seleccionar una opción en un menú y contestar [Si/No]. Si alguna conlleva algo más que instalar, por ejemplo modificar un script en el arranque, añadir una línea a un fichero, descargar otros ficheros, comprobar dependencias, **PiKISS** lo hará por ti.
 
