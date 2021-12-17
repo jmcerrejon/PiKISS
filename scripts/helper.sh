@@ -859,7 +859,6 @@ exists_magic_file() {
 #
 message_magic_air_copy() {
     if ! exists_magic_file; then
-        echo -e "\nFile $PIKISS_MAGIC_AIR_COPY_PATH not found..."
         false
         return
     fi
