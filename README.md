@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **920 hours**
+- **925 hours**
 
 ## 💰 Total amount donated by users
 
@@ -31,8 +31,6 @@
 
 - 📖⠀Blog (English & Spanish): [misapuntesde.com](https://misapuntesde.com/)
 
-- 💰⠀Patreon: [patreon.com/cerrejon](https://www.patreon.com/cerrejon?fan_landing=true)
-
 - 🐦⠀Twitter: [@ulysess10](https://twitter.com/ulysess10)
 
 - 👾⠀Discord for suggestions & support [thanks to Pi Labs](https://discord.gg/Y7WFeC5)
@@ -40,6 +38,10 @@
 - 👨🏻‍💻⠀LinkedIn: [es.linkedin.com/in/jmcerrejon](https://es.linkedin.com/in/jmcerrejon/)
 
 - 📣⠀Mewe (Spanish): [mewe.com](https://mewe.com/group/5c6bbed8f0e71669f228c457)
+
+- 💰 ⠀Patreon: https://patreon.com/cerrejon
+
+- 💰 ⠀Paypal: https://paypal.me/jmcerrejon
 
 ## 🤝 Contributors
 
@@ -64,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (25/12/21)
+
+· 🐛 FIX: Others > RPiPlay (AirPlay mirroring) now compatible with Bullseye using Gstreamer.
 
 ### (17/12/21)
 

@@ -1,3 +1,7 @@
+# (25/12/21)
+
+· 🐛 FIX: Others > RPiPlay (AirPlay mirroring) now compatible with Bullseye using Gstreamer.
+
 # (17/12/21)
 
 · 📦 ADD: Games > OpenJK (Jedi Knight: Jedi Academy).
