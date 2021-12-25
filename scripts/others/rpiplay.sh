@@ -2,18 +2,20 @@
 #
 # Description : RPiPlay - Airplay mirroring
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.1 (22/Feb/21)
+# Version     : 1.2.1 (25/Dec/21)
 #
 . ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/apps"
-readonly PACKAGES=(libavahi-compat-libdnssd1)
-readonly PACKAGES_DEV=(cmake libavahi-compat-libdnssd-dev libplist-dev libssl-dev)
-readonly BINARY_PATH="https://misapuntesde.com/rpi_share/rpiplay-v1.2.tar.gz"
+readonly PACKAGES=(libavahi-compat-libdnssd1 libgstreamer1.0-0 libgstreamer-plugins-base1.0-0)
+readonly PACKAGES_DEV=(cmake libavahi-compat-libdnssd-dev libplist-dev libssl-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev)
+readonly BINARY_BUSTER_PATH="https://misapuntesde.com/rpi_share/rpiplay-v1.2.tar.gz"
+readonly BINARY_BULLSEYE_PATH="https://misapuntesde.com/rpi_share/rpiplay-v1.2-bullseye.tar.gz"
 readonly SOURCE_CODE_URL="https://github.com/FD-/RPiPlay"
-INPUT=/tmp/rpiplay.$$
+readonly CODENAME
+CODENAME=$(get_codename)
 
 runme() {
     if [[ ! -f $INSTALL_DIR/rpiplay/rpiplay ]]; then
@@ -69,7 +71,11 @@ EOF
 
 download_binaries() {
     echo -e "\nInstalling binary files..."
-    download_and_extract "$BINARY_PATH" "$INSTALL_DIR"
+    if [[ "$CODENAME" == "buster" ]]; then
+        download_and_extract "$BINARY_BUSTER_PATH" "$INSTALL_DIR"
+    else
+        download_and_extract "$BINARY_BULLSEYE_PATH" "$INSTALL_DIR"
+    fi
 }
 
 end_message() {
@@ -78,6 +84,13 @@ end_message() {
     echo "2) Tap the 'Screen Mirroring' or 'AirPlay' button and connect to RPiPlay."
     echo "3) EXIT: ALT + F4 or CTRL + C"
     echo -e "\n· More info rpiplay -h or visiting $SOURCE_CODE_URL\n"
+}
+
+fix_libbrcmGLESv2() {
+    # Only needed If you want to use OpenMAX AL (didnt work for me). See https://github.com/FD-/RPiPlay/issues/308
+    echo -e "\nFixing libbrcmGLESv2..."
+    [[ -e /usr/lib/arm-linux-gnueabihf/libGLESv2.so ]] && sudo ln -s /usr/lib/arm-linux-gnueabihf/libGLESv2.so /usr/lib/libbrcmGLESv2.so
+    [[ -e /usr/lib/arm-linux-gnueabihf/libEGL.so ]] && sudo ln -s /usr/lib/arm-linux-gnueabihf/libEGL.so /usr/lib/libbrcmEGL.so
 }
 
 compile() {
@@ -91,7 +104,7 @@ compile() {
     make_with_all_cores
     mv rpiplay ../rpiplay
     end_message
-    runme
+    exit_message
 }
 
 install() {
