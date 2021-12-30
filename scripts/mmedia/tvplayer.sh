@@ -1,92 +1,214 @@
 #!/bin/bash
 #
-# Description : Streaming TV Viewer. Thanks to Pikomule and tvenlinux
+# Description : TV Channels Viewer.
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.9 (6/Sep/14)
+# Version     : 1.0.0 (30/Dec/21)
 #
-# HELP	      · https://dl.dropboxusercontent.com/s/al4x26cyp947kc1/PiKoMuLe.xml
-# 	          · https://www.compraschinas.net/foro/livestreams/lista-de-canales-para-livestream-solo-plus-liga-y-gol-tv/
-#             · https://www.enlacesiptv.es/2013/11/canal-espana-premium.html
+# Help        : https://jqplay.org/
 #
-# IMPROVEMENT · Read another xml stream file with different format
-#             · Check whenever a var pageURL doen's exist
-#             · On raspberry Pi, clean omxplayer front end
-#
-#
+. ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
-#IFS=$'\n'
-URL_FILE="https://dl.dropboxusercontent.com/s/al4x26cyp947kc1/PiKoMuLe.xml"
-FREEMEM=$(free -m | sed -n 2p | awk '{print $3}')
-[ -e /usr/bin/omxplayer ] && PLAYER="omxplayer -s -o hdmi " || PLAYER="mplayer -fs -framedrop "
-INPUT=/tmp/mnu.sh.$$
-trap "rm $INPUT; exit" SIGHUP SIGINT SIGTERM
+check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-[ ! -e /usr/bin/dialog ] && sudo apt-get install -y dialog
-[ ! -e /usr/bin/rtmpdump ] && sudo apt-get install -y rtmpdump
+readonly CHANNELS_JSON_URL="https://www.tdtchannels.com/lists/tv.json"
+FREEMEM="$(get_free_mem)"
+JSON_FILE=/tmp/tv.json.$$
+INPUT_COUNTRY=/tmp/mnu_opt_country.$$
+COUNTRIES_PATH=/tmp/countries.$$
+AMBITS_PATH=/tmp/ambits.$$
+CHANNELS_PATH=/tmp/channels.$$
+OPTIONS_PATH=/tmp/options.$$
 
-validate_url(){
-    if [[ `wget -S --spider $1 2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then echo "true"; fi
+download_channel_list() {
+    echo "Downloading channel list..."
+    wget -qO "$JSON_FILE" "$CHANNELS_JSON_URL"
 }
 
-if [[ ! -e ./PiKoMuLe.xml ]]; then
-    dialog --infobox "Downloading streaming file..." 3 33; sleep 2
+delete_temporal_files() {
+    [[ -e $JSON_FILE ]] && rm "$JSON_FILE"
+    [[ -e $INPUT_COUNTRY ]] && rm "$INPUT_COUNTRY"
+    [[ -e $COUNTRIES_PATH ]] && rm "$COUNTRIES_PATH"
+    [[ -e $AMBITS_PATH ]] && rm "$AMBITS_PATH"
+    [[ -e $CHANNELS_PATH ]] && rm "$CHANNELS_PATH"
+    [[ -e $OPTIONS_PATH ]] && rm "$OPTIONS_PATH"
+    [[ -e $INPUT_OPTION ]] && rm "$INPUT_OPTION"
+}
 
-    if ! ping -q -w 1 -c 1 `ip r | grep default | cut -d ' ' -f 3` > /dev/null;then echo "Internet connection required. Check your network."; exit 1; fi
+clean_file() {
+    echo "" >"$1"
+}
 
-    if [[ $(validate_url $URL_FILE) != "true" ]] ; then
-        clear
-        echo "Sorry, not exist the .xml file and the file $URL_FILE has no longer accessible. Please download it manually."; exit 1
-    else
-        wget -q $URL_FILE
+add_back_option() {
+    clean_file "$1"
+    echo "B Back" >>"$1"
+}
+
+save_countries_file() {
+    local INDEX=0
+
+    echo "" >"$COUNTRIES_PATH"
+
+    jq <"$JSON_FILE" '.countries | .[].name' | while read p; do
+        echo "$INDEX $p" >>"$COUNTRIES_PATH"
+        INDEX=$((INDEX + 1))
+    done
+}
+
+save_ambits_file() {
+    local INDEX=0
+
+    add_back_option "$AMBITS_PATH"
+    jq <"$JSON_FILE" ".countries | .[$1].ambits[].name" | while read p; do
+        echo "$INDEX $p" >>"$AMBITS_PATH"
+        INDEX=$((INDEX + 1))
+    done
+}
+
+save_channels_file() {
+    local INDEX=0
+
+    add_back_option "$CHANNELS_PATH"
+    jq <"$JSON_FILE" ".countries | .[$1].ambits[$2].channels[].name" | while read p; do
+        echo "$INDEX $p" >>"$CHANNELS_PATH"
+        INDEX=$((INDEX + 1))
+    done
+}
+
+save_options_file() {
+    local INDEX=0
+
+    add_back_option "$OPTIONS_PATH"
+    jq <"$JSON_FILE" ".countries | .[$1].ambits[$2].channels[$3].options[$4].url" | while read p; do
+        echo "$INDEX $p" >>"$OPTIONS_PATH"
+        INDEX=$((INDEX + 1))
+    done
+}
+
+check_options() {
+    if jq <"$JSON_FILE" ".countries | .[$1].ambits[$2].channels[$3].options==[]" | grep -q true; then
+        echo "This channel has not stream. Opening the browser with the channel..."
+        WEB_URL=$(jq <"$JSON_FILE" ".countries | .[$1].ambits[$2].channels[$3].web" | sed 's/^"//' | sed 's/"$//')
+        open_default_browser "$WEB_URL"
+        channel_menu "$1" "$2"
     fi
-fi
 
-(cat PiKoMuLe.xml | grep -e '<title>' | sed -e '/Actualizado\|\[COLOR/d' | sed 's/<[^>]*>//g' | sed '1d' | awk '{print "\""$0"\""}' | nl -b a | tr '\n\r' ' ') > /tmp/chntitles
+    if jq <"$JSON_FILE" ".countries | .[$1].ambits[$2].channels[$3].options | length" | grep -q 1; then
+        open_stream "$1" "$2" "$3" "0"
+        channel_menu "$1" "$2"
+    fi
 
-stream(){
-    STREAM=$(cat PiKoMuLe.xml | sed -e '/<link>_<\/link>\|XBMC/d' | grep -e '<link>' | sed 's/<[^>]*>//g' | sed $1'q;d')
+    save_options_file "$1" "$2" "$3"
+    options_menu "$1" "$2" "$3"
+}
 
-    if [[ ($STREAM = *m3u8*) || ($STREAM = *mp4*) ]]; then
-        $PLAYER $STREAM
-    elif [[ $STREAM == *rtmp* ]]; then
-        [ -e /tmp/livevideo ] && rm /tmp/livevideo
-        mkfifo /tmp/livevideo
+open_stream() {
+    STREAM_URL=$(jq <"$JSON_FILE" ".countries | .[$1].ambits[$2].channels[$3].options[$4].url" | sed 's/^"//' | sed 's/"$//')
+    play_media "$STREAM_URL"
+}
 
-        rtmp=$(echo $STREAM | sed -n 's/^.*\(rtmp[^ ]*\).*/\1/p')
-        playpath=$(echo $STREAM | sed -n 's/^.*\(playpath[^ ]*\).*/\1/p' | sed 's/playpath=//')
-        swfUrl=$(echo $STREAM | sed -n 's/^.*\(swfUrl[^ ]*\).*/\1/p' | sed 's/swfUrl=//')
-        pageUrl=$(echo $STREAM | sed -n 's/^.*\(pageUrl[^ ]*\).*/\1/p' | sed 's/pageUrl=//')
+#
+# Menus
+#
 
-        (rtmpdump -r "${rtmp}" -y "${playpath}" -W "${swfUrl}" -p "${pageUrl}" --live -q -o /tmp/livevideo|$PLAYER /tmp/livevideo)
+main_menu() {
+    save_countries_file
 
-        [ -e /tmp/livevideo ] && rm /tmp/livevideo
-    else
-        dialog --title "Message" --clear \
-            --msgbox "Not a valid channel. Please choose another or [ESC] to exit." 10 41
+    while true; do
+        dialog --clear --title "[ Stream TV Channels .:. Free Memory: $FREEMEM ]" \
+            --menu "Choose a provider, [ESC] twice to exit:" 15 50 4 --file "$COUNTRIES_PATH" 2>"${INPUT_COUNTRY}"
 
         case $? in
-          0)
-            echo "OK";;
-          255)
-            echo "ESC pressed.";;
+        0)
+            save_ambits_file "$(<"${INPUT_COUNTRY}")"
+            ambit_menu "$(<"${INPUT_COUNTRY}")"
+            break
+            ;;
+        255)
+            clear
+            echo "ESC pressed. Have a nice day :)"
+            break
+            ;;
         esac
-    fi
+    done
 }
 
-while true
-do
-    dialog --clear --title "[ Stream TV ]" \
-    --menu "Choose a channel, [ESC] twice to exit:" 15 50 4 --file /tmp/chntitles 2>"${INPUT}"
+ambit_menu() {
+    CMD=(dialog --clear --title "[ Ambits ]"
+        --menu "Choose an ambit, [ESC] twice to exit:" 15 50 4 --file "$AMBITS_PATH")
 
-    case $? in
-    0)
-        stream $(<"${INPUT}") ;;
-    255)
-        clear; echo "ESC pressed. Have a nice day :)"; break ;;
-    esac
-done
+    CHOICES=$("${CMD[@]}" 2>&1 >/dev/tty)
 
-# Cleaning the house
-rm /tmp/chntitles $INPUT
-# Kill all tvplayer process
-$(ps -ef | awk '/tvplayer/{print $2}' | xargs kill -9) > /dev/null
+    for CHOICE in $CHOICES; do
+        case $CHOICE in
+        B)
+            main_menu
+            break
+            ;;
+        255)
+            clear
+            echo "ESC pressed. Have a nice day :)"
+            break
+            ;;
+        *)
+            save_channels_file "$1" "$CHOICE"
+            channel_menu "$1" "$CHOICE"
+            break
+            ;;
+        esac
+    done
+}
+
+channel_menu() {
+    CMD=(dialog --clear --title "[ Channels ]"
+        --menu "Choose a channel, [ESC] twice to exit:" 15 50 4 --file "$CHANNELS_PATH")
+
+    CHOICES=$("${CMD[@]}" 2>&1 >/dev/tty)
+
+    for CHOICE in $CHOICES; do
+        case $CHOICE in
+        B)
+            ambit_menu
+            break
+            ;;
+        255)
+            clear
+            echo "ESC pressed. Have a nice day :)"
+            break
+            ;;
+        *)
+            check_options "$1" "$2" "$CHOICE"
+            break
+            ;;
+        esac
+    done
+}
+
+options_menu() {
+    CMD=(dialog --clear --title "[ Streams ]"
+        --menu "Choose a stream, [ESC] twice to exit:" 15 50 4 --file "$OPTIONS_PATH")
+
+    CHOICES=$("${CMD[@]}" 2>&1 >/dev/tty)
+
+    for CHOICE in $CHOICES; do
+        case $CHOICE in
+        B)
+            channel_menu "$1" "$2"
+            break
+            ;;
+        255)
+            clear
+            echo "ESC pressed. Have a nice day :)"
+            break
+            ;;
+        *)
+            open_stream "$1" "$2" "$3" "$CHOICE"
+            channel_menu "$1" "$2"
+            break
+            ;;
+        esac
+    done
+}
+
+download_channel_list
+main_menu
+delete_temporal_files
