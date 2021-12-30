@@ -2,7 +2,7 @@
 #
 # Description : Discord
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.4 (05/Oct/20)
+# Version     : 1.0.5 (30/Dec/21)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -10,7 +10,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 GO_INSTALL_PATH="/usr/local"
-SOURCE_CODE_URL="github.com/Bios-Marcel/cordless"
+SOURCE_CODE_URL="https://github.com/Bios-Marcel/cordless"
 PACKAGES=(xclip wl-clipboard feh)
 GO_URL="https://golang.org/dl/go1.14.6.linux-armv6l.tar.gz"
 
