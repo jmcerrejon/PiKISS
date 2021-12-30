@@ -1,3 +1,9 @@
+# (30/12/21)
+
+· 📦 ADD: Multimedia > TVPlayer for watch TV channels from Spain and other International.
+
+· ❌ REMOVE: Scripts dwnmp3.sh, flexget.sh, hotstop.sh
+
 # (25/12/21)
 
 · 🐛 FIX: Others > RPiPlay (AirPlay mirroring) now compatible with Bullseye using Gstreamer.

@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **925 hours**
+- **930 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,12 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (30/12/21)
+
+· 📦 ADD: Multimedia > TVPlayer for watch TV channels from Spain and other International.
+
+· ❌ REMOVE: Scripts dwnmp3.sh, flexget.sh, hotstop.sh
 
 ### (25/12/21)
 
