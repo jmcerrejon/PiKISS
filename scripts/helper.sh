@@ -1323,3 +1323,22 @@ open_file_explorer() {
         dolphin "$1" &>/dev/null &
     fi
 }
+
+get_free_mem() {
+    free -h | sed -n 2p | awk '{print $4}'
+}
+
+play_media() {
+    if which vlc >/dev/null; then
+        PLAYER=$(which vlc)
+        echo -e "\nOpening vlc with stream: $1..."
+        "$PLAYER" "$1" &>/dev/null &
+        return 0
+    fi
+    if which omxplayer >/dev/null; then
+        PLAYER=$(which omxplayer)
+        echo -e "\nOpening omxplayer with stream: $1..."
+        "$PLAYER" "$1" &>/dev/null &
+        return 0
+    fi
+}
