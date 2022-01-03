@@ -630,7 +630,7 @@ Categories=ConsoleOnly;Utility;System;
 Terminal=true
 X-KeepTerminal=true
 EOF
-        lxpanelctl restart
+        restart_panel
     fi
 }
 
@@ -1340,5 +1340,12 @@ play_media() {
         echo -e "\nOpening omxplayer with stream: $1..."
         "$PLAYER" "$1" &>/dev/null &
         return 0
+    fi
+}
+
+restart_panel() {
+    if [[ -e /usr/bin/lxpanelctl ]]; then
+        echo -e "\nRestarting LXPanel..."
+        lxpanelctl restart &>/dev/null
     fi
 }
