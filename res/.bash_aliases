@@ -44,6 +44,10 @@ alias dep='dpkg-depcheck -d ./configure' # Check dependencies from a source code
 
 # Functions
 
+compress() {
+    time tar --use-compress-program="pigz -k --best -p 4 -r" -cf "$1.tar.gz" "$2"
+}
+
 ip() {
     hostname -I | awk '{print $1}'
 }
@@ -62,7 +66,7 @@ my_checkinstall() {
 }
 
 search() {
-    sudo find / -iname *"$1"*
+    sudo find / -iname "*$1*"
 }
 
 extract() {
