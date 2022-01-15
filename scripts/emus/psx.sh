@@ -1,8 +1,8 @@
-#!/bin/bash -x
+#!/bin/bash
 #
 # Description : Duckstation - Fast PlayStation 1 emulator for PC and Android
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.2 (16/Dec/21)
+# Version     : 1.0.3 (15/Jan/22)
 # Compatible  : Raspberry Pi 4 (tested)
 # Repository  : https://github.com/stenzek/duckstation
 #
