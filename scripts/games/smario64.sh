@@ -2,7 +2,7 @@
 #
 # Description : Super Mario 64 EX
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.1 (14/Nov/21)
+# Version     : 1.2.2 (14/Jan/22)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -52,9 +52,9 @@ generate_icon() {
         cat <<EOF >~/.local/share/applications/sm64.desktop
 [Desktop Entry]
 Name=Super Mario 64 port EX
-Exec=${PWD}/sm64/sm64
-Icon=${PWD}/sm64/icon.jpg
-Path=${PWD}/sm64
+Exec=${INSTALL_DIR}/sm64/sm64
+Icon=${INSTALL_DIR}/sm64/icon.jpg
+Path=${INSTALL_DIR}/sm64
 Type=Application
 Comment=Super Mario 64 is a 1996 platform video game for the Nintendo 64 and the first in the Super Mario series to feature 3D gameplay.
 Categories=Game;ActionGame;
@@ -79,7 +79,6 @@ compile() {
 }
 
 install() {
-    install_script_message
     echo -e "\n\nInstalling, please wait..."
     if [[ $(validate_url "$BINARY_URL") != "true" ]]; then
         read -p "Sorry, the game is not available here: $BINARY_URL. Try to compile."
@@ -89,7 +88,6 @@ install() {
     generate_icon
     echo -e "\n\nDone!. You can play typing $INSTALL_DIR/sm64/sm64 or opening the Menu > Games > Super Mario 64.\n"
     echo -e "ALT+ENTER full-screen | SPACE Select | WSAD for move | Arrows for camera, [KL,.] for actions.\n"
-    runme
 }
 
 install_script_message
@@ -103,3 +101,4 @@ Super Mario 64 port EX for Raspberry Pi
 read -p "Press [Enter] to continue..."
 
 install
+runme
