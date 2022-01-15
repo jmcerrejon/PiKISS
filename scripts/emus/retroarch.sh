@@ -2,7 +2,7 @@
 #
 # Description : RetroArch
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.5 (11/Dec/21)
+# Version     : 1.0.6 (15/Jan/22)
 #
 # Help        : Thanks @foxhound311 for compile all cores and binary files
 #
@@ -121,14 +121,14 @@ install_assets() {
 
 install() {
     echo -e "Installing package and dependencies..."
-    install_packages_if_missing "${PACKAGES[@]}"
     download_and_install "$BINARY_URL"
     install_config
     install_assets
     install_system
     install_cores
     install_bios
-    echo -e "\nDone!. To play, use the Menu option on Games > RetroArch or type $INSTALL_DIR/retroarch\n"
+    echo -e "\nDone!. To play, use the Menu option on Games > RetroArch or type $INSTALL_DIR/retroarch"
+    echo -e "NOTE: The icon in the Menu appears after reboot."
     runme
 }
 
@@ -142,7 +142,7 @@ RetroArch
 · Can be used with GLES or Vulkan drivers.
 · All cores and binaries optimized for Raspberry Pi 4.
 · Cores are the most updated versions. Anyway, online updater is disabled.
-· Thanks @foxhound311 for compile all cores and binary files, he put so much work into it :)
+· Thanks @foxhound311 for compile all cores and binary files, he put so much effort into it :)
 · KEYS: F=Full screen | F1=Quick menu | F2=Save game | F3=Show FPS | F4=Load game | F5=Desktop menu | F6/F7=Choose save slot | F8=Save screenshot
 "
 
