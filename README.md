@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **930 hours**
+- **933 hours**
 
 ## 💰 Total amount donated by users
 
@@ -67,11 +67,15 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (15/01/22)
+
+· 👌 IMPROVE: Minor refactor code on helper.sh, .bashrc_aliases, psx.sh, smario64.sh
+
 ### (30/12/21)
 
 · 📦 ADD: Multimedia > TVPlayer for watch TV channels from Spain and other International.
 
-· ❌ REMOVE: Scripts dwnmp3.sh, flexget.sh, hotstop.sh
+· ❌ REMOVE: Scripts dwnmp3.sh, flexget.sh, hotstop.sh.
 
 ### (25/12/21)
 
