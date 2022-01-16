@@ -166,6 +166,7 @@ smGames() {
         Revolt "Re-Volt is a radio control car racing themed video game"
         SWarrior "FPS developed by 3D Realms and released on 1997 by GT Interactive"
         SMario64 "Super Mario 64 EX native OpenGL ES"
+        SMarioWar "The game centers on players fighting each other"
         SpelunkyHD "Spelunky is a cave exploration/treasure-hunting game"
         Sqrxz4 "Sqrxz 4: Difficult platform game"
         SSam12 "Serious Sam I & II. Kill all walking monster"
@@ -213,6 +214,7 @@ smGames() {
         Revolt) ./scripts/games/revolt.sh ;;
         SWarrior) ./scripts/games/swarrior.sh ;;
         SMario64) ./scripts/games/smario64.sh ;;
+        SMarioWar) ./scripts/games/smariowar.sh ;;
         SpelunkyHD) ./scripts/games/spelunky.sh ;;
         Sqrxz4) ./scripts/games/sqrxz4.sh ;;
         SSam12) ./scripts/games/ssam.sh ;;
