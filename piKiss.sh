@@ -169,6 +169,7 @@ smGames() {
         SMarioWar "The game centers on players fighting each other"
         SpelunkyHD "Spelunky is a cave exploration/treasure-hunting game"
         Sqrxz4 "Sqrxz 4: Difficult platform game"
+        Srb2 "3D platformer fangame based on the Sonic the Hedgehog series."
         SSam12 "Serious Sam I & II. Kill all walking monster"
         StarCraft "Expansion pack for the real-time strategy video game StarCraft"
         StepMania "StepMania is a free dance and rhythm game"
@@ -217,6 +218,7 @@ smGames() {
         SMarioWar) ./scripts/games/smariowar.sh ;;
         SpelunkyHD) ./scripts/games/spelunky.sh ;;
         Sqrxz4) ./scripts/games/sqrxz4.sh ;;
+        Srb2) ./scripts/games/srb2.sh ;;
         SSam12) ./scripts/games/ssam.sh ;;
         StarCraft) ./scripts/games/starcraft.sh ;;
         StepMania) ./scripts/games/stepmania.sh ;;
