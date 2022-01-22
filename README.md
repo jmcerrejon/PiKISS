@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **935 hours**
+- **937 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (22/01/22)
+
+· 📦 ADD: Games > Sonic Robo Blast 2.
 
 ### (16/01/22)
 
