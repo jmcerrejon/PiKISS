@@ -2,9 +2,10 @@
 #
 # Description : RetroArch
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.6 (15/Jan/22)
+# Version     : 1.0.8 (29/Jan/22)
 #
 # Help        : Thanks @foxhound311 for compile all cores and binary files
+#             : EmulationStation-DE URLs: https://es-de.org/ | https://gitlab.com/leonstyhre/emulationstation-de/
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
@@ -12,7 +13,8 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="/usr/local/bin"
 readonly CONFIG_PATH="$HOME/.config/retroarch"
-readonly BINARY_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_1.9.14-1_armhf.deb"
+readonly PACKAGES=(libfreeimage3 libpugixml1v5)
+readonly BINARY_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_1.10.0-1_armhf.deb"
 readonly CONFIG_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch_config.tar.gz"
 readonly CORES_URL="https://misapuntesde.com/rpi_share/retroarch/libretro_cores.tar.gz"
 readonly BIOS_URL="https://misapuntesde.com/rpi_share/retroarch/libretro_bios.tar.gz"
@@ -21,6 +23,8 @@ readonly ASSETS_URL="https://buildbot.libretro.com/assets/frontend/assets.zip"
 readonly AUTOCONFIG_URL="https://buildbot.libretro.com/assets/frontend/autoconfig.zip"
 readonly DATABASE_URL="https://buildbot.libretro.com/assets/frontend/database-rdb.zip"
 readonly OVERLAY_URL="https://buildbot.libretro.com/assets/frontend/overlays.zip"
+readonly EMULATIONSTATIONDE_32_URL="https://gitlab.com/leonstyhre/emulationstation-de/-/package_files/25023905/download"
+readonly EMULATIONSTATIONDE_64_URL="https://gitlab.com/leonstyhre/emulationstation-de/-/package_files/25023885/download"
 
 runme() {
     echo
@@ -137,7 +141,7 @@ echo "
 RetroArch
 =========
 
-· Version 1.9.14-1.
+· Version 1.10.0-1.
 · It works on 32/64 bits OS.
 · Can be used with GLES or Vulkan drivers.
 · All cores and binaries optimized for Raspberry Pi 4.
