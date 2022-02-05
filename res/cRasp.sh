@@ -2,7 +2,7 @@
 #
 # Description : Personal script to make my custom Raspberry Pi OS
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.4 (20/Mar/21)
+# Version     : 1.3.5 (5/Feb/22)
 # Compatible  : Raspberry Pi 1-4 (tested)
 #
 clear
@@ -63,6 +63,12 @@ echo
 read -p "Do you want to enable ZRAM? [y/n] " option
 case "$option" in
 y*) enableZRAM ;;
+esac
+
+echo
+read -p "Do you want access to RDP protocol? [y/n] " option
+case "$option" in
+y*) sudo apt install -y xrdp ;;
 esac
 
 # Automatic fsck on start
