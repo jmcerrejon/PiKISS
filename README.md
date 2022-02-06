@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **938 hours**
+- **941 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,12 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (6/02/21)
+
+· 👌 IMPROVE: PiKISS menu and message If you are running on a 64 Bits environment.
+
+· 👌 IMPROVE: Emulators > RetroArch v1.10.0 64 Bits support.
 
 ### (29/01/21)
 
