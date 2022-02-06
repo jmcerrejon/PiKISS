@@ -11,11 +11,12 @@
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-VERSION="v.1.9.1"
+VERSION="v.1.10.0"
 IP=$(get_ip)
 PI_VERSION_NUMBER=$(get_pi_version_number)
-check_CPU
-TITLE="PiKISS (Pi Keeping It Simple, Stupid!) ${VERSION} .:. Jose Cerrejon | IP=${IP} ${CPU}| Model=${MODEL} ${PI_VERSION_NUMBER}"
+ARCHITECTURE=$(getconf LONG_BIT)
+CPU_FREQUENCY=$(get_cpu_frequency)
+TITLE="PiKISS (Pi Keeping It Simple, Stupid!) ${VERSION} | ${ARCHITECTURE} Bits | ${IP} | ${MODEL} ${PI_VERSION_NUMBER} (${CPU_FREQUENCY} Mhz)"
 CHK_UPDATE=0
 CHK_PIKISS_UPDATE=0
 NOINTERNETCHECK=0
@@ -130,6 +131,10 @@ smTweaks() {
 }
 
 smGames() {
+    if is_userspace_64_bits; then
+        show_dialog_only_32_bits
+        return
+    fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Games ]" --menu "Select game from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
     options=(
@@ -230,6 +235,9 @@ smGames() {
 }
 
 smEmulators() {
+    if is_userspace_64_bits; then
+        show_dialog_only_32_bits "RetroArch"
+    fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Emulators ]" --menu "Select emulator from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
     options=(
@@ -288,6 +296,10 @@ smEmulators() {
 }
 
 smMultimedia() {
+    if is_userspace_64_bits; then
+        show_dialog_only_32_bits
+        return
+    fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Multimedia ]" --menu "Select a script from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
     options=(
@@ -489,6 +501,16 @@ smOthers() {
         WineX86) ./scripts/others/wine86.sh ;;
         esac
     done
+}
+
+show_dialog_only_32_bits() {
+    local MESSAGE="This section has partial 64 Bits support.\nScripts availables: $1."
+
+    if [[ -z "$1" ]]; then
+        MESSAGE='Apologies!. PiKISS only works on 32 Bits OS.\n64 Bits support in progress...'
+    fi
+
+    dialog --title "[ 64 BITS OS DETECTED! ]" --msgbox "$MESSAGE" 8 52
 }
 
 #

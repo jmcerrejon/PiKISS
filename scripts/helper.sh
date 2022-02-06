@@ -548,11 +548,11 @@ check_temperature() {
 #
 # Show extend CPU info
 #
-check_CPU() {
+get_cpu_frequency() {
     if [ -f /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq ]; then
-        CPU="| CPU Freq="$(expr "$(cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq)" / 1000)" MHz "
+        echo "$(expr "$(cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq)" / 1000)"
     else
-        CPU=''
+        echo "?"
     fi
 }
 
