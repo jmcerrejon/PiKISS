@@ -2,7 +2,7 @@
 #
 # Description : RetroArch
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.8 (29/Jan/22)
+# Version     : 1.0.9 (6/Feb/22)
 #
 # Help        : Thanks @foxhound311 for compile all cores and binary files
 #             : EmulationStation-DE URLs: https://es-de.org/ | https://gitlab.com/leonstyhre/emulationstation-de/
@@ -15,6 +15,7 @@ readonly INSTALL_DIR="/usr/local/bin"
 readonly CONFIG_PATH="$HOME/.config/retroarch"
 readonly PACKAGES=(libfreeimage3 libpugixml1v5)
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_1.10.0-1_armhf.deb"
+readonly BINARY_64_BITS_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_1.10.0-1_arm64.deb"
 readonly CONFIG_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch_config.tar.gz"
 readonly CORES_URL="https://misapuntesde.com/rpi_share/retroarch/libretro_cores.tar.gz"
 readonly BIOS_URL="https://misapuntesde.com/rpi_share/retroarch/libretro_bios.tar.gz"
@@ -124,8 +125,15 @@ install_assets() {
 }
 
 install() {
+    local BINARY_URL_INSTALL=$BINARY_URL
+
     echo -e "Installing package and dependencies..."
-    download_and_install "$BINARY_URL"
+
+    if is_userspace_64_bits; then
+        BINARY_URL_INSTALL=$BINARY_64_BITS_URL
+    fi
+
+    download_and_install "$BINARY_URL_INSTALL"
     install_config
     install_assets
     install_system
@@ -142,8 +150,7 @@ RetroArch
 =========
 
 · Version 1.10.0-1.
-· It works on 32/64 bits OS.
-· Can be used with GLES or Vulkan drivers.
+· Can be used with GLES, GLES3 or Vulkan drivers.
 · All cores and binaries optimized for Raspberry Pi 4.
 · Cores are the most updated versions. Anyway, online updater is disabled.
 · Thanks @foxhound311 for compile all cores and binary files, he put so much effort into it :)
