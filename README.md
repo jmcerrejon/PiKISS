@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **941 hours**
+- **945 hours**
 
 ## 💰 Total amount donated by users
 
@@ -67,13 +67,21 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
-### (6/02/21)
+### (18/02/22)
+
+· 👌 IMPROVE: Emulators > New RetroArch cores 64 Bits (Thanks @foxhound311).
+
+· 👌 IMPROVE: Games > Grand Thef Auto III & IV 64 Bits support (Thanks @foxhound311).
+
+· 👌 IMPROVE: Games > l'Abbaye des Morts 64 Bits support.
+
+### (6/02/22)
 
 · 👌 IMPROVE: PiKISS menu and message If you are running on a 64 Bits environment.
 
 · 👌 IMPROVE: Emulators > RetroArch v1.10.0 64 Bits support.
 
-### (29/01/21)
+### (29/01/22)
 
 · 👌 IMPROVE: Emulators > RetroArch v1.10.0 + update cores.
 
