@@ -2,7 +2,7 @@
 #
 # Description : GTA thks to foxhound311
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.2 (10/Sep/21)
+# Version     : 1.1.3 (18/Feb/22)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -10,7 +10,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
-readonly PACKAGES=(libopenal1 libsndfile1 libmpg123-0)
+readonly PACKAGES=(libopenal1 libsndfile1 libmpg123-0 libglfw3)
 readonly GTA3_BINARY_URL="https://misapuntesde.com/rpi_share/gta3-bin-rpi.tar.gz"
 readonly GTAVC_BINARY_URL="https://misapuntesde.com/rpi_share/gtavc-bin-rpi.tar.gz"
 readonly LIBGLFW3_URL="https://misapuntesde.com/rpi_share/libglfw3_3.3.2-1_armhf.deb"
@@ -78,6 +78,9 @@ download_data_files_gta3() {
 }
 
 install_additional_packages() {
+    if is_userspace_64_bits; then
+        return 0
+    fi
     if [[ ! -e /usr/lib/arm-linux-gnueabihf/libglfw.so.3 ]]; then
         download_and_install "$LIBGLFW3_URL"
     fi
