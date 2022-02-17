@@ -2,7 +2,7 @@
 #
 # Description : RetroArch
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.9 (6/Feb/22)
+# Version     : 1.0.10 (12/Feb/22)
 #
 # Help        : Thanks @foxhound311 for compile all cores and binary files
 #             : EmulationStation-DE URLs: https://es-de.org/ | https://gitlab.com/leonstyhre/emulationstation-de/
@@ -18,6 +18,7 @@ readonly BINARY_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4
 readonly BINARY_64_BITS_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_1.10.0-1_arm64.deb"
 readonly CONFIG_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch_config.tar.gz"
 readonly CORES_URL="https://misapuntesde.com/rpi_share/retroarch/libretro_cores.tar.gz"
+readonly CORES_64_BITS_URL="https://misapuntesde.com/rpi_share/retroarch/libretro_cores_64.tar.gz"
 readonly BIOS_URL="https://misapuntesde.com/rpi_share/retroarch/libretro_bios.tar.gz"
 readonly SYSTEM_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch_system.zip"
 readonly ASSETS_URL="https://buildbot.libretro.com/assets/frontend/assets.zip"
@@ -91,11 +92,16 @@ install_system() {
 }
 
 install_cores() {
+    local CORES_URL_INSTALL=$CORES_URL
+
     echo -e "\nInstalling cores..."
-    download_and_extract "$CORES_URL" "$CONFIG_PATH"
+    if is_userspace_64_bits; then
+        CORES_URL_INSTALL=$BINARY_64_BITS_URL
+    fi
+    download_and_extract "$CORES_URL_INSTALL" "$CONFIG_PATH"
     echo -e "\nCores installed:\n"
     cd "$CONFIG_PATH/cores/" || return 0
-    ls *.so --format=comma
+    ls ./*.so --format=comma
     echo
 }
 
