@@ -45,6 +45,9 @@ alias dep='dpkg-depcheck -d ./configure' # Check dependencies from a source code
 # Functions
 
 compress() {
+    if [[ -d $2 ]]; then
+        rm "$2/.DS_Store"
+    fi
     time tar --use-compress-program="pigz -k --best -p 4 -r" -cf "$1.tar.gz" "$2"
 }
 
