@@ -2,7 +2,7 @@
 #
 # Description : RetroArch
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.10 (12/Feb/22)
+# Version     : 1.0.11 (21/Feb/22)
 #
 # Help        : Thanks @foxhound311 for compile all cores and binary files
 #             : EmulationStation-DE URLs: https://es-de.org/ | https://gitlab.com/leonstyhre/emulationstation-de/
@@ -96,7 +96,7 @@ install_cores() {
 
     echo -e "\nInstalling cores..."
     if is_userspace_64_bits; then
-        CORES_URL_INSTALL=$BINARY_64_BITS_URL
+        CORES_URL_INSTALL=$CORES_64_BITS_URL
     fi
     download_and_extract "$CORES_URL_INSTALL" "$CONFIG_PATH"
     echo -e "\nCores installed:\n"
