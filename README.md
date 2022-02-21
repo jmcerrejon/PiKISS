@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **945 hours**
+- **946 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (21/02/22)
+
+· 🐛 FIX: Emulators > Retroarch 64 bits cores.
 
 ### (18/02/22)
 
