@@ -2,7 +2,7 @@
 #
 # Description : RPiPlay - Airplay mirroring
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.1 (25/Dec/21)
+# Version     : 1.2.2 (5/Mar/22)
 #
 . ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
@@ -11,10 +11,9 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 readonly INSTALL_DIR="$HOME/apps"
 readonly PACKAGES=(libavahi-compat-libdnssd1 libgstreamer1.0-0 libgstreamer-plugins-base1.0-0)
 readonly PACKAGES_DEV=(cmake libavahi-compat-libdnssd-dev libplist-dev libssl-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev)
-readonly BINARY_BUSTER_PATH="https://misapuntesde.com/rpi_share/rpiplay-v1.2.tar.gz"
-readonly BINARY_BULLSEYE_PATH="https://misapuntesde.com/rpi_share/rpiplay-v1.2-bullseye.tar.gz"
+readonly BINARY_BUSTER_URL="https://misapuntesde.com/rpi_share/rpiplay-v1.2.tar.gz"
+readonly BINARY_BULLSEYE_URL="https://misapuntesde.com/rpi_share/rpiplay-armv8-arm64-bullseye.tar.gz"
 readonly SOURCE_CODE_URL="https://github.com/FD-/RPiPlay"
-readonly CODENAME
 CODENAME=$(get_codename)
 
 runme() {
@@ -70,12 +69,15 @@ EOF
 }
 
 download_binaries() {
-    echo -e "\nInstalling binary files..."
-    if [[ "$CODENAME" == "buster" ]]; then
-        download_and_extract "$BINARY_BUSTER_PATH" "$INSTALL_DIR"
-    else
-        download_and_extract "$BINARY_BULLSEYE_PATH" "$INSTALL_DIR"
+    local BINARY_URL="$BINARY_BULLSEYE_URL"
+
+    echo -e "Installing binary files..."
+
+    if [[ $CODENAME == "buster" ]]; then
+        BINARY_URL=$BINARY_BUSTER_URL
     fi
+
+    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
 }
 
 end_message() {
@@ -94,7 +96,7 @@ fix_libbrcmGLESv2() {
 }
 
 compile() {
-    echo -e "\nInstalling dependencies (if proceed)...\n"
+    echo -e "\nInstalling dependencies (If proceed)...\n"
     install_packages_if_missing "${PACKAGES_DEV[@]}"
     mkdir -p ~/sc && cd "$_" || exit 1
     git clone "$SOURCE_CODE_URL" rpiplay && cd "$_" || exit 1
