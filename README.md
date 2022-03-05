@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **946 hours**
+- **948 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,12 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (05/03/22)
+
+· 👌 IMPROVE: Emulators > RetroArch Duckstation core for 64 Bits (Thanks @foxhound311).
+
+· 👌 IMPROVE: Others > RPiplay 64 bits support.
 
 ### (21/02/22)
 
