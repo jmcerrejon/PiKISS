@@ -2,7 +2,7 @@
 #
 # Description : Other tweaks yes/no answer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.4 (20/Nov/21)
+# Version     : 1.4.5 (06/Mar/22)
 # Compatible  : Raspberry Pi 1-4 (tested)
 #
 # Help        · https://www.raspberrypi.org/forums/viewtopic.php?f=31&t=11642
@@ -57,6 +57,8 @@ Enable TRIM mode on SSD
 
 overclock() {
     RPI_NUMBER=$(get_raspberry_pi_model_number)
+    echo
+
     case ${RPI_NUMBER} in
 
     1)
