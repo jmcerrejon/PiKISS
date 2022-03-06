@@ -235,7 +235,7 @@ smGames() {
 
 smEmulators() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "RetroArch"
+        show_dialog_only_32_bits "RetroArch, MS-Dos"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Emulators ]" --menu "Select emulator from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
@@ -246,7 +246,7 @@ smEmulators() {
         Comm64 "VICE is a Commodore 64 emulator"
         Dolphin "Dolphin is a Wii & Gamecube emulator (EXPERIMENTAL)"
         Amstrad "Amstrad CPC with Caprice32"
-        MSDOS "DOSBox-X is a DOS emulator with GUI"
+        MS-Dos "DOSBox-X is a DOS emulator with GUI"
         Gba "Gameboy Advance (mgba)"
         Genesis "Genesis Megadrive Emulator (picodrive)"
         Mednafen "Portable multi-system emulator (Mednafen)"
@@ -274,7 +274,7 @@ smEmulators() {
         Amstrad) ./scripts/emus/caprice.sh ;;
         Comm64) ./scripts/emus/commodore.sh ;;
         Dolphin) ./scripts/emus/dolphin.sh ;;
-        MSDOS) ./scripts/emus/msdos.sh ;;
+        MS-Dos) ./scripts/emus/msdos.sh ;;
         Gba) ./scripts/emus/gba.sh ;;
         Genesis) ./scripts/emus/genesis.sh ;;
         Mednafen) ./scripts/emus/mednafen.sh ;;

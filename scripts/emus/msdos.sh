@@ -2,7 +2,7 @@
 #
 # Description : MS-DOS Emulator DOSBox-X
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.0 (15/Nov/21)
+# Version     : 1.3.1 (6/Mar/22)
 #
 # Help        : https://github.com/joncampbell123/dosbox-x/blob/master/BUILD.md
 #             : https://krystof.io/dosbox-shaders-comparison-for-modern-dos-retro-gaming/
@@ -13,11 +13,13 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="$HOME/games"
 readonly DOSLIB_PATH="$HOME/sc/doslib/tool/linker/linux-host"
+readonly PACKAGES=(libsdl2-net-2.0-0)
 readonly PACKAGES_DEV=(sudo apt install automake gcc g++ make libncurses-dev nasm libsdl-net1.2-dev libsdl2-net-dev libpcap-dev libslirp-dev fluidsynth libfluidsynth-dev libavdevice58 libavformat-dev libavcodec-dev libavcodec-extra libavcodec-extra58 libswscale-dev libfreetype-dev libxkbfile-dev libxrandr-dev)
-readonly BINARY_URL="https://misapuntesde.com/rpi_share/dosbox-X-rpi_0-83.20.tar.gz"
+readonly BINARY_URL="https://misapuntesde.com/rpi_share/dosbox-X-rpi_0-83.24.tar.gz"
 readonly GAME_DATA_URL="https://misapuntesde.com/res/jill-of-the-jungle-the-complete-trilogy.zip"
 readonly SOURCE_CODE_URL="https://github.com/joncampbell123/dosbox-x"
 readonly SOURCE_CODE_DOSLIB_URL="https://github.com/joncampbell123/doslib"
+
 runme() {
     echo
     if [ ! -f "$INSTALL_DIR/dosbox/dosbox-x" ]; then
@@ -57,7 +59,7 @@ make_desktop_entry() {
         cat <<EOF >~/.local/share/applications/dosbox-x.desktop
 [Desktop Entry]
 Name=DOSBox-X
-Exec=${INSTALL_DIR}/dosbox/dosbox-x
+Exec=${INSTALL_DIR}/dosbox/run.sh
 Path=${INSTALL_DIR}/dosbox/
 Icon=${INSTALL_DIR}/dosbox/dosbox.png
 Type=Application
@@ -103,10 +105,9 @@ post_install() {
 }
 
 install() {
-    echo -e "Installing...\n"
-    mkdir -p "$INSTALL_DIR" && cd "$_" || exit 1
-    wget -qO- -O tmp.tar.gz $BINARY_URL && tar -xzvf tmp.tar.gz && rm tmp.tar.gz
-    mkdir -p "$INSTALL_DIR/dosbox/dos"
+    echo -e "Installing..."
+    install_packages_if_missing "${PACKAGES[@]}"
+    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
     make_desktop_entry
     post_install
     echo -e "\nDone!. Put your games inside $INSTALL_DIR/dosbox/dos. To play, go to $INSTALL_DIR/dosbox and type: ./dosbox-x\n"
@@ -117,7 +118,7 @@ echo "
 DOSBox-X MS-DOS Emulator
 ========================
 
-· Version 0.83.20 (15/Nov/21).
+· Version 0.83.24 (06/Mar/22).
 · More Info: $SOURCE_CODE_URL
 · Put your games into: $INSTALL_DIR/dosbox/dos
 · Many thanks to Jonathan Campbell.
