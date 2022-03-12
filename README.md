@@ -67,6 +67,10 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (12/03/22)
+
+· 👌 IMPROVE: Emulators > Amiberry (Amiga emulator) 4.1.6 for 32/64 Bits.
+
 ### (6/03/22)
 
 · 👌 IMPROVE: Emulators > DOSBox-X version 0-83.24 for 32/64 Bits.
