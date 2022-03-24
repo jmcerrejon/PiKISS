@@ -13,17 +13,17 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **951 hours**
+- **956 hours**
 
 ## 💰 Total amount donated by users
 
-- $1386,67
+- $1399,67
 
 - I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd) & [ptitSeb](https://github.com/ptitSeb).
 
 - I want to thank my patrons _James Carroll, Mathew Gracie, Matthew Michink, Rodney Hester, Jay Edwards & Bo Martin_ for trusting me ❤️
 
-- Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy, Jonathan Hodges, Mattias True, Sara J Shireman Anderson_
+- Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy, Jonathan Hodges, Mattias True, Sara J Shireman Anderson, Anthony Skiver, Shawn Mullins, Michaël Bortolin_
 
 ## 📣 Stay tuned!
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (24/03/22)
+
+· 👌 IMPROVE: Emulators > Redream (Sega Dreamcast) for 32/64 Bits.
 
 ### (12/03/22)
 
