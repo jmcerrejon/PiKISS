@@ -30,10 +30,10 @@ remove_unneeded_helper
 usage() {
     echo -e "$TITLE\n\nScript designed to config or install apps on Raspberry Pi easier for everyone.\n"
     echo -e "Usage: ./piKiss.sh [Arguments]\n\nArguments:\n"
-    echo "-h   | --help       		: This help."
-    echo "-nu  | --no-update  	 	: No check if repositories are updated."
+    echo "-h   | --help             : This help."
+    echo "-nu  | --no-update        : No check if repositories are updated."
     echo "-nup | --no-update-pikiss : No check if PiKISS are updated."
-    echo "-ni  | --noinet     		: No check if internet connection is available."
+    echo "-ni  | --noinet           : No check if internet connection is available."
     echo
     echo "For trouble, ideas or technical support please visit https://github.com/jmcerrejon/PiKISS"
 }
@@ -235,7 +235,7 @@ smGames() {
 
 smEmulators() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Amiga, MS-Dos, RetroArch"
+        show_dialog_only_32_bits "Amiga, MS-Dos, RetroArch, Redream"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Emulators ]" --menu "Select emulator from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
