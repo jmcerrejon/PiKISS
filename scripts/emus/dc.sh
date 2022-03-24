@@ -68,7 +68,14 @@ EOF
     fi
 }
 
-post_install() {
+fix_32_bits() {
+    echo -e "\nFixing 32 bits..."
+
+    [[ -e "$INSTALL_DIR"/redream/redream ]] && rm "$INSTALL_DIR"/redream/redream
+    [[ -e $INSTALL_DIR/redream/redream.aarch32.elf ]] && mv "$INSTALL_DIR"/redream/redream.aarch32.elf "$INSTALL_DIR"/redream/redream
+}
+
+install_game() {
     echo -e "\nInstalling Homebrew game, please wait..."
     mkdir -p "$INSTALL_DIR"/redream/cdi/volgarr
     download_and_extract "$DATA_GAME_URL" "$INSTALL_DIR"/redream/cdi/volgarr
@@ -77,7 +84,10 @@ post_install() {
 install() {
     echo -e "\nInstalling, please wait..."
     download_and_extract "$BINARY_URL" "$INSTALL_DIR"/redream
-    post_install
+    if ! is_userspace_64_bits; then
+        fix_32_bits
+    fi
+    install_game
     generate_icon
     echo -e "\nDone!. To play, go to Menu > Games > Sega Dreamcast emulator (Redream) or type $INSTALL_DIR/redream/redream\n"
     runme
