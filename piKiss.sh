@@ -332,7 +332,7 @@ smConfigure() {
     options=(
         Back "Back to main menu"
         Vulkan "Compile/update Vulkan Mesa driver"
-        RaspNet "Configure Raspbian Net Install distro"
+        RaspNet "Configure Raspberry Pi OS Net Install distro"
         SSIDCfg "Configure SSID (WPA/WPA2 with PSK)"
         Joypad "Configure WII, XBox360 controller"
         Backup "Simple backup dir to run daily"
@@ -466,7 +466,7 @@ smOthers() {
         Aircrack "Compile Aircrack-NG suite easily"
         Alacritty "Fastest terminal emulator using GPU for rendering and Wayland compatible"
         BootLoader "Update your RPi boot loader"
-        Fixes "Fix some problems with the Raspbian OS"
+        Fixes "Fix some problems with the Raspberry Pi OS"
         GL4ES "Compile GL4ES - OpenGL for GLES Hardware"
         NetTools "MITM Pentesting Opensource Toolkit (Require X)"
         Part "Check issues & fix SD corruptions"
