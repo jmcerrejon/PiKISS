@@ -24,6 +24,10 @@ BLACK_SCREEN(){
 	sudo sh -c "TERM=linux setterm -foreground black -clear >/dev/tty0"
 }
 
+USB_POLL(){
+	sudo sh -c "printf \"$(cat /boot/cmdline.txt) usbhid.mousepoll=0\" > /boot/cmdline.txt"
+}
+
 while true
 do
 	dialog --clear   \
@@ -32,12 +36,14 @@ do
 		Sound		"ALSA lib pcm.c:2217:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.front" \
 		Black		"Black out the local terminal (ideal for omxplayer)" \
 		SDL		"Fix SDL1.2 black screen" \
+		USB		"Fix USB HID poll rate" \
 		Exit 		"Exit to the shell" 2>"${tempfile}"
 
 	case $(<"${tempfile}") in
 		Sound)	SOUND ;;
 		Black)	BLACK_SCREEN ;;
 		SDL)	SDL_fix_Rpi ;;
+		USB)	USB_POLL ;;
 		Exit)	exit ;;
 	esac
 done
