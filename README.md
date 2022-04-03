@@ -13,13 +13,13 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **956 hours**
+- **959 hours**
 
 ## 💰 Total amount donated by users
 
 - $1399,67
 
-- I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd) & [ptitSeb](https://github.com/ptitSeb).
+- I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu).
 
 - I want to thank my patrons _James Carroll, Mathew Gracie, Matthew Michink, Rodney Hester, Jay Edwards & Bo Martin_ for trusting me ❤️
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (03/04/22)
+
+· 👌 IMPROVE: Emulators > MAME 0.242 for 32/64 Bits.
 
 ### (24/03/22)
 
