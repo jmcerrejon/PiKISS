@@ -6,6 +6,22 @@
 readonly PIKISS_DIR=$PWD
 readonly PIKISS_MAGIC_AIR_COPY_PATH=$PIKISS_DIR/res/magic-air-copy-pikiss.txt
 
+# Usage: "${INFO}INFO${RESET}: This is an ${BOLD}info${RESET} message"
+BOLD=$(tput bold)
+UNDERLINE=$(tput smul)
+ITALIC=$(tput sitm)
+INFO=$(tput setaf 2)
+ERROR=$(tput setaf 160)
+WARN=$(tput setaf 214)
+RESET=$(tput sgr0)
+export BOLD
+export UNDERLINE
+export ITALIC
+export INFO
+export ERROR
+export WARN
+export RESET
+
 #
 # Fix libGLESv2.so on Raspbian Stretch
 #
@@ -416,7 +432,7 @@ set_download_manager() {
         echo "aria2c -x16 --max-tries=0 --check-certificate=false --file-allocation=none -o"
     fi
 
-    echo "wget -q --show-progress -O"
+    echo "wget -q --show-progress --no-check-certificate -O"
 }
 
 #
@@ -1348,4 +1364,11 @@ restart_panel() {
         echo -e "\nRestarting LXPanel..."
         lxpanelctl restart &>/dev/null
     fi
+}
+
+pip_install() {
+    INSTALLER_DEPS=("$@")
+    for i in "${INSTALLER_DEPS[@]}"; do
+        python3 -m pip install "$i"
+    done
 }
