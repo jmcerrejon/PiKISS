@@ -235,7 +235,7 @@ smGames() {
 
 smEmulators() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Amiga, MS-Dos, RetroArch, Redream"
+        show_dialog_only_32_bits "Amiga, MS-Dos, Mame, RetroArch, Redream"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Emulators ]" --menu "Select emulator from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
@@ -250,7 +250,7 @@ smEmulators() {
         Gba "Gameboy Advance (mgba)"
         Genesis "Genesis Megadrive Emulator (picodrive)"
         Mednafen "Portable multi-system emulator (Mednafen)"
-        Mame "Install MAME 0.230, Advance MAME or MAME4ALL-PI"
+        Mame "MAME is a multi-system emulator"
         MSX "OpenMSX"
         NES "Nestopia UE is an accurate NES emulator"
         Pifba "Emulates old arcade games using CPS1, CPS2,..."
@@ -278,7 +278,7 @@ smEmulators() {
         Gba) ./scripts/emus/gba.sh ;;
         Genesis) ./scripts/emus/genesis.sh ;;
         Mednafen) ./scripts/emus/mednafen.sh ;;
-        Mame) ./scripts/emus/mame4allpi.sh ;;
+        Mame) ./scripts/emus/mame.sh ;;
         MSX) ./scripts/emus/msx.sh ;;
         NES) ./scripts/emus/nes.sh ;;
         PS1) ./scripts/emus/psx.sh ;;
