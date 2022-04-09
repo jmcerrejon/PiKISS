@@ -13,17 +13,17 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **959 hours**
+- **962 hours**
 
 ## 💰 Total amount donated by users
 
-- $1399,67
+- $1408,67
 
 - I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu).
 
 - I want to thank my patrons _James Carroll, Mathew Gracie, Matthew Michink, Rodney Hester, Jay Edwards & Bo Martin_ for trusting me ❤️
 
-- Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy, Jonathan Hodges, Mattias True, Sara J Shireman Anderson, Anthony Skiver, Shawn Mullins, Michaël Bortolin_
+- Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy, Jonathan Hodges, Mattias True, Sara J Shireman Anderson, Anthony Skiver, Shawn Mullins, Michaël Bortolin, William Norris_
 
 ## 📣 Stay tuned!
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (09/04/22)
+
+· 👌 IMPROVE: Inet > SyncTERM 1.2 for 32/64 Bits.
 
 ### (03/04/22)
 
