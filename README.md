@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **962 hours**
+- **966 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (10/04/22)
+
+· 👌 IMPROVE: Games > Blake Stone 1.2.12 for 32/64 Bits.
 
 ### (09/04/22)
 
