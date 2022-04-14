@@ -44,7 +44,7 @@ fix_libGLES() {
     fi
 }
 
-box86_check_if_latest_version_is_installed() {
+box_check_if_latest_version_is_installed() {
     local BOX86_FINAL_PATH
     local BOX86_VERSION
     local GIT_VERSION
@@ -63,16 +63,20 @@ box86_check_if_latest_version_is_installed() {
     fi
 }
 
-#
-# PI LABS Libraries
-#
-compile_box86() {
+compile_box86_or_64() {
     local PI_VERSION_NUMBER
+    local BOX_VERSION
     local SOURCE_PATH
 
-    INSTALL_DIRECTORY="$HOME/box86"
+    if is_userspace_64_bits; then
+        BOX_VERSION="box64"
+    else
+        BOX_VERSION="box86"
+    fi
+
+    INSTALL_DIRECTORY="$HOME/$BOX_VERSION"
     PI_VERSION_NUMBER=$(get_raspberry_pi_model_number)
-    SOURCE_PATH="https://github.com/ptitSeb/box86"
+    SOURCE_PATH="https://github.com/ptitSeb/$BOX_VERSION"
 
     install_packages_if_missing cmake
 
@@ -85,43 +89,50 @@ compile_box86() {
         [[ -d "$INSTALL_DIRECTORY"/build ]] && rm -rf "$INSTALL_DIRECTORY"/build
     fi
 
-    if [[ -f /usr/local/bin/box86 ]]; then
-        if box86_check_if_latest_version_is_installed; then
-            echo -e "\nYour box86 is already updated. Skipping...\n"
+    if [[ -f /usr/local/bin/$BOX_VERSION ]]; then
+        if box_check_if_latest_version_is_installed; then
+            echo -e "\nYour $BOX_VERSION is already updated. Skipping...\n"
             return 0
         fi
     fi
 
     mkdir -p build && cd "$_" || exit 1
     echo -e "\nCompiling, please wait...\n"
-    cmake .. -DRPI"${PI_VERSION_NUMBER}"=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo
     make_with_all_cores
-    echo -e "\nCompilation done. Installing...\n"
-    sudo make install
-    echo -e "\nBox successfully installed.\n"
+    make_install_compiled_app
+    echo -e "\n${BOX_VERSION} successfully installed.\n"
 }
 
-install_box86() {
-    local BINARY_BOX86_URL
-    BINARY_BOX86_URL="https://misapuntesde.com/rpi_share/pilabs/box86.tar.gz"
+install_box86_or_64() {
+    local BINARY_BOX_URL
+    local BOX_VERSION
 
-    if [[ -f /usr/local/bin/box86 ]]; then
+    if is_userspace_64_bits; then
+        BOX_VERSION="box64"
+    else
+        BOX_VERSION="box86"
+    fi
+
+    BINARY_BOX_URL="https://misapuntesde.com/rpi_share/pilabs/${BOX_VERSION}.tar.gz"
+
+    if [[ -f /usr/local/bin/${BOX_VERSION} ]]; then
         echo
-        read -p "Box86 already installed. Do you want to update it (Y/n)? " response
+        read -p "${BOX_VERSION} already installed. Do you want to update it (Y/n)? " response
         if [[ $response =~ [Nn] ]]; then
             return 0
         fi
 
-        compile_box86
+        compile_box86_or_64
     fi
 
-    echo -e "\n\nInstalling Box86..."
-    download_and_extract "$BINARY_BOX86_URL" "$HOME"
-    cd "$HOME"/box86/build || exit 1
+    echo -e "\n\nInstalling ${BOX_VERSION}..."
+    download_and_extract "$BINARY_BOX_URL" "$HOME"
+    cd "$HOME"/${BOX_VERSION}/build || exit 1
     sudo make install
     echo
-    box86 -v
-    echo -e "\nBox86 has been installed."
+    ${BOX_VERSION} -v
+    echo -e "\n${BOX_VERSION} has been installed."
 }
 
 generate_icon_winetricks() {
