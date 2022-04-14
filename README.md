@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **966 hours**
+- **967 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (14/04/22)
+
+· 👌 IMPROVE: Emulation > Box86 and Box64.
 
 ### (10/04/22)
 
