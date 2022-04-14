@@ -235,14 +235,14 @@ smGames() {
 
 smEmulators() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Amiga, MS-Dos, Mame, RetroArch, Redream"
+        show_dialog_only_32_bits "Amiga, Box86/64, MS-Dos, Mame, RetroArch, Redream"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Emulators ]" --menu "Select emulator from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
     options=(
         Back "Back to main menu"
         Amiga "Amiberry is the best Amiga emulator"
-        Box86 "Lets you run x86 Linux programs on non-x86 Linux"
+        Box86-64 "Let's you run x86/64 Linux programs on non-x86/64 Linux"
         Comm64 "VICE is a Commodore 64 emulator"
         Dolphin "Dolphin is a Wii & Gamecube emulator (EXPERIMENTAL)"
         Amstrad "Amstrad CPC with Caprice32"
@@ -270,7 +270,7 @@ smEmulators() {
         case $choice in
         Back) break ;;
         Amiga) ./scripts/emus/amiga.sh ;;
-        Box86) ./scripts/emus/box86.sh ;;
+        Box86-64) ./scripts/emus/box86_64.sh ;;
         Amstrad) ./scripts/emus/caprice.sh ;;
         Comm64) ./scripts/emus/commodore.sh ;;
         Dolphin) ./scripts/emus/dolphin.sh ;;
