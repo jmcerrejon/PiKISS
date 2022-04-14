@@ -2,7 +2,7 @@
 #
 # Description : Winex86 + Box86
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (23/May/21)
+# Version     : 1.0.2 (14/Apr/22)
 # Compatible  : Raspberry Pi 4
 # Info        : https://github.com/ptitSeb/box86/blob/master/docs/X86WINE.md
 #
@@ -38,7 +38,7 @@ if [[ -e /usr/local/bin/wine ]]; then
 fi
 
 install() {
-    compile_box86
+    compile_box86_or_64
     echo -e "\nInstalling Wine x86..."
     install_winex86
     echo -e "\nDone!."
