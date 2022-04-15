@@ -29,6 +29,7 @@ alias pk='cd /home/pi/pikiss/ && ./piKiss.sh -nup'
 alias 7zc='7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on file-rpi.7z'
 alias mkfr='find ./ -print > files_required.txt'
 alias open_ports='sudo ss -ltnp'
+alias search_executables_from_here="grep -rIL ."
 
 # APT
 alias au='sudo apt-get -qq -y update'
@@ -59,7 +60,7 @@ is_installed() {
     sudo dpkg -l | grep "$1"
 }
 
-mk() {
+take() {
     mkdir "$1" && cd "$_" || exit
 }
 
