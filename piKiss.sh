@@ -470,6 +470,7 @@ smOthers() {
         GL4ES "Compile GL4ES - OpenGL for GLES Hardware"
         NetTools "MITM Pentesting Opensource Toolkit (Require X)"
         Part "Check issues & fix SD corruptions"
+        PiKISS-GUI " GTK frontend for PiKISS"
         RPiPlay "An open-source implementation of an AirPlay mirroring server"
         Scrcpy "Display and control of Android devices connected on USB"
         SDL2 "Compile/Install SDL2 + Libraries"
@@ -491,6 +492,7 @@ smOthers() {
         GL4ES) ./scripts/others/gl4es.sh ;;
         NetTools) ./scripts/others/nettools.sh ;;
         Part) ./scripts/others/checkpart.sh ;;
+        PiKISS-GUI) ./scripts/others/pikiss-gui.sh;;
         RPiPlay) ./scripts/others/rpiplay.sh ;;
         Scrcpy) ./scripts/others/scrcpy.sh ;;
         SDL2) ./scripts/others/sdl2.sh ;;
