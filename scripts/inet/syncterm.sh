@@ -2,7 +2,7 @@
 #
 # Description : Syncterm (BBS)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (25/Sep/21)
+# Version     : 1.0.2 (9/Apr/22)
 # Compatible  : Raspberry Pi 4 (tested)
 # Repository  : http://syncterm.bbsdev.net/ | https://gitlab.synchro.net/main/sbbs
 # Help        : https://www.askapache.com/online-tools/figlet-ascii/
@@ -60,7 +60,7 @@ Name=SyncTERM
 Version=1.0
 Type=Application
 Comment=ANSI-BBS Terminal
-Exec=${INSTALL_DIR}/syncterm/syncterm
+Exec=${INSTALL_DIR}/syncterm/run.sh
 Icon=${INSTALL_DIR}/syncterm/syncterm.png
 Path=${INSTALL_DIR}/syncterm/
 Categories=TerminalEmulator;Network;Dialup;
@@ -74,15 +74,19 @@ end_message() {
 }
 
 compile() {
+    local REPOSITORY_PATH
+    REPOSITORY_PATH="$HOME/sc/syncterm-$(date +%Y%m%d)/src/syncterm"
+
     install_packages_if_missing "${PACKAGES_DEV[@]}"
     mkdir -p "$HOME/sc" && cd "$_" || exit 1
     download_and_extract "$SOURCE_CODE_URL" "$HOME/sc"
-    cd syncterm-20210806/src/syncterm || exit 1
+    cd "$REPOSITORY_PATH" || exit 1
     st_path=$(pwd | sed 's/\/syncterm$//g')
     make SRC_ROOT="$st_path"
     make_install_compiled_app
     echo -e "\nDone!. Check the code at $HOME/sc/syncterm."
-    exit_message
+    cd "$REPOSITORY_PATH" || exit 1
+    exit 0
 }
 
 post_install() {
@@ -131,7 +135,7 @@ SyncTERM for Raspberry Pi
 · Supports character pacing for ANSI animation as well as the VT500 ESC[*r sequence to allow dynamic speed changes.
 · Comes with 43 standard fonts and allows the BBS to change the current font *and* upload custom fonts. This tool will allow you to create fonts for use with SyncTERM.
 · Supports Operation Overkill ][ Terminal emulation.
-· Some default BBS thanks to Paul Hughes (2o fOr beeRS bbS).
+· Thanks to pAULIE42o (2o fOr beeRS bbS).
 "
 
 read -p "Press Enter to continue..."
