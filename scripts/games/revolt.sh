@@ -15,7 +15,7 @@ DATA_PATH="https://misapuntesde.com/rpi_share/rvgl-data.deb"
 APP_PATH="https://misapuntesde.com/rpi_share/rvgl.deb"
 
 installer() {
-    sudo apt install -y libsdl2-image-2.0-0 libenet7 libunistring-dev
+    sudo apt install -y libsdl2-image-2.0-0:armhf libunistring-dev:armhf libenet7:armhf libvorbisfile3:armhf libmpg123-0:armhf libdumb1:armhf libmodplug1:armhf libfluidsynth2:armhf
     fix_libGLES
     cd ~
     if [ ! -f /usr/local/bin/rvgl_start ]; then
