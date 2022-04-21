@@ -15,6 +15,8 @@ DATA_PATH="https://misapuntesde.com/rpi_share/rvgl-data.deb"
 APP_PATH="https://misapuntesde.com/rpi_share/rvgl.deb"
 
 installer() {
+    sudo dpkg --add-architecture armhf
+    sudo apt update
     sudo apt install -y libsdl2-image-2.0-0:armhf libunistring-dev:armhf libenet7:armhf libvorbisfile3:armhf libmpg123-0:armhf libdumb1:armhf libmodplug1:armhf libfluidsynth2:armhf
     fix_libGLES
     cd ~
