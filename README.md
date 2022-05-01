@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **967 hours**
+- **973 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,12 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (01/05/22)
+
+· ❌ REMOVE: Config > raspnetinst.sh.
+
+· 👌 IMPROVE: Games > Arx Libertatis v1.3 for 64 Bits.
 
 ### (14/04/22)
 
