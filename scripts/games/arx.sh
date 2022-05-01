@@ -2,7 +2,7 @@
 #
 # Description : Arx Libertatis (AKA Arx Fatalis)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.11 (17/Dec/21)
+# Version     : 1.1.0 (1/May/22)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help        : https://wiki.arx-libertatis.org/Downloading_and_Compiling_under_Linux
@@ -14,12 +14,12 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
-readonly PACKAGES=(libglew-dev)
-readonly PACKAGES_DEV=(zlib1g-dev libfreetype6-dev libopenal1 libopenal-dev mesa-common-dev libgl1-mesa-dev libboost-dev libepoxy-dev libglm-dev libcppunit-dev libglew-dev libsdl2-dev)
+readonly PACKAGES=(libglew2.1)
+readonly PACKAGES_DEV=(zlib1g-dev libfreetype6-dev libopenal1 libopenal-dev mesa-common-dev libgl1-mesa-dev libboost-dev libepoxy-dev libglm-dev libcppunit-dev libglew-dev libsdl2-dev doxygen)
 readonly CONFIG_DIR="$HOME/.local/share/arx"
 readonly BINARY_URL="https://www.littlecarnage.com/arx_rpi2.tar.gz"
-readonly SOURCE_CODE_URL="https://github.com/ptitSeb/ArxLibertatis.git"
-readonly SOURCE_CODE_OFFICIAL_URL="https://github.com/arx/ArxLibertatis.git" # Doesn't work for now
+readonly BINARY_AARCH64_URL="https://misapuntesde.com/rpi_share/arx_libertatis-rpi-bin-aarch64.tar.gz"
+readonly SOURCE_CODE_URL="https://github.com/arx/ArxLibertatis"
 readonly ICON_URL="https://github.com/arx/ArxLibertatisData/blob/master/icons/arx-libertatis-32.png?raw=true"
 readonly VAR_DATA_NAME="ARX_FATALIS"
 DATA_URL="https://e.pcloud.link/publink/show?code=XZOsaZFJFHKEmMiHQtMyFw7ESWemvYz8xV"
@@ -78,14 +78,6 @@ EOF
     fi
 }
 
-fix_libndi() {
-    echo -e "\nFixing library libndi.so\n"
-    sudo rm -f /usr/lib/libndi.so
-    sudo ln -r -s /usr/lib/libndi.so.4.0.0 /usr/lib/libndi.so
-    sudo rm -f /usr/lib/libndi.so.4
-    sudo ln -r -s /usr/lib/libndi.so.4.0.0 /usr/lib/libndi.so.4
-}
-
 fix_libGLEW1.7() {
     if [[ -f /usr/lib/arm-linux-gnueabihf/libGLEW.so.1.7 ]]; then
         return 0
@@ -97,38 +89,36 @@ fix_libGLEW1.7() {
 
 compile() {
     install_packages_if_missing "${PACKAGES_DEV[@]}"
-    fix_libndi
     mkdir -p ~/sc && cd "$_" || exit 1
     git clone "$SOURCE_CODE_URL" arx && cd "$_" || exit 1
     mkdir build && cd "$_" || exit 1
-    CFLAGS="-fsigned-char -marm -march=armv8-a+crc -mtune=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard" CXXFLAGS="-fsigned-char" cmake .. -DBUILD_TOOLS=off -DBUILD_IO_LIBRARY=off -DBUILD_CRASHREPORTER=off -DICON_TYPE=none
+    CFLAGS="-fsigned-char -march=armv8-a+crc -mtune=cortex-a72" CXXFLAGS="-fsigned-char" cmake .. -DBUILD_TOOLS=off -DBUILD_IO_LIBRARY=off -DBUILD_CRASHREPORTER=off -DICON_TYPE=none -Wno-dev -DICON_TYPE=none
 
-    if [[ -f ~/sc/arx/build/CMakeFiles/CMakeError.log ]]; then
-        echo -e "\n\nERROR!!. I can't continue with the command make. Check ~/sc/arx/build/CMakeFiles/CMakeError.log\n"
-        exit 1
-    fi
-    make -j"$(getconf _NPROCESSORS_ONLN)"
-}
-
-install_binaries() {
-    echo -e "\nInstalling binary files..."
-    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
-    rm "$INSTALL_DIR/Arx Fatalis.sh"
-    chmod +x "$INSTALL_DIR"/arx/arx*
-    fix_libGLEW1.7
-}
-
-end_message() {
-    echo -e "\nDone!. Click on Menu > Games > Arx Libertatis."
-    runme
+    # It takes ~6 minutes to compile on a Pi 4.
+    make_with_all_cores
+    echo -e "Done!.\n"
+    exit_message
 }
 
 download_data_files() {
     if exists_magic_file; then
         DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
+        message_magic_air_copy "$VAR_DATA_NAME_EN"
     fi
-    message_magic_air_copy "$VAR_DATA_NAME_EN"
     download_and_extract "$DATA_URL" ~
+}
+
+install_binaries() {
+    echo -e "\nInstalling binary files..."
+    if is_userspace_64_bits; then
+        download_and_extract "$BINARY_AARCH64_URL" "$INSTALL_DIR"
+        return 0
+    fi
+
+    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
+    fix_libGLEW1.7
+    rm "$INSTALL_DIR/Arx Fatalis.sh"
+    chmod +x "$INSTALL_DIR"/arx/arx*
 }
 
 install() {
@@ -137,16 +127,18 @@ install() {
     install_binaries
     generate_icon
     download_data_files
-    end_message
+    echo -e "\nDone!. Click on Menu > Games > Arx Libertatis."
+    runme
 }
 
 install_script_message
 echo "
 Install Arx Libertatis (Port of Arx Fatalis)
 ============================================
- · Install path: $INSTALL_DIR/arx
- · Demo version will be installed If it's not provided the game data files path in $PIKISS_MAGIC_AIR_COPY_PATH.
- · NOTE: It's NOT the latest compiled from source. This binary comes from https://www.littlecarnage.com/
+
+ · Visit the project at $SOURCE_CODE_URL
+ · Thanks to Sebastian (PtitSeb) for the compiling help.
+ · Demo version will be installed.
 "
 read -p "Press [Enter] to continue..."
 install
