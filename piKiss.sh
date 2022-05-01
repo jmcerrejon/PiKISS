@@ -332,7 +332,6 @@ smConfigure() {
     options=(
         Back "Back to main menu"
         Vulkan "Compile/update Vulkan Mesa driver"
-        RaspNet "Configure Raspberry Pi OS Net Install distro"
         SSIDCfg "Configure SSID (WPA/WPA2 with PSK)"
         Joypad "Configure WII, XBox360 controller"
         Backup "Simple backup dir to run daily"
@@ -347,7 +346,6 @@ smConfigure() {
         case $choice in
         Back) break ;;
         Vulkan) ./scripts/config/vulkan.sh ;;
-        RaspNet) ./scripts/config/raspnetins.sh ;;
         SSIDCfg) ./scripts/config/ssidcfg.sh ;;
         Joypad) ./scripts/config/jpad.sh ;;
         Backup) ./scripts/config/backup.sh ;;
