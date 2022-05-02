@@ -95,6 +95,10 @@ extract() {
     fi
 }
 
+cmake_on_build() {
+    cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+}
+
 #
 # Compile with all cores
 #
