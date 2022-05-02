@@ -94,3 +94,18 @@ extract() {
         echo "'$1' is not a valid file"
     fi
 }
+
+#
+# Compile with all cores
+#
+make_with_all_cores() {
+    echo -e "\n Compiling..."
+
+    if [ "$(uname -m)" == 'armv7l' ]; then
+        time make -j"$(nproc)" OPTOPT="-fsigned-char -marm -march=armv8-a+crc -mtune=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard"
+    else
+        time make -j"$(nproc)"
+    fi
+
+    echo
+}
