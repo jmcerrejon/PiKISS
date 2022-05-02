@@ -11,8 +11,8 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 clear
 
 readonly INSTALL_DIR="$HOME/games"
-readonly BINARY_URL="https://stickfreaks.com/mame/mame_0.242_armhf_gcc8.7z"
-readonly BINARY_64_BITS_URL="https://stickfreaks.com/mame/mame_0.242_aarch64_gcc8.7z"
+readonly BINARY_URL="https://stickfreaks.com/mame/mame_0.243_armhf_gcc8.7z"
+readonly BINARY_64_BITS_URL="https://stickfreaks.com/mame/mame_0.243_aarch64_gcc8.7z"
 readonly PACKAGES=(p7zip libfreetype6 libsdl2-ttf-2.0-0 libsdl2-2.0-0 libqt5widgets5 libqt5gui5)
 readonly ROMS_URL="https://misapuntesde.com/res/galaxian.zip"
 readonly INPUT=/tmp/temp.$$
