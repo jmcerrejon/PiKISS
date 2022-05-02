@@ -80,7 +80,7 @@ echo "
 MAME 0.243
 ==========
 
-· More info: https://stickfreaks.com/mame/ | https://www.mamedev.org/?p=511
+· More info: https://stickfreaks.com/mame/ | https://www.mamedev.org/releases/whatsnew_0243.txt
 · KEYS: F3=RESET | F7=Load | Shift+F7=Save | 5=Add 1 Credit Player 1 | 1=Start Player 1 | ESC=Exit
 "
 install
