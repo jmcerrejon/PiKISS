@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **973 hours**
+- **976 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (02/05/22)
+
+· 👌 IMPROVE: Emulators > MAME 0.243 (Thks [@nathanielbutts](https://github.com/nathanielbutts)).
 
 ### (01/05/22)
 
