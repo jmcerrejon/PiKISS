@@ -3,7 +3,7 @@
 #
 # Description : MAME
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 2.0.0 (3/Apr/22)
+# Version     : 2.0.1 (2/May/22)
 # Compatible  : Raspberry Pi 4
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -77,7 +77,7 @@ install() {
 }
 
 echo "
-MAME 0.242
+MAME 0.243
 ==========
 
 · More info: https://stickfreaks.com/mame/ | https://www.mamedev.org/?p=511
