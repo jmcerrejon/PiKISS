@@ -1,4 +1,4 @@
-# PiKISS For Raspberry Pi: A Bunch Of Scripts With Menu To Make Your Life Easier
+# PiKISS For Raspberry Pi: A Bunch Of Scripts With A Menu To Make Your Life Easier
 
 ![PiKISS Logo](logo_pikiss_header.png)
 
@@ -19,7 +19,7 @@
 
 - $1408,67
 
-- I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu).
+- I want to the project#s contributors for their help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu).
 
 - I want to thank my patrons _James Carroll, Mathew Gracie, Matthew Michink, Rodney Hester, Jay Edwards & Bo Martin_ for trusting me ❤️
 
@@ -49,7 +49,7 @@
 
 - Logo: grayduck
 
-## 🎥 Check what **PiKISS** can do for you on my Youtube's channel:
+## 🎥 Check out what **PiKISS** can do for you on my Youtube channel:
 
 - [youtube.com > PIKISS](https://www.youtube.com/playlist?list=PLXhElW3ALmWh8p0mn1ZECawkKyF8QzNNP)
 
@@ -69,175 +69,175 @@
 
 ### (02/05/22)
 
-· 👌 IMPROVE: Emulators > MAME 0.243 (Thks [@nathanielbutts](https://github.com/nathanielbutts)).
+· 👌 IMPROVED: Emulators > MAME 0.243 (Thx [@nathanielbutts](https://github.com/nathanielbutts)).
 
 ### (01/05/22)
 
-· ❌ REMOVE: Config > raspnetinst.sh.
+· ❌ REMOVED: Config > raspnetinst.sh.
 
-· 👌 IMPROVE: Games > Arx Libertatis v1.3 for 64 Bits.
+· 👌 IMPROVED: Games > Arx Libertatis v1.3 for 64 Bits.
 
 ### (14/04/22)
 
-· 👌 IMPROVE: Emulation > Box86 and Box64.
+· 👌 IMPROVED: Emulation > Box86 and Box64.
 
 ### (10/04/22)
 
-· 👌 IMPROVE: Games > Blake Stone 1.2.12 for 32/64 Bits.
+· 👌 IMPROVED: Games > Blake Stone 1.2.12 for 32/64 Bits.
 
 ### (09/04/22)
 
-· 👌 IMPROVE: Inet > SyncTERM 1.2 for 32/64 Bits.
+· 👌 IMPROVED: Inet > SyncTERM 1.2 for 32/64 Bits.
 
 ### (03/04/22)
 
-· 👌 IMPROVE: Emulators > MAME 0.242 for 32/64 Bits.
+· 👌 IMPROVED: Emulators > MAME 0.242 for 32/64 Bits.
 
 ### (24/03/22)
 
-· 👌 IMPROVE: Emulators > Redream (Sega Dreamcast) for 32/64 Bits.
+· 👌 IMPROVED: Emulators > Redream (Sega Dreamcast) for 32/64 Bits.
 
 ### (12/03/22)
 
-· 👌 IMPROVE: Emulators > Amiberry (Amiga emulator) 4.1.6 for 32/64 Bits.
+· 👌 IMPROVED: Emulators > Amiberry (Amiga emulator) 4.1.6 for 32/64 Bits.
 
 ### (6/03/22)
 
-· 👌 IMPROVE: Emulators > DOSBox-X version 0-83.24 for 32/64 Bits.
+· 👌 IMPROVED: Emulators > DOSBox-X version 0-83.24 for 32/64 Bits.
 
 ### (05/03/22)
 
-· 👌 IMPROVE: Emulators > RetroArch Duckstation core for 64 Bits (Thanks @foxhound311).
+· 👌 IMPROVED: Emulators > RetroArch Duckstation core for 64 Bits (Thanks @foxhound311).
 
-· 👌 IMPROVE: Others > RPiplay 64 bits support.
+· 👌 IMPROVED: Others > RPiplay 64 bit support.
 
 ### (21/02/22)
 
-· 🐛 FIX: Emulators > Retroarch 64 bits cores.
+· 🐛 FIXED: Emulators > Retroarch 64 bit cores.
 
 ### (18/02/22)
 
-· 👌 IMPROVE: Emulators > New RetroArch cores 64 Bits (Thanks @foxhound311).
+· 👌 IMPROVED: Emulators > New 64 bit RetroArch cores (Thanks @foxhound311).
 
-· 👌 IMPROVE: Games > Grand Thef Auto III & IV 64 Bits support (Thanks @foxhound311).
+· 👌 IMPROVED: Games > Grand Thef Auto III & IV 64 Bit support (Thanks @foxhound311).
 
-· 👌 IMPROVE: Games > l'Abbaye des Morts 64 Bits support.
+· 👌 IMPROVED: Games > l'Abbaye des Morts 64 Bit support.
 
 ### (6/02/22)
 
-· 👌 IMPROVE: PiKISS menu and message If you are running on a 64 Bits environment.
+· 👌 IMPROVED: PiKISS menu and message If you are running on a 64 Bit environment.
 
-· 👌 IMPROVE: Emulators > RetroArch v1.10.0 64 Bits support.
+· 👌 IMPROVED: Emulators > RetroArch v1.10.0 64 Bit support.
 
 ### (29/01/22)
 
-· 👌 IMPROVE: Emulators > RetroArch v1.10.0 + update cores.
+· 👌 IMPROVED: Emulators > RetroArch v1.10.0 + update cores.
 
 ### (22/01/22)
 
-· 📦 ADD: Games > Sonic Robo Blast 2.
+· 📦 ADDED: Games > Sonic Robo Blast 2.
 
 ### (16/01/22)
 
-· 📦 ADD: Games > Super Mario War.
+· 📦 ADDED: Games > Super Mario War.
 
 ### (15/01/22)
 
-· 👌 IMPROVE: Minor refactor code on helper.sh, .bashrc_aliases, psx.sh, smario64.sh
+· 👌 IMPROVED: Minor refactoring of code in helper.sh, .bashrc_aliases, psx.sh, smario64.sh
 
 ### (30/12/21)
 
-· 📦 ADD: Multimedia > TVPlayer for watch TV channels from Spain and other International.
+· 📦 ADDED: Multimedia > TVPlayer to watch international TV channels from Spain and other places.
 
-· ❌ REMOVE: Scripts dwnmp3.sh, flexget.sh, hotstop.sh.
+· ❌ REMOVED: Scripts dwnmp3.sh, flexget.sh, hotstop.sh.
 
 ### (25/12/21)
 
-· 🐛 FIX: Others > RPiPlay (AirPlay mirroring) now compatible with Bullseye using Gstreamer.
+· 🐛 FIXED: Others > RPiPlay (AirPlay mirroring) now compatible with Bullseye using Gstreamer.
 
 ### (17/12/21)
 
-· 📦 ADD: Games > OpenJK (Jedi Knight: Jedi Academy).
+· 📦 ADDED: Games > OpenJK (Jedi Knight: Jedi Academy).
 
-· 👌 IMPROVE: Internet > Whatscli v1.0.11 (A cli interface for whatsapp).
+· 👌 IMPROVED: Internet > Whatscli v1.0.11 (A cli interface for whatsapp).
 
-· 👌 IMPROVE: Emulators > Duckstation (PSX) now compatible with Buster & Twister OS.
+· 👌 IMPROVED: Emulators > Duckstation (PSX) now compatible with Buster & Twister OS.
 
-· 🐛 FIX: Games > Arx Libertatis > Broken link. Remove menu for choose version.
+· 🐛 FIXED: Games > Arx Libertatis > Broken link. Removed menu for choosing version.
 
-· 🐛 FIX: Games > Alien Vs Predator > Broken link.
+· 🐛 FIXED: Games > Alien Vs Predator > Broken link.
 
 ### (11/12/21)
 
-· 👌 IMPROVE: Emulators > RetroArch v1.9.14-1 + update cores.
+· 👌 IMPROVED: Emulators > RetroArch v1.9.14-1 + update cores.
 
 ### (07/12/21)
 
-· 👌 IMPROVE: Emulators > Duckstation (PSX).
+· 👌 IMPROVED: Emulators > Duckstation (PSX).
 
-· 🐛 FIX: Emulators > PSX missing BiOS URL.
+· 🐛 FIXED: Emulators > PSX missing BiOS URL.
 
 ### (04/12/21)
 
-· 🐛 FIX: Emulators > PSX missing deps.
+· 🐛 FIXED: Emulators > PSX missing deps.
 
-· 🐛 FIX: Games > Serious Sam.
+· 🐛 FIXED: Games > Serious Sam.
 
 ### (20/11/21)
 
-· 👌 IMPROVE: Emulators > RetroArch 1.9.13.2-1.
+· 👌 IMPROVED: Emulators > RetroArch 1.9.13.2-1.
 
-· 🐛 FIX: Configure > Vulkan.
+· 🐛 FIXED: Configure > Vulkan.
 
-· 👌 IMPROVE: Tweaks > Others >Add reduce stop job running tweak.
+· 👌 IMPROVED: Tweaks > Others >Add reduce stop job running tweak.
 
 ### (16/11/21)
 
-· 👌 IMPROVE: Emulators > Update & new binary compiled DOSBox to 0.83.20 (Compatible with Bullseye).
+· 👌 IMPROVED: Emulators > Update & new binary compiled DOSBox to 0.83.20 (Compatible with Bullseye).
 
-· 🐛 FIX: Configure > Vulkan. FIX missing deps on Bullseye.
+· 🐛 FIXED: Configure > Vulkan. FIX missing deps on Bullseye.
 
 ### (15/11/21)
 
-· 👌 IMPROVE: Emulators > Update & new binary compiled DOSBox to 0.83.20 (Compatible with Bullseye).
+· 👌 IMPROVED: Emulators > Update & new binary compiled DOSBox to 0.83.20 (Compatible with Bullseye).
 
-· 👌 IMPROVE: Change compile parameter for cortex-a72 on some scripts.
+· 👌 IMPROVED: Change compile parameter for cortex-a72 on some scripts.
 
-· 🐛 FIX: Games > Quake > Quake ][ URL texture pack & typo.
+· 🐛 FIXED: Games > Quake > Quake ][ URL texture pack & typo.
 
-· ❌ REMOVE: Others > Cool Retro Term (Added on Bullseye's repository).
+· ❌ REMOVED: Others > Cool Retro Term (Added on Bullseye's repository).
 
 ### (12/11/21)
 
-· 👌 IMPROVE: Server > Remote desktop > xRDP.
+· 👌 IMPROVED: Server > Remote desktop > xRDP.
 
-· ❌ REMOVE: Server > Remote desktop > Nomachine (It's not compatible with bullseye).
+· ❌ REMOVED: Server > Remote desktop > Nomachine (It's not compatible with bullseye).
 
 ### (11/11/21)
 
-· 👌 IMPROVE: Games > Update Diablo (ver. 1.3.0).
+· 👌 IMPROVED: Games > Update Diablo (ver. 1.3.0).
 
-· ❌ REMOVE: Tweaks > Others > NOOP Scheduler (Not available anymore).
+· ❌ REMOVED: Tweaks > Others > NOOP Scheduler (Not available anymore).
 
 ### (1/11/21)
 
-· 👌 IMPROVE: Server > CUPs (Printer driver).
+· 👌 IMPROVED: Server > CUPs (Printer driver).
 
 ### (26/10/21)
 
-· 👌 IMPROVE: Emulators > RetroArch 1.9.12-1.
+· 👌 IMPROVED: Emulators > RetroArch 1.9.12-1.
 
 ### (25/10/21)
 
-· 🐛 FIX: Games > OpenRCT2 ([issue #121](https://github.com/jmcerrejon/PiKISS/issues/121)).
+· 🐛 FIXED: Games > OpenRCT2 ([issue #121](https://github.com/jmcerrejon/PiKISS/issues/121)).
 
-· 🐛 FIX: Games > Heroes 3 ([issue #120](https://github.com/jmcerrejon/PiKISS/issues/120)).
+· 🐛 FIXED: Games > Heroes 3 ([issue #120](https://github.com/jmcerrejon/PiKISS/issues/120)).
 
 ### (18/10/21)
 
-· 📦 ADD: Server > Database MariaDB (MySQL fork).
+· 📦 ADDED: Server > Database MariaDB (MySQL fork).
 
-· 📦 ADD: Server > LEMP stack (Linux + Nginx Light v1.43 + MariaDB v10.3 + PHP v7.4 or v8.1).
+· 📦 ADDED: Server > LEMP stack (Linux + Nginx Light v1.43 + MariaDB v10.3 + PHP v7.4 or v8.1).
 
 · 👌 IMPROVE: Server > Frameworks (WordPress, Node, Ghost).
 
@@ -249,7 +249,7 @@ To see the full list of changes, read the [CHANGELOG](./CHANGELOG)
 
 ### _"Everything that can be automated, should be automated."_
 
-Installing an application on Linux is not a complex task. Sometimes you just type _sudo apt install_ and get the application installed with all of its dependencies. But... What if we need to install more than one app such as a web server or it requires many steps to complete the install process? Is it not in the official repositories? What if you want to get rid of input commands?
+Installing an application on Linux is not a complex task. Sometimes you just type _sudo apt install_ and get the application installed with all of its dependencies. But... What if we need to install more than one app such as a web server or the app requires many steps to complete the install process? What if it is not in the official repositories? What if you want to get rid of input commands?
 
 "Please, make an easy way to set up my WIFI network!"
 
@@ -259,13 +259,13 @@ Don't despair. **PiKISS** has come to help you...
 
 **PiKISS** _(Pi Keeping It Simple, Stupid!)_ is made with _scripts (Bash)_ for _Raspberry Pi 4_ boards which has a menu that will allow you to install some applications or configure files automatically as easy as possible. The ideal stage is:
 
-- _Raspberry PI OS Desktop_ Bullseye 32 bits.
+- _Raspberry PI OS Desktop_ Bullseye 32 bit.
 
 - User _pi_ or another user with sudo priviledges.
 
-The idea is to offer facilities to manage your operating system, selecting an option in a menu and answer [Yes/No]. If you need to check dependencies, install an app, modify a script at boot, add a line to a file or download other, **PiKISS** will do it for you.
+The idea is to offer tools to manage your operating system by selecting an option in a menu and answering [Yes/No]. If you need to check dependencies, install an app, modify a script at boot, add a line to a file or download other, **PiKISS** will do it for you.
 
-I included not only the ability to install, but also compile programs. Do you have problems when compiling your favorite emulator? Have you forgotten to modify a line in the source code and now you have to recompile again for 4 hours?. Laugh with **PiKISS**.
+I included not only the ability to install, but also to compile programs. Do you have problems when compiling your favorite emulator? Have you forgotten to modify a line in the source code and now you have to recompile again for 4 hours?. Laugh with **PiKISS**.
 
 What some users have said about **PiKISS**:
 
@@ -287,25 +287,25 @@ curl -sSL https://git.io/JfAPE | bash
 
 ## [ Data Files 🚨 ]
 
-Honestly, I just want to let you get everything done without having to fight with the command line. The project has grown a lot, and the games I own and have been hosted on the internet, can't be there because of _Copyright_. I don't understand how a game that is older than 15 years old in some cases, has these so restrictive laws in some countries. Someone should do something about it.
+Honestly, I just want to let you get everything done without having to fight with the command line. The project has grown a lot, and the games I own and games that are hosted on the internet can't be there because of _Copyright_. I don't understand how a game that is older than 15 years old in some cases has such restrictive laws in some countries. Someone should do something about it.
 
-**My solution to keep this project working is the following**: If you have copies saved for your use, just copy those links/paths in a file at `res/magic-air-copy-pikiss.txt`. You have an example of this file with instructions at [./res/magic-air-copy-pikiss.example](./res/magic-air-copy-pikiss.example). _PiKISS_ will read the links/files/directories in that file and install it for you when is required. Compatible and tested hosters: _dropbox.com, archive.org, anonfiles.com, pcloud.com_.
+**My solution to keep this project working is the following**: If you have copies saved for your use, just copy those links/paths in a file at `res/magic-air-copy-pikiss.txt`. You have an example of this file with instructions at [./res/magic-air-copy-pikiss.example](./res/magic-air-copy-pikiss.example). _PiKISS_ will read the links/files/directories in that file and install it for you when it is required. Compatible and tested hosters: _dropbox.com, archive.org, anonfiles.com, pcloud.com_.
 
-You can share this file _magic-air-copy-pikiss.txt_ with your brother/sister if you paid half price for the game and if the laws of your country allow it.
+You can share this file _magic-air-copy-pikiss.txt_ with your siblings if you paid half price for the game and if the laws of your country allow it.
 
 ## [ Update ]
 
-_PiKISS_ checks if new scripts are available on remote and updates them automatically, but if you want to get the latest version manually, just enter into the directory with cd PiKISS and type:
+_PiKISS_ checks if new scripts are available on a remote and updates them automatically, but if you want to get the latest version manually, just go to the directory with cd PiKISS and type:
 
 ```sh-session
 $ git pull
 ```
 
-**NOTE:** If you use another distribution other than _Raspberry OS/TwisterOS_, maybe you need to execute the next command: _git config --global http.sslVerify false_
+**NOTE:** If you use another distribution other than _Raspberry OS/TwisterOS_, you may need to execute the following command: _git config --global http.sslVerify false_
 
 ### [ HELP ME! ]
 
-**PiKISS** grows up according to users requests or I'll append scripts that I consider necessary, but I call **to the community** to share, improve and help to add new scripts to the existing one. If the project grow, **is up to you**.
+**PiKISS** grows according to users requests or by me appending scripts that I consider necessary, but I call **to the community** to share, improve and help add new scripts to the existing one. **It is up to you** for the project to grow.
 
 ## ESPAÑOL
 
