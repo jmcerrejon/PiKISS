@@ -1,4 +1,4 @@
-# PiKISS For Raspberry Pi: A Bunch Of Scripts With A Menu To Make Your Life Easier
+# PiKISS For Raspberry Pi: A Bunch Of Scripts With Menus To Make Your Life Easier
 
 ![PiKISS Logo](logo_pikiss_header.png)
 
