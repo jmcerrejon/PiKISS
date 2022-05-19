@@ -296,8 +296,7 @@ smEmulators() {
 
 smMultimedia() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits
-        return
+        show_dialog_only_32_bits "OBS"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Multimedia ]" --menu "Select a script from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
