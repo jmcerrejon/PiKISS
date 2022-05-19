@@ -3,17 +3,17 @@
 ![PiKISS Logo](logo_pikiss_header.png)
 
 <p align="center">
-	<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ulysess%40gmail%2ecom&lc=GB&item_name=PiKISS&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted"><img src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif" /></a>
-	<a href='https://ko-fi.com/cerrejon' target='_blank'><img height="20" src="https://az743702.vo.msecnd.net/cdn/kofi2.png?v=0" alt='Buy Me a Coffee at ko-fi.com' /></a>
-	<a href="https://github.com/jmcerrejon/neighborhood-games/blob/master/LICENSE"><img src="https://img.shields.io/github/license/jmcerrejon/neighborhood-games" alt="npm version"></a>
-	<a href="https://twitter.com/ulysess10"><img src="https://img.shields.io/twitter/follow/ulysess10?style=social" alt="Follow me on Twitter!"></a>
-	<a href="https://github.com/jmcerrejon/PiKISS/search?l=shell"><img src="https://img.shields.io/github/languages/top/jmcerrejon/pikiss" alt="language top"></a>
-	<a href="https://commerce.coinbase.com/checkout/71737f60-2440-488e-b413-f41e706f024b"><img height="20" src="https://estafaonline.com/wp-content/uploads/2019/02/Coinbase-logo.png" alt="Coinbase"></a>
+ <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ulysess%40gmail%2ecom&lc=GB&item_name=PiKISS&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted"><img src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif" /></a>
+ <a href='https://ko-fi.com/cerrejon' target='_blank'><img height="20" src="https://az743702.vo.msecnd.net/cdn/kofi2.png?v=0" alt='Buy Me a Coffee at ko-fi.com' /></a>
+ <a href="https://github.com/jmcerrejon/neighborhood-games/blob/master/LICENSE"><img src="https://img.shields.io/github/license/jmcerrejon/neighborhood-games" alt="npm version"></a>
+ <a href="https://twitter.com/ulysess10"><img src="https://img.shields.io/twitter/follow/ulysess10?style=social" alt="Follow me on Twitter!"></a>
+ <a href="https://github.com/jmcerrejon/PiKISS/search?l=shell"><img src="https://img.shields.io/github/languages/top/jmcerrejon/pikiss" alt="language top"></a>
+ <a href="https://commerce.coinbase.com/checkout/71737f60-2440-488e-b413-f41e706f024b"><img height="20" src="https://estafaonline.com/wp-content/uploads/2019/02/Coinbase-logo.png" alt="Coinbase"></a>
 </p>
 
 ## ⏰ Estimated hours of work so far
 
-- **976 hours**
+- **980 hours**
 
 ## 💰 Total amount donated by users
 
@@ -25,7 +25,7 @@
 
 - Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy, Jonathan Hodges, Mattias True, Sara J Shireman Anderson, Anthony Skiver, Shawn Mullins, Michaël Bortolin, William Norris_
 
-## 📣 Stay tuned!
+## 📣 Stay tuned
 
 - 📬⠀Mail: <ulysess@gmail.com>
 
@@ -39,9 +39,9 @@
 
 - 📣⠀Mewe (Spanish): [mewe.com](https://mewe.com/group/5c6bbed8f0e71669f228c457)
 
-- 💰 ⠀Patreon: https://patreon.com/cerrejon
+- 💰 ⠀Patreon: <https://patreon.com/cerrejon>
 
-- 💰 ⠀Paypal: https://paypal.me/jmcerrejon
+- 💰 ⠀Paypal: <https://paypal.me/jmcerrejon>
 
 ## 🤝 Contributors
 
@@ -49,7 +49,7 @@
 
 - Logo: grayduck
 
-## 🎥 Check what **PiKISS** can do for you on my Youtube's channel:
+## 🎥 Check what **PiKISS** can do for you on my Youtube's channel
 
 - [youtube.com > PIKISS](https://www.youtube.com/playlist?list=PLXhElW3ALmWh8p0mn1ZECawkKyF8QzNNP)
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (19/05/22)
+
+· 📦 NEW: MMedia > OBS for 64 Bits.
 
 ### (02/05/22)
 
@@ -298,7 +302,7 @@ You can share this file _magic-air-copy-pikiss.txt_ with your brother/sister if 
 _PiKISS_ checks if new scripts are available on remote and updates them automatically, but if you want to get the latest version manually, just enter into the directory with cd PiKISS and type:
 
 ```sh-session
-$ git pull
+git pull
 ```
 
 **NOTE:** If you use another distribution other than _Raspberry OS/TwisterOS_, maybe you need to execute the next command: _git config --global http.sslVerify false_
@@ -309,7 +313,7 @@ $ git pull
 
 ## ESPAÑOL
 
-## PiKISS para Raspberry Pi: Un puñado de scripts con menú para hacerte la vida más fácil.
+## PiKISS para Raspberry Pi: Un puñado de scripts con menú para hacerte la vida más fácil
 
 ### [ Presentando PiKISS ]
 
@@ -329,11 +333,11 @@ Incluyo la posibilidad no solo de instalar, sino también de compilar programas.
 
 Lo que algunos usuarios han dicho de **PiKISS**:
 
-_"¡Se me podría haber ocurrido a mí!"_
+- _"¡Se me podría haber ocurrido a mí!"_
 
-_"Menuda tontería (voy a instalarlo en cuanto llegue a casa)"_
+- _"Menuda tontería (voy a instalarlo en cuanto llegue a casa)"_
 
-_"¿Ya no tengo que pelearme con la terminal?. Cállate y coge mi dinero!"_ - Tranquilos, es gratis.
+- _"¿Ya no tengo que pelearme con la terminal?. Cállate y coge mi dinero!"_ - Tranquilos, es gratis.
 
 **NOTA:** 100% Libre de virus y troyanos. No disponible en tiendas. El autor de _PiKISS_ no se hace responsable si te aburres con tu _Raspberry Pi_ porque todo es demasiado fácil. Online hasta que me plazca o se destruya _Internet_.
 
@@ -358,7 +362,7 @@ Este fichero _magic-air-copy-pikiss.txt_ lo puedes compartir con tu herman@ si p
 _PiKISS_ comprueba si hay nuevas actualizaciones en remoto y las actualiza automaticamente, pero si quieres conseguir la última versión de forma manual, teclea en el directorio de _PiKISS_:
 
 ```sh-session
-$ git pull
+git pull
 ```
 
 **NOTA:** Si usas otra distribución que no sea _Raspberry OS/TwisterOS_ en la _Raspberry Pi_, tal vez tengas que ejecutar esta sencencia: _git config --global http.sslVerify false_
