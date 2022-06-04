@@ -2,7 +2,7 @@
 #
 # Description : Quake I, ][, ]I[
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.6 (15/Nov/21)
+# Version     : 1.4.0 (4/Jun/22)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help 		  : Quake 1: | https://godmodeuser.com/p/8#40
@@ -16,13 +16,14 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
-readonly Q1_BINARY_URL="https://misapuntesde.com/rpi_share/quakespasm-0.93.2-rpi4-bin.tar.gz"
+readonly Q1_BINARY_URL="https://misapuntesde.com/rpi_share/quakespasm-0.94.3-rpi4-bin.tar.gz"
 readonly Q1_SOUNDTRACK_URL="https://www.quaddicted.com/files/music/quake_campaign_soundtrack.zip"
-readonly Q1_SOURCE_CODE_1_URL="https://sourceforge.net/projects/quakespasm/files/Linux/quakespasm-0.93.2_linux.tar.gz/download"
-readonly Q1_SOURCE_CODE_2_VK_URL="https://github.com/Novum/vkQuake.git"
+readonly Q1_SOURCE_CODE_1_URL="https://sourceforge.net/projects/quakespasm/files/Source/quakespasm-0.94.3.tar.gz/download"
+readonly Q1_SOURCE_CODE_2_VK_URL="https://github.com/Novum/vkQuake"
 readonly Q1_PACKAGES=(libogg0 libvorbis0a)
 readonly Q2_CONFIG_DIR="$HOME/.yq2"
 readonly Q2_BINARY_URL="https://misapuntesde.com/rpi_share/yquake2_bin_arm.tar.gz"
+readonly Q2_BINARY_AARCH64_URL="https://misapuntesde.com/rpi_share/yquake2-bin-rpi-aarch64.tar.gz"
 readonly Q2_SOURCE_CODE_URL="https://github.com/yquake2/yquake2.git"
 readonly Q2_OGG_URL="https://misapuntesde.com/rpi_share/q2_ogg.zip"
 readonly Q2_HIGH_TEXTURE_PAK_URL="https://deponie.yamagi.org/quake2/texturepack/textures.zip"
@@ -72,14 +73,12 @@ q1_check_if_installed() {
 }
 
 q1_generate_icon() {
-    local QUAKE_BIN
-    QUAKE_BIN="quake"
     echo -e "\nGenerating icon..."
     if [[ ! -e ~/.local/share/applications/quake.desktop ]]; then
         cat <<EOF >~/.local/share/applications/quake.desktop
 [Desktop Entry]
 Name=Quake
-Exec=${INSTALL_DIR}/quake/${QUAKE_BIN}
+Exec=${INSTALL_DIR}/quake/run.sh
 Icon=${INSTALL_DIR}/quake/logo.png
 Path=${INSTALL_DIR}/quake/
 Type=Application
@@ -99,16 +98,16 @@ q1_opengl_compile() {
     sudo apt install -y libsdl2-dev libvorbis-dev libmad0-dev
     mkdir -p "$HOME"/sc && cd "$_" || exit 1
     download_and_extract "$Q1_SOURCE_CODE_1_URL" "$HOME"/sc
-    cd "$HOME"/sc/quakespasm-0.93.2/Quake || exit 1
+    cd "$HOME"/sc/quakespasm-0.94.3/Quake || exit 1
     make_with_all_cores USE_SDL2=1
     echo -e "\nDone!. "
 }
 
 q1_vulkan_compile() {
     echo -e "\nInstalling Dependencies..."
-    sudo apt install -y apt-get install git make gcc libsdl2-dev libvulkan-dev libvorbis-dev libmad0-dev
+    sudo apt install -y make gcc libsdl2-dev libvulkan-dev libvorbis-dev libmad0-dev
     mkdir -p "$HOME"/sc && cd "$_" || exit 1
-    download_and_extract "$Q1_SOURCE_CODE_2_VK_URL" "$HOME"/sc
+    git clone "$Q1_SOURCE_CODE_2_VK_URL"
     cd "$HOME"/sc/vkQuake/Quake || exit 1
     make_with_all_cores USE_SDL2=1
     echo -e "\nDone!. "
@@ -129,7 +128,7 @@ q1_magic_air_copy() {
         Q1_DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_1")
         message_magic_air_copy "$VAR_DATA_NAME_1"
     fi
-    download_and_extract "$Q1_DATA_URL" "$HOME"/quake
+    download_and_extract "$Q1_DATA_URL" "$HOME"/games/quake
 }
 
 q1_install() {
@@ -142,12 +141,11 @@ Quake for Raspberry Pi
  · Optimized for Raspberry Pi 4.
  · Based on code at ${Q1_SOURCE_CODE_1_URL}.
  · If you don't provide game data file inside res/magic-air-copy-pikiss.txt, shareware version will be installed.
+ · Make sure all data files are lowercase, e.g. pak0.pak, not PAK0.PAK. Some distributions of the game have upper case file names.
  · Start at 720p (You can change it).
  · SDL2 with graphic improvements through autoexec.cfg.
  · Check for more improvements changing autoexec.cfg at https://www.celephais.net/fitzquake/#commands
- · OGG/MP3 soundtrack ONLY for full version (in progress).
  · If you want to disable fps cap, just open the console (tilde key in game) and type: SCR_SHOWFPS 0
- · Install path: $INSTALL_DIR/quake
 "
     read -p "Press [Enter] to install the game..."
     echo -e "\n\nInstalling Quake, please wait...\n"
@@ -157,7 +155,7 @@ Quake for Raspberry Pi
     q1_soundtrack_download
     q1_generate_icon
     q1_magic_air_copy
-    echo -e "\nDone!. You can play typing $INSTALL_DIR/quake/quake or opening the Menu > Games > Quake.\n"
+    echo -e "\nDone!. You can play typing $INSTALL_DIR/quake/run.sh or opening the Menu > Games > Quake.\n"
     q1_runme
 }
 
@@ -211,19 +209,28 @@ EOF
 }
 
 q2_install_binary() {
+    local BINARY_URL
+    BINARY_URL=$Q2_BINARY_URL
+
+    if is_userspace_64_bits; then
+        BINARY_URL=$Q2_BINARY_URL_64
+    fi
+
     echo -e "\nInstalling binary files..."
-    download_and_extract "$Q2_BINARY_URL" "$INSTALL_DIR"
+    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
     cp -rf "$INSTALL_DIR"/yquake2/.yq2 ~/
 }
 
 q2_compile() {
     echo -e "\nInstalling Dependencies..."
-    sudo apt install -y libsdl2-dev libopenal-dev
-    mkdir -p "$HOME"/sc
+    sudo apt install -y libsdl2-dev libopenal-dev libcurl4-gnutls-dev
+    mkdir -p "$HOME"/sc && cd "$_" || exit 1
     git clone "$Q2_SOURCE_CODE_URL" yquake2 && cd "$_" || exit 1
-    # TODO Add on Makefile -march=armv7
-    make -j"$(nproc)"
-    echo -e "\nDone!. "
+    mkdir build && cd "$_" || exit 1
+    cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    make_with_all_cores
+    echo -e "\nDone!. Check $HOME/sc/yquake2/build/release"
+    exit_message
 }
 
 q2_soundtrack_download() {
@@ -234,7 +241,7 @@ q2_soundtrack_download() {
 q2_high_textures_download() {
     echo -e "\nInstalling high texture pack..."
     download_and_extract "$Q2_HIGH_TEXTURE_PAK_URL" "$Q2_CONFIG_DIR"/baseq2
-    echo "Installing high texture models..."
+    echo -e "\nInstalling high texture models..."
     download_and_extract "$Q2_HIGH_TEXTURE_MODELS_URL" "$Q2_CONFIG_DIR"/baseq2
 }
 
