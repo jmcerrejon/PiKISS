@@ -1383,3 +1383,12 @@ pip_install() {
         python3 -m pip install "$i"
     done
 }
+
+uninstall_packages() {
+    INSTALLER_DEPS=("$@")
+    for i in "${INSTALLER_DEPS[@]}"; do
+        if ! package_check "$i" -eq 0 >/dev/null; then
+            sudo apt remove -y "$i"
+        fi
+    done
+}
