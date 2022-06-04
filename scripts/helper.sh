@@ -1387,7 +1387,7 @@ pip_install() {
 uninstall_packages() {
     INSTALLER_DEPS=("$@")
     for i in "${INSTALLER_DEPS[@]}"; do
-        if ! package_check "$i" -eq 0 >/dev/null; then
+        if package_check "$i" -eq 0 >/dev/null; then
             sudo apt remove -y "$i"
         fi
     done
