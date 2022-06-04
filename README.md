@@ -67,9 +67,13 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (04/06/22)
+
+· 📦 ADD: Others > ZShell.
+
 ### (19/05/22)
 
-· 📦 NEW: MMedia > OBS for 64 Bits.
+· 👌 IMPROVE: MMedia > OBS for 64 Bits.
 
 ### (02/05/22)
 
