@@ -104,13 +104,11 @@ cmake_on_build() {
 # Compile with all cores
 #
 make_with_all_cores() {
-    echo -e "\n Compiling..."
+    local OPTOPT_PARAMS
 
-    if [ "$(uname -m)" == 'armv7l' ]; then
-        time make -j"$(nproc)" OPTOPT="-fsigned-char -marm -march=armv8-a+crc -mtune=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard"
-    else
-        time make -j"$(nproc)"
-    fi
+    OPTOPT_PARAMS=$([[ "$(uname -m)" == 'armv7l' ]] && echo "-fsigned-char -marm -march=armv8-a+crc -mtune=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard" || echo "")
 
+    echo -e "\n Compiling with parameters: $OPTOPT_PARAMS"
+    time make -j"$(nproc)" "$OPTOPT_PARAMS"
     echo
 }
