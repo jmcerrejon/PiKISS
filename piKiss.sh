@@ -476,6 +476,7 @@ smOthers() {
         Synergy "Allow you to share keyboard and mouse to computers on LAN"
         Uninstall "Uninstall PiKISS :_("
         WineX86 "Install Wine X86 + Box86"
+        Zsh "Install Z Shell"
     )
 
     choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
@@ -497,6 +498,7 @@ smOthers() {
         Synergy) ./scripts/others/synergy.sh ;;
         Uninstall) uninstall_pikiss ;;
         WineX86) ./scripts/others/wine86.sh ;;
+        Zsh) ./scripts/others/zsh.sh ;;
         esac
     done
 }
