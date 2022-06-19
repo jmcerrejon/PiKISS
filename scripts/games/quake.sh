@@ -2,7 +2,7 @@
 #
 # Description : Quake I, ][, ]I[
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.0 (4/Jun/22)
+# Version     : 1.4.1 (4/Jun/22)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help 		  : Quake 1: | https://godmodeuser.com/p/8#40
@@ -213,7 +213,7 @@ q2_install_binary() {
     BINARY_URL=$Q2_BINARY_URL
 
     if is_userspace_64_bits; then
-        BINARY_URL=$Q2_BINARY_URL_64
+        BINARY_URL=$Q2_BINARY_AARCH64_URL
     fi
 
     echo -e "\nInstalling binary files..."
