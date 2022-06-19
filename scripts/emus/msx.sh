@@ -2,7 +2,7 @@
 #
 # Description : OpenMSX emulator
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.5.0 (19/Jun/22)
+# Version     : 1.5.1 (19/Jun/22)
 # Tested      : Raspberry 4
 #
 #
@@ -15,7 +15,7 @@ readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES=(libglew2.1 libsdl2-ttf-2.0-0)
 readonly PACKAGES_DEV=(libsdl2-dev libsdl2-ttf-dev libglew-dev libao-dev libogg-dev libtheora-dev libxml2-dev libvorbis-dev tcl-dev g++-4.8)
 readonly SOURCE_CODE_URL="https://github.com/openMSX/openMSX/releases/download/RELEASE_18_0/openmsx-18.0.tar.gz"
-readonly BINARY_ARMV7L_URL="https://misapuntesde.com/rpi_share/openmsx_0.17_armhf.tar.gz"
+readonly BINARY_ARMHF_URL="https://misapuntesde.com/rpi_share/openmsx_0.18_armhf.tar.gz"
 readonly BINARY_AARCH64_URL="https://misapuntesde.com/rpi_share/openmsx_0.18_aarch64.tar.gz"
 readonly RELEASE_NOTES_URL="https://raw.githubusercontent.com/openMSX/openMSX/RELEASE_18_0/doc/release-notes.txt"
 readonly SETTINGS_URL="https://raw.githubusercontent.com/jmcerrejon/PiKISS/master/res/settings.xml"
@@ -100,7 +100,7 @@ postinstall() {
 
 install() {
     local BINARY_URL
-    BINARY_URL=$BINARY_ARMV7L_URL
+    BINARY_URL=$BINARY_ARMHF_URL
 
     if is_userspace_64_bits; then
         BINARY_URL=$BINARY_AARCH64_URL
