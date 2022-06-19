@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **980 hours**
+- **983 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (19/06/22)
+
+· 👌 IMPROVE: Emulators > openMSX 0.18 & 64 bits support.
 
 ### (04/06/22)
 
