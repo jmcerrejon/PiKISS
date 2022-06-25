@@ -2,7 +2,7 @@
 #
 # Description : MS-DOS Emulator DOSBox-X
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.1 (6/Mar/22)
+# Version     : 1.3.2 (25/Jun/22)
 #
 # Help        : https://github.com/joncampbell123/dosbox-x/blob/master/BUILD.md
 #             : https://krystof.io/dosbox-shaders-comparison-for-modern-dos-retro-gaming/
@@ -13,7 +13,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="$HOME/games"
 readonly DOSLIB_PATH="$HOME/sc/doslib/tool/linker/linux-host"
-readonly PACKAGES=(libsdl2-net-2.0-0)
+readonly PACKAGES=(libsdl2-net-2.0-0 libpcap0.8 libslirp0)
 readonly PACKAGES_DEV=(sudo apt install automake gcc g++ make libncurses-dev nasm libsdl-net1.2-dev libsdl2-net-dev libpcap-dev libslirp-dev fluidsynth libfluidsynth-dev libavdevice58 libavformat-dev libavcodec-dev libavcodec-extra libavcodec-extra58 libswscale-dev libfreetype-dev libxkbfile-dev libxrandr-dev)
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/dosbox-X-rpi_0-83.24.tar.gz"
 readonly GAME_DATA_URL="https://misapuntesde.com/res/jill-of-the-jungle-the-complete-trilogy.zip"
