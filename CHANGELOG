@@ -1,5 +1,15 @@
 # Changelog
 
+## (09/07/22)
+
+· 👌 IMPROVE: Emulators > RetroArch 1.10.3.
+· 👌 IMPROVE: Emulators > DOSBox-X 0.84.2.
+· 👌 IMPROVE & Fix: Emulators > MAME v0.245.
+
+## (28/06/22)
+
+· 🐛 FIX: Configure > Vulkan driver.
+
 ## (25/06/22)
 
 · 🐛 FIX: Emulators > Dosbox.

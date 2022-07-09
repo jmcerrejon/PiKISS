@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **985 hours**
+- **989 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,16 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (09/07/22)
+
+· 👌 IMPROVE: Emulators > RetroArch 1.10.3.
+· 👌 IMPROVE: Emulators > DOSBox-X 0.84.2.
+· 👌 IMPROVE & Fix: Emulators > MAME v0.245.
+
+### (28/06/22)
+
+· 🐛 FIX: Configure > Vulkan driver.
 
 ### (25/06/22)
 
