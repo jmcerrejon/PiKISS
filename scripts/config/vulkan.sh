@@ -2,23 +2,22 @@
 #
 # Description : Vulkan driver
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.1 (20/Nov/21)
+# Version     : 1.4.3 (38/Jun/22)
 # Compatible  : Raspberry Pi 4
 #
-# Info        : Thks to PI Labs
 # Help        : https://ninja-build.org/manual.html#ref_pool
-#             : https://www.raspberrypi.org/forums/viewtopic.php?f=63&t=276412&start=25#p1678723
+#             : https://qengineering.eu/install-vulkan-on-raspberry-pi.html
 #             : https://blogs.igalia.com/apinheiro/2020/06/v3dv-quick-guide-to-build-and-run-some-demos/
-#             : https://github.com/Yours3lf/rpi-vk-driver/blob/master/BUILD.md
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/mesa_vulkan"
-readonly BRANCH_VERSION="20.3"
 readonly SOURCE_CODE_URL="https://gitlab.freedesktop.org/mesa/mesa.git"
-readonly PI_VERSION_NUMBER=$(get_pi_version_number)
+PI_VERSION_NUMBER=$(get_pi_version_number)
+BRANCH_VERSION="22.1"
+INPUT=/tmp/vulkan.$$
 
 install() {
     echo -e "\nInstalling,...\n"
@@ -27,6 +26,7 @@ install() {
     echo
     glxinfo -B
     echo "Done."
+    exit_message
 }
 
 install_full_deps() {
@@ -54,33 +54,98 @@ clone_repo() {
     git clone -b "$BRANCH_VERSION" "$SOURCE_CODE_URL" "$INSTALL_DIR" && cd "$_" || exit
 }
 
+install_vulkan_from_official_repository() {
+    local CODENAME
+    CODENAME=$(get_codename)
+
+    if [ "$CODENAME" != "bullseye" ]; then
+        echo -e "You need at least Debian Bullseye to install Vulkan. See: https://wiki.debian.org/bullseye"
+        return 0
+    fi
+
+    echo -e "\nInstalling Vulkan driver from official repository...\n"
+    sudo apt install -y mesa-vulkan-drivers libvulkan-dev libvulkan1 vulkan-tools
+    echo
+    glxinfo -B
+    echo "Done."
+    exit_message
+}
+
+compile_and_install_libdrm() {
+    local LIBDRM_URL
+    local SOURCE_CODE_PATH
+    LIBDRM_URL="https://dri.freedesktop.org/libdrm/libdrm-2.4.110.tar.xz"
+    SOURCE_CODE_PATH="$HOME/sc"
+
+    echo -e "\nCompiling libdrm...\n"
+    download_and_extract "$LIBDRM_URL" "$SOURCE_CODE_PATH"
+    cd libdrm-2.4.110 || exit
+    mkdir build && cd "$_" || exit
+    meson -Dudev=true -Dvc4=true -Dintel=false -Dvmwgfx=false -Dradeon=false -Damdgpu=false -Dnouveau=false -Dfreedreno=false -Dinstall-test-programs=true ..
+    time ninja -C . -j"$(nproc)"
+    sudo ninja install
+    echo "Compiled & installed onto your system. Move on..."
+}
+
 compile() {
     local EXTRA_PARAM
 
     [[ -d $INSTALL_DIR ]] && rm -rf "$INSTALL_DIR"
     install_full_deps
+    compile_and_install_libdrm
     clone_repo
 
     [[ -d "$INSTALL_DIR"/build ]] && rm -rf "$INSTALL_DIR"/build
 
-    if [[ $PI_VERSION_NUMBER -eq 4 ]]; then
-        EXTRA_PARAM="-mcpu=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard"
+    if is_userspace_64_bits; then
+        EXTRA_PARAM="-mcpu=cortex-a72"
+    else
+        # EXTRA_PARAM="-mcpu=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard"
+        EXTRA_PARAM="-mcpu=cortex-a72 -mfpu=neon-fp-armv8"
     fi
 
-    # TODO Check in a future the next params for better performance. It seems it's failing due some incompatible params.
-    # ... -Dgallium-drivers=v3d,kmsro,vc4,zink,virgl
     meson --prefix /usr -Dgles1=disabled -Dgles2=enabled -Dplatforms=x11 -Dvulkan-drivers=broadcom -Ddri-drivers= -Dgallium-drivers=v3d,kmsro,vc4,virgl -Dbuildtype=release -Dc_args="$EXTRA_PARAM" -Dcpp_args="$EXTRA_PARAM" build
     echo -e "\nCompiling... \n"
     time ninja -C build -j"$(nproc)"
     install
 }
 
+menu_choose_branch() {
+    while true; do
+        dialog --clear \
+            --title "[ Vulkan Branch ]" \
+            --menu "Select from the list:" 11 100 3 \
+            repo "(Quicker) Not latest but stable from official repository." \
+            22.1 "(Recommended) Latest stable branch working." \
+            main "(Latest) NOT stable at all. Install on your own risk." \
+            Exit "Exit" 2>"${INPUT}"
+
+        menuitem=$(<"${INPUT}")
+
+        case $menuitem in
+        repo) install_vulkan_from_official_repository ;;
+        22.1) BRANCH_VERSION="22.1" && compile ;;
+        main) BRANCH_VERSION="main" && compile ;;
+        Exit) exit ;;
+        esac
+    done
+}
+
 install_script_message
-echo -e "\n· This script compile Vulkan Branch $BRANCH_VERSION.\n· Estimated time on Raspberry Pi 4 over USB/SSD drive (Not overclocked): ~12 min.\n"
-read -p "This process can't be undone. Continue? (Y/n) " response
+echo "
+Vulkan Mesa Drivers
+===================
+
+· Support 32/64 bits.
+· This process can't be undone.
+· Make sure you have a backup of your data.
+· This script install or compiles Vulkan Mesa Driver on your OS.
+· Estimated compilation time on Raspberry Pi 4 over USB/SSD drive (Not overclocked): ~17 min.
+"
+read -p "Continue? (Y/n) " response
 if [[ $response =~ [Nn] ]]; then
     exit_message
 fi
 upgrade_dist
-compile
+menu_choose_branch
 exit_message
