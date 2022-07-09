@@ -2,10 +2,11 @@
 #
 # Description : MS-DOS Emulator DOSBox-X
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.2 (25/Jun/22)
+# Version     : 1.3.3 (09/Jul/22)
 #
 # Help        : https://github.com/joncampbell123/dosbox-x/blob/master/BUILD.md
 #             : https://krystof.io/dosbox-shaders-comparison-for-modern-dos-retro-gaming/
+# TODO        : Add support for GR-Lida (compile_gr_lida inside!).
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
@@ -15,10 +16,12 @@ readonly INSTALL_DIR="$HOME/games"
 readonly DOSLIB_PATH="$HOME/sc/doslib/tool/linker/linux-host"
 readonly PACKAGES=(libsdl2-net-2.0-0 libpcap0.8 libslirp0)
 readonly PACKAGES_DEV=(sudo apt install automake gcc g++ make libncurses-dev nasm libsdl-net1.2-dev libsdl2-net-dev libpcap-dev libslirp-dev fluidsynth libfluidsynth-dev libavdevice58 libavformat-dev libavcodec-dev libavcodec-extra libavcodec-extra58 libswscale-dev libfreetype-dev libxkbfile-dev libxrandr-dev)
-readonly BINARY_URL="https://misapuntesde.com/rpi_share/dosbox-X-rpi_0-83.24.tar.gz"
+readonly PACKAGES_GR_LIDA_DEV=(qt5-qmake-bin qtbase5-dev qt5-qmake qtchooser zlib1g-dev qtmultimedia5-dev libqt5multimediawidgets5 libqt5multimedia5-plugins libqt5multimedia5 qtscript5-dev libpoppler-qt5-dev)
+readonly BINARY_URL="https://misapuntesde.com/rpi_share/dosbox-X-rpi_0-84.2.tar.gz"
 readonly GAME_DATA_URL="https://misapuntesde.com/res/jill-of-the-jungle-the-complete-trilogy.zip"
 readonly SOURCE_CODE_URL="https://github.com/joncampbell123/dosbox-x"
 readonly SOURCE_CODE_DOSLIB_URL="https://github.com/joncampbell123/doslib"
+readonly SOURCE_CODE_GRLIDA_URL="https://github.com/Monthy/gr-lida"
 
 runme() {
     echo
@@ -77,6 +80,14 @@ compile_doslib_repository() {
     make
 }
 
+compile_gr_lida() {
+    mkdir -p "$HOME/sc" && cd "$_" || return
+    git clone "$SOURCE_CODE_GRLIDA_URL" gr-lida && cd "$_" || return
+    install_packages_if_missing "${PACKAGES_GR_LIDA_DEV[@]}"
+    qmake
+    make
+}
+
 compile() {
     [[ -e $HOME/sc/dosbox-x ]] && rm -rf "$HOME/sc/dosbox-x"
     install_packages_if_missing "${PACKAGES_DEV[@]}"
@@ -85,7 +96,7 @@ compile() {
     git clone "$SOURCE_CODE_URL" dosbox-x && cd "$_" || return
     PATH=$PATH:$DOSLIB_PATH ./autogen.sh
     PATH=$PATH:$DOSLIB_PATH ./configure --enable-core-inline --enable-debug=heavy --prefix="$HOME/sc/dosbox-x/bin" --enable-sdl2 --enable-silent-rules --enable-scaler-full-line --disable-dependency-tracking --disable-sdl2test --disable-alsatest --disable-printer --disable-screenshots --disable-avcodec --host=arm-raspberry-linux-gnueabihf || exit 1
-    echo -e "\nCompiling... It can takes ~14 minutes on RPi 4."
+    echo -e "\nCompiling... It can takes ~40 minutes on RPi 4."
     make_with_all_cores
     echo -e "\nDone!. Check the code at $HOME/sc/dosbox-x/src"
     exit_message
@@ -118,7 +129,6 @@ echo "
 DOSBox-X MS-DOS Emulator
 ========================
 
-· Version 0.83.24 (06/Mar/22).
 · More Info: $SOURCE_CODE_URL
 · Put your games into: $INSTALL_DIR/dosbox/dos
 · Many thanks to Jonathan Campbell.
