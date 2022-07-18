@@ -2,7 +2,7 @@
 #
 # Description : Duckstation - Fast PlayStation 1 emulator for PC and Android
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.3 (15/Jan/22)
+# Version     : 1.0.4 (18/Jul/22)
 # Compatible  : Raspberry Pi 4 (tested)
 # Repository  : https://github.com/stenzek/duckstation
 #
@@ -13,18 +13,18 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES_DEV=(cmake ninja-build libsdl2-dev libxrandr-dev pkg-config qtbase5-dev qtbase5-private-dev qtbase5-dev-tools qttools5-dev libevdev-dev libwayland-dev libwayland-egl-dev extra-cmake-modules libcurl4-gnutls-dev libgbm-dev libdrm-dev)
 readonly GAME_DATA_URL="https://archive.org/download/magic-castle-2021-01-feb/Magic_Castle_2021_01_feb.chd"
-readonly BIOS_URL="https://dl.hexrom.com/rom/psx-bios-SCPH1001-hexrom_com.zip"
+readonly BIOS_URL="https://downloads.gamulator.com/bios/SCPH1001.zip"
 readonly SOURCE_CODE_URL="https://github.com/stenzek/duckstation"
 readonly BINARY_URL_BUSTER="https://misapuntesde.com/rpi_share/duckstation-rpi-buster.tar.gz"
 BINARY_URL="https://misapuntesde.com/rpi_share/duckstation-rpi.tar.gz"
 
 runme() {
-    if [ ! -f "$INSTALL_DIR/duckstation/duckstation-qt" ]; then
+    if [ ! -f "$INSTALL_DIR/duckstation/run.sh" ]; then
         echo -e "\nFile does not exist.\n· Something is wrong.\n· Try to install again."
         exit_message
     fi
     read -p "Press [ENTER] to run the emulator..."
-    cd "$INSTALL_DIR"/duckstation && ./duckstation-qt
+    cd "$INSTALL_DIR"/duckstation && ./run.sh
     exit_message
 }
 
@@ -60,7 +60,7 @@ Name=Duckstation
 Version=1.0
 Type=Application
 Comment=PlayStation 1, aka. PSX Emulator
-Exec=${INSTALL_DIR}/duckstation/duckstation-qt
+Exec=${INSTALL_DIR}/duckstation/run.sh
 Icon=${INSTALL_DIR}/duckstation/resources/duck.png
 Path=${INSTALL_DIR}/duckstation/
 Terminal=false
@@ -75,7 +75,7 @@ compile() {
     git clone "$SOURCE_CODE_URL" -b dev duckstation && cd "$_" || exit 1
     mkdir -p build && cd "$_" || exit 1
     cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -GNinja -Wno-dev ..
-    echo -e "\nCompiling... It takes ~12 minutes on Rpi4"
+    echo -e "\nCompiling... It takes ~12 minutes on Rpi4\n"
     cd ..
     time ninja -C build -j"$(nproc)"
     echo -e "\nDone!. Get the binary at $HOME/sc/duckstation/build/bin/duckstation-qt."
@@ -126,7 +126,7 @@ Duckstation for Raspberry Pi
     download_bios
     generate_icon
     download_data
-    echo -e "\n\nDone!. You can play typing $INSTALL_DIR/duckstation/duckstation-qt or opening the Menu > Games > Duckstation.\n"
+    echo -e "\n\nDone!. You can play typing $INSTALL_DIR/duckstation/run.sh or opening the Menu > Games > Duckstation.\n"
     runme
 }
 
