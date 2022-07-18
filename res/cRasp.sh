@@ -2,8 +2,9 @@
 #
 # Description : Personal script to make my custom Raspberry Pi OS
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.5 (5/Feb/22)
+# Version     : 1.3.6 (11/Jul/22)
 # Compatible  : Raspberry Pi 1-4 (tested)
+# TODO        : https://itnext.io/linux-setlocale-lc-all-cannot-change-locale-en-us-utf8-and-cyrillic-symbols-2d846fe3c166
 #
 clear
 
