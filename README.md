@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **989 hours**
+- **991 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (18/07/22)
+
+· 👌 IMPROVE: Emulators > DuckStation 64 bits support.
 
 ### (09/07/22)
 
