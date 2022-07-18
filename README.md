@@ -69,7 +69,8 @@
 
 ### (18/07/22)
 
-· 👌 IMPROVE: Emulators > DuckStation 64 bits support.
+· 👌 IMPROVE: Emulators > PS1 (DuckStation) 64 bits support.
+· 👌 IMPROVE: Emulators > PS2 (AetherSX2).
 
 ### (09/07/22)
 
