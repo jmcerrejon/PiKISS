@@ -2,7 +2,7 @@
 #
 # Description : AetherSX2  A Playstation 2 Emulator for ARM devices.
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (14/May/22)
+# Version     : 1.0.1 (18/Jul/22)
 # Compatible  : Raspberry Pi 4 (tested)
 # Repository  : https://www.aethersx2.com/archive/?dir=desktop/linux
 #
@@ -11,9 +11,10 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
+readonly PACKAGES=(libopengl0)
 readonly GAME_DATA_URL="https://archive.org/download/magic-castle-2021-01-feb/Magic_Castle_2021_01_feb.chd"
 readonly BIOS_URL="https://downloads.retrostic.com/bioses/ps2_bios.zip"
-readonly FILENAME="AetherSX2-alpha-1929.AppImage"
+readonly FILENAME="AetherSX2-v1.0-2455.AppImage"
 readonly BINARY_URL="https://www.aethersx2.com/archive/desktop/linux/$FILENAME"
 
 runme() {
@@ -87,6 +88,7 @@ download_data() {
 }
 
 install() {
+    install_packages_if_missing "${PACKAGES[@]}"
     download_file "$BINARY_URL" "$INSTALL_DIR/aethersx2"
     chmod +x "$INSTALL_DIR/aethersx2/$FILENAME"
     # download_bios
