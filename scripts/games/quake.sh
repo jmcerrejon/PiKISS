@@ -2,7 +2,7 @@
 #
 # Description : Quake I, ][, ]I[
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.1 (4/Jun/22)
+# Version     : 1.4.2 (21/Jul/22)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help 		  : Quake 1: | https://godmodeuser.com/p/8#40
@@ -34,7 +34,7 @@ readonly Q3_SOURCE_CODE_URL="https://github.com/ec-/Quake3e.git"
 readonly VAR_DATA_NAME_1="QUAKE_1"
 readonly VAR_DATA_NAME_2="QUAKE_2"
 readonly VAR_DATA_NAME_3="QUAKE_3"
-Q1_DATA_URL="https://image.dosgamesarchive.com/games/quake106.zip"
+Q1_DATA_URL="https://misapuntesde.com/rpi_share/quake1-shareware.tar.gz"
 Q2_DATA_URL="https://misapuntesde.com/rpi_share/baseq2_share.tar.gz"
 Q3_DATA_URL=""
 INPUT=/tmp/quake.$$
@@ -42,12 +42,12 @@ INPUT=/tmp/quake.$$
 # Quake 1
 
 q1_runme() {
-    if [ ! -f "$INSTALL_DIR"/quake/quake ]; then
+    if [ ! -f "$INSTALL_DIR"/quake/run.sh ]; then
         echo -e "\nFile does not exist.\n· Something is wrong.\n· Try to install again."
         exit_message
     fi
     read -p "Press [ENTER] to run the game..."
-    cd "$INSTALL_DIR"/quake && ./quake
+    cd "$INSTALL_DIR"/quake && ./run.sh
     exit_message
 }
 
