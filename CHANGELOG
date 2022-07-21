@@ -1,5 +1,10 @@
 # Changelog
 
+## (21/07/22)
+
+· 🐛 FIX: Emulators > PS1 (DuckStation).
+· 🐛 FIX: Games > Quake 1.
+
 ## (18/07/22)
 
 · 👌 IMPROVE: Emulators > PS1 (DuckStation) 64 bits support.

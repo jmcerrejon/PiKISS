@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **991 hours**
+- **993 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,11 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (21/07/22)
+
+· 🐛 FIX: Emulators > PS1 (DuckStation).
+· 🐛 FIX: Games > Quake 1.
 
 ### (18/07/22)
 
