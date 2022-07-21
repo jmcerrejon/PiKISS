@@ -2,7 +2,7 @@
 #
 # Description : Duckstation - Fast PlayStation 1 emulator for PC and Android
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.4 (18/Jul/22)
+# Version     : 1.0.5 (21/Jul/22)
 # Compatible  : Raspberry Pi 4 (tested)
 # Repository  : https://github.com/stenzek/duckstation
 #
@@ -52,6 +52,12 @@ if [[ -d "$INSTALL_DIR"/duckstation ]]; then
 fi
 
 generate_icon() {
+    local EXECUTABLE="$INSTALL_DIR"/duckstation/run.sh
+
+    if [[ $CODENAME == "buster" ]]; then
+        EXECUTABLE="$INSTALL_DIR"/duckstation/duckstation-qt
+    fi
+
     echo -e "\nGenerating icon..."
     if [[ ! -e ~/.local/share/applications/duckstation.desktop ]]; then
         cat <<EOF >~/.local/share/applications/duckstation.desktop
@@ -60,7 +66,7 @@ Name=Duckstation
 Version=1.0
 Type=Application
 Comment=PlayStation 1, aka. PSX Emulator
-Exec=${INSTALL_DIR}/duckstation/run.sh
+Exec=${EXECUTABLE}
 Icon=${INSTALL_DIR}/duckstation/resources/duck.png
 Path=${INSTALL_DIR}/duckstation/
 Terminal=false
@@ -87,10 +93,12 @@ download_binaries() {
     CODENAME=$(get_codename)
 
     echo -e "\nInstalling binary files..."
-    if [[ "$CODENAME" == "buster" ]]; then
+
+    if [[ $CODENAME == "buster" ]]; then
         echo -e "\nDetected Buster code name..."
         BINARY_URL="$BINARY_URL_BUSTER"
     fi
+
     download_and_extract "$BINARY_URL" "$INSTALL_DIR"
 }
 
