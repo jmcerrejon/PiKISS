@@ -87,7 +87,7 @@ generate_icon_tse() {
         cat <<EOF >~/.local/share/applications/ssam-tse.desktop
 [Desktop Entry]
 Name=Serious Sam The Second Encounter
-Exec=${INSTALL_DIR}/ssam/ssam-tse/ssam-tse
+Exec=${INSTALL_DIR}/ssam/ssam-tse/Bin/ssam-tse
 Icon=${INSTALL_DIR}/ssam/ssam-tse.png
 Path=${INSTALL_DIR}/ssam-tse/Bin
 Type=Application
