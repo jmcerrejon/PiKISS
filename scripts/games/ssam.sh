@@ -2,7 +2,7 @@
 #
 # Description : Serious Sam 1 & 2
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.6 (04/Dec/21)
+# Version     : 1.2.8 (30/Jul/22)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help        : https://www.raspberrypi.org/forums/viewtopic.php?t=200458
@@ -33,26 +33,25 @@ runme_tfe() {
 
 runme_tse() {
     echo
-    if [ ! -f "$INSTALL_DIR"/ssam-tse/ssam-tse.sh ]; then
+    if [ ! -f "$INSTALL_DIR"/ssam-tse/ssam-tse ]; then
         echo -e "\nFile does not exist.\n· Something is wrong.\n· Try to install again."
         exit_message
     fi
     read -p "Press [ENTER] to run the game..."
-    cd "$INSTALL_DIR"/ssam-tse && ./ssam-tse.sh
+    cd "$INSTALL_DIR"/ssam-tse/Bin && ./ssam-tse
     clear
     exit_message
 }
 
 remove_files() {
-    [ $# -eq 0 ] && exit 0
     [ -d "$INSTALL_DIR/$1" ] && rm -rf "${INSTALL_DIR:?}/${1}" ~/.local/share/applications/"$1".desktop ~/.local/share/applications/ssam-tfe.desktop ~/.local/share/applications/ssam-tse.desktop
 }
 
 uninstall() {
     read -p "Do you want to uninstall it (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
-        remove_files "$1"
-        if [[ -e "$INSTALL_DIR/$1" ]]; then
+        rm -rf "$INSTALL_DIR/ssam" ~/.local/share/applications/ssam-tfe.desktop ~/.local/share/applications/ssam-tse.desktop
+        if [[ -e $INSTALL_DIR/ssam ]]; then
             echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
             exit_message
         fi
@@ -61,19 +60,9 @@ uninstall() {
     fi
 }
 
-if [[ -d "$INSTALL_DIR"/ssam-tfe ]]; then
-    echo -e "\nSerious Sam The First Encounter already installed.\n"
-    uninstall ssam-tfe
-fi
-
-if [[ -d "$INSTALL_DIR"/ssam-tse ]]; then
-    echo -e "\nSerious Sam The Second Encounter already installed.\n"
-    uninstall ssam-tse
-fi
-
-if [[ -d "$INSTALL_DIR"/ssam ]]; then
+if [[ -d $INSTALL_DIR/ssam ]]; then
     echo -e "\nSerious Sam engine already installed.\n"
-    uninstall ssam
+    uninstall
 fi
 
 generate_icon_tfe() {
@@ -82,7 +71,7 @@ generate_icon_tfe() {
         cat <<EOF >~/.local/share/applications/ssam-tfe.desktop
 [Desktop Entry]
 Name=Serious Sam The First Encounter
-Exec=${INSTALL_DIR}/ssam-tfe/Bin/ssam-tfe
+Exec=${INSTALL_DIR}/ssam/ssam-tfe/Bin/ssam-tfe
 Icon=${INSTALL_DIR}/ssam/ssam-tfe.png
 Path=${INSTALL_DIR}/ssam-tfe/Bin
 Type=Application
@@ -98,9 +87,9 @@ generate_icon_tse() {
         cat <<EOF >~/.local/share/applications/ssam-tse.desktop
 [Desktop Entry]
 Name=Serious Sam The Second Encounter
-Exec=${INSTALL_DIR}/ssam-tse/ssam-tse.sh
+Exec=${INSTALL_DIR}/ssam/ssam-tse/ssam-tse
 Icon=${INSTALL_DIR}/ssam/ssam-tse.png
-Path=${INSTALL_DIR}/ssam-tse/Serious-Engine/Bin
+Path=${INSTALL_DIR}/ssam-tse/Bin
 Type=Application
 Comment=After the events of The First Encounter, Serious Sam is seen traveling through space in the SSS Centerprice...
 Categories=Game;ActionGame;
@@ -130,7 +119,7 @@ install_full_tse() {
     message_magic_air_copy "$VAR_DATA_NAME_2"
     download_and_extract "$DATA_URL" "$INSTALL_DIR"
     fix_libEGL
-    echo -e "\nDone!. Go to $INSTALL_DIR/ssam-tse/ssam-tse.sh or go to Menu > Games > Serious Sam The Second Encounter."
+    echo -e "\nDone!. Go to $INSTALL_DIR/ssam-tse/Bin/ssam-tse or go to Menu > Games > Serious Sam The Second Encounter."
     runme_tse
 }
 
@@ -160,7 +149,7 @@ install() {
     if exists_magic_file; then
         choose_data_files
     fi
-    echo -e "\nDone!. Now follow the instructions to copy data files from https://github.com/ptitSeb/Serious-Engine#copy-official-game-data-optional"
+    echo -e "\nDone!. Now follow the instructions to copy data files at https://github.com/ptitSeb/Serious-Engine#copy-official-game-data-optional"
     exit_message
 }
 
@@ -170,8 +159,8 @@ Install Serious Sam 1/2
 =======================
 
  · Optimized for Raspberry Pi 4.
- · REMEMBER YOU NEED A LEGAL COPY OF THE GAME and copy game files inside $INSTALL_DIR/ssam
+ · REMEMBER YOU NEED A LEGAL COPY OF THE GAME and copy game files inside $INSTALL_DIR/ssam-tfe and $INSTALL_DIR/ssam-tse.
  · I want to thanks Pi Labs & ptitSeb for the help.
 "
-read -p "Press [Enter] to continue..."
+
 install
