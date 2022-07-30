@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **993 hours**
+- **994 hours**
 
 ## 💰 Total amount donated by users
 
@@ -21,7 +21,7 @@
 
 - I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu).
 
-- I want to thank my patrons _James Carroll, Mathew Gracie, Matthew Michink, Rodney Hester, Jay Edwards & Bo Martin_ for trusting me ❤️
+- I want to thank my patrons _James Carroll, Mathew Gracie, Matthew Michink, Rodney Hester & Bo Martin_ for trusting me ❤️
 
 - Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy, Jonathan Hodges, Mattias True, Sara J Shireman Anderson, Anthony Skiver, Shawn Mullins, Michaël Bortolin, William Norris_
 
@@ -67,20 +67,28 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (30/07/22)
+
+· 🐛 FIX: Games > Serious Sam.
+
 ### (21/07/22)
 
 · 🐛 FIX: Emulators > PS1 (DuckStation).
+
 · 🐛 FIX: Games > Quake 1.
 
 ### (18/07/22)
 
 · 👌 IMPROVE: Emulators > PS1 (DuckStation) 64 bits support.
+
 · 👌 IMPROVE: Emulators > PS2 (AetherSX2).
 
 ### (09/07/22)
 
 · 👌 IMPROVE: Emulators > RetroArch 1.10.3.
+
 · 👌 IMPROVE: Emulators > DOSBox-X 0.84.2.
+
 · 👌 IMPROVE & Fix: Emulators > MAME v0.245.
 
 ### (28/06/22)

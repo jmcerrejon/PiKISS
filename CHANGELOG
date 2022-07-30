@@ -1,19 +1,27 @@
 # Changelog
 
+## (30/07/22)
+
+· 🐛 FIX: Games > Serious Sam.
+
 ## (21/07/22)
 
 · 🐛 FIX: Emulators > PS1 (DuckStation).
+
 · 🐛 FIX: Games > Quake 1.
 
 ## (18/07/22)
 
 · 👌 IMPROVE: Emulators > PS1 (DuckStation) 64 bits support.
+
 · 👌 IMPROVE: Emulators > PS2 (AetherSX2).
 
 ## (09/07/22)
 
 · 👌 IMPROVE: Emulators > RetroArch 1.10.3.
+
 · 👌 IMPROVE: Emulators > DOSBox-X 0.84.2.
+
 · 👌 IMPROVE & Fix: Emulators > MAME v0.245.
 
 ## (28/06/22)
