@@ -13,15 +13,15 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **997 hours**
+- **1006 hours**
 
 ## 💰 Total amount donated by users
 
-- $1408,67
+- $1567,89
 
 - I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu).
 
-- I want to thank my patrons _Matthew Michink, Rodney Hester, Mathew Gracie, Bo Martin_ for trusting me, specially **James Carroll** ❤️
+- I want to thank my patrons _Matthew Michink, Rodney Hester & Les Pounder_ for trusting me, specially **James Carroll**. ❤️
 
 - Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy, Jonathan Hodges, Mattias True, Sara J Shireman Anderson, Anthony Skiver, Shawn Mullins, Michaël Bortolin, William Norris_
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (16/08/22)
+
+· 👌 IMPROVE: Emulators > ScummVM bump to 2.7.0 for 32/64 bits.
 
 ### (06/08/22)
 
