@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1006 hours**
+- **1007 hours**
 
 ## 💰 Total amount donated by users
 
@@ -21,7 +21,7 @@
 
 - I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu).
 
-- I want to thank my patrons _Matthew Michink, Rodney Hester & Les Pounder_ for trusting me, specially **James Carroll**. ❤️
+- I want to thank my patrons _Matthew Michink, Rodney Hester, Bo Martin & Les Pounder_ for trusting me, specially **James Carroll**. ❤️
 
 - Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy, Jonathan Hodges, Mattias True, Sara J Shireman Anderson, Anthony Skiver, Shawn Mullins, Michaël Bortolin, William Norris_
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (19/08/22)
+
+· 👌 IMPROVE: Games > Super Mario 64 for 64 bits.
 
 ### (16/08/22)
 
@@ -116,184 +120,6 @@
 · 📦 ADD: Others > ZShell.
 
 · 👌 IMPROVE: Games > Quake I, II 64 bits support.
-
-### (19/05/22)
-
-· 👌 IMPROVE: MMedia > OBS for 64 Bits.
-
-### (02/05/22)
-
-· 👌 IMPROVE: Emulators > MAME 0.243 (Thks [@nathanielbutts](https://github.com/nathanielbutts)).
-
-### (01/05/22)
-
-· ❌ REMOVE: Config > raspnetinst.sh.
-
-· 👌 IMPROVE: Games > Arx Libertatis v1.3 for 64 Bits.
-
-### (14/04/22)
-
-· 👌 IMPROVE: Emulation > Box86 and Box64.
-
-### (10/04/22)
-
-· 👌 IMPROVE: Games > Blake Stone 1.2.12 for 32/64 Bits.
-
-### (09/04/22)
-
-· 👌 IMPROVE: Inet > SyncTERM 1.2 for 32/64 Bits.
-
-### (03/04/22)
-
-· 👌 IMPROVE: Emulators > MAME 0.242 for 32/64 Bits.
-
-### (24/03/22)
-
-· 👌 IMPROVE: Emulators > Redream (Sega Dreamcast) for 32/64 Bits.
-
-### (12/03/22)
-
-· 👌 IMPROVE: Emulators > Amiberry (Amiga emulator) 4.1.6 for 32/64 Bits.
-
-### (6/03/22)
-
-· 👌 IMPROVE: Emulators > DOSBox-X version 0-83.24 for 32/64 Bits.
-
-### (05/03/22)
-
-· 👌 IMPROVE: Emulators > RetroArch Duckstation core for 64 Bits (Thanks @foxhound311).
-
-· 👌 IMPROVE: Others > RPiplay 64 bits support.
-
-### (21/02/22)
-
-· 🐛 FIX: Emulators > Retroarch 64 bits cores.
-
-### (18/02/22)
-
-· 👌 IMPROVE: Emulators > New RetroArch cores 64 Bits (Thanks @foxhound311).
-
-· 👌 IMPROVE: Games > Grand Thef Auto III & IV 64 Bits support (Thanks @foxhound311).
-
-· 👌 IMPROVE: Games > l'Abbaye des Morts 64 Bits support.
-
-### (6/02/22)
-
-· 👌 IMPROVE: PiKISS menu and message If you are running on a 64 Bits environment.
-
-· 👌 IMPROVE: Emulators > RetroArch v1.10.0 64 Bits support.
-
-### (29/01/22)
-
-· 👌 IMPROVE: Emulators > RetroArch v1.10.0 + update cores.
-
-### (22/01/22)
-
-· 📦 ADD: Games > Sonic Robo Blast 2.
-
-### (16/01/22)
-
-· 📦 ADD: Games > Super Mario War.
-
-### (15/01/22)
-
-· 👌 IMPROVE: Minor refactor code on helper.sh, .bashrc_aliases, psx.sh, smario64.sh
-
-### (30/12/21)
-
-· 📦 ADD: Multimedia > TVPlayer for watch TV channels from Spain and other International.
-
-· ❌ REMOVE: Scripts dwnmp3.sh, flexget.sh, hotstop.sh.
-
-### (25/12/21)
-
-· 🐛 FIX: Others > RPiPlay (AirPlay mirroring) now compatible with Bullseye using Gstreamer.
-
-### (17/12/21)
-
-· 📦 ADD: Games > OpenJK (Jedi Knight: Jedi Academy).
-
-· 👌 IMPROVE: Internet > Whatscli v1.0.11 (A cli interface for whatsapp).
-
-· 👌 IMPROVE: Emulators > Duckstation (PSX) now compatible with Buster & Twister OS.
-
-· 🐛 FIX: Games > Arx Libertatis > Broken link. Remove menu for choose version.
-
-· 🐛 FIX: Games > Alien Vs Predator > Broken link.
-
-### (11/12/21)
-
-· 👌 IMPROVE: Emulators > RetroArch v1.9.14-1 + update cores.
-
-### (07/12/21)
-
-· 👌 IMPROVE: Emulators > Duckstation (PSX).
-
-· 🐛 FIX: Emulators > PSX missing BiOS URL.
-
-### (04/12/21)
-
-· 🐛 FIX: Emulators > PSX missing deps.
-
-· 🐛 FIX: Games > Serious Sam.
-
-### (20/11/21)
-
-· 👌 IMPROVE: Emulators > RetroArch 1.9.13.2-1.
-
-· 🐛 FIX: Configure > Vulkan.
-
-· 👌 IMPROVE: Tweaks > Others >Add reduce stop job running tweak.
-
-### (16/11/21)
-
-· 👌 IMPROVE: Emulators > Update & new binary compiled DOSBox to 0.83.20 (Compatible with Bullseye).
-
-· 🐛 FIX: Configure > Vulkan. FIX missing deps on Bullseye.
-
-### (15/11/21)
-
-· 👌 IMPROVE: Emulators > Update & new binary compiled DOSBox to 0.83.20 (Compatible with Bullseye).
-
-· 👌 IMPROVE: Change compile parameter for cortex-a72 on some scripts.
-
-· 🐛 FIX: Games > Quake > Quake ][ URL texture pack & typo.
-
-· ❌ REMOVE: Others > Cool Retro Term (Added on Bullseye's repository).
-
-### (12/11/21)
-
-· 👌 IMPROVE: Server > Remote desktop > xRDP.
-
-· ❌ REMOVE: Server > Remote desktop > Nomachine (It's not compatible with bullseye).
-
-### (11/11/21)
-
-· 👌 IMPROVE: Games > Update Diablo (ver. 1.3.0).
-
-· ❌ REMOVE: Tweaks > Others > NOOP Scheduler (Not available anymore).
-
-### (1/11/21)
-
-· 👌 IMPROVE: Server > CUPs (Printer driver).
-
-### (26/10/21)
-
-· 👌 IMPROVE: Emulators > RetroArch 1.9.12-1.
-
-### (25/10/21)
-
-· 🐛 FIX: Games > OpenRCT2 ([issue #121](https://github.com/jmcerrejon/PiKISS/issues/121)).
-
-· 🐛 FIX: Games > Heroes 3 ([issue #120](https://github.com/jmcerrejon/PiKISS/issues/120)).
-
-### (18/10/21)
-
-· 📦 ADD: Server > Database MariaDB (MySQL fork).
-
-· 📦 ADD: Server > LEMP stack (Linux + Nginx Light v1.43 + MariaDB v10.3 + PHP v7.4 or v8.1).
-
-· 👌 IMPROVE: Server > Frameworks (WordPress, Node, Ghost).
 
 ...
 
