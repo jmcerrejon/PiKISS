@@ -2,7 +2,7 @@
 #
 # Description : Super Mario 64 EX
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.2 (14/Jan/22)
+# Version     : 1.3.0 (19/Aug/22)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -12,6 +12,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES_DEV=(libaudiofile-dev libglew-dev libsdl2-dev)
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/sm64ex-rpi.tar.gz"
+readonly BINARY_64_BITS_URL="https://misapuntesde.com/rpi_share/sm64ex-aarch64-rpi.tar.gz"
 readonly ROM_URL="https://s2roms.cc/s3roms/Nintendo%2064/P-T/Super%20Mario%2064%20%28U%29%20%5B%21%5D.zip"
 readonly SOURCE_CODE_URL="https://github.com/foxhound311/sm64ex"
 
@@ -79,12 +80,14 @@ compile() {
 }
 
 install() {
+    local BINARY_URL_INSTALL=$BINARY_URL
     echo -e "\n\nInstalling, please wait..."
-    if [[ $(validate_url "$BINARY_URL") != "true" ]]; then
-        read -p "Sorry, the game is not available here: $BINARY_URL. Try to compile."
-        exit
+
+    if is_userspace_64_bits; then
+        BINARY_URL_INSTALL=$BINARY_64_BITS_URL
     fi
-    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
+
+    download_and_extract "$BINARY_URL_INSTALL" "$INSTALL_DIR"
     generate_icon
     echo -e "\n\nDone!. You can play typing $INSTALL_DIR/sm64/sm64 or opening the Menu > Games > Super Mario 64.\n"
     echo -e "ALT+ENTER full-screen | SPACE Select | WSAD for move | Arrows for camera, [KL,.] for actions.\n"
