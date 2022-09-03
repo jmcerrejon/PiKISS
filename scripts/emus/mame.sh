@@ -2,7 +2,7 @@
 #
 # Description : MAME
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 2.0.3 (6/Aug/22)
+# Version     : 2.0.4 (3/Sep/22)
 # Compatible  : Raspberry Pi 4
 # Source      : https://stickfreaks.com/mame/
 #
@@ -11,8 +11,9 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 clear
 
 readonly INSTALL_DIR="$HOME/games"
-readonly BINARY_URL="https://stickfreaks.com/mame/mame_0.246_armhf_gcc10.7z"
-readonly BINARY_64_BITS_URL="https://stickfreaks.com/mame/mame_0.246_aarch64_gcc10.7z"
+readonly MAME_MIN_VERSION="247"
+readonly BINARY_URL="https://stickfreaks.com/mame/mame_0.${MAME_MIN_VERSION}_armhf_gcc10.7z"
+readonly BINARY_64_BITS_URL="https://stickfreaks.com/mame/mame_0.${MAME_MIN_VERSION}_aarch64_gcc10.7z"
 readonly PACKAGES=(p7zip libfreetype6 libsdl2-ttf-2.0-0 libsdl2-2.0-0 libqt5widgets5 libqt5gui5)
 readonly ROMS_URL="https://misapuntesde.com/res/galaxian.zip"
 readonly INPUT=/tmp/temp.$$
@@ -77,10 +78,10 @@ install() {
 }
 
 echo "
-MAME 0.246
+MAME 0.${MAME_MIN_VERSION}
 ==========
 
-· More info: https://stickfreaks.com/mame/ | https://www.mamedev.org/releases/whatsnew_0245.txt
+· More info: https://stickfreaks.com/mame/ | https://www.mamedev.org/releases/whatsnew_0${MAME_MIN_VERSION}.txt
 · KEYS: F3=RESET | F7=Load | Shift+F7=Save | 5=Add 1 Credit Player 1 | 1=Start Player 1 | ESC=Exit
 "
 install
