@@ -67,6 +67,10 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (03/09/22)
+
+· 👌 IMPROVE: Emulators > MAME 0.247 for 32/64 bits.
+
 ### (19/08/22)
 
 · 👌 IMPROVE: Games > Super Mario 64 for 64 bits.
