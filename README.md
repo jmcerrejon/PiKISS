@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1007 hours**
+- **1017 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (18/09/22)
+
+· 📦 ADD: Emulators > Flycast for 32/64 bits.
 
 ### (03/09/22)
 
