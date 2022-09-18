@@ -4,7 +4,11 @@
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 #
 readonly PIKISS_DIR=$PWD
-readonly PIKISS_MAGIC_AIR_COPY_PATH=$PIKISS_DIR/res/magic-air-copy-pikiss.txt
+readonly RESOURCES_DIR="$PIKISS_DIR/res"
+readonly PIKISS_MAGIC_AIR_COPY_PATH=$RESOURCES_DIR/magic-air-copy-pikiss.txt
+readonly ADDITIONAL_FILES_PATH=$RESOURCES_DIR/additional_files.txt
+# INFO On the next, do not use ""
+readonly ADDITIONAL_FILES_URL=https://e.pcloud.link/publink/show?code=XZkry8Z9AV6VqWikkJfzzdyHLOwnyPVDKMX
 
 # Usage: "${INFO}INFO${RESET}: This is an ${BOLD}info${RESET} message"
 BOLD=$(tput bold)
@@ -911,15 +915,11 @@ message_magic_air_copy() {
 # Extract row from a file
 #
 extract_path_from_file() {
-    local MAGIC_FILE_PATH
-    MAGIC_FILE_PATH="${PIKISS_DIR}/res/magic-air-copy-pikiss.txt"
-
-    if [[ ! -f $MAGIC_FILE_PATH ]]; then
+    if [[ -f $PIKISS_MAGIC_AIR_COPY_PATH ]]; then
+        grep ^"$1=" "$PIKISS_MAGIC_AIR_COPY_PATH" | awk -F "$1=" '{print $2}'
+    else
         echo ""
-        exit 1
     fi
-
-    grep ^"$1=" "$MAGIC_FILE_PATH" | awk -F "$1=" '{print $2}'
 }
 
 #
@@ -1391,4 +1391,16 @@ uninstall_packages() {
             sudo apt remove -y "$i"
         fi
     done
+}
+
+check_additional_file() {
+    # TODO Check If file from ADDITIONAL_FILES_PATH is older than version from internet
+    if [[ ! -f $ADDITIONAL_FILES_PATH ]]; then
+        echo -e "\nAdditional files not found. Downloading..."
+        download_file "$ADDITIONAL_FILES_URL" "$RESOURCES_DIR"
+    fi
+}
+
+extract_path_from_res() {
+    grep ^"$1=" "$ADDITIONAL_FILES_PATH" | awk -F "$1=" '{print $2}'
 }
