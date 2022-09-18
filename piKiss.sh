@@ -235,17 +235,18 @@ smGames() {
 
 smEmulators() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Amiga, Box86/64, MS-Dos, Mame, PS1, PS2, RetroArch, Redream, ScummVM"
+        show_dialog_only_32_bits "Amiga, Box86/64, Flycast, MS-Dos, Mame, PS1, PS2, RetroArch, Redream, ScummVM"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Emulators ]" --menu "Select emulator from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
     options=(
         Back "Back to main menu"
         Amiga "Amiberry is the best Amiga emulator"
+        Amstrad "Amstrad CPC with Caprice32"
         Box86-64 "Let's you run x86/64 Linux programs on non-x86/64 Linux"
         Comm64 "VICE is a Commodore 64 emulator"
         Dolphin "Dolphin is a Wii & Gamecube emulator (EXPERIMENTAL)"
-        Amstrad "Amstrad CPC with Caprice32"
+        Flycast "Sega Dreamcast,Naomi,Naomi 2 and Atomiswave emu"
         MS-Dos "DOSBox-X is a DOS emulator with GUI"
         Gba "Gameboy Advance (mgba)"
         Genesis "Genesis Megadrive Emulator (picodrive)"
@@ -275,6 +276,7 @@ smEmulators() {
         Amstrad) ./scripts/emus/caprice.sh ;;
         Comm64) ./scripts/emus/commodore.sh ;;
         Dolphin) ./scripts/emus/dolphin.sh ;;
+        Flycast) ./scripts/emus/flycast.sh ;;
         MS-Dos) ./scripts/emus/msdos.sh ;;
         Gba) ./scripts/emus/gba.sh ;;
         Genesis) ./scripts/emus/genesis.sh ;;
