@@ -235,7 +235,7 @@ smGames() {
 
 smEmulators() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Amiga, Box86/64, Flycast, MS-Dos, Mame, PS1, PS2, RetroArch, Redream, ScummVM"
+        show_dialog_only_32_bits "Amiga, Box86/64, Flycast, MS-Dos, Mame, PS1, PS2, RetroArch, Redream, ScummVM, VICE"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Emulators ]" --menu "Select emulator from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
@@ -244,7 +244,6 @@ smEmulators() {
         Amiga "Amiberry is the best Amiga emulator"
         Amstrad "Amstrad CPC with Caprice32"
         Box86-64 "Let's you run x86/64 Linux programs on non-x86/64 Linux"
-        Comm64 "VICE is a Commodore 64 emulator"
         Dolphin "Dolphin is a Wii & Gamecube emulator (EXPERIMENTAL)"
         Flycast "Sega Dreamcast,Naomi,Naomi 2 and Atomiswave emu"
         MS-Dos "DOSBox-X is a DOS emulator with GUI"
@@ -263,6 +262,7 @@ smEmulators() {
         Redream "Redream is a Dreamcast emulator"
         ScummVM "Allow gamers to play point-and-click adventure games"
         Snes "SNES Emulator Snes9X or Bsnes"
+        VICE "Commodore 64 emulator"
         ZX-Spectrum "Speccy is a ZX-Spectrum emulator"
     )
 
@@ -274,7 +274,6 @@ smEmulators() {
         Amiga) ./scripts/emus/amiga.sh ;;
         Box86-64) ./scripts/emus/box86_64.sh ;;
         Amstrad) ./scripts/emus/caprice.sh ;;
-        Comm64) ./scripts/emus/commodore.sh ;;
         Dolphin) ./scripts/emus/dolphin.sh ;;
         Flycast) ./scripts/emus/flycast.sh ;;
         MS-Dos) ./scripts/emus/msdos.sh ;;
@@ -293,6 +292,7 @@ smEmulators() {
         Redream) ./scripts/emus/dc.sh ;;
         ScummVM) ./scripts/emus/scummvm.sh ;;
         Snes) ./scripts/emus/snes.sh ;;
+        VICE) ./scripts/emus/commodore.sh ;;
         ZX-Spectrum) ./scripts/emus/speccy.sh ;;
         esac
     done
