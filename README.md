@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1017 hours**
+- **1021 hours**
 
 ## 💰 Total amount donated by users
 
@@ -66,6 +66,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (7/10/22)
+
+· 👌 IMPROVE: Emulators > RetroArch 1.11.1-1. Added Buster 32 bits support.
 
 ### (18/09/22)
 
