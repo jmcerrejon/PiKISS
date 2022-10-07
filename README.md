@@ -69,6 +69,7 @@
 
 ### (7/10/22)
 
+· 📦 ADD: Emulators > Add VICE Commodore 64 emu for 32/64 bits.
 · 👌 IMPROVE: Emulators > RetroArch 1.11.1-1. Added Buster 32 bits support.
 
 ### (18/09/22)
