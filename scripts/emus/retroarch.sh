@@ -2,7 +2,7 @@
 #
 # Description : RetroArch
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.12 (9/Jul/22)
+# Version     : 1.0.13 (7/Oct/22)
 #
 # Help        : Thanks @foxhound311 for compile all cores and binary files
 #             : EmulationStation-DE URLs: https://es-de.org/ | https://gitlab.com/leonstyhre/emulationstation-de/
@@ -11,11 +11,13 @@
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
+readonly VERSION="1.11.1-1"
 readonly INSTALL_DIR="/usr/local/bin"
 readonly CONFIG_PATH="$HOME/.config/retroarch"
 readonly PACKAGES=(libfreeimage3 libpugixml1v5)
-readonly BINARY_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_1.10.0-1_armhf.deb"
-readonly BINARY_64_BITS_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_1.10.0-3_arm64.deb"
+readonly BINARY_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_${VERSION}_armhf.deb"
+readonly BINARY_BUSTER_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_${VERSION}-buster_armhf.deb"
+readonly BINARY_64_BITS_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_${VERSION}_arm64.deb"
 readonly CONFIG_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch_config.tar.gz"
 readonly CORES_URL="https://misapuntesde.com/rpi_share/retroarch/libretro_cores.tar.gz"
 readonly CORES_64_BITS_URL="https://misapuntesde.com/rpi_share/retroarch/libretro_cores_64.tar.gz"
@@ -139,6 +141,10 @@ install() {
         BINARY_URL_INSTALL=$BINARY_64_BITS_URL
     fi
 
+    if [[ $CODENAME == "buster" ]]; then
+        BINARY_URL_INSTALL=$BINARY_BUSTER_URL
+    fi
+
     download_and_install "$BINARY_URL_INSTALL"
     install_config
     install_assets
@@ -155,7 +161,8 @@ echo "
 RetroArch
 =========
 
-· Version 1.10.0-1.
+· Thanks to Foxhound311.
+· Version $VERSION.
 · Can be used with GLES, GLES3 or Vulkan drivers.
 · All cores and binaries optimized for Raspberry Pi 4.
 · Cores are the most updated versions. Anyway, online updater is disabled.
