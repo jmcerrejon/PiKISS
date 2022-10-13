@@ -67,6 +67,10 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (13/10/22)
+
+· 👌 IMPROVE: Config > Change Vulkan driver to compile 22.2 (stable branch)
+
 ### (7/10/22)
 
 · 📦 ADD: Emulators > Add VICE Commodore 64 emu for 32/64 bits.
