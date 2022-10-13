@@ -2,7 +2,7 @@
 #
 # Description : Vulkan driver
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.3 (38/Jun/22)
+# Version     : 1.4.4 (13/Oct/22)
 # Compatible  : Raspberry Pi 4
 #
 # Help        : https://ninja-build.org/manual.html#ref_pool
@@ -16,7 +16,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 readonly INSTALL_DIR="$HOME/mesa_vulkan"
 readonly SOURCE_CODE_URL="https://gitlab.freedesktop.org/mesa/mesa.git"
 PI_VERSION_NUMBER=$(get_pi_version_number)
-BRANCH_VERSION="22.1"
+BRANCH_VERSION="22.2"
 INPUT=/tmp/vulkan.$$
 
 install() {
@@ -116,7 +116,7 @@ menu_choose_branch() {
             --title "[ Vulkan Branch ]" \
             --menu "Select from the list:" 11 100 3 \
             repo "(Quicker) Not latest but stable from official repository." \
-            22.1 "(Recommended) Latest stable branch working." \
+            22.2 "(Recommended) Latest stable branch working." \
             main "(Latest) NOT stable at all. Install on your own risk." \
             Exit "Exit" 2>"${INPUT}"
 
@@ -124,7 +124,7 @@ menu_choose_branch() {
 
         case $menuitem in
         repo) install_vulkan_from_official_repository ;;
-        22.1) BRANCH_VERSION="22.1" && compile ;;
+        22.2) compile ;;
         main) BRANCH_VERSION="main" && compile ;;
         Exit) exit ;;
         esac
