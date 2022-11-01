@@ -41,7 +41,7 @@ alias as='apt-cache search'
 alias asv='apt-cache madison'
 alias asf='apt-file search'
 alias apiy='sudo apt install -y'
-alias abdp='sudo apt-get build-dep'
+alias abdp='sudo apt-get build-dep'      # Remove comment #dev-src at /etc/apt/sources.list
 alias dep='dpkg-depcheck -d ./configure' # Check dependencies from a source code dir using file ./configure
 
 # Functions
