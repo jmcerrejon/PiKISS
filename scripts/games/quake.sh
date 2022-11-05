@@ -2,7 +2,7 @@
 #
 # Description : Quake I, ][, ]I[
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.2 (21/Jul/22)
+# Version     : 1.4.3 (5/Nov/22)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help 		  : Quake 1: | https://godmodeuser.com/p/8#40
@@ -16,9 +16,10 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
-readonly Q1_BINARY_URL="https://misapuntesde.com/rpi_share/quakespasm-0.94.3-rpi4-bin.tar.gz"
+readonly Q1_VERSION="0.95.0"
+readonly Q1_BINARY_URL="https://misapuntesde.com/rpi_share/quakespasm-${Q1_VERSION}-rpi4-bin.tar.gz"
 readonly Q1_SOUNDTRACK_URL="https://www.quaddicted.com/files/music/quake_campaign_soundtrack.zip"
-readonly Q1_SOURCE_CODE_1_URL="https://sourceforge.net/projects/quakespasm/files/Source/quakespasm-0.94.3.tar.gz/download"
+readonly Q1_SOURCE_CODE_1_URL="https://sourceforge.net/projects/quakespasm/files/Source/quakespasm-${Q1_VERSION}.tar.gz/download"
 readonly Q1_SOURCE_CODE_2_VK_URL="https://github.com/Novum/vkQuake"
 readonly Q1_PACKAGES=(libogg0 libvorbis0a)
 readonly Q2_CONFIG_DIR="$HOME/.yq2"
@@ -98,7 +99,7 @@ q1_opengl_compile() {
     sudo apt install -y libsdl2-dev libvorbis-dev libmad0-dev
     mkdir -p "$HOME"/sc && cd "$_" || exit 1
     download_and_extract "$Q1_SOURCE_CODE_1_URL" "$HOME"/sc
-    cd "$HOME"/sc/quakespasm-0.94.3/Quake || exit 1
+    cd "$HOME"/sc/quakespasm-${Q1_VERSION}/Quake || exit 1
     make_with_all_cores USE_SDL2=1
     echo -e "\nDone!. "
 }
@@ -138,14 +139,10 @@ q1_install() {
 Quake for Raspberry Pi
 ======================
 
- · Optimized for Raspberry Pi 4.
- · Based on code at ${Q1_SOURCE_CODE_1_URL}.
+ · Quakespam version ${Q1_VERSION}.
  · If you don't provide game data file inside res/magic-air-copy-pikiss.txt, shareware version will be installed.
  · Make sure all data files are lowercase, e.g. pak0.pak, not PAK0.PAK. Some distributions of the game have upper case file names.
- · Start at 720p (You can change it).
- · SDL2 with graphic improvements through autoexec.cfg.
- · Check for more improvements changing autoexec.cfg at https://www.celephais.net/fitzquake/#commands
- · If you want to disable fps cap, just open the console (tilde key in game) and type: SCR_SHOWFPS 0
+ · SDL2 with graphic improvements through id1/autoexec.cfg. for more improvements visit https://www.celephais.net/fitzquake/#commands
 "
     read -p "Press [Enter] to install the game..."
     echo -e "\n\nInstalling Quake, please wait...\n"
