@@ -2,7 +2,7 @@
 #
 # Description : OpenXcom with the help of user chills340
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.8 (25/Sep/21)
+# Version     : 1.1.9 (6/Nov/22)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://www.ufopaedia.org/index.php/Compiling_with_CMake_(OpenXcom)
@@ -14,7 +14,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES=(libsdl-gfx1.2-5 libglu1-mesa libyaml-cpp0.6)
 readonly PACKAGES_DEV=(build-essential libboost-dev libsdl1.2-dev libsdl-mixer1.2-dev libsdl-image1.2-dev libsdl-gfx1.2-dev libyaml-cpp-dev xmlto)
-readonly BINARY_URL="https://misapuntesde.com/rpi_share/openxcom_rpi.tar.gz"
+readonly BINARY_URL="https://misapuntesde.com/rpi_share/openxcom-1.0.a379-rpi-bin.tar.gz"
 readonly SOURCE_CODE_URL="https://github.com/SupSuper/OpenXcom.git"
 readonly VAR_DATA_NAME="UFO_ENEMY_UNKNOWN"
 INPUT=/tmp/openxcom.$$
@@ -62,7 +62,7 @@ Version=1.0
 Type=Application
 Name=OpenXcom
 Comment=Open-source clone of UFO: Enemy Unknown
-Exec=${INSTALL_DIR}/openxcom/openxcom
+Exec=${INSTALL_DIR}/openxcom/run.sh
 Icon=${INSTALL_DIR}/openxcom/openxcom.svg
 Path=${INSTALL_DIR}/openxcom/
 Terminal=false
@@ -98,10 +98,20 @@ end_message() {
     echo -e "\nDone!. You can play typing $INSTALL_DIR/openxcom/openxcom or opening the Menu > Games > OpenXcom."
 }
 
+install_config_file() {
+    local CONFIG_DIR="$HOME/.config/openxcom"
+
+    echo -e "\nInstalling config file..."
+    mkdir -p "$CONFIG_DIR" || exit 1
+    cp "$INSTALL_DIR"/openxcom/options.cfg "$CONFIG_DIR"
+}
+
 install() {
     install_packages_if_missing "${PACKAGES[@]}"
     download_and_extract "$BINARY_URL" "$INSTALL_DIR"
     generate_icon
+    install_config_file
+
     if ! exists_magic_file; then
         echo -e "\nCopy the data files inside $INSTALL_DIR/openxcom/UFO."
         end_message
