@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1028 hours**
+- **1029 hours**
 
 ## 💰 Total amount donated by users
 
@@ -21,7 +21,9 @@
 
 - I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu).
 
-- I want to thank my patrons _Rodney Hester, Bo Martin & Les Pounder_ for trusting me, specially **James Carroll**. ❤️
+- I want to thank my current patrons **Bo Martin, Rodney Hester & James Carroll** for trusting me. ❤️
+
+- Patrons support me in the past: _Jay Edwards, Tomás Delgado, Jeremy Palmer, cxgr, Willie D Kerner Jr, Matthew Michink, Mathew Gracie, Mike A. Torevell, David J Leto_.
 
 - Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy, Jonathan Hodges, Mattias True, Sara J Shireman Anderson, Anthony Skiver, Shawn Mullins, Michaël Bortolin, William Norris, Jacob Ehrman_
 
@@ -66,6 +68,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (6/11/22)
+
+· 👌 IMPROVE: Games > OpenXCOM 1.0.a379 for 32/64 bits.
 
 ### (5/11/22)
 
