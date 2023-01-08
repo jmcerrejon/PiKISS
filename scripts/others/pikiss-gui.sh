@@ -4,13 +4,13 @@
 # Author      : Jai A P (jai.jap.318@gmail.com)
 # Version     : 1.0.0 (16/Apr/22)
 # Compatible  : Raspberry Pi 1-4
-# Repository  : https://github.com/ptitSeb/gl4es
+# Repository  : https://github.com/Jai-JAP/pikiss-gui
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-readonly COMPILE_PATH="$HOME/sc/pikiss-gui"
+readonly COMPILE_PATH="$HOME/srx/pikiss-gui"
 readonly PACKAGES_DEV=(ninja-build gobject-introspection libgee-0.8-dev libgirepository1.0-dev libgtk-3-dev valac libgnome-menu-3-dev)
 readonly GITHUB_PATH="https://github.com/Jai-JAP/pikiss-gui.git"
 
