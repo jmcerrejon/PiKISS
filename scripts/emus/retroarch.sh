@@ -134,6 +134,7 @@ install_assets() {
 
 install() {
     local BINARY_URL_INSTALL=$BINARY_URL
+    CODENAME=$(get_codename)
 
     echo -e "Installing package and dependencies..."
 
