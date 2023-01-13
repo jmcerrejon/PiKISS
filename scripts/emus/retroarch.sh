@@ -2,10 +2,10 @@
 #
 # Description : RetroArch
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.13 (7/Oct/22)
+# Contrib     : foxhound311, Rak1ta
+# Version     : 1.0.14 (13/Jan/23)
 #
-# Help        : Thanks @foxhound311 for compile all cores and binary files
-#             : EmulationStation-DE URLs: https://es-de.org/ | https://gitlab.com/leonstyhre/emulationstation-de/
+# Help        : https://archive.org/download/RetroArch-rpi4
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
@@ -15,7 +15,7 @@ readonly VERSION="1.11.1-1"
 readonly INSTALL_DIR="/usr/local/bin"
 readonly CONFIG_PATH="$HOME/.config/retroarch"
 readonly PACKAGES=(libfreeimage3 libpugixml1v5)
-readonly BINARY_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_${VERSION}_armhf.deb"
+readonly BINARY_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_1.14.0-1_armhf.deb"
 readonly BINARY_BUSTER_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_${VERSION}-buster_armhf.deb"
 readonly BINARY_64_BITS_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_${VERSION}_arm64.deb"
 readonly CONFIG_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch_config.tar.gz"
@@ -134,6 +134,7 @@ install_assets() {
 
 install() {
     local BINARY_URL_INSTALL=$BINARY_URL
+    local CODENAME
     CODENAME=$(get_codename)
 
     echo -e "Installing package and dependencies..."
@@ -163,7 +164,7 @@ RetroArch
 =========
 
 · Thanks to Foxhound311.
-· Version $VERSION.
+· Version $VERSION, except Bullseye armhf (32 bits): 1.14.0-1.
 · Can be used with GLES, GLES3 or Vulkan drivers.
 · All cores and binaries optimized for Raspberry Pi 4.
 · Cores are the most updated versions. Anyway, online updater is disabled.
