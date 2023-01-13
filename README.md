@@ -69,6 +69,10 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (13/01/23)
+
+· 👌 IMPROVE: Emulators > RetroArch Update cores & 1.14.0-1 (armhf).
+
 ### (6/11/22)
 
 · 👌 IMPROVE: Games > OpenXCOM 1.0.a379 for 32/64 bits.
@@ -84,7 +88,7 @@
 ### (7/10/22)
 
 · 📦 ADD: Emulators > Add VICE Commodore 64 emu for 32/64 bits.
-· 👌 IMPROVE: Emulators > RetroArch 1.11.1-1. Added Buster 32 bits support.
+· 👌 IMPROVE: Emulators > RetroArch 1.11.1-1. Add Buster 32 bits support.
 
 ### (18/09/22)
 
