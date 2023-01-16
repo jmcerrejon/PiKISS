@@ -3,20 +3,20 @@
 # Description : RetroArch
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Contrib     : foxhound311, Rak1ta
-# Version     : 1.0.14 (13/Jan/23)
+# Version     : 1.0.15 (16/Jan/23)
 #
-# Help        : https://archive.org/download/RetroArch-rpi4
+# Help        : https://archive.org/download/RetroArch-rpi4 | https://archive.org/details/rpi4_64bit_retroarch
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-readonly VERSION="1.11.1-1"
+readonly VERSION="1.14.0-1"
 readonly INSTALL_DIR="/usr/local/bin"
 readonly CONFIG_PATH="$HOME/.config/retroarch"
 readonly PACKAGES=(libfreeimage3 libpugixml1v5)
-readonly BINARY_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_1.14.0-1_armhf.deb"
-readonly BINARY_BUSTER_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_${VERSION}-buster_armhf.deb"
+readonly BINARY_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_${VERSION}_armhf.deb"
+readonly BINARY_BUSTER_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_1.11.1-buster_armhf.deb"
 readonly BINARY_64_BITS_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_${VERSION}_arm64.deb"
 readonly CONFIG_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch_config.tar.gz"
 readonly CORES_URL="https://misapuntesde.com/rpi_share/retroarch/libretro_cores.tar.gz"
@@ -164,7 +164,7 @@ RetroArch
 =========
 
 · Thanks to Foxhound311.
-· Version $VERSION, except Bullseye armhf (32 bits): 1.14.0-1.
+· Version $VERSION
 · Can be used with GLES, GLES3 or Vulkan drivers.
 · All cores and binaries optimized for Raspberry Pi 4.
 · Cores are the most updated versions. Anyway, online updater is disabled.
