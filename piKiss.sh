@@ -399,13 +399,12 @@ smServer() {
         Minidlna "Install/Compile UPnP/DLNA Minidlna"
         Nagios "Nagios is a network host and service monitoring"
         OctoPrint "Control your 3D-Printer"
-        OwnCloud "Access your data from all your devices"
         RDesktop "Connect to your Raspberry Pi throught VNC,..."
         Smtp "SMTP Config to send e-mail"
         SMB "Share files with SAMBA"
         Upd "keep Debian patched with latest security updates"
         VPNServer "OpenVPN setup and config thanks to pivpn.io"
-        Web "Web server+PHP7"
+        Web "Web server"
         WebDAV "WebDAV to share local content with Apache"
     )
 
@@ -425,7 +424,6 @@ smServer() {
         Minidlna) ./scripts/server/mediaserver.sh ;;
         Nagios) ./scripts/server/nagios.sh ;;
         OctoPrint) ./scripts/server/octoprint.sh ;;
-        OwnCloud) ./scripts/server/owncloud.sh ;;
         RDesktop) ./scripts/server/rdesktop.sh ;;
         Smtp) ./scripts/server/smtp.sh ;;
         SMB) ./scripts/server/fileserver.sh ;;
