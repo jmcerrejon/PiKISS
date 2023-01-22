@@ -9,6 +9,7 @@ readonly PIKISS_MAGIC_AIR_COPY_PATH=$RESOURCES_DIR/magic-air-copy-pikiss.txt
 readonly ADDITIONAL_FILES_PATH=$RESOURCES_DIR/additional_files.txt
 # INFO On the next, do not use ""
 readonly ADDITIONAL_FILES_URL=https://e.pcloud.link/publink/show?code=XZkry8Z9AV6VqWikkJfzzdyHLOwnyPVDKMX
+readonly DEBIAN_VERSION="$(lsb_release -cs)"
 
 # Usage: "${INFO}INFO${RESET}: This is an ${BOLD}info${RESET} message"
 BOLD=$(tput bold)
@@ -845,27 +846,20 @@ compile_sdl2_net() {
 }
 
 #
-# Install Apache 2
-#
-install_apache2() {
-    sudo apt-get install -y apache2 libapache2-mod-php7.0
-    sudo sh -c 'echo "ServerSignature Off\nServerTokens Prod" >> /etc/apache2/apache2.conf'
-    sudo chown -R www-data:www-data /var/www/html
-    sudo systemctl restart apache2
-    # Run on each new installed framework
-    # sudo find /var/www/html -type d -exec chmod 755 {} \;
-    # sudo find /var/www/html -type f -exec chmod 644 {} \;
-}
-
-#
 # Add latest php repository
 #
 add_php_repository() {
+    local PHP_SURY_REPO_GPG_URL="https://packages.sury.org/php/apt.gpg"
+    local DEB_PACKAGE_STRING="deb https://packages.sury.org/php/ $(lsb_release -sc) main"
+
     if [[ -e /etc/apt/sources.list.d/php.list ]]; then
         return 0
     fi
-    sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
-    sudo sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
+
+    echo -e "\n· Adding PHP SURY repository...\n"
+
+    sudo wget -O /etc/apt/trusted.gpg.d/php.gpg "$PHP_SURY_REPO_GPG_URL"
+    sudo sh -c "echo '$DEB_PACKAGE_STRING' > /etc/apt/sources.list.d/php.list"
     sudo apt-get -qq update
 }
 
