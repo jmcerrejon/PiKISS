@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1031 hours**
+- **1034 hours**
 
 ## 💰 Total amount donated by users
 
@@ -68,6 +68,11 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+## (22/01/23)
+
+· 👌 IMPROVE: Server > Update Web Server with PHP 8.2 & Nginx 1.23.3.
+· ❌ REMOVE: Owncloud.
 
 ## (16/01/23)
 

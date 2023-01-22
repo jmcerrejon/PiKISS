@@ -1,5 +1,10 @@
 # Changelog
 
+## (22/01/23)
+
+· 👌 IMPROVE: Server > Update Web Server with PHP 8.2 & Nginx 1.23.3.
+· ❌ REMOVE: Owncloud.
+
 ## (16/01/23)
 
 · 👌 IMPROVE: Emulators > RetroArch Update cores & 1.14.0-1 (arm64).
