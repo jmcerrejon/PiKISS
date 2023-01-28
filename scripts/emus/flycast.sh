@@ -2,24 +2,24 @@
 #
 # Description : Flycast Dreamcast Emulator
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (18/Sep/22)
+# Version     : 1.0.1 (25/Sep/22)
 # Links       : https://archive.org/download/DreamcastSelfBoot
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-PROYECT_NAME="flycast"
-BASE_DIR="$HOME/games"
-INSTALL_DIR="$BASE_DIR/$PROYECT_NAME"
-CONFIG_DIR="$HOME/.config/$PROYECT_NAME"
-SHARE_DIR="$HOME/.local/share/$PROYECT_NAME"
-CONFIG_FILE_NAME="emu.cfg"
-PACKAGES=(libminiupnpc17 libzip4)
-BINARY_URL="https://misapuntesde.com/rpi_share/flycast-rpi-all.tar.gz"
-SOURCE_CODE_URL="https://github.com/flyinghead/flycast"
-GAME_URL="http://volgarr.rkd.zone/VolgarrDC_BIG_2015-10-15.cdi.zip"
-BIOS_CODE_NAME="DREAMCAST_BIOS_URL"
+readonly PROYECT_NAME="flycast"
+readonly BASE_DIR="$HOME/games"
+readonly INSTALL_DIR="$BASE_DIR/$PROYECT_NAME"
+readonly CONFIG_DIR="$HOME/.config/$PROYECT_NAME"
+readonly SHARE_DIR="$HOME/.local/share/$PROYECT_NAME"
+readonly CONFIG_FILE_NAME="emu.cfg"
+readonly PACKAGES=(libminiupnpc17 libzip4)
+readonly BINARY_URL="https://misapuntesde.com/rpi_share/flycast-rpi-all.tar.gz"
+readonly SOURCE_CODE_URL="https://github.com/flyinghead/flycast"
+readonly GAME_URL="http://volgarr.rkd.zone/VolgarrDC_BIG_2015-10-15.cdi.zip"
+readonly BIOS_CODE_NAME="DREAMCAST_BIOS_URL"
 
 uninstall() {
     echo -e "Uninstall Flycast?\nNOTE: All installed files/cartridge/save games will be erased."
