@@ -2,7 +2,7 @@
 #
 # Description : Vulkan driver
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.4 (13/Oct/22)
+# Version     : 1.4.5 (9/Mar/23)
 # Compatible  : Raspberry Pi 4
 #
 # Help        : https://ninja-build.org/manual.html#ref_pool
@@ -16,7 +16,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 readonly INSTALL_DIR="$HOME/mesa_vulkan"
 readonly SOURCE_CODE_URL="https://gitlab.freedesktop.org/mesa/mesa.git"
 PI_VERSION_NUMBER=$(get_pi_version_number)
-BRANCH_VERSION="22.2"
+BRANCH_VERSION="mesa-22.3.7"
 INPUT=/tmp/vulkan.$$
 
 install() {
@@ -74,14 +74,15 @@ install_vulkan_from_official_repository() {
 compile_and_install_libdrm() {
     local LIBDRM_URL
     local SOURCE_CODE_PATH
-    LIBDRM_URL="https://dri.freedesktop.org/libdrm/libdrm-2.4.110.tar.xz"
+    FILE_NAME="libdrm-2.4.115"
+    LIBDRM_URL="https://dri.freedesktop.org/libdrm/$FILE_NAME.tar.xz"
     SOURCE_CODE_PATH="$HOME/sc"
 
     echo -e "\nCompiling libdrm...\n"
     download_and_extract "$LIBDRM_URL" "$SOURCE_CODE_PATH"
-    cd libdrm-2.4.110 || exit
+    cd "$FILE_NAME" || exit
     mkdir build && cd "$_" || exit
-    meson -Dudev=true -Dvc4=true -Dintel=false -Dvmwgfx=false -Dradeon=false -Damdgpu=false -Dnouveau=false -Dfreedreno=false -Dinstall-test-programs=true ..
+    meson -Dudev=true -Dvc4=auto -Dintel=disabled -Dvmwgfx=disabled -Dradeon=disabled -Damdgpu=disabled -Dnouveau=disabled -Dfreedreno=disabled -Dinstall-test-programs=true ..
     time ninja -C . -j"$(nproc)"
     sudo ninja install
     echo "Compiled & installed onto your system. Move on..."
@@ -116,7 +117,7 @@ menu_choose_branch() {
             --title "[ Vulkan Branch ]" \
             --menu "Select from the list:" 11 100 3 \
             repo "(Quicker) Not latest but stable from official repository." \
-            22.2 "(Recommended) Latest stable branch working." \
+            22.3.7 "(Recommended) Latest stable branch working." \
             main "(Latest) NOT stable at all. Install on your own risk." \
             Exit "Exit" 2>"${INPUT}"
 
@@ -124,7 +125,7 @@ menu_choose_branch() {
 
         case $menuitem in
         repo) install_vulkan_from_official_repository ;;
-        22.2) compile ;;
+        22.3.7) compile ;;
         main) BRANCH_VERSION="main" && compile ;;
         Exit) exit ;;
         esac
