@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1034 hours**
+- **1040 hours**
 
 ## 💰 Total amount donated by users
 
@@ -68,6 +68,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+## (9/03/23)
+
+· 👌 IMPROVE: Config > Vulkan Driver 22.3.7 for 32/64 bits.
 
 ## (22/01/23)
 
