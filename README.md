@@ -13,11 +13,11 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1040 hours**
+- **1041 hours**
 
 ## 💰 Total amount donated by users
 
-- $1586,96
+- $1815,99
 
 - I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu).
 
@@ -68,6 +68,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+## (10/03/23)
+
+· 👌 IMPROVE: Emulators > RetroArch Update cores & 1.15.0-1 for 32/64 bits.
 
 ## (9/03/23)
 
