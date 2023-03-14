@@ -2,7 +2,7 @@
 #
 # Description : Vulkan driver
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.5 (9/Mar/23)
+# Version     : 1.4.6 (14/Mar/23)
 # Compatible  : Raspberry Pi 4
 #
 # Help        : https://ninja-build.org/manual.html#ref_pool
@@ -81,7 +81,8 @@ compile_and_install_libdrm() {
     echo -e "\nCompiling libdrm...\n"
     download_and_extract "$LIBDRM_URL" "$SOURCE_CODE_PATH"
     cd "$FILE_NAME" || exit
-    mkdir build && cd "$_" || exit
+    [[ ! -d build ]] && mkdir build
+    cd build || exit
     meson -Dudev=true -Dvc4=auto -Dintel=disabled -Dvmwgfx=disabled -Dradeon=disabled -Damdgpu=disabled -Dnouveau=disabled -Dfreedreno=disabled -Dinstall-test-programs=true ..
     time ninja -C . -j"$(nproc)"
     sudo ninja install
@@ -118,7 +119,7 @@ menu_choose_branch() {
             --menu "Select from the list:" 11 100 3 \
             repo "(Quicker) Not latest but stable from official repository." \
             22.3.7 "(Recommended) Latest stable branch working." \
-            main "(Latest) NOT stable at all. Install on your own risk." \
+            main "(Latest) NOT stable at all. Install at your own risk." \
             Exit "Exit" 2>"${INPUT}"
 
         menuitem=$(<"${INPUT}")
@@ -140,7 +141,7 @@ Vulkan Mesa Drivers
 · Support 32/64 bits.
 · This process can't be undone.
 · Make sure you have a backup of your data.
-· This script install or compiles Vulkan Mesa Driver on your OS.
+· This script installs or compiles Vulkan Mesa Driver on your OS.
 · Estimated compilation time on Raspberry Pi 4 over USB/SSD drive (Not overclocked): ~17 min.
 "
 read -p "Continue? (Y/n) " response
