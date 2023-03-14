@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1041 hours**
+- **1042 hours**
 
 ## 💰 Total amount donated by users
 
@@ -47,7 +47,7 @@
 
 ## 🤝 Contributors
 
-- [huelvayork](https://github.com/huelvayork), [mayavera](https://github.com/mayavera), [CleanMachine1](https://github.com/CleanMachine1).
+- [huelvayork](https://github.com/huelvayork), [mayavera](https://github.com/mayavera), [CleanMachine1](https://github.com/CleanMachine1), [kleinerm](https://github.com/kleinerm).
 
 - Logo: grayduck
 
@@ -68,6 +68,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+## (14/03/23)
+
+· 👌 IMPROVE: Config > Vulkan Driver 22.3.7 for 32/64 bits.
 
 ## (10/03/23)
 
