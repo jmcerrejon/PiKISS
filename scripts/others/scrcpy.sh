@@ -2,17 +2,19 @@
 #
 # Description : Scrcpy
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.1 (08/May/21)
+# Version     : 1.2.0 (20/Mar/23)
+# TODO        : https://github.com/srevinsaju/guiscrcpy
 #
 . ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
+readonly VERSION="2.0"
 readonly INSTALL_DIR="$HOME/apps"
-readonly PACKAGES=(adb ffmpeg libsdl2-2.0-0)
-readonly PACKAGES_DEV=(ffmpeg libsdl2-2.0-0 adb pkg-config ninja-build libavcodec-dev libavformat-dev libavutil-dev libsdl2-dev)
-readonly BINARY_URL="https://misapuntesde.com/rpi_share/scrcpy-1.17.tar.gz"
-readonly PREBUILD_SERVER_URL="https://github.com/Genymobile/scrcpy/releases/download/v1.17/scrcpy-server-v1.17"
+readonly PACKAGES=(adb ffmpeg libsdl2-2.0-0 libusb-1.0-0)
+readonly PACKAGES_DEV=(ffmpeg libsdl2-2.0-0 adb wget gcc git pkg-config meson ninja-build libsdl2-dev libavcodec-dev libavdevice-dev libavformat-dev libavutil-dev libswresample-dev libusb-1.0-0 libusb-1.0-0-dev)
+readonly BINARY_URL="https://misapuntesde.com/rpi_share/scrcpy-$VERSION.tar.gz"
+readonly PREBUILD_SERVER_URL="https://github.com/Genymobile/scrcpy/releases/download/v$VERSION/scrcpy-server-v$VERSION"
 readonly SOURCE_CODE_URL="https://github.com/Genymobile/scrcpy"
 
 remove_files() {
@@ -62,15 +64,7 @@ compile() {
     install_meson
     mkdir -p ~/sc && cd "$_" || exit 1
     git clone "$SOURCE_CODE_URL" scrcpy && cd "$_" || exit 1
-    download_file "$PREBUILD_SERVER_URL" ~/sc/scrcpy
-    meson build --buildtype release --strip -Db_lto=true -Dprebuilt_server=scrcpy-server-v1.17
-    ninja -Cbuild
-    if [[ ! -e ~/sc/scrcpy/build/app/scrcpy ]]; then
-        echo -e "\nSomething is wrong :("
-        exit_message
-    fi
-    echo -e "\nDone!. Check ~/sc/scrcpy/build/app"
-    exit_message
+    ./install_release.sh
 }
 
 install() {
@@ -81,7 +75,7 @@ install() {
     # Server
     sudo mkdir -p /usr/local/share/scrcpy || exit 0
     download_file "$PREBUILD_SERVER_URL" "$INSTALL_DIR/scrcpy"
-    sudo mv "$INSTALL_DIR/scrcpy/scrcpy-server-v1.17" /usr/local/share/scrcpy/scrcpy-server
+    sudo mv "$INSTALL_DIR/scrcpy/scrcpy-server-v$VERSION" /usr/local/share/scrcpy/scrcpy-server
     chmod +x /usr/local/share/scrcpy/scrcpy-server
     generate_icon
     echo -e "\nDone. Type $INSTALL_DIR/scrcpy/android.sh or go to Menu > System Tools > Scrcpy."
@@ -90,10 +84,11 @@ install() {
 
 install_script_message
 echo "
-Install Scrcpy
-==============
+Install Scrcpy $VERSION
+==================
 
  · More info scrcpy --help or visiting $SOURCE_CODE_URL
+ · Audio forwarding is supported from API 30 (Android 11+).
  · The Android device requires at least API 21 (Android 5.0).
  · Make sure you enabled adb debugging on your device(s) and plug an Android device before start scrcpy.
  · On some devices, you also need to enable an additional option to control it using keyboard and mouse.

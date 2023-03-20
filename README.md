@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1042 hours**
+- **1043 hours**
 
 ## 💰 Total amount donated by users
 
@@ -68,6 +68,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+## (20/03/23)
+
+· 👌 IMPROVE: New relases: Scrcopy v2.0 for 64 bits (Audio support for Android 11+).
 
 ## (14/03/23)
 
