@@ -2,7 +2,7 @@
 #
 # Description : UPnP/DLNA MediaServer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.9.3 (12/Sep/16)
+# Version     : 0.9.4 (25/Mar/23)
 #
 # HELP        · https://www.raspberrypi.org/forums/viewtopic.php?p=518676#p518676
 #             · https://www.raspberrypi.org/forums/viewtopic.php?t=16352
@@ -20,7 +20,7 @@ MINIDLNA_FILES="https://misapuntesde.com/res/minidlna_files.tar.gz"
 INPUT=/tmp/mnu.sh.$$
 trap "rm $INPUT; exit" SIGHUP SIGINT SIGTERM
 
-after_install(){
+after_install() {
     wget -O /tmp/tmp.tar.gz $MINIDLNA_FILES
     sudo tar xzf /tmp/tmp.tar.gz -C / && rm /tmp/tmp.tar.gz
     echo -e "\n\nCreating music, videos & images directories...\n"
@@ -30,14 +30,14 @@ after_install(){
     read -p 'Press [ENTER] to continue...'
 }
 
-create_dir(){
+create_dir() {
     mkdir -p ${HOME}/music && sudo chmod 777 ${HOME}/music
     mkdir -p ${HOME}/videos && sudo chmod 777 ${HOME}/videos
     mkdir -p ${HOME}/images && sudo chmod 777 ${HOME}/images
     echo -e "media_dir=A,"${HOME}"/music\nmedia_dir=P,"${HOME}"/images\nmedia_dir=V,"${HOME}"/videos" | sudo tee -a /etc/minidlna.conf
 }
 
-rygel(){
+rygel() {
     # Unfinished
     echo -e "Rygel UPnP/DLNA MediaServer (install 55MB)\n==========================================\n Rygel allows a user to:\n\n* Browse and play media stored on a PC via a TV or PS3, even if the original content is in a format that the TV or PS3 cannot play.\n* Easily search and play media using a phone, TV, or PC.\n* Redirect sound output to DLNA speakers.\n"
 
@@ -49,7 +49,7 @@ rygel(){
     create_dir
 }
 
-minidlna_latest(){
+minidlna_latest() {
     clear
     # "Oh and by the way, it streams 1080p to XBoxes, Playstations, Smart TVs and other computers flawlessly..." - Ben Brooks
     echo -e "Compile & download minidlna(lastest version)\n============================================\n\n"
@@ -63,12 +63,12 @@ minidlna_latest(){
     echo -e "\n\nGrab a coffee (It takes about 10 minutes)... ;)\n"
     ./autogen.sh && ./configure
     make
-    sudo make install
+    make_install_compiled_app
     after_install
 }
 minidlna_latest
 exit
-minidlna_misa(){
+minidlna_misa() {
     wget $URL_MINIDLNA_MISA
     sudo apt-get install -y libavformat56
     sudo dpkg -i minidlna*.deb
@@ -76,21 +76,23 @@ minidlna_misa(){
     after_install
 }
 
-while true
-do
+while true; do
     dialog --clear --backtitle "UPnP/DLNA MiniDLNA MediaServer" \
-    --title "[ MINIDLNA ]" \
-    --menu "You can use the UP/DOWN arrow keys, the first letter of the choice as a hot key, or the number keys 1-3 to choose an option.\n\
+        --title "[ MINIDLNA ]" \
+        --menu "You can use the UP/DOWN arrow keys, the first letter of the choice as a hot key, or the number keys 1-3 to choose an option.\n\
     Choose the TASK:" 13 55 3 \
-    latest "Compile the latest version (slow)" \
-    minidlna "Install version 1.1.4 (fast)" \
-    Exit "Exit to the shell" 2>"${INPUT}"
+        latest "Compile the latest version (slow)" \
+        minidlna "Install version 1.1.4 (fast)" \
+        Exit "Exit to the shell" 2>"${INPUT}"
     menuitem=$(<"${INPUT}")
 
     case $menuitem in
-        latest) minidlna_latest ;;
-        minidlna) minidlna_misa ;;
-        Exit) echo -e "\nThanks for visiting https://misapuntesde.com"; break ;;
+    latest) minidlna_latest ;;
+    minidlna) minidlna_misa ;;
+    Exit)
+        echo -e "\nThanks for visiting https://misapuntesde.com"
+        break
+        ;;
     esac
 
 done

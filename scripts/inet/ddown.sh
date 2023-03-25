@@ -2,7 +2,7 @@
 #
 # Description : Install Plowshare4 for direct download links
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0 (12/Sep/16)
+# Version     : 1.0.1 (25/Mar/22)
 #
 clear
 
@@ -14,7 +14,7 @@ fi
 cd $HOME
 git clone https://github.com/mcrapet/plowshare.git
 cd plowshare
-sudo make install
+make_install_compiled_app
 plowmod --install
 cd ..
 rm -rf $HOME/plowshare

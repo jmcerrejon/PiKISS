@@ -2,10 +2,10 @@
 #
 # Description : Gameboy Advance emulator mgba
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.5.1 (28/Aug/21)
-# Compatible  : Raspberry Pi 1-3 (¿?), 4 (tested)
+# Version     : 1.5.3 (28/Jan/23)
+# Compatible  : Raspberry Pi 4 (tested)
 # Repository  : https://github.com/mgba-emu/mgba.git
-# TODO        : Wait for the fix at https://github.com/mgba-emu/mgba/issues/1081
+# Help        : 32 bits fix compilation at https://github.com/mgba-emu/mgba/issues/1081
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
@@ -13,9 +13,11 @@ clear
 
 readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES=(ffmpeg libglu1-mesa libzip4 qtmultimedia5-dev libqt5multimedia5 libqt5opengl5)
-readonly PACKAGES_DEV=(qtbase5-dev-tools qtbase5-dev cmake libsdl2-dev ffmpeg libnewlib-dev libzip-dev libedit-dev freebsd-glue libsqlite3-dev libelf-dev libepoxy-dev libpng-dev libavcodec-dev libavresample-dev libminizip-dev libavfilter-dev qtmultimedia5-dev qt5-qmake qt5-default qtdeclarative5-dev qttools5-dev)
+readonly PACKAGES_DEV=(qtbase5-dev-tools qtbase5-dev cmake libsdl2-dev ffmpeg libnewlib-dev libzip-dev libedit-dev libsqlite3-dev libelf-dev libepoxy-dev libpng-dev libavcodec-dev libavresample-dev libminizip-dev libavfilter-dev qtmultimedia5-dev qt5-qmake qtdeclarative5-dev qttools5-dev zipcmp zipmerge ziptool)
 readonly SOURCE_CODE_URL="https://github.com/mgba-emu/mgba.git"
-readonly BINARY_URL="https://misapuntesde.com/rpi_share/mgba_0.90-rpi.tar.gz"
+readonly BINARY_URL="https://misapuntesde.com/rpi_share/mgba-0.11-rpi-aarch64.tar.gz"
+readonly BINARY_64_BITS_URL="https://misapuntesde.com/rpi_share/mgba-0.11-rpi-aarch64.tar.gz"
+readonly GAME_URL="https://web.archive.org/web/20080625061600/http://www.freewebs.com/worldtreegames/TyrianGBA.zip"
 
 runme() {
     if [ ! -d "$INSTALL_DIR"/mgba ]; then
@@ -72,8 +74,14 @@ compile() {
     mkdir -p "$HOME/sc" && cd "$_" || exit 1
     git clone "$SOURCE_CODE_URL" mgba && cd "$_" || exit 1
     mkdir build && cd "$_" || exit 1
-    CFLAGS="-fsigned-char -marm -march=armv8-a+crc -mtune=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard" CXXFLAGS="-fsigned-char" cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX:PATH=~/games/mgba -DUSE_DEBUGGERS=OFF -DBUILD_STATIC=ON -DBUILD_SHARED=OFF
+    if is_kernel_64_bits; then
+        cmake -DCMAKE_INSTALL_PREFIX:PATH="$HOME/games/mgba" ..
+    else
+        cmake -DCMAKE_INSTALL_PREFIX:PATH="$HOME/games/mgba" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_CXX_FLAGS="-march=armv8-a -mtune=cortex-a72" ..
+    fi
     make_with_all_cores
+    echo "Done!. Check $HOME/sc/mgba/build/qt/mgba-qt and $HOME/sc/mgba/build/sdl/mgba"
+    exit_message
 }
 
 post_install() {
@@ -83,8 +91,12 @@ post_install() {
 install() {
     echo -e "\nInstalling, please wait..."
     install_packages_if_missing "${PACKAGES[@]}"
-    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
-    post_install
+    if is_kernel_64_bits; then
+        download_and_extract "$BINARY_64_BITS_URL" "$INSTALL_DIR"
+    else
+        download_and_extract "$BINARY_URL" "$INSTALL_DIR"
+    fi
+    # post_install # TODO: Recover file from compressed file
     generate_icon
     echo -e "\nDone!. To play, go to Menu > Games > mGBA Game Boy Advance Emulator or $INSTALL_DIR/mgba/bin path and type: ./mgba ../roms/<rom_file>\n"
     runme
@@ -95,7 +107,7 @@ echo "
 Gameboy Advance Emulator (mgba)
 ===============================
 
- · Optimized for Raspberry Pi 4.
+ · Optimized for Raspberry Pi 4 | Thks Foxhound311 for the tips.
  · Install path: $INSTALL_DIR/mgba
  · GBA BIOS included.
  · bin/mgba-qt for the GUI frontend or bin/mgba for console.

@@ -1,5 +1,10 @@
 # Changelog
 
+## (25/03/23)
+
+· 📦 ADD: Server > Block IPs using Iptables.
+· 👌 IMPROVE: Scripts Server > Media Server, Emulators > GBA. Some minor fixes.
+
 ## (20/03/23)
 
 · 👌 IMPROVE: New relases: Scrcopy v2.0 for 64 bits (Audio support for Android 11+).

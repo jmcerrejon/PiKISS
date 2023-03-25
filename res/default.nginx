@@ -56,7 +56,7 @@ server {
 	#
 	location ~ \.php$ {
                include snippets/fastcgi-php.conf;
-               fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+               fastcgi_pass unix:/run/php/php8.2-fpm.sock;
 	}
 
         location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
@@ -71,23 +71,3 @@ server {
 	#	deny all;
 	#}
 }
-
-
-# Virtual Host configuration for example.com
-#
-# You can move that to a different file under sites-available/ and symlink that
-# to sites-enabled/ to enable it.
-#
-#server {
-#	listen 80;
-#	listen [::]:80;
-#
-#	server_name example.com;
-#
-#	root /var/www/example.com;
-#	index index.php index.html;
-#
-#	location / {
-#		try_files $uri $uri/ =404;
-#	}
-#}

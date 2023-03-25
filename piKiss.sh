@@ -235,7 +235,7 @@ smGames() {
 
 smEmulators() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Amiga, Box86/64, Flycast, MS-Dos, Mame, PS1, PS2, RetroArch, Redream, ScummVM, VICE"
+        show_dialog_only_32_bits "Amiga, Box86/64, Flycast, DOSBox, Mame, mGBA, PS1, PS2, RetroArch, Redream, ScummVM, VICE"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Emulators ]" --menu "Select emulator from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
@@ -245,8 +245,8 @@ smEmulators() {
         Amstrad "Amstrad CPC with Caprice32"
         Box86-64 "Let's you run x86/64 Linux programs on non-x86/64 Linux"
         Dolphin "Dolphin is a Wii & Gamecube emulator (EXPERIMENTAL)"
+        DOSBox "DOSBox-X is a DOS emulator with GUI"
         Flycast "Sega Dreamcast,Naomi,Naomi 2 and Atomiswave emu"
-        MS-Dos "DOSBox-X is a DOS emulator with GUI"
         Gba "Gameboy Advance (mgba)"
         Genesis "Genesis Megadrive Emulator (picodrive)"
         Mednafen "Portable multi-system emulator (Mednafen)"
@@ -276,7 +276,7 @@ smEmulators() {
         Amstrad) ./scripts/emus/caprice.sh ;;
         Dolphin) ./scripts/emus/dolphin.sh ;;
         Flycast) ./scripts/emus/flycast.sh ;;
-        MS-Dos) ./scripts/emus/msdos.sh ;;
+        DOSBox) ./scripts/emus/msdos.sh ;;
         Gba) ./scripts/emus/gba.sh ;;
         Genesis) ./scripts/emus/genesis.sh ;;
         Mednafen) ./scripts/emus/mednafen.sh ;;
@@ -389,6 +389,7 @@ smServer() {
     options=(
         Back "Back to main menu"
         AdBlock "Turn Raspberry Pi into an Ad blocker with Pi-Hole"
+        BlockIPs "Block access attempts to your Pi connected to the Internet"
         Cups "Printer server (cups)"
         DB "Install MariaDB"
         FTP "Simple FTP Server with vsftpd"
@@ -414,6 +415,7 @@ smServer() {
         case $choice in
         Back) break ;;
         AdBlock) ./scripts/server/adblock.sh ;;
+        BlockIPs) sudo ./scripts/server/block-ips.sh ;;
         Cups) ./scripts/server/printer.sh ;;
         DB) ./scripts/server/db.sh ;;
         FTP) ./scripts/server/ftp.sh ;;
