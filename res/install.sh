@@ -2,7 +2,7 @@
 #
 # Description : Easy install PiKISS
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.4 (24/Sep/21)
+# Version     : 1.0.5 (8/Mar/23)
 #
 clear
 
@@ -31,7 +31,7 @@ install() {
         exit
     fi
     echo -e "\nPiKISS\n======\n\nInstalling at ${INSTALL_DIR}/piKiss. Please wait...\n"
-    sudo apt install -y dialog
+    sudo apt install -y dialog git
     git clone -b master "$PIKISS_URL" piKiss && cd "$_" || exit 1
 }
 
