@@ -79,7 +79,7 @@ esac
 echo -e "\nRunning apt-file update...\n"
 sudo apt-file update
 echo -e "\nmkdir pikiss for test using sshfs...\n"
-[[ ! -d "$HOME/pikiss" ]] && mkdir "$HOME/pikiss"
+[[ ! -d $HOME/pikiss ]] && mkdir "$HOME/pikiss"
 
 echo -e "\nThe system is going to reboot in 5 seconds. Pray...\n"
 sleep 5
