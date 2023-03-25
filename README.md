@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1043 hours**
+- **1044 hours**
 
 ## 💰 Total amount donated by users
 
@@ -68,6 +68,11 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+## (25/03/23)
+
+· 📦 ADD: Server > Block IPs using Iptables.
+· 👌 IMPROVE: Scripts Server > Media Server, Emulators > GBA. Some minor fixes.
 
 ## (20/03/23)
 
