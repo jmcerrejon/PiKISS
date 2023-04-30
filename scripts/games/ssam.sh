@@ -2,56 +2,42 @@
 #
 # Description : Serious Sam 1 & 2
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.8 (30/Jul/22)
+# Version     : 2.0.0 (29/Apr/23)
 # Compatible  : Raspberry Pi 4 (tested)
 #
-# Help        : https://www.raspberrypi.org/forums/viewtopic.php?t=200458
+# TODO        :  32 bits support.
 #
 
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-readonly INSTALL_DIR="$HOME/games"
-readonly PACKAGES_DEV=(libsdl2-dev bison flex libogg-dev)
-readonly BINARY_URL="https://misapuntesde.com/rpi_share/ssam-bin-1.05-rpi4.tar.gz"
+readonly PACKAGES_DEV=(git bison flex cmake make gcc libc6-dev libsdl2-dev libogg-dev libvorbis-dev zlib1g-dev)
+VERSION_NUMBER="1.10.4-1"
+ALPHA_VERSION_NUMBER="1.5.1-1"
+PKG_SERIOUSSAM_CLASSIC_32_URL="https://github.com/tx00100xt/serioussam-packages/raw/main/RasberryPiOS/RPi4B/armhf/serioussamclassic-${VERSION_NUMBER}_rpi4b_armhf.deb"
+PKG_SERIOUSSAM_CLASSIC_VK_32_URL="https://github.com/tx00100xt/serioussam-packages/raw/main/RasberryPiOS/RPi4B/armhf/serioussamclassic-vk-${VERSION_NUMBER}_rpi4b_armhf.deb"
+PKG_SERIOUSSAM_CLASSIC_XPLUS_32_URL="https://github.com/tx00100xt/serioussam-packages/raw/main/RasberryPiOS/RPi4B/armhf/serioussamclassic-xplus-${VERSION_NUMBER}_rpi4b_armhf.deb"
+PKG_SERIOUSSAM_CLASSIC_ALPHA_32_URL="https://github.com/tx00100xt/serioussam-packages/raw/main/RasberryPiOS/RPi4B/armhf/serioussamclassic-alpha-${ALPHA_VERSION_NUMBER}_rpi4b_armhf.deb"
+PKG_SERIOUSSAM_CLASSIC_64_URL="https://github.com/tx00100xt/serioussam-packages/raw/main/RasberryPiOS/RPi4B/arm64/serioussamclassic-${VERSION_NUMBER}_rpi4b_arm64.deb"
+PKG_SERIOUSSAM_CLASSIC_VK_64_URL="https://github.com/tx00100xt/serioussam-packages/raw/main/RasberryPiOS/RPi4B/arm64/serioussamclassic-vk-${VERSION_NUMBER}_rpi4b_arm64.deb"
+PKG_SERIOUSSAM_CLASSIC_XPLUS_64_URL="https://github.com/tx00100xt/serioussam-packages/raw/main/RasberryPiOS/RPi4B/arm64/serioussamclassic-xplus-${VERSION_NUMBER}_rpi4b_arm64.deb"
+PKG_SERIOUSSAM_CLASSIC_ALPHA_64_URL="https://github.com/tx00100xt/serioussam-packages/raw/main/RasberryPiOS/RPi4B/arm64/serioussamclassic-alpha-${ALPHA_VERSION_NUMBER}_rpi4b_arm64.deb"
+readonly SOURCE_CODE_URL="https://github.com/tx00100xt/SeriousSamClassic"
 readonly VAR_DATA_NAME_1="SSAM_TFE"
 readonly VAR_DATA_NAME_2="SSAM_TSE"
 INPUT=/tmp/ssam.$$
 
-runme_tfe() {
-    echo
-    if [ ! -f "$INSTALL_DIR"/ssam-tfe/Bin/ssam-tfe ]; then
-        echo -e "\nFile does not exist.\n· Something is wrong.\n· Try to install again."
-        exit_message
-    fi
-    read -p "Press [ENTER] to run the game..."
-    cd "$INSTALL_DIR"/ssam-tfe/Bin && ./ssam-tfe
-    clear
-    exit_message
-}
-
-runme_tse() {
-    echo
-    if [ ! -f "$INSTALL_DIR"/ssam-tse/ssam-tse ]; then
-        echo -e "\nFile does not exist.\n· Something is wrong.\n· Try to install again."
-        exit_message
-    fi
-    read -p "Press [ENTER] to run the game..."
-    cd "$INSTALL_DIR"/ssam-tse/Bin && ./ssam-tse
-    clear
-    exit_message
-}
-
 remove_files() {
-    [ -d "$INSTALL_DIR/$1" ] && rm -rf "${INSTALL_DIR:?}/${1}" ~/.local/share/applications/"$1".desktop ~/.local/share/applications/ssam-tfe.desktop ~/.local/share/applications/ssam-tse.desktop
+    sudo dpkg --purge serioussamclassic serioussamclassic-xplus serioussamclassic-vk serioussamclassic-alpha
+    rm -rf ~/.local/share/applications/Serious-Engine
 }
 
 uninstall() {
     read -p "Do you want to uninstall it (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
-        rm -rf "$INSTALL_DIR/ssam" ~/.local/share/applications/ssam-tfe.desktop ~/.local/share/applications/ssam-tse.desktop
-        if [[ -e $INSTALL_DIR/ssam ]]; then
+        remove_files
+        if [[ -e /usr/lib/aarch64-linux-gnu/serioussam ]]; then
             echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
             exit_message
         fi
@@ -60,107 +46,134 @@ uninstall() {
     fi
 }
 
-if [[ -d $INSTALL_DIR/ssam ]]; then
+if [[ -d /usr/lib/aarch64-linux-gnu/serioussam ]]; then
     echo -e "\nSerious Sam engine already installed.\n"
     uninstall
 fi
 
-generate_icon_tfe() {
-    echo -e "\nGenerating icon Serious Sam The First Encounter..."
-    if [[ ! -e ~/.local/share/applications/ssam-tfe.desktop ]]; then
-        cat <<EOF >~/.local/share/applications/ssam-tfe.desktop
-[Desktop Entry]
-Name=Serious Sam The First Encounter
-Exec=${INSTALL_DIR}/ssam/ssam-tfe/Bin/ssam-tfe
-Icon=${INSTALL_DIR}/ssam/ssam-tfe.png
-Path=${INSTALL_DIR}/ssam-tfe/Bin
-Type=Application
-Comment=Sam Serious Stone is chosen to use the Time-Lock in hopes that he will defeat Mental and change the course of history...
-Categories=Game;ActionGame;
-EOF
-    fi
-}
-
-generate_icon_tse() {
-    echo -e "\nGenerating icon Serious Sam The Second Encounter"
-    if [[ ! -e ~/.local/share/applications/ssam-tse.desktop ]]; then
-        cat <<EOF >~/.local/share/applications/ssam-tse.desktop
-[Desktop Entry]
-Name=Serious Sam The Second Encounter
-Exec=${INSTALL_DIR}/ssam/ssam-tse/Bin/ssam-tse
-Icon=${INSTALL_DIR}/ssam/ssam-tse.png
-Path=${INSTALL_DIR}/ssam-tse/Bin
-Type=Application
-Comment=After the events of The First Encounter, Serious Sam is seen traveling through space in the SSS Centerprice...
-Categories=Game;ActionGame;
-EOF
-    fi
-}
-
-fix_libEGL() {
-    if [[ -f /opt/vc/lib/libEGL.so && ! -f $INSTALL_DIR/ssam-tse/Serious-Engine/Bin/libEGL.so ]]; then
-        echo -e "\nFixing libEGL.so..."
-        touch "$INSTALL_DIR"/ssam-tse/Serious-Engine/Bin/libEGL.so
-    fi
-}
-
 install_full_tfe() {
+    local SERIOUSSAM_DIR="$HOME/.local/share/applications/Serious-Engine/serioussam"
     local DATA_URL
     DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_1")
-    message_magic_air_copy "$VAR_DATA_NAME_1"
-    download_and_extract "$DATA_URL" "$INSTALL_DIR"
-    echo -e "\nDone!. Go to $INSTALL_DIR/ssam-tfe/Bin/ssam-tfe or go to Menu > Games > Serious Sam The First Encounter."
-    runme_tfe
+
+    read -p "Do you want to install your Serious Sam The First Encounter game data files to $SERIOUSSAM_DIR? (y/N) " response
+    if [[ $response =~ [Yy] ]]; then
+        message_magic_air_copy "$VAR_DATA_NAME_1"
+        download_and_extract "$DATA_URL" "$SERIOUSSAM_DIR"
+    fi
 }
 
 install_full_tse() {
+    local SERIOUSSAM_DIR="$HOME/.local/share/applications/Serious-Engine/serioussamse"
     local DATA_URL
     DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME_2")
-    message_magic_air_copy "$VAR_DATA_NAME_2"
-    download_and_extract "$DATA_URL" "$INSTALL_DIR"
-    fix_libEGL
-    echo -e "\nDone!. Go to $INSTALL_DIR/ssam-tse/Bin/ssam-tse or go to Menu > Games > Serious Sam The Second Encounter."
-    runme_tse
+
+    read -p "Do you want to install your Serious Sam The Second Encounter game data files to $SERIOUSSAM_DIR? (y/N) " response
+    if [[ $response =~ [Yy] ]]; then
+        message_magic_air_copy "$VAR_DATA_NAME_2"
+        download_and_extract "$DATA_URL" "$SERIOUSSAM_DIR"
+    fi
 }
 
-choose_data_files() {
+compile() {
+    install_packages_if_missing "${PACKAGES_DEV[@]}"
+    echo -e "\nCompiling Serious Sam..."
+
+    [[ ! -d $HOME/sc ]] && mkdir -p "$HOME/sc"
+    cd "$HOME/sc" || exit 1
+
+    git clone "$SOURCE_CODE_URL" && cd Serious-Engine/Sources || exit 1
+    time ./build-linux64.sh
+    mv cmake-build build-ssam-tse
+    # time ./build-linux64.sh -DTFE=TRUE
+
+    if [[ ! -f Sources/cmake-build/ssam ]]; then
+        echo -e "\nSomething is wrong.\n· Try to compile it again."
+        exit_message
+    fi
+
+    echo -e "\nDone!. Check Sources/cmake-build/ssam"
+    exit_message
+}
+
+install_alpha_data() {
+    local SERIOUSSAM_MOD_DIR="$HOME/.local/share/applications/Serious-Engine/serioussam/Mods"
+
+    echo -e "\nInstalling Serious Sam Alpha data files...\n"
+    [[ ! -d $SERIOUSSAM_MOD_DIR ]] && mkdir -p "$SERIOUSSAM_MOD_DIR"
+    cd "$SERIOUSSAM_DIR" || exit 1
+
+    for var in a b c d; do wget https://github.com/tx00100xt/serioussam-mods/raw/main/SamTFE-SSA/SeriousSamAlphaRemake_v1.5.tar.xz.parta$var; done
+    cat SeriousSamAlphaRemake_v1.5.tar.xz.part* >SeriousSamAlphaRemake_v1.5.tar.xz
+
+    echo -e "Uncompressing file...\n"
+    tar -xJpf SeriousSamAlphaRemake_v1.5.tar.xz
+
+    rm "$SERIOUSSAM_MOD_DIR/SSA/Bin/libEntities.so" "$SERIOUSSAM_MOD_DIRSSA/Bin/libGame.so"
+    rm SeriousSamAlphaRemake_v1.5.tar.xz.part*
+}
+
+install_xplus_data() {
+    local XPLUS_URL="https://e1.pcloud.link/publink/show?code=XZ02gRZ4nhrRGPSfV4aEL4IF8GYySafWVJX"
+    local SERIOUSSAM_DIR="$HOME/.local/share/applications/Serious-Engine/serioussam"
+
+    echo -e "\nInstalling Serious Sam Alpha data files...\n"
+    cd "$SERIOUSSAM_DIR" || exit 1
+    download "$XPLUS_URL" "$SERIOUSSAM_DIR"
+    echo -e "Uncompressing file...\n"
+    tar -xJpf SamTFE-XPLUS.tar.xz && rm SamTFE-XPLUS.tar.xz
+    rm SamTFE-XPLUS.tar.xz.part*
+}
+
+menu() {
     while true; do
         dialog --clear \
-            --title "[ Serious Sam Data files ]" \
-            --menu "Choose:" 11 68 3 \
-            I "Serious Sam The First Encounter" \
-            II "Serious Sam The Second Encounter" \
+            --title "[ Serious Sam ]" \
+            --menu "Choose the version:" 11 68 3 \
+            Vulkan "Serious Sam Vulkan Edition" \
+            XPlus "Serious Sam with visual enhancements" \
+            Alpha "Serious Sam lost levels" \
             Exit "Return to main menu" 2>"${INPUT}"
 
         menuitem=$(<"${INPUT}")
 
         case $menuitem in
-        I) clear && install_full_tfe && return 0 ;;
-        II) clear && install_full_tse && return 0 ;;
+        Vulkan) clear && download_and_install $PKG_SERIOUSSAM_CLASSIC_VK_64_URL && return 0 ;;
+        XPlus) clear && download_and_install $PKG_SERIOUSSAM_CLASSIC_XPLUS_64_URL && install_xplus_data && return 0 ;;
+        Alpha) clear && download_and_install $PKG_SERIOUSSAM_CLASSIC_ALPHA_64_URL && install_alpha_data && return 0 ;;
         Exit) exit 0 ;;
         esac
     done
 }
 
 install() {
-    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
-    generate_icon_tfe
-    generate_icon_tse
+    download_and_install $PKG_SERIOUSSAM_CLASSIC_64_URL
+    # menu
     if exists_magic_file; then
-        choose_data_files
+        echo
+        install_full_tfe
+        install_full_tse
+        exit_message
     fi
-    echo -e "\nDone!. Now follow the instructions to copy data files at https://github.com/ptitSeb/Serious-Engine#copy-official-game-data-optional"
+
+    echo -e "\nDone!. Now follow the instructions to copy game data files at https://github.com/tx00100xt/serioussam-packages"
     exit_message
 }
 
 install_script_message
 echo "
-Install Serious Sam 1/2
-=======================
+Install Serious Sam 1 & 2
+=========================
 
- · Optimized for Raspberry Pi 4.
- · REMEMBER YOU NEED A LEGAL COPY OF THE GAME and copy game files inside $INSTALL_DIR/ssam-tfe and $INSTALL_DIR/ssam-tse.
- · I want to thanks Pi Labs & ptitSeb for the help.
+ · Version $VERSION_NUMBER.
+ · Based on the great port by tx00100xt optimized for Raspberry Pi 4.
+ · I want to thanks Pi Labs, meveric, Jojo-A, ptitSeb & tx00100xt.
+ · REMEMBER YOU NEED A LEGAL COPY OF THE GAME.
 "
+
+read -p "Continue? (Y/n) " response
+if [[ $response =~ [Nn] ]]; then
+    exit_message
+fi
 
 install

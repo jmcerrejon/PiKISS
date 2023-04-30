@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1044 hours**
+- **1051 hours**
 
 ## 💰 Total amount donated by users
 
@@ -47,7 +47,7 @@
 
 ## 🤝 Contributors
 
-- [huelvayork](https://github.com/huelvayork), [mayavera](https://github.com/mayavera), [CleanMachine1](https://github.com/CleanMachine1), [kleinerm](https://github.com/kleinerm).
+- [huelvayork](https://github.com/huelvayork), [mayavera](https://github.com/mayavera), [CleanMachine1](https://github.com/CleanMachine1), [kleinerm](https://github.com/kleinerm), [tx00100xt](https://github.com/tx00100xt).
 
 - Logo: grayduck
 
@@ -69,33 +69,39 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
-## (25/03/23)
+### (30/04/23)
+
+· 👌 IMPROVE: Games > Serious Sam 1.10.4-1: Classic, Vulkan Ed. for arm64 (armhf soon).
+
+### (25/03/23)
 
 · 📦 ADD: Server > Block IPs using Iptables.
+
 · 👌 IMPROVE: Scripts Server > Media Server, Emulators > GBA. Some minor fixes.
 
-## (20/03/23)
+### (20/03/23)
 
 · 👌 IMPROVE: New relases: Scrcopy v2.0 for 64 bits (Audio support for Android 11+).
 
-## (14/03/23)
+### (14/03/23)
 
 · 👌 IMPROVE: Config > Vulkan Driver 22.3.7 for 32/64 bits.
 
-## (10/03/23)
+### (10/03/23)
 
 · 👌 IMPROVE: Emulators > RetroArch Update cores & 1.15.0-1 for 32/64 bits.
 
-## (9/03/23)
+### (9/03/23)
 
 · 👌 IMPROVE: Config > Vulkan Driver 22.3.7 for 32/64 bits.
 
-## (22/01/23)
+### (22/01/23)
 
 · 👌 IMPROVE: Server > Update Web Server with PHP 8.2 & Nginx 1.23.3.
+
 · ❌ REMOVE: Owncloud.
 
-## (16/01/23)
+### (16/01/23)
 
 · 👌 IMPROVE: Emulators > RetroArch Update cores & 1.14.0-1 (arm64).
 
