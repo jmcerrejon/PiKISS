@@ -460,7 +460,7 @@ download_and_install() {
     FILE=$(get_file_name_from_path "$1")
 
     download_file "$1" /tmp
-    echo -e "\nInstalling necessary custom package..." && sudo apt --fix-broken install /tmp/"$FILE"
+    echo -e "\nInstalling necessary custom package..." && sudo dpkg -i /tmp/"$FILE"
     [ -e /tmp/"$FILE" ] && rm -f rm /tmp/"$FILE"
 }
 
