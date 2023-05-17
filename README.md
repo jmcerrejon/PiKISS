@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1051 hours**
+- **1053 hours**
 
 ## 💰 Total amount donated by users
 
@@ -68,6 +68,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (17/05/23)
+
+· 👌 IMPROVE: Games > MAME 0.254 for 32/64 bits BullsEye & Buster.
 
 ### (30/04/23)
 
