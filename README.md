@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1053 hours**
+- **1055 hours**
 
 ## 💰 Total amount donated by users
 
@@ -68,6 +68,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (03/06/23)
+
+· 📦 ADD: Games > Fallout 2.
 
 ### (17/05/23)
 
