@@ -1,30 +1,31 @@
 #!/bin/bash
 #
-# Description : Super Mario 64 EX
+# Description : Super Mario 64 Plus
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.0 (19/Aug/22)
+# Version     : 1.4.0 (17/Jun/23)
 # Compatible  : Raspberry Pi 4 (tested)
 #
+# shellcheck source=../helper.sh
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
-readonly PACKAGES_DEV=(libaudiofile-dev libglew-dev libsdl2-dev)
+readonly PACKAGES=(libusb-1.0-0)
+readonly PACKAGES_DEV=(libaudiofile-dev libglew-dev libsdl2-dev libusb-1.0-0-dev)
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/sm64ex-rpi.tar.gz"
-readonly BINARY_64_BITS_URL="https://misapuntesde.com/rpi_share/sm64ex-aarch64-rpi.tar.gz"
-readonly ROM_URL="https://s2roms.cc/s3roms/Nintendo%2064/P-T/Super%20Mario%2064%20%28U%29%20%5B%21%5D.zip"
-readonly SOURCE_CODE_URL="https://github.com/foxhound311/sm64ex"
+readonly BINARY_64_BITS_URL="https://misapuntesde.com/rpi_share/sm64plus-aarch64-rpi.tar.gz"
+readonly ROM_URL="https://e.pcloud.link/publink/show?code=XZSjXfZpiOInSiqy97Lpjs79MDzxhVvs6Vy"
+readonly SOURCE_CODE_URL="https://github.com/MorsGames/sm64plus"
 
 runme() {
     read -p "Press [ENTER] to run the game..."
-    cd "$INSTALL_DIR"/sm64 && ./sm64
-    read -p "Press ENTER to go back to main menu"
-    exit
+    cd "$INSTALL_DIR"/sm64 && ./sm64.us
+    exit_message
 }
 
 remove_files() {
-    sudo rm -rf "$INSTALL_DIR"/sm64 ~/.local/share/sm64pc ~/.local/share/applications/sm64.desktop
+    sudo rm -rf "$INSTALL_DIR"/sm64 ~/.local/share/sm64pc ~/.local/share/applications/sm64plus.desktop
 }
 
 uninstall() {
@@ -44,17 +45,16 @@ uninstall() {
 if [[ -d "$INSTALL_DIR"/sm64 ]]; then
     echo -e "Super Mario 64 port EX already installed.\n"
     uninstall
-    exit 1
 fi
 
 generate_icon() {
     echo -e "\n\nGenerating icon..."
-    if [[ ! -e ~/.local/share/applications/sm64.desktop ]]; then
-        cat <<EOF >~/.local/share/applications/sm64.desktop
+    if [[ ! -e ~/.local/share/applications/sm64plus.desktop ]]; then
+        cat <<EOF >~/.local/share/applications/sm64plus.desktop
 [Desktop Entry]
-Name=Super Mario 64 port EX
-Exec=${INSTALL_DIR}/sm64/sm64
-Icon=${INSTALL_DIR}/sm64/icon.jpg
+Name=Super Mario 64 Plus
+Exec=${INSTALL_DIR}/sm64/sm64.us
+Icon=${INSTALL_DIR}/sm64/star.ico
 Path=${INSTALL_DIR}/sm64
 Type=Application
 Comment=Super Mario 64 is a 1996 platform video game for the Nintendo 64 and the first in the Super Mario series to feature 3D gameplay.
@@ -68,9 +68,7 @@ compile() {
     mkdir -p "$HOME/sc" && cd "$_" || exit 1
     [[ -d $HOME/sc/mario64 ]] && rm -rf "$HOME/sc/mario64"
     git clone "$SOURCE_CODE_URL" mario64 && cd "$_" || exit 1
-    wget -O ./sm64.zip --no-check-certificate "$ROM_URL"
-    unzip sm64.zip && rm sm64.zip
-    mv Super\ Mario\ 64\ \(U\)\ \[\!\].z64 baserom.us.z64
+    download_file "$ROM_URL" .
     echo -e "\n\nCompiling... Estimated time on RPi 4: < 5 min.\n"
     make_with_all_cores TARGET_RPI=1 BETTERCAMERA=1 NODRAWINGDISTANCE=1 TEXTURE_FIX=1 EXT_OPTIONS_MENU=1 EXTERNAL_DATA=1
     cd build/us_pc || exit 1
@@ -89,19 +87,20 @@ install() {
 
     download_and_extract "$BINARY_URL_INSTALL" "$INSTALL_DIR"
     generate_icon
-    echo -e "\n\nDone!. You can play typing $INSTALL_DIR/sm64/sm64 or opening the Menu > Games > Super Mario 64.\n"
+    echo -e "\n\nDone!. You can play typing $INSTALL_DIR/sm64/sm64.us or opening the Menu > Games > Super Mario 64.\n"
     echo -e "ALT+ENTER full-screen | SPACE Select | WSAD for move | Arrows for camera, [KL,.] for actions.\n"
+    runme
 }
 
 install_script_message
 echo "
-Super Mario 64 port EX for Raspberry Pi
-=======================================
+Super Mario 64 Plus
+===================
 
- · Thanks @foxhound311.
- · HD Mario, HD bowser and you ride a Mario kart instead of a turtle when you grab a star.
+· Based on the work of MorsGames, this is a port of Super Mario 64 to the Raspberry Pi, along with a number of optimizations.
+· More responsive controls, improved camera, extended moveset, the ability to continue the level after getting a star, optional extra modes, 60fps support via interpolation, various bug fixes.
+· Look at the file settings.ini for set some parameters & hacks.
+· KEYS: ALT+ENTER full-screen | SPACE Select | WSAD for move | Mouse or arrows for camera, [KL,.] for actions.
 "
-read -p "Press [Enter] to continue..."
 
 install
-runme
