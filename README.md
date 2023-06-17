@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1055 hours**
+- **1057 hours**
 
 ## 💰 Total amount donated by users
 
@@ -68,6 +68,10 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (17/06/23)
+
+· 👌 IMPROVE: Games > SMario 64 for 64 bits by Morsgame with tons of improvements.
 
 ### (03/06/23)
 
