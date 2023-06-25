@@ -2,7 +2,7 @@
 #
 # Description : Super Mario 64 Plus
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.0 (17/Jun/23)
+# Version     : 1.4.1 (25/Jun/23)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # shellcheck source=../helper.sh
@@ -29,7 +29,7 @@ remove_files() {
 }
 
 uninstall() {
-    read -p "Do you want to uninstall Super Mario 64 port EX (y/N)? " response
+    read -p "Do you want to uninstall Super Mario 64 Plus (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
         remove_files
         if [[ -e "$INSTALL_DIR"/sm64 ]]; then
@@ -43,7 +43,7 @@ uninstall() {
 }
 
 if [[ -d "$INSTALL_DIR"/sm64 ]]; then
-    echo -e "Super Mario 64 port EX already installed.\n"
+    echo -e "Super Mario 64 Plus already installed.\n"
     uninstall
 fi
 
@@ -97,7 +97,7 @@ echo "
 Super Mario 64 Plus
 ===================
 
-· Based on the work of MorsGames, this is a port of Super Mario 64 to the Raspberry Pi, along with a number of optimizations.
+· Based on the work of MorsGames, this is a port of Super Mario 64 for the Raspberry Pi, along with a number of optimizations.
 · More responsive controls, improved camera, extended moveset, the ability to continue the level after getting a star, optional extra modes, 60fps support via interpolation, various bug fixes.
 · Look at the file settings.ini for set some parameters & hacks.
 · KEYS: ALT+ENTER full-screen | SPACE Select | WSAD for move | Mouse or arrows for camera, [KL,.] for actions.
