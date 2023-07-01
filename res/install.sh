@@ -2,7 +2,7 @@
 #
 # Description : Easy install PiKISS
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.5 (8/Mar/23)
+# Version     : 1.0.6 (1/Jul/23)
 #
 clear
 
@@ -16,7 +16,20 @@ make_desktop_entry() {
     fi
 }
 
+check_and_install_dialog() {
+    if ! [ -x "$(command -v dialog)" ]; then
+        read -p "Dialog pkg is not installed and you need it for PiKISS. Do you want to install it? (y/N) " response
+        if [[ $response =~ [Yy] ]]; then
+            sudo apt install -y dialog
+        else
+            echo "Aborting..."
+            exit 1
+        fi
+    fi
+}
+
 if [[ -d "$INSTALL_DIR/piKiss" ]]; then
+    check_and_install_dialog
     cd "$INSTALL_DIR/piKiss" && ./piKiss.sh
     exit 0
 fi
@@ -27,11 +40,12 @@ install() {
     cd "$INSTALL_DIR" || exit 1
 
     if [[ -z $IS_RASPBERRYPI ]]; then
-        echo "Sorry. PiKISS is only available for Raspberry Pi 1-4 boards."
+        echo "Sorry. PiKISS is only available for Raspberry Pi boards."
         exit
     fi
+
     echo -e "\nPiKISS\n======\n\nInstalling at ${INSTALL_DIR}/piKiss. Please wait...\n"
-    sudo apt install -y dialog git
+    check_and_install_dialog
     git clone -b master "$PIKISS_URL" piKiss && cd "$_" || exit 1
 }
 
@@ -45,7 +59,6 @@ PiKISS installed!
 cd ${HOME}/piKiss, type or click ./piKiss.sh. You have an Menu shortcut, too!. Go to:
 
  · Raspberry Pi OS: Menu > System Tools > PiKISS
- · Twister OS: Menu > Accesories > PiKISS
 "
 read -p "Press ENTER to exit."
 exit
