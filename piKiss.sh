@@ -132,7 +132,7 @@ smTweaks() {
 
 smGames() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Abbaye, Blake Stone, Fallout 2, GTA, Quake I-II, SMario64, Serious Sam, OpenXCom"
+        show_dialog_only_32_bits "Abbaye, Blake Stone, EDuke32, Fallout 2, GTA, Quake I-II, SMario64, Serious Sam, OpenXCom"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Games ]" --menu "Select game from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
