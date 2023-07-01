@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1057 hours**
+- **1060 hours**
 
 ## 💰 Total amount donated by users
 
@@ -69,9 +69,13 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (01/07/23)
+
+· 👌 IMPROVE: Games > Duke Nukem 3D (Eduke32) for 64 bits
+.
 ### (17/06/23)
 
-· 👌 IMPROVE: Games > SMario 64 for 64 bits by Morsgame with tons of improvements.
+· 👌 IMPROVE: Games > SMario 64 Plus for 64 bits by Morsgame with tons of improvements.
 
 ### (03/06/23)
 
