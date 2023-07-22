@@ -368,7 +368,7 @@ smInternet() {
         Back "Back to main menu"
         Plowshare "Direct download from hosters like uploaded,..."
         SyncTERM "BBS terminal program"
-        Whatscli "Allow users to use WhatsApp via cli"
+        nChat "Use WhatsApp/Telegram on Terminal"
         Zoom "i386 version of software platform used for teleconferencing using Box86"
     )
 
@@ -379,7 +379,7 @@ smInternet() {
         Back) break ;;
         Plowshare) ./scripts/inet/ddown.sh ;;
         SyncTERM) ./scripts/inet/syncterm.sh ;;
-        Whatscli) ./scripts/inet/whatscli.sh ;;
+        nChat) ./scripts/inet/nchat.sh ;;
         Zoom) ./scripts/inet/zoom.sh ;;
         esac
     done
