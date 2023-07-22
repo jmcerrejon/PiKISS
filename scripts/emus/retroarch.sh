@@ -3,7 +3,7 @@
 # Description : RetroArch
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Contrib     : foxhound311, Rak1ta
-# Version     : 1.0.16 (10/Mar/23)
+# Version     : 1.0.17 (19/Jul/23)
 #
 # Help        : https://archive.org/download/RetroArch-rpi4 | https://archive.org/details/rpi4_64bit_retroarch
 #
@@ -11,7 +11,7 @@
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-readonly VERSION="1.15.0-1"
+readonly VERSION="1.16.0-1"
 readonly INSTALL_DIR="/usr/local/bin"
 readonly CONFIG_PATH="$HOME/.config/retroarch"
 readonly PACKAGES=(libfreeimage3 libpugixml1v5)
