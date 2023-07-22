@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1060 hours**
+- **1065 hours**
 
 ## 💰 Total amount donated by users
 
@@ -21,7 +21,7 @@
 
 - I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu).
 
-- I want to thank my current patrons **Bo Martin, Rodney Hester & James Carroll** for trusting me. ❤️
+- I want to thank my current patrons **Bo Martin, Rodney Hester & specially James Carroll** for trusting me. ❤️
 
 - Patrons support me in the past: _Jay Edwards, Tomás Delgado, Jeremy Palmer, cxgr, Willie D Kerner Jr, Matthew Michink, Mathew Gracie, Mike A. Torevell, David J Leto_.
 
@@ -69,10 +69,16 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (22/07/23)
+
+· 📦 ADD: Internet > nChat is Telegram/WhatsApp from Terminal for 64 bits.
+· 👌 IMPROVE: Emulators > RetroArch Update cores & 1.16.0-1 for 32/64 bits.
+· ❌ REMOVE: Internet > WhatsApp Cli (not working anymore).
+
 ### (01/07/23)
 
-· 👌 IMPROVE: Games > Duke Nukem 3D (Eduke32) for 64 bits
-.
+· 👌 IMPROVE: Games > Duke Nukem 3D (Eduke32) for 64 bits.
+
 ### (17/06/23)
 
 · 👌 IMPROVE: Games > SMario 64 Plus for 64 bits by Morsgame with tons of improvements.

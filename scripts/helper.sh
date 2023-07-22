@@ -3,6 +3,8 @@
 # Description : Helpers functions
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 #
+readonly PIKISS_BASE_DOMAIN="https://misapuntesde.com"
+readonly PIKISS_REMOTE_SHARE_DIR_URL="$PIKISS_BASE_DOMAIN/rpi_share"
 readonly PIKISS_DIR=$PWD
 readonly RESOURCES_DIR="$PIKISS_DIR/res"
 readonly PIKISS_MAGIC_AIR_COPY_PATH=$RESOURCES_DIR/magic-air-copy-pikiss.txt
@@ -404,7 +406,7 @@ download_and_extract() {
     fi
 
     if is_URL "$DATA_URL"; then
-        rm -f "$DESTINATION_DIR"/"$FILE_NAME"
+        sudo rm -f "$DESTINATION_DIR"/"$FILE_NAME"
     fi
 }
 
@@ -920,20 +922,24 @@ extract_path_from_file() {
 # Extract all kind of compressed files
 #
 extract() {
+    local PREFIX=""
+    if [ ! -w . ]; then
+        PREFIX="sudo"
+    fi
     if [ -f "$1" ]; then
         case "$1" in
-        *.tar.bz2 | *.tbz2) tar xjf "$1" ;;
-        *.tar.gz | *.tgz) tar xzf "$1" ;;
-        *.tar.xz) tar xf "$1" ;;
-        *.xz) xz --decompress "$1" ;;
-        *.bz2) tar jxf "$1" ;;
-        *.rar) unrar x "$1" ;;
-        *.gz) gunzip "$1" ;;
-        *.tar) tar xvf "$1" ;;
-        *.zip) unzip -qq -o "$1" ;;
-        *.Z) uncompress "$1" ;;
-        *.7z) p7zip -d "$1" ;;
-        *.exe) cabextract "$1" ;;
+        *.tar.bz2 | *.tbz2) ${PREFIX} tar xjf "$1" ;;
+        *.tar.gz | *.tgz) ${PREFIX} tar xzf "$1" ;;
+        *.tar.xz) ${PREFIX} tar xf "$1" ;;
+        *.xz) ${PREFIX} xz --decompress "$1" ;;
+        *.bz2) ${PREFIX} tar jxf "$1" ;;
+        *.rar) ${PREFIX} unrar x "$1" ;;
+        *.gz) ${PREFIX} gunzip "$1" ;;
+        *.tar) ${PREFIX} tar xvf "$1" ;;
+        *.zip) ${PREFIX} unzip -qq -o "$1" ;;
+        *.Z) ${PREFIX} uncompress "$1" ;;
+        *.7z) ${PREFIX} p7zip -d "$1" ;;
+        *.exe) ${PREFIX} cabextract "$1" ;;
         *) echo "'$1': unrecognized file compression" ;;
         esac
     else
@@ -1397,4 +1403,29 @@ check_additional_file() {
 
 extract_path_from_res() {
     grep ^"$1=" "$ADDITIONAL_FILES_PATH" | awk -F "$1=" '{print $2}'
+}
+
+install_go() {
+    local GO_VERSION
+    local GO_URL
+    local GO_PATH
+    local ARCHITECTURE
+    GO_VERSION="1.20.6"
+    if [ "$(uname -m)" == 'armv7l' ]; then
+        ARCHITECTURE="arm64"
+        else
+        ARCHITECTURE="armv6l"
+    fi
+    GO_URL="https://go.dev/dl/go${GO_VERSION}.linux-${ARCHITECTURE}.tar.gz"
+    GO_PATH="/usr/local"
+
+    if [[ -e $GO_PATH/go/bin/go ]]; then
+        return 0
+    fi
+
+    echo -e "\nInstalling Go ${GO_VERSION}...\n"
+    download_and_extract "$GO_URL" "$GO_PATH"
+    # cd /tmp || exit 1
+    # wget -O - "$GO_URL" | sudo tar -C "$GO_PATH" -xzf -
+    echo -e "\nDone!. You can use it with: export PATH=$PATH:/usr/local/go/bin"
 }

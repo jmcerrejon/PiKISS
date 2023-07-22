@@ -1,5 +1,16 @@
 # Changelog
 
+## (22/07/23)
+
+· 📦 ADD: Internet > nChat is Telegram/WhatsApp from Terminal for 64 bits.
+· 👌 IMPROVE: Emulators > RetroArch Update cores & 1.16.0-1 for 32/64 bits.
+· ❌ REMOVE: Internet > WhatsApp Cli (not working anymore).
+
+## (15/07/23)
+
+· 📦 ADD: Internet > nChat for Telegram/WhatsApp for 64 bits.
+· ❌ REMOVE: Internet > WhatsApp Cli (not working anymore).
+
 ## (01/07/23)
 
 · 👌 IMPROVE: Games > Duke Nukem 3D (Eduke32) for 64 bits
