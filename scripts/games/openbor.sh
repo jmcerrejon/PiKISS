@@ -2,7 +2,7 @@
 #
 # Description : OpenBOR
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.7 (15/Nov/21)
+# Version     : 1.4.8 (07/Aug/23)
 # Compatible  : Raspberry Pi 4 (tested)
 # Repository  : https://github.com/crcerror/OpenBOR-63xx-RetroPie-openbeta
 # Help		  : https://www.raspberrypi.org/forums/viewtopic.php?f=78&t=26859&start=25
@@ -15,7 +15,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 INSTALL_DIR="$HOME/games"
-PACKAGES=(libsdl-gfx1.2-5 libpng12-0 libsdl2-gfx-1.0-0 libvorbisidec1)
+PACKAGES=(libsdl-gfx1.2-5 libpng16-16 libsdl2-gfx-1.0-0 libvorbisidec1)
 PACKAGES_DEV=(libsdl2-gfx-dev libvorbisidec-dev libvpx-dev libogg-dev libsdl2-gfx-1.0-0 libvorbisidec1)
 BINARY_URL="https://misapuntesde.com/rpi_share/openbor_by_ulysess.tar.gz"
 GITHUB_URL="https://github.com/crcerror/OpenBOR-Raspberry"

@@ -2,7 +2,7 @@
 #
 # Description : StepMania
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.2 (25/Sep/21)
+# Version     : 1.0.3 (07/Aug/23)
 # Compatible  : Raspberry Pi 4
 # Repository  : https://github.com/stepmania/stepmania
 # Help        : https://github.com/SpottyMatt/raspbian-stepmania-deb
@@ -14,7 +14,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
-readonly PACKAGES=(libvorbisidec1 libopenal1 libsdl2-mixer-2.0-0 libpng12-0 libglu1-mesa p7zip-full pulseaudio)
+readonly PACKAGES=(libvorbisidec1 libopenal1 libsdl2-mixer-2.0-0 libpng16-16 libglu1-mesa p7zip-full pulseaudio)
 readonly PACKAGES_DEV=(build-essential cmake mesa-common-dev libglu1-mesa-dev libglew1.5-dev libxtst-dev libxrandr-dev libpng-dev libjpeg-dev zlib1g-dev libbz2-dev libogg-dev libvorbis-dev libc6-dev yasm libasound-dev libpulse-dev binutils-dev libgtk-3-dev libmad0-dev libudev-dev libva-dev nasm pulseaudio)
 readonly BINARY_URL="https://archive.org/download/stepmania_5.1-dev-rpi.7z/stepmania_5.1-dev-rpi.7z"
 readonly SOURCE_CODE_URL="https://github.com/stepmania/stepmania"

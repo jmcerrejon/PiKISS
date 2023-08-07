@@ -2,10 +2,10 @@
 #
 # Description : Serious Sam 1 & 2
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 2.0.0 (29/Apr/23)
+# Version     : 2.0.2 (07/Aug/23)
 # Compatible  : Raspberry Pi 4 (tested)
 #
-# TODO        :  32 bits support.
+# TODO        :  32 bits support, Mods support.
 #
 
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'

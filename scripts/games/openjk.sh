@@ -2,7 +2,7 @@
 #
 # Description : OpenJK
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (17/Dec/21)
+# Version     : 1.0.1 (07/Aug/23)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 #
@@ -12,7 +12,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="$HOME/games"
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/openjk-rpi.tar.gz"
-readonly PACKAGES=(libpng12-0 libjpeg-dev zlib1g-dev)
+readonly PACKAGES=(libpng16-16 libjpeg-dev zlib1g-dev)
 readonly PACKAGES_DEV=(build-essential cmake libjpeg-dev libpng-dev zlib1g-dev libsdl2-dev)
 readonly SOURCE_CODE_URL="https://github.com/JACoders/OpenJK.git"
 readonly VAR_DATA_NAME="JEDI_ACADEMY"

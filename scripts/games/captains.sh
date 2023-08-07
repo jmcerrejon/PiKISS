@@ -2,7 +2,7 @@
 #
 # Description : Capitan Sevilla El Remake (AKA Captain 'S' The Remake)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com) and Salvador (Pi Labs)
-# Version     : 1.0.3 (05/Jan/21)
+# Version     : 1.0.4 (07/Aug/23)
 # Compatible  : Raspberry Pi 3-4 (tested)
 #
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -78,8 +78,8 @@ install() {
     if ! isPackageInstalled liballegro4.4; then
         sudo apt install -y liballegro4.4
     fi
-    if ! isPackageInstalled libpng12-0; then
-        sudo apt install -y libpng12-0
+    if ! isPackageInstalled libpng16-16; then
+        sudo apt install -y libpng16-16
     fi
     mkdir -p "$INSTALL_DIR" && cd "$_" || exit 1
     wget -qO- -O "$INSTALL_DIR"/captain_s.tar.gz "$URL_FILE"
