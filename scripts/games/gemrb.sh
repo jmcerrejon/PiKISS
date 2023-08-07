@@ -1,22 +1,28 @@
 #!/bin/bash
 #
-# Description : GemRB (EXPERIMENTAL)
+# Description : GemRB
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.2 (27/Jun/21)
+#             : Thanks to @foxhound311 for his help with compilation issues
+# Version     : 1.1.0 (07/Aug/23)
 # Compatible  : Raspberry Pi 4
 # Repository  : https://github.com/gemrb/gemrb
 # Help        : https://github.com/gemrb/gemrb/blob/master/INSTALL
 #             : https://gemrb.org/Manpage.html
 #
+# shellcheck source=../helper.sh
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
-readonly PACKAGES=(libvorbisidec1 libopenal1 libsdl2-mixer-2.0-0 libpng12-0 libglu1-mesa)
+readonly VERSION="0.9.2"
+readonly INFO_RELEASE_URL="https://gemrb.org/2023/07/08/gemrb-0-9-2-released.html"
+readonly INFO_SETTNGS_URL="https://gemrb.org/Manpage.html#configuration"
+readonly PACKAGES=(libvorbisidec1 libopenal1 libsdl2-mixer-2.0-0 libpng16-16 libglu1-mesa)
 readonly PACKAGES_DEV=(cmake libsdl2-dev libvorbis-dev libopenal-dev libsdl2-mixer-dev libpng-dev libfontconfig1-dev libfreetype6-dev libglew-dev libgles2-mesa-dev)
-readonly BINARY_URL="https://misapuntesde.com/res/gemrb-0.8.8-rpi.tar.gz"
-readonly SOURCE_CODE_URL="https://github.com/gemrb/gemrb/archive/refs/tags/v0.8.8.zip"
+readonly BINARY_URL="https://misapuntesde.com/res/gemrb-0.8.8-armhf.tar.gz"
+readonly BINARY_64_BITS_URL="https://misapuntesde.com/res/gemrb-${VERSION}-arm64.tar.gz"
+readonly SOURCE_CODE_URL="https://github.com/gemrb/gemrb/archive/refs/tags/v${VERSION}.zip"
 readonly GAME_DATA_PATH="$INSTALL_DIR/gemrb/data"
 readonly GEMRBCFG_PATH="$INSTALL_DIR/gemrb/etc/gemrb/GemRB.cfg"
 readonly MAGIC_AIR_NAME="GEMRB"
@@ -28,7 +34,8 @@ runme() {
         exit_message
     fi
     read -p "Press [ENTER] to run the game..."
-    cd "$INSTALL_DIR"/gemrb/bin && ./gemrb
+    cd "$INSTALL_DIR"/gemrb/bin || exit 1
+    ./gemrb
     exit_message
 }
 
@@ -61,7 +68,7 @@ generate_icon() {
         cat <<EOF >~/.local/share/applications/gemrb.desktop
 [Desktop Entry]
 Name=GemRB
-Version=0.8.8
+Version=${VERSION}
 Type=Application
 Comment=Game engine made with preRendered Background
 Exec=${INSTALL_DIR}/gemrb/bin/gemrb
@@ -77,9 +84,12 @@ compile() {
     # Tip: Better use cmake-gui | git clone form repo broke the compilation: Use the release.
     install_packages_if_missing "${PACKAGES_DEV[@]}"
     mkdir -p "$HOME/sc" && cd "$_" || exit 1
-    download_and_extract "$SOURCE_CODE_URL" "$HOME/sc" && cd "$HOME/sc/gemrb-0.8.8"
+    download_and_extract "$SOURCE_CODE_URL" "$HOME/sc"
+    cd "$HOME/sc/gemrb-${VERSION}" || exit 1
     mkdir build && cd "$_" || exit 1
-    cmake .. -DSDL_BACKEND=SDL2 -DCMAKE_BUILD_TYPE=RelWithDebInfo -DOPENGL_BACKEND=GLES -DDISABLE_WERROR=1 -DSTATIC_LINK=enabled -DCMAKE_INSTALL_PREFIX=$HOME/games/gemrb -DUSE_SDLMIXER=disabled -DSDL2MAIN_LIBRARY=/usr/lib/arm-linux-gnueabihf/libSDL2.so -DDISABLE_VIDEOCORE=1
+    # -DOPENGL_BACKEND=GLES It doesn't work on 0.9.2. See https://github.com/gemrb/gemrb/issues/932 | https://github.com/gemrb/gemrb/issues/936 | https://github.com/gemrb/gemrb/pull/938
+    cmake .. -DSDL_BACKEND=SDL2 -DOPENGL_BACKEND=OpenGL -DCMAKE_BUILD_TYPE=RelWithDebInfo -DDISABLE_WERROR=ON -DSTATIC_LINK=enabled -DCMAKE_INSTALL_PREFIX="$HOME/games/gemrb" -DUSE_SDLMIXER=disabled -DSDL2MAIN_LIBRARY=/usr/lib/arm-linux-gnueabihf/libSDL2.so -DDISABLE_VIDEOCORE=ON -DFREETYPE_INCLUDE_DIRS=/usr/include/freetype2/ -DRPI=ON
+    echo -e "\nCompiling... Estimated time on RPi 4: < 30 min.\n"
     make_with_all_cores
     read -p "Do you want to install globally the app (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
@@ -100,7 +110,7 @@ set_game_path() {
 
     if [[ -e $GEMRBCFG_PATH ]]; then
         echo -e "\nChanging GamePath to $DATA_PATH on $GEMRBCFG_PATH"
-        sed -i -e "s|GamePath=.*|GamePath=${DATA_PATH}|g" "$GEMRBCFG_PATH"
+        sed -i -e "s|#GamePath=.*|GamePath=${DATA_PATH}|g" "$GEMRBCFG_PATH"
     fi
 }
 
@@ -111,17 +121,24 @@ download_data_files() {
         return
     fi
     message_magic_air_copy "$DATA_URL"
-    download_and_extract "$DATA_URL" "$INSTALL_DIR/gemrb/data"
+    download_and_extract "$DATA_URL" "$GAME_DATA_PATH"
     true
     return
 }
 
 install() {
+    local BINARY_URL_INSTALL=$BINARY_URL
+
+    if is_userspace_64_bits; then
+        BINARY_URL_INSTALL=$BINARY_64_BITS_URL
+    fi
+
     install_packages_if_missing "${PACKAGES[@]}"
-    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
+    download_and_extract "$BINARY_URL_INSTALL" "$INSTALL_DIR"
     generate_icon
+    set_game_path
+
     if exists_magic_file && download_data_files; then
-        set_game_path
         echo -e "\nDone!. You can play typing $INSTALL_DIR/gemrb/bin/gemrb or opening the Menu > Games > GemRB.\n"
         runme
     else
@@ -135,12 +152,11 @@ echo "
 GemRB (Infinite Engine) for Raspberry Pi
 ========================================
 
+ · Version ${VERSION}
+ · + Info: ${INFO_RELEASE_URL}
  · Supported games: Baldur's Gate, Baldur's Gate 2 : SoA or ToB, Icewind Dale : HoW or ToTL, Icewind Dale 2 & Planescape Torment.
- · Thanks to @foxhound311 for his help with compilation issues.
- · Optimized for Raspberry Pi 4 with OpenGL ES.
- · It has a glitch and you can't play video sequences atm.
+ · Settings are changed in the file ${GEMRBCFG_PATH} | + Info: ${INFO_SETTNGS_URL}
  · You must to set the GamePath of the game you want to play in the file GemRB.cfg
- · IMPORTANT: All settings are changed in the file $GEMRBCFG_PATH
 "
 read -p "Press [Enter] to continue..."
 
