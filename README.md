@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1065 hours**
+- **1072 hours**
 
 ## 💰 Total amount donated by users
 
@@ -68,6 +68,11 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (07/08/23)
+
+· 👌 IMPROVE: Games > GemRB (AKA Baldur's Gate Game Engine) 0.92 for 64 bits.
+· 👌 IMPROVE: Replace libpng12-0 on some scripts for libpng16-16.
 
 ### (22/07/23)
 

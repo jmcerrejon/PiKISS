@@ -1,5 +1,10 @@
 # Changelog
 
+## (07/08/23)
+
+· 👌 IMPROVE: Games > GemRB (AKA Baldur's Gate Game Engine) 0.92 for 64 bits.
+· 👌 IMPROVE: Replace libpng12-0 on some scripts for libpng16-16.
+
 ## (22/07/23)
 
 · 📦 ADD: Internet > nChat is Telegram/WhatsApp from Terminal for 64 bits.
