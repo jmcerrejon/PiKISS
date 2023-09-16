@@ -1429,3 +1429,28 @@ install_go() {
     # wget -O - "$GO_URL" | sudo tar -C "$GO_PATH" -xzf -
     echo -e "\nDone!. You can use it with: export PATH=$PATH:/usr/local/go/bin"
 }
+
+build_glibc() {
+    local PACKAGES=(gawk texinfo)
+    local GLIBC_VERSION="2.34"
+    local GLIBC_URL="https://ftp.gnu.org/gnu/glibc/glibc-${GLIBC_VERSION}.tar.bz2"
+    local GLIBC_URL="https://ftp.gnu.org/gnu/glibc/glibc-2.34.tar.bz2"
+    local GLIBC_SC_PATH="${HOME}/sc"
+    local PREFIX_PATH="/lib/aarch64-linux-gnu"
+
+    mkdir -p "$GLIBC_SC_PATH" || exit 1
+    cd "$GLIBC_SC_PATH" || exit 1
+    download_and_extract "$GLIBC_URL" "$GLIBC_SC_PATH"
+    cd "glibc-${GLIBC_VERSION}" || exit 1
+    mkdir build && cd "$_" || exit 1
+    install_packages_if_missing "${PACKAGES[@]}"
+
+    ../configure --disable-sanity-checks --disable-werror --prefix=${PREFIX_PATH}
+    echo -e "\nBuilding glibc...It can take ~15 minutes."
+    make_with_all_cores
+
+    read -p "Do you want to install it globally? (y/N) " response
+    if [[ $response =~ [Yy] ]]; then
+        sudo make install
+    fi
+}
