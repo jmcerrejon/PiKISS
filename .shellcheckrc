@@ -1,2 +1,2 @@
-disable=SC2162,SC2034,SC2088
+disable=SC2162,SC2034,SC2088,SC2317,SC2119
 external-sources=true
