@@ -30,7 +30,7 @@ runme() {
         exit_message
     fi
     read -p "Press [ENTER] to run..."
-    cd "$INSTALL_DIR/dosbox" && ./dosbox-x
+    cd "$INSTALL_DIR/dosbox" && ./run.sh
     exit_message
 }
 
