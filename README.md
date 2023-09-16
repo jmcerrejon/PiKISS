@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1072 hours**
+- **1074 hours**
 
 ## 💰 Total amount donated by users
 
@@ -69,15 +69,23 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (16/09/23)
+
+· 👌 IMPROVE: Merge some improvements thanks to some collaborators.
+
+· 👌 IMPROVE: Emulators > MAME version (2.58)
 ### (07/08/23)
 
 · 👌 IMPROVE: Games > GemRB (AKA Baldur's Gate Game Engine) 0.92 for 64 bits.
+
 · 👌 IMPROVE: Replace libpng12-0 on some scripts for libpng16-16.
 
 ### (22/07/23)
 
 · 📦 ADD: Internet > nChat is Telegram/WhatsApp from Terminal for 64 bits.
+
 · 👌 IMPROVE: Emulators > RetroArch Update cores & 1.16.0-1 for 32/64 bits.
+
 · ❌ REMOVE: Internet > WhatsApp Cli (not working anymore).
 
 ### (01/07/23)

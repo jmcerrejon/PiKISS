@@ -1,19 +1,29 @@
 # Changelog
 
+## (16/09/23)
+
+· 👌 IMPROVE: Merge some improvements thanks to some collaborators.
+
+· 👌 IMPROVE: Emulators > MAME version (2.58)
+
 ## (07/08/23)
 
 · 👌 IMPROVE: Games > GemRB (AKA Baldur's Gate Game Engine) 0.92 for 64 bits.
+
 · 👌 IMPROVE: Replace libpng12-0 on some scripts for libpng16-16.
 
 ## (22/07/23)
 
 · 📦 ADD: Internet > nChat is Telegram/WhatsApp from Terminal for 64 bits.
+
 · 👌 IMPROVE: Emulators > RetroArch Update cores & 1.16.0-1 for 32/64 bits.
+
 · ❌ REMOVE: Internet > WhatsApp Cli (not working anymore).
 
 ## (15/07/23)
 
 · 📦 ADD: Internet > nChat for Telegram/WhatsApp for 64 bits.
+
 · ❌ REMOVE: Internet > WhatsApp Cli (not working anymore).
 
 ## (01/07/23)
@@ -39,6 +49,7 @@
 ## (25/03/23)
 
 · 📦 ADD: Server > Block IPs using Iptables.
+
 · 👌 IMPROVE: Scripts Server > Media Server, Emulators > GBA. Some minor fixes.
 
 ## (20/03/23)
@@ -60,6 +71,7 @@
 ## (22/01/23)
 
 · 👌 IMPROVE: Server > Update Web Server with PHP 8.2 & Nginx 1.23.3.
+
 · ❌ REMOVE: Owncloud.
 
 ## (16/01/23)
@@ -85,6 +97,7 @@
 ## (7/10/22)
 
 · 📦 ADD: Emulators > Add VICE Commodore 64 emu for 32/64 bits.
+
 · 👌 IMPROVE: Emulators > RetroArch 1.11.1-1. Added Buster 32 bits support.
 
 ## (18/09/22)
