@@ -41,7 +41,7 @@ install() {
 
     if [[ -z $IS_RASPBERRYPI ]]; then
         echo "Sorry. PiKISS is only available for Raspberry Pi boards."
-        exit
+        exit 1
     fi
 
     echo -e "\nPiKISS\n======\n\nInstalling at ${INSTALL_DIR}/piKiss. Please wait...\n"
