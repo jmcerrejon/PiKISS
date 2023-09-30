@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1074 hours**
+- **1076 hours**
 
 ## 💰 Total amount donated by users
 
@@ -69,11 +69,20 @@
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (30/09/23)
+
+· 👌 IMPROVE: Config > Vulkan 23.2.1.
+
+· 👌 IMPROVE: Others > GL4ES (Thanks to [Dorin Cretu](https://github.com/cretudorin)).
+
+· 👌 IMPROVE: Tweaks > Others (Option to increase performance).
+
 ### (16/09/23)
 
 · 👌 IMPROVE: Merge some improvements thanks to some collaborators.
 
 · 👌 IMPROVE: Emulators > MAME version (2.58)
+
 ### (07/08/23)
 
 · 👌 IMPROVE: Games > GemRB (AKA Baldur's Gate Game Engine) 0.92 for 64 bits.
