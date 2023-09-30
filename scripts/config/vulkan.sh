@@ -2,7 +2,7 @@
 #
 # Description : Vulkan driver
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.6 (14/Mar/23)
+# Version     : 1.4.7 (30/Sep/23)
 # Compatible  : Raspberry Pi 4
 #
 # Help        : https://ninja-build.org/manual.html#ref_pool
@@ -16,7 +16,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 readonly INSTALL_DIR="$HOME/mesa_vulkan"
 readonly SOURCE_CODE_URL="https://gitlab.freedesktop.org/mesa/mesa.git"
 PI_VERSION_NUMBER=$(get_pi_version_number)
-BRANCH_VERSION="mesa-22.3.7"
+BRANCH_VERSION="mesa-23.2.1"
 INPUT=/tmp/vulkan.$$
 
 install() {
@@ -83,7 +83,7 @@ compile_and_install_libdrm() {
     cd "$FILE_NAME" || exit
     [[ ! -d build ]] && mkdir build
     cd build || exit
-    meson -Dudev=true -Dvc4=auto -Dintel=disabled -Dvmwgfx=disabled -Dradeon=disabled -Damdgpu=disabled -Dnouveau=disabled -Dfreedreno=disabled -Dinstall-test-programs=true ..
+    meson setup -Dudev=true -Dvc4=auto -Dintel=disabled -Dvmwgfx=disabled -Dradeon=disabled -Damdgpu=disabled -Dnouveau=disabled -Dfreedreno=disabled -Dinstall-test-programs=true ..
     time ninja -C . -j"$(nproc)"
     sudo ninja install
     echo "Compiled & installed onto your system. Move on..."
@@ -91,6 +91,7 @@ compile_and_install_libdrm() {
 
 compile() {
     local EXTRA_PARAM
+    EXTRA_PARAM="-mcpu=cortex-a72 -mfpu=neon-fp-armv8"
 
     [[ -d $INSTALL_DIR ]] && rm -rf "$INSTALL_DIR"
     install_full_deps
@@ -101,12 +102,9 @@ compile() {
 
     if is_userspace_64_bits; then
         EXTRA_PARAM="-mcpu=cortex-a72"
-    else
-        # EXTRA_PARAM="-mcpu=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard"
-        EXTRA_PARAM="-mcpu=cortex-a72 -mfpu=neon-fp-armv8"
     fi
 
-    meson --prefix /usr -Dgles1=disabled -Dgles2=enabled -Dplatforms=x11 -Dxlib-lease=auto -Dvulkan-drivers=broadcom -Dgallium-drivers=v3d,kmsro,vc4,virgl,zink -Dbuildtype=release -Dc_args="$EXTRA_PARAM" -Dcpp_args="$EXTRA_PARAM" build
+    meson setup --prefix /usr -Dgles1=disabled -Dgles2=enabled -Dplatforms=x11 -Dxlib-lease=auto -Dvulkan-drivers=broadcom -Dgallium-drivers=v3d,kmsro,vc4,virgl,zink -Dbuildtype=release -Dc_args="$EXTRA_PARAM" -Dcpp_args="$EXTRA_PARAM" build
     echo -e "\nCompiling... \n"
     time ninja -C build -j"$(nproc)"
     install
@@ -118,7 +116,7 @@ menu_choose_branch() {
             --title "[ Vulkan Branch ]" \
             --menu "Select from the list:" 11 100 3 \
             repo "(Quicker) Not latest but stable from official repository." \
-            22.3.7 "(Recommended) Latest stable branch working." \
+            stable "(Recommended) Latest stable branch working ${BRANCH_VERSION}." \
             main "(Latest) NOT stable at all. Install at your own risk." \
             Exit "Exit" 2>"${INPUT}"
 
@@ -126,7 +124,7 @@ menu_choose_branch() {
 
         case $menuitem in
         repo) install_vulkan_from_official_repository ;;
-        22.3.7) compile ;;
+        stable) compile ;;
         main) BRANCH_VERSION="main" && compile ;;
         Exit) exit ;;
         esac
@@ -142,7 +140,7 @@ Vulkan Mesa Drivers
 · This process can't be undone.
 · Make sure you have a backup of your data.
 · This script installs or compiles Vulkan Mesa Driver on your OS.
-· Estimated compilation time on Raspberry Pi 4 over USB/SSD drive (Not overclocked): ~17 min.
+· Estimated compilation time on Raspberry Pi 4 over USB/SSD drive (Not overclocked): ~19 min.
 "
 read -p "Continue? (Y/n) " response
 if [[ $response =~ [Nn] ]]; then
