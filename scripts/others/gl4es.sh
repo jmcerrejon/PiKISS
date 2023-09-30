@@ -2,7 +2,8 @@
 #
 # Description : GL4ES from ptitSeb
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.2 (03/Jan/21)
+# Collab      : Dorin Cretu
+# Version     : 1.0.3 (30/Sep/23)
 # Compatible  : Raspberry Pi 1-4
 # Repository  : https://github.com/ptitSeb/gl4es
 #
