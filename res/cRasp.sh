@@ -2,7 +2,7 @@
 #
 # Description : Personal script to make my custom Raspberry Pi OS
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.6 (11/Jul/22)
+# Version     : 1.3.7 (13/Sep/23)
 # Compatible  : Raspberry Pi 1-4 (tested)
 # TODO        : https://itnext.io/linux-setlocale-lc-all-cannot-change-locale-en-us-utf8-and-cyrillic-symbols-2d846fe3c166
 #
@@ -16,7 +16,7 @@ y*) sudo apt-get dist-upgrade -y ;;
 esac
 
 echo -e "\nInstalling some packages...\n"
-sudo apt-get install -y mc htop apt-file sshfs dialog cmake exfat-fuse exfat-utils checkinstall p7zip-full
+sudo apt-get install -y mc htop apt-file sshfs dialog cmake exfat-fuse exfat-utils checkinstall p7zip-full slurp grim
 sudo apt-get -y autoremove
 
 echo -e "\nAdding useful alias...\n"
@@ -72,6 +72,11 @@ case "$option" in
 y*) sudo apt install -y xrdp ;;
 esac
 
+echo -e "\nAdding locale en_GB.UTF-8 & en_US.UTF-8...\n"
+sudo sed -i 's/# en_GB.UTF-8 UTF-8/en_GB.UTF-8 UTF-8/g' /etc/locale.gen
+sudo sed -i 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/g' /etc/locale.gen
+sudo locale-gen
+
 # Automatic fsck on start
 #sudo sed -i 's/#FSCKFIX=no/FSCKFIX=yes/g' /etc/default/rcS && grep "FSCKFIX=yes" /etc/default/rcS | wc -l
 
@@ -83,4 +88,4 @@ echo -e "\nmkdir pikiss for test using sshfs...\n"
 
 echo -e "\nThe system is going to reboot in 5 seconds. Pray...\n"
 sleep 5
-telinit 6
+sudo reboot
