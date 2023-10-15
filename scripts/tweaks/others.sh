@@ -2,15 +2,10 @@
 #
 # Description : Other tweaks yes/no answer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.6 (30/Sep/23)
-# Compatible  : Raspberry Pi 1-4 (tested)
+# Version     : 1.4.7 (15/Nov/23)
+# Tested      : Raspberry Pi 4
 #
-# Help        · https://www.raspberrypi.org/forums/viewtopic.php?f=31&t=11642
-#             · https://extremeshok.com/1081/raspberry-pi-raspbian-tuning-optimising-optimizing-for-reduced-memory-usage/
-#             · https://www.jeffgeerling.com/blog/2016/how-overclock-microsd-card-reader-on-raspberry-pi-3
-#
-clear
-
+# shellcheck source=../helper.sh
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
@@ -101,12 +96,6 @@ overclock() {
 
 sudo mount -o remount,rw /boot
 
-echo -e "\nEthernet Network Adapter."
-read -p "Disable (y/n)? " option
-case "$option" in
-y*) echo -n "1-1.1:1.0" | sudo tee /sys/bus/usb/drivers/smsc95xx/unbind ;;
-esac
-
 echo -e "\nDisable IPv6."
 read -p "Disable (y/n)? " option
 case "$option" in
@@ -125,20 +114,10 @@ fi
 
 overclock
 
-echo -e "\nAdd pi user to sudo group and modify /etc/sudoers (SECURITY RISK!. USE AT YOUR OWN)"
+echo -e "\nAdd $USER user to sudo group and modify /etc/sudoers (SECURITY RISK!. USE AT YOUR OWN)"
 read -p "Agree (y/n)? " option
 case "$option" in
-y*) sudo usermod -aG sudo pi && echo "pi ALL=(ALL:ALL) ALL" | sudo sh -c '(EDITOR="tee -a" visudo)' && sudo visudo -c ;;
-esac
-
-echo -e "\nRecreate SSH Keys (recommended)"
-read -p "Agree (y/n)? " option
-case "$option" in
-y*)
-    sudo rm /etc/ssh/ssh_host_*
-    sudo dpkg-reconfigure openssh-server
-    sudo service ssh restart
-    ;;
+y*) sudo usermod -aG sudo "$USER" && echo "$USER ALL=(ALL:ALL) ALL" | sudo sh -c '(EDITOR="tee -a" visudo)' && sudo visudo -c ;;
 esac
 
 echo -e "\nDelete old SSH Keys and recreate them."
