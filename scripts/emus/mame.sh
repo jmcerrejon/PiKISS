@@ -11,7 +11,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 clear
 
 readonly INSTALL_DIR="$HOME/games"
-readonly MAME_MIN_VERSION="258"
+readonly MAME_MIN_VERSION="259"
 readonly BINARY_URL="https://stickfreaks.com/mame/mame_0.${MAME_MIN_VERSION}_armhf_gcc10.7z"
 readonly BINARY_64_BITS_URL="https://stickfreaks.com/mame/mame_0.${MAME_MIN_VERSION}_aarch64_gcc10.7z"
 readonly BINARY_BUSTER_URL="https://stickfreaks.com/mame/mame_0.${MAME_MIN_VERSION}_rpi2b_gcc8.7z"
