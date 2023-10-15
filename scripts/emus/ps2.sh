@@ -2,10 +2,11 @@
 #
 # Description : AetherSX2  A Playstation 2 Emulator for ARM devices.
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (18/Jul/22)
+# Version     : 1.0.3 (15/Oct/23)
 # Compatible  : Raspberry Pi 4 (tested)
 # Repository  : https://www.aethersx2.com/archive/?dir=desktop/linux
 #
+# shellcheck source=../helper.sh
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
@@ -14,11 +15,11 @@ readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES=(libopengl0)
 readonly GAME_DATA_URL="https://archive.org/download/magic-castle-2021-01-feb/Magic_Castle_2021_01_feb.chd"
 readonly BIOS_URL="https://downloads.retrostic.com/bioses/ps2_bios.zip"
-readonly FILENAME="AetherSX2-v1.0-2455.AppImage"
+readonly FILENAME="AetherSX2-v1.5-3606.AppImage"
 readonly BINARY_URL="https://www.aethersx2.com/archive/desktop/linux/$FILENAME"
 
 runme() {
-    if [ ! -f "$INSTALL_DIR/aethersx2/aethersx2" ]; then
+    if [ ! -f "$INSTALL_DIR/aethersx2/$FILENAME" ]; then
         echo -e "\nFile does not exist.\n· Something is wrong.\n· Try to install again."
         exit_message
     fi
@@ -88,6 +89,7 @@ download_data() {
 }
 
 install() {
+    check_vulkan_is_installed
     install_packages_if_missing "${PACKAGES[@]}"
     download_file "$BINARY_URL" "$INSTALL_DIR/aethersx2"
     chmod +x "$INSTALL_DIR/aethersx2/$FILENAME"
@@ -96,6 +98,13 @@ install() {
     # download_data
     echo -e "\n\nDone!. You can play typing $INSTALL_DIR/aethersx2/aethersx2 or opening the Menu > Games > AetherSX2.\n"
     runme
+}
+
+check_vulkan_is_installed() {
+    if ! is_vulkan_installed; then
+        echo -e "\nVulkan is required to run AetherSX2. Install it first.\n"
+        exit_message
+    fi
 }
 
 install_script_message
@@ -111,5 +120,4 @@ AetherSX2 for Raspberry Pi
  · More Info: https://www.aethersx2.com/
 "
 read -p "Press [ENTER] to continue..."
-echo -e "\nInstalling..."
 install
