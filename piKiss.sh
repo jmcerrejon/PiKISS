@@ -109,7 +109,6 @@ smTweaks() {
 
     options=(
         Back "Back to main menu"
-        # Autologin "Set autologin for the pi user"
         Others "CPU performance, disable Ethernet and so on"
         Packages "Programs you don't use (maybe) to free space"
         Daemons "Disable useless services"
@@ -121,7 +120,6 @@ smTweaks() {
     for choice in $choices; do
         case $choice in
         Back) break ;;
-        Autologin) ./scripts/tweaks/autologin.sh ;;
         Others) ./scripts/tweaks/others.sh ;;
         Packages) ./scripts/tweaks/removepkg.sh ;;
         Daemons) ./scripts/tweaks/services.sh ;;
@@ -291,7 +289,7 @@ smEmulators() {
         Pifba) ./scripts/emus/pifba.sh ;;
         ResidualVM) ./scripts/emus/residual.sh ;;
         RetroArch) ./scripts/emus/retroarch.sh ;;
-        Redream) ./scripts/emus/dc.sh ;;
+        Redream) ./scripts/emus/redream.sh ;;
         ScummVM) ./scripts/emus/scummvm.sh ;;
         Snes) ./scripts/emus/snes.sh ;;
         VICE) ./scripts/emus/commodore.sh ;;
