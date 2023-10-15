@@ -1430,6 +1430,22 @@ install_go() {
     echo -e "\nDone!. You can use it with: export PATH=$PATH:/usr/local/go/bin"
 }
 
+is_vulkan_installed() {
+    if [ "$(uname -m)" == 'armv7l' ]; then
+        if [ -f /usr/lib/aarch64-linux-gnu/libvulkan.so ]; then
+            true
+        else
+            false
+        fi
+    else
+        if [ -f /usr/lib/arm-linux-gnueabihf/libvulkan.so ]; then
+            true
+        else
+            false
+        fi
+    fi
+}
+
 build_glibc() {
     local PACKAGES=(gawk texinfo)
     local GLIBC_VERSION="2.34"
