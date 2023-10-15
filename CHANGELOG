@@ -1,5 +1,15 @@
 # Changelog
 
+## (15/10/23)
+
+· 👌 IMPROVE: Emulators > AetherSX2 (PS2) to v1.5 for 32-bit & 64-bit.
+
+· 👌 IMPROVE: Adapt some scripts for Raspberry Pi Bookworm.
+
+· 🐛 FIX: Tweaks > Others.
+
+· ❌ REMOVE: Tweaks > autologin.
+
 ## (30/09/23)
 
 · 👌 IMPROVE: Config > Vulkan 23.2.1.
