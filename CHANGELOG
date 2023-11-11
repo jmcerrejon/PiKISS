@@ -1,5 +1,11 @@
 # Changelog
 
+## (11/11/23)
+
+· 👌 IMPROVE: Refactor code adapted to RPi 5 on some scripts.
+
+· 👌 IMPROVE: Others > Update bootloader compatible with Raspberry Pi 5.
+
 ## (15/10/23)
 
 · 👌 IMPROVE: Emulators > AetherSX2 (PS2) to v1.5 for 32-bit & 64-bit.

@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1080 hours**
+- **1083 hours**
 
 ## 💰 Total amount donated by users
 
@@ -68,6 +68,12 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (11/11/23)
+
+· 👌 IMPROVE: Refactor code adapted to RPi 5 on some scripts.
+
+· 👌 IMPROVE: Others > Update bootloader compatible with Raspberry Pi 5.
 
 ### (15/10/23)
 
