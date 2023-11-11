@@ -2,7 +2,7 @@
 #
 # Description : Other tweaks yes/no answer
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.7 (15/Nov/23)
+# Version     : 1.4.8 (11/Nov/23)
 # Tested      : Raspberry Pi 4
 #
 # shellcheck source=../helper.sh
@@ -170,12 +170,6 @@ echo -e "\nReduce shutdown timeout for a stop job running to 5 seconds."
 read -p "Agree (y/n)? " option
 case "$option" in
 y*) sudo sed -i 's/#DefaultTimeoutStopSec=90s/DefaultTimeoutStopSec=5s/g' /etc/systemd/system.conf ;;
-esac
-
-echo -e "\nImprove performance at cpu/cpufreq/ondemand/up_threshold (but increase temperatures)."
-read -p "Agree (y/n)? " option
-case "$option" in
-y*) echo 5 | sudo tee /sys/devices/system/cpu/cpufreq/ondemand/up_threshold ;;
 esac
 
 echo
