@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-# Description : Personal script to make my custom Raspberry Pi OS
+# Description : Personal script to tune my custom Raspberry Pi OS
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.7 (13/Sep/23)
-# Compatible  : Raspberry Pi 1-4 (tested)
+# Version     : 1.3.7 (11/Nov/23)
+# Tested      : Raspberry Pi 5
 # TODO        : https://itnext.io/linux-setlocale-lc-all-cannot-change-locale-en-us-utf8-and-cyrillic-symbols-2d846fe3c166
 #
 clear
@@ -16,8 +16,8 @@ y*) sudo apt-get dist-upgrade -y ;;
 esac
 
 echo -e "\nInstalling some packages...\n"
-sudo apt-get install -y mc htop apt-file sshfs dialog cmake exfat-fuse exfat-utils checkinstall p7zip-full slurp grim
-sudo apt-get -y autoremove
+sudo apt install -y mc htop apt-file sshfs dialog cmake exfat-fuse exfatprogs checkinstall p7zip-full slurp grim
+sudo apt -y autoremove
 
 echo -e "\nAdding useful alias...\n"
 # Some useful alias

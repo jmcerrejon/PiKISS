@@ -2,7 +2,7 @@
 #
 # Description : Easy install PiKISS
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.6 (1/Jul/23)
+# Version     : 1.0.7 (11/Nov/23)
 #
 clear
 
@@ -12,7 +12,10 @@ readonly PIKISS_URL="https://github.com/jmcerrejon/PiKISS.git"
 make_desktop_entry() {
     if [[ ! -e "$HOME"/.local/share/applications/pikiss.desktop ]]; then
         echo -e "[Desktop Entry]\nName=PiKISS\nComment=A bunch of scripts with menu to make your life easier\nExec=${PWD}/piKiss.sh\nIcon=${PWD}/icons/pikiss_32.png\nTerminal=true\nType=Application\nCategories=ConsoleOnly;Utility;System;\nPath=${PWD}/" >"$HOME"/.local/share/applications/pikiss.desktop
-        lxpanelctl restart
+        if [[ -e /usr/bin/lxpanelctl ]]; then
+            echo -e "\nRestarting LXPanel..."
+            lxpanelctl restart &>/dev/null
+        fi
     fi
 }
 
@@ -56,7 +59,7 @@ echo "
 PiKISS installed!
 =================
 
-cd ${HOME}/piKiss, type or click ./piKiss.sh. You have an Menu shortcut, too!. Go to:
+cd ${HOME}/piKiss, type ./piKiss.sh. You have a menu shortcut, too!. Go to:
 
  · Raspberry Pi OS: Menu > System Tools > PiKISS
 "

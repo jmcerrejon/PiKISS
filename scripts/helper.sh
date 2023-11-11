@@ -781,7 +781,7 @@ function is_missing_dialog_pkg() {
 }
 
 get_raspberry_pi_model_number() {
-    awk </proc/device-tree/model '{print $3}' | head -c 1
+    awk </proc/device-tree/model '{print $3}'
 }
 
 #
@@ -951,7 +951,7 @@ extract() {
 # exit PiKISS
 #
 exit_pikiss() {
-    echo -e "\nSee you soon.\nPiKISS is a software maintained by Jose Cerrejon.\nYou can find me here (CTRL + Click):\n\n · PiKISS Repository: https://github.com/jmcerrejon/PiKISS\n · Paypal: https://paypal.me/jmcerrejon\n · Twitter: https://twitter.com/ulysess10\n · Discord Server (Pi Labs): https://discord.gg/Y7WFeC5\n · Email: ulysess@gmail.com\n\n · Wanna be my Patron?: https://www.patreon.com/cerrejon?fan_landing=true"
+    echo -e "\nSee you soon!\nPiKISS is a software maintained by Jose Cerrejon.\nYou can find me here (CTRL + Click):\n\n · PiKISS Repository: https://github.com/jmcerrejon/PiKISS\n · Paypal: https://paypal.me/jmcerrejon\n · Twitter: https://twitter.com/ulysess10\n · Discord Server (Pi Labs): https://discord.gg/Y7WFeC5\n · Email: ulysess@gmail.com\n\n · Wanna be my Patreon?: https://www.patreon.com/cerrejon?fan_landing=true"
     exit
 }
 
@@ -1469,4 +1469,8 @@ build_glibc() {
     if [[ $response =~ [Yy] ]]; then
         sudo make install
     fi
+}
+
+clean_all() {
+    sudo apt update && sudo update-apt-xapian-index && sudo apt install -f && sudo apt install -y --fix-broken && sudo apt -y autoclean && sudo apt -y autoremove && sudo apt -y autopurge
 }
