@@ -2,7 +2,7 @@
 #
 # Description : Easy install PiKISS
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.8 (12/Nov/23)
+# Version     : 1.0.9 (12/Nov/23)
 #
 clear
 
@@ -38,13 +38,13 @@ if [[ -d "$INSTALL_DIR/piKiss" ]]; then
 fi
 
 install() {
-    # FIX
-    # if grep -q 'bcm2712\|bcm2711\|bcm2837\|bcm2836\|bcm2835' </proc/device-tree/compatible; then
-    #     echo "Sorry. PiKISS is only available for Raspberry Pi boards."
-    #     exit 1
-    # fi
+    if ! grep -q </proc/device-tree/compatible 'bcm2712\|bcm2711\|bcm2837\|bcm2836\|bcm2835'; then
+        echo "Sorry. PiKISS is only available for Raspberry Pi boards."
+        exit 1
+    fi
 
     echo -e "\nPiKISS\n======\n\nInstalling at ${INSTALL_DIR}/piKiss. Please wait...\n"
+    cd "$INSTALL_DIR" || exit 1
     check_and_install_dialog
     git clone -b master "$PIKISS_URL" piKiss && cd "$_" || exit 1
 }
