@@ -38,11 +38,7 @@ if [[ -d "$INSTALL_DIR/piKiss" ]]; then
 fi
 
 install() {
-    local IS_RASPBERRYPI
-    IS_RASPBERRYPI=$(grep </proc/cpuinfo 'BCM2708\|BCM2709\|BCM2835\|BCM2711')
-    cd "$INSTALL_DIR" || exit 1
-
-    if [[ -z $IS_RASPBERRYPI ]]; then
+    if grep -q 'bcm2712\|bcm2711\|bcm2837\|bcm2836\|bcm2835' </proc/device-tree/compatible; then
         echo "Sorry. PiKISS is only available for Raspberry Pi boards."
         exit 1
     fi
