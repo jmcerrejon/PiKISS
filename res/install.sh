@@ -2,7 +2,7 @@
 #
 # Description : Easy install PiKISS
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.9 (12/Nov/23)
+# Version     : 1.0.10 (14/Nov/23)
 #
 clear
 
@@ -60,5 +60,7 @@ cd ${HOME}/piKiss, type ./piKiss.sh. You have a menu shortcut, too!. Go to:
 
  · Raspberry Pi OS: Menu > System Tools > PiKISS
 "
-read -p "Press ENTER to exit."
-exit
+read -p "Press ENTER to run PiKISS."
+
+cd "${INSTALL_DIR}/piKiss" || exit 1
+./piKiss.sh
