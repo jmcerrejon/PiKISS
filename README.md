@@ -6,14 +6,14 @@
  <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ulysess%40gmail%2ecom&lc=GB&item_name=PiKISS&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted"><img src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif" /></a>
  <a href='https://ko-fi.com/cerrejon' target='_blank'><img height="20" src="https://az743702.vo.msecnd.net/cdn/kofi2.png?v=0" alt='Buy Me a Coffee at ko-fi.com' /></a>
  <a href="https://github.com/jmcerrejon/neighborhood-games/blob/master/LICENSE"><img src="https://img.shields.io/github/license/jmcerrejon/neighborhood-games" alt="npm version"></a>
- <a href="https://twitter.com/ulysess10"><img src="https://img.shields.io/twitter/follow/ulysess10?style=social" alt="Follow me on Twitter!"></a>
+ <a href="https://x.com/ulysess10"><img src="https://img.shields.io/twitter/follow/ulysess10?style=social" alt="Follow me on X!"></a>
  <a href="https://github.com/jmcerrejon/PiKISS/search?l=shell"><img src="https://img.shields.io/github/languages/top/jmcerrejon/pikiss" alt="language top"></a>
  <a href="https://commerce.coinbase.com/checkout/71737f60-2440-488e-b413-f41e706f024b"><img height="20" src="https://estafaonline.com/wp-content/uploads/2019/02/Coinbase-logo.png" alt="Coinbase"></a>
 </p>
 
 ## ⏰ Estimated hours of work so far
 
-- **1083 hours**
+- **1089 hours**
 
 ## 💰 Total amount donated by users
 
@@ -33,7 +33,7 @@
 
 - 📖⠀Blog (English & Spanish): [misapuntesde.com](https://misapuntesde.com/)
 
-- 🐦⠀Twitter: [@ulysess10](https://twitter.com/ulysess10)
+- 🐦⠀ X (AKA Twitter): [@ulysess10](https://x.com/ulysess10)
 
 - 👾⠀Discord for suggestions & support [thanks to Pi Labs](https://discord.gg/Y7WFeC5)
 
@@ -50,6 +50,14 @@
 - [huelvayork](https://github.com/huelvayork), [mayavera](https://github.com/mayavera), [CleanMachine1](https://github.com/CleanMachine1), [kleinerm](https://github.com/kleinerm), [tx00100xt](https://github.com/tx00100xt).
 
 - Logo: grayduck
+
+## TL;DR
+
+Just type:
+
+```sh-session
+curl -sSL https://git.io/JfAPE | bash
+```
 
 ## 🎥 Check what **PiKISS** can do for you on my Youtube's channel
 
@@ -68,6 +76,18 @@
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (14/11/23)
+
+· 📦 ADD: Devs > Docker.
+
+· 👌 IMPROVE: Refactor code adapted to RPi 5 on some scripts.
+
+· 🐛 FIX: Install script.
+
+· 🐛 FIX: Games > Duke Nukem 3D 32-bit.
+
+· 🐛 FIX: Devs > VSCode.
 
 ### (11/11/23)
 
@@ -125,129 +145,6 @@
 
 · 📦 ADD: Games > Fallout 2.
 
-### (17/05/23)
-
-· 👌 IMPROVE: Games > MAME 0.254 for 32/64 bits BullsEye & Buster.
-
-### (30/04/23)
-
-· 👌 IMPROVE: Games > Serious Sam 1.10.4-1: Classic, Vulkan Ed. for arm64 (armhf soon).
-
-### (25/03/23)
-
-· 📦 ADD: Server > Block IPs using Iptables.
-
-· 👌 IMPROVE: Scripts Server > Media Server, Emulators > GBA. Some minor fixes.
-
-### (20/03/23)
-
-· 👌 IMPROVE: New relases: Scrcopy v2.0 for 64 bits (Audio support for Android 11+).
-
-### (14/03/23)
-
-· 👌 IMPROVE: Config > Vulkan Driver 22.3.7 for 32/64 bits.
-
-### (10/03/23)
-
-· 👌 IMPROVE: Emulators > RetroArch Update cores & 1.15.0-1 for 32/64 bits.
-
-### (9/03/23)
-
-· 👌 IMPROVE: Config > Vulkan Driver 22.3.7 for 32/64 bits.
-
-### (22/01/23)
-
-· 👌 IMPROVE: Server > Update Web Server with PHP 8.2 & Nginx 1.23.3.
-
-· ❌ REMOVE: Owncloud.
-
-### (16/01/23)
-
-· 👌 IMPROVE: Emulators > RetroArch Update cores & 1.14.0-1 (arm64).
-
-### (13/01/23)
-
-· 👌 IMPROVE: Emulators > RetroArch Update cores & 1.14.0-1 (armhf).
-
-### (6/11/22)
-
-· 👌 IMPROVE: Games > OpenXCOM 1.0.a379 for 32/64 bits.
-
-### (5/11/22)
-
-· 👌 IMPROVE: Games > Quake > Quakespasm 0.95 for 32/64 bits.
-
-### (13/10/22)
-
-· 👌 IMPROVE: Config > Change Vulkan driver to compile 22.2 (stable branch)
-
-### (7/10/22)
-
-· 📦 ADD: Emulators > Add VICE Commodore 64 emu for 32/64 bits.
-· 👌 IMPROVE: Emulators > RetroArch 1.11.1-1. Add Buster 32 bits support.
-
-### (18/09/22)
-
-· 📦 ADD: Emulators > Flycast for 32/64 bits.
-
-### (03/09/22)
-
-· 👌 IMPROVE: Emulators > MAME 0.247 for 32/64 bits.
-
-### (19/08/22)
-
-· 👌 IMPROVE: Games > Super Mario 64 for 64 bits.
-
-### (16/08/22)
-
-· 👌 IMPROVE: Emulators > ScummVM bump to 2.7.0 for 32/64 bits.
-
-### (06/08/22)
-
-· 👌 IMPROVE: Emulators > MAME bump to 0.246.
-
-### (30/07/22)
-
-· 🐛 FIX: Games > Serious Sam.
-
-### (21/07/22)
-
-· 🐛 FIX: Emulators > PS1 (DuckStation).
-
-· 🐛 FIX: Games > Quake 1.
-
-### (18/07/22)
-
-· 👌 IMPROVE: Emulators > PS1 (DuckStation) 64 bits support.
-
-· 👌 IMPROVE: Emulators > PS2 (AetherSX2).
-
-### (09/07/22)
-
-· 👌 IMPROVE: Emulators > RetroArch 1.10.3.
-
-· 👌 IMPROVE: Emulators > DOSBox-X 0.84.2.
-
-· 👌 IMPROVE & Fix: Emulators > MAME v0.245.
-
-### (28/06/22)
-
-· 🐛 FIX: Configure > Vulkan driver.
-
-### (25/06/22)
-
-· 🐛 FIX: Emulators > Dosbox.
-
-### (19/06/22)
-
-· 👌 IMPROVE: Emulators > openMSX 0.18 & 64 bits support.
-
-### (04/06/22)
-
-· 📦 ADD: Others > ZShell.
-
-· 👌 IMPROVE: Games > Quake I, II 64 bits support.
-
 ...
 
 To see the full list of changes, read the [CHANGELOG](./CHANGELOG)
@@ -266,9 +163,7 @@ Don't despair. **PiKISS** has come to help you...
 
 **PiKISS** _(Pi Keeping It Simple, Stupid!)_ is made with _scripts (Bash)_ for _Raspberry Pi 4 & 5_ boards which has a menu that will allow you to install some applications or configure files automatically as easy as possible. The ideal stage is:
 
-- _Raspberry PI OS Desktop_ Bullseye 32 bits.
-
-- User _pi_ or another user with sudo priviledges.
+- _Raspberry PI OS Desktop_ Bullseye 32-bit. 64-bit support is comming slowly.
 
 The idea is to offer facilities to manage your operating system, selecting an option in a menu and answer [Yes/No]. If you need to check dependencies, install an app, modify a script at boot, add a line to a file or download other, **PiKISS** will do it for you.
 
@@ -328,7 +223,7 @@ No desesperéis. Ha llegado **PiKISS** para ayudarte...
 
 ---
 
-**PiKISS** _(Pi Keeping It Simple, Stupid!, "Pi manteniéndolo sencillo, ¡Estúpido!")_ son unos _scripts en Bash_ para placas _Raspberry Pi 4 y 5_ y testeado en _Raspberry PI OS Desktop_ Bullseye 32 bits, que cuenta con un menú que te va a permitir instalar algunas aplicaciones o configurar ficheros de forma automática de la manera más fácil posible. **Su misión: Simplificar la instalación de software en _Raspberry Pi_.**
+**PiKISS** _(Pi Keeping It Simple, Stupid!, "Pi manteniéndolo sencillo, ¡Estúpido!")_ son unos _scripts en Bash_ para placas _Raspberry Pi 4 y 5_ y testeado en _Raspberry PI OS Desktop_ Bullseye 32-bit (el soporte a 64-bit lo estoy haciendo poco a poco), que cuenta con un menú que te va a permitir instalar algunas aplicaciones o configurar ficheros de forma automática de la manera más fácil posible. **Su misión: Simplificar la instalación de software en _Raspberry Pi_.**
 
 La idea es ofrecer facilidades para manejar tu distribución y que las instalaciones sean tan sencillas como seleccionar una opción en un menú y contestar [Si/No]. Si alguna conlleva algo más que instalar, por ejemplo modificar un script en el arranque, añadir una línea a un fichero, descargar otros ficheros, comprobar dependencias, **PiKISS** lo hará por ti.
 

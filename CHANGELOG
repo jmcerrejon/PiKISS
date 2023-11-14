@@ -1,5 +1,17 @@
 # Changelog
 
+## (14/11/23)
+
+· 📦 ADD: Devs > Docker.
+
+· 👌 IMPROVE: Refactor code adapted to RPi 5 on some scripts.
+
+· 🐛 FIX: Install script.
+
+· 🐛 FIX: Games > Duke Nukem 3D 32-bit.
+
+· 🐛 FIX: Devs > VSCode.
+
 ## (11/11/23)
 
 · 👌 IMPROVE: Refactor code adapted to RPi 5 on some scripts.
