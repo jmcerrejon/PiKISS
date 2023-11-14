@@ -442,6 +442,7 @@ smDevs() {
 
     options=(
         Back "Back to main menu"
+        Docker "Docker use OS-level virtualization to deliver software in packages called containers"
         QT5 "Free and open-source widget toolkit for creating graphical UI cross-platform applications"
         TIC80 "TIC-80 is a free fantasy computer for making, playing tiny games"
         VSCode/ium "Lightweight but powerful source code editor which runs on your desktop"
@@ -452,6 +453,7 @@ smDevs() {
     for choice in $choices; do
         case $choice in
         Back) break ;;
+        Docker) ./scripts/devs/docker.sh ;;
         QT5) ./scripts/devs/qt5.sh ;;
         TIC80) ./scripts/devs/tic-80.sh ;;
         VSCode/ium) ./scripts/devs/vscode.sh ;;
