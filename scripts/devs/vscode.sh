@@ -2,10 +2,11 @@
 #
 # Description : VSCode
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.0 (28/Feb/21)
+# Version     : 1.2.1 (14/Nov/23)
 # Compatible  : Raspberry Pi 4 (tested)
 # Help        : https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo
 #
+# shellcheck source=../helper.sh
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
@@ -102,11 +103,13 @@ VSCode for Raspberry Pi
 
     echo -e "\nInstalling, please wait...\n"
 
-    if ! is_kernel_64_bits; then
-        VSCODE_INSTALL="$INSTALL_URL"
+    if is_userspace_64_bits; then
+        VSCODE_INSTALL=$INSTALL_64_BITS_URL
     else
-        VSCODE_INSTALL="$INSTALL_64_BITS_URL"
+        echo "32 bits detected. Installing 32 bits version..."
+        VSCODE_INSTALL=$INSTALL_URL
     fi
+
     wget -q --show-progress "$VSCODE_INSTALL" -O "$HOME"/code.deb
     echo
     sudo dpkg -i "$HOME"/code.deb
