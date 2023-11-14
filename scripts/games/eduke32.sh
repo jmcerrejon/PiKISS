@@ -2,7 +2,7 @@
 #
 # Description : Duke Nukem 3D
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.0 (01/Jul/23)
+# Version     : 1.1.1 (14/Nov/23)
 # Compatible  : Raspberry Pi 4 (tested)
 #
 # Help		  : https://github.com/nukeykt/NBlood <-- Better than Eduke32 official port for the Pi?
@@ -95,6 +95,13 @@ download_binaries() {
     download_and_extract "$INSTALL_URL" "$INSTALL_DIR"
 }
 
+ln_libflac_lib_on_32_bit() {
+    if [[ ! -f /usr/lib/arm-linux-gnueabihf/libFLAC.so.8 ]]; then
+        echo "Fixing libFLAC.so.8..."
+        ln -s /usr/lib/arm-linux-gnueabihf/libFLAC.so.12 /usr/lib/arm-linux-gnueabihf/libFLAC.so.8
+    fi
+}
+
 install() {
     echo -e "\n\nInstalling EDuke32, please wait..."
     mkdir -p "$INSTALL_DIR" && cd "$_" || exit 1
@@ -103,6 +110,10 @@ install() {
     if exists_magic_file; then
         DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
         message_magic_air_copy "$VAR_DATA_NAME"
+    fi
+
+    if ! is_userspace_64_bits; then
+        ln_libflac_lib_on_32_bit
     fi
 
     download_data_files
