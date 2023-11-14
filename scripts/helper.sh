@@ -951,7 +951,22 @@ extract() {
 # exit PiKISS
 #
 exit_pikiss() {
-    echo -e "\nSee you soon!\nPiKISS is a software maintained by Jose Cerrejon.\nYou can find me here (CTRL + Click):\n\n · PiKISS Repository: https://github.com/jmcerrejon/PiKISS\n · Paypal: https://paypal.me/jmcerrejon\n · Twitter: https://twitter.com/ulysess10\n · Discord Server (Pi Labs): https://discord.gg/Y7WFeC5\n · Email: ulysess@gmail.com\n\n · Wanna be my Patreon?: https://www.patreon.com/cerrejon?fan_landing=true"
+    echo "
+See you soon!
+
+Wanna be my Patreon?: https://www.patreon.com/cerrejon?fan_landing=true
+
+PiKISS is a software maintained by Jose Cerrejon.
+
+You can find me here (CTRL + Click):
+ · PiKISS Repository: https://github.com/jmcerrejon/PiKISS
+ · Paypal: https://paypal.me/jmcerrejon
+ · X (AKA Twitter): https://x.com/ulysess10
+ · Discord Server (Pi Labs): https://discord.gg/Y7WFeC5
+ · Email: ulysess@gmail.com
+"
+
+    read -p "Press [Enter] to exit..."
     exit
 }
 
@@ -995,6 +1010,7 @@ uninstall_pikiss() {
     echo -e "\nUninstalling..."
     rm -f "$PIKISS_SHORTCUT_PATH"
     rm -rf "$PIKISS_PATH"
+    cd || exit
     echo -e "\nPiKISS uninstall completed."
     exit_pikiss
 }
