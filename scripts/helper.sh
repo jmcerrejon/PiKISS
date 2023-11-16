@@ -1010,7 +1010,7 @@ uninstall_pikiss() {
     echo -e "\nUninstalling..."
     rm -f "$PIKISS_SHORTCUT_PATH"
     rm -rf "$PIKISS_PATH"
-    cd || exit
+    cd "$HOME" || exit
     echo -e "\nPiKISS uninstall completed."
     exit_pikiss
 }
