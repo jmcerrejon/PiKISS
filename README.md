@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1089 hours**
+- **1093 hours**
 
 ## 💰 Total amount donated by users
 
@@ -76,6 +76,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (16/11/23)
+
+· 👌 IMPROVE: Emulatos > mGBA 0.11 for 32/64-bit.
 
 ### (14/11/23)
 
