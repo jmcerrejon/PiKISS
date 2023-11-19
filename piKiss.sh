@@ -281,7 +281,7 @@ smEmulators() {
         Genesis) ./scripts/emus/genesis.sh ;;
         Mednafen) ./scripts/emus/mednafen.sh ;;
         Mame) ./scripts/emus/mame.sh ;;
-        MSX) ./scripts/emus/msx.sh ;;
+        MSX) ./scripts/emus/openmsx.sh ;;
         NES) ./scripts/emus/nes.sh ;;
         PS1) ./scripts/emus/psx.sh ;;
         PS2) ./scripts/emus/ps2.sh ;;

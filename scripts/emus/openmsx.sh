@@ -2,9 +2,8 @@
 #
 # Description : OpenMSX emulator
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.5.1 (19/Jun/22)
-# Tested      : Raspberry 4
-#
+# Version     : 1.5.2 (19/Nov/23)
+# Tested      : Raspberry 5
 #
 # shellcheck disable=SC1091
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -12,7 +11,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 clear
 
 readonly INSTALL_DIR="$HOME/games"
-readonly PACKAGES=(libglew2.1 libsdl2-ttf-2.0-0)
+readonly PACKAGES=(libglew2.2 libsdl2-ttf-2.0-0)
 readonly PACKAGES_DEV=(libsdl2-dev libsdl2-ttf-dev libglew-dev libao-dev libogg-dev libtheora-dev libxml2-dev libvorbis-dev tcl-dev g++-4.8)
 readonly SOURCE_CODE_URL="https://github.com/openMSX/openMSX/releases/download/RELEASE_18_0/openmsx-18.0.tar.gz"
 readonly BINARY_ARMHF_URL="https://misapuntesde.com/rpi_share/openmsx_0.18_armhf.tar.gz"
@@ -89,11 +88,22 @@ download_game() {
     download_and_extract "$ROM_GAME_URL" "$HOME/.openMSX/share/software"
 }
 
+fix_libGLEW() {
+    local -r libGLEW_21_PATH="/usr/lib/arm-linux-gnueabihf/libGLEW.so.2.1"
+    local -r libGLEW_22_PATH="/usr/lib/arm-linux-gnueabihf/libGLEW.so.2.2"
+
+    if [[ ! -f $libGLEW_21_PATH ]]; then
+        echo -e "\nFixing libGLEW..."
+        sudo ln -sf "$libGLEW_22_PATH" "$libGLEW_21_PATH"
+    fi
+}
+
 postinstall() {
     echo -e "\nInstalling ROM BiOS for maximum compatibility..."
     download_and_extract "$SYSTEMROMS_URL" "$SYSTEMROMS/.openMSX"
     wget -q "$SETTINGS_URL" "$HOME"/.openMSX/share/settings.xml
 
+    fix_libGLEW
     download_game
     runme
 }
