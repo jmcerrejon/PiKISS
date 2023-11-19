@@ -29,6 +29,13 @@ export ERROR
 export WARN
 export RESET
 
+is_piapps_installed() {
+    if [[ $(whereis pi-apps) ]]; then
+        true
+    else
+        false
+    fi
+}
 #
 # Fix libGLESv2.so on Raspbian Stretch
 #
@@ -966,8 +973,10 @@ You can find me here (CTRL + Click):
  · Email: ulysess@gmail.com
 "
 
-    read -p "Press [Enter] to exit..."
-    exit
+    if ! is_piapps_installed; then
+        read -p "Press [Enter] to exit..."
+    fi
+    exit 0
 }
 
 #
@@ -1429,7 +1438,7 @@ install_go() {
     GO_VERSION="1.20.6"
     if [ "$(uname -m)" == 'armv7l' ]; then
         ARCHITECTURE="arm64"
-        else
+    else
         ARCHITECTURE="armv6l"
     fi
     GO_URL="https://go.dev/dl/go${GO_VERSION}.linux-${ARCHITECTURE}.tar.gz"

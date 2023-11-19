@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1093 hours**
+- **1094 hours**
 
 ## 💰 Total amount donated by users
 
@@ -76,6 +76,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (19/11/23)
+
+· 🐛 FIX: Install script.
 
 ### (16/11/23)
 
