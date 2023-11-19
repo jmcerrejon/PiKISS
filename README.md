@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1094 hours**
+- **1095 hours**
 
 ## 💰 Total amount donated by users
 
@@ -80,6 +80,8 @@ curl -sSL https://git.io/JfAPE | bash
 ### (19/11/23)
 
 · 🐛 FIX: Install script.
+
+· 🐛 FIX: Emulatos > OpenMSX (missing library).
 
 ### (16/11/23)
 

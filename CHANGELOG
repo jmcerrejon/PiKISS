@@ -1,5 +1,11 @@
 # Changelog
 
+## (19/11/23)
+
+· 🐛 FIX: Install script.
+
+· 🐛 FIX: Emulatos > OpenMSX (missing library).
+
 ## (16/11/23)
 
 · 👌 IMPROVE: Emulatos > mGBA 0.11 for 32/64-bit.
