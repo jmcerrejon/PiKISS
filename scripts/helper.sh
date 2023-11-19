@@ -678,7 +678,7 @@ EOF
 exit_message() {
     echo
     read -p "Press [Enter] to go back to the menu..."
-    exit 1
+    exit 0
 }
 
 validate_url() {
