@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1095 hours**
+- **1096 hours**
 
 ## 💰 Total amount donated by users
 
@@ -21,7 +21,7 @@
 
 - I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu).
 
-- I want to thank my current patrons **Bo Martin, Rodney Hester & specially James Carroll** for trusting me. ❤️
+- I want to thank my current patrons Josiah McCracken, **Bo Martin, Rodney Hester & specially James Carroll** for trusting me. ❤️
 
 - Patrons support me in the past: _Jay Edwards, Tomás Delgado, Jeremy Palmer, cxgr, Willie D Kerner Jr, Matthew Michink, Mathew Gracie, Mike A. Torevell, David J Leto_.
 
