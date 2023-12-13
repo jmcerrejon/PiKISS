@@ -31,6 +31,14 @@ check_and_install_dialog() {
     fi
 }
 
+is_piapps_installed() {
+    if [[ $(whereis pi-apps) ]]; then
+        true
+    else
+        false
+    fi
+}
+
 if [[ -d "$INSTALL_DIR/piKiss" ]]; then
     check_and_install_dialog
     cd "$INSTALL_DIR/piKiss" && ./piKiss.sh
@@ -60,7 +68,9 @@ cd ${HOME}/piKiss, type ./piKiss.sh. You have a menu shortcut, too!. Go to:
 
  · Raspberry Pi OS: Menu > System Tools > PiKISS
 "
-read -p "Press ENTER to run PiKISS."
 
-cd "${INSTALL_DIR}/piKiss" || exit 1
-./piKiss.sh
+if ! is_piapps_installed; then
+    read -p "Press ENTER to run PiKISS."
+    cd "${INSTALL_DIR}/piKiss" || exit 1
+    ./piKiss.sh
+fi
