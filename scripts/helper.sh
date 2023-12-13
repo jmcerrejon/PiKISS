@@ -549,7 +549,7 @@ install_yarn() {
 check_board() {
     if [[ $(cat /proc/cpuinfo | grep 'ODROIDC') ]]; then
         MODEL="ODROID-C1"
-    elif [[ $(cat /proc/cpuinfo | grep 'BCM2708\|BCM2709\|BCM2835\|BCM2711') ]]; then
+    elif grep -q </proc/device-tree/compatible 'bcm2712\|bcm2711\|bcm2837\|bcm2836\|bcm2835'; then
         MODEL="Raspberry Pi"
     elif [ "$(uname -n)" = "debian" ]; then
         MODEL="Debian"
@@ -603,8 +603,7 @@ get_cpu_frequency() {
 check_internet_available() {
     # Make sure we have internet conection
     if [ ! "$NOINTERNETCHECK" = 1 ]; then
-        PINGOUTPUT=$(ping -c 1 8.8.8.8 >/dev/null && echo '...')
-        if [ ! "$PINGOUTPUT" = '...' ]; then
+        if ! ping -c 1 google.com &> /dev/null; then
             echo -e "\nInternet connection required. Causes:\n\n · Check your network.\n · Weak WiFi signal?.\n · Try no check internet connection parameter (-ni): cd ~/piKiss && ./piKiss.sh -ni\n"
             read -p "Press [Enter] to exit..."
             exit 1
