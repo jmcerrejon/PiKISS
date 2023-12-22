@@ -2,7 +2,7 @@
 #
 # Description : Personal script to tune my custom Raspberry Pi OS
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.7 (11/Nov/23)
+# Version     : 1.3.8 (22/Nov/23)
 # Tested      : Raspberry Pi 5
 # TODO        : https://itnext.io/linux-setlocale-lc-all-cannot-change-locale-en-us-utf8-and-cyrillic-symbols-2d846fe3c166
 #
@@ -85,6 +85,7 @@ echo -e "\nRunning apt-file update...\n"
 sudo apt-file update
 echo -e "\nmkdir pikiss for test using sshfs...\n"
 [[ ! -d $HOME/pikiss ]] && mkdir "$HOME/pikiss"
+sudo sed -i 's/#user_allow_other/user_allow_other/' /etc/fuse.conf
 
 echo -e "\nThe system is going to reboot in 5 seconds. Pray...\n"
 sleep 5
