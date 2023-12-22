@@ -2,13 +2,14 @@
 #
 # Description : Vulkan driver
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.7 (30/Sep/23)
-# Compatible  : Raspberry Pi 4
+# Version     : 1.4.8 (22/Dec/23)
+# Tested      : Raspberry Pi 4-5
 #
 # Help        : https://ninja-build.org/manual.html#ref_pool
 #             : https://qengineering.eu/install-vulkan-on-raspberry-pi.html
 #             : https://blogs.igalia.com/apinheiro/2020/06/v3dv-quick-guide-to-build-and-run-some-demos/
 #
+# shellcheck source=../helper.sh
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
@@ -16,7 +17,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 readonly INSTALL_DIR="$HOME/mesa_vulkan"
 readonly SOURCE_CODE_URL="https://gitlab.freedesktop.org/mesa/mesa.git"
 PI_VERSION_NUMBER=$(get_pi_version_number)
-BRANCH_VERSION="mesa-23.2.1"
+BRANCH_VERSION="mesa-23.3.1"
 INPUT=/tmp/vulkan.$$
 
 install() {
@@ -37,14 +38,20 @@ install_full_deps() {
         xutils-dev libpthread-stubs0-dev libpciaccess-dev \
         libffi-dev x11proto-xext-dev libxcb1-dev libxcb-*dev \
         bison flex libssl-dev libgnutls28-dev x11proto-dri2-dev \
-        x11proto-dri3-dev libx11-dev libxcb-glx0-dev \
+        libx11-dev libxcb-glx0-dev \
         libx11-xcb-dev libxext-dev libxdamage-dev libxfixes-dev \
         libva-dev x11proto-randr-dev x11proto-present-dev \
-        libclc-dev libelf-dev git build-essential mesa-utils \
+        libelf-dev git build-essential mesa-utils \
         libvulkan-dev ninja-build libvulkan1 python3-mako \
         libdrm-dev libxshmfence-dev libxxf86vm-dev libwayland-dev \
         python3-mako wayland-protocols libwayland-egl-backend-dev \
         cmake libassimp-dev python3-pip
+        # x11proto-dri3-dev missing on Debian Bullseye
+    if is_userspace_64_bits; then
+        sudo apt install -y libclc-16-dev
+    else
+        sudo apt install -y libclc-dev
+    fi
     install_meson
 }
 
@@ -74,7 +81,7 @@ install_vulkan_from_official_repository() {
 compile_and_install_libdrm() {
     local LIBDRM_URL
     local SOURCE_CODE_PATH
-    FILE_NAME="libdrm-2.4.115"
+    FILE_NAME="libdrm-2.4.119"
     LIBDRM_URL="https://dri.freedesktop.org/libdrm/$FILE_NAME.tar.xz"
     SOURCE_CODE_PATH="$HOME/sc"
 
@@ -139,8 +146,8 @@ Vulkan Mesa Drivers
 · Support 32/64 bits.
 · This process can't be undone.
 · Make sure you have a backup of your data.
-· This script installs or compiles Vulkan Mesa Driver on your OS.
-· Estimated compilation time on Raspberry Pi 4 over USB/SSD drive (Not overclocked): ~19 min.
+· This script installs/compiles libdrm & Vulkan Mesa Driver on your OS.
+· Estimated compilation time on Raspberry Pi 4 ~19 min & Pi 5 ~7 min over USB/SSD drive (Not overclocked).
 "
 read -p "Continue? (Y/n) " response
 if [[ $response =~ [Nn] ]]; then

@@ -1217,7 +1217,7 @@ install_meson() {
     echo -e "\nChecking if meson is installed...\n"
     if ! pip3 list | grep -F meson &>/dev/null; then
         isPackageInstalled meson && sudo apt-get remove -y meson
-        sudo pip3 install meson --force-reinstall
+        sudo pip3 install meson --break-system-packages
     fi
 }
 
