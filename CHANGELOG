@@ -1,5 +1,9 @@
 # Changelog
 
+## (22/12/23)
+
+· 👌 IMPROVE: Config > Vulkan 23.3.1 & libdrm-2.4.119.
+
 ## (19/11/23)
 
 · 🐛 FIX: Install script.

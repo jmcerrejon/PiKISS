@@ -13,11 +13,11 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1096 hours**
+- **1099 hours**
 
 ## 💰 Total amount donated by users
 
-- $1815,99
+- $2033,07
 
 - I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu).
 
@@ -76,6 +76,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (22/12/23)
+
+· 👌 IMPROVE: Config > Vulkan 23.3.1 & libdrm-2.4.119.
 
 ### (19/11/23)
 
