@@ -1,36 +1,64 @@
 #!/bin/bash
 #
-# Description : Net Tools - MITM Pentesting Opensource Toolkit
+# Description : Metasploit Framework
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 0.3 (5/Apr/15)
+# Version     : 1.0.0 (13/Jan/24)
+# Tested on   : Raspberry Pi 5
 #
-# Help        · https://www.jsitech.com/seguridad/net-tools-mitm-pentesting-opensource-toolkit/
+# shellcheck source=../helper.sh
+. ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
-
-. ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-echo -e "\nNet Tools - MITM Pentesting Opensource Toolkit\n==============================================\n\n· Require run from X\n\n"
+readonly INSTALL_DIR="$HOME/sc"
+readonly METASPLOIT_INSTALL_URL="https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb"
+readonly DOCUMENTATION_URL="https://docs.metasploit.com/docs/using-metasploit/basics/"
+readonly EXEC_FILE_PATH="/usr/bin/msfconsole"
 
-check_update
+uninstall() {
+    read -p "Do you want to uninstall (y/N)? " response
+    if [[ $response =~ [Yy] ]]; then
+        sudo apt remove -y metasploit-framework
+        if [[ -e $EXEC_FILE_PATH ]]; then
+            echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
+            exit_message
+        fi
+        echo -e "\nSuccessfully uninstalled."
+        exit_message
+    fi
+    exit_message
+}
 
-echo -e "\nInstalling dependences (62.3 MB)...\n\n"
-sudo apt-get install -y zenity nmap ettercap-text-only macchanger driftnet apache2 sslstrip
+install_metasploit() {
+    echo -e "\nInstalling MetaSploit (latest)...\n\n"
+    curl  "$METASPLOIT_INSTALL_URL" > msfinstall
+    chmod 755 msfinstall
+    ./msfinstall
+    rm ./msfinstall
+}
 
-echo -e "\nInstalling MetaSploit (latest)...\n\n"
-mkdir -p $HOME/sc && cd $HOME/sc
-wget https://downloads.metasploit.com/data/releases/framework-latest.tar.bz2
-tar jxpf framework-latest.tar.bz2
-sudo apt-get install -y ruby subversion
-sudo gem install bundler
-sudo gem install bcrypt
-cd msf3
-./msfconsole
-cd ..
+if [[ -e $EXEC_FILE_PATH ]]; then
+    echo -e "\nMetaSploit already installed.\n"
+    uninstall
+fi
 
-# Net Tools
-wget -O opensource.tar.gz https://sourceforge.net/projects/netoolsh/files/latest/download?source=files
-tar -xzvf opensource.tar.gz
-cd opensource
-./nettool.sh
-read -p "Done!. to use the app, cd $HOME/sc/opensource and run ./netool.sh. Press [ENTER] to Continue..."
+install() {
+    install_metasploit
+    read "Done!. To run, type: msfconsole."
+    exit_message
+}
+
+install_script_message
+echo "
+Metasploit Framework
+====================
+
+· The world’s most used penetration testing framework.
+· Metasploit is based around the concept of modules. The most commonly used module types are: Auxiliary, Exploit, Payloads & Post.
+· + Information: $DOCUMENTATION_URL
+"
+
+read -p "Are you sure you want to install? (y/N) " response
+if [[ $response =~ [Yy] ]]; then
+    install
+fi
