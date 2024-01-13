@@ -471,7 +471,7 @@ smOthers() {
         BootLoader "Update your RPi boot loader"
         Fixes "Fix some problems with the Raspberry Pi OS"
         GL4ES "Compile GL4ES - OpenGL for GLES Hardware"
-        NetTools "MITM Pentesting Opensource Toolkit (Require X)"
+        Metasploit "The world’s most used penetration testing framework"
         Part "Check issues & fix SD corruptions"
         RPiPlay "An open-source implementation of an AirPlay mirroring server"
         Scrcpy "Display and control of Android devices connected on USB"
@@ -493,7 +493,7 @@ smOthers() {
         BootLoader) ./scripts/others/update-bootloader.sh ;;
         Fixes) ./scripts/others/fixes.sh ;;
         GL4ES) ./scripts/others/gl4es.sh ;;
-        NetTools) ./scripts/others/nettools.sh ;;
+        Metasploit) ./scripts/others/metasploit.sh ;;
         Part) ./scripts/others/checkpart.sh ;;
         RPiPlay) ./scripts/others/rpiplay.sh ;;
         Scrcpy) ./scripts/others/scrcpy.sh ;;
