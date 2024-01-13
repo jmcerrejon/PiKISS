@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1101 hours**
+- **1102 hours**
 
 ## 💰 Total amount donated by users
 
@@ -76,6 +76,11 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (13/01/24)
+
+· ❌ REMOVE: Others > Net Tools (deprecated).
+· 👌 IMPROVE: Others > Metasploit.
 
 ### (10/01/24)
 
