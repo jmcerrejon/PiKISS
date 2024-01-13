@@ -3,10 +3,11 @@
 # Description : RetroArch
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Contrib     : foxhound311, Rak1ta
-# Version     : 1.0.17 (19/Jul/23)
+# Version     : 1.0.18 (13/Jan/24)
 #
 # Help        : https://archive.org/download/RetroArch-rpi4 | https://archive.org/details/rpi4_64bit_retroarch
 #
+# shellcheck source=../helper.sh
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
@@ -24,6 +25,7 @@ readonly CORES_64_BITS_URL="https://misapuntesde.com/rpi_share/retroarch/libretr
 readonly BIOS_URL="https://misapuntesde.com/rpi_share/retroarch/libretro_bios.tar.gz"
 readonly SYSTEM_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch_system.zip"
 readonly ASSETS_URL="https://buildbot.libretro.com/assets/frontend/assets.zip"
+readonly SHADERS_URL="https://buildbot.libretro.com/assets/frontend/shaders_glsl.zip"
 readonly AUTOCONFIG_URL="https://buildbot.libretro.com/assets/frontend/autoconfig.zip"
 readonly DATABASE_URL="https://buildbot.libretro.com/assets/frontend/database-rdb.zip"
 readonly OVERLAY_URL="https://buildbot.libretro.com/assets/frontend/overlays.zip"
@@ -130,6 +132,8 @@ install_assets() {
     download_and_extract "$DATABASE_URL" "$CONFIG_PATH/database"
     echo -e "\nInstalling overlay..."
     download_and_extract "$OVERLAY_URL" "$CONFIG_PATH/overlay"
+    echo -e "\nInstalling shaders..."
+    download_and_extract "$SHADERS_URL" "$CONFIG_PATH/shader"
 }
 
 install() {
