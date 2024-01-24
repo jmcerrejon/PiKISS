@@ -720,17 +720,17 @@ compile_sdl2() {
     local CURRENT_SDL2_VERSION_WITH_NO_DOTS=$(echo "$CURRENT_SDL2_VERSION" | tr -d '.')
     local LATEST_VERSION_NUMBER_WITH_NO_DOTS=$(echo "$LATEST_VERSION_NUMBER" | tr -d '.')
 
-    echo -e "Current SDL2 version: $CURRENT_SDL2_VERSION\n"
+    echo -e "\nCurrent SDL2 version: $CURRENT_SDL2_VERSION"
     echo -e "Latest SDL2 version: $LATEST_VERSION_NUMBER\n"
 
     if [[ $CURRENT_SDL2_VERSION_WITH_NO_DOTS -ge $LATEST_VERSION_NUMBER_WITH_NO_DOTS ]]; then
-        echo -e "Your SDL2 version is up to date. Skipping...\n"
-        return 0
+        echo -e "Your SDL2 version is up to date. Skipping..."
+        exit_message
     fi
 
-    read -p "Press [ENTER] to compile SDL2 from source code or CTRL+C to abort."
+    read -p "Press [ENTER] to compile SDL2 from source code or CTRL+C to abort." opt
 
-    clear && echo "Compiling SDL2, please wait about 5 minutes..."
+    echo "Compiling SDL2, please wait about 5 minutes..."
     mkdir -p "$HOME"/sc && cd "$_" || exit
     wget "https://www.libsdl.org/release/$SDL2_LATEST_FILENAME"
     extract "$SDL2_LATEST_FILENAME"
