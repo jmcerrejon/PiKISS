@@ -3,6 +3,7 @@
 # Description : Helpers functions
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 #
+# shellcheck disable=SC2120,SC2125,SC2155
 readonly PIKISS_BASE_DOMAIN="https://misapuntesde.com"
 readonly PIKISS_REMOTE_SHARE_DIR_URL="$PIKISS_BASE_DOMAIN/rpi_share"
 readonly PIKISS_DIR=$PWD
@@ -111,7 +112,7 @@ compile_box86_or_64() {
     fi
 
     mkdir -p build && cd "$_" || exit 1
-    echo -e "\nCompiling, please wait...\n"
+    echo -e "\nCompiling $BOX_VERSION, please wait...\n"
     cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo
     make_with_all_cores
     make_install_compiled_app
@@ -147,85 +148,6 @@ install_box86_or_64() {
     echo
     ${BOX_VERSION} -v
     echo -e "\n${BOX_VERSION} has been installed."
-}
-
-generate_icon_winetricks() {
-    if [[ ! -e /usr/local/bin/winetricks ]]; then
-        return 0
-    fi
-
-    echo -e "\nGenerating icon...\n"
-    if [[ ! -e ~/.local/share/applications/winetricks.desktop ]]; then
-        cat <<EOF >~/.local/share/applications/winetricks.desktop
-[Desktop Entry]
-Name=Winetricks
-Comment=Work around problems and install applications under Wine
-Exec=env BOX86_NOBANNER=1 winetricks --gui
-Terminal=false
-Icon=B13E_wscript.0
-Type=Application
-Categories=Utility;
-EOF
-    fi
-}
-
-# https://github.com/ptitSeb/box86/blob/master/docs/X86WINE.md
-install_winex86() {
-    local WINE_PKG_I386
-    local WINE_PKG
-    local DEBIAN_F_PKGS_URL
-    local WINETRICKS_URL
-    WINE_PKG_I386="https://dl.winehq.org/wine-builds/debian/dists/buster/main/binary-i386/wine-devel-i386_6.8~buster-1_i386.deb"
-    WINE_PKG="https://dl.winehq.org/wine-builds/debian/dists/buster/main/binary-i386/wine-devel_6.8~buster-1_i386.deb"
-    DEBIAN_F_PKGS_URL="http://ftp.us.debian.org/debian/pool/main/f/faudio/"
-    WINETRICKS_URL="https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks"
-
-    cd || exit 1
-
-    echo -e "Backing old wine versions to ~/wine-old and /usr/local/bin/wine*old...\n"
-    sudo rm -rf ~/wine-old ~/.wine-old /usr/local/bin/wine-old /usr/local/bin/wineboot-old /usr/local/bin/winecfg-old /usr/local/bin/wineserver-old
-    [[ -d ~/wine ]] && sudo mv ~/wine ~/wine-old
-    [[ -d ~/.wine ]] && sudo mv ~/.wine ~/.wine-old
-    [[ -e /usr/local/bin/wine ]] && sudo mv /usr/local/bin/wine /usr/local/bin/wine-old
-    [[ -e /usr/local/bin/wineboot ]] && sudo mv /usr/local/bin/wineboot /usr/local/bin/wineboot-old
-    [[ -e /usr/local/bin/winecfg ]] && sudo mv /usr/local/bin/winecfg /usr/local/bin/winecfg-old
-    [[ -e /usr/local/bin/wineserver ]] && sudo mv /usr/local/bin/wineserver /usr/local/bin/wineserver-old
-
-    echo -e "Downloading...\n"
-    wget -q -O wine_devel.deb "$WINE_PKG_I386"
-    wget -q -O wine.deb "$WINE_PKG"
-    wget -q -r -l1 -np -nd -A "libfaudio0_*~bpo10+1_i386.deb" "$DEBIAN_F_PKGS_URL"
-
-    echo -e "Extract,clean & installing files/pkgs...\n"
-    dpkg-deb -x ./wine_devel.deb wine-installer
-    dpkg-deb -x ./wine.deb wine-installer
-    dpkg-deb -xv ./libfaudio0_*~bpo10+1_i386.deb libfaudio
-
-    mv ./wine-installer/opt/wine* ~/wine
-    sudo cp -TRv libfaudio/usr/ /usr/
-    rm -rf wine*.deb wine-installer libfaudio0_*~bpo10+1_i386.deb libfaudio
-    #sudo rm /usr/local/bin/wine /usr/local/bin/wineboot /usr/local/bin/winecfg /usr/local/bin/wineserver
-
-    echo -e "\nGenerating shortcuts at /usr/local/bin/wine*...\n"
-    echo -e '#!/bin/bash\nsetarch linux32 -L '"$HOME/wine/bin/wine "'"$@"' | sudo tee -a /usr/local/bin/wine >/dev/null
-    if ! is_kernel_64_bits; then
-        sudo rm /usr/local/bin/wine
-        sudo ln -f -s ~/wine/bin/wine /usr/local/bin/wine
-    fi
-    sudo ln -f -s ~/wine/bin/wineboot /usr/local/bin/wineboot
-    sudo ln -f -s ~/wine/bin/winecfg /usr/local/bin/winecfg
-    sudo ln -f -s ~/wine/bin/wineserver /usr/local/bin/wineserver
-    sudo chmod +x /usr/local/bin/wine /usr/local/bin/wineboot /usr/local/bin/winecfg /usr/local/bin/wineserver
-
-    echo -e "Installing some essential components for you..."
-    sudo DEBIAN_FRONTEND=noninteractive apt-get install -qq libstb0 cabextract </dev/null >/dev/null
-
-    wget -q "$WINETRICKS_URL"
-    sudo chmod +x winetricks
-    sudo mv winetricks /usr/local/bin/
-    generate_icon_winetricks
-
-    wine wineboot
 }
 
 install_mesa() {
@@ -549,7 +471,7 @@ install_yarn() {
 check_board() {
     if [[ $(cat /proc/cpuinfo | grep 'ODROIDC') ]]; then
         MODEL="ODROID-C1"
-    elif grep -q </proc/device-tree/compatible 'bcm2712\|bcm2711\|bcm2837\|bcm2836\|bcm2835'; then
+    elif grep -q 'bcm2712\|bcm2711\|bcm2837\|bcm2836\|bcm2835' </proc/device-tree/compatible; then
         MODEL="Raspberry Pi"
     elif [ "$(uname -n)" = "debian" ]; then
         MODEL="Debian"
@@ -603,7 +525,7 @@ get_cpu_frequency() {
 check_internet_available() {
     # Make sure we have internet conection
     if [ ! "$NOINTERNETCHECK" = 1 ]; then
-        if ! ping -c 1 google.com &> /dev/null; then
+        if ! ping -c 1 google.com &>/dev/null; then
             echo -e "\nInternet connection required. Causes:\n\n · Check your network.\n · Weak WiFi signal?.\n · Try no check internet connection parameter (-ni): cd ~/piKiss && ./piKiss.sh -ni\n"
             read -p "Press [Enter] to exit..."
             exit 1
@@ -681,7 +603,7 @@ exit_message() {
 }
 
 validate_url() {
-    if [[ $(wget -S --spider $1 2>&1 | grep 'HTTP/1.1 200 OK') ]]; then echo "true"; fi
+    if wget -S --spider "$1" 2>&1 | grep -q 'HTTP/1.1 200 OK'; then echo "true"; fi
 }
 
 install_joypad() {
@@ -790,67 +712,110 @@ get_raspberry_pi_model_number() {
     awk </proc/device-tree/model '{print $3}'
 }
 
-#
-# Compile SDL2 and some dependencies
-#
 compile_sdl2() {
-    if [ ! -e /usr/include/SDL2 ]; then
-        clear && echo "Compiling SDL2, please wait about 5 minutes..."
-        mkdir -p "$HOME"/sc && cd "$_" || exit
-        wget https://www.libsdl.org/release/SDL2-2.0.10.zip
-        unzip SDL2-2.0.10.zip && cd SDL2-2.0.10 || exit
-        ./autogen.sh
-        ./configure --disable-pulseaudio --disable-esd --disable-video-wayland --disable-video-opengl --host=arm-raspberry-linux-gnueabihf --prefix=/usr
-        make_with_all_cores
-        sudo make install
-        echo "Done!"
-    else
-        echo -e "\n· SDL2 already installed.\n"
+    local SDL2_RELEASES_URL="https://www.libsdl.org/release"
+    local SDL2_LATEST_FILENAME=$(curl -s "$SDL2_RELEASES_URL/?C=M;O=D" | grep -oE 'href="([^"#]+\.tar\.gz)"' | grep -v "devel" | cut -d'"' -f2 | sort -r | head -n1)
+    local CURRENT_SDL2_VERSION=$(sdl2-config --version)
+    local LATEST_VERSION_NUMBER=$(echo "$SDL2_LATEST_FILENAME" | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')
+    local CURRENT_SDL2_VERSION_WITH_NO_DOTS=$(echo "$CURRENT_SDL2_VERSION" | tr -d '.')
+    local LATEST_VERSION_NUMBER_WITH_NO_DOTS=$(echo "$LATEST_VERSION_NUMBER" | tr -d '.')
+
+    echo -e "Current SDL2 version: $CURRENT_SDL2_VERSION\n"
+    echo -e "Latest SDL2 version: $LATEST_VERSION_NUMBER\n"
+
+    if [[ $CURRENT_SDL2_VERSION_WITH_NO_DOTS -ge $LATEST_VERSION_NUMBER_WITH_NO_DOTS ]]; then
+        echo -e "Your SDL2 version is up to date. Skipping...\n"
+        return 0
     fi
+
+    read -p "Press [ENTER] to compile SDL2 from source code or CTRL+C to abort."
+
+    clear && echo "Compiling SDL2, please wait about 5 minutes..."
+    mkdir -p "$HOME"/sc && cd "$_" || exit
+    wget "https://www.libsdl.org/release/$SDL2_LATEST_FILENAME"
+    extract "$SDL2_LATEST_FILENAME"
+    cd "$(basename "$SDL2_LATEST_FILENAME" .tar.gz)" || exit
+    ./autogen.sh
+    if is_wayland_enabled; then
+        ./configure --disable-pulseaudio --disable-esd --disable-video-wayland --disable-video-opengl --host=arm-raspberry-linux-gnueabihf --prefix=/usr
+    else
+        ./configure --disable-pulseaudio --disable-esd --disable-video-opengl --host=arm-raspberry-linux-gnueabihf --prefix=/usr
+    fi
+    make_with_all_cores
+    sudo make install
+    echo "Done!. Now you have latest SDL2 version $LATEST_VERSION_NUMBER installed."
 }
 
 compile_sdl2_image() {
-    clear && echo "Compiling SDL2_image, please wait..."
-    cd "$HOME"/sc || exit
-    wget https://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.0.5.tar.gz
-    tar zxvf SDL2_image-2.0.5.tar.gz && cd SDL2_image-2.0.5 || exit 1
+    local SDL2_IMAGE_RELEASES_URL="https://www.libsdl.org/projects/SDL_image/release"
+    local SDL2_IMAGE_LATEST_FILENAME=$(curl -s "$SDL2_IMAGE_RELEASES_URL/?C=M;O=D" | grep -oE 'href="SDL2_image[^"#]+\.tar\.gz"' | grep -v "devel" | cut -d'"' -f2 | sort -r | head -n1)
+
+    install_packages_if_missing automake
+    clear && echo "Compiling SDL2 Image Lib, please wait..."
+    mkdir -p "$HOME"/sc && cd "$_" || exit
+    wget "$SDL2_IMAGE_RELEASES_URL/$SDL2_IMAGE_LATEST_FILENAME"
+    extract "$SDL2_IMAGE_LATEST_FILENAME"
+    cd "$(basename "$SDL2_IMAGE_LATEST_FILENAME" .tar.gz)" || exit
     ./autogen.sh
     ./configure --prefix=/usr
     make_with_all_cores
     sudo make install
+    rm -rf "$HOME/sc/$(basename "$SDL2_IMAGE_LATEST_FILENAME" .tar.gz)" "$SDL2_IMAGE_LATEST_FILENAME"
+    echo "Done!. Now you have latest SDL2 Image Lib installed."
 }
 
 compile_sdl2_mixer() {
-    clear && echo "Compiling SDL2_mixer, please wait..."
-    cd "$HOME"/sc || exit
-    wget https://www.libsdl.org/projects/SDL_mixer/release/SDL2_mixer-2.0.4.tar.gz
-    tar zxvf SDL2_mixer-2.0.4.tar.gz && cd SDL2_mixer-2.0.4 || exit 1
+    local SDL2_MIXER_RELEASES_URL="https://www.libsdl.org/projects/SDL_mixer/release"
+    local SDL2_MIXER_LATEST_FILENAME=$(curl -s "$SDL2_MIXER_RELEASES_URL/?C=M;O=D" | grep -oE 'href="SDL2_mixer[^"#]+\.tar\.gz"' | grep -v "devel" | cut -d'"' -f2 | sort -r | head -n1)
+
+    install_packages_if_missing automake
+    clear && echo "Compiling SDL2 Mixer Lib, please wait..."
+    mkdir -p "$HOME"/sc && cd "$_" || exit
+    wget "$SDL2_MIXER_RELEASES_URL/$SDL2_MIXER_LATEST_FILENAME"
+    extract "$SDL2_MIXER_LATEST_FILENAME"
+    cd "$(basename "$SDL2_MIXER_LATEST_FILENAME" .tar.gz)" || exit
     ./autogen.sh
     ./configure --prefix=/usr
     make_with_all_cores
     sudo make install
+    rm -rf "$HOME/sc/$(basename "$SDL2_MIXER_LATEST_FILENAME" .tar.gz)" "$SDL2_MIXER_LATEST_FILENAME"
+    echo "Done!. Now you have latest SDL2 Mixer Lib installed."
 }
 
 compile_sdl2_ttf() {
-    clear && echo "Compiling SDL2_ttf, please wait..."
-    cd "$HOME"/sc || exit
-    wget https://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-2.0.15.tar.gz
-    tar zxvf SDL2_ttf-2.0.15.tar.gz && cd SDL2_ttf-2.0.15 || exit 1
+    local SDL2_TTF_RELEASES_URL="https://www.libsdl.org/projects/SDL_ttf/release"
+    local SDL2_TTF_LATEST_FILENAME=$(curl -s "$SDL2_TTF_RELEASES_URL/?C=M;O=D" | grep -oE 'href="SDL2_ttf[^"#]+\.tar\.gz"' | grep -v "devel" | cut -d'"' -f2 | sort -r | head -n1)
+
+    install_packages_if_missing automake
+    clear && echo "Compiling SDL2 Mixer Lib, please wait..."
+    mkdir -p "$HOME"/sc && cd "$_" || exit
+    wget "$SDL2_TTF_RELEASES_URL/$SDL2_TTF_LATEST_FILENAME"
+    extract "$SDL2_TTF_LATEST_FILENAME"
+    cd "$(basename "$SDL2_TTF_LATEST_FILENAME" .tar.gz)" || exit
     ./autogen.sh
     ./configure --prefix=/usr
     make_with_all_cores
     sudo make install
+    rm -rf "$HOME/sc/$(basename "$SDL2_TTF_LATEST_FILENAME" .tar.gz)" "$SDL2_TTF_LATEST_FILENAME"
+    echo "Done!. Now you have latest SDL2 TTF Lib installed."
 }
 
 compile_sdl2_net() {
-    clear && echo "Compiling SDL2_net, please wait..."
-    cd "$HOME"/sc || exit
-    wget https://www.libsdl.org/projects/SDL_net/release/SDL2_net-2.0.1.tar.gz
-    tar zxvf SDL2_net-2.0.1.tar.gz && cd SDL2_net-2.0.1 || exit 1
+    local SDL2_NET_RELEASES_URL="https://www.libsdl.org/projects/SDL_net/release"
+    local SDL2_NET_LATEST_FILENAME=$(curl -s "$SDL2_NET_RELEASES_URL/?C=M;O=D" | grep -oE 'href="SDL2_net[^"#]+\.tar\.gz"' | grep -v "devel" | cut -d'"' -f2 | sort -r | head -n1)
+
+    install_packages_if_missing automake
+    clear && echo "Compiling SDL2 Mixer Lib, please wait..."
+    mkdir -p "$HOME"/sc && cd "$_" || exit
+    wget "$SDL2_NET_RELEASES_URL/$SDL2_NET_LATEST_FILENAME"
+    extract "$SDL2_NET_LATEST_FILENAME"
+    cd "$(basename "$SDL2_NET_LATEST_FILENAME" .tar.gz)" || exit
     ./autogen.sh
     ./configure --prefix=/usr
     make_with_all_cores
     sudo make install
+    rm -rf "$HOME/sc/$(basename "$SDL2_NET_LATEST_FILENAME" .tar.gz)" "$SDL2_NET_LATEST_FILENAME"
+    echo "Done!. You have SDL2 Net Lib installed."
 }
 
 #
@@ -1496,5 +1461,13 @@ build_glibc() {
 }
 
 clean_all() {
-    sudo apt update && sudo update-apt-xapian-index && sudo apt install -f && sudo apt install -y --fix-broken && sudo apt -y autoclean && sudo apt -y autoremove && sudo apt -y autopurge
+    sudo apt update && sudo apt install -f && sudo apt install -y --fix-broken && sudo apt -y autoclean && sudo apt -y autoremove && sudo apt -y autopurge
+}
+
+get_OS_version_codename() {
+    grep VERSION_CODENAME /etc/os-release | cut -d '=' -f 2
+}
+
+is_wayland_enabled() {
+    loginctl show-session "$(loginctl | grep $(whoami) | awk '{print $1}')" -p Type | grep -q wayland
 }
