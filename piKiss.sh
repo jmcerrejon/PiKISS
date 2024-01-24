@@ -475,7 +475,7 @@ smOthers() {
         Part "Check issues & fix SD corruptions"
         RPiPlay "An open-source implementation of an AirPlay mirroring server"
         Scrcpy "Display and control of Android devices connected on USB"
-        SDL2 "Compile/Install SDL2 + Libraries"
+        SDL2 "Compile SDL2 + Libraries"
         ShaderToy "Render over 100+ OpenGL ES 3.0 shaders"
         Synergy "Allow you to share keyboard and mouse to computers on LAN"
         Uninstall "Uninstall PiKISS :_("

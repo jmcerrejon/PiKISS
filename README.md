@@ -13,13 +13,13 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1102 hours**
+- **1112 hours**
 
 ## 💰 Total amount donated by users
 
 - $2048,07
 
-- I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu).
+- I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu), Kreal (krishenriksen.dk).
 
 - I want to thank my current patrons Josiah McCracken, **Bo Martin, Rodney Hester & specially James Carroll** for trusting me. ❤️
 
@@ -76,6 +76,14 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (24/01/24)
+
+· 👌 IMPROVE: Others > Fixes.
+
+· 👌 IMPROVE: Others > SDL2 (Compile the latest version on your OS).
+
+· 👌 IMPROVE: Minor fixes on helper.sh.
 
 ### (13/01/24)
 

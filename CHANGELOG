@@ -1,5 +1,13 @@
 # Changelog
 
+## (24/01/24)
+
+· 👌 IMPROVE: Others > Fixes.
+
+· 👌 IMPROVE: Others > SDL2 (Compile the latest version on your OS).
+
+· 👌 IMPROVE: Minor fixes on helper.sh.
+
 ## (13/01/24)
 
 · 👌 IMPROVE: Emulators > RetroArch (Add Shaders).
