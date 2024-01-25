@@ -235,7 +235,7 @@ smGames() {
 
 smEmulators() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Amiga, Box86/64, Flycast, DOSBox, Mame, mGBA, PS1, PS2, RetroArch, Redream, ScummVM, VICE"
+        show_dialog_only_32_bits "Amiga, Box86/64, Dolphin, Flycast, DOSBox, Mame, mGBA, PS1, PS2, RetroArch, Redream, ScummVM, VICE"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Emulators ]" --menu "Select emulator from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
@@ -244,7 +244,7 @@ smEmulators() {
         Amiga "Amiberry is the best Amiga emulator"
         Amstrad "Amstrad CPC with Caprice32"
         Box86-64 "Let's you run x86/64 Linux programs on non-x86/64 Linux"
-        Dolphin "Dolphin is a Wii & Gamecube emulator (EXPERIMENTAL)"
+        Dolphin "Dolphin is a Wii & Gamecube emulator"
         DOSBox "DOSBox-X is a DOS emulator with GUI"
         Flycast "Sega Dreamcast,Naomi,Naomi 2 and Atomiswave emu"
         Gba "Gameboy Advance (mgba)"
