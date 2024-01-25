@@ -13,9 +13,9 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1112 hours**
+- **1115 hours**
 
-## 💰 Total amount donated by users
+## 💰 Total amount donated by users & sponsors
 
 - $2048,07
 
@@ -26,6 +26,8 @@
 - Patrons support me in the past: _Jay Edwards, Tomás Delgado, Jeremy Palmer, cxgr, Willie D Kerner Jr, Matthew Michink, Mathew Gracie, Mike A. Torevell, David J Leto_.
 
 - Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy, Jonathan Hodges, Mattias True, Sara J Shireman Anderson, Anthony Skiver, Shawn Mullins, Michaël Bortolin, William Norris, Jacob Ehrman, Karsten Schulz_
+
+- [raspipc.es](https://www.raspipc.es/) ❤️
 
 ## 📣 Stay tuned
 
@@ -76,6 +78,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (26/01/24)
+
+· 👌 IMPROVE: Emulators > RetroArch (Add Shaders).
 
 ### (24/01/24)
 
@@ -170,14 +176,6 @@ curl -sSL https://git.io/JfAPE | bash
 ### (01/07/23)
 
 · 👌 IMPROVE: Games > Duke Nukem 3D (Eduke32) for 64 bits.
-
-### (17/06/23)
-
-· 👌 IMPROVE: Games > SMario 64 Plus for 64 bits by Morsgame with tons of improvements.
-
-### (03/06/23)
-
-· 📦 ADD: Games > Fallout 2.
 
 ...
 
