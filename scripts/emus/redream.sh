@@ -2,8 +2,8 @@
 #
 # Description : Redream Sega Dreamcast emulator
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.2 (24/Mar/22)
-#
+# Version     : 1.0.3 (01/Feb/24)
+# Tested      : Raspberry Pi 5
 # Website     : https://redream.io/
 #
 # shellcheck source=../helper.sh
@@ -12,7 +12,8 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 clear
 
 readonly INSTALL_DIR="$HOME/games"
-readonly BINARY_URL="https://misapuntesde.com/rpi_share/redream.universal-raspberry-linux-v1.5.0-1043-gd3a6df2.tar.gz"
+readonly BASE_URL="https://redream.io"
+readonly BINARY_FILE_URL=$(curl -s https://redream.io/download/ | grep -oE -m 1 'href="[^"]+universal-raspberry-linux[^"]+\.tar\.gz"' | sed 's/href="//;s/"//')
 readonly DATA_GAME_URL="http://volgarr.rkd.zone/VolgarrDC_2015-10-15.zip"
 
 runme() {
@@ -84,7 +85,7 @@ install_game() {
 
 install() {
     echo -e "\nInstalling, please wait..."
-    download_and_extract "$BINARY_URL" "$INSTALL_DIR"/redream
+    download_and_extract "${BASE_URL}${BINARY_FILE_URL}" "$INSTALL_DIR"/redream
     if ! is_userspace_64_bits; then
         fix_32_bits
     fi
@@ -99,6 +100,7 @@ echo "
 Sega Dreamcast emulator (Redream)
 =================================
 
+ · Install the latest version from its website.
  · Install path: $INSTALL_DIR/redream
  · Homebrew game included: Volgarr.
  · Compatibility Info: https://redream.io/compatibility
