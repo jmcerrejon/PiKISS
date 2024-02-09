@@ -737,9 +737,9 @@ compile_sdl2() {
     cd "$(basename "$SDL2_LATEST_FILENAME" .tar.gz)" || exit
     ./autogen.sh
     if is_wayland_enabled; then
-        ./configure --disable-pulseaudio --disable-esd --disable-video-wayland --disable-video-opengl --host=arm-raspberry-linux-gnueabihf --prefix=/usr
+        ./configure --disable-pulseaudio --disable-esd --disable-video-wayland --enable-video-opengl --host=arm-raspberry-linux-gnueabihf --prefix=/usr
     else
-        ./configure --disable-pulseaudio --disable-esd --disable-video-opengl --host=arm-raspberry-linux-gnueabihf --prefix=/usr
+        ./configure --disable-pulseaudio --disable-esd --enable-video-opengl --host=arm-raspberry-linux-gnueabihf --prefix=/usr
     fi
     make_with_all_cores
     sudo make install
