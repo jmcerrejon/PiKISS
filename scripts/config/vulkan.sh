@@ -2,7 +2,7 @@
 #
 # Description : Vulkan driver
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.8 (22/Dec/23)
+# Version     : 1.4.9 (10/Feb/24)
 # Tested      : Raspberry Pi 4-5
 #
 # Help        : https://ninja-build.org/manual.html#ref_pool
@@ -46,7 +46,7 @@ install_full_deps() {
         libdrm-dev libxshmfence-dev libxxf86vm-dev libwayland-dev \
         python3-mako wayland-protocols libwayland-egl-backend-dev \
         cmake libassimp-dev python3-pip
-        # x11proto-dri3-dev missing on Debian Bullseye
+    # x11proto-dri3-dev missing on Debian Bullseye
     if is_userspace_64_bits; then
         sudo apt install -y libclc-16-dev
     else
@@ -143,6 +143,7 @@ echo "
 Vulkan Mesa Drivers
 ===================
 
+· WARNING! Issue reported: If you can't see the desktop after reboot, you have to reinstall again entering ${INSTALL_DIR}/mesa_vulkan/build and run 'sudo ninja install'.
 · Support 32/64 bits.
 · This process can't be undone.
 · Make sure you have a backup of your data.
