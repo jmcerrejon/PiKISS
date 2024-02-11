@@ -130,7 +130,7 @@ smTweaks() {
 
 smGames() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Abbaye, Blake Stone, EDuke32, Fallout 2, GTA, GemRB, Quake I-II, SMario64, Serious Sam, OpenXCom"
+        show_dialog_only_32_bits "Abbaye, Blake Stone, DX-Rebirth, EDuke32, Fallout 2, GTA, GemRB, Quake I-II, SMario64, Serious Sam, OpenXCom"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Games ]" --menu "Select game from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
@@ -143,7 +143,7 @@ smGames() {
         BStone "Robert W. Stone III, AKA Blake Stone must eliminate Dr. Pyrus Goldfire"
         CaptainS "Save Seville from the evil Torrebruno"
         Doom_engine "Zendronum or Crispy engine to play Doom, Heretic, Hexen..."
-        Descent "Descent 1 & 2 Shareware Ed."
+        DX-Rebirth "Descent I/II improved engine"
         Dune2 "Dune 2 Legacy"
         Diablo "Take control of a lone hero battling to rid the world of Diablo"
         Diablo2 "Diablo 2 Lord of Destruction"
@@ -154,7 +154,7 @@ smGames() {
         HalfLife "Gordon Freeman must exit Black Mesa after it's invaded by aliens"
         Heroes2 "Free implementation of Heroes of Might and Magic II engine"
         Heroes3 "Open-source engine for Heroes of Might and Magic III"
-        Hermes "Jump'n' Run game with plenty of bad taste humour."
+        Hermes "Jump'n' Run game with plenty of bad taste humour"
         Hurrican "Jump and shoot game based on the Turrican game series"
         Morrowind "The Elder Scrolls III: Morrowind is an open-world RPG"
         OpenBor "OpenBOR is the open source continuation of Beats of Rage"
@@ -193,7 +193,7 @@ smGames() {
         BStone) ./scripts/games/bstone.sh ;;
         CaptainS) ./scripts/games/captains.sh ;;
         Doom_engine) ./scripts/games/cdoom.sh ;;
-        Descent) ./scripts/games/descent.sh ;;
+        DX-Rebirth) ./scripts/games/descent.sh ;;
         Dune2) ./scripts/games/dune2.sh ;;
         Diablo) ./scripts/games/diablo.sh ;;
         Diablo2) ./scripts/games/diablo2.sh ;;

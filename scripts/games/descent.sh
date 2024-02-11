@@ -1,41 +1,35 @@
 #!/bin/bash
 #
-# Description : Descent 1 & 2 thks to DXX-Rebirth v0.61.0 0.60.0-beta2-544-g427f45fdd703 compiled on 17/Sep/2019
+# Description : Descent 1 & 2
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.4 (17/APr/21)
-# Compatible  : Raspberry Pi 1-4 (tested on Raspberry Pi 4)
+# Version     : 1.1.0 (11/Feb/24)
+# Tested      : Raspberry Pi 5
 # TODO        : Add Full version using magic-air-copy-pikiss.txt
 #
 # HELP	      : https://github.com/dxx-rebirth/dxx-rebirth
-#				https://github.com/dxx-rebirth/dxx-rebirth/blob/master/INSTALL.markdown
+#               https://github.com/dxx-rebirth/dxx-rebirth/blob/master/INSTALL.markdown
+#               https://github.com/JeodC/PortMaster-Descent/tree/main/addons
 #
+# shellcheck source=../helper.sh
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES=(libphysfs1 libglu1-mesa)
-readonly PACKAGES_DEV=(libsdl1.2-dev libsdl-mixer1.2-dev libphysfs-dev libsdl2-image-dev scons libsdl2-net-dev)
-readonly SOURCE_CODE_URL="https://github.com/dxx-rebirth/dxx-rebirth"
-readonly D1X_SHARE_URL="https://www.dxx-rebirth.com/download/dxx/content/descent-pc-shareware.zip"
-readonly D2X_SHARE_URL="https://www.dxx-rebirth.com/download/dxx/content/descent2-pc-demo.zip"
+readonly PACKAGES_DEV=(libsdl1.2-dev libsdl-mixer1.2-dev libphysfs-dev libsdl2-image-dev scons libsdl2-net-dev libsdl-image1.2-dev)
 readonly DXX_URL="https://misapuntesde.com/rpi_share/dxx-rebirth.tar.gz"
-readonly D1X_HIGH_TEXTURE_URL="https://www.dxx-rebirth.com/download/dxx/res/d1xr-hires.dxa"
-readonly D1X_OGG_URL="https://www.dxx-rebirth.com/download/dxx/res/d1xr-sc55-music.dxa"
-readonly D2X_OGG_URL="https://www.dxx-rebirth.com/download/dxx/res/d2xr-sc55-music.dxa"
-readonly D1X_DATA="$HOME/.d1x-rebirth/Data"
-readonly D2X_DATA="$HOME/.d2x-rebirth/Data"
-#readonly INSTALL_DIR="/usr/games"
+readonly DXX_64_BIT_URL="https://misapuntesde.com/rpi_share/dxx-rebirth-0.60-rpi-aarm64.tar.gz"
+readonly DXX_DATA_DIRECTORY_URL="https://misapuntesde.com/rpi_share/descent12-hq-data.tar.gz"
+readonly SOURCE_CODE_URL="https://github.com/dxx-rebirth/dxx-rebirth"
 
 uninstall() {
     echo
     read -p "Do you want to uninstall Descent Rebirth (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
-        [[ -d $D1X_DATA ]] && rm -rf "$D1X_DATA" ~/.local/share/applications/d1x.desktop
-        [[ -d $D2X_DATA ]] && rm -rf "$D2X_DATA" ~/.local/share/applications/d2x.desktop
-        [[ -e $INSTALL_DIR/descent/d1x-rebirth ]] && sudo rm "$INSTALL_DIR/descent/d1x-rebirth"
-        [[ -e $INSTALL_DIR/descent/d2x-rebirth ]] && sudo rm "$INSTALL_DIR/descent/d2x-rebirth"
-        if [[ -e $INSTALL_DIR/descent/d1x-rebirth ]]; then
+        rm -rf ~/.local/share/applications/d1x.desktop ~/.local/share/applications/d2x.desktop ~/.d1x-rebirth ~/.d2x-rebirth
+        [[ -e $INSTALL_DIR/descent ]] && sudo rm -rf "$INSTALL_DIR/descent"
+        if [[ -e $INSTALL_DIR/descent ]]; then
             echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
             exit_message
         fi
@@ -45,18 +39,18 @@ uninstall() {
     exit_message
 }
 
-if [[ -e $INSTALL_DIR/descent/d1x-rebirth ]]; then
+if [[ -e $INSTALL_DIR/descent ]]; then
     echo "Warning!: Descent Rebirth already installed."
     uninstall
 fi
 
-generateIconsD1X() {
+generate_icon_d1x() {
     if [[ ! -e ~/.local/share/applications/d1x.desktop ]]; then
         cat <<EOF >~/.local/share/applications/d1x.desktop
 [Desktop Entry]
 Name=Descent 1
-Exec=${INSTALL_DIR}/descent/d1x-rebirth
-Icon=${INSTALL_DIR}/descent/descent.png
+Exec=${INSTALL_DIR}/descent/d1x-rebirth -hogdir ${INSTALL_DIR}/descent/data
+Icon=${INSTALL_DIR}/descent/d1x-rebirth.png
 Type=Application
 Comment=The game requires the player to navigate labyrinthine mines while fighting virus-infected robots.
 Categories=Game;ActionGame;
@@ -64,13 +58,13 @@ EOF
     fi
 }
 
-generateIconsD2X() {
+generate_icon_d2x() {
     if [[ ! -e ~/.local/share/applications/d2x.desktop ]]; then
         cat <<EOF >~/.local/share/applications/d2x.desktop
 [Desktop Entry]
 Name=Descent 2
-Exec=${INSTALL_DIR}/descent/d2x-rebirth
-Icon=${INSTALL_DIR}/descent/descent2.png
+Exec=${INSTALL_DIR}/descent/d2x-rebirth -hogdir ${INSTALL_DIR}/descent/data
+Icon=${INSTALL_DIR}/descent/d2x-rebirth.png
 Type=Application
 Comment=Complete 24 levels where different types of AI-controlled robots will try to destroy you.
 Categories=Game;ActionGame;
@@ -82,30 +76,28 @@ compile() {
     install_packages_if_missing "${PACKAGES_DEV[@]}"
     mkdir -p "$HOME/sc" && cd "$_" || exit 1
     git clone "$SOURCE_CODE_URL" descent && cd "$_" || exit 1
-    scons
-    # compress with tar -czvf ~/dxx-rebirth.tar.gz d1x-rebirth d2x-rebirth
+    echo -e "\nCompiling... Estimated ~5 minutes. Please wait...\n"
+    time nice scons -j"$(nproc)" raspberrypi=mesa sdl2=1 lto=1 sdlmixer=1 e_editor=1
     echo "Done!. Go to $HOME/sc/descent"
     exit_message
 }
 
 post_install() {
     # Some extra addons to improve the game experience ;)
-    clear && echo -e "\nInstalling HIGH textures quality pack...\n\nPlease wait...\n" && sudo wget -P "$D1X_DATA" $D1X_HIGH_TEXTURE_URL
-    echo -e "\n\nInstalling OGG Music for better experience...\n\n· All music was recorded with the Roland Sound Canvas SC-55 MIDI Module.\n\nPlease wait...\n" && sudo wget -P "$D1X_DATA" $D1X_OGG_URL && sudo wget -P "$D2X_DATA" $D2X_OGG_URL
-    # Cleaning da house
-    sudo rm "$INSTALL_DIR"/dxx-rebirth.tar.gz "$D1X_DATA"/descent-pc-shareware.zip "$D2X_DATA"/descent2-pc-demo.zip
+    echo -e "\nInstalling HIGH music/textures quality pack...\n\nPlease wait..."
+    download_and_extract "$DXX_DATA_DIRECTORY_URL" "$INSTALL_DIR/descent"
 }
 
 install() {
     install_packages_if_missing "${PACKAGES[@]}"
-    # Binaries
-    download_and_extract "$DXX_URL" "$INSTALL_DIR"
-    # Shareware demo datas
-    download_and_extract "$D1X_SHARE_URL" "$D1X_DATA"
-    download_and_extract "$D2X_SHARE_URL" "$D2X_DATA"
-    #post_install
-    generateIconsD1X
-    generateIconsD2X
+    if is_kernel_64_bits; then
+        download_and_extract "$DXX_64_BIT_URL" "$INSTALL_DIR"
+    else
+        download_and_extract "$DXX_URL" "$INSTALL_DIR"
+    fi
+    post_install
+    generate_icon_d1x
+    generate_icon_d2x
     echo -e "\nDone!. Type to play $INSTALL_DIR/descent/d1x-rebirth or $INSTALL_DIR/descent/d2x-rebirth or opening the Menu > Games > Descent 1 or 2."
     exit_message
 }
@@ -115,9 +107,9 @@ echo "
 Descent DXX-Rebirth
 ===================
 
-· Add High quality texture pack.
-· Add High quality sound pack.
-· This is using the shareware version. You are free to copy the full version inside $INSTALL_DIR/descent
+· Compiled & optimized using Link Time Optimization (LTO) for SDL2.
+· Add High quality texture & sound pack (Soundtrack in OGG format - SC-55 Version).
+· Using the shareware version. You are free to copy the full version inside $INSTALL_DIR/descent
 
 Installing, please wait...
 "
