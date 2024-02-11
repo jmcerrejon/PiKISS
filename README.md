@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1117 hours**
+- **1120 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (11/02/24)
+
+· 👌 IMPROVE: Games > DXX-Rebirth 0.60 (Descent).
 
 ### (01/02/24)
 
