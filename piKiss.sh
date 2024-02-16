@@ -247,7 +247,7 @@ smEmulators() {
         Dolphin "Dolphin is a Wii & Gamecube emulator"
         DOSBox "DOSBox-X is a DOS emulator with GUI"
         Flycast "Sega Dreamcast,Naomi,Naomi 2 and Atomiswave emu"
-        Gba "Gameboy Advance (mgba)"
+        mGBA "Gameboy Advance (mgba)"
         Genesis "Genesis Megadrive Emulator (picodrive)"
         Mednafen "Portable multi-system emulator (Mednafen)"
         Mame "MAME is a multi-system emulator"
@@ -277,7 +277,7 @@ smEmulators() {
         Dolphin) ./scripts/emus/dolphin.sh ;;
         Flycast) ./scripts/emus/flycast.sh ;;
         DOSBox) ./scripts/emus/msdos.sh ;;
-        Gba) ./scripts/emus/gba.sh ;;
+        mGBA) ./scripts/emus/gba.sh ;;
         Genesis) ./scripts/emus/genesis.sh ;;
         Mednafen) ./scripts/emus/mednafen.sh ;;
         Mame) ./scripts/emus/mame.sh ;;

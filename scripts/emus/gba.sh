@@ -3,11 +3,12 @@
 # Description : Gameboy Advance emulator mgba
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Contributor : Foxhound311
-# Version     : 1.6.0 (16/Nov/23)
+# Version     : 1.6.0 (16/Feb/24)
 # Tested      : Raspberry Pi 5
 # Repository  : https://github.com/mgba-emu/mgba.git
-# Help        : 32 bits fix compilation at https://github.com/mgba-emu/mgba/issues/1081
+# Help        : 32-bit fix compilation at https://github.com/mgba-emu/mgba/issues/1081
 #
+# shellcheck source=../helper.sh
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 clear
@@ -89,7 +90,7 @@ post_install() {
     ln -s "$INSTALL_DIR/mgba/lib/libmgba.so.0.11.0" "$INSTALL_DIR/mgba/lib/libmgba.so.0"
     ln -s "$INSTALL_DIR/mgba/lib/libmgba.so.0.11.0" "$INSTALL_DIR/mgba/lib/libmgba.so.0.11"
 
-    download_and_extract "$INSTALL_DIR/mgba" "$INSTALL_DIR/mgba/share/mgba/roms"
+    download_and_extract "$GAME_URL" "$INSTALL_DIR/mgba/share/mgba/roms"
 }
 
 install() {
