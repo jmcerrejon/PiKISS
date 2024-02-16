@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1120 hours**
+- **1121 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (17/02/24)
+
+· 👌 IMPROVE: Emulators > mGBA 0.10.3 (It supports Game Boy, Game Boy Color & Game Boy Advanced).
 
 ### (11/02/24)
 
