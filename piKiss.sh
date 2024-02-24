@@ -130,7 +130,7 @@ smTweaks() {
 
 smGames() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Abbaye, Blake Stone, DX-Rebirth, EDuke32, Fallout 2, GTA, GemRB, Quake I-II, SMario64, Serious Sam, OpenXCom"
+        show_dialog_only_32_bits "Abbaye, Blake Stone, DX-Rebirth, EDuke32, Fallout 2, GTA, GemRB, Quake I-II, RVGL (Re-Volt), SMario64, Serious Sam, OpenXCom"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Games ]" --menu "Select game from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
@@ -166,7 +166,7 @@ smGames() {
         Prince "port/conversion of the DOS game Prince of Persia"
         Quake "Enhanced clients for ID Software's Quake saga"
         ReturnC "The dark reich's closing in. The time to act is now"
-        Revolt "Re-Volt is a radio control car racing themed video game"
+        RVGL "Re-Volt is a radio control car racing themed video game"
         SWarrior "FPS developed by 3D Realms and released on 1997 by GT Interactive"
         SMario64 "Super Mario 64 EX native OpenGL ES"
         SMarioWar "The game centers on players fighting each other"
@@ -216,7 +216,7 @@ smGames() {
         Prince) ./scripts/games/princeofp.sh ;;
         Quake) ./scripts/games/quake.sh ;;
         ReturnC) ./scripts/games/rwolf.sh ;;
-        Revolt) ./scripts/games/revolt.sh ;;
+        RVGL) ./scripts/games/rvgl.sh ;;
         SWarrior) ./scripts/games/swarrior.sh ;;
         SMario64) ./scripts/games/smario64.sh ;;
         SMarioWar) ./scripts/games/smariowar.sh ;;
