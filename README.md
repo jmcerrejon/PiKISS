@@ -79,9 +79,13 @@ curl -sSL https://git.io/JfAPE | bash
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (24/02/24)
+
+· 👌 IMPROVE: Games > RVGL (AKA Re-Volt) v23.1030 for archhf & aarch64
+
 ### (17/02/24)
 
-· 👌 IMPROVE: Emulators > mGBA 0.10.3 (It supports Game Boy, Game Boy Color & Game Boy Advanced).
+· 👌 IMPROVE: Emulators > mGBA 0.11 (It supports Game Boy, Game Boy Color & Game Boy Advanced).
 
 ### (11/02/24)
 
