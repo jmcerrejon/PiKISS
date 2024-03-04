@@ -2,8 +2,8 @@
 #
 # Description : Fallout 1/2 Community Ed
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (03/Jun/23)
-# Compatible  : Raspberry Pi 4 (tested)
+# Version     : 1.0.1 (04/Mar/24)
+# Tested      : Raspberry Pi 5
 # TODO        : Fallout 1 support
 #
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
