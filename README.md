@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1121 hours**
+- **1124 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (5/03/24)
+
+· 👌 IMPROVE: Games > Fallout 2 Community Edition (aarch64)
 
 ### (24/02/24)
 
