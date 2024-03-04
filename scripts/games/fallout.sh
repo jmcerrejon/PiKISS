@@ -2,7 +2,7 @@
 #
 # Description : Fallout 1/2 Community Ed
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (04/Mar/24)
+# Version     : 1.0.2 (04/Mar/24)
 # Tested      : Raspberry Pi 5
 # TODO        : Fallout 1 support
 #
@@ -11,7 +11,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 INSTALL_DIR="$HOME/games"
-PACKAGES=()
+PACKAGES=(libstdc++6 libc6)
 PACKAGES_DEV=(cmake libsdl2-2.0-0 g++)
 BINARY_URL="https://misapuntesde.com/rpi_share/fallout2-ce-rpi-all.tar.gz"
 SOURCE_CODE_URL="https://github.com/alexbatalov/fallout2-ce"
