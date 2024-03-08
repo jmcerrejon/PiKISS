@@ -1420,7 +1420,7 @@ install_go() {
 }
 
 is_vulkan_installed() {
-    if [ "$(uname -m)" == 'armv7l' ]; then
+    if [ "$(getconf LONG_BIT)" == "64" ]; then
         if [ -f /usr/lib/aarch64-linux-gnu/libvulkan.so ]; then
             true
         else
