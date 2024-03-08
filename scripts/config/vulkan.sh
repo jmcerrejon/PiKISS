@@ -2,7 +2,7 @@
 #
 # Description : Vulkan driver
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.9 (10/Feb/24)
+# Version     : 1.5.0 (8/Mar/24)
 # Tested      : Raspberry Pi 4-5
 #
 # Help        : https://ninja-build.org/manual.html#ref_pool
@@ -16,14 +16,18 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="$HOME/mesa_vulkan"
 readonly SOURCE_CODE_URL="https://gitlab.freedesktop.org/mesa/mesa.git"
+readonly LIB_DRM_VERSION="2.4.120" # Get the latest version at https://dri.freedesktop.org/libdrm/?C=M;O=D
+readonly VULKAN_INSTALL_SCRIPT_URL="https://gist.githubusercontent.com/jmcerrejon/a08eca2bba3e5e23bda2b3f7d7506ab0/raw/267b4184fa0d6a0b5fc1c3655c84e059e065d621/reinstall-vulkan-driver.sh"
 PI_VERSION_NUMBER=$(get_pi_version_number)
-BRANCH_VERSION="mesa-23.3.1"
+BRANCH_VERSION="mesa-24.0.0"
 INPUT=/tmp/vulkan.$$
 
 install() {
-    echo -e "\nInstalling,...\n"
+    echo -e "\nInstalling...\n"
     cd "$INSTALL_DIR" || exit
-    sudo ninja -C build install
+    sudo ninja -C build install > /dev/null 2>&1
+    echo
+    add_reinstall_service
     echo
     glxinfo -B
     echo "Done."
@@ -81,7 +85,7 @@ install_vulkan_from_official_repository() {
 compile_and_install_libdrm() {
     local LIBDRM_URL
     local SOURCE_CODE_PATH
-    FILE_NAME="libdrm-2.4.119"
+    FILE_NAME="libdrm-$LIB_DRM_VERSION"
     LIBDRM_URL="https://dri.freedesktop.org/libdrm/$FILE_NAME.tar.xz"
     SOURCE_CODE_PATH="$HOME/sc"
 
@@ -90,7 +94,7 @@ compile_and_install_libdrm() {
     cd "$FILE_NAME" || exit
     [[ ! -d build ]] && mkdir build
     cd build || exit
-    meson setup -Dudev=true -Dvc4=auto -Dintel=disabled -Dvmwgfx=disabled -Dradeon=disabled -Damdgpu=disabled -Dnouveau=disabled -Dfreedreno=disabled -Dinstall-test-programs=true ..
+    meson setup --wipe -Dudev=true -Dvc4=auto -Dintel=disabled -Dvmwgfx=disabled -Dradeon=disabled -Damdgpu=disabled -Dnouveau=disabled -Dfreedreno=disabled -Dinstall-test-programs=true ..
     time ninja -C . -j"$(nproc)"
     sudo ninja install
     echo "Compiled & installed onto your system. Move on..."
@@ -115,6 +119,21 @@ compile() {
     echo -e "\nCompiling... \n"
     time ninja -C build -j"$(nproc)"
     install
+}
+
+function add_reinstall_service() {
+    local SCRIPT_PATH="$INSTALL_DIR/reinstall-vulkan-driver.sh"
+    local REINSTALL_VULKAN_DRIVER_HOOK="/etc/apt/apt.conf.d/99reinstall-vulkan-driver-hook"
+
+    echo -e "\nAdding service to re-install Vulkan driver on each apt upgrade/update..."
+    download_file "$VULKAN_INSTALL_SCRIPT_URL" "$INSTALL_DIR"
+    if [[ ! -f $SCRIPT_PATH ]]; then
+        echo "Error: Can't download the script to reinstall the Vulkan driver. Skippping process."
+        return 1
+    fi
+
+    chmod +x "$SCRIPT_PATH"
+    echo "DPkg::Post-Invoke {'if [ -x ${SCRIPT_PATH} ]; then ${SCRIPT_PATH}; fi';};" | sudo tee "$REINSTALL_VULKAN_DRIVER_HOOK" >/dev/null
 }
 
 menu_choose_branch() {
@@ -143,10 +162,12 @@ echo "
 Vulkan Mesa Drivers
 ===================
 
-· WARNING! Issue reported: If you can't see the desktop after reboot, you have to reinstall again entering ${INSTALL_DIR}/mesa_vulkan/build and run 'sudo ninja install'.
+WARNING! Issue reported: If you can't see the desktop after apt upgrade/update, you have to reinstall the driver again, so: cd $HOME/mesa_vulkan/build && sudo ninja install.
+THIS script installs for you a service to re-install the driver on each apt upgrade/update as a temporal solution.
+
 · Support 32/64 bits.
 · This process can't be undone.
-· Make sure you have a backup of your data.
+· Make sure you backup your data.
 · This script installs/compiles libdrm & Vulkan Mesa Driver on your OS.
 · Estimated compilation time on Raspberry Pi 4 ~19 min & Pi 5 ~7 min over USB/SSD drive (Not overclocked).
 "
