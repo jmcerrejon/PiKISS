@@ -130,7 +130,7 @@ smTweaks() {
 
 smGames() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Abbaye, Blake Stone, DX-Rebirth, EDuke32, Fallout 2, GTA, GemRB, Quake I-II, RVGL (Re-Volt), SMario64, Serious Sam, OpenXCom"
+        show_dialog_only_32_bits "Abbaye, Blake Stone, DX-Rebirth, EDuke32, Fallout 2, GTA, GemRB, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, OpenXCom"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Games ]" --menu "Select game from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
@@ -235,7 +235,7 @@ smGames() {
 
 smEmulators() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Amiga, Box86/64, Dolphin, Flycast, DOSBox, Mame, mGBA, PS1, PS2, RetroArch, Redream, ScummVM, VICE"
+        show_dialog_only_32_bits "Amiga, Box86/64, Dolphin, Flycast, DOSBox, Mame, mGBA, PS1, PS2, RetroArch, Redream, ScummVM, USP (Spectrum), VICE"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Emulators ]" --menu "Select emulator from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
@@ -263,7 +263,7 @@ smEmulators() {
         ScummVM "Allow gamers to play point-and-click adventure games"
         Snes "SNES Emulator Snes9X or Bsnes"
         VICE "Commodore 64 emulator"
-        ZX-Spectrum "Speccy is a ZX-Spectrum emulator"
+        USP "Speccy (USP) is a ZX-Spectrum emulator"
     )
 
     choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
@@ -292,8 +292,8 @@ smEmulators() {
         Redream) ./scripts/emus/redream.sh ;;
         ScummVM) ./scripts/emus/scummvm.sh ;;
         Snes) ./scripts/emus/snes.sh ;;
+        USP) ./scripts/emus/speccy.sh ;;
         VICE) ./scripts/emus/commodore.sh ;;
-        ZX-Spectrum) ./scripts/emus/speccy.sh ;;
         esac
     done
 }
@@ -508,13 +508,13 @@ smOthers() {
 }
 
 show_dialog_only_32_bits() {
-    local MESSAGE="This section has partial 64 Bits support.\nScripts availables: $1."
+    local MESSAGE="This section has partial 64-Bit support.\nScripts availables: $1."
 
     if [[ -z "$1" ]]; then
         MESSAGE='Apologies!. PiKISS only works on 32 Bits OS.\n64 Bits support in progress...'
     fi
 
-    dialog --title "[ 64 BITS OS DETECTED! ]" --msgbox "$MESSAGE" 8 52
+    dialog --title "[ 64BIT OS DETECTED! ]" --msgbox "$MESSAGE" 10 52
 }
 
 #

@@ -2,8 +2,8 @@
 #
 # Description : Quake I, ][, ]I[
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.4.3 (5/Nov/22)
-# Compatible  : Raspberry Pi 4 (tested)
+# Version     : 1.5.1 (8/Mar/24)
+# Tested      : Raspberry Pi 5
 #
 # Help 		  : Quake 1: | https://godmodeuser.com/p/8#40
 #               QuakeServer: https://www.recantha.co.uk/blog/?p=9962
@@ -11,26 +11,29 @@
 #               https://swissmacuser.ch/how-you-want-to-run-quake-iii-arena-in-2018-with-high-definition-graphics-120-fps-on-5k-resolution/
 #               https://pimylifeup.com/raspberry-pi-quake-3/
 #
+# shellcheck source=../helper.sh
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
-readonly Q1_VERSION="0.95.0"
-readonly Q1_BINARY_URL="https://misapuntesde.com/rpi_share/quakespasm-${Q1_VERSION}-rpi4-bin.tar.gz"
+readonly Q1_VERSION="0.96.1"
+readonly Q1_PACKAGES=(libogg0 libvorbis0a)
+readonly Q1_PACKAGES_DEV=(libsdl2-dev libvorbis-dev libmad0-dev)
+readonly Q1_VK_PACKAGES_DEV=(meson glslang-tools spirv-tools libsdl2-dev libvulkan-dev libvorbis-dev libmad0-dev libx11-xcb-dev)
+readonly Q1_BINARY_URL="https://misapuntesde.com/rpi_share/quakespasm-${Q1_VERSION}.tar.gz"
 readonly Q1_SOUNDTRACK_URL="https://www.quaddicted.com/files/music/quake_campaign_soundtrack.zip"
 readonly Q1_SOURCE_CODE_1_URL="https://sourceforge.net/projects/quakespasm/files/Source/quakespasm-${Q1_VERSION}.tar.gz/download"
-readonly Q1_SOURCE_CODE_2_VK_URL="https://github.com/Novum/vkQuake"
-readonly Q1_PACKAGES=(libogg0 libvorbis0a)
+readonly Q1_SOURCE_CODE_2_VK_URL="https://github.com/vsonnier/vkQuake-vso"
 readonly Q2_CONFIG_DIR="$HOME/.yq2"
 readonly Q2_BINARY_URL="https://misapuntesde.com/rpi_share/yquake2_bin_arm.tar.gz"
-readonly Q2_BINARY_AARCH64_URL="https://misapuntesde.com/rpi_share/yquake2-bin-rpi-aarch64.tar.gz"
+readonly Q2_BINARY_AARCH64_URL="https://misapuntesde.com/rpi_share/yquake2-rpi-aarch64.tar.gz"
 readonly Q2_SOURCE_CODE_URL="https://github.com/yquake2/yquake2.git"
 readonly Q2_OGG_URL="https://misapuntesde.com/rpi_share/q2_ogg.zip"
 readonly Q2_HIGH_TEXTURE_PAK_URL="https://deponie.yamagi.org/quake2/texturepack/textures.zip"
 readonly Q2_HIGH_TEXTURE_MODELS_URL="https://deponie.yamagi.org/quake2/texturepack/models.zip"
 readonly Q3_PACKAGES_DEV=(libsdl2-dev libxxf86dga-dev libcurl4-openssl-dev)
-readonly Q3_BINARY_URL="https://misapuntesde.com/rpi_share/quake3-1.32-rpi.tar.gz"
+readonly Q3_BINARY_URL="https://misapuntesde.com/rpi_share/quake3-rpi.tar.gz"
 readonly Q3_SOURCE_CODE_URL="https://github.com/ec-/Quake3e.git"
 readonly VAR_DATA_NAME_1="QUAKE_1"
 readonly VAR_DATA_NAME_2="QUAKE_2"
@@ -96,32 +99,35 @@ q1_install_binary() {
 
 q1_opengl_compile() {
     echo -e "\nInstalling Dependencies..."
-    sudo apt install -y libsdl2-dev libvorbis-dev libmad0-dev
+    install_packages_if_missing "${Q1_PACKAGES_DEV[@]}"
     mkdir -p "$HOME"/sc && cd "$_" || exit 1
-    download_and_extract "$Q1_SOURCE_CODE_1_URL" "$HOME"/sc
-    cd "$HOME"/sc/quakespasm-${Q1_VERSION}/Quake || exit 1
+    wget -O quakespasm.tar.gz "$Q1_SOURCE_CODE_1_URL" && tar -xzf quakespasm.tar.gz && rm quakespasm.tar.gz
+    cd "$HOME/sc/quakespasm-${Q1_VERSION}/Quake" || exit 1
     make_with_all_cores USE_SDL2=1
-    echo -e "\nDone!. "
+    echo -e "\nDone!. Check at $HOME/sc/quakespasm-0.96.1/Quake/quakespasm"
+    exit_message
 }
 
 q1_vulkan_compile() {
+    # FIX: It fails due Mesa Driver issues. Check out: https://github.com/Novum/vkQuake/issues/616
     echo -e "\nInstalling Dependencies..."
-    sudo apt install -y make gcc libsdl2-dev libvulkan-dev libvorbis-dev libmad0-dev
+    install_packages_if_missing "${Q1_VK_PACKAGES_DEV[@]}"
     mkdir -p "$HOME"/sc && cd "$_" || exit 1
     git clone "$Q1_SOURCE_CODE_2_VK_URL"
-    cd "$HOME"/sc/vkQuake/Quake || exit 1
-    make_with_all_cores USE_SDL2=1
-    echo -e "\nDone!. "
+    cd "$HOME"/sc/vkQuake-vso/Quake || exit 1
+    time meson build && ninja -C build
+    echo -e "\nDone!. Check at $HOME/sc/vkQuake-vso/build/vkquake"
+    exit_message
 }
 
 q1_soundtrack_download() {
-    if [[ ! -d "$HOME"/games/quake/id1 ]]; then
-        return 0
+    if [[ ! -d $INSTALL_DIR/quake/id1 ]]; then
+        mkdir -p "$INSTALL_DIR/quake/id1"
     fi
     echo -e "\nInstalling sound tracks..."
     download_and_extract "$Q1_SOUNDTRACK_URL" /tmp
-    mv /tmp/quake_campaign_soundtrack/id1/music "$HOME"/games/quake/id1
-    mv /tmp/quake_campaign_soundtrack/id1/tracklist.cfg "$HOME"/games/quake/id1
+    mv /tmp/quake_campaign_soundtrack/id1/music "$INSTALL_DIR"/quake/id1
+    mv /tmp/quake_campaign_soundtrack/id1/tracklist.cfg "$INSTALL_DIR"/quake/id1
 }
 
 q1_magic_air_copy() {
@@ -312,12 +318,21 @@ q3_check_if_installed() {
 }
 
 q3_generate_icon() {
+    if [ "$(getconf LONG_BIT)" == "64" ]; then
+        BINARY_URL="quake3e.aarch64"
+    else
+        if is_vulkan_installed; then
+            BINARY_URL="quake3e-vulkan"
+        else
+            BINARY_URL="quake3e-gl"
+        fi
+    fi
     echo -e "\nGenerating icon..."
     if [[ ! -e ~/.local/share/applications/quake3.desktop ]]; then
         cat <<EOF >~/.local/share/applications/quake3.desktop
 [Desktop Entry]
 Name=Quake ]I[
-Exec=${INSTALL_DIR}/quake3/quake3e.sh
+Exec=${INSTALL_DIR}/quake3/${BINARY_URL}
 Icon=${INSTALL_DIR}/quake3/icon.png
 Path=${INSTALL_DIR}/quake3/
 Type=Application
