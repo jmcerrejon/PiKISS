@@ -2,16 +2,17 @@
 #
 # Description : MAME
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 2.0.6 (16/Sep/23)
-# Compatible  : Raspberry Pi 4
+# Version     : 2.0.7 (9/Mar/24)
+# Tested      : Raspberry Pi 5
 # Source      : https://stickfreaks.com/mame/
 #
+# shellcheck source=../helper.sh
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 clear
 
 readonly INSTALL_DIR="$HOME/games"
-readonly MAME_MIN_VERSION="259"
+readonly MAME_MIN_VERSION="263"
 readonly BINARY_URL="https://stickfreaks.com/mame/mame_0.${MAME_MIN_VERSION}_armhf_gcc10.7z"
 readonly BINARY_64_BITS_URL="https://stickfreaks.com/mame/mame_0.${MAME_MIN_VERSION}_aarch64_gcc10.7z"
 readonly BINARY_BUSTER_URL="https://stickfreaks.com/mame/mame_0.${MAME_MIN_VERSION}_rpi2b_gcc8.7z"
@@ -82,6 +83,7 @@ install() {
     exit_message
 }
 
+install_script_message
 echo "
 MAME 0.${MAME_MIN_VERSION}
 ==========
