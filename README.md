@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1124 hours**
+- **1129 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -79,13 +79,29 @@ curl -sSL https://git.io/JfAPE | bash
 
 ### [ ChangeLog (dd/mm/yy)]
 
-### (5/03/24)
+### (08/03/24)
 
-· 👌 IMPROVE: Games > Fallout 2 Community Edition (aarch64)
+· 👌 IMPROVE: Config > Vulkan 24.0.0 & libdrm-2.4.120.
+
+· 👌 IMPROVE: Games > Quake: Quakespasm (Quake I) v0.96.1 for aarch64.
+
+· 👌 IMPROVE: Games > Quake: Latest Quake 2 with Vulkan support.Quake 3 now with aarch64 support.
+
+· 👌 IMPROVE: Games > Quake: Quake 3 now with aarch64 support.
+
+· 👌 IMPROVE: Emulators > M.A.M.E. v0.263.
+
+### (06/03/24)
+
+· 👌 IMPROVE: Emulators > Unreal Speccy Emulator (ZX Spectrum) for armhf & aarch64.
+
+### (05/03/24)
+
+· 👌 IMPROVE: Games > Fallout 2 Community Edition (aarch64).
 
 ### (24/02/24)
 
-· 👌 IMPROVE: Games > RVGL (AKA Re-Volt) v23.1030 for archhf & aarch64
+· 👌 IMPROVE: Games > RVGL (AKA Re-Volt) v23.1030 for archhf & aarch64.
 
 ### (17/02/24)
 
@@ -164,38 +180,6 @@ curl -sSL https://git.io/JfAPE | bash
 · 🐛 FIX: Tweaks > Others.
 
 · ❌ REMOVE: Tweaks > autologin.
-
-### (30/09/23)
-
-· 👌 IMPROVE: Config > Vulkan 23.2.1.
-
-· 👌 IMPROVE: Others > GL4ES (Thanks to [Dorin Cretu](https://github.com/cretudorin)).
-
-· 👌 IMPROVE: Tweaks > Others (Option to increase performance).
-
-### (16/09/23)
-
-· 👌 IMPROVE: Merge some improvements thanks to some collaborators.
-
-· 👌 IMPROVE: Emulators > MAME version (2.58)
-
-### (07/08/23)
-
-· 👌 IMPROVE: Games > GemRB (AKA Baldur's Gate Game Engine) 0.92 for 64 bits.
-
-· 👌 IMPROVE: Replace libpng12-0 on some scripts for libpng16-16.
-
-### (22/07/23)
-
-· 📦 ADD: Internet > nChat is Telegram/WhatsApp from Terminal for 64 bits.
-
-· 👌 IMPROVE: Emulators > RetroArch Update cores & 1.16.0-1 for 32/64 bits.
-
-· ❌ REMOVE: Internet > WhatsApp Cli (not working anymore).
-
-### (01/07/23)
-
-· 👌 IMPROVE: Games > Duke Nukem 3D (Eduke32) for 64 bits.
 
 ...
 
