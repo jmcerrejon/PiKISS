@@ -2,23 +2,25 @@
 #
 # Description : Scrcpy
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.0 (20/Mar/23)
-# TODO        : https://github.com/srevinsaju/guiscrcpy
+# Version     : 1.2.1 (15/Mar/24)
 #
+# shellcheck source=../helper.sh
 . ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-readonly VERSION="2.0"
+readonly VERSION="2.4"
 readonly INSTALL_DIR="$HOME/apps"
 readonly PACKAGES=(adb ffmpeg libsdl2-2.0-0 libusb-1.0-0)
 readonly PACKAGES_DEV=(ffmpeg libsdl2-2.0-0 adb wget gcc git pkg-config meson ninja-build libsdl2-dev libavcodec-dev libavdevice-dev libavformat-dev libavutil-dev libswresample-dev libusb-1.0-0 libusb-1.0-0-dev)
-readonly BINARY_URL="https://misapuntesde.com/rpi_share/scrcpy-$VERSION.tar.gz"
+readonly BINARY_URL="https://misapuntesde.com/rpi_share/scrcpy-$VERSION-aarch64.tar.gz"
+
 readonly PREBUILD_SERVER_URL="https://github.com/Genymobile/scrcpy/releases/download/v$VERSION/scrcpy-server-v$VERSION"
+https://github.com/Genymobile/scrcpy/releases/download/v2.4/scrcpy-server-v2.4
 readonly SOURCE_CODE_URL="https://github.com/Genymobile/scrcpy"
 
 remove_files() {
-    sudo rm -rf "$INSTALL_DIR"/scrcpy /usr/local/share/scrcpy ~/.local/share/applications/scrcpy.desktop /usr/local/share/scrcpy/scrcpy-server
+    sudo rm -rf "$INSTALL_DIR"/scrcpy ~/.local/share/applications/scrcpy.desktop /usr/local/share/scrcpy/scrcpy-server
 }
 
 uninstall() {
@@ -65,6 +67,7 @@ compile() {
     mkdir -p ~/sc && cd "$_" || exit 1
     git clone "$SOURCE_CODE_URL" scrcpy && cd "$_" || exit 1
     ./install_release.sh
+    exit_message
 }
 
 install() {
@@ -78,7 +81,7 @@ install() {
     sudo mv "$INSTALL_DIR/scrcpy/scrcpy-server-v$VERSION" /usr/local/share/scrcpy/scrcpy-server
     chmod +x /usr/local/share/scrcpy/scrcpy-server
     generate_icon
-    echo -e "\nDone. Type $INSTALL_DIR/scrcpy/android.sh or go to Menu > System Tools > Scrcpy."
+    echo -e "\nDone. Type $INSTALL_DIR/scrcpy/android.sh or go to Menu > System Tools > Scrcpy. Plug your Android device BEFORE start scrcpy."
     exit_message
 }
 
