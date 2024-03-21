@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1133 hours**
+- **1134 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (21/03/24)
+
+· 🐛 FIX: Config > Vulkan driver.
 
 ### (15/03/24)
 

@@ -1,5 +1,9 @@
 # Changelog (dd/mm/yy)
 
+## (21/03/24)
+
+· 🐛 FIX: Config > Vulkan driver.
+
 ## (15/03/24)
 
 · 👌 IMPROVE: Others > Scrcopy v2.4 with Android 15 support.
