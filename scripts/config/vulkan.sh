@@ -2,7 +2,7 @@
 #
 # Description : Vulkan driver
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.5.0 (8/Mar/24)
+# Version     : 1.5.1 (21/Mar/24)
 # Tested      : Raspberry Pi 4-5
 #
 # Help        : https://ninja-build.org/manual.html#ref_pool
@@ -17,7 +17,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 readonly INSTALL_DIR="$HOME/mesa_vulkan"
 readonly SOURCE_CODE_URL="https://gitlab.freedesktop.org/mesa/mesa.git"
 readonly LIB_DRM_VERSION="2.4.120" # Get the latest version at https://dri.freedesktop.org/libdrm/?C=M;O=D
-readonly VULKAN_INSTALL_SCRIPT_URL="https://gist.githubusercontent.com/jmcerrejon/a08eca2bba3e5e23bda2b3f7d7506ab0/raw/267b4184fa0d6a0b5fc1c3655c84e059e065d621/reinstall-vulkan-driver.sh"
+readonly VULKAN_INSTALL_SCRIPT_URL="https://gist.githubusercontent.com/jmcerrejon/a08eca2bba3e5e23bda2b3f7d7506ab0/raw/11aad2190e1244821571788c4b143c6970f476e0/reinstall-vulkan-driver.sh"
 PI_VERSION_NUMBER=$(get_pi_version_number)
 BRANCH_VERSION="mesa-24.0.0"
 INPUT=/tmp/vulkan.$$
@@ -141,8 +141,8 @@ menu_choose_branch() {
         dialog --clear \
             --title "[ Vulkan Branch ]" \
             --menu "Select from the list:" 11 100 3 \
-            repo "(Quicker) Not latest but stable from official repository." \
-            stable "(Recommended) Latest stable branch working ${BRANCH_VERSION}." \
+            repo "(Recommended) Not latest but stable from official repository." \
+            stable "(Safe) Latest stable branch working ${BRANCH_VERSION}." \
             main "(Latest) NOT stable at all. Install at your own risk." \
             Exit "Exit" 2>"${INPUT}"
 
