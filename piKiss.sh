@@ -334,7 +334,7 @@ smConfigure() {
 
     options=(
         Back "Back to main menu"
-        Vulkan "Compile/update Vulkan Mesa driver"
+        Vulkan "Install Vulkan Mesa driver"
         SSIDCfg "Configure SSID (WPA/WPA2 with PSK)"
         Joypad "Configure WII, XBox360 controller"
         Backup "Simple backup dir to run daily"
