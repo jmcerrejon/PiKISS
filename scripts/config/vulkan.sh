@@ -2,7 +2,7 @@
 #
 # Description : Vulkan driver
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.5.1 (21/Mar/24)
+# Version     : 1.5.2 (28/Mar/24)
 # Tested      : Raspberry Pi 4-5
 #
 # Help        : https://ninja-build.org/manual.html#ref_pool
@@ -22,12 +22,17 @@ PI_VERSION_NUMBER=$(get_pi_version_number)
 BRANCH_VERSION="mesa-24.0.0"
 INPUT=/tmp/vulkan.$$
 
+if [[ -f /etc/apt/apt.conf.d/99reinstall-vulkan-driver-hook ]];then
+    echo "Removing service to re-install Vulkan driver on each apt upgrade/update..."
+    sudo rm /etc/apt/apt.conf.d/99reinstall-vulkan-driver-hook
+fi
+
 install() {
     echo -e "\nInstalling...\n"
     cd "$INSTALL_DIR" || exit
     sudo ninja -C build install > /dev/null 2>&1
     echo
-    add_reinstall_service
+    # add_reinstall_service
     echo
     glxinfo -B
     echo "Done."
@@ -104,6 +109,11 @@ compile() {
     local EXTRA_PARAM
     EXTRA_PARAM="-mcpu=cortex-a72 -mfpu=neon-fp-armv8"
 
+    read -p "WARNING!!. This option could BREAK your OS. Make sure you have a backup. Continue? (Y/n)" response
+    if [[ $response =~ [nN] ]]; then
+        exit_message
+    fi
+
     [[ -d $INSTALL_DIR ]] && rm -rf "$INSTALL_DIR"
     install_full_deps
     compile_and_install_libdrm
@@ -142,7 +152,7 @@ menu_choose_branch() {
             --title "[ Vulkan Branch ]" \
             --menu "Select from the list:" 11 100 3 \
             repo "(Recommended) Not latest but stable from official repository." \
-            stable "(Safe) Latest stable branch working ${BRANCH_VERSION}." \
+            stable "Stable branch ${BRANCH_VERSION}. Install at your own risk." \
             main "(Latest) NOT stable at all. Install at your own risk." \
             Exit "Exit" 2>"${INPUT}"
 

@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1134 hours**
+- **1136 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -79,7 +79,7 @@ curl -sSL https://git.io/JfAPE | bash
 
 ### [ ChangeLog (dd/mm/yy)]
 
-### (21/03/24)
+### (28/03/24)
 
 · 🐛 FIX: Config > Vulkan driver.
 
