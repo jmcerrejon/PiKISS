@@ -130,7 +130,7 @@ smTweaks() {
 
 smGames() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Abbaye, Blake Stone, DX-Rebirth, EDuke32, Fallout 2, GTA, GemRB, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, OpenXCom"
+        show_dialog_only_32_bits "Abbaye, Blake Stone, DX-Rebirth, EDuke32, Fallout 2, GTA, GemRB, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, OpenXCom, Unreal Tournament"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Games ]" --menu "Select game from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
@@ -177,6 +177,7 @@ smGames() {
         StarCraft "Expansion pack for the real-time strategy video game StarCraft"
         StepMania "StepMania is a free dance and rhythm game"
         Temptations "Platform game made exclusively for MSX computers"
+        UT99 "Unreal Tournament 99 is a fps using Unreal Engine"
         VVVVVV "Minimalist platformer: instead of jumping, you need to reverse gravity"
         Xump "Xump: Simple multi-platform puzzler"
     )
@@ -227,6 +228,7 @@ smGames() {
         StarCraft) ./scripts/games/starcraft.sh ;;
         StepMania) ./scripts/games/stepmania.sh ;;
         Temptations) ./scripts/games/temptations.sh ;;
+        UT99) ./scripts/games/unrealt.sh ;;
         VVVVVV) ./scripts/games/vvvvvv.sh ;;
         Xump) ./scripts/games/xump.sh ;;
         esac
