@@ -3,7 +3,7 @@
 # Description : Gameboy Advance emulator mgba
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Contributor : Foxhound311
-# Version     : 1.6.0 (16/Feb/24)
+# Version     : 1.6.1 (7/Apr/24)
 # Tested      : Raspberry Pi 5
 # Repository  : https://github.com/mgba-emu/mgba.git
 # Help        : 32-bit fix compilation at https://github.com/mgba-emu/mgba/issues/1081
@@ -66,6 +66,7 @@ generate_icon() {
 Name=mGBA Game Boy Advance Emulator
 Exec=${INSTALL_DIR}/mgba/mgba-qt
 Icon=${INSTALL_DIR}/mgba/share/icons/hicolor/128x128/apps/io.mgba.mGBA.png
+Path=${INSTALL_DIR}/mgba
 Type=Application
 Comment=mGBA is an emulator for running Game Boy Advance games. It aims to be faster and more accurate than many existing Game Boy Advance emulators
 Categories=Game;Emulator;
@@ -87,10 +88,11 @@ compile() {
 
 post_install() {
     echo -e "\nLinking libraries..."
-    ln -s "$INSTALL_DIR/mgba/lib/libmgba.so.0.11.0" "$INSTALL_DIR/mgba/lib/libmgba.so.0"
-    ln -s "$INSTALL_DIR/mgba/lib/libmgba.so.0.11.0" "$INSTALL_DIR/mgba/lib/libmgba.so.0.11"
+    ln -s "$INSTALL_DIR/mgba/lib/libmgba.so.0.11.0" "$INSTALL_DIR/mgba/libmgba.so.0"
+    ln -s "$INSTALL_DIR/mgba/lib/libmgba.so.0.11.0" "$INSTALL_DIR/mgba/libmgba.so.0.11"
 
     download_and_extract "$GAME_URL" "$INSTALL_DIR/mgba/share/mgba/roms"
+    echo -e "\nGame installed at: $INSTALL_DIR/mgba/share/mgba/roms"
 }
 
 install() {
