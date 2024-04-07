@@ -5,3 +5,4 @@ res/additional_files.txt
 .DS_Store
 test.sh
 run.sh
+test/
