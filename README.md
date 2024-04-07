@@ -17,7 +17,7 @@
 
 ## 💰 Total amount donated by users & sponsors
 
-- $2048,07
+- $2056,07
 
 - I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu), Kreal (krishenriksen.dk).
 
@@ -25,7 +25,7 @@
 
 - Patrons support me in the past: _Jay Edwards, Tomás Delgado, Jeremy Palmer, cxgr, Willie D Kerner Jr, Matthew Michink, Mathew Gracie, Mike A. Torevell, David J Leto, Josiah McCracken._
 
-- Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy, Jonathan Hodges, Mattias True, Sara J Shireman Anderson, Anthony Skiver, Shawn Mullins, Michaël Bortolin, William Norris, Jacob Ehrman, Karsten Schulz._
+- Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy, Jonathan Hodges, Mattias True, Sara J Shireman Anderson, Anthony Skiver, Shawn Mullins, Michaël Bortolin, William Norris, Jacob Ehrman, Karsten Schulz, Robert Napier._
 
 - [raspipc.es](https://www.raspipc.es/) ❤️
 
@@ -78,6 +78,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (07/04/24)
+
+· 🐛 FIX: Emulatos > mGBA.
 
 ### (02/04/24)
 
