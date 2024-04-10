@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1141 hours**
+- **1145 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (10/04/24)
+
+· 📦 ADD: Devs > SQLiteStudio.
 
 ### (07/04/24)
 
@@ -180,23 +184,6 @@ curl -sSL https://git.io/JfAPE | bash
 · 🐛 FIX: Games > Duke Nukem 3D 32-bit.
 
 · 🐛 FIX: Devs > VSCode.
-
-### (11/11/23)
-
-· 👌 IMPROVE: Refactor code adapted to RPi 5 on some scripts.
-
-· 👌 IMPROVE: Others > Update bootloader compatible with Raspberry Pi 5.
-
-### (15/10/23)
-
-· 👌 IMPROVE: Emulators > AetherSX2 (PS2) to v1.5 for 32-bit & 64-bit.
-
-· 👌 IMPROVE: Adapt some scripts for Raspberry Pi Bookworm.
-
-· 🐛 FIX: Tweaks > Others.
-
-· ❌ REMOVE: Tweaks > autologin.
-
 ...
 
 To see the full list of changes, read the [CHANGELOG](./CHANGELOG)
