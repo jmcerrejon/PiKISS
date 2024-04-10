@@ -444,10 +444,11 @@ smDevs() {
 
     options=(
         Back "Back to main menu"
-        Docker "Docker use OS-level virtualization to deliver software in packages called containers"
-        QT5 "Free and open-source widget toolkit for creating graphical UI cross-platform applications"
+        Docker "Docker use OS-level virtualization to deliver containers"
+        QT5 "Free and open-source toolkit for creating GUI cross-platform apps"
+        SQLiteStudio "SQLiteStudio is a SQLite database manager"
         TIC80 "TIC-80 is a free fantasy computer for making, playing tiny games"
-        VSCode/ium "Lightweight but powerful source code editor which runs on your desktop"
+        VSCode/ium "Powerful source code editor developed by Microsoft"
     )
 
     choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
@@ -457,6 +458,7 @@ smDevs() {
         Back) break ;;
         Docker) ./scripts/devs/docker.sh ;;
         QT5) ./scripts/devs/qt5.sh ;;
+        SQLiteStudio) ./scripts/devs/sqlitestudio.sh ;;
         TIC80) ./scripts/devs/tic-80.sh ;;
         VSCode/ium) ./scripts/devs/vscode.sh ;;
         esac
