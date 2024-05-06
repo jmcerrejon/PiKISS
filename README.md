@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1145 hours**
+- **1157 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (06/05/24)
+
+· 📦 ADD: Games > Hexen 2 for aarch64 (using engine fteqw).
 
 ### (10/04/24)
 
