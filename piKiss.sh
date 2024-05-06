@@ -130,7 +130,7 @@ smTweaks() {
 
 smGames() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Abbaye, Blake Stone, DX-Rebirth, EDuke32, Fallout 2, GTA, GemRB, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, OpenXCom, Unreal Tournament"
+        show_dialog_only_32_bits "Abbaye, Blake Stone, DX-Rebirth, EDuke32, Fallout 2, GTA, GemRB, Hexen 2, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, OpenXCom, Unreal Tournament"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Games ]" --menu "Select game from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
@@ -155,6 +155,7 @@ smGames() {
         Heroes2 "Free implementation of Heroes of Might and Magic II engine"
         Heroes3 "Open-source engine for Heroes of Might and Magic III"
         Hermes "Jump'n' Run game with plenty of bad taste humour"
+        Hexen2 "Hexen II is a dark fantasy 1st shooter and RPG"
         Hurrican "Jump and shoot game based on the Turrican game series"
         Morrowind "The Elder Scrolls III: Morrowind is an open-world RPG"
         OpenBor "OpenBOR is the open source continuation of Beats of Rage"
@@ -206,6 +207,7 @@ smGames() {
         Heroes2) ./scripts/games/heroes2.sh ;;
         Heroes3) ./scripts/games/heroes3.sh ;;
         Hermes) ./scripts/games/hermes.sh ;;
+        Hexen2) ./scripts/games/hexen2.sh ;;
         Hurrican) ./scripts/games/hurrican.sh ;;
         Morrowind) ./scripts/games/openmw.sh ;;
         OpenBor) ./scripts/games/openbor.sh ;;
@@ -477,12 +479,12 @@ smOthers() {
         GL4ES "Compile GL4ES - OpenGL for GLES Hardware"
         Metasploit "The world’s most used penetration testing framework"
         Part "Check issues & fix SD corruptions"
-        RPiPlay "An open-source implementation of an AirPlay mirroring server"
         Scrcpy "Display and control of Android devices connected on USB"
         SDL2 "Compile SDL2 + Libraries"
         ShaderToy "Render over 100+ OpenGL ES 3.0 shaders"
         Synergy "Allow you to share keyboard and mouse to computers on LAN"
         Uninstall "Uninstall PiKISS :_("
+        UxPlay "An open-source implementation of an AirPlay mirroring server"
         WineX86 "Install Wine X86 + Box86"
         Zsh "Install Z Shell"
     )
@@ -499,12 +501,12 @@ smOthers() {
         GL4ES) ./scripts/others/gl4es.sh ;;
         Metasploit) ./scripts/others/metasploit.sh ;;
         Part) ./scripts/others/checkpart.sh ;;
-        RPiPlay) ./scripts/others/rpiplay.sh ;;
         Scrcpy) ./scripts/others/scrcpy.sh ;;
         SDL2) ./scripts/others/sdl2.sh ;;
         ShaderToy) ./scripts/others/shadertoy.sh ;;
         Synergy) ./scripts/others/synergy.sh ;;
         Uninstall) uninstall_pikiss ;;
+        UxPlay) ./scripts/others/uxplay.sh ;;
         WineX86) ./scripts/others/wine86.sh ;;
         Zsh) ./scripts/others/zsh.sh ;;
         esac
