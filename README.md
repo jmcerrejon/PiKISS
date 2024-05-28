@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1157 hours**
+- **1161 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,12 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (28/05/24)
+
+· 👌 IMPROVE: Games > OpenClaw for aarch64.
+
+· 👌 IMPROVE: Others > UXPlay (Airplay Mirroring) armhf & aarch64.
 
 ### (06/05/24)
 

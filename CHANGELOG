@@ -1,5 +1,11 @@
 # Changelog (dd/mm/yy)
 
+## (28/05/24)
+
+· 👌 IMPROVE: Games >  OpenClaw for aarch64.
+
+· 👌 IMPROVE: Others > UXPlay (Airplay Mirroring) for armhf & aarch64.
+
 ## (06/05/24)
 
 · 📦 ADD: Games > Hexen 2 for aarch64 (using engine fteqw).
