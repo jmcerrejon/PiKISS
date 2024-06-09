@@ -79,6 +79,10 @@ curl -sSL https://git.io/JfAPE | bash
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (09/06/24)
+
+· 📦 ADD: Games > WipeOut for aarch64.
+
 ### (28/05/24)
 
 · 👌 IMPROVE: Games > OpenClaw for aarch64.
