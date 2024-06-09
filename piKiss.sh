@@ -130,7 +130,7 @@ smTweaks() {
 
 smGames() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Abbaye, Blake Stone, DX-Rebirth, EDuke32, Fallout 2, GTA, GemRB, Hexen 2, OpenClaw, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, OpenXCom, Unreal Tournament"
+        show_dialog_only_32_bits "Abbaye, Blake Stone, DX-Rebirth, EDuke32, Fallout 2, GTA, GemRB, Hexen 2, OpenClaw, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, OpenXCom, Unreal Tournament, WipeOut"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Games ]" --menu "Select game from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
@@ -173,13 +173,14 @@ smGames() {
         SMarioWar "The game centers on players fighting each other"
         SpelunkyHD "Spelunky is a cave exploration/treasure-hunting game"
         Sqrxz4 "Sqrxz 4: Difficult platform game"
-        Srb2 "3D platformer fangame based on the Sonic the Hedgehog series."
+        Srb2 "3D platformer fangame based on the Sonic the Hedgehog series"
         SSam12 "Serious Sam I & II. Kill all walking monster"
         StarCraft "Expansion pack for the real-time strategy video game StarCraft"
         StepMania "StepMania is a free dance and rhythm game"
         Temptations "Platform game made exclusively for MSX computers"
         UT99 "Unreal Tournament 99 is a fps using Unreal Engine"
         VVVVVV "Minimalist platformer: instead of jumping, you need to reverse gravity"
+        WipeOut "re-implementation of the 1995 PSX game wipEout"
         Xump "Xump: Simple multi-platform puzzler"
     )
 
@@ -232,6 +233,7 @@ smGames() {
         Temptations) ./scripts/games/temptations.sh ;;
         UT99) ./scripts/games/unrealt.sh ;;
         VVVVVV) ./scripts/games/vvvvvv.sh ;;
+        WipeOut) ./scripts/games/wipeout.sh ;;
         Xump) ./scripts/games/xump.sh ;;
         esac
     done
