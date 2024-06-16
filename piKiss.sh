@@ -241,7 +241,7 @@ smGames() {
 
 smEmulators() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Amiga, Box86/64, Dolphin, Flycast, DOSBox, Mame, mGBA, PS1, PS2, RetroArch, Redream, ScummVM, USP (Spectrum), VICE"
+        show_dialog_only_32_bits "Amiga, Box86/64, Dolphin, Flycast, DOSBox, Mame, mGBA, PCem, PS1, PS2, RetroArch, Redream, ScummVM, USP (Spectrum), VICE"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Emulators ]" --menu "Select emulator from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
@@ -260,6 +260,7 @@ smEmulators() {
         MSX "OpenMSX"
         NES "Nestopia UE is an accurate NES emulator"
         Pifba "Emulates old arcade games using CPS1, CPS2,..."
+        PCem "PCem is an emulator for old XT/AT-class PCs"
         PS1 "DuckStation - PlayStation 1, aka. PSX Emulator"
         PS2 "AetherSX2 is an emulator of the PS Two console"
         PSP "PPSSPP can run your PSP games on your RPi in full HD resolution"
@@ -293,6 +294,7 @@ smEmulators() {
         PS2) ./scripts/emus/ps2.sh ;;
         PSP) ./scripts/emus/psp.sh ;;
         Pifba) ./scripts/emus/pifba.sh ;;
+        PCem) ./scripts/emus/pcem.sh ;;
         ResidualVM) ./scripts/emus/residual.sh ;;
         RetroArch) ./scripts/emus/retroarch.sh ;;
         Redream) ./scripts/emus/redream.sh ;;
