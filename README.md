@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1161 hours**
+- **1166 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (16/06/24)
+
+· 📦 ADD: Emulators > PCem for aarch64 (PCem is an emulator for old XT/AT-class PC).
 
 ### (09/06/24)
 
@@ -186,18 +190,6 @@ curl -sSL https://git.io/JfAPE | bash
 ### (16/11/23)
 
 · 👌 IMPROVE: Emulatos > mGBA 0.11 for 32/64-bit.
-
-### (14/11/23)
-
-· 📦 ADD: Devs > Docker.
-
-· 👌 IMPROVE: Refactor code adapted to RPi 5 on some scripts.
-
-· 🐛 FIX: Install script.
-
-· 🐛 FIX: Games > Duke Nukem 3D 32-bit.
-
-· 🐛 FIX: Devs > VSCode.
 ...
 
 To see the full list of changes, read the [CHANGELOG](./CHANGELOG)
