@@ -2,7 +2,7 @@
 #
 # Description : MS-DOS Emulator DOSBox-X
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.3 (09/Jul/22)
+# Version     : 1.3.4 (09/Jul/22)
 #
 # Help        : https://github.com/joncampbell123/dosbox-x/blob/master/BUILD.md
 #             : https://krystof.io/dosbox-shaders-comparison-for-modern-dos-retro-gaming/
@@ -15,7 +15,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 readonly INSTALL_DIR="$HOME/games"
 readonly DOSLIB_PATH="$HOME/sc/doslib/tool/linker/linux-host"
 readonly PACKAGES=(libsdl2-net-2.0-0 libpcap0.8 libslirp0)
-readonly PACKAGES_DEV=(sudo apt install automake gcc g++ make libncurses-dev nasm libsdl-net1.2-dev libsdl2-net-dev libpcap-dev libslirp-dev fluidsynth libfluidsynth-dev libavdevice58 libavformat-dev libavcodec-dev libavcodec-extra libavcodec-extra58 libswscale-dev libfreetype-dev libxkbfile-dev libxrandr-dev)
+readonly PACKAGES_DEV=(gcc g++ make libncurses-dev nasm libsdl-net1.2-dev libsdl2-net-dev libpcap-dev libslirp-dev fluidsynth libfluidsynth-dev libavdevice58 libavformat-dev libavcodec-dev libavcodec-extra libavcodec-extra58 libswscale-dev libfreetype-dev libxkbfile-dev libxrandr-dev)
 readonly PACKAGES_GR_LIDA_DEV=(qt5-qmake-bin qtbase5-dev qt5-qmake qtchooser zlib1g-dev qtmultimedia5-dev libqt5multimediawidgets5 libqt5multimedia5-plugins libqt5multimedia5 qtscript5-dev libpoppler-qt5-dev)
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/dosbox-X-rpi_0-84.2.tar.gz"
 readonly GAME_DATA_URL="https://misapuntesde.com/res/jill-of-the-jungle-the-complete-trilogy.zip"
