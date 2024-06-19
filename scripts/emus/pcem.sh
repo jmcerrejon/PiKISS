@@ -79,10 +79,10 @@ post_install() {
     local PCEM_CONFIG_DIR="$HOME/.pcem"
     local ROM_PATH="$HOME/.pcem/roms"
 
-    [[ ! -d $PCEM_CONFIG_DIR_PATH ]] && mv "$INSTALL_DIR/pcem/.pcem" "$HOME"
-    if [[ -f $PCEM_CONFIG_DIR_PATH/pcem.cfg ]]; then
+    [[ ! -d $PCEM_CONFIG_DIR ]] && mv "$INSTALL_DIR/pcem/.pcem" "$HOME"
+    if [[ -f $PCEM_CONFIG_DIR/pcem.cfg ]]; then
         echo -e "\nPatching config file..."
-        sed -i "s/ulysess/$(whoami)/g" "$PCEM_CONFIG_DIR_PATH/pcem.cfg"
+        sed -i "s/ulysess/$(whoami)/g" "$PCEM_CONFIG_DIR/pcem.cfg"
     fi
 
     echo
