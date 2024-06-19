@@ -2,7 +2,7 @@
 #
 # Description : PCem Emulator
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (16/Jun/24)
+# Version     : 1.0.1 (19/Jun/24)
 #
 # shellcheck source=../helper.sh
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -76,8 +76,15 @@ compile() {
 }
 
 post_install() {
+    local PCEM_CONFIG_DIR="$HOME/.pcem"
     local ROM_PATH="$HOME/.pcem/roms"
-    [[ ! -d $HOME/.pcem ]] && mv "$INSTALL_DIR/pcem/.pcem" "$HOME"
+
+    [[ ! -d $PCEM_CONFIG_DIR ]] && mv "$INSTALL_DIR/pcem/.pcem" "$HOME"
+    if [[ -f $PCEM_CONFIG_DIR/pcem.cfg ]]; then
+        echo -e "\nPatching config file..."
+        sed -i "s/ulysess/$(whoami)/g" "$PCEM_CONFIG_DIR/pcem.cfg"
+    fi
+
     echo
     read -p "Do you want to install ROMs for devices?. Take into account the laws in your country. [y/N] " response
     if [[ $response =~ [Yy] ]]; then
