@@ -76,7 +76,7 @@ compile() {
 }
 
 post_install() {
-    local PCEM_CONFIG_DIR_PATH="$HOME/.pcem"
+    local PCEM_CONFIG_DIR="$HOME/.pcem"
     local ROM_PATH="$HOME/.pcem/roms"
 
     [[ ! -d $PCEM_CONFIG_DIR_PATH ]] && mv "$INSTALL_DIR/pcem/.pcem" "$HOME"
