@@ -13,11 +13,11 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1166 hours**
+- **1171 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
-- $2056,07
+- $2253,15
 
 - I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu), Kreal (krishenriksen.dk).
 
@@ -78,6 +78,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (23/06/24)
+
+· 👌 IMPROVE: Games > Abbaye des Morts 2.0.3 for aarch64.
 
 ### (16/06/24)
 
