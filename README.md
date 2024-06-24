@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1171 hours**
+- **1174 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (24/06/24)
+
+· 👌 IMPROVE: Games > Alien VS Predator for aarch64.
 
 ### (23/06/24)
 
