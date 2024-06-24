@@ -1,19 +1,20 @@
 #!/bin/bash
 #
-# Description : Aliens versus Predator
+# Description : Aliens versus Predator for aarch64
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.4 (17/Dec/21)
-# Compatible  : Raspberry Pi 4 (tested)
+# Version     : 1.1.0 (24/Jun/24)
+# Tested      : Raspberry Pi 5
 #
-# Help		  : https://www.raspberrypi.org/forums/viewtopic.php?t=100152
-#
-
+# shellcheck source=../helper.sh
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
-readonly BINARY_URL="https://e.pcloud.link/publink/show?code=XZAsaZyuPOGu08DYJk0ksHVDDYgmGAoTcV"
+readonly PACKAGES=(libsdl2-2.0-0 libopenal1 libc6)
+readonly PACKAGES_DEV=(libsdl2-2.0-0-dev libopenal1-dev libc6-dev)
+readonly BINARY_64_BITS_URL="https://e.pcloud.link/publink/show?code=XZwaxTZmBATjuuptQQrYgMAveYGTL4IjKVX"
+readonly SOURCE_CODE_URL="https://github.com/atsb/NakedAVP"
 
 runme() {
     echo
@@ -27,14 +28,10 @@ runme() {
     exit_message
 }
 
-remove_files() {
-    rm -rf "$INSTALL_DIR"/avp ~/.local/share/applications/avp.desktop ~/.avp
-}
-
 uninstall() {
     read -p "Do you want to uninstall AVP (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
-        remove_files
+        rm -rf "$INSTALL_DIR"/avp ~/.local/share/applications/avp.desktop ~/.avp
         if [[ -e "$INSTALL_DIR"/avp ]]; then
             echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
             exit_message
@@ -49,6 +46,11 @@ if [[ -d "$INSTALL_DIR"/avp ]]; then
     echo -e "Aliens versus Predator already installed.\n"
     uninstall
     exit 1
+fi
+
+if ! is_userspace_64_bits; then
+    echo -e "Sorry,Aliens versus Predator only works on 64-bit OS.\n"
+    exit_message
 fi
 
 generate_icon() {
@@ -67,6 +69,16 @@ EOF
     fi
 }
 
+compile() {
+    install_packages_if_missing "${PACKAGES_DEV[@]}"
+    git clone "$SOURCE_CODE_URL" && cd NakedAVP || exit 1
+    cd "$DIR_NAME" || exit 1
+    mkdir build && cd "$_" || exit 1
+    cmake -DSDL_TYPE=SDL2 -DOPENGL_TYPE=OPENGL -DCMAKE_C_FLAGS="-march=armv8-a+crc+simd" -DCMAKE_CXX_FLAGS="-march=armv8-a+crc+simd" -DCMAKE_EXE_LINKER_FLAGS="-g" -Wno-dev ..
+    make_with_all_cores
+    echo "Done!."
+}
+
 post_install() {
     if [[ ! -d "$INSTALL_DIR"/avp/.avp ]]; then
         return 0
@@ -77,7 +89,8 @@ post_install() {
 
 install() {
     echo -e "\nInstalling Aliens versus Predator (1999 video game), please wait..."
-    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
+    install_packages_if_missing "${PACKAGES[@]}"
+    download_and_extract "$BINARY_64_BITS_URL" "$INSTALL_DIR"
     post_install
     generate_icon
     echo
@@ -86,24 +99,20 @@ install() {
         rm -rf "$INSTALL_DIR"/avp/avp_huds "$INSTALL_DIR"/avp/avp_rifs "$INSTALL_DIR"/avp/fastfile
         echo -e "\nCopy your files with lowew case on $INSTALL_DIR/avp, cd into the game directory and type ./avp -f (f for full screen)"
         exit_message
-    else
-        echo -e "\nType in a terminal $INSTALL_DIR/avp/avp or go to Menu > Games > Aliens versus Predator."
-        runme
     fi
+    echo -e "\nType in a terminal $INSTALL_DIR/avp/avp or go to Menu > Games > Aliens versus Predator."
+    runme
 }
 
 install_script_message
+echo "
+Install Aliens versus Predator
+==============================
 
-echo "Install Aliens versus Predator"
-echo "=============================="
-echo
-echo " · Compiled for Raspberry Pi 4."
-echo " · Install path: $INSTALL_DIR/avp"
-echo " · Very buggy, but playable. Common issue: al lib alc_cleanup 1 device not closed."
-echo " · This version has no videos (DRM protected) and no ripped CD audio."
-echo " · I've added my custom keyboard WSAD standard, because it's very difficult to change it."
-echo " · Full Screen: [CTRL] + [ENTER] | Grab mouse in windowed mode: [CTRL] + [G]"
-echo
-read -p "Press [Enter] to continue..."
+ · Optimized for Raspberry Pi.
+ · Install path: $INSTALL_DIR/avp
+ · This version has no videos (DRM protected) and no ripped CD audio.
+ · Change the video resolution to fit your screen, exit the game and run it again.
+"
 
 install
