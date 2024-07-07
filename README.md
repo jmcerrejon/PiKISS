@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1174 hours**
+- **1171 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,12 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (07/07/24)
+
+· 👌 IMPROVE: Games > Arx Libertatis for aarch64.
+
+· 🐛 FIX: Emulatos > residual.
 
 ### (24/06/24)
 
@@ -184,20 +190,6 @@ curl -sSL https://git.io/JfAPE | bash
 ### (10/01/24)
 
 · 👌 IMPROVE: Emulatos > Snes9X 1.62.3 & BSNes v115 for 64-bit.
-
-### (22/12/23)
-
-· 👌 IMPROVE: Config > Vulkan 23.3.1 & libdrm-2.4.119.
-
-### (19/11/23)
-
-· 🐛 FIX: Install script.
-
-· 🐛 FIX: Emulatos > OpenMSX (missing library).
-
-### (16/11/23)
-
-· 👌 IMPROVE: Emulatos > mGBA 0.11 for 32/64-bit.
 ...
 
 To see the full list of changes, read the [CHANGELOG](./CHANGELOG)
