@@ -2,19 +2,19 @@
 #
 # Description : Arx Libertatis (AKA Arx Fatalis)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.0 (1/May/22)
-# Compatible  : Raspberry Pi 4 (tested)
+# Version     : 1.1.1 (7/Jul/24)
+# Tested      : Raspberry Pi 5
 #
 # Help        : https://wiki.arx-libertatis.org/Downloading_and_Compiling_under_Linux
 # For fans    : https://www.reddit.com/r/ArxFatalis/ | https://www.moddb.com/mods/arx-neuralis/downloads/arx-neuralis
 #
-
+# shellcheck source=../helper.sh
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
-readonly PACKAGES=(libglew2.1)
+readonly PACKAGES=(libglew2.2)
 readonly PACKAGES_DEV=(zlib1g-dev libfreetype6-dev libopenal1 libopenal-dev mesa-common-dev libgl1-mesa-dev libboost-dev libepoxy-dev libglm-dev libcppunit-dev libglew-dev libsdl2-dev doxygen)
 readonly CONFIG_DIR="$HOME/.local/share/arx"
 readonly BINARY_URL="https://www.littlecarnage.com/arx_rpi2.tar.gz"
@@ -78,25 +78,15 @@ EOF
     fi
 }
 
-fix_libGLEW1.7() {
-    if [[ -f /usr/lib/arm-linux-gnueabihf/libGLEW.so.1.7 ]]; then
-        return 0
-    fi
-
-    echo -e "\nLinking libGLEW.so -> libGLEW.so.1.7\n"
-    sudo ln -s /usr/lib/arm-linux-gnueabihf/libGLEW.so /usr/lib/arm-linux-gnueabihf/libGLEW.so.1.7
-}
-
 compile() {
     install_packages_if_missing "${PACKAGES_DEV[@]}"
     mkdir -p ~/sc && cd "$_" || exit 1
     git clone "$SOURCE_CODE_URL" arx && cd "$_" || exit 1
     mkdir build && cd "$_" || exit 1
-    CFLAGS="-fsigned-char -march=armv8-a+crc -mtune=cortex-a72" CXXFLAGS="-fsigned-char" cmake .. -DBUILD_TOOLS=off -DBUILD_IO_LIBRARY=off -DBUILD_CRASHREPORTER=off -DICON_TYPE=none -Wno-dev -DICON_TYPE=none
+    CFLAGS="-fsigned-char -march=armv8-a+crc -mtune=cortex-a72" CXXFLAGS="-fsigned-char" cmake .. -DBUILD_TOOLS=off -DBUILD_IO_LIBRARY=off -DBUILD_CRASHHANDLER=off -DBUILD_CRASHREPORTER=off -DICON_TYPE=none -DCMAKE_BUILD_TYPE=RelWithDebInfo -Wno-dev
 
-    # It takes ~6 minutes to compile on a Pi 4.
     make_with_all_cores
-    echo -e "Done!.\n"
+    echo -e "Done!. Remember to copy data/core dirs inside final destination.\n"
     exit_message
 }
 
@@ -116,7 +106,6 @@ install_binaries() {
     fi
 
     download_and_extract "$BINARY_URL" "$INSTALL_DIR"
-    fix_libGLEW1.7
     rm "$INSTALL_DIR/Arx Fatalis.sh"
     chmod +x "$INSTALL_DIR"/arx/arx*
 }
@@ -140,5 +129,4 @@ Install Arx Libertatis (Port of Arx Fatalis)
  · Thanks to Sebastian (PtitSeb) for the compiling help.
  · Demo version will be installed.
 "
-read -p "Press [Enter] to continue..."
 install
