@@ -2,19 +2,21 @@
 #
 # Description : Blood
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.9 (04/Dec/21)
-# Compatible  : Raspberry Pi 4 (tested)
+# Version     : 1.0.10 (10/Jul/24)
+# Tested      : Raspberry Pi 5
 #
 # Help		  : https://www.techradar.com/how-to/how-to-run-wolfenstein-3d-doom-and-duke-nukem-on-your-raspberry-pi
 #
+# shellcheck source=../helper.sh
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/blood_r12112.tar.gz"
+readonly BINARY_64_BITS_URL="https://misapuntesde.com/rpi_share/nblood_aarch64.tar.gz"
 readonly PACKAGES_DEV=(build-essential nasm libgl1-mesa-dev libglu1-mesa-dev libsdl1.2-dev libsdl-mixer1.2-dev libsdl2-dev libsdl2-mixer-dev flac libflac-dev libvorbis-dev libvpx-dev libgtk2.0-dev freepats)
-readonly SOURCE_CODE_URL="https://github.com/nukeykt/NBlood.git"
+readonly SOURCE_CODE_URL="https://github.com/nukeykt/NBlood"
 readonly VAR_DATA_NAME="BLOOD_FULL"
 
 runme() {
@@ -80,7 +82,6 @@ compile() {
     mkdir -p "$HOME/sc" && cd "$_" || exit 1
     echo
     git clone "$SOURCE_CODE_URL" blood && cd "$_" || exit 1
-    fix_path
     echo -e "\n\nCompiling... Estimated time on RPi 4: <5 min.\n"
     make_with_all_cores WITHOUT_GTK=1 POLYMER=1 USE_LIBVPX=0 HAVE_FLAC=0 OPTLEVEL=3 LTO=0 RENDERTYPESDL=1 HAVE_JWZGLES=1 USE_OPENGL=1
     echo -e "\nDone. Copy the data files inside $INSTALL_DIR/blood. You can play typing $INSTALL_DIR/blood/nblood"
@@ -90,14 +91,18 @@ compile() {
 download_data_files() {
     DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
     message_magic_air_copy "$VAR_DATA_NAME"
-    download_and_extract "$DATA_URL" "$INSTALL_DIR/blood"
+    download_and_extract "$DATA_URL" "$INSTALL_DIR"
 }
 
 install() {
-    install_script_message
+    local INSTALL_BIN_PATH=$BINARY_URL
+
     echo -e "\n\nInstalling Blood, please wait..."
     mkdir -p "$INSTALL_DIR" && cd "$_" || exit 1
-    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
+    if is_userspace_64_bits; then
+        INSTALL_BIN_PATH=$BINARY_64_BITS_URL
+    fi
+    download_and_extract "$INSTALL_BIN_PATH" "$INSTALL_DIR"
     generate_icon
     if exists_magic_file; then
         download_data_files
@@ -109,4 +114,5 @@ install() {
     exit_message
 }
 
+install_script_message
 install
