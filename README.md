@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1171 hours**
+- **1178 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,12 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (10/07/24)
+
+· 👌 IMPROVE: Games > Blood for aarch64.
+
+· 👌 IMPROVE: Games > Xash3D (Half Life) for aarch64. Removed armfh support.
 
 ### (07/07/24)
 
