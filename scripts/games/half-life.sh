@@ -12,13 +12,16 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="$HOME/games"
 readonly BIN_GAME_DIR="$INSTALL_DIR/xash3d"
-readonly PACKAGES_DEV=(libsdl2-dev)
+readonly BIN_GAME_SOURCE_DIR="$INSTALL_DIR/source-engine"
+readonly PACKAGES_DEV=(libsdl2-dev build-essential pkg-config ccache libbz2-dev libcurl4-gnutls-dev)
 readonly BINARY_64_BITS_URL="https://misapuntesde.com/rpi_share/xash3d-hlsdk-aarch64.tar.gz"
 readonly HQ_TEXTURE_PACK_URL="https://gamebanana.com/dl/265907"
 readonly SOURCE_CODE_XASH_FWGS_URL="https://github.com/FWGS/xash3d-fwgs"
 readonly SOURCE_CODE_HLSDK_URL="https://github.com/FWGS/hlsdk-portable"
 readonly ES_TRANSLATION_URL="https://misapuntesde.com/rpi_share/hl-sp-patch.tar.gz"
 readonly VAR_DATA_NAME="HALF_LIFE"
+
+readonly SOURCE_CODE_HL2_URL="https://github.com/nillerusr/source-engine"
 
 runme() {
     read -p "Press [ENTER] to run the game..."
@@ -91,6 +94,15 @@ download_data_files() {
     DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
     message_magic_air_copy "$VAR_DATA_NAME"
     download_and_extract "$DATA_URL" "$BIN_GAME_DIR"
+}
+
+compile_source_engine() {
+    install_packages_if_missing "${PACKAGES_DEV[@]}"
+    git clone --recursive --depth 1 "$SOURCE_CODE_HL2_URL" hl2 && cd "$_" || return 1
+    ./waf configure -T release -j "$(nproc)"
+    ./waf build
+    ./waf install --destdir="$BIN_GAME_SOURCE_DIR"
+    echo -e "\nDone!. Check $BIN_GAME_SOURCE_DIR directory."
 }
 
 compile_hlsdk() {
