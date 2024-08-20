@@ -2,11 +2,10 @@
 #
 # Description : Zandronum and Crispy-Doom
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 2.0.5 (15/Nov/21)
-# Compatible  : Raspberry Pi 4 (tested)
+# Version     : 2.0.6 (20/Aug/24)
+# Tested      : Raspberry Pi 5
 #
-# HELP        : To compile crispy-doom, follow the instructions at https://github.com/fabiangreffrath/crispy-doom
-#
+# shellcheck source=../helper.sh
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
@@ -20,6 +19,7 @@ readonly PACKAGES_DEV=(g++ make cmake libsdl2-dev git zlib1g-dev libbz2-dev libj
 readonly ZANDRONUM_BINARY_URL="https://misapuntesde.com/rpi_share/zandronum-rpi.tar.gz"
 readonly ZANDRONUM_SOURCE_CODE_URL="https://github.com/ptitSeb/zandronum"
 readonly CRISPY_DOOM_PKG_URL="https://misapuntesde.com/rpi_share/crispy_5-8.0_armhf.deb"
+readonly CRISPY_DOOM_PKG_64_BITS_URL="https://misapuntesde.com/rpi_share/crispy-doom_7.0.0_arm64.deb"
 readonly CRISPY_DOOM_SOURCE="https://github.com/fabiangreffrath/crispy-doom"
 readonly GZ_DOOM_SOURCE="https://github.com/coelckers/gzdoom"
 readonly ZMUSIC_SOURCE="https://github.com/coelckers/ZMusic.git"
@@ -40,10 +40,10 @@ runme() {
 }
 
 removeUnusedLinks() {
-    rm -f ~/.local/share/applications/crispy-hexen.desktop ~/.local/share/applications/crispy-strife.desktop
+    rm -rf "$HOME/.local/share/crispy-doom"
+    rm -f ~/.local/share/applications/crispy-hexen.desktop ~/.local/share/applications/crispy-strife.desktop ~/.local/share/applications/crispy-doom.desktop ~/.local/share/applications/crispy-heretic.desktop
     rm -f /usr/local/share/applications/io.github.fabiangreffrath.Doom.desktop /usr/local/share/applications/io.github.fabiangreffrath.Heretic.desktop /usr/local/share/applications/io.github.fabiangreffrath.Setup.desktop
-    rm -f ~/.local/share/applications/crispy-doom.desktop
-    rm -f ~/.local/share/applications/crispy-heretic.desktop
+    sudo rm -f /usr/share/applications/io.github.fabiangreffrath.Doom.desktop /usr/share/applications/io.github.fabiangreffrath.Heretic.desktop /usr/share/applications/io.github.fabiangreffrath.Hexen.desktop /usr/share/applications/io.github.fabiangreffrath.Strife.desktop /usr/share/applications/io.github.fabiangreffrath.Setup.desktop
 }
 
 remove_files() {
@@ -55,7 +55,7 @@ remove_files() {
 uninstall_crispy_doom() {
     read -p "Do you want to uninstall Crispy-Doom (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
-        sudo apt remove -y crispy
+        sudo apt remove -y crispy*
         remove_files
         if [[ -e /usr/local/bin/crispy-doom ]]; then
             echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
@@ -95,55 +95,51 @@ compile_crispy_doom() {
     autoreconf -fiv
     ./configure
     make_with_all_cores
-    echo -e "\nDone! . Go to $(pwd) to run the binaries or type make install to install the app.\n"
+    echo -e "\nDone! . Go to $(pwd)/src to run the binaries or type make install to install the app.\n"
+    exit_message
 }
 
-generate_icon_crispy_doom() {
+modify_icons_crispy_doom() {
+    local BASE_SHORTCUT_PATH="/usr/share/applications/io.github.fabiangreffrath"
+    local DOOM_SHORTCUT_PATH="${BASE_SHORTCUT_PATH}.Doom.desktop"
+    local HERETIC_SHORTCUT_PATH="${BASE_SHORTCUT_PATH}.Heretic.desktop"
+    local HEXEN_SHORTCUT_PATH="${BASE_SHORTCUT_PATH}.Hexen.desktop"
+    local STRIFE_SHORTCUT_PATH="${BASE_SHORTCUT_PATH}.Strife.desktop"
+
     echo -e "\nGenerating icon..."
-    if [[ ! -e ~/.local/share/applications/crispy-doom.desktop ]]; then
-        cat <<EOF >~/.local/share/applications/crispy-doom.desktop
-[Desktop Entry]
-Name=Crispy Doom
-Version=1.0
-Type=Application
-Comment=Limit-removing enhanced-resolution Doom source port
-Exec=crispy-doom -iwad ${INSTALL_DIR}/wads/DOOM.WAD
-Icon=crispy-doom
-Terminal=false
-Categories=Game;ActionGame;
-EOF
+    if [[ -e $DOOM_SHORTCUT_PATH ]]; then
+        sudo sed -i "s|^Exec=crispy-doom.*|Exec=crispy-doom -iwad ${INSTALL_DIR}/wads/DOOM.WAD|" "$DOOM_SHORTCUT_PATH"
     fi
-    if [[ ! -e ~/.local/share/applications/crispy-heretic.desktop ]]; then
-        cat <<EOF >~/.local/share/applications/crispy-heretic.desktop
-[Desktop Entry]
-Name=Crispy Heretic
-Version=1.0
-Type=Application
-Comment=Limit-removing enhanced-resolution Doom source port
-Exec=crispy-heretic -iwad ${INSTALL_DIR}/wads/HERETIC.WAD
-Icon=crispy-doom
-Terminal=false
-Categories=Game;ActionGame;
-EOF
+    if [[ -e $HERETIC_SHORTCUT_PATH ]]; then
+        sudo sed -i "s|^Exec=crispy-heretic.*|Exec=crispy-heretic -iwad ${INSTALL_DIR}/wads/HERETIC.WAD|" "$HERETIC_SHORTCUT_PATH"
+    fi
+    if [[ -e $HEXEN_SHORTCUT_PATH ]]; then
+        sudo sed -i "s|^Exec=crispy-hexen.*|Exec=crispy-hexen -iwad ${INSTALL_DIR}/wads/HEXEN.WAD|" "$HEXEN_SHORTCUT_PATH"
+    fi
+    if [[ -e $STRIFE_SHORTCUT_PATH ]]; then
+        sudo sed -i "s|^Exec=crispy-strife.*|Exec=crispy-strife -iwad ${INSTALL_DIR}/wads/STRIFE.WAD|" "$STRIFE_SHORTCUT_PATH"
     fi
 }
 
 install_crispy() {
-    if [[ -e /usr/local/bin/crispy-doom ]]; then
-        clear
+    local DOWNLOAD_URL=$CRISPY_DOOM_PKG_URL
+
+    if command -v crispy-doom &>/dev/null; then
         echo -e "Crispy-Doom already installed!."
         uninstall_crispy_doom
         exit 1
     fi
-    local SHORTCUT_URL
-    SHORTCUT_URL="https://misapuntesde.com/res/crispy_modified_link.zip"
+
+    if is_userspace_64_bits; then
+        DOWNLOAD_URL=$CRISPY_DOOM_PKG_64_BITS_URL
+    fi
+
     install_script_message
     install_packages_if_missing "${PACKAGES[@]}"
-    download_and_install "$CRISPY_DOOM_PKG_URL"
-    removeUnusedLinks
-    generate_icon_crispy_doom
-    download_data_files "$INSTALL_DIR/wads"
-    echo -e "\nYou can play typing crispy-doom <WAD_FILE> or opening the Menu > Games > Doom or Heretic."
+    download_and_install "$DOWNLOAD_URL"
+    download_data_files "$INSTALL_DIR"
+    modify_icons_crispy_doom
+    echo -e "\nYou can play typing crispy-doom -iwad <WAD_FILE> or opening the Menu > Games > Crispy links.\nType crispy-{doom,heretic,hexen,strife}-setup for change settings."
     exit_message
 }
 
@@ -220,8 +216,8 @@ menu() {
         dialog --clear \
             --title "[ DOOM'S ENGINE ]" \
             --menu "Select from the list:" 11 100 3 \
-            ZANDRONUM "(Recommended) Multiplayer oriented port for Doom I/II,Heretic,Hexen,Strife..." \
-            CRISPY_DOOM "Another engine with Doom + Heretic support" \
+            ZANDRONUM "(Recommended) Multiplayer oriented port for Doom,Heretic,Hexen,Strife..." \
+            CRISPY_DOOM "Another engine with Doom,Heretic,Hexen,Strife support" \
             Exit "Exit" 2>"${INPUT}"
 
         menuitem=$(<"${INPUT}")
