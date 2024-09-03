@@ -2,7 +2,7 @@
 #
 # Description : UxPlay - Airplay mirroring
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.0 (28/May/24)
+# Version     : 1.3.1 (04/Sep/24)
 # Tested      : Raspberry Pi 5
 #
 # shellcheck source=../helper.sh
@@ -82,7 +82,7 @@ compile() {
     mkdir -p ~/sc && cd "$_" || exit 1
     git clone "$SOURCE_CODE_URL" uxplay && cd "$_" || exit 1
     mkdir build && cd "$_" || exit 1
-    cmake ..
+    cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
     echo -e "\nCompiling at ~/sc/uxplay, please wait..."
     make_with_all_cores
     mv uxplay ../uxplay
