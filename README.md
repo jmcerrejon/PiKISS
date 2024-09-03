@@ -13,45 +13,45 @@
 
 ## ⏰ Estimated hours of work so far
 
-- **1183 hours**
+-   **1186 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
-- $2253,15
+-   $2253,15
 
-- I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu), Kreal (krishenriksen.dk).
+-   I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu), Kreal (krishenriksen.dk).
 
-- I want to thank my current patrons **Bo Martin, Rodney Hester & specially James Carroll** for trusting me. ❤️
+-   I want to thank my current patrons **Bo Martin, Rodney Hester & specially James Carroll** for trusting me. ❤️
 
-- Patrons support me in the past: _Jay Edwards, Tomás Delgado, Jeremy Palmer, cxgr, Willie D Kerner Jr, Matthew Michink, Mathew Gracie, Mike A. Torevell, David J Leto, Josiah McCracken._
+-   Patrons support me in the past: _Jay Edwards, Tomás Delgado, Jeremy Palmer, cxgr, Willie D Kerner Jr, Matthew Michink, Mathew Gracie, Mike A. Torevell, David J Leto, Josiah McCracken._
 
-- Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy, Jonathan Hodges, Mattias True, Sara J Shireman Anderson, Anthony Skiver, Shawn Mullins, Michaël Bortolin, William Norris, Jacob Ehrman, Karsten Schulz, Robert Napier._
+-   Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy, Jonathan Hodges, Mattias True, Sara J Shireman Anderson, Anthony Skiver, Shawn Mullins, Michaël Bortolin, William Norris, Jacob Ehrman, Karsten Schulz, Robert Napier._
 
-- [raspipc.es](https://www.raspipc.es/) ❤️
+-   [raspipc.es](https://www.raspipc.es/) ❤️
 
 ## 📣 Stay tuned
 
-- 📬⠀Mail: <ulysess@gmail.com>
+-   📬⠀Mail: <ulysess@gmail.com>
 
-- 📖⠀Blog (English & Spanish): [misapuntesde.com](https://misapuntesde.com/)
+-   📖⠀Blog (English & Spanish): [misapuntesde.com](https://misapuntesde.com/)
 
-- 🐦⠀ X (AKA Twitter): [@ulysess10](https://x.com/ulysess10)
+-   🐦⠀ X (AKA Twitter): [@ulysess10](https://x.com/ulysess10)
 
-- 👾⠀Discord for suggestions & support [thanks to Pi Labs](https://discord.gg/Y7WFeC5)
+-   👾⠀Discord for suggestions & support [thanks to Pi Labs](https://discord.gg/Y7WFeC5)
 
-- 👨🏻‍💻⠀LinkedIn: [es.linkedin.com/in/jmcerrejon](https://es.linkedin.com/in/jmcerrejon/)
+-   👨🏻‍💻⠀LinkedIn: [es.linkedin.com/in/jmcerrejon](https://es.linkedin.com/in/jmcerrejon/)
 
-- 📣⠀Mewe (Spanish): [mewe.com](https://mewe.com/group/5c6bbed8f0e71669f228c457)
+-   📣⠀Mewe (Spanish): [mewe.com](https://mewe.com/group/5c6bbed8f0e71669f228c457)
 
-- 💰 ⠀Patreon: <https://patreon.com/cerrejon>
+-   💰 ⠀Patreon: <https://patreon.com/cerrejon>
 
-- 💰 ⠀Paypal: <https://paypal.me/jmcerrejon>
+-   💰 ⠀Paypal: <https://paypal.me/jmcerrejon>
 
 ## 🤝 Contributors
 
-- [huelvayork](https://github.com/huelvayork), [mayavera](https://github.com/mayavera), [CleanMachine1](https://github.com/CleanMachine1), [kleinerm](https://github.com/kleinerm), [tx00100xt](https://github.com/tx00100xt).
+-   [huelvayork](https://github.com/huelvayork), [mayavera](https://github.com/mayavera), [CleanMachine1](https://github.com/CleanMachine1), [kleinerm](https://github.com/kleinerm), [tx00100xt](https://github.com/tx00100xt).
 
-- Logo: grayduck
+-   Logo: grayduck
 
 ## TL;DR
 
@@ -63,7 +63,7 @@ curl -sSL https://git.io/JfAPE | bash
 
 ## 🎥 Check what **PiKISS** can do for you on my Youtube's channel
 
-- [youtube.com > PIKISS](https://www.youtube.com/playlist?list=PLXhElW3ALmWh8p0mn1ZECawkKyF8QzNNP)
+-   [youtube.com > PIKISS](https://www.youtube.com/playlist?list=PLXhElW3ALmWh8p0mn1ZECawkKyF8QzNNP)
 
 ## ENGLISH
 
@@ -78,6 +78,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (03/09/24)
+
+· 👌 IMPROVE: Emulation > PPSSPP v1.17.1-19410 (PSP Emulator) for aarch64.
 
 ### (20/08/24)
 
@@ -218,7 +222,7 @@ Don't despair. **PiKISS** has come to help you...
 
 **PiKISS** _(Pi Keeping It Simple, Stupid!)_ is made with _scripts (Bash)_ for _Raspberry Pi 4 & 5_ boards which has a menu that will allow you to install some applications or configure files automatically as easy as possible. The ideal stage is:
 
-- _Raspberry PI OS Desktop_ Bullseye 32-bit. 64-bit support is comming slowly.
+-   _Raspberry PI OS Desktop_ Bullseye 32-bit. 64-bit support is comming slowly.
 
 The idea is to offer facilities to manage your operating system, selecting an option in a menu and answer [Yes/No]. If you need to check dependencies, install an app, modify a script at boot, add a line to a file or download other, **PiKISS** will do it for you.
 
@@ -226,11 +230,11 @@ I included not only the ability to install, but also compile programs. Do you ha
 
 What some users have said about **PiKISS**:
 
-- _"It could have happened to me!"_
+-   _"It could have happened to me!"_
 
-- _"That's silly! (I'm going to install it as soon as I get home)"_
+-   _"That's silly! (I'm going to install it as soon as I get home)"_
 
-- _"I don't need to fight with the terminal anymore? Shut up and take my money!."_ - Easy, it's free.
+-   _"I don't need to fight with the terminal anymore? Shut up and take my money!."_ - Easy, it's free.
 
 **NOTE:** 100% Free of viruses and Trojans. Not available in stores. The author of **PiKISS** is not responsible if you get bored with your _Raspberry Pi_ because everything is too easy. Online until I wish or _Internet_ is destroyed.
 
@@ -286,11 +290,11 @@ Incluyo la posibilidad no solo de instalar, sino también de compilar programas.
 
 Lo que algunos usuarios han dicho de **PiKISS**:
 
-- _"¡Se me podría haber ocurrido a mí!"_
+-   _"¡Se me podría haber ocurrido a mí!"_
 
-- _"Menuda tontería (voy a instalarlo en cuanto llegue a casa)"_
+-   _"Menuda tontería (voy a instalarlo en cuanto llegue a casa)"_
 
-- _"¿Ya no tengo que pelearme con la terminal?. Cállate y coge mi dinero!"_ - Tranquilos, es gratis.
+-   _"¿Ya no tengo que pelearme con la terminal?. Cállate y coge mi dinero!"_ - Tranquilos, es gratis.
 
 **NOTA:** 100% Libre de virus y troyanos. No disponible en tiendas. El autor de _PiKISS_ no se hace responsable si te aburres con tu _Raspberry Pi_ porque todo es demasiado fácil. Online hasta que me plazca o se destruya _Internet_.
 
