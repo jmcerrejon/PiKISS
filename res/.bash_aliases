@@ -65,11 +65,6 @@ take() {
     mkdir "$1" && cd "$_" || exit
 }
 
-my_checkinstall() {
-    # Config at /etc/checkinstallrc
-    sudo checkinstall --install=no --fstrans=yes -D --pkgname="$1" --pkgversion=1 --pkgrelease="1" --maintainer=ulysess@gmail.com --strip=no --stripso=no --addso=yes -d2 make
-}
-
 search() {
     sudo find / -iname "*$1*"
 }
@@ -100,9 +95,6 @@ cmake_on_build() {
     cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
 }
 
-#
-# Compile with all cores
-#
 make_with_all_cores() {
     local OPTOPT_PARAMS
 
@@ -111,4 +103,68 @@ make_with_all_cores() {
     echo -e "\n Compiling with parameters: $OPTOPT_PARAMS"
     time make -j"$(nproc)" "$OPTOPT_PARAMS"
     echo
+}
+
+my_checkinstall() {
+    # Config at /etc/checkinstallrc
+    sudo checkinstall --install=no --fstrans=yes -D --pkgname="$1" --pkgversion=1 --pkgrelease="1" --maintainer=ulysess@gmail.com --strip=no --stripso=no --addso=yes -d2 make
+}
+
+# shellcheck disable=SC2154
+make_control_file() {
+    cat <<EOF >debian/control
+Source: my_app
+Section: games
+Priority: optional
+Maintainer: Jose Cerrejon <ulysess@gmail.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 1.0.0
+Homepage: https://my_app.com
+
+Package: my_app
+Architecture: arm64
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: your_description_here
+EOF
+}
+
+# shellcheck disable=SC2120
+make_rules_file() {
+    cat <<EOF >debian/rules
+#!/usr/bin/make -f
+
+%:
+     dh $@
+EOF
+}
+
+make_change_log_file() {
+    local DATE
+    DATE=$(date +"%a, %d %b %Y %H:%M:%S %z")
+
+    cat <<EOF >debian/changelog
+my_app (1.0-1) unstable; urgency=low
+
+  * Initial release.
+
+ -- Jose Cerrejon <ulysess@gmail.com>  ${DATE}
+EOF
+}
+
+build_deb_pkg_from_here() {
+    # TODO: Check before install
+    sudo apt install -y build-essential devscripts debhelper
+    mkdir -p debian
+    make_control_file
+    make_rules_file
+    make_change_log_file
+    echo "10" >debian/compat
+    echo "3.0 (quilt)" >debian/source/format
+    cat debian/control
+    cat debian/changelog
+
+    read -p "Compile? (y/N) " response
+    if [[ $response =~ [Yy] ]]; then
+        DEB_BUILD_OPTIONS=nocheck dpkg-buildpackage -us -uc
+    fi
 }
