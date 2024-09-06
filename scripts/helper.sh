@@ -80,18 +80,16 @@ box_check_if_latest_version_is_installed() {
 
 compile_box86_or_64() {
     local PI_VERSION_NUMBER
-    local BOX_VERSION
-    local SOURCE_PATH
+    local BOX_VERSION=$(is_userspace_64_bits && echo "box64" || echo "box86")
+    local INSTALL_DIRECTORY="$HOME/$BOX_VERSION"
+    local SOURCE_PATH="https://github.com/ptitSeb/$BOX_VERSION"
 
-    if is_userspace_64_bits; then
-        BOX_VERSION="box64"
-    else
-        BOX_VERSION="box86"
+    if [[ -e /usr/local/bin/$BOX_VERSION ]]; then
+        if [[ "$(stat -c %y /usr/local/bin/${BOX_VERSION} | awk '{print $1}')" = "$(date +"%Y-%m-%d")" ]]; then
+            echo -e "Box86 already compiled and installed today. Skipping step.\n"
+            return 0
+        fi
     fi
-
-    INSTALL_DIRECTORY="$HOME/$BOX_VERSION"
-    PI_VERSION_NUMBER=$(get_raspberry_pi_model_number)
-    SOURCE_PATH="https://github.com/ptitSeb/$BOX_VERSION"
 
     install_packages_if_missing cmake
 
@@ -116,38 +114,7 @@ compile_box86_or_64() {
     cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo
     make_with_all_cores
     make_install_compiled_app
-    echo -e "\n${BOX_VERSION} successfully installed.\n"
-}
-
-install_box86_or_64() {
-    local BINARY_BOX_URL
-    local BOX_VERSION
-
-    if is_userspace_64_bits; then
-        BOX_VERSION="box64"
-    else
-        BOX_VERSION="box86"
-    fi
-
-    BINARY_BOX_URL="https://misapuntesde.com/rpi_share/pilabs/${BOX_VERSION}.tar.gz"
-
-    if [[ -f /usr/local/bin/${BOX_VERSION} ]]; then
-        echo
-        read -p "${BOX_VERSION} already installed. Do you want to update it (Y/n)? " response
-        if [[ $response =~ [Nn] ]]; then
-            return 0
-        fi
-
-        compile_box86_or_64
-    fi
-
-    echo -e "\n\nInstalling ${BOX_VERSION}..."
-    download_and_extract "$BINARY_BOX_URL" "$HOME"
-    cd "$HOME"/${BOX_VERSION}/build || exit 1
-    sudo make install
-    echo
-    ${BOX_VERSION} -v
-    echo -e "\n${BOX_VERSION} has been installed."
+    echo -e "\n$BOX_VERSION successfully installed.\n"
 }
 
 install_mesa() {
