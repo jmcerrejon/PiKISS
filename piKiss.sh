@@ -489,7 +489,7 @@ smOthers() {
         Synergy "Allow you to share keyboard and mouse to computers on LAN"
         Uninstall "Uninstall PiKISS :_("
         UxPlay "An open-source implementation of an AirPlay mirroring server"
-        WineX86 "Install Wine X86 + Box86"
+        Wine "Wine is a compatibility layer capable of running Windows apps"
         Zsh "Install Z Shell"
     )
 
@@ -511,7 +511,7 @@ smOthers() {
         Synergy) ./scripts/others/synergy.sh ;;
         Uninstall) uninstall_pikiss ;;
         UxPlay) ./scripts/others/uxplay.sh ;;
-        WineX86) ./scripts/others/wine86.sh ;;
+        Wine) ./scripts/others/wine86.sh ;;
         Zsh) ./scripts/others/zsh.sh ;;
         esac
     done
