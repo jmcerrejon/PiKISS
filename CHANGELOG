@@ -1,5 +1,11 @@
 # Changelog (dd/mm/yy)
 
+## (06/09/24)
+
+· 👌 IMPROVE: Others > Wine add Hangover v9.15 for aarch64.
+
+· ❌ REMOVE: Others > Box86/Box64 installation (Only compilation is available).
+
 ## (03/09/24)
 
 · 👌 IMPROVE: Emulation > PPSSPP v1.17.1-19410 (PSP Emulator) for aarch64.
@@ -38,7 +44,7 @@
 
 ## (28/05/24)
 
-· 👌 IMPROVE: Games >  OpenClaw for aarch64.
+· 👌 IMPROVE: Games > OpenClaw for aarch64.
 
 · 👌 IMPROVE: Others > UXPlay (Airplay Mirroring) for armhf & aarch64.
 

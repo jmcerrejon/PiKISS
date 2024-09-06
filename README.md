@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1186 hours**
+-   **1191 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,12 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (06/09/24)
+
+· 👌 IMPROVE: Others > Wine add Hangover v9.15 for aarch64.
+
+· ❌ REMOVE: Others > Box86/Box64 installation (Only compilation is available).
 
 ### (03/09/24)
 
@@ -181,29 +187,6 @@ curl -sSL https://git.io/JfAPE | bash
 
 · 👌 IMPROVE: Emulators > Redream (Sega Dreamcast).
 
-### (26/01/24)
-
-· 👌 IMPROVE: Emulators > RetroArch (Add Shaders).
-
-### (24/01/24)
-
-· 👌 IMPROVE: Others > Fixes.
-
-· 👌 IMPROVE: Others > SDL2 (Compile the latest version on your OS).
-
-· 👌 IMPROVE: Minor fixes on helper.sh.
-
-### (13/01/24)
-
-· 👌 IMPROVE: Emulators > RetroArch (Add Shaders).
-
-· ❌ REMOVE: Others > Net Tools (deprecated).
-
-· 👌 IMPROVE: Others > Metasploit.
-
-### (10/01/24)
-
-· 👌 IMPROVE: Emulatos > Snes9X 1.62.3 & BSNes v115 for 64-bit.
 ...
 
 To see the full list of changes, read the [CHANGELOG](./CHANGELOG)
