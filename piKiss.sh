@@ -318,6 +318,7 @@ smMultimedia() {
         Kodi "Kodi is a free media player that is designed to look great on your TV but is just as home on a small screen."
         Kiosk "Image slideshow"
         Moonlight "Moonlight PC is an open source implementation of NVIDIA's GameStream"
+        Spotube "Spotify clone"
         TV "CLI TV Player: Spain and International"
         OBS "Free & open source software 4 video recording and streaming"
     )
@@ -331,6 +332,7 @@ smMultimedia() {
         Kodi) ./scripts/mmedia/xbmc.sh ;;
         Kiosk) ./scripts/mmedia/kiosk.sh ;;
         Moonlight) ./scripts/mmedia/moonlight-qt.sh ;;
+        Spotube) ./scripts/mmedia/spotube.sh ;;
         TV) ./scripts/mmedia/tvplayer.sh ;;
         OBS) ./scripts/mmedia/obs.sh ;;
         esac
