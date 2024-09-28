@@ -2,7 +2,7 @@
 #
 # Description : Winex86 + Box86
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.0 (06/Sep/24)
+# Version     : 1.2.1 (28/Sep/24)
 # Tested      : Raspberry Pi 5
 # Info        : https://github.com/ptitSeb/box86/blob/master/docs/X86WINE.md
 #
@@ -12,8 +12,9 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly COMPILE_PATH="$HOME/sc"
+readonly HANGOVER_LASTEST_VERSION="9.17"
 readonly PACKAGES_DEV=(libx11-dev)
-readonly HANGOVER_BIN_URL="https://github.com/AndreRH/hangover/releases/download/hangover-9.15/hangover_9.15_debian12_bookworm_arm64.tar"
+readonly HANGOVER_BIN_URL="https://github.com/AndreRH/hangover/releases/download/hangover-${HANGOVER_LASTEST_VERSION}/hangover_${HANGOVER_LASTEST_VERSION}_debian12_bookworm_arm64.tar"
 readonly WINETRICKS_URL="https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks"
 
 remove_files() {
@@ -61,7 +62,12 @@ EOF
 }
 
 enable_4k_pagesize() {
+    local CONFIG_PATH="/boot/firmware/config.txt"
+
     if [[ $(getconf PAGESIZE) -eq 4096 ]]; then
+        return 0
+    fi
+    if grep -q "kernel=kernel8.img" $CONFIG_PATH; then
         return 0
     fi
     echo "
@@ -70,12 +76,13 @@ WARNING!
 
 · Wine doesn't work with 16K Kernel PageSize.
 · You need to switch to the 4k pagesize kernel.
-· Add to /boot/firmware/config.txt: kernel=kernel8.img
+· Add to $CONFIG_PATH: kernel=kernel8.img
 "
-    read -p "Can I modify the /boot/firmware/config.txt file by adding this setting? (y/N) " response
+    read -p "Can I modify the $CONFIG_PATH file by adding this setting? (y/N) " response
     if [[ $response =~ [Yy] ]]; then
-        if ! grep -q "kernel=kernel8.img" /boot/firmware/config.txt; then
-            echo -e "\nkernel=kernel8.img" | sudo tee -a /boot/firmware/config.txt
+        if ! grep -q "kernel=kernel8.img" $CONFIG_PATH; then
+            echo -e "\nkernel=kernel8.img" | sudo tee -a $CONFIG_PATH
+            read -p "Remember you need to reboot for changes to take effect."
         fi
     fi
 }
@@ -180,7 +187,7 @@ Wine
 ====
 
  · For armhf: Compile & install latest Box86/Box64 + Wine.
- · For aarch64: Install Hangover. It runs simple Win32 applications on arm64 Linux.
+ · For aarch64: Install Hangover v${HANGOVER_LASTEST_VERSION}.
  · Add Winetricks (Menu > Accesories).
  · Use wine <app>.exe or winecfg to configure Wine.
 "
