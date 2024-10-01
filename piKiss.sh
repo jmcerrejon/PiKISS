@@ -130,7 +130,7 @@ smTweaks() {
 
 smGames() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Abbaye, AVP, Arx, Blood, Blake Stone, Doom_engine, DX-Rebirth, EDuke32, Fallout 2, GTA, GemRB, Half Life, Hexen 2, OpenClaw, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, OpenXCom, Unreal Tournament, WipeOut"
+        show_dialog_only_32_bits "Abbaye, AVP, Arx, Blood, Blake Stone, Carmageddon, Doom_engine, DX-Rebirth, EDuke32, Fallout 2, GTA, GemRB, Half Life, Hexen 2, OpenClaw, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, OpenXCom, Unreal Tournament, WipeOut"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Games ]" --menu "Select game from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
@@ -142,6 +142,7 @@ smGames() {
         Blood "Blood is a fps game developed by Monolith Productions"
         BStone "Robert W. Stone III, AKA Blake Stone must eliminate Dr. Pyrus Goldfire"
         CaptainS "Save Seville from the evil Torrebruno"
+        Carmageddon "Carmageddon is a vehicular combat game"
         Doom_engine "Zendronum or Crispy engine to play Doom, Heretic, Hexen..."
         DX-Rebirth "Descent I/II improved engine"
         Dune2 "Dune 2 Legacy"
@@ -195,6 +196,7 @@ smGames() {
         Blood) ./scripts/games/blood.sh ;;
         BStone) ./scripts/games/bstone.sh ;;
         CaptainS) ./scripts/games/captains.sh ;;
+        Carmageddon) ./scripts/games/carmageddon.sh ;;
         Doom_engine) ./scripts/games/cdoom.sh ;;
         DX-Rebirth) ./scripts/games/descent.sh ;;
         Dune2) ./scripts/games/dune2.sh ;;
