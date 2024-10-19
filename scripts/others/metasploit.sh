@@ -2,7 +2,7 @@
 #
 # Description : Metasploit Framework
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (13/Jan/24)
+# Version     : 1.0.1 (19/Oct/24)
 # Tested on   : Raspberry Pi 5
 #
 # shellcheck source=../helper.sh
@@ -44,7 +44,7 @@ fi
 
 install() {
     install_metasploit
-    read "Done!. To run, type: msfconsole."
+    read -p "Done!. To run, type: msfconsole."
     exit_message
 }
 
