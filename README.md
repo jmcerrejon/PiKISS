@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1197 hours**
+-   **1198 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,16 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (05/11/24)
+
+· 👌 IMPROVE: Devs > Docker.
+
+· 👌 IMPROVE: Server > Git Server.
+
+### (19/10/24)
+
+· 📦 ADD: Others > Metasploit Framework.
 
 ### (01/10/24)
 
