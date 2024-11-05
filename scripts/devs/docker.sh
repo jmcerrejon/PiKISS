@@ -2,7 +2,7 @@
 #
 # Description : Docker
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (14/Nov/23)
+# Version     : 1.0.1 (05/Nov/24)
 # Tested      : Raspberry Pi 5
 #
 # shellcheck source=../helper.sh
@@ -77,7 +77,7 @@ install() {
     if [[ $response =~ [Yy] ]]; then
         sudo systemctl enable docker
     fi
-    echo -e"\nDone!. You can try it using the command: sudo docker run hello-world"
+    echo -e "\nDone!. You can try it using the command: sudo docker run hello-world"
     exit_message
 }
 
