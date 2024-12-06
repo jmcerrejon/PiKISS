@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1198 hours**
+-   **1200 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -21,9 +21,9 @@
 
 -   I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu), Kreal (krishenriksen.dk).
 
--   I want to thank my current patrons **Bo Martin, Rodney Hester & specially James Carroll** for trusting me. ❤️
+-   **Patreon Legends:** I want to thank **Bo Martin, Rodney Hester & specially James Carroll** for trusting me. ❤️
 
--   Patrons support me in the past: _Jay Edwards, Tomás Delgado, Jeremy Palmer, cxgr, Willie D Kerner Jr, Matthew Michink, Mathew Gracie, Mike A. Torevell, David J Leto, Josiah McCracken._
+-   Patreons supported me in the past: _Jay Edwards, Tomás Delgado, Jeremy Palmer, cxgr, Willie D Kerner Jr, Matthew Michink, Mathew Gracie, Mike A. Torevell, David J Leto, Josiah McCracken._
 
 -   Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy, Jonathan Hodges, Mattias True, Sara J Shireman Anderson, Anthony Skiver, Shawn Mullins, Michaël Bortolin, William Norris, Jacob Ehrman, Karsten Schulz, Robert Napier, Patrick Michels._
 
@@ -79,11 +79,13 @@ curl -sSL https://git.io/JfAPE | bash
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (06/12/24)
+
+· 👌 IMPROVE: Server > Git Server.
+
 ### (05/11/24)
 
 · 👌 IMPROVE: Devs > Docker.
-
-· 👌 IMPROVE: Server > Git Server.
 
 ### (19/10/24)
 
