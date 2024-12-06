@@ -11,7 +11,7 @@
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-VERSION="v.1.11.1"
+VERSION="v.1.11.2"
 IP=$(get_ip)
 PI_VERSION_NUMBER=$(get_pi_version_number)
 ARCHITECTURE=$(getconf LONG_BIT)
