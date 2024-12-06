@@ -171,9 +171,7 @@ install_packages_if_missing() {
 # Get your current IP in the Lan
 #
 get_ip() {
-    local IP
-    IP=$(hostname -I | awk '{print $1}')
-    echo "$IP"
+    hostname -I | awk '{print $1}'
 }
 
 #
