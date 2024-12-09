@@ -2,7 +2,7 @@
 #
 # Description : Fallout 1/2 Community Ed
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.2 (04/Mar/24)
+# Version     : 1.0.3 (09/Dec/24)
 # Tested      : Raspberry Pi 5
 # TODO        : Fallout 1 support
 #
@@ -22,7 +22,7 @@ readonly VAR_DATA_NAME_2="FALLOUT2"
 uninstall() {
     read -p "Do you want to uninstall Fallout 2 (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
-        rm -rf "$INSTALL_DIR" ~/.config/fallout2-ce ~/.local/share/applications/fallout2-ce.desktop
+        rm -rf "$INSTALL_DIR/fallout-ce" ~/.config/fallout2-ce ~/.local/share/applications/fallout2-ce.desktop
         if [[ -e $INSTALL_DIR ]]; then
             echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
             exit_message
