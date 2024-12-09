@@ -79,6 +79,10 @@ curl -sSL https://git.io/JfAPE | bash
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (09/12/24)
+
+· 👌 IMPROVE: Emulators > Amiberry (Amiga emulator) v7.0.0-RC1 for armhf/aarch64.
+
 ### (06/12/24)
 
 · 👌 IMPROVE: Server > Git Server.
