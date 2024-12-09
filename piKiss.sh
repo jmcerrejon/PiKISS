@@ -282,7 +282,7 @@ smEmulators() {
         Back) break ;;
         Amiga) ./scripts/emus/amiga.sh ;;
         Box86-64) ./scripts/emus/box86_64.sh ;;
-        Amstrad) ./scripts/emus/caprice.sh ;;
+        Amstrad) ./scripts/emus/amstrad.sh ;;
         Dolphin) ./scripts/emus/dolphin.sh ;;
         Flycast) ./scripts/emus/flycast.sh ;;
         DOSBox) ./scripts/emus/msdos.sh ;;

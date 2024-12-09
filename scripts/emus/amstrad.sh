@@ -1,14 +1,14 @@
 #!/bin/bash
 #
-# Description : Caprice32 for Raspberry Pi(Amstrad)
+# Description : Amstrad emulator for Raspberry Pi(Amstrad)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.1 (16/Jun/20)
-# Compatible  : Raspberry Pi 2-4 (tested)
+# Version     : 1.0.0 (10/Dec/24)
+# Tested      : Raspberry Pi 5 (tested)
 #
-# HELP        : https://www.raspberrypi.org/forums/viewtopic.php?f=78&t=105811
-#			  : For load disk, type cat and then run"game_name"
-#
+# shellcheck source=../helper.sh
+. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
+check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 INSTALL_DIR="$HOME/games"
 URL_FILE="https://misapuntesde.com/res/caprice32_4-60.tar.gz"
@@ -19,16 +19,16 @@ if [[ -f $INSTALL_DIR/caprice/cap32 ]]; then
     exit
 fi
 
-playgame(){
+playgame() {
     if [[ -f $INSTALL_DIR/caprice/disk/brucelee.dsk ]]; then
         read -p "Do you want to run caprice now? [y/n] " option
         case "$option" in
-            y*) cd $INSTALL_DIR/caprice/ && ./cap32 ;;
+        y*) cd $INSTALL_DIR/caprice/ && ./cap32 ;;
         esac
     fi
 }
 
-install(){
+install() {
     echo "Installing dependencies..."
     sudo apt install -y libts-0.0-0
     echo "Downloading packages..."
@@ -47,9 +47,9 @@ while true; do
     echo " "
     read -p "Proceed? [y/n] " yn
     case $yn in
-    [Yy]* ) echo "Installing, please wait..." && install;;
-    [Nn]* ) exit;;
-    [Ee]* ) exit;;
-    * ) echo "Please answer (y)es, (n)o or (e)xit.";;
+    [Yy]*) echo "Installing, please wait..." && install ;;
+    [Nn]*) exit ;;
+    [Ee]*) exit ;;
+    *) echo "Please answer (y)es, (n)o or (e)xit." ;;
     esac
 done
