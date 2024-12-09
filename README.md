@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1200 hours**
+-   **1203 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -82,6 +82,8 @@ curl -sSL https://git.io/JfAPE | bash
 ### (09/12/24)
 
 · 👌 IMPROVE: Emulators > Amiberry (Amiga emulator) v7.0.0-RC1 for armhf/aarch64.
+
+· 🐛 FIX: Games > Fallout.
 
 ### (06/12/24)
 
