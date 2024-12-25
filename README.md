@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1203 hours**
+-   **1220 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -21,7 +21,7 @@
 
 -   I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu), Kreal (krishenriksen.dk).
 
--   **Patreon Legends:** I want to thank **Bo Martin, Rodney Hester & specially James Carroll** for trusting me. ❤️
+-   **Patreon Legends:** I want to thank **Bo Martin, Rodney Hester, CraigsBar & specially James Carroll** for trusting me. ❤️
 
 -   Patreons supported me in the past: _Jay Edwards, Tomás Delgado, Jeremy Palmer, cxgr, Willie D Kerner Jr, Matthew Michink, Mathew Gracie, Mike A. Torevell, David J Leto, Josiah McCracken._
 
@@ -78,6 +78,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (25/12/24) 🎄
+
+· 📦 ADD: Games > Half Life 2 (Source Engine) for aarch64.
 
 ### (09/12/24)
 
@@ -200,22 +204,6 @@ curl -sSL https://git.io/JfAPE | bash
 ### (05/03/24)
 
 · 👌 IMPROVE: Games > Fallout 2 Community Edition (aarch64).
-
-### (24/02/24)
-
-· 👌 IMPROVE: Games > RVGL (AKA Re-Volt) v23.1030 for archhf & aarch64.
-
-### (17/02/24)
-
-· 👌 IMPROVE: Emulators > mGBA 0.11 (It supports Game Boy, Game Boy Color & Game Boy Advanced).
-
-### (11/02/24)
-
-· 👌 IMPROVE: Games > DXX-Rebirth 0.60 (Descent).
-
-### (01/02/24)
-
-· 👌 IMPROVE: Emulators > Redream (Sega Dreamcast).
 
 ...
 
