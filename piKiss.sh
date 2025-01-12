@@ -130,7 +130,7 @@ smTweaks() {
 
 smGames() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Abbaye, AVP, Arx, Blood, Blake Stone, Carmageddon, Doom_engine, DX-Rebirth, EDuke32, Fallout 2, GTA, GemRB, Half Life, Hexen 2, OpenClaw, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, OpenXCom, Unreal Tournament, WipeOut"
+        show_dialog_only_32_bits "Abbaye, AVP, Arx, Blood, Blake Stone, Carmageddon, Doom_engine, DX-Rebirth, EDuke32, Fallout 2, GTA, GemRB, Half Life, Hexen 2, OpenClaw, Portal, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, OpenXCom, Unreal Tournament, WipeOut"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Games ]" --menu "Select game from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
@@ -166,6 +166,7 @@ smGames() {
         OpenSPlex "OpenSupaplex reimplementation of the original 90's game"
         OpenXCom "Open-source clone of UFO: Enemy Unknown"
         Prince "port/conversion of the DOS game Prince of Persia"
+        Portal "Players must solve puzzles by opening portals and moving objects"
         Quake "Enhanced clients for ID Software's Quake saga"
         ReturnC "The dark reich's closing in. The time to act is now"
         RVGL "Re-Volt is a radio control car racing themed video game"
@@ -220,6 +221,7 @@ smGames() {
         OpenSPlex) ./scripts/games/supaplex.sh ;;
         OpenXCom) ./scripts/games/openxcom.sh ;;
         Prince) ./scripts/games/princeofp.sh ;;
+        Portal) ./scripts/games/portal.sh ;;
         Quake) ./scripts/games/quake.sh ;;
         ReturnC) ./scripts/games/rwolf.sh ;;
         RVGL) ./scripts/games/rvgl.sh ;;
