@@ -21,7 +21,7 @@
 
 -   I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu), Kreal (krishenriksen.dk).
 
--   **Patreon Legends:** I want to thank **Bo Martin, Rodney Hester, CraigsBar & specially James Carroll** for trusting me. ❤️
+-   **Patreon Legends:** I want to thank **Bo Martin, Rodney Hester, CraigsBar, Lohann Paterno Coutinho Ferreira & specially James Carroll** for trusting me. ❤️
 
 -   Patreons supported me in the past: _Jay Edwards, Tomás Delgado, Jeremy Palmer, cxgr, Willie D Kerner Jr, Matthew Michink, Mathew Gracie, Mike A. Torevell, David J Leto, Josiah McCracken._
 
