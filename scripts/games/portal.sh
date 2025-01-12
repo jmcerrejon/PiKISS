@@ -83,7 +83,7 @@ install_source_engine() {
     download_and_extract "$BINARY_SOURCE_64_BITS_URL" "$INSTALL_DIR"
     generate_icon_source_engine
 
-    echo -e "\nDone!\n"q
+    echo -e "\nDone!\n"
     runme_source_engine
 }
 
