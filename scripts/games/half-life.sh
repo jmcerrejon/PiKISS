@@ -2,7 +2,7 @@
 #
 # Description : Xash3D-fwgs (AKA Half Life) & Source Engine (HL2) installer for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 2.0.0 (25/Dec/24)
+# Version     : 2.0.1 (12/Jan/25)
 # Tested      : Raspberry Pi 5
 #
 # shellcheck source=../helper.sh
@@ -10,6 +10,7 @@
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
+readonly GAME_NAME="Half Life"
 readonly INSTALL_DIR="$HOME/games"
 readonly BIN_GAME_DIR="$INSTALL_DIR/xash3d"
 readonly BIN_GAME_SOURCE_DIR="$INSTALL_DIR/hl2"
@@ -42,7 +43,7 @@ runme_source_engine() {
 }
 
 uninstall_xash() {
-    read -p "Do you want to uninstall Half-Life (y/N)? " response
+    read -p "Do you want to uninstall $GAME_NAME (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
         rm -rf "$BIN_GAME_DIR" ~/.local/share/applications/xash3d.desktop
         if [[ -d $BIN_GAME_DIR ]]; then
@@ -56,9 +57,9 @@ uninstall_xash() {
 }
 
 uninstall_source_engine() {
-    read -p "Do you want to uninstall Half-Life 2 (y/N)? " response
+    read -p "Do you want to uninstall $GAME_NAME 2 (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
-        rm -rf "$BIN_GAME_SOURCE_DIR" ~/.local/share/applications/source_engine.desktop
+        rm -rf "$BIN_GAME_SOURCE_DIR" ~/.local/share/applications/source_hl2.desktop
         if [[ -d $BIN_GAME_SOURCE_DIR ]]; then
             echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
             exit_message
@@ -74,7 +75,7 @@ generate_icon_xash() {
         echo -e "\nGenerating icon..."
         cat <<EOF >~/.local/share/applications/xash3d.desktop
 [Desktop Entry]
-Name=Half Life
+Name=$GAME_NAME
 Exec=${INSTALL_DIR}/xash3d/xash3d
 Icon=${INSTALL_DIR}/xash3d/hl.png
 Path=${INSTALL_DIR}/xash3d/
@@ -90,7 +91,7 @@ generate_icon_source_engine() {
         echo -e "\nGenerating icon..."
         cat <<EOF >~/.local/share/applications/source_hl2.desktop
 [Desktop Entry]
-Name=Half Life 2
+Name=$GAME_NAME 2
 Exec=${INSTALL_DIR}/hl2/launcher.sh
 Icon=${INSTALL_DIR}/hl2/Icon.svg
 Path=${INSTALL_DIR}/hl2/
@@ -167,19 +168,19 @@ compile_xash() {
 
 install_xash() {
     if [[ -d $BIN_GAME_DIR ]]; then
-        echo -e "Half-Life already installed.\n"
+        echo -e "$GAME_NAME already installed.\n"
         uninstall_xash
         exit 0
     fi
     install_script_message
     echo "
-Half Life
+$GAME_NAME
 =========
 
  · Based on engine: ${SOURCE_CODE_XASH_FWGS_URL}
  · REMEMBER YOU NEED A LEGAL COPY OF THE GAME and copy /valve directory inside $BIN_GAME_DIR.
  · Overwrite /valve with /valve_hd to get HD textures for some models, materials & HQ sounds.
- · To play, when installed use Menu > Games > Half-Life or $BIN_GAME_DIR/xash3d
+ · To play, when installed use Menu > Games > $GAME_NAME or $BIN_GAME_DIR/xash3d
 "
     read -p "Press [ENTER] to continue..."
 
@@ -199,21 +200,21 @@ Half Life
 
 install_source_engine() {
     if [[ -d $BIN_GAME_SOURCE_DIR ]]; then
-        echo -e "Half-Life 2 already installed.\n"
+        echo -e "$GAME_NAME 2 already installed.\n"
         uninstall_source_engine
         exit 0
     fi
     install_script_message
     echo "
-Half Life 2
+$GAME_NAME 2
 ===========
 
  · Based on engine: ${SOURCE_CODE_HL2_URL}
  · Thanks to Lohann Paterno Coutinho and other participants for the help.
- · Better experience with 720p resolution.
- · You need to have a legal copy of the game from Steam.
+ · Better experience at 720p resolution.
+ · Steam account with Portal game bought is required
 
- · IMPORTANT!: Run the file ./launcher.sh or click on Menu > Game > Half-Life 2 on Desktop to download the game data files from your Steam account and play. This process works exclusively for a specific version of game data files, so ensure you have your Steam credentials ready before proceeding. PiKISS does not store any of your credentials. Check out the project https://github.com/SteamRE/DepotDownloader for more information.
+ · IMPORTANT!: Run the file ./launcher.sh or click on Menu > Game > $GAME_NAME 2 on Desktop to download the game data files from your Steam account and play. This process works exclusively for a specific version of game data files, so ensure you have your Steam credentials ready before proceeding. PiKISS does not store any of your credentials. Check out the project https://github.com/SteamRE/DepotDownloader for more information.
 "
     read -p "Press [ENTER] to continue..."
 
@@ -227,10 +228,10 @@ Half Life 2
 menu() {
     while true; do
         dialog --clear \
-            --title "[ Half Life ]" \
+            --title "[ $GAME_NAME ]" \
             --menu "Select from the list:" 11 68 3 \
-            XASH "Half Life 1" \
-            SOURCE "Half Life 2" \
+            XASH "$GAME_NAME 1" \
+            SOURCE "$GAME_NAME 2" \
             EXIT "Exit" 2>"${tempfile}"
 
         menuitem=$(<"${tempfile}")
