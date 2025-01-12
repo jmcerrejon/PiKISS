@@ -13,11 +13,11 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1220 hours**
+-   **1227 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
--   $2.308,99
+-   $2.470,98
 
 -   I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu), Kreal (krishenriksen.dk).
 
@@ -78,6 +78,12 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (12/01/25)
+
+· 📦 ADD: Games > Portal (Source Engine) for aarch64.
+
+· 👌 IMPROVE: Games > Half Life 2 launcher script for aarch64.
 
 ### (25/12/24) 🎄
 
@@ -184,27 +190,6 @@ curl -sSL https://git.io/JfAPE | bash
 ### (15/03/24)
 
 · 👌 IMPROVE: Others > Scrcopy v2.4 with Android 15 support.
-
-### (08/03/24)
-
-· 👌 IMPROVE: Config > Vulkan 24.0.0 & libdrm-2.4.120.
-
-· 👌 IMPROVE: Games > Quake: Quakespasm (Quake I) v0.96.1 for aarch64.
-
-· 👌 IMPROVE: Games > Quake: Latest Quake 2 with Vulkan support.
-
-· 👌 IMPROVE: Games > Quake: Quake 3 now with aarch64 support.
-
-· 👌 IMPROVE: Emulators > M.A.M.E. v0.263.
-
-### (06/03/24)
-
-· 👌 IMPROVE: Emulators > Unreal Speccy Emulator (ZX Spectrum) for armhf & aarch64.
-
-### (05/03/24)
-
-· 👌 IMPROVE: Games > Fallout 2 Community Edition (aarch64).
-
 ...
 
 To see the full list of changes, read the [CHANGELOG](./CHANGELOG)
