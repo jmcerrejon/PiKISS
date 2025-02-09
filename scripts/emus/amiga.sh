@@ -2,7 +2,7 @@
 #
 # Description : Amiberry Amiga emulator
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.6.0 (9/Dec/24)
+# Version     : 1.6.1 (09/Feb/25)
 #
 # shellcheck source=../helper.sh
 . ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -10,7 +10,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 INSTALL_DIR="$HOME/Amiberry"
-AMIBERRY_VERSION="v7.0.0-RC1"
+AMIBERRY_VERSION="v7.0.4"
 ARCHITECTURE=$(getconf LONG_BIT)
 PACKAGES=(libsdl2-image-2.0-0 libsdl2-ttf-2.0-0 flac libserialport0 libenet7)
 RPI_MODEL=$(get_raspberry_pi_model_number)
