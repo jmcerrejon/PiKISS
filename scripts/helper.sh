@@ -30,13 +30,6 @@ export ERROR
 export WARN
 export RESET
 
-is_piapps_installed() {
-    if [[ $(whereis pi-apps) ]]; then
-        true
-    else
-        false
-    fi
-}
 #
 # Fix libGLESv2.so on Raspbian Stretch
 #
@@ -902,9 +895,7 @@ You can find me here (CTRL + Click):
  · Email: ulysess@gmail.com
 "
 
-    if ! is_piapps_installed; then
-        read -p "Press [Enter] to exit..."
-    fi
+    read -p "Press [Enter] to exit..."
     exit 0
 }
 

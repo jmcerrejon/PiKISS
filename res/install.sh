@@ -2,7 +2,7 @@
 #
 # Description : Easy install PiKISS
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.10 (14/Nov/23)
+# Version     : 1.0.11 (09/Feb/25)
 #
 clear
 
@@ -31,14 +31,6 @@ check_and_install_dialog() {
     fi
 }
 
-is_piapps_installed() {
-    if [[ $(whereis pi-apps) ]]; then
-        true
-    else
-        false
-    fi
-}
-
 if [[ -d "$INSTALL_DIR/piKiss" ]]; then
     check_and_install_dialog
     cd "$INSTALL_DIR/piKiss" && ./piKiss.sh
@@ -46,7 +38,7 @@ if [[ -d "$INSTALL_DIR/piKiss" ]]; then
 fi
 
 install() {
-    if ! grep -q </proc/device-tree/compatible 'bcm2712\|bcm2711\|bcm2837\|bcm2836\|bcm2835'; then
+    if ! grep -q 'bcm2712\|bcm2711\|bcm2837\|bcm2836\|bcm2835' </proc/device-tree/compatible; then
         echo "Sorry. PiKISS is only available for Raspberry Pi boards."
         exit 1
     fi
@@ -69,8 +61,6 @@ cd ${HOME}/piKiss, type ./piKiss.sh. You have a menu shortcut, too!. Go to:
  · Raspberry Pi OS: Menu > System Tools > PiKISS
 "
 
-if ! is_piapps_installed; then
-    read -p "Press ENTER to run PiKISS."
-    cd "${INSTALL_DIR}/piKiss" || exit 1
-    ./piKiss.sh
-fi
+read -p "Press ENTER to run PiKISS."
+cd "${INSTALL_DIR}/piKiss" || exit 1
+./piKiss.sh
