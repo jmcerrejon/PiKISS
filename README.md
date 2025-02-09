@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1227 hours**
+-   **1235 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,14 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (2025/02/09)
+
+· 👌 IMPROVE: Games > GemRB v0.9.4 for aarch64.
+
+· 👌 IMPROVE: Emulators > Amiberry (Amiga emulator) v7.0.4 for armhf/aarch64.
+
+· 🐛 FIX: PiKISS icon on Menu when install it.
 
 ### (12/01/25)
 

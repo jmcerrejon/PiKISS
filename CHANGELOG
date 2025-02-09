@@ -1,5 +1,13 @@
 # Changelog (dd/mm/yy)
 
+## (2025/02/09)
+
+· 👌 IMPROVE: Games > GemRB v0.9.4 for aarch64.
+
+· 👌 IMPROVE: Emulators > Amiberry (Amiga emulator) v7.0.4 for armhf/aarch64.
+
+· 🐛 FIX: PiKISS icon on Menu when install it.
+
 ## (12/01/25)
 
 · 📦 ADD: Games > Portal (Source Engine) for aarch64.
