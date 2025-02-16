@@ -96,13 +96,11 @@ cmake_on_build() {
 }
 
 make_with_all_cores() {
-    local OPTOPT_PARAMS
-
-    OPTOPT_PARAMS=$([[ "$(uname -m)" == 'armv7l' ]] && echo "-fsigned-char -marm -march=armv8-a+crc -mtune=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard" || echo "")
-
-    echo -e "\n Compiling with parameters: $OPTOPT_PARAMS"
-    time make -j"$(nproc)" "$OPTOPT_PARAMS"
-    echo
+    time make -j"$(nproc)"
+    read -p "Do you want to install it? (y/N) " response
+    if [[ $response =~ [Yy] ]]; then
+        sudo make install
+    fi
 }
 
 my_checkinstall() {
