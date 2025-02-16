@@ -2,34 +2,37 @@
 #
 # Description : VVVVVV (WIP)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (25/12/20)
+# Version     : 1.1.0 (16/02/25)
 # Compatible  : Raspberry Pi 4
 # Repository  : https://github.com/TerryCavanagh/VVVVVV
 #
+# shellcheck source=../helper.sh
 . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
+readonly VERSION="2.4.2"
 readonly PACKAGES=(libsdl2-mixer-2.0-0)
 readonly PACKAGES_DEV=(libsdl2-dev libsdl2-mixer-dev)
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/vvvvvv-2.3dev-rpi.tar.gz"
+readonly BINARY_64_BITS_URL="https://misapuntesde.com/rpi_share/vvvvvv-${VERSION}-aarch64.tar.gz"
 readonly DATA_GAME_URL="https://thelettervsixtim.es/makeandplay/data.zip"
 readonly DATA_GAME_WEBSITE="https://thelettervsixtim.es/makeandplay"
 readonly SOURCE_CODE_URL="https://github.com/TerryCavanagh/VVVVVV"
 
 runme() {
-    if [ ! -f "$INSTALL_DIR"/vvvvvv/vvvvvv.sh ]; then
+    if [ ! -f "$INSTALL_DIR"/vvvvvv/VVVVVV ]; then
         echo -e "\nFile does not exist.\n· Something is wrong.\n· Try to install again."
         exit_message
     fi
     read -p "Press [ENTER] to run..."
-    cd "$INSTALL_DIR"/vvvvvv && ./vvvvvv.sh
+    cd "$INSTALL_DIR"/vvvvvv && ./VVVVVV
     exit_message
 }
 
 remove_files() {
-    rm -rf "$INSTALL_DIR"/vvvvvv ~/.local/share/applications/vvvvvv.desktop
+    rm -rf "$INSTALL_DIR"/vvvvvv ~/.local/share/VVVVVV ~/.local/share/applications/vvvvvv.desktop
 }
 
 uninstall() {
@@ -59,8 +62,8 @@ generate_icon() {
 Name=VVVVVV
 Type=Application
 Comment=Smart, minimalist platformer with one simple but brilliant twist: instead of jumping, you need to reverse gravity.
-Exec=${INSTALL_DIR}/vvvvvv/vvvvvv.sh
-Icon=${INSTALL_DIR}/vvvvvv/icon.png
+Exec=${INSTALL_DIR}/vvvvvv/VVVVVV
+Icon=${INSTALL_DIR}/vvvvvv/icon.ico
 Path=${INSTALL_DIR}/vvvvvv/
 Terminal=false
 Categories=Game;
@@ -73,15 +76,14 @@ end_message() {
 }
 
 compile() {
-    # Raspberry Pi OS has an issue with the lib libSDL2-2-0-so-0. You need to compile it manually,
-    # Then include it with the binary and run with LD_LIBRARY_PATH=./ ./VVVVVV
     install_packages_if_missing "${PACKAGES_DEV[@]}"
     mkdir -p "$HOME/sc" && cd "$_" || return
-    git clone "$SOURCE_CODE_URL" vvvvvv && cd vvvvvv/desktop_version || return
+    git clone "$SOURCE_CODE_URL" vvvvvv && cd vvvvvv/desktop_version || exit 1
+    git submodule init && git submodule update --init --recursive
     cmake -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_CXX_FLAGS="$(sdl2-config --cflags)" -DCMAKE_EXE_LINKER_FLAGS="$(sdl2-config --libs)"
     make_with_all_cores
     download_file "$DATA_GAME_URL" "$HOME/sc/vvvvvv"
-    echo -e "\nDone!. Check the code at $HOME/sc/vvvvvv"
+    echo -e "\nDone!. Check the code at $HOME/sc/vvvvvv/desktop_version."
     exit_message
 }
 
@@ -103,7 +105,13 @@ post_install() {
 
 install() {
     install_packages_if_missing "${PACKAGES[@]}"
-    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
+    local BINARY_URL_INSTALL=$BINARY_URL
+
+    if is_userspace_64_bits; then
+        BINARY_URL_INSTALL=$BINARY_64_BITS_URL
+    fi
+
+    download_and_extract "$BINARY_URL_INSTALL" "$INSTALL_DIR"
     generate_icon
     post_install
 }
@@ -113,7 +121,7 @@ echo "
 VVVVVV: Make and Play edition for Raspberry Pi
 ==============================================
 
- · Optimized for Raspberry Pi 4.
+ · Version: $VERSION for aarch64.
  · VVVVVV Source Code License v1.0. https://thelettervsixtim.es/makeandplay/
  · If you enjoy the game, please consider purchasing a copy at http://thelettervsixtim.es
  · KEYS: Cursors=Movement | Space=Change gravity | Alt+ENTER=Full screen | Enter=Map

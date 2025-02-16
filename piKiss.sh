@@ -130,7 +130,7 @@ smTweaks() {
 
 smGames() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Abbaye, AVP, Arx, Blood, Blake Stone, Carmageddon, Doom_engine, DX-Rebirth, EDuke32, Fallout 2, GTA, GemRB, Half Life, Hexen 2, OpenClaw, Portal, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, OpenXCom, Unreal Tournament, WipeOut"
+        show_dialog_only_32_bits "Abbaye, AVP, Arx, Blood, Blake Stone, Carmageddon, Doom_engine, DX-Rebirth, EDuke32, Fallout 2, GTA, GemRB, Half Life, Hexen 2, OpenClaw, Portal, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, OpenXCom, Unreal Tournament, VVVVVV, WipeOut"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Games ]" --menu "Select game from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
@@ -245,14 +245,14 @@ smGames() {
 
 smEmulators() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Amiga, Box86/64, Dolphin, Flycast, DOSBox, Mame, mGBA, PCem, PS1, PS2, PSP, RetroArch, Redream, ScummVM, USP (Spectrum), VICE"
+        show_dialog_only_32_bits "Amiga, Amstrad, Box86/64, Dolphin, Flycast, DOSBox, Mame, mGBA, PCem, PS1, PS2, PSP, RetroArch, Redream, ScummVM, USP (Spectrum), VICE"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Emulators ]" --menu "Select emulator from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
     options=(
         Back "Back to main menu"
         Amiga "Amiberry is the best Amiga emulator"
-        Amstrad "Amstrad CPC with Caprice32"
+        Amstrad "Caprice32 is an Amstrad CPC emulator"
         Box86-64 "Let's you run x86/64 Linux programs on non-x86/64 Linux"
         Dolphin "Dolphin is a Wii & Gamecube emulator"
         DOSBox "DOSBox-X is a DOS emulator with GUI"
