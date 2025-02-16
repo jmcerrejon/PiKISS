@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1235 hours**
+-   **1238 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,12 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (2025/02/16)
+
+· 👌 IMPROVE: Emulators > Caprice32 for aarch64.
+
+· 📦 ADD: Games > VVVVVV v2.4.2 for aarch64.
 
 ### (2025/02/09)
 
