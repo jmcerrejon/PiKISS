@@ -2,11 +2,11 @@
 #
 # Description : Bstone: A source port of Blake Stone: Aliens Of Gold and Blake Stone: Planet Strike.
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.1 (11/Jul/24)
+# Version     : 1.1.2 (16/Mar/25)
 # Compatible  : Raspberry Pi 4 (tested on Raspberry Pi 4)
 #
 # shellcheck source=../helper.sh
-. ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
@@ -24,7 +24,7 @@ runme() {
     local DATA_DIR
     [[ -e ~/.local/share/applications/aog-full.desktop ]] && DATA_DIR="$AOG_FULL_DATA_PATH" || DATA_DIR="$AOG_SHARE_DATA_PATH"
     read -p "Press [ENTER] to run the game..."
-    cd "$INSTALL_DIR"/bstone && ./bstone --data_dir "$DATA_DIR"
+    cd "$INSTALL_DIR"/bstone && ./run.sh "$DATA_DIR"
     echo
     exit_message
 }
