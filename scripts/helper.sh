@@ -200,9 +200,12 @@ directory_exist() {
 # Get the distribution name
 #
 get_distro_name() {
-    local DISTRO
-    DISTRO=$(lsb_release -si)
-    echo "$DISTRO"
+    if [[ -f /etc/os-release ]]; then
+        . /etc/os-release
+        echo "$ID"
+    else
+        echo "Unknown"
+    fi
 }
 
 #
@@ -552,6 +555,12 @@ X-KeepTerminal=true
 EOF
         restart_panel
     fi
+}
+
+error_message() {
+    echo
+    read -p "There was an issue in the process. Press [Enter] to go back to the menu..."
+    exit 1
 }
 
 exit_message() {
@@ -1136,10 +1145,11 @@ remove_backports() {
 
 install_meson() {
     echo -e "\nChecking if meson is installed...\n"
-    if ! pip3 list | grep -F meson &>/dev/null; then
-        isPackageInstalled meson && sudo apt-get remove -y meson
-        sudo pip3 install meson --break-system-packages
+    if isPackageInstalled meson; then
+        echo -e "Meson is already installed.\n"
+        return 0
     fi
+    sudo apt install -y meson
 }
 
 install_nginx() {
@@ -1271,7 +1281,12 @@ open_default_browser() {
 }
 
 get_codename() {
-    lsb_release -sc
+    if [[ -f /etc/os-release ]]; then
+        . /etc/os-release
+        echo "$VERSION_CODENAME"
+    else
+        echo "Unknown"
+    fi
 }
 
 get_pi_version_number() {
