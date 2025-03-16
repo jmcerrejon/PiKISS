@@ -2,13 +2,13 @@
 #
 # Description : Blood
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.10 (10/Jul/24)
+# Version     : 1.0.11 (16/Mar/25)
 # Tested      : Raspberry Pi 5
 #
 # Help		  : https://www.techradar.com/how-to/how-to-run-wolfenstein-3d-doom-and-duke-nukem-on-your-raspberry-pi
 #
 # shellcheck source=../helper.sh
-. ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
@@ -115,4 +115,16 @@ install() {
 }
 
 install_script_message
+echo "
+Blood
+=====
+ · Blood is a fps game.The game follows the story of Caleb, an undead early 20th century gunfighter seeking revenge against the dark god Tchernobog.
+ · You need the data files from the original game to play.
+ · Install the game and then copy the data files inside $INSTALL_DIR/blood.
+"
+read -p "Do you want to continue? (y/N) " response
+if [[ $response =~ [Nn] ]]; then
+    exit_message
+fi
+
 install
