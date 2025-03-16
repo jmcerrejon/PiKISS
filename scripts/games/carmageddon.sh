@@ -2,11 +2,11 @@
 #
 # Description : Dethrace is a Carmageddon clone.
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (01/Oct/24)
+# Version     : 1.0.1 (16/Mar/25)
 # Tested      : Raspberry Pi 5
 #
 # shellcheck source=../helper.sh
-. ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
@@ -17,7 +17,7 @@ readonly BINARY_AARCH64_URL="https://misapuntesde.com/rpi_share/dethrace-rpi-aar
 readonly SOURCE_CODE_URL="https://github.com/dethrace-labs/dethrace"
 readonly ICON_URL="https://cdn2.steamgriddb.com/icon/76fb6fb9cbea7011e49166d9d4ddbc48.png"
 readonly VAR_DATA_NAME="CARMAGEDDON"
-DATA_URL="https://rr2000.cwaboard.co.uk/R4/PC/carmdemo.zip"
+DATA_URL="https://rr2000.cwaboard.co.uk/R4/PC/carmdemo.zip" # DATA_URL="https://misapuntesde.com/rpi_share/demos/carmdemo.zip"
 INPUT=/tmp/dethrace.$$
 
 runme() {
@@ -35,7 +35,7 @@ uninstall() {
     read -p "Do you want to uninstall Dethrace (Carmageddon) (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
         rm -rf ~/.local/share/applications/dethrace.desktop ~/.local/share/dethrace "$CONFIG_DIR"/dethrace.png \
-        "$INSTALL_DIR"/dethrace /usr/local/share/blender/scripts/addons/dethrace /usr/local/share/games/dethrace
+            "$INSTALL_DIR"/dethrace /usr/local/share/blender/scripts/addons/dethrace /usr/local/share/games/dethrace
         if [[ -e "$INSTALL_DIR"/dethrace ]]; then
             echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
             exit_message
@@ -83,11 +83,12 @@ compile() {
 }
 
 download_data_files() {
+    echo -e "\nInstalling data files..."
     if exists_magic_file; then
         DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
         message_magic_air_copy "$VAR_DATA_NAME_EN"
     fi
-    download_and_extract "$DATA_URL" $INSTALL_DIR/dethrace
+    download_and_extract "$DATA_URL" "$INSTALL_DIR/dethrace"
 }
 
 install_binaries() {
@@ -114,4 +115,10 @@ Dethrace (Carmageddon)
  · Demo version will be installed If no copy is present in the file $RESOURCES_DIR/magic_air_copy.txt
  · Tip: Go to Control and enable different alternative configurations.
 "
+
+read -p "Do you want to continue? (y/N) " response
+if [[ $response =~ [Nn] ]]; then
+    exit_message
+fi
+
 install
