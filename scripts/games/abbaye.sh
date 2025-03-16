@@ -2,7 +2,7 @@
 #
 # Description : Abbaye des Morts
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.1 (01/Oct/24)
+# Version     : 1.2.2 (16/Mar/25)
 # Tested      : Raspberry Pi 5
 # Help		  : https://misapuntesde.com/post.php?id=162
 #
@@ -33,7 +33,7 @@ if [[ -d $INSTALL_DIR/abbaye ]]; then
     echo -e "Abbaye des Morts already installed.\n"
     read -p "Do you want to unistall it (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
-        rm -rf "$INSTALL_DIR/abbaye" /usr/share/applications/abbaye.desktop
+        rm -rf "$INSTALL_DIR/abbaye" ~/.local/share/applications/abbaye.desktop
         if [[ -e $INSTALL_DIR/abbaye ]]; then
             echo -e "I hate when this happens. Try to delete manually.\n"
             exit_message
