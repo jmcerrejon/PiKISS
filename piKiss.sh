@@ -530,7 +530,7 @@ show_dialog_only_32_bits() {
         MESSAGE='Apologies!. PiKISS only works on 32 Bits OS.\n64 Bits support in progress...'
     fi
 
-    dialog --title "[ 64BIT OS DETECTED! ]" --msgbox "$MESSAGE" 10 52
+    dialog --title "[ 64BIT OS DETECTED! ]" --msgbox "$MESSAGE" 15 52
 }
 
 #
