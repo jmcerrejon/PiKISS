@@ -149,7 +149,7 @@ smGames() {
         Diablo "Take control of a lone hero battling to rid the world of Diablo"
         Diablo2 "Diablo 2 Lord of Destruction"
         Eduke32 "Duke Nukem 3D is a fps game developed by 3D Realms"
-        Fallout "Fallout 2 is a post-apocalyptic RPG"
+        Fallout2 "Fallout 2 is a post-apocalyptic RPG"
         GTA "GTA III/Vice City are open worlds video games part of the GTA franchise"
         GemRB "Engine for games like Baldur's Gate"
         HalfLife "Gordon Freeman must exit Black Mesa after it's invaded by aliens"
@@ -204,7 +204,7 @@ smGames() {
         Diablo) ./scripts/games/diablo.sh ;;
         Diablo2) ./scripts/games/diablo2.sh ;;
         Eduke32) ./scripts/games/eduke32.sh ;;
-        Fallout) ./scripts/games/fallout.sh ;;
+        Fallout2) ./scripts/games/fallout.sh ;;
         GTA) ./scripts/games/gta.sh ;;
         GemRB) ./scripts/games/gemrb.sh ;;
         HalfLife) ./scripts/games/half-life.sh ;;
