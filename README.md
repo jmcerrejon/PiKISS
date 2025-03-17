@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1238 hours**
+-   **1255 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,24 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (2025/03/17)
+
+· 📦 ADD: Games > Dune 2 Legacy 0.96.4 for aarch64.
+
+· 📦 ADD: Games > Captain S for aarch64.
+
+· 👌 IMPROVE: Games > Fallout 2 install script.
+
+· 👌 IMPROVE: Games > Deathrace install script.
+
+· 👌 IMPROVE: Games > Blood install message.
+
+· 🐛 FIX: Games > Abbaye des Morts remove icon when uninstall.
+
+· 🐛 FIX: Games > Blake Stone run app when install.
+
+· 🐛 FIX: PiKISS 64-bit OS detection message.
 
 ### (2025/02/16)
 
