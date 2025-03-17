@@ -11,7 +11,7 @@
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-VERSION="v.1.11.2"
+VERSION="v.1.12.0"
 IP=$(get_ip)
 PI_VERSION_NUMBER=$(get_pi_version_number)
 ARCHITECTURE=$(getconf LONG_BIT)
@@ -130,7 +130,7 @@ smTweaks() {
 
 smGames() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Abbaye, AVP, Arx, Blood, Blake Stone, Carmageddon, Doom_engine, DX-Rebirth, EDuke32, Fallout 2, GTA, GemRB, Half Life, Hexen 2, OpenClaw, Portal, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, OpenXCom, Unreal Tournament, VVVVVV, WipeOut"
+        show_dialog_only_32_bits "Abbaye, AVP, Arx, Blood, Blake Stone, Carmageddon, Doom_engine, DX-Rebirth, Dune2, EDuke32, Fallout 2, GTA, GemRB, Half Life, Hexen 2, OpenClaw, Portal, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, OpenXCom, Unreal Tournament, VVVVVV, WipeOut"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Games ]" --menu "Select game from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
