@@ -1,22 +1,23 @@
 #!/bin/bash
 #
 # Description : Capitan Sevilla El Remake (AKA Captain 'S' The Remake)
-# Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com) and Salvador (Pi Labs)
-# Version     : 1.0.4 (07/Aug/23)
-# Compatible  : Raspberry Pi 3-4 (tested)
+# Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
+# Version     : 1.0.5 (17/Mar/25)
+# Tested      : Raspberry Pi 5
 #
-. ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+# shellcheck source=../helper.sh
+. ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 INSTALL_DIR="$HOME/games"
 URL_FILE="https://misapuntesde.com/rpi_share/captain_s.tar.gz"
 
-playNow() {
+runme() {
     echo
     read -p "Do you want to play Captain S right now (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
-        cd "$INSTALL_DIR"/captain_s && ./captain
+        cd "$INSTALL_DIR"/captain_s && ./run.sh
     fi
 }
 
@@ -31,7 +32,7 @@ uninstall() {
         echo -e "\nSuccessfully uninstalled."
         exit_message
     fi
-    playNow
+    runme
 }
 
 if [[ -d "$INSTALL_DIR"/captain_s ]]; then
@@ -48,8 +49,8 @@ generate_icon() {
 Encoding=UTF-8
 Name=Captain 'S' The Remake
 Comment=Save Seville from the evil Torrebruno
-Exec=${PWD}/captain_s/captain.sh
-Icon=${PWD}/captain_s/extra/icon_captain.png
+Exec=${INSTALL_DIR}/captain_s/run.sh
+Icon=${INSTALL_DIR}/captain_s/extra/icon_captain.png
 Terminal=false
 Type=Application
 Categories=Application;Game;ArcadeGame;
@@ -63,8 +64,8 @@ EOF
 Encoding=UTF-8
 Name=Captain 'S' The Documentation
 Comment=Read how to save Seville from the evil Torrebruno
-Exec=qpdfview ${PWD}/captain_s/extra/instructions.pdf
-Icon=${PWD}/captain_s/extra/icon_captain.png
+Exec=evince ${INSTALL_DIR}/captain_s/extra/instructions.pdf
+Icon=${INSTALL_DIR}/captain_s/extra/icon_captain.png
 Terminal=false
 Type=Application
 Categories=Application;Game;ArcadeGame;
@@ -82,22 +83,26 @@ install() {
         sudo apt install -y libpng16-16
     fi
     mkdir -p "$INSTALL_DIR" && cd "$_" || exit 1
-    wget -qO- -O "$INSTALL_DIR"/captain_s.tar.gz "$URL_FILE"
-    tar xf captain_s.tar.gz && rm captain_s.tar.gz
+    download_and_extract "$URL_FILE" "$INSTALL_DIR"
     mkdir -p "$HOME/.capitan" && cp "$INSTALL_DIR/captain_s/capitan.cfg" "$HOME/.capitan"
-    echo -e "Generating shorcuts menu..."
     generate_icon
     echo -e "\nDone. To play, on Desktop go to Menu > Games or via terminal, cd $INSTALL_DIR/captain_s and type: ./captain\n\nControls: Arrow: Move | CTRL: Action | ENTER: Change character when get a sausage or change superpower when you are Captain S."
-    playNow
-    exit_message
+    runme
 }
 
-echo "Install Capitan Sevilla (AKA Captain S)"
-echo -e "=======================================\n"
-echo " · More Info: https://computeremuzone.com/ficha.php?id=754&l=en"
-echo " · Languages: English, Spanish."
-echo " · Install path: $INSTALL_DIR/captain_s"
-echo " · NOTE: There is a bug: If you set a new language, you can't change it anymore (FIX: delete the folder ~/.capitan)."
-echo ""
-read -p "Press [Enter] to continue..."
+echo "
+Install Capitan Sevilla (AKA Captain S)
+=======================================
+
+ · More Info: https://computeremuzone.com/ficha.php?id=754&l=en
+ · Languages: English, Spanish.
+ · Install path: $INSTALL_DIR/captain_s
+ · NOTE: There is a bug: If you set a new language, you can't change it anymore (FIX: delete the folder ~/.capitan).
+"
+
+read -p "Do you want to continue? (y/N) " response
+if [[ $response =~ [Nn] ]]; then
+    exit_message
+fi
+
 install
