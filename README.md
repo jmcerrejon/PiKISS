@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1255 hours**
+-   **1257 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -79,6 +79,10 @@ curl -sSL https://git.io/JfAPE | bash
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (2025/03/29)
+
+· 📦 ADD: Games > DevilutionX (Diablo 1) v1.5.4 for aarch64.
+
 ### (2025/03/17)
 
 · 📦 ADD: Games > Dune 2 Legacy 0.96.4 for aarch64.
@@ -93,7 +97,7 @@ curl -sSL https://git.io/JfAPE | bash
 
 · 🐛 FIX: Games > Abbaye des Morts remove icon when uninstall.
 
-· 🐛 FIX: Games > Blake Stone run app when install.
+· 🐛 FIX: Games > Blake Stone runs the app when installed.
 
 · 🐛 FIX: PiKISS 64-bit OS detection message.
 
