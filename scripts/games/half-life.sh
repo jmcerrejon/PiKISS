@@ -2,7 +2,7 @@
 #
 # Description : Xash3D-fwgs (AKA Half Life) & Source Engine (HL2) installer for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 2.0.1 (12/Jan/25)
+# Version     : 2.0.2 (29/Apr/25)
 # Tested      : Raspberry Pi 5
 #
 # shellcheck source=../helper.sh
@@ -212,9 +212,9 @@ $GAME_NAME 2
  · Based on engine: ${SOURCE_CODE_HL2_URL}
  · Thanks to Lohann Paterno Coutinho and other participants for the help.
  · Better experience at 720p resolution.
- · Steam account with Portal game bought is required
+ · Steam account with ${GAME_NAME} game bought is required
 
- · IMPORTANT!: Run the file ./launcher.sh or click on Menu > Game > $GAME_NAME 2 on Desktop to download the game data files from your Steam account and play. This process works exclusively for a specific version of game data files, so ensure you have your Steam credentials ready before proceeding. PiKISS does not store any of your credentials. Check out the project https://github.com/SteamRE/DepotDownloader for more information.
+ · IMPORTANT!: Run the file ./launcher.sh or click on Menu > Game > ${GAME_NAME} 2 on Desktop to download the game data files from your Steam account and play. This process works exclusively for a specific version of game data files, so ensure you have your Steam credentials ready before proceeding. PiKISS does not store any of your credentials. Check out the project https://github.com/SteamRE/DepotDownloader for more information.
 "
     read -p "Press [ENTER] to continue..."
 
