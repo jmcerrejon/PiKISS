@@ -245,7 +245,7 @@ smGames() {
 
 smEmulators() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Amiga, Amstrad, Box86/64, Dolphin, Flycast, DOSBox, Mame, mGBA, PCem, PS1, PS2, PSP, RetroArch, Redream, ScummVM, USP (Spectrum), VICE"
+        show_dialog_only_32_bits "Amiga, Amstrad, Box86/64, Dolphin, Flycast, DOSBox, Mame, mGBA, Picodrive (Genesis), PCem, PS1, PS2, PSP, RetroArch, Redream, ScummVM, USP (Spectrum), VICE"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Emulators ]" --menu "Select emulator from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 

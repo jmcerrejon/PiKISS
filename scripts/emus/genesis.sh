@@ -2,55 +2,94 @@
 #
 # Description : Picodrive
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.0 (15/Jun/20)
-# Compatible  : Raspberry Pi 1-4 (tested)
+# Version     : 1.3.0 (03/May/25)
+# Tested      : Raspberry Pi 5
 #
-# HELP        : https://www.raspberrypi.org/forums/viewtopic.php?f=78&t=105811
-#
+# shellcheck source=../helper.sh
+. ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
+check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-INSTALL_DIR="$HOME/games"
-URL_FILE="https://misapuntesde.com/res/picodrive192.tar.gz"
-GAME_URL="https://www.mojontwins.com/juegos/mojon-twins--mega-cheril-perils.zip"
+readonly VERSION_NUMBER="2.04"
+readonly INSTALL_DIR="$HOME/games"
+readonly BINARY_64_BITS_URL="https://misapuntesde.com/rpi_share/picodrive-aarch64.tar.gz"
+readonly ROM_GAME_URL="https://www.mojontwins.com/juegos/mojon-twins--mega-cheril-perils.zip"
+readonly GAME_FILE_NAME="mojon-twins--mega-cheril-perils.bin"
+readonly SOURCE_CODE_URL="https://github.com/irixxxx/picodrive"
 
-if  which $INSTALL_DIR/picodrive/PicoDrive_rpi2 >/dev/null ; then
-    read -p "Warning!: Picodrive already installed. Press [ENTER] to exit..."
-    exit
+runme() {
+    if [[ -f $INSTALL_DIR/picodrive/roms/$GAME_FILE_NAME ]]; then
+        read -p "Press [ENTER] to run the emulator..."
+        cd "$INSTALL_DIR/picodrive" && ./picodrive "roms/$GAME_FILE_NAME"
+    fi
+    exit_message
+}
+
+uninstall() {
+    read -p "Do you want to uninstall Picodrive (y/N)? " response
+    if [[ $response =~ [Yy] ]]; then
+        rm -rf "$INSTALL_DIR"/picodrive ~/.local/share/applications/picodrive.desktop ~/.picodrive
+        if [[ -e $INSTALL_DIR/picodrive ]]; then
+            echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
+            exit_message
+        fi
+        echo -e "\nSuccessfully uninstalled."
+        exit_message
+    fi
+    exit_message
+}
+
+if [[ -d $INSTALL_DIR/picodrive ]]; then
+    echo -e "Picodrive already installed.\n"
+    uninstall
 fi
 
-playgame()
-{
-    if [[ -f $INSTALL_DIR/picodrive/doroppu.bin ]]; then
-        read -p "Do you want to play Doroppu now? [y/n] " option
-        case "$option" in
-            y*) cd $INSTALL_DIR/picodrive/ && ./PicoDrive_rpi2 doroppu.bin ;;
-        esac
+generate_icon() {
+    if [[ ! -e ~/.local/share/applications/picodrive.desktop ]]; then
+        echo -e "Creating shortcut...\n"
+        cat <<EOF >~/.local/share/applications/picodrive.desktop
+[Desktop Entry]
+
+Version=1.0
+Name=Picodrive
+Comment=Play Sega Genesis games
+Exec=$INSTALL_DIR/picodrive/picodrive
+Icon=$INSTALL_DIR/picodrive/logo.png
+Terminal=false
+Type=Application
+Categories=Game;
+EOF
     fi
 }
 
-install()
-{
-    mkdir -p $INSTALL_DIR && cd $_
-    wget $URL_FILE && tar xzvf picodrive192.tar.gz && rm picodrive192.tar.gz
-    cd picodrive
-    wget $GAME_URL
-	unzip mojon-twins--mega-cheril-perils.zip
-	rm mojon-twins--mega-cheril-perils.zip
+compile() {
+    echo -e "\nCompiling Picodrive..."
+    mkdir -p "$HOME/sc" && cd "$_" || exit 1
+    git clone "$SOURCE_CODE_URL" picodrive && cd "$_" || exit 1
+
+}
+
+install() {
+    download_and_extract "$BINARY_64_BITS_URL" "$INSTALL_DIR"
+    download_and_extract "$ROM_GAME_URL" "$INSTALL_DIR/picodrive/roms"
+
+    generate_icon
 
     echo "Done!. To play go to install path, copy any ROM file to $INSTALL_DIR/picodrive and type: ./PicoDrive <game name>"
-    playgame
+    runme
     read -p "Press [Enter] to continue..."
     exit
 }
 
-echo -e "Picodrive v1.91 with OpenGLES\n=============================\n\n· Thanks to Chips, NotaZ & Mojon Twins.\n· More Info: https://www.raspberrypi.org/forums/viewtopic.php?f=78&t=105811\n· Add game Cheril Perils to play\n\nInstall path: $INSTALL_DIR/picodrive"
-while true; do
-    echo " "
-    read -p "Proceed? [y/n] " yn
-    case $yn in
-    [Yy]* ) echo "Installing, please wait..." && install;;
-    [Nn]* ) exit;;
-    [Ee]* ) exit;;
-    * ) echo "Please answer (y)es, (n)o or (e)xit.";;
-    esac
-done
+install_script_message
+echo "
+Picodrive
+=========
+
+· Version $VERSION_NUMBER | URL: $SOURCE_CODE_URL
+· Optimized for Raspberry Pi 4+.
+· OpenGLES support.
+· Add game Cheril Perils.
+"
+
+install
