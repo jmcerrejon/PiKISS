@@ -916,13 +916,14 @@ make_with_all_cores() {
 
     if [ "$(uname -m)" == 'armv7l' ]; then
         time make -j"$(nproc)" OPTOPT="-fsigned-char -marm -march=armv8-a+crc -mtune=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard" "$@"
+    elif [ "$(uname -m)" == 'aarch64' ]; then
+        time make -j"$(nproc)" OPTOPT="-O3 -pipe -march=armv8.2-a+crc+crypto+fp16 -mtune=cortex-a76 -fomit-frame-pointer" "$@"
     else
         time make -j"$(nproc)" "$@"
     fi
 
     echo
 }
-
 #
 #
 # Uninstall PiKISS
