@@ -1,5 +1,11 @@
 # Changelog (dd/mm/yy)
 
+## (2025/05/24)
+
+· 👌 IMPROVE: Config > Vulkan 25.1.1 & libdrm-2.4.124.
+
+· 👌 IMPROVE: Improve helper call.
+
 ## (2025/05/03)
 
 · 👌 IMPROVE: Emulators > Picodrive 2.0.4 for aarch64.

@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1266 hours**
+-   **1271 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,12 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (2025/05/24)
+
+· 👌 IMPROVE: Config > Vulkan 25.1.1 & libdrm-2.4.124.
+
+· 👌 IMPROVE: Improve helper call.
 
 ### (2025/05/03)
 
