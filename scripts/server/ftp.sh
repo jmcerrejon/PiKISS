@@ -9,7 +9,7 @@
 #			  · https://www.instructables.com/id/VSFTPD-Installation-Setup-on-Ubuntu/?ALLSTEPS
 #
 clear
-. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ../helper.sh || . ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 IP=$(ifconfig eth0 | grep inet | awk '{print $2}')
@@ -22,22 +22,22 @@ echo -e "vsftpd Server\n=============\n\n·Its lightweight (aprox. 329 kB) & all
 
 # sudo apt install -y vsftpd
 
-INSTALLER_DEPS=( vsftpd )
+INSTALLER_DEPS=(vsftpd)
 check_dependencies $INSTALLER_DEPS
 
 read -p "Allow anonymous FTP? [y/n] " option
 case "$option" in
-    n*) sudo sed -i '/anonymous_enable=YES/s/^/#/' /etc/vsftpd.conf
+n*) sudo sed -i '/anonymous_enable=YES/s/^/#/' /etc/vsftpd.conf ;;
 esac
 
 read -p "Allow local users to log in? [y/n] " option
 case "$option" in
-    y*) sudo sed -i 's/^#local_enable=YES/local_enable=YES/' /etc/vsftpd.conf
+y*) sudo sed -i 's/^#local_enable=YES/local_enable=YES/' /etc/vsftpd.conf ;;
 esac
 
 read -p "Enable any user the write command? [y/n] " option
 case "$option" in
-    y*) sudo sed -i 's/^#write_enable=YES/write_enable=YES/' /etc/vsftpd.conf
+y*) sudo sed -i 's/^#write_enable=YES/write_enable=YES/' /etc/vsftpd.conf ;;
 esac
 
 sudo service vsftpd restart

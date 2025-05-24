@@ -5,7 +5,7 @@
 # Version     : 1.0.0 (07/Jul/20)
 # Compatible  : Raspberry Pi 1-4
 #
-. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ../helper.sh || . ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
@@ -13,8 +13,8 @@ set -e
 free -wth
 
 enableZRAM() {
-	echo -e "\nEnabling ZRAM...\n"
-	cat <<\EOF >/tmp/zram
+    echo -e "\nEnabling ZRAM...\n"
+    cat <<\EOF >/tmp/zram
 #!/bin/bash
 
 CORES=$(nproc --all)
@@ -29,43 +29,43 @@ while [ ${CORE} -lt ${CORES} ]; do
   (( CORE += 1 ))
 done
 EOF
-	chmod +x /tmp/zram
-	sudo mv /tmp/zram /etc/zram
-	sudo /etc/zram
-	if [ "$(grep -c zram /etc/rc.local)" -eq 0 ]; then
-		sudo sed -i 's_^exit 0$_/etc/zram\nexit 0_' /etc/rc.local
-	fi
+    chmod +x /tmp/zram
+    sudo mv /tmp/zram /etc/zram
+    sudo /etc/zram
+    if [ "$(grep -c zram /etc/rc.local)" -eq 0 ]; then
+        sudo sed -i 's_^exit 0$_/etc/zram\nexit 0_' /etc/rc.local
+    fi
 }
 
 removeZRAM() {
-	echo -e "\nRemoving ZRAM...\n"
-	CORES=$(nproc --all)
-	CORE=0
-	while [ ${CORE} -lt "${CORES}" ]; do
-		sudo swapoff /dev/zram${CORE}
-		((CORE += 1))
-	done
-	wait
-	sleep .5
-	sudo modprobe --remove zram
-	sudo sed -i '/zram/d' /etc/rc.local
-	sudo rm /etc/zram
-	sudo /etc/init.d/dphys-swapfile stop >/dev/null
-	sudo /etc/init.d/dphys-swapfile start >/dev/null
+    echo -e "\nRemoving ZRAM...\n"
+    CORES=$(nproc --all)
+    CORE=0
+    while [ ${CORE} -lt "${CORES}" ]; do
+        sudo swapoff /dev/zram${CORE}
+        ((CORE += 1))
+    done
+    wait
+    sleep .5
+    sudo modprobe --remove zram
+    sudo sed -i '/zram/d' /etc/rc.local
+    sudo rm /etc/zram
+    sudo /etc/init.d/dphys-swapfile stop >/dev/null
+    sudo /etc/init.d/dphys-swapfile start >/dev/null
 }
 
 if [ -e /etc/zram ]; then
-	echo
-	read -p "ZRAM already installed. Remove it (y/N)? " response
-	if [[ $response =~ [Yy] ]]; then
-		removeZRAM
-	fi
+    echo
+    read -p "ZRAM already installed. Remove it (y/N)? " response
+    if [[ $response =~ [Yy] ]]; then
+        removeZRAM
+    fi
 else
-	echo
-	read -p "ZRAM is not present. Enable it (y/N)? " response
-	if [[ $response =~ [Yy] ]]; then
-		enableZRAM
-	fi
+    echo
+    read -p "ZRAM is not present. Enable it (y/N)? " response
+    if [[ $response =~ [Yy] ]]; then
+        enableZRAM
+    fi
 fi
 
 echo

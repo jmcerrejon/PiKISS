@@ -8,7 +8,7 @@
 # Help        : https://github.com/sezero/uhexen2 (Another port )
 #             : https://github.com/tpo1990/Hexen2-RPI/blob/master/Hexen2-Install-Desktop.sh
 # shellcheck source=../helper.sh
-. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ../helper.sh || . ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
@@ -89,7 +89,7 @@ install() {
 }
 
 install_script_message
-    echo "
+echo "
 Hexen ][ for Raspberry Pi
 =========================
 

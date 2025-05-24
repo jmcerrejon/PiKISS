@@ -5,10 +5,9 @@
 # Version     : 1.0.1 (03/Jan/21)
 # Compatible  : NOT WORKING ON Raspberry Pi 4 (tested)
 #
-. ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
-
 
 readonly INSTALL_DIR="$HOME/games"
 readonly BINARY_FILE="https://www.retroguru.com/gianas-return/gianas-return-v.latest-raspberrypi.zip"
@@ -40,7 +39,7 @@ fi
 generate_icon() {
     echo "Generating icon..."
     if [[ ! -e ~/.local/share/applications/gianas.desktop ]]; then
-cat << EOF > ~/.local/share/applications/gianas.desktop
+        cat <<EOF >~/.local/share/applications/gianas.desktop
 [Desktop Entry]
 Name=Giana Return
 Exec=${PWD}/giana/giana_rpi

@@ -7,7 +7,7 @@
 # Compatible  : Raspberry Pi 1-4
 # Repository  : https://github.com/ptitSeb/gl4es
 #
-. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ../helper.sh || . ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
@@ -29,7 +29,7 @@ compile() {
         rm -r build
     fi
     mkdir build && cd "$_" || exit 1
-    if [ "$(dpkg -l | awk '/mesa0/ {print }'|wc -l)" -ge 1 ]; then
+    if [ "$(dpkg -l | awk '/mesa0/ {print }' | wc -l)" -ge 1 ]; then
         cmake .. -DBCMHOST=1 -DCMAKE_BUILD_TYPE=RELEASE
     else
         cmake .. -DODROID=1 -DCMAKE_BUILD_TYPE=RELEASE

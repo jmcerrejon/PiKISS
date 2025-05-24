@@ -6,7 +6,7 @@
 # Tested on   : Raspberry Pi 5
 #
 # shellcheck source=../helper.sh
-. ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
@@ -31,7 +31,7 @@ uninstall() {
 
 install_metasploit() {
     echo -e "\nInstalling MetaSploit (latest)...\n\n"
-    curl  "$METASPLOIT_INSTALL_URL" > msfinstall
+    curl "$METASPLOIT_INSTALL_URL" >msfinstall
     chmod 755 msfinstall
     ./msfinstall
     rm ./msfinstall

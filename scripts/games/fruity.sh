@@ -5,14 +5,14 @@
 # Version     : 1.0.2 (20/Jun/21)
 # Compatible  : NOT WORKING ON Raspberry Pi 4 (tested)
 #
-. ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games/"
 readonly BINARY_URL="https://www.retroguru.com/fruity/fruity-v.latest-raspberrypi.zip"
 
-if  which $INSTALL_DIR/fruity_rpi >/dev/null ; then
+if which $INSTALL_DIR/fruity_rpi >/dev/null; then
     read -p "Warning!: Fruit'Y already installed. Press [ENTER] to exit..."
     exit
 fi
@@ -20,7 +20,7 @@ fi
 generate_icon() {
     echo "Generating icon..."
     if [[ ! -e ~/.local/share/applications/Fruity.desktop ]]; then
-cat << EOF > ~/.local/share/applications/Fruity.desktop
+        cat <<EOF >~/.local/share/applications/Fruity.desktop
 [Desktop Entry]
 Name=Fruity
 Exec=${PWD}/fruity_rpi/fruity_rpi
@@ -50,9 +50,9 @@ while true; do
     echo " "
     read -p "Proceed? [y/n] " yn
     case $yn in
-    [Yy]* ) echo "Installing, please wait..." && install;;
-    [Nn]* ) exit;;
-    [Ee]* ) exit;;
-    * ) echo "Please answer (y)es, (n)o or (e)xit.";;
+    [Yy]*) echo "Installing, please wait..." && install ;;
+    [Nn]*) exit ;;
+    [Ee]*) exit ;;
+    *) echo "Please answer (y)es, (n)o or (e)xit." ;;
     esac
 done

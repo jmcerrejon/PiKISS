@@ -7,7 +7,7 @@
 # URL         : https://www.srb2.org/ | https://wiki.srb2.org/wiki/Main_Page
 # Thks to     : @Foxhound311 for the binary version
 
-. ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 

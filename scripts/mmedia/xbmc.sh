@@ -7,41 +7,41 @@
 #
 # TODO	      [ ] Ask user if want to start Kodi from boot.
 #
-. ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 uninstall() {
-	read -p "Do you want to uninstall Kodi (y/N)? " response
-	if [[ $response =~ [Yy] ]]; then
-		sudo apt remove -y kodi
-		sudo apt -y autoremove
-	fi
-	exit_message
+    read -p "Do you want to uninstall Kodi (y/N)? " response
+    if [[ $response =~ [Yy] ]]; then
+        sudo apt remove -y kodi
+        sudo apt -y autoremove
+    fi
+    exit_message
 }
 
 if [[ -e /usr/bin/kodi ]]; then
-	echo -e "Kodi already installed.\n"
-	uninstall
-	exit 1
+    echo -e "Kodi already installed.\n"
+    uninstall
+    exit 1
 fi
 
 runNow() {
-	echo
-	read -p "Do you want to run Kodi right now (y/N)? " response
-	if [[ $response =~ [Yy] ]]; then
-		kodi
-	fi
-	exit_message
+    echo
+    read -p "Do you want to run Kodi right now (y/N)? " response
+    if [[ $response =~ [Yy] ]]; then
+        kodi
+    fi
+    exit_message
 }
 
 install() {
-	sudo apt-get -qq update
-	sudo apt-get install -y kodi
-	sudo usermod -a -G "audio,video,input,dialout,plugdev,tty" $USER
-	sudo addgroup --system input
-	echo -e "\nDone. Go to Menu > Sound & Video or type kodi to run."
-	runNow
+    sudo apt-get -qq update
+    sudo apt-get install -y kodi
+    sudo usermod -a -G "audio,video,input,dialout,plugdev,tty" $USER
+    sudo addgroup --system input
+    echo -e "\nDone. Go to Menu > Sound & Video or type kodi to run."
+    runNow
 }
 
 echo -e "Installing KODI (from repo)...\n"

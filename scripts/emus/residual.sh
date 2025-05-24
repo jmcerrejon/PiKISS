@@ -8,14 +8,14 @@
 # Help		  : https://wiki.residualvm.org/index.php/Building_ResidualVM
 #				https://tljhd.github.io/
 #
-. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ../helper.sh || . ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
 readonly COMPILE_DIR="$HOME/sc"
-readonly PACKAGES=( libSDL2-net-2.0-0 libglu1-mesa libglew2.1 )
-readonly PACKAGES_DEV=( libsdl1.2-dev libglew-dev libjpeg-dev libclanlib-dev libmpeg2-4-dev )
+readonly PACKAGES=(libSDL2-net-2.0-0 libglu1-mesa libglew2.1)
+readonly PACKAGES_DEV=(libsdl1.2-dev libglew-dev libjpeg-dev libclanlib-dev libmpeg2-4-dev)
 readonly BINARY_PATH="https://srv-file21.gofile.io/downloadStore/srv-store2/I6hN2d/residualvm_rpi.tar.gz"
 readonly SOURCE_PATH="https://github.com/residualvm/residualvm.git"
 

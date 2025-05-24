@@ -7,7 +7,7 @@
 # Repository  : http://syncterm.bbsdev.net/ | https://gitlab.synchro.net/main/sbbs
 # Help        : https://www.askapache.com/online-tools/figlet-ascii/
 #
-. ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 

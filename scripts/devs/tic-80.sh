@@ -10,7 +10,7 @@
 #               https://github.com/nesbox/TIC-80/issues/1151
 #               link_directories(/opt/vc/lib) on CMakeLists.txt
 #
-. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ../helper.sh || . ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
@@ -101,7 +101,7 @@ create_libbcm_host_link() {
         return 0
     fi
 
-    echo -e  "Creating link to /usr/local/lib/libbcm_host.so"
+    echo -e "Creating link to /usr/local/lib/libbcm_host.so"
     # sudo ln -s /opt/vc/lib/libbcm_host.so /usr/local/lib/libbcm_host.so
     sudo cp /opt/vc/lib/libbcm_host.so /usr/local/lib
 }

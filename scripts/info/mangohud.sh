@@ -6,7 +6,7 @@
 # Compatible  : Raspberry Pi
 # Repository  : https://github.com/flightlessmango/MangoHud
 #
-. ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
@@ -37,7 +37,7 @@ install_meson() {
 
 install_full_deps() {
     echo -e "\nInstalling deps...\n"
-    sudo apt-get install -y libx11-dev libdbus-1-dev glslang-tools libxnvctrl-dev ninja-build \
+    sudo apt-get install -y libx11-dev libdbus-1-dev glslang-tools libxnvctrl-dev ninja-build
     #  libxcb-randr0-dev libxrandr-dev \
     #     libxcb-xinerama0-dev libxinerama-dev libxcursor-dev \
     #     libxcb-cursor-dev libxkbcommon-dev xutils-dev \
@@ -60,8 +60,6 @@ clone_repo() {
     cd "$HOME"
     git clone --recurse-submodules https://github.com/flightlessmango/MangoHud.git MangoHud && cd "$_"
 }
-
-
 
 compile() {
     if [[ -d "$HOME"/mesa_vulkan ]]; then

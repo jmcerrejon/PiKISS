@@ -6,7 +6,7 @@
 # Help        : https://github.com/d99kris/nchat#low-memory--ram-systems
 #
 # shellcheck source=../helper.sh
-. ../helper.sh || . ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ../helper.sh || . ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
@@ -76,7 +76,10 @@ compile() {
     php SplitSource.php
     cd - || exit 1
     echo -e "\n\nCompiling... Estimated time on RPi 4: ~1 hour.\n"
-    time make -s -j"$(nproc)" || { echo -e "\nError at compile.\n"; exit 1; }
+    time make -s -j"$(nproc)" || {
+        echo -e "\nError at compile.\n"
+        exit 1
+    }
     read -p "Do you want to install nChat (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
         sudo make install

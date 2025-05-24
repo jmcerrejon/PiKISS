@@ -8,7 +8,7 @@
 #             : https://github.com/bsnes-emu/bsnes | Try https://github.com/vanfanel/bsnes-mercury
 #
 # shellcheck source=../helper.sh
-. ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
@@ -17,7 +17,7 @@ readonly GAME_URL="https://archive.org/download/new-super-mario-land/New_Super_M
 readonly PACKAGES_SNES9X=(libportaudio2 libminizip1)
 readonly PACKAGES_BSNES=(libgtksourceview2.0-0 libao4 libopenal1)
 readonly PACKAGES_DEV_SNES9X=(libgtkmm-3.0-dev libsdl2-dev libx11-dev libepoxy-dev cmake libpulse-dev libasound2-dev libportaudio2 libwayland-dev libpng-dev libminizip-dev zlib1g-dev portaudio19-dev gettext)
-readonly PACKAGES_DEV_BSNES=(qtbase5-dev qtbase5-dev-tools libxv-dev  libao-dev libopenal-dev g++ libdbus-1-dev libcairo2-dev libgtk-3-dev libudev-dev)
+readonly PACKAGES_DEV_BSNES=(qtbase5-dev qtbase5-dev-tools libxv-dev libao-dev libopenal-dev g++ libdbus-1-dev libcairo2-dev libgtk-3-dev libudev-dev)
 BINARY_SNES9X_URL="https://misapuntesde.com/res/snes9x_1-60.tar.gz"
 BINARY_BSNES_URL="https://misapuntesde.com/rpi_share/bsnes-111.8-rpi.tar.gz"
 readonly BINARY_SNES9X_64_URL="https://misapuntesde.com/rpi_share/snes9x_1-62.3-aarch64.tar.gz"
@@ -29,7 +29,7 @@ runme() {
     echo
     read -p "Do you want to play New Super Mario Land now? [y/n] " option
     case "$option" in
-        y*) "$INSTALL_DIR/$1/$1" "$INSTALL_DIR/$1/roms/new_super_mario_land.sfc" -fullscreen -maxaspect;;
+    y*) "$INSTALL_DIR/$1/$1" "$INSTALL_DIR/$1/roms/new_super_mario_land.sfc" -fullscreen -maxaspect ;;
     esac
 }
 
