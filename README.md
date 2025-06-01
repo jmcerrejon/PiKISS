@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1271 hours**
+-   **1275 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -79,11 +79,19 @@ curl -sSL https://git.io/JfAPE | bash
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (2025/06/01)
+
+· 📦 New: Games > 2 Ship 2 Harkinian (Free port of The Legend of Z3lda: Ocarina of Time.)
+
 ### (2025/05/24)
 
 · 👌 IMPROVE: Config > Vulkan 25.1.1 & libdrm-2.4.124.
 
 · 👌 IMPROVE: Improve helper call.
+
+· 🐛 FIX: Games > Half Life 2 (Source Engine)
+
+· 🐛 FIX: Games > Portal
 
 ### (2025/05/03)
 
