@@ -130,12 +130,13 @@ smTweaks() {
 
 smGames() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Abbaye, AVP, Arx, Blood, Blake Stone, Captain S, Carmageddon, Doom_engine, DX-Rebirth, Dune2, Diablo, EDuke32, Fallout 2, GTA, GemRB, Half Life, Hexen 2, OpenClaw, Portal, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, OpenXCom, Unreal Tournament, VVVVVV, WipeOut"
+        show_dialog_only_32_bits "2Ship2Harkinian, Abbaye, AVP, Arx, Blood, Blake Stone, Captain S, Carmageddon, Doom_engine, DX-Rebirth, Dune2, Diablo, EDuke32, Fallout 2, GTA, GemRB, Half Life, Hexen 2, OpenClaw, Portal, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, OpenXCom, Unreal Tournament, VVVVVV, WipeOut"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Games ]" --menu "Select game from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
     options=(
         Back "Back to main menu"
+        2Ship2Harkinian "Free port of The Legend of Z3lda: Ocarina of Time."
         Abbaye "L’Abbaye des Morts is a retro puzzle platformer by Locomalito"
         AVP "Aliens versus Predator is a 1999 SF fps published by Fox Interactive"
         Arx "Arx Fatalis is a fps RPG set on a world whose sun has failed"
@@ -191,6 +192,7 @@ smGames() {
     for choice in $choices; do
         case $choice in
         Back) break ;;
+        2Ship2Harkinian) ./scripts/games/2Ship2Harkinian.sh ;;
         Abbaye) ./scripts/games/abbaye.sh ;;
         AVP) ./scripts/games/avp.sh ;;
         Arx) ./scripts/games/arx.sh ;;
