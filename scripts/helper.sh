@@ -13,7 +13,7 @@ readonly ADDITIONAL_FILES_PATH=$RESOURCES_DIR/additional_files.txt
 # INFO On the next, do not use ""
 readonly ADDITIONAL_FILES_URL=https://e.pcloud.link/publink/show?code=XZkry8Z9AV6VqWikkJfzzdyHLOwnyPVDKMX
 readonly DEBIAN_VERSION="$(lsb_release -cs)"
-
+readonly LOG_FILE="/tmp/pikiss_$(date +%Y%m%d_%H%M%S)_$$_$(openssl rand -hex 4).log"
 # Usage: "${INFO}INFO${RESET}: This is an ${BOLD}info${RESET} message"
 BOLD=$(tput bold)
 UNDERLINE=$(tput smul)
@@ -1442,4 +1442,15 @@ get_OS_version_codename() {
 
 is_wayland_enabled() {
     loginctl show-session "$(loginctl | grep $(whoami) | awk '{print $1}')" -p Type | grep -q wayland
+}
+
+log_message() {
+    local level="$1"
+    shift
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] [$level] $*" | tee -a "$LOG_FILE"
+}
+
+error_exit() {
+    log_message "ERROR" "$1"
+    exit 1
 }
