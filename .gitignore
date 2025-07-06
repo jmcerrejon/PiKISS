@@ -6,3 +6,4 @@ res/additional_files.txt
 test.sh
 run.sh
 test/
+.github/instructions/copilot-instructions.md
