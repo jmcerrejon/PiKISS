@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **12781 hours**
+-   **12782 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (2025/07/25)
+
+· 📦 New: Devs > Gemini CLI.
 
 ### (2025/07/06)
 
