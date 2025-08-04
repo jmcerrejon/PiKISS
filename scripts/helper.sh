@@ -392,9 +392,22 @@ php_file_max_size() {
 #
 install_node() {
     local NODE_VERSION
+    local INSTALLED_VERSION
+
+    if [[ -z "$1" ]]; then
+        read -p "Type the Node.js version you want to install: 20 (recommended), 19, ...10, followed by [ENTER]: " NODE_VERSION
+    else
+        NODE_VERSION="$1"
+    fi
 
     if which node >/dev/null; then
-        read -p "Warning!: Node.js already installed (Version $(node -v)). Do you want to uninstall it (y/n)?: " option
+        INSTALLED_VERSION=$(node -v | cut -d'v' -f2 | cut -d'.' -f1)
+        if [[ "$INSTALLED_VERSION" == "$NODE_VERSION" ]]; then
+            echo "Node.js v${NODE_VERSION} is already installed."
+            return
+        fi
+
+        read -p "Warning!: Node.js v${INSTALLED_VERSION} is installed. Do you want to uninstall it and install v${NODE_VERSION} (y/n)?: " option
         case "$option" in
         y*)
             sudo apt-get remove -y nodejs
@@ -405,11 +418,6 @@ install_node() {
     fi
 
     cd ~ || exit
-    if [[ -z "$1" ]]; then
-        read -p "Type the Node.js version you want to install: 16, 15, 14 (recommended), 13, ...10, followed by [ENTER]: " NODE_VERSION
-    else
-        NODE_VERSION="$1"
-    fi
 
     curl -sL https://deb.nodesource.com/setup_"${NODE_VERSION}".x | sudo -E bash -
     echo -e "\nInstalling Node.js and dependencies, please wait...\n"
@@ -924,7 +932,7 @@ make_with_all_cores() {
 
     echo
 }
-#
+
 #
 # Uninstall PiKISS
 #
