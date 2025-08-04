@@ -130,7 +130,7 @@ smTweaks() {
 
 smGames() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "2Ship2Harkinian, Abbaye, AVP, Arx, Blood, Blake Stone, Captain S, Carmageddon, Doom_engine, DX-Rebirth, Dune2, Diablo, EDuke32, Fallout 2, GTA, GemRB, Half Life, Hexen 2, OpenClaw, Portal, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, OpenXCom, Unreal Tournament, VVVVVV, WipeOut"
+        show_dialog_only_32_bits "2Ship2Harkinian, Abbaye, AVP, Arx, Blood, Blake Stone, Captain S, Carmageddon, Doom_engine, DX-Rebirth, Dune2, Diablo, EDuke32, Fallout 2, GTA, GemRB, Half Life, Hexen 2, OpenClaw, Portal, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, SpaceCadetPinball, OpenXCom, Unreal Tournament, VVVVVV, WipeOut"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Games ]" --menu "Select game from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
@@ -174,6 +174,7 @@ smGames() {
         SWarrior "FPS developed by 3D Realms and released on 1997 by GT Interactive"
         SMario64 "Super Mario 64 EX native OpenGL ES"
         SMarioWar "The game centers on players fighting each other"
+        Space3D "Space Cadet 3D Pinball is a re-implementation of the original game"
         SpelunkyHD "Spelunky is a cave exploration/treasure-hunting game"
         Sqrxz4 "Sqrxz 4: Difficult platform game"
         Srb2 "3D platformer fangame based on the Sonic the Hedgehog series"
@@ -230,6 +231,7 @@ smGames() {
         SWarrior) ./scripts/games/swarrior.sh ;;
         SMario64) ./scripts/games/smario64.sh ;;
         SMarioWar) ./scripts/games/smariowar.sh ;;
+        Space3D) ./scripts/games/space_cadet.sh ;;
         SpelunkyHD) ./scripts/games/spelunky.sh ;;
         Sqrxz4) ./scripts/games/sqrxz4.sh ;;
         Srb2) ./scripts/games/srb2.sh ;;
