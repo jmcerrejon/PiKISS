@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **12782 hours**
+-   **1285 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -79,19 +79,23 @@ curl -sSL https://git.io/JfAPE | bash
 
 ### [ ChangeLog (dd/mm/yy)]
 
-### (2025/07/25)
+### (04/08/25)
+
+· 📦 ADD: Games > Space Cadet Pinball (3D Pinball for Windows - Space Cadet).
+
+### (25/07/25)
 
 · 📦 New: Devs > Gemini CLI.
 
-### (2025/07/06)
+### (06/07/25)
 
 · 👌 IMPROVE: Config > Vulkan 25.1.4 & libdrm-2.4.125.
 
-### (2025/06/01)
+### (01/06/25)
 
 · 📦 New: Games > 2 Ship 2 Harkinian (Free port of The Legend of Z3lda: Ocarina of Time.)
 
-### (2025/05/24)
+### (24/05/25)
 
 · 👌 IMPROVE: Config > Vulkan 25.1.1 & libdrm-2.4.124.
 
@@ -101,19 +105,19 @@ curl -sSL https://git.io/JfAPE | bash
 
 · 🐛 FIX: Games > Portal
 
-### (2025/05/03)
+### (03/05/25)
 
 · 👌 IMPROVE: Emulators > Picodrive 2.0.4 for aarch64.
 
-### (2025/04/29)
+### (29/04/25)
 
 · 📦 FIX: Games > Half Life 2 (Source Engine)
 
-### (2025/03/29)
+### (29/03/25)
 
 · 📦 ADD: Games > DevilutionX (Diablo 1) v1.5.4 for aarch64.
 
-### (2025/03/17)
+### (17/03/25)
 
 · 📦 ADD: Games > Dune 2 Legacy 0.96.4 for aarch64.
 
@@ -131,13 +135,13 @@ curl -sSL https://git.io/JfAPE | bash
 
 · 🐛 FIX: PiKISS 64-bit OS detection message.
 
-### (2025/02/16)
+### (16/02/25)
 
 · 👌 IMPROVE: Emulators > Caprice32 for aarch64.
 
 · 📦 ADD: Games > VVVVVV v2.4.2 for aarch64.
 
-### (2025/02/09)
+### (09/02/25)
 
 · 👌 IMPROVE: Games > GemRB v0.9.4 for aarch64.
 

@@ -1,18 +1,22 @@
 # Changelog (dd/mm/yy)
 
-## (2025/07/25)
+## (04/08/25)
+
+· 📦 ADD: Games > Space Cadet Pinball (3D Pinball for Windows - Space Cadet).
+
+## (25/07/25)
 
 · 📦 New: Devs > Gemini CLI.
 
-## (2025/07/06)
+## (06/07/25)
 
 · 👌 IMPROVE: Config > Vulkan 25.1.4 & libdrm-2.4.125.
 
-## (2025/06/01)
+## (01/06/25)
 
 · 📦 New: Games > 2 Ship 2 Harkinian (Free port of The Legend of Z3lda: Ocarina of Time.)
 
-## (2025/05/24)
+## (24/05/25)
 
 · 👌 IMPROVE: Config > Vulkan 25.1.1 & libdrm-2.4.124.
 
@@ -22,19 +26,19 @@
 
 · 🐛 FIX: Games > Portal
 
-## (2025/05/03)
+## (03/05/25)
 
 · 👌 IMPROVE: Emulators > Picodrive 2.0.4 for aarch64.
 
-## (2025/04/29)
+## (29/04/25)
 
 · 📦 FIX: Games > Half Life 2 (Source Engine)
 
-## (2025/03/29)
+## (29/03/25)
 
 · 📦 ADD: Games > DevilutionX (Diablo 1) v1.5.4 for aarch64.
 
-## (2025/03/17)
+## (17/03/25)
 
 · 📦 ADD: Games > Dune 2 Legacy 0.96.4 for aarch64.
 
@@ -52,13 +56,13 @@
 
 · 🐛 FIX: PiKISS 64-bit OS detection message.
 
-## (2025/02/16)
+## (16/02/25)
 
 · 👌 IMPROVE: Emulators > Caprice32 for aarch64.
 
 · 📦 ADD: Games > VVVVVV v2.4.2 for aarch64.
 
-## (2025/02/09)
+## (09/02/25)
 
 · 👌 IMPROVE: Games > GemRB v0.9.4 for aarch64.
 
@@ -66,13 +70,13 @@
 
 · 🐛 FIX: PiKISS icon on Menu when install it.
 
-## (12/01/25)
+## (25/01/25)
 
 · 📦 ADD: Games > Portal (Source Engine) for aarch64.
 
 · 👌 IMPROVE: Games > Half Life 2 launcher script for aarch64.
 
-## (25/12/24)
+## (24/12/24)
 
 · 📦 ADD: Games > Half Life 2 (Source Engine) for aarch64.
 
@@ -302,7 +306,7 @@
 
 ## (07/08/23)
 
-· 👌 IMPROVE: Games > GemRB (AKA Baldur's Gate Game Engine) 0.92 for aarch64.
+· 👌 IMPROVE: Games > GemRB (AKA Baldur`s Gate Game Engine) 0.92 for aarch64.
 
 · 👌 IMPROVE: Replace libpng12-0 on some scripts for libpng16-16.
 
@@ -514,7 +518,7 @@
 
 · 👌 IMPROVE: Games > Grand Thef Auto III & IV aarch64 support (Thanks @foxhound311).
 
-· 👌 IMPROVE: Games > l'Abbaye des Morts aarch64 support.
+· 👌 IMPROVE: Games > l`Abbaye des Morts aarch64 support.
 
 ## (6/02/22)
 
@@ -604,7 +608,7 @@
 
 · 🐛 FIX: Games > Quake > Quake ][ URL texture pack & typo.
 
-· ❌ REMOVE: Others > Cool Retro Term (Added on Bullseye's repository).
+· ❌ REMOVE: Others > Cool Retro Term (Added on Bullseye`s repository).
 
 ## (11/11/21)
 
@@ -694,7 +698,7 @@
 
 ## (27/06/21)
 
-· 📦 ADD: Games > GemRB (Baldur's Gate and other RPG games).
+· 📦 ADD: Games > GemRB (Baldur`s Gate and other RPG games).
 
 · 👌 IMPROVE: Grand Theft Auto III, Grand Theft Auto Vice City.
 
@@ -844,7 +848,7 @@
 
 ## (13/12/20)
 
-· 📦 ADD: Multimedia > Moonlight (Open source implementation of NVIDIA's GameStream).
+· 📦 ADD: Multimedia > Moonlight (Open source implementation of NVIDIA`s GameStream).
 
 · 👌 IMPROVE: Others > SDL2.
 
@@ -1080,7 +1084,7 @@
 
 ## (13/07/20)
 
-· 📦 ADD: Games > Captain 'S' The Remake (AKA Capitan Sevilla).
+· 📦 ADD: Games > Captain `S` The Remake (AKA Capitan Sevilla).
 
 · 👌 IMPROVE: Multimedia > Kodi 18.7.
 
@@ -1224,7 +1228,7 @@
 
 · Updated & fixed url broken in Games/Descent 1 & 2 to 0.59.100.20161206-1
 
-· Added Games > Fruit'Y
+· Added Games > Fruit`Y
 
 ## (13/01/18)
 
@@ -1252,7 +1256,7 @@
 
 · Updated and improved Server > Owncloud 10.0.2
 
-· New helper's functions
+· New helper`s functions
 
 ## (21/07/17)
 
@@ -1284,7 +1288,7 @@
 
 ## (13/09/16)
 
-· Added Games > Giana's return, ScummVM. Updated Spectrum emulator unrealspeccy to 0.0.69.1
+· Added Games > Giana`s return, ScummVM. Updated Spectrum emulator unrealspeccy to 0.0.69.1
 
 ## (12/09/16)
 
@@ -1314,7 +1318,7 @@
 
 ## (04/05/16)
 
-· Added Let's Encrypt on web server
+· Added Let`s Encrypt on web server
 
 ## (18/04/16)
 
