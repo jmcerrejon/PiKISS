@@ -2,7 +2,7 @@
 #
 # Description: 3D Pinball for Windows - Space Cadet.
 # Author     : Jose Cerrejon Gonzalez (ulysess@gmail.com)
-# Version    : 1.0.0 (04/8/2025)
+# Version    : 1.0.1 (04/8/2025)
 # Tested     : Raspberry Pi 5
 #
 # shellcheck source=../helper.sh
@@ -12,7 +12,7 @@ check_board || { echo "Missing file helper.sh..." && exit 1; }
 clear
 
 readonly INSTALL_DIR="$HOME/games"
-readonly PACKAGES=(libsdl2-dev libsdl2-mixer-dev cabextract)
+readonly PACKAGES=(libsdl2-dev libsdl2-mixer-dev)
 readonly PACKAGES_DEV=(cmake)
 readonly GITHUB_REPO_URL="https://github.com/k4zmu2a/SpaceCadetPinball"
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/space-cabinet-rpi-aarch64.tar.gz"
@@ -49,6 +49,22 @@ if [[ -d $INSTALL_DIR/SpaceCadetPinball ]]; then
     exit 0
 fi
 
+generate_icon() {
+    echo -e "\nGenerating icon...\n"
+    if [[ ! -e "$HOME/.local/share/applications/spacecadet.desktop" ]]; then
+        cat <<EOF >"$HOME/.local/share/applications/spacecadet.desktop"
+[Desktop Entry]
+Name=Space Cadet Pinball
+Exec=${INSTALL_DIR}/SpaceCadetPinball/SpaceCadetPinball
+Icon=${INSTALL_DIR}/SpaceCadetPinball/logo.png
+Type=Application
+Comment=3D Pinball for Windows - Space Cadet
+Categories=Game;
+Path=${INSTALL_DIR}/SpaceCadetPinball/
+EOF
+    fi
+}
+
 compile() {
     install_packages_if_missing "${PACKAGES_DEV[@]}"
     mkdir -p "$HOME/sc"
@@ -77,22 +93,6 @@ install() {
     generate_icon
     echo -e "\nDone!. To play, go to Menu > Games > Space Cadet Pinball or type $INSTALL_DIR/SpaceCadetPinball."
     runme
-}
-
-generate_icon() {
-    echo -e "\nGenerating icon...\n"
-    if [[ ! -e "$HOME/.local/share/applications/spacecadet.desktop" ]]; then
-        cat <<EOF >"$HOME/.local/share/applications/spacecadet.desktop"
-[Desktop Entry]
-Name=Space Cadet Pinball
-Exec=${INSTALL_DIR}/SpaceCadetPinball/SpaceCadetPinball
-Icon=${INSTALL_DIR}/SpaceCadetPinball/logo.png
-Type=Application
-Comment=3D Pinball for Windows - Space Cadet
-Categories=Game;
-Path=${INSTALL_DIR}/SpaceCadetPinball/
-EOF
-    fi
 }
 
 install_script_message
