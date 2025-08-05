@@ -1462,3 +1462,9 @@ error_exit() {
     log_message "ERROR" "$1"
     exit 1
 }
+
+ask_yes_no() {
+    local prompt="$1 (y/N) "
+    read -r -p "$prompt" response
+    [[ $response =~ ^[Yy]$ ]]
+}
