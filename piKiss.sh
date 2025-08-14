@@ -130,7 +130,7 @@ smTweaks() {
 
 smGames() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "2Ship2Harkinian, Abbaye, AVP, Arx, Blood, Blake Stone, Captain S, Carmageddon, Doom_engine, DX-Rebirth, Dune2, Diablo, EDuke32, Fallout 2, GTA, GemRB, Half Life, Hexen 2, OpenClaw, Portal, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, SpaceCadetPinball, OpenXCom, Unreal Tournament, VVVVVV, WipeOut"
+        show_dialog_only_32_bits "2Ship2Harkinian, Abbaye, AVP, Arx, Blood, Blake Stone, Captain S, Carmageddon, Doom_engine, Dominatrix (Sin), DX-Rebirth, Dune2, Diablo, EDuke32, Fallout 2, GTA, GemRB, Half Life, Hexen 2, OpenClaw, Portal, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, SpaceCadetPinball, OpenXCom, Unreal Tournament, VVVVVV, WipeOut"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Games ]" --menu "Select game from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
@@ -145,6 +145,7 @@ smGames() {
         CaptainS "Save Seville from the evil Torrebruno"
         Carmageddon "Carmageddon is a vehicular combat game"
         Doom_engine "Zendronum or Crispy engine to play Doom, Heretic, Hexen..."
+        Dominatrix "Dominatrix is the open-source game Sin Gold Edition"
         DX-Rebirth "Descent I/II improved engine"
         Dune2 "Dune 2 Legacy"
         Diablo "Take control of a lone hero battling to rid the world of Diablo"
@@ -202,6 +203,7 @@ smGames() {
         CaptainS) ./scripts/games/captains.sh ;;
         Carmageddon) ./scripts/games/carmageddon.sh ;;
         Doom_engine) ./scripts/games/cdoom.sh ;;
+        Dominatrix) ./scripts/games/dominatrix.sh ;;
         DX-Rebirth) ./scripts/games/descent.sh ;;
         Dune2) ./scripts/games/dune2.sh ;;
         Diablo) ./scripts/games/diablo.sh ;;
