@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1285 hours**
+-   **1287 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (14/08/25)
+
+· 📦 ADD: Games > Dominatrix (Sin Gold).
 
 ### (04/08/25)
 
