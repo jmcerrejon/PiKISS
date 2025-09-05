@@ -144,7 +144,7 @@ smGames() {
         BStone "Robert W. Stone III, AKA Blake Stone must eliminate Dr. Pyrus Goldfire"
         CaptainS "Save Seville from the evil Torrebruno"
         Carmageddon "Carmageddon is a vehicular combat game"
-        Doom_engine "Zendronum or Crispy engine to play Doom, Heretic, Hexen..."
+        Doom_engine "Crispy engine to play Doom, Heretic, Hexen..."
         Dominatrix "Dominatrix is the open-source game Sin Gold Edition"
         DX-Rebirth "Descent I/II improved engine"
         Dune2 "Dune 2 Legacy"

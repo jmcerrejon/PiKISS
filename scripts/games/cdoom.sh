@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# Description : Zandronum and Crispy-Doom
+# Description : Crispy-Doom
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 2.0.6 (20/Aug/24)
+# Version     : 2.0.7 (05/Sep/25)
 # Tested      : Raspberry Pi 5
 #
 # shellcheck source=../helper.sh
@@ -12,12 +12,8 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES=(timidity libsdl2-net-2.0-0 libsdl2-net-dev libsdl2-mixer-2.0-0)
-readonly PACKAGES_ZANDRONUM=(libglu1-mesa)
 readonly PACKAGES_DEV_CRISPY=(build-essential automake git timidity libsdl2-net-2.0-0 libsdl2-net-dev libsdl2-mixer-dev)
 readonly PACKAGES_DEV_GZ_DOOM=(g++ make cmake libsdl2-dev git zlib1g-dev libbz2-dev libjpeg-dev libfluidsynth-dev libgme-dev libopenal-dev libmpg123-dev libsndfile1-dev libgtk-3-dev timidity nasm libgl1-mesa-dev tar libsdl1.2-dev libglew-dev)
-readonly PACKAGES_DEV=(g++ make cmake libsdl2-dev git zlib1g-dev libbz2-dev libjpeg-dev libfluidsynth-dev libgme-dev libopenal-dev libmpg123-dev libsndfile1-dev libgtk-3-dev timidity nasm libgl1-mesa-dev tar libsdl1.2-dev libglew-dev libssl-dev)
-readonly ZANDRONUM_BINARY_URL="https://misapuntesde.com/rpi_share/zandronum-rpi.tar.gz"
-readonly ZANDRONUM_SOURCE_CODE_URL="https://github.com/ptitSeb/zandronum"
 readonly CRISPY_DOOM_PKG_URL="https://misapuntesde.com/rpi_share/crispy_5-8.0_armhf.deb"
 readonly CRISPY_DOOM_PKG_64_BITS_URL="https://misapuntesde.com/rpi_share/crispy-doom_7.0.0_arm64.deb"
 readonly CRISPY_DOOM_SOURCE="https://github.com/fabiangreffrath/crispy-doom"
@@ -28,16 +24,7 @@ readonly VAR_DATA_NAME="WADS"
 DATA_URL="https://misapuntesde.com/rpi_share/wads-shareware.tar.gz"
 INPUT=/tmp/doom.$$
 
-runme() {
-    [[ ! -e $INSTALL_DIR/zandronum/zandronum ]] && exit_message
 
-    read -p "Do you want to play now (Y/n)? " response
-    if [[ $response =~ [Nn] ]]; then
-        exit_message
-    fi
-    cd "$INSTALL_DIR/zandronum" && ./zandronum
-    exit_message
-}
 
 removeUnusedLinks() {
     rm -rf "$HOME/.local/share/crispy-doom"
@@ -66,18 +53,7 @@ uninstall_crispy_doom() {
     fi
 }
 
-uninstall_zandronum() {
-    read -p "Do you want to uninstall Zandronum (y/N)? " response
-    if [[ $response =~ [Yy] ]]; then
-        rm -rf "$INSTALL_DIR/zandronum" ~/.local/share/applications/zandronum.desktop
-        if [[ -e $INSTALL_DIR/zandronum ]]; then
-            echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
-            exit_message
-        fi
-        echo -e "\nSuccessfully uninstalled."
-        exit_message
-    fi
-}
+
 
 download_data_files() {
     echo -e "\nInstalling data files..."
@@ -163,67 +139,19 @@ compile_gzdoom() {
     printf "\nDone. If GZDoom complains you do not have any IWADs set up, make sure that you have your IWAD files placed in the same directory as GZDoom, in ~/.config/gzdoom/, DOOMWADDIR, or /usr/local/share/. Alternatively, you can edit ~/.config/gzdoom/gzdoom.ini or ~/ config/gzdoom/zdoom.ini to set the path for your IWADs."
 }
 
-generate_icon_zandronum() {
-    echo -e "\nGenerating icon..."
-    if [[ ! -e ~/.local/share/applications/zandronum.desktop ]]; then
-        cat <<EOF >~/.local/share/applications/zandronum.desktop
-[Desktop Entry]
-Name=Zandronum
-Version=1.0
-Type=Application
-Comment=Zandronum is a multiplayer oriented port, based off Skulltag, for Doom I/II and derivates
-Exec=${INSTALL_DIR}/zandronum/zandronum
-Icon=${INSTALL_DIR}/zandronum/icon.png
-Path=${INSTALL_DIR}/zandronum/
-Terminal=true
-Categories=Game;
-EOF
-    fi
-}
 
-compile_zandronum() {
-    install_packages_if_missing "${PACKAGES_DEV[@]}"
-    mkdir -p "$HOME/sc" && cd "$_" || exit 1
-    git clone --recursive "$ZANDRONUM_SOURCE_CODE_URL" zandronum && cd "$_" || exit 1
-    mkdir build && cd "$_" || exit 1
-    # TODO Returning valid CFLAGS for different RPi, Check https://github.com/ptitSeb/zandronum/blob/master/CMakeLists.txt
-    CFLAGS="-fsigned-char -marm -march=armv8-a+crc -mtune=cortex-a72 -mfpu=neon-fp-armv8 -mfloat-abi=hard" CXXFLAGS="-fsigned-char" cmake .. -DNO_FMOD=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo -Wno-dev
-    make_with_all_cores
-    make_install_compiled_app
-    echo -e "\nDone!. Check the code at $HOME/sc/zandronum"
-    exit_message
-}
-
-install_zandronum() {
-    if [[ -e $INSTALL_DIR/zandronum/zandronum ]]; then
-        clear
-        echo -e "Zandronum already installed!."
-        uninstall_zandronum
-        exit 1
-    fi
-    install_script_message
-    install_packages_if_missing "${PACKAGES_ZANDRONUM[@]}"
-    download_and_extract "$ZANDRONUM_BINARY_URL" "$INSTALL_DIR"
-    generate_icon_zandronum
-
-    download_data_files "$INSTALL_DIR/zandronum"
-    echo -e "\nYou can play typing $INSTALL_DIR/zandronum/zandronum or opening the Menu > Games > Zandronum."
-    runme
-}
 
 menu() {
     while true; do
         dialog --clear \
             --title "[ DOOM'S ENGINE ]" \
-            --menu "Select from the list:" 11 100 3 \
-            ZANDRONUM "(Recommended) Multiplayer oriented port for Doom,Heretic,Hexen,Strife..." \
-            CRISPY_DOOM "Another engine with Doom,Heretic,Hexen,Strife support" \
+            --menu "Select from the list:" 11 100 2 \
+            CRISPY_DOOM "(32-bit/64-bit) Engine with Doom,Heretic,Hexen,Strife support" \
             Exit "Exit" 2>"${INPUT}"
 
         menuitem=$(<"${INPUT}")
 
         case $menuitem in
-        ZANDRONUM) clear && install_zandronum ;;
         CRISPY_DOOM) clear && install_crispy ;;
         Exit) exit ;;
         esac
