@@ -2,7 +2,7 @@
 #
 # Description : 2Ship2Harkinian - A free port of The Legend of Z3lda: Ocarina of Time
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (01/Jun/25)
+# Version     : 1.0.1 (05/Sep/25)
 # Tested      : Raspberry Pi 5
 #
 # shellcheck source=../helper.sh
@@ -66,7 +66,7 @@ install() {
     generate_icon
     echo -e "\n\nDone!. Once you copy the ROM file inside $INSTALL_DIR/2s2h, you can play typing $INSTALL_DIR/2s2h/2s2h.elf or opening the Menu > Games > 2Ship2Harkinian.\n"
     echo -e "ALT+ENTER full-screen | SPACE Select | WSAD for move | Arrows for camera, [KL,.] for actions.\n"
-
+    exit_message
 }
 
 install_script_message
