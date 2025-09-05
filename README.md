@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1287 hours**
+-   **1291 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,16 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (05/09/25)
+
+· 🐛 FIX: Games > 2Ship2Harkinian.
+
+· 🐛 FIX: Games > Blake Stone.
+
+· 🐛 FIX: Games > Deathrace (AKA Carmageddon).
+
+· ❌ REMOVE: Games > Zandronum (AKA DooM port). Obsolete.
 
 ### (14/08/25)
 

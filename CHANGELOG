@@ -1,5 +1,15 @@
 # Changelog (dd/mm/yy)
 
+## (05/09/25)
+
+· 🐛 FIX: Games > 2Ship2Harkinian.
+
+· 🐛 FIX: Games > Blake Stone.
+
+· 🐛 FIX: Games > Deathrace (AKA Carmageddon).
+
+· ❌ REMOVE: Games > Zandronum (AKA DooM port). Obsolete.
+
 ## (14/08/25)
 
 · 📦 ADD: Games > Dominatrix (Sin Gold).
@@ -812,7 +822,7 @@
 
 ## (17/01/21)
 
-· 📦 ADD: Games > Zendronum to play Doom + Heretic + Hexen + Strife. Shareware included.
+· 📦 ADD: Games > Zandronum to play Doom + Heretic + Hexen + Strife. Shareware included.
 
 ## (12/01/21)
 
