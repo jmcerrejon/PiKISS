@@ -2,8 +2,8 @@
 #
 # Description : Bstone: A source port of Blake Stone: Aliens Of Gold and Blake Stone: Planet Strike.
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.2 (16/Mar/25)
-# Compatible  : Raspberry Pi 4 (tested on Raspberry Pi 4)
+# Version     : 1.1.3 (05/Sep/25)
+# Tested      : Raspberry Pi 5
 #
 # shellcheck source=../helper.sh
 . ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -144,6 +144,9 @@ Install Blake Stone on Raspberry Pi
  · WASD: Movement | Cursor: Rotate | Space: Open | Ctrl: Fire | TAB: HUB
  · Aliens of Gold Maps: https://jalu.ch/misc/bstone/
 "
-read -p "Press [ENTER] to go back to the menu..."
+read -p "Continue? (Y/n) " response
+if [[ $response =~ [Nn] ]]; then
+    exit_message
+fi
 
 install
