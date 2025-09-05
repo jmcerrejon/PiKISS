@@ -2,7 +2,7 @@
 #
 # Description : Dethrace is a Carmageddon clone.
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (16/Mar/25)
+# Version     : 1.0.2 (05/Sep/25)
 # Tested      : Raspberry Pi 5
 #
 # shellcheck source=../helper.sh
@@ -11,7 +11,7 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
-readonly PACKAGES=(libsdl2-2.0-0)
+readonly PACKAGES=(libsdl2-2.0-0 curl unzip)
 readonly CONFIG_DIR="$HOME/.local/share/dethrace"
 readonly BINARY_AARCH64_URL="https://misapuntesde.com/rpi_share/dethrace-rpi-aarch64.tar.gz"
 readonly SOURCE_CODE_URL="https://github.com/dethrace-labs/dethrace"
@@ -87,8 +87,16 @@ download_data_files() {
     if exists_magic_file; then
         DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
         message_magic_air_copy "$VAR_DATA_NAME_EN"
+        download_and_extract "$DATA_URL" "$INSTALL_DIR/dethrace"
+    else
+        CARMDEMO_ZIP_PATH="$INSTALL_DIR/dethrace/carmdemo.zip"
+        # Hack to bypass 403 error
+        curl -L -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36" --compressed -o "$CARMDEMO_ZIP_PATH" "$DATA_URL"
+        unzip -o "$CARMDEMO_ZIP_PATH" -d "$INSTALL_DIR/dethrace"
+        if [ -f "$CARMDEMO_ZIP_PATH" ]; then
+            rm "$CARMDEMO_ZIP_PATH"
+        fi
     fi
-    download_and_extract "$DATA_URL" "$INSTALL_DIR/dethrace"
 }
 
 install_binaries() {
