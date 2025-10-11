@@ -2,7 +2,7 @@
 #
 # Description : Aliens versus Predator for aarch64
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.0 (24/Jun/24)
+# Version     : 1.1.1 (11/Oct/25)
 # Tested      : Raspberry Pi 5
 #
 # shellcheck source=../helper.sh
@@ -15,6 +15,8 @@ readonly PACKAGES=(libsdl2-2.0-0 libopenal1 libc6)
 readonly PACKAGES_DEV=(libsdl2-2.0-0-dev libopenal1-dev libc6-dev)
 readonly BINARY_64_BITS_URL="https://e.pcloud.link/publink/show?code=XZwaxTZmBATjuuptQQrYgMAveYGTL4IjKVX"
 readonly SOURCE_CODE_URL="https://github.com/atsb/NakedAVP"
+
+not_trixie_compatible
 
 runme() {
     echo
