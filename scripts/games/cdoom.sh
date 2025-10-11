@@ -2,7 +2,7 @@
 #
 # Description : Crispy-Doom
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 2.0.7 (05/Sep/25)
+# Version     : 2.0.8 (11/Oct/25)
 # Tested      : Raspberry Pi 5
 #
 # shellcheck source=../helper.sh
@@ -60,7 +60,7 @@ download_data_files() {
     if [[ $(extract_path_from_file "$VAR_DATA_NAME") != '' ]]; then
         DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
     fi
-    download_and_extract "$DATA_URL" "$1"
+    download_and_extract "$DATA_URL" "$1/wads"
 }
 
 compile_crispy_doom() {
