@@ -11,7 +11,7 @@
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-VERSION="v.1.12.0"
+VERSION="v.1.13.0"
 IP=$(get_ip)
 PI_VERSION_NUMBER=$(get_pi_version_number)
 ARCHITECTURE=$(getconf LONG_BIT)
@@ -130,7 +130,7 @@ smTweaks() {
 
 smGames() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "2Ship2Harkinian, Abbaye, AVP, Arx, Blood, Blake Stone, Captain S, Carmageddon, Doom_engine, Dominatrix (Sin), DX-Rebirth, Dune2, Diablo, EDuke32, Fallout 2, GTA, GemRB, Half Life, Hexen 2, OpenClaw, Portal, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, SpaceCadetPinball, OpenXCom, Unreal Tournament, VVVVVV, WipeOut"
+        show_dialog_only_32_bits "2Ship2Harkinian, Abbaye, AVP, Arx, Blood, Blake Stone, Captain S, Carmageddon, Doom_engine, Dominatrix (Sin), DX-Rebirth, Dune2, Diablo, EDuke32, Fallout 2, GTA, GemRB, Half Life, Hexen 2, OpenClaw, OpenFodder, Portal, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, SpaceCadetPinball, OpenXCom, Unreal Tournament, VVVVVV, WipeOut"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Games ]" --menu "Select game from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
@@ -163,6 +163,7 @@ smGames() {
         Morrowind "The Elder Scrolls III: Morrowind is an open-world RPG"
         OpenBor "OpenBOR is the open source continuation of Beats of Rage"
         OpenClaw "Platform 2D Captain Claw (1997) reimplementation"
+        OpenFodder "OpenFodder is a free reimplementation of Cannon Fodder games."
         OpenJK "Engine for Star Wars Jedi Knight: Jedi Academy (SP & MP)"
         OpenRCT2 "Open Source re-implementation of RollerCoaster Tycoon 2"
         OpenSPlex "OpenSupaplex reimplementation of the original 90's game"
@@ -221,6 +222,7 @@ smGames() {
         Morrowind) ./scripts/games/openmw.sh ;;
         OpenBor) ./scripts/games/openbor.sh ;;
         OpenClaw) ./scripts/games/openclaw.sh ;;
+        OpenFodder) ./scripts/games/openfodder.sh ;;
         OpenJK) ./scripts/games/openjk.sh ;;
         OpenRCT2) ./scripts/games/openrct2.sh ;;
         OpenSPlex) ./scripts/games/supaplex.sh ;;
