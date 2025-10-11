@@ -608,7 +608,7 @@ check_dependencies() {
     INSTALLER_DEPS=("$@")
     for i in "${INSTALLER_DEPS[@]}"; do
         if ! package_check "$i" -eq 0 >/dev/null; then
-            sudo apt install -y "$i"
+            sudo apt install -y "$i" || true
         fi
     done
 }
@@ -1467,4 +1467,12 @@ ask_yes_no() {
     local prompt="$1 (y/N) "
     read -r -p "$prompt" response
     [[ $response =~ ^[Yy]$ ]]
+}
+
+not_trixie_compatible() {
+    if [[ $(get_OS_version_codename) == "trixie" ]]; then
+        echo -e "\nThis software is not compatible with Debian 12 (Trixie) at the moment."
+        echo -e "If you want to use it, please downgrade to Debian 11 (Bullseye).\n"
+        exit_message
+    fi
 }
