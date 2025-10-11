@@ -2,7 +2,7 @@
 #
 # Description : 2Ship2Harkinian - A free port of The Legend of Z3lda: Ocarina of Time
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (05/Sep/25)
+# Version     : 1.0.2 (11/Oct/25)
 # Tested      : Raspberry Pi 5
 #
 # shellcheck source=../helper.sh
@@ -11,10 +11,12 @@ clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
-readonly PACKAGES=(libzip4 libtinyxml2-9 libspdlog1.10 libspdlog-dev)
+readonly PACKAGES=(libzip4 libtinyxml2-9 libspdlog1.10 libzip5 libtinyxml2-11 libspdlog1.15 libspdlog-dev)
 readonly BINARY_64_BITS_URL="https://github.com/AndresJosueToledoCalderon/Compile-2Ship2Harkinian-for-Raspberry-Pi/raw/refs/heads/main/2%20Ship%202%20Harkinian.7z"
 readonly ICON_URL="https://github.com/AndresJosueToledoCalderon/Compile-2Ship2Harkinian-for-Raspberry-Pi/raw/refs/heads/main/mmicon.png"
 readonly SOURCE_CODE_URL="https://github.com/AndresJosueToledoCalderon/Compile-2Ship2Harkinian-for-Raspberry-Pi"
+
+not_trixie_compatible
 
 uninstall() {
     read -p "Do you want to uninstall 2Ship2Harkinian (y/N)? " response
@@ -53,6 +55,14 @@ Comment=2Ship2Harkinian is a free port of The Legend of Zelda: Ocarina of Time.
 Categories=Game;ActionGame;
 EOF
     fi
+}
+
+post_install() {
+    echo -e "\nPost-installation tasks..."
+    sudo ln -s /usr/lib/aarch64-linux-gnu/libzip.so.5 /usr/lib/aarch64-linux-gnu/libzip.so.4
+    sudo ln -s /usr/lib/aarch64-linux-gnu/libtinyxml2.so.11 /usr/lib/aarch64-linux-gnu/libtinyxml2.so.9
+    sudo ln -s /usr/lib/aarch64-linux-gnu/libspdlog.so.1.15 /usr/lib/aarch64-linux-gnu/libspdlog.so.1.10
+    sudo ln -s /usr/lib/aarch64-linux-gnu/libfmt.so.10.1.0 /usr/lib/aarch64-linux-gnu/libfmt.so.9
 }
 
 install() {
