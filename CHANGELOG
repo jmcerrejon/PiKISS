@@ -1,5 +1,23 @@
 # Changelog (dd/mm/yy)
 
+## (11/Oct/25)
+
+· 📦 ADD: Games > OpenFodder (AKA Cannon Fodder).
+
+· 🐛 FIX: Games > Crispy-Doom (Adjust data extraction path)
+
+· ❌ REMOVE: Config > Vulkan 25.2.4 .
+
+· ❌ REMOVE: Games > 2Ship2Harkinian.
+
+· ❌ REMOVE: Games > Alien Vs Predator.
+
+· ❌ REMOVE: Games > Diablo 2 with wine.
+
+· ❌ REMOVE: Games > GTA.
+
+· ❌ REMOVE: Games > GemRB.
+
 ## (05/09/25)
 
 · 🐛 FIX: Games > 2Ship2Harkinian.

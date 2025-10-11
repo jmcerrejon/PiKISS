@@ -13,11 +13,11 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1291 hours**
+-   **1301 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
--   $2.476,48
+-   $2.805,13
 
 -   I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu), Kreal (krishenriksen.dk).
 
@@ -78,6 +78,28 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (11/10/25)
+
+· 📦 ADD: Games > OpenFodder (AKA Cannon Fodder).
+
+· 🐛 FIX: Games > Crispy-Doom (Adjust data extraction path)
+
+The next at the moment, it's exclusively working for _Raspberry Pi OS Booksworm Edition_:
+
+· ❌ REMOVE: Config > Vulkan 25.2.4.
+
+· ❌ REMOVE: Games > 2Ship2Harkinian.
+
+· ❌ REMOVE: Games > Alien Vs Predator.
+
+· ❌ REMOVE: Games > Diablo 2 with wine.
+
+· ❌ REMOVE: Games > GTA.
+
+· ❌ REMOVE: Games > GemRB.
+
+**NOTE:** If you found any issue with the latest _RPi OS Trixie_, please, open an issue at [GitHub Issues](https://github.com/jmcerrejon/PiKISS/issues).
 
 ### (05/09/25)
 
@@ -292,7 +314,7 @@ Don't despair. **PiKISS** has come to help you...
 
 **PiKISS** _(Pi Keeping It Simple, Stupid!)_ is made with _scripts (Bash)_ for _Raspberry Pi 4 & 5_ boards which has a menu that will allow you to install some applications or configure files automatically as easy as possible. The ideal stage is:
 
--   _Raspberry PI OS Desktop_ Bullseye 32-bit. 64-bit support is comming slowly.
+-   _Raspberry PI OS Desktop_ Booksworm 32-bit. 64-bit and Trixie support is comming slowly.
 
 The idea is to offer facilities to manage your operating system, selecting an option in a menu and answer [Yes/No]. If you need to check dependencies, install an app, modify a script at boot, add a line to a file or download other, **PiKISS** will do it for you.
 
@@ -352,7 +374,7 @@ No desesperéis. Ha llegado **PiKISS** para ayudarte...
 
 ---
 
-**PiKISS** _(Pi Keeping It Simple, Stupid!, "Pi manteniéndolo sencillo, ¡Estúpido!")_ son unos _scripts en Bash_ para placas _Raspberry Pi 4 y 5_ y testeado en _Raspberry PI OS Desktop_ Bullseye 32-bit (el soporte a 64-bit lo estoy haciendo poco a poco), que cuenta con un menú que te va a permitir instalar algunas aplicaciones o configurar ficheros de forma automática de la manera más fácil posible. **Su misión: Simplificar la instalación de software en _Raspberry Pi_.**
+**PiKISS** _(Pi Keeping It Simple, Stupid!, "Pi manteniéndolo sencillo, ¡Estúpido!")_ son unos _scripts en Bash_ para placas _Raspberry Pi 4 y 5_ y testeado en _Raspberry PI OS Desktop_ Booksworm 32-bit (el soporte a 64-bit y a Trixie lo estoy haciendo poco a poco), que cuenta con un menú que te va a permitir instalar algunas aplicaciones o configurar ficheros de forma automática de la manera más fácil posible. **Su misión: Simplificar la instalación de software en _Raspberry Pi_.**
 
 La idea es ofrecer facilidades para manejar tu distribución y que las instalaciones sean tan sencillas como seleccionar una opción en un menú y contestar [Si/No]. Si alguna conlleva algo más que instalar, por ejemplo modificar un script en el arranque, añadir una línea a un fichero, descargar otros ficheros, comprobar dependencias, **PiKISS** lo hará por ti.
 
