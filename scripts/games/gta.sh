@@ -2,9 +2,10 @@
 #
 # Description : GTA thks to foxhound311
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.3 (18/Feb/22)
+# Version     : 1.1.4 (11/Oct/25)
 # Compatible  : Raspberry Pi 4 (tested)
 #
+# shellcheck disable=SC1091
 . ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
@@ -17,6 +18,8 @@ readonly LIBGLFW3_URL="https://misapuntesde.com/rpi_share/libglfw3_3.3.2-1_armhf
 readonly VAR_DATA_GTA3_NAME="GTA_3"
 readonly VAR_DATA_GTAVC_NAME="GTA_VC"
 readonly INPUT=/tmp/temp.$$
+
+not_trixie_compatible
 
 # GTA III
 
