@@ -2,7 +2,7 @@
 #
 # Description : GemRB
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.0 (09/Feb/25)
+# Version     : 1.2.1 (11/Oct/25)
 # Tested      : Raspberry Pi 5
 # Repository  : https://github.com/gemrb/gemrb
 # Help        : https://github.com/gemrb/gemrb/blob/master/INSTALL
@@ -26,6 +26,8 @@ readonly GAME_DATA_PATH="$INSTALL_DIR/gemrb/data"
 readonly GEMRBCFG_PATH="$INSTALL_DIR/gemrb/etc/gemrb/GemRB.cfg"
 readonly MAGIC_AIR_NAME="GEMRB"
 INPUT=/tmp/temp.$$
+
+not_trixie_compatible
 
 runme() {
     if [[ ! -f $INSTALL_DIR/gemrb/bin/gemrb ]]; then
