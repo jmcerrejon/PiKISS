@@ -2,7 +2,7 @@
 #
 # Description : Vulkan driver
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 2.1.0 (06/Jul/25)
+# Version     : 2.2.0 (11/Oct/25)
 # Tested      : Raspberry Pi 5
 #
 # Help        : https://ninja-build.org/manual.html#ref_pool
@@ -20,12 +20,13 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="$HOME/mesa_vulkan"
 readonly SOURCE_CODE_URL="https://gitlab.freedesktop.org/mesa/mesa.git"
-readonly LIB_DRM_VERSION="2.4.125" # Get the latest version at https://dri.freedesktop.org/libdrm/?C=M;O=D
+readonly LIB_DRM_VERSION="2.4.126" # Get the latest version at https://dri.freedesktop.org/libdrm/?C=M;O=D
 readonly VULKAN_INSTALL_SCRIPT_URL="https://gist.githubusercontent.com/jmcerrejon/a08eca2bba3e5e23bda2b3f7d7506ab0/raw/11aad2190e1244821571788c4b143c6970f476e0/reinstall-vulkan-driver.sh"
 readonly BACKUP_DIR="$HOME/.vulkan_backup_$(date +%Y%m%d_%H%M%S)"
 readonly INPUT=/tmp/vulkan.$$
+# Target tuning (Wayland is default session on RPi OS, but X11 is supported too)
 PI_VERSION_NUMBER=$(get_pi_version_number)
-BRANCH_VERSION="mesa-25.1.4"
+BRANCH_VERSION="mesa-25.2.4"
 
 log_message() {
     local level="$1"
@@ -36,6 +37,15 @@ log_message() {
 error_exit() {
     log_message "ERROR" "$1"
     exit 1
+}
+
+print_session_info() {
+    log_message "INFO" "Session info: DISPLAY='${DISPLAY:-}', WAYLAND_DISPLAY='${WAYLAND_DISPLAY:-}', XDG_SESSION_TYPE='${XDG_SESSION_TYPE:-}'"
+    if command -v Xwayland >/dev/null 2>&1 || dpkg -s xwayland >/dev/null 2>&1; then
+        log_message "INFO" "Xwayland is available. X11 apps should run under Wayland."
+    else
+        log_message "WARNING" "Xwayland not detected. Consider installing 'xwayland' for X11 apps under Wayland."
+    fi
 }
 
 get_optimal_build_params() {
@@ -49,15 +59,16 @@ get_optimal_build_params() {
     cpu_cores=$(nproc)
     memory_gb=$(free -g | awk '/^Mem:/{print $2}')
 
-    if [[ "$PI_VERSION_NUMBER" -ge 5 ]]; then
+    # RPi 5
+    if [[ "$PI_VERSION_NUMBER" == "5" ]]; then
         cpu_arch="cortex-a76"
     else
-        cpu_arch="cortex-a72"
+        cpu_arch="cortex-a53"
     fi
 
     if is_userspace_64_bits; then
-        cc_args="-mcpu=${cpu_arch} -O3 -DNDEBUG -pipe"
-        cpp_args="-mcpu=${cpu_arch} -O3 -DNDEBUG -pipe"
+        cc_args="-mcpu=${cpu_arch} -mtune=${cpu_arch} -O3 -DNDEBUG -pipe"
+        cpp_args="-mcpu=${cpu_arch} -mtune=${cpu_arch} -O3 -DNDEBUG -pipe"
         # Enable LTO for better performance on 64-bit with sufficient memory
         if [[ $memory_gb -ge 6 ]]; then
             cc_args="$cc_args -flto"
@@ -93,6 +104,7 @@ install() {
     fi
 
     log_message "INFO" "Vulkan driver installation completed successfully"
+    print_session_info
     echo "Done."
     exit_message
 }
@@ -105,39 +117,45 @@ install_full_deps() {
     local essential_deps=(
         build-essential git cmake ninja-build python3-pip python3-mako
         pkg-config bison flex libssl-dev libgnutls28-dev
-        libdrm-dev libelf-dev mesa-utils zlib1g-dev
-        libexpat1-dev libxml2-dev libzstd-dev python3-yaml
-        vulkan-tools
+        libelf-dev mesa-utils zlib1g-dev libexpat1-dev libxml2-dev libzstd-dev
+        python3-yaml vulkan-tools libvulkan-dev libvulkan1 libudev-dev
     )
 
-    local display_deps=(
-        libxcb-randr0-dev libxrandr-dev libxcb-xinerama0-dev libxinerama-dev
-        libxcursor-dev libxcb-cursor-dev libxkbcommon-dev xutils-dev
-        libpthread-stubs0-dev libpciaccess-dev libffi-dev x11proto-xext-dev
-        libxcb1-dev libxcb-*dev libx11-dev libxcb-glx0-dev libx11-xcb-dev
-        libxext-dev libxdamage-dev libxfixes-dev libva-dev x11proto-randr-dev
-        x11proto-present-dev libxshmfence-dev libxxf86vm-dev
-        libwayland-dev wayland-protocols libwayland-egl-backend-dev
+    local wayland_deps=(
+        libwayland-dev wayland-protocols libxkbcommon-dev
+        libdrm-dev libdrm2 libdrm-common libwayland-egl-backend-dev
     )
 
-    local vulkan_deps=(
-        libvulkan-dev libvulkan1 libassimp-dev
-        libdrm-dev libdrm2 libdrm-common
+    local x11_deps=(
+        xorgproto xwayland
+        libx11-dev libx11-xcb-dev libxext-dev libxfixes-dev libxdamage-dev
+        libxrandr-dev libxshmfence-dev libxxf86vm-dev
+        libxcb1-dev libxcb-glx0-dev libxcb-randr0-dev libxcb-dri3-dev
+        libxcb-present-dev libxcb-sync-dev libxcb-shm0-dev
     )
 
-    for deps_array in essential_deps display_deps vulkan_deps; do
-        local -n deps_ref="$deps_array"
-        log_message "INFO" "Installing ${deps_array} dependencies..."
-        sudo apt-get install -y "${deps_ref[@]}" || error_exit "Failed to install ${deps_array}"
-    done
+    local examples_deps=(
+        libassimp-dev libglfw3-dev
+    )
 
-    if is_userspace_64_bits; then
-        sudo apt install -y libclc-16-dev || sudo apt install -y libclc-dev
-    else
-        sudo apt install -y libclc-dev
-    fi
+    log_message "INFO" "Installing essential dependencies..."
+    install_packages_if_missing "${essential_deps[@]}" || error_exit "Failed to install essential dependencies"
 
-    install_meson
+    log_message "INFO" "Installing Wayland dependencies..."
+    install_packages_if_missing "${wayland_deps[@]}" || error_exit "Failed to install Wayland dependencies"
+
+    log_message "INFO" "Installing X11 dependencies..."
+    install_packages_if_missing "${x11_deps[@]}" || error_exit "Failed to install X11 dependencies"
+
+    log_message "INFO" "Installing examples dependencies..."
+    install_packages_if_missing "${examples_deps[@]}" || error_exit "Failed to install examples dependencies"
+
+    log_message "INFO" "Installing libclc-dev..."
+    install_packages_if_missing libclc-dev || error_exit "Failed to install libclc-dev"
+
+    log_message "INFO" "Installing meson build system..."
+    install_meson || error_exit "Failed to install meson"
+
     log_message "INFO" "Dependencies installation completed"
 }
 
@@ -160,7 +178,7 @@ install_vulkan_from_official_repository() {
     local CODENAME
     CODENAME=$(get_codename)
 
-    if [ "$CODENAME" != "bullseye" ] && [ "$CODENAME" != "bookworm" ]; then
+    if [ "$CODENAME" != "bullseye" ] && [ "$CODENAME" != "bookworm" ] && [ "$CODENAME" != "trixie" ]; then
         log_message "ERROR" "You need at least Debian Bullseye to install Vulkan. See: https://wiki.debian.org/bullseye"
         return 0
     fi
@@ -235,6 +253,8 @@ compile() {
     local cpp_args
     local link_args
 
+    not_trixie_compatible
+
     clear
     log_message "INFO" "This script will compile the Vulkan Mesa Driver from source branch ${BRANCH_VERSION}."
     log_message "INFO" "Estimated compilation time on Raspberry Pi 5: ~14 min over USB/SSD drive (Not overclocked)"
@@ -261,7 +281,7 @@ compile() {
 
     [[ -d "$INSTALL_DIR"/build ]] && rm -rf "$INSTALL_DIR"/build
 
-    export PKG_CONFIG_PATH="/usr/lib/aarch64-linux-gnu/pkgconfig:/usr/lib/arm-linux-gnueabihf/pkgconfig:/usr/share/pkgconfig:/usr/lib/pkgconfig"
+    export PKG_CONFIG_PATH="/usr/lib/aarch64-linux-gnu/pkgconfig:/usr/share/pkgconfig:/usr/lib/pkgconfig"
 
     local meson_args=(
         --prefix /usr
@@ -271,8 +291,9 @@ compile() {
         -Dplatforms=x11,wayland
         -Dxlib-lease=auto
         -Dvulkan-drivers=broadcom
-        -Dgallium-drivers=v3d,vc4,virgl,zink
+        -Dgallium-drivers=v3d,vc4,zink
         -Degl=enabled
+        -Dgbm=enabled
         -Dglx=auto
         -Dllvm=disabled
         -Dvalgrind=disabled
@@ -318,7 +339,7 @@ compile_sascha_willems_vulkan_examples() {
     git clone --recursive "$examples_repo_url" "$examples_install_dir" || error_exit "Failed to clone Sascha Willems Vulkan examples repository"
     cd "$examples_install_dir" || error_exit "Failed to enter examples directory $examples_install_dir"
 
-    export PKG_CONFIG_PATH="/usr/lib/aarch64-linux-gnu/pkgconfig:/usr/lib/arm-linux-gnueabihf/pkgconfig:/usr/share/pkgconfig:/usr/lib/pkgconfig:${PKG_CONFIG_PATH:-}"
+    export PKG_CONFIG_PATH="/usr/lib/aarch64-linux-gnu/pkgconfig:/usr/share/pkgconfig:/usr/lib/pkgconfig:${PKG_CONFIG_PATH:-}"
 
     log_message "INFO" "Configuring build for Sascha Willems Vulkan examples..."
     mkdir -p build && cd build || error_exit "Failed to create or enter build directory"
@@ -340,56 +361,8 @@ compile_sascha_willems_vulkan_examples() {
     log_message "INFO" "Sascha Willems Vulkan examples compiled successfully."
     log_message "INFO" "Examples can be run from: $examples_install_dir/build/bin"
     echo "Sascha Willems Vulkan examples compiled. Binaries are in $examples_install_dir/build/bin"
-}
 
-compile_vulkan_caps_viewer_wayland() {
-    local viewer_install_dir="$HOME/VulkanCapsViewer_SaschaWillems"
-    local viewer_repo_url="https://github.com/SaschaWillems/VulkanCapsViewer.git"
-    local build_params
-    local cc_args
-    local cpp_args
-    local link_args
-
-    log_message "INFO" "Starting compilation of Sascha Willems VulkanCapsViewer for Wayland..."
-
-    log_message "INFO" "Installing Qt5 and Wayland dependencies for VulkanCapsViewer..."
-    sudo apt-get update || error_exit "Failed to update package cache for VulkanCapsViewer."
-    sudo apt-get install -y qtbase5-dev qt5-qmake libqt5waylandclient5 qtwayland5 git || error_exit "Failed to install Qt5/Wayland dependencies for VulkanCapsViewer."
-
-    if ! command -v vulkaninfo &>/dev/null; then
-        log_message "WARNING" "Vulkan SDK (vulkan-tools) not found. Please ensure Vulkan is installed."
-        exit_message
-    fi
-
-    log_message "INFO" "Cloning Sascha Willems VulkanCapsViewer repository..."
-    if [[ -d "$viewer_install_dir" ]]; then
-        log_message "INFO" "Removing existing VulkanCapsViewer directory: $viewer_install_dir"
-        rm -rf "$viewer_install_dir"
-    fi
-    git clone "$viewer_repo_url" "$viewer_install_dir" && cd "$_" || error_exit "Failed to clone VulkanCapsViewer repository."
-
-    build_params=$(get_optimal_build_params)
-    IFS='|' read -r _ cc_args cpp_args link_args <<<"$build_params"
-
-    log_message "INFO" "Configuring build with qmake for Wayland..."
-    local qmake_extra_args=()
-    [[ -n "$cc_args" ]] && qmake_extra_args+=("QMAKE_CFLAGS+=${cc_args}")
-    [[ -n "$cpp_args" ]] && qmake_extra_args+=("QMAKE_CXXFLAGS+=${cpp_args}")
-    [[ -n "$link_args" ]] && qmake_extra_args+=("QMAKE_LFLAGS+=${link_args}")
-
-    qmake vulkanCapsViewer.pro -spec linux-g++ CONFIG+=release DEFINES+=WAYLAND "${qmake_extra_args[@]}" || error_exit "qmake configuration failed for VulkanCapsViewer."
-
-    log_message "INFO" "Starting compilation of VulkanCapsViewer with $(nproc) jobs..."
-    make -j"$(nproc)" || error_exit "Compilation of VulkanCapsViewer failed."
-
-    log_message "INFO" "Sascha Willems VulkanCapsViewer compiled successfully for Wayland."
-    if [[ -f "$viewer_install_dir/VulkanCapsViewer" ]]; then
-        log_message "INFO" "Executable is at: $viewer_install_dir/VulkanCapsViewer"
-        echo "VulkanCapsViewer compiled successfully. Executable: $viewer_install_dir/VulkanCapsViewer"
-    else
-        log_message "WARNING" "Could not locate the VulkanCapsViewer executable automatically. Please check $viewer_install_dir."
-        echo "VulkanCapsViewer compilation finished. Check $viewer_install_dir for the executable."
-    fi
+    exit_message
 }
 
 menu_choose_branch() {
@@ -423,7 +396,6 @@ Vulkan Mesa Drivers
 · Version: $BRANCH_VERSION with 32/64 bits support.
 · This process can't be undone.
 · Make sure you backup your data.
-· This script installs/compiles libdrm & Vulkan Mesa Driver on your OS.
 "
 read -p "Continue? (Y/n) " response
 if [[ $response =~ [Nn] ]]; then
@@ -432,4 +404,3 @@ fi
 
 upgrade_dist
 menu_choose_branch
-exit_message
