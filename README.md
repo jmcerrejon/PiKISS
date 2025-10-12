@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1301 hours**
+-   **1303 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,16 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (12/10/25)
+
+· 👌 IMPROVE: Games > Heroes Of Might And Magic II 1.11.1.
+
+The next at the moment, it's exclusively working for _Raspberry Pi OS Booksworm Edition_:
+
+· ❌ REMOVE: Games > Heroes Of Might And Magic III.
+
+· ❌ REMOVE: Games > Hermes (Obsolete).
 
 ### (11/10/25)
 
