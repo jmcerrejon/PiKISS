@@ -157,7 +157,6 @@ smGames() {
         HalfLife "Gordon Freeman must exit Black Mesa after it's invaded by aliens"
         Heroes2 "Free implementation of Heroes of Might and Magic II engine"
         Heroes3 "Open-source engine for Heroes of Might and Magic III"
-        Hermes "Jump'n' Run game with plenty of bad taste humour"
         Hexen2 "Hexen II is a dark fantasy 1st shooter and RPG"
         Hurrican "Jump and shoot game based on the Turrican game series"
         Morrowind "The Elder Scrolls III: Morrowind is an open-world RPG"
@@ -216,7 +215,6 @@ smGames() {
         HalfLife) ./scripts/games/half-life.sh ;;
         Heroes2) ./scripts/games/heroes2.sh ;;
         Heroes3) ./scripts/games/heroes3.sh ;;
-        Hermes) ./scripts/games/hermes.sh ;;
         Hexen2) ./scripts/games/hexen2.sh ;;
         Hurrican) ./scripts/games/hurrican.sh ;;
         Morrowind) ./scripts/games/openmw.sh ;;
