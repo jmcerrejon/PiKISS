@@ -2,7 +2,7 @@
 #
 # Description : VCMI. Open-source engine for Heroes of Might and Magic III
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (25/Oct/21)
+# Version     : 1.0.1 (12/Oct/25)
 # Compatible  : Raspberry Pi 4
 # Repository  : https://github.com/vcmi/vcmi
 #
@@ -18,6 +18,8 @@ readonly DEMO_MM3_URL="https://e.pcloud.link/publink/show?code=XZAAk0Z8P6jmN12mT
 readonly SOURCE_CODE_MM3_URL="https://github.com/vcmi/vcmi"
 readonly VAR_DATA_MM3_NAME="HEROES_3"
 INPUT=/tmp/temp.$$
+
+not_trixie_compatible
 
 runme_mm3() {
     if [[ ! -f $INSTALL_DIR/heroes3/vcmilauncher ]]; then
