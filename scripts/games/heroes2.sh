@@ -2,18 +2,19 @@
 #
 # Description : fheroes2
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.3 (04/Dec/21)
-# Compatible  : Raspberry Pi 4
-# Repository  : https://github.com/ihhub/fheroes2
+# Version     : 1.1.0 (12/Oct/25)
+# Tested      : Raspberry Pi 5
 #
+# shellcheck disable=SC1091
 . ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
+readonly VERSION="1.1.11"
 readonly PACKAGES=(fluidr3mono-gm-soundfont fluid-soundfont-gm libsdl2-mixer-2.0-0 libsdl2-image-2.0-0 libsdl2-ttf-2.0-0)
 readonly PACKAGES_DEV=(libsdl2-dev libsdl2-ttf-dev libsdl2-mixer-dev libsdl2-image-dev gettext)
-readonly BINARY_URL="https://misapuntesde.com/rpi_share/fheroes2_0.83_rpi.tar.gz"
+readonly BINARY_URL="https://github.com/ihhub/fheroes2/releases/download/$VERSION/fheroes2_ubuntu_arm64_SDL2.zip"
 readonly SOURCE_CODE_URL="https://github.com/ihhub/fheroes2"
 readonly VAR_DATA_NAME="HEROES_2"
 INPUT=/tmp/temp.$$
@@ -28,14 +29,10 @@ runme() {
     exit_message
 }
 
-remove_files() {
-    rm -rf "$INSTALL_DIR"/fheroes2 ~/.local/share/applications/fheroes2.desktop ~/.fheroes2
-}
-
 uninstall() {
     read -p "Do you want to uninstall Heroes of Might and Magic II (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
-        remove_files
+        rm -rf "$INSTALL_DIR"/fheroes2 ~/.local/share/applications/fheroes2.desktop ~/.config/fheroes2
         if [[ -e "$INSTALL_DIR"/fheroes2 ]]; then
             echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
             exit_message
@@ -53,6 +50,7 @@ fi
 
 generate_icon() {
     echo -e "\nGenerating icon..."
+    wget "https://raw.githubusercontent.com/ihhub/fheroes2/refs/heads/master/src/resources/fheroes2.png"
     if [[ ! -e ~/.local/share/applications/fheroes2.desktop ]]; then
         cat <<EOF >~/.local/share/applications/fheroes2.desktop
 [Desktop Entry]
@@ -61,7 +59,7 @@ Version=1.0
 Type=Application
 Comment=Free implementation of Heroes of Might and Magic II engine
 Exec=${INSTALL_DIR}/fheroes2/fheroes2
-Icon=${INSTALL_DIR}/fheroes2/icon.png
+Icon=${INSTALL_DIR}/fheroes2/fheroes2.png
 Path=${INSTALL_DIR}/fheroes2/
 Terminal=false
 Categories=Game;
@@ -85,8 +83,9 @@ compile() {
 
 get_demo() {
     echo -e "\nInstalling demo files...\n"
-    cd "$INSTALL_DIR/fheroes2/script/demo" || exit 1
-    ./demo_linux.sh
+    cd "$INSTALL_DIR/fheroes2/" || exit 1
+    chmod +x download_demo_version.sh
+    ./download_demo_version.sh
 }
 
 download_data_files() {
@@ -98,7 +97,7 @@ download_data_files() {
 install() {
     local DATA_URL
     install_packages_if_missing "${PACKAGES[@]}"
-    download_and_extract "$BINARY_URL" "$INSTALL_DIR"
+    download_and_extract "$BINARY_URL" "$INSTALL_DIR/fheroes2"
     generate_icon
     if ! exists_magic_file; then
         get_demo
