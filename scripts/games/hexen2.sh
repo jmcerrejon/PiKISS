@@ -2,7 +2,7 @@
 #
 # Description : Hexen ][ using fteqw engine for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (07/May/24)
+# Version     : 1.0.1 (01/Nov/25)
 # Tested      : Raspberry Pi 5
 #
 # Help        : https://github.com/sezero/uhexen2 (Another port )
@@ -75,7 +75,12 @@ magic_air_copy() {
         DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
         message_magic_air_copy "$VAR_DATA_NAME"
     fi
-    download_and_extract "$DATA_URL" "$HOME/games/hexen2/games"
+    download_and_extract "$DATA_URL" "$INSTALL_DIR/hexen2/games"
+}
+
+post_install() {
+    echo -e "\nCopying custom settings..."
+    cp "$INSTALL_DIR/hexen2/fte.cfg" "$INSTALL_DIR/hexen2/games/h2/data1"
 }
 
 install() {
@@ -84,6 +89,7 @@ install() {
     install_binary
     generate_icon
     magic_air_copy
+    post_install
     echo -e "\nDone!. You can play typing $INSTALL_DIR/hexen2/run.sh or opening the Menu > Games > Hexen 2.\n"
     runme
 }
@@ -93,7 +99,7 @@ echo "
 Hexen ][ for Raspberry Pi
 =========================
 
- · OpenGL version.
+ · OpenGL version (windowed for now, fullscreen has an issue on Raspberry Pi OS with OpenGL).
  · If you don't provide game data file inside res/magic-air-copy-pikiss.txt, demo version will be installed.
 "
 
