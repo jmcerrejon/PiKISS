@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1303 hours**
+-   **1305 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (01/11/25)
+
+· 👌 IMPROVE: Games > Hexen2 (latest compilation 2025-11-01).
 
 ### (12/10/25)
 
