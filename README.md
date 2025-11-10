@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1305 hours**
+-   **1307 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (10/11/25)
+
+· 👌 IMPROVE: Games > Hurrican (Turrican clone) for aarch64.
 
 ### (01/11/25)
 
