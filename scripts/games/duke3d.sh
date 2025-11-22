@@ -2,14 +2,15 @@
 #
 # Description : Duke Nukem 3D
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.1 (14/Nov/23)
-# Compatible  : Raspberry Pi 4 (tested)
+# Version     : 1.1.2 (22/Nov/25)
+# Tested.     : Raspberry Pi 5
 #
 # Help		  : https://github.com/nukeykt/NBlood <-- Better than Eduke32 official port for the Pi?
 # 			  : http://wiki.eduke32.com/wiki/Building_EDuke32_on_Linux#Prerequisites_for_the_build
 #
 # shellcheck source=../helper.sh
 . ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ../helper.sh || . ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 

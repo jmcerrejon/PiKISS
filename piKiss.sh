@@ -130,7 +130,7 @@ smTweaks() {
 
 smGames() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "2Ship2Harkinian, Abbaye, AVP, Arx, Blood, Blake Stone, Captain S, Carmageddon, Doom_engine, Dominatrix (Sin), DX-Rebirth, Dune2, Diablo, EDuke32, Fallout 2, GTA, GemRB, Half Life, Hexen 2, Hurrican, OpenClaw, OpenFodder, Portal, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, SpaceCadetPinball, OpenXCom, Unreal Tournament, VVVVVV, WipeOut"
+        show_dialog_only_32_bits "2Ship2Harkinian, Abbaye, AVP, Arx, Blood, Blake Stone, Captain S, Carmageddon, Doom_engine, Dominatrix (Sin), DX-Rebirth, Dune2, Diablo, Duke Nukem 3D, Fallout 2, GTA, GemRB, Half Life, Hexen 2, Hurrican, OpenMW, OpenClaw, OpenFodder, Portal, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, Shadow Warriors, SpaceCadetPinball, OpenXCom, Unreal Tournament, VVVVVV, WipeOut"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Games ]" --menu "Select game from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
@@ -150,7 +150,7 @@ smGames() {
         Dune2 "Dune 2 Legacy"
         Diablo "Take control of a lone hero battling to rid the world of Diablo"
         Diablo2 "Diablo 2 Lord of Destruction"
-        Eduke32 "Duke Nukem 3D is a fps game developed by 3D Realms"
+        Duke3D "Duke Nukem 3D is a fps game developed by 3D Realms"
         Fallout2 "Fallout 2 is a post-apocalyptic RPG"
         GTA "GTA III/Vice City are open worlds video games part of the GTA franchise"
         GemRB "Engine for games like Baldur's Gate"
@@ -159,11 +159,11 @@ smGames() {
         Heroes3 "Open-source engine for Heroes of Might and Magic III"
         Hexen2 "Hexen II is a dark fantasy 1st shooter and RPG"
         Hurrican "Jump and shoot game based on the Turrican game series"
-        Morrowind "The Elder Scrolls III: Morrowind is an open-world RPG"
         OpenBor "OpenBOR is the open source continuation of Beats of Rage"
         OpenClaw "Platform 2D Captain Claw (1997) reimplementation"
         OpenFodder "OpenFodder is a free reimplementation of Cannon Fodder games."
         OpenJK "Engine for Star Wars Jedi Knight: Jedi Academy (SP & MP)"
+        OpenMW "The Elders Scroll III: Morrowind is an open-world RPG"
         OpenRCT2 "Open Source re-implementation of RollerCoaster Tycoon 2"
         OpenSPlex "OpenSupaplex reimplementation of the original 90's game"
         OpenXCom "Open-source clone of UFO: Enemy Unknown"
@@ -208,7 +208,7 @@ smGames() {
         Dune2) ./scripts/games/dune2.sh ;;
         Diablo) ./scripts/games/diablo.sh ;;
         Diablo2) ./scripts/games/diablo2.sh ;;
-        Eduke32) ./scripts/games/eduke32.sh ;;
+        Duke3D) ./scripts/games/duke3d.sh ;;
         Fallout2) ./scripts/games/fallout.sh ;;
         GTA) ./scripts/games/gta.sh ;;
         GemRB) ./scripts/games/gemrb.sh ;;
@@ -217,11 +217,11 @@ smGames() {
         Heroes3) ./scripts/games/heroes3.sh ;;
         Hexen2) ./scripts/games/hexen2.sh ;;
         Hurrican) ./scripts/games/hurrican.sh ;;
-        Morrowind) ./scripts/games/openmw.sh ;;
         OpenBor) ./scripts/games/openbor.sh ;;
         OpenClaw) ./scripts/games/openclaw.sh ;;
         OpenFodder) ./scripts/games/openfodder.sh ;;
         OpenJK) ./scripts/games/openjk.sh ;;
+        OpenMW) ./scripts/games/openmw.sh ;;
         OpenRCT2) ./scripts/games/openrct2.sh ;;
         OpenSPlex) ./scripts/games/supaplex.sh ;;
         OpenXCom) ./scripts/games/openxcom.sh ;;
