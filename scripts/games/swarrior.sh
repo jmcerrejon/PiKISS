@@ -2,15 +2,17 @@
 #
 # Description : Shadow Warrior
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.2 (14/Nov/21)
-# Compatible  : Raspberry Pi 4 (tested)
+# Version     : 1.0.3 (22/Nov/25)
+# Tested.     : Raspberry Pi 5
 #
+# shellcheck source=../helper.sh
 . ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ../helper.sh || . ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
-readonly BINARY_URL="https://misapuntesde.com/rpi_share/swarrior-rpi.tar.gz"
+readonly BINARY_URL="https://media.githubusercontent.com/media/jmcerrejon/pikiss-bin/refs/heads/main/games/swarrior-rpi-all.tar.gz"
 readonly TRACKS_URL="https://misapuntesde.com/rpi_share/swarrior_tracks.tar.gz"
 readonly PACKAGES=(p7zip)
 readonly PACKAGES_DEV=(build-essential nasm libgl1-mesa-dev libglu1-mesa-dev libsdl1.2-dev libsdl-mixer1.2-dev libsdl2-dev libsdl2-mixer-dev flac libflac-dev libvorbis-dev libvpx-dev libgtk2.0-dev freepats)
@@ -24,7 +26,7 @@ runme() {
         exit_message
     fi
     read -p "Press [ENTER] to run..."
-    cd "$INSTALL_DIR"/swarrior && ./sw
+    cd "$INSTALL_DIR"/swarrior && ./sw.sh
     exit_message
 }
 
@@ -57,7 +59,7 @@ generate_icon() {
         cat <<EOF >~/.local/share/applications/swarrior.desktop
 [Desktop Entry]
 Name=Shadow Warrior
-Exec=${INSTALL_DIR}/swarrior/sw
+Exec=${INSTALL_DIR}/swarrior/sw.sh
 Icon=${INSTALL_DIR}/swarrior/sw.ico
 Path=${INSTALL_DIR}/swarrior/
 Type=Application
@@ -70,11 +72,12 @@ EOF
 compile() {
     echo -e "\nInstalling dependencies (if proceed)...\n"
     install_packages_if_missing "${PACKAGES_DEV[@]}"
-    cd "$INSTALL_DIR" || exit 1
+    mkdir -p "$HOME/sc" && cd "$_" || exit 1
     git clone "$SOURCE_CODE_URL" swarrior && cd "$_" || exit 1
     git submodule update --init
     make_with_all_cores RELEASE=1 USE_POLYMOST=1 USE_OPENGL=USE_GLES2 WITHOUT_GTK=1
-    echo -e "\nDone. Copy the game data files and run ./sw" || exit 0
+    echo -e "\nDone. Copy the game data files and run ./sw"
+    exit_message
 }
 
 post_install() {
@@ -110,7 +113,6 @@ echo "
 Shadow Warrior
 ==============
 
- · Optimized for Raspberry Pi 4.
  · Install the shareware version by default.
  · More info: https://www.jonof.id.au/jfsw/readme.html
  · Install path: $INSTALL_DIR/swarrior
