@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1307 hours**
+-   **1310 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,12 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (22/11/25)
+
+· 👌 IMPROVE: Games > OpenMW (Elders Scroll Morrowind) v0.51 for aarch64.
+
+· 👌 IMPROVE: Games > Shadow Warrior for aarch64.
 
 ### (10/11/25)
 
