@@ -1,5 +1,11 @@
 # Changelog (dd/mm/yy)
 
+## (30/11/25)
+
+· 👌 IMPROVE: Emulators > RetroArch 1.20.0 (cores supported: SNES9x, Genesis Plus GX, mGBA, Nestopia, DeSmuME).
+
+· 👌 IMPROVE: Games > 👌 IMPROVE: JFDuke3D (Duke Nukem 3D) for aarch64 (replacing Eduke32).
+
 ## (22/11/25)
 
 · 👌 IMPROVE: Games > OpenMW (Elders Scroll Morrowind) v0.51 for aarch64.
