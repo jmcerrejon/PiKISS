@@ -2,20 +2,20 @@
 #
 # Description : RetroArch
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Contrib     : foxhound311, Rak1ta
-# Version     : 1.0.18 (13/Jan/24)
-#
-# Help        : https://archive.org/download/RetroArch-rpi4 | https://archive.org/details/rpi4_64bit_retroarch
+# Version     : 1.1.0 (30/Nov/25)
+# Tested      : Raspberry Pi 5
 #
 # shellcheck source=../helper.sh
+. ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 . ../helper.sh || . ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
-readonly VERSION="1.16.0-1"
-readonly INSTALL_DIR="/usr/local/bin"
+readonly VERSION="1.20.0"
+readonly INSTALL_DIR="/usr/bin"
 readonly CONFIG_PATH="$HOME/.config/retroarch"
-readonly PACKAGES=(libfreeimage3 libpugixml1v5)
+readonly PACKAGES=(libfreeimage3 libpugixml1v5 retroarch)
+readonly PACKAGES_LIBRETRO=(libretro-snes9x libretro-genesisplusgx libretro-mgba libretro-nestopia libretro-desmume)
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_${VERSION}_armhf.deb"
 readonly BINARY_BUSTER_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_1.11.1-1-buster_armhf.deb"
 readonly BINARY_64_BITS_URL="https://misapuntesde.com/rpi_share/retroarch/retroarch-rpi4_${VERSION}_arm64.deb"
@@ -47,7 +47,7 @@ uninstall() {
     read -p "Do you want to uninstall RetroArch (y/N)? " response
     if [[ $response =~ [Yy] ]]; then
         [[ -d $CONFIG_PATH ]] && rm -rf "$CONFIG_PATH"
-        sudo apt remove -y retroarch-rpi4
+        sudo apt remove -y retroarch libretro-snes9x libretro-genesisplusgx libretro-mgba libretro-nestopia libretro-desmume
         if [[ -e $INSTALL_DIR/retroarch ]]; then
             echo -e "I hate when this happens. I could not find the directory, Try to uninstall manually. Apologies."
             exit_message
@@ -136,7 +136,7 @@ install_assets() {
     download_and_extract "$SHADERS_URL" "$CONFIG_PATH/shader"
 }
 
-install() {
+install_from_binary() {
     local BINARY_URL_INSTALL=$BINARY_URL
     local CODENAME
     CODENAME=$(get_codename)
@@ -152,10 +152,16 @@ install() {
     fi
 
     download_and_install "$BINARY_URL_INSTALL"
-    install_config
+    # install_config
     install_assets
     install_system
     install_cores
+}
+
+install() {
+    install_packages_if_missing "${PACKAGES[@]}"
+    install_packages_if_missing "${PACKAGES_LIBRETRO[@]}"
+
     install_bios
     echo -e "\nDone!. To play, use the Menu option on Games > RetroArch or type $INSTALL_DIR/retroarch"
     echo -e "NOTE: The icon in the Menu appears after reboot."
@@ -167,12 +173,8 @@ echo "
 RetroArch
 =========
 
-· Thanks to Foxhound311.
 · Version $VERSION
-· Can be used with GLES, GLES3 or Vulkan drivers.
-· All cores and binaries optimized for Raspberry Pi 4.
-· Cores are the most updated versions. Anyway, online updater is disabled.
-· Thanks @foxhound311 for compile all cores and binary files, he put so much effort into it :)
+· Emulators installed: SNES9x, Genesis Plus GX, mGBA, Nestopia, DeSmuME.
 · KEYS: F=Full screen | F1=Quick menu | F2=Save game | F3=Show FPS | F4=Load game | F5=Desktop menu | F6/F7=Choose save slot | F8=Save screenshot
 "
 
