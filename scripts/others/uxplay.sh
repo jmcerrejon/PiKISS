@@ -2,17 +2,18 @@
 #
 # Description : UxPlay - Airplay mirroring
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.1 (04/Sep/24)
+# Version     : 1.3.2 (12/Dec/25)
 # Tested      : Raspberry Pi 5
 #
 # shellcheck source=../helper.sh
-. ./scripts/helper.sh || . ../helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+. ../helper.sh || . ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
+readonly VERSION="1.7.3"
 readonly INSTALL_DIR="$HOME/apps"
 readonly PACKAGES=(libavahi-compat-libdnssd1 libgstreamer1.0-0 libgstreamer-plugins-base1.0-0 gstreamer1.0-tools gstreamer1.0-libav gstreamer1.0-plugins-good)
-readonly PACKAGES_DEV=(cmake libavahi-compat-libdnssd-dev libplist-dev libssl-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev)
+readonly PACKAGES_DEV=(cmake libavahi-compat-libdnssd-dev libplist-dev libssl-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-vaapi)
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/uxplay-rpi-all.tar.gz"
 readonly SOURCE_CODE_URL="https://github.com/FDH2/UxPlay"
 
@@ -70,8 +71,8 @@ download_binaries() {
 
 end_message() {
     echo -e "\nSteps:\n======\n"
-    echo "1) You will see a black background here. On your iDevice, open the Control Center by swiping up from the bottom of the device screen or swiping down from the top right corner of the screen (varies by device and iOS version)."
-    echo "2) Tap the 'Screen Mirroring' or 'AirPlay' button and connect to UxPlay."
+    echo "1) On your iDevice, open the Control Center by swiping up from the bottom of the device screen or swiping down from the top right corner of the screen (varies by device and iOS version)."
+    echo "2) Tap the 'Screen Mirroring' or 'AirPlay' button and connect to Rpi option."
     echo "3) EXIT: ALT + F4 or CTRL + C"
     echo -e "\n· More info uxplay -h or visiting $SOURCE_CODE_URL\n"
 }
@@ -82,7 +83,19 @@ compile() {
     mkdir -p ~/sc && cd "$_" || exit 1
     git clone "$SOURCE_CODE_URL" uxplay && cd "$_" || exit 1
     mkdir build && cd "$_" || exit 1
-    cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+
+    local CMAKE_FLAGS="-DCMAKE_BUILD_TYPE=RelWithDebInfo"
+
+    if is_userspace_64_bits; then
+        CMAKE_FLAGS="$CMAKE_FLAGS -DCMAKE_C_FLAGS=-march=armv8-a+crc -DCMAKE_CXX_FLAGS=-march=armv8-a+crc"
+    fi
+
+    if command -v wayland-scanner &> /dev/null; then
+        CMAKE_FLAGS="$CMAKE_FLAGS -DNO_X11_DEPS=ON"
+        echo -e "\nWayland detected, compiling with Wayland support...\n"
+    fi
+
+    cmake $CMAKE_FLAGS ..
     echo -e "\nCompiling at ~/sc/uxplay, please wait..."
     make_with_all_cores
     mv uxplay ../uxplay
@@ -106,7 +119,8 @@ UXPlay - Airplay mirroring
 ==========================
 
  · Raspberry Pi support both with and without hardware video decoding by the Broadcom GPU.
- · Tested on Raspberry Pi Zero 2 W, 3 Model B+, 4 Model B, and 5.
+ · Version for aarch64: $VERSION
+ · Wayland support for aarch64.
  · Use uxplay -h for help.
  · More info: $SOURCE_CODE_URL
 "
