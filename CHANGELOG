@@ -1,10 +1,14 @@
 # Changelog (dd/mm/yy)
 
+## (12/12/25)
+
+· 👌 IMPROVE: Others > UXPlay (Airplay Mirroring) for aarch64.
+
 ## (30/11/25)
 
 · 👌 IMPROVE: Emulators > RetroArch 1.20.0 (cores supported: SNES9x, Genesis Plus GX, mGBA, Nestopia, DeSmuME).
 
-· 👌 IMPROVE: Games > 👌 IMPROVE: JFDuke3D (Duke Nukem 3D) for aarch64 (replacing Eduke32).
+· 👌 IMPROVE: Games > JFDuke3D (Duke Nukem 3D) for aarch64 (replacing Eduke32).
 
 ## (22/11/25)
 

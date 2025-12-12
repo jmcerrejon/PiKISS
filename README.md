@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1311 hours**
+-   **1312 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -79,11 +79,15 @@ curl -sSL https://git.io/JfAPE | bash
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (12/12/25)
+
+· 👌 IMPROVE: Others > UXPlay (Airplay Mirroring) for aarch64.
+
 ### (30/11/25)
 
 · 👌 IMPROVE: Emulators > RetroArch 1.20.0 (cores supported: SNES9x, Genesis Plus GX, mGBA, Nestopia, DeSmuME).
 
-· 👌 IMPROVE: Games > 👌 IMPROVE: JFDuke3D (Duke Nukem 3D) for aarch64 (replacing Eduke32).
+· 👌 IMPROVE: Games > JFDuke3D (Duke Nukem 3D) for aarch64 (replacing Eduke32).
 
 ### (22/11/25)
 
