@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1312 hours**
+-   **1315 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (20/12/25)
+
+· 👌 IMPROVE: Games > OpenBor v4.0 for aarch64.
 
 ### (12/12/25)
 
