@@ -2,7 +2,7 @@
 #
 # Description : OpenBOR
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 2.0.0 (20/Dec/25)
+# Version     : 2.0.1 (21/Dec/25)
 # Tested      : Raspberry Pi 5
 #
 # shellcheck source=../helper.sh
@@ -13,7 +13,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES=(libsdl-gfx1.2-5 libpng16-16 libsdl2-gfx-1.0-0 libvorbisidec1)
 readonly PACKAGES_DEV=(libsdl2-gfx-dev libvorbisidec-dev libvpx-dev libogg-dev libsdl2-gfx-1.0-0 libvorbisidec1)
-readonly BINARY_URL="https://misapuntesde.com/rpi_share/openbor-v4.0-rpi-aarch64.tar.gz
+readonly BINARY_URL="https://media.githubusercontent.com/media/jmcerrejon/pikiss-bin/refs/heads/main/games/openbor-v4.0-rpi-aarch64.tar.gz
 "
 readonly SOURCE_CODE_URL="https://github.com/DCurrent/openbor"
 

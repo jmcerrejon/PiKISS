@@ -2,7 +2,7 @@
 #
 # Description : Hurrican
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.1.0 (10/Nov/25)
+# Version     : 1.1.1 (21/Dec/25)
 # Tested      : Raspberry Pi 5 (tested)
 #
 # shellcheck source=../helper.sh
@@ -15,7 +15,7 @@ readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES_DEV=(libepoxy-dev libegl1-mesa-dev libdtovl-dev)
 readonly SOURCE_CODE_URL="https://github.com/HurricanGame/Hurrican"
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/hurrican_rpi.tar.gz"
-readonly BINARY_64_BITS_URL="https://misapuntesde.com/rpi_share/hurrican-rpi-aarch64.tar.gz"
+readonly BINARY_64_BITS_URL="https://media.githubusercontent.com/media/jmcerrejon/pikiss-bin/refs/heads/main/games/hurrican-rpi-aarch64.tar.gz"
 
 runme() {
     echo

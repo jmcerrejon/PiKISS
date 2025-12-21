@@ -2,7 +2,7 @@
 #
 # Description : Xash3D-fwgs (AKA Half Life) & Source Engine (HL2) installer for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 2.0.2 (29/Apr/25)
+# Version     : 2.0.3 (21/Dec/25)
 # Tested      : Raspberry Pi 5
 #
 # shellcheck source=../helper.sh
@@ -17,7 +17,7 @@ readonly BIN_GAME_SOURCE_DIR="$INSTALL_DIR/hl2"
 readonly PACKAGES_DEV=(libsdl2-dev build-essential pkg-config ccache libbz2-dev libcurl4-gnutls-dev)
 readonly PACKAGES_SOURCE_DEV=(git-all build-essential pkg-config ccache libsdl2-dev libfontconfig1-dev libopenal-dev libjpeg-dev libpng-dev libcurl4-gnutls-dev libbz2-dev libedit-dev)
 readonly BINARY_XASH_64_BITS_URL="https://misapuntesde.com/rpi_share/xash3d-hlsdk-aarch64.tar.gz"
-readonly BINARY_SOURCE_64_BITS_URL="https://misapuntesde.com/rpi_share/source-eng-hl2-aarch64.tar.gz"
+readonly BINARY_SOURCE_64_BITS_URL="https://media.githubusercontent.com/media/jmcerrejon/pikiss-bin/refs/heads/main/games/source-eng-hl2-aarch64.tar.gz"
 readonly HQ_HL_TEXTURE_PACK_URL="https://gamebanana.com/dl/265907"
 readonly SOURCE_CODE_XASH_FWGS_URL="https://github.com/FWGS/xash3d-fwgs"
 readonly SOURCE_CODE_HL2_URL="https://github.com/nillerusr/source-engine"

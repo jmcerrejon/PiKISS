@@ -2,7 +2,7 @@
 #
 # Description: 3D Pinball for Windows - Space Cadet.
 # Author     : Jose Cerrejon Gonzalez (ulysess@gmail.com)
-# Version    : 1.0.1 (04/8/2025)
+# Version    : 1.0.2 (21/Dec/2025)
 # Tested     : Raspberry Pi 5
 #
 # shellcheck source=../helper.sh
@@ -15,7 +15,7 @@ readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES=(libsdl2-dev libsdl2-mixer-dev)
 readonly PACKAGES_DEV=(cmake)
 readonly GITHUB_REPO_URL="https://github.com/k4zmu2a/SpaceCadetPinball"
-readonly BINARY_URL="https://misapuntesde.com/rpi_share/space-cabinet-rpi-aarch64.tar.gz"
+readonly BINARY_URL="https://media.githubusercontent.com/media/jmcerrejon/pikiss-bin/refs/heads/main/games/space-cadet-rpi-aarch64.tar.gz"
 readonly ASSETS_FILE_NAME="3d_pinball_for_windows_space_cadet.exe"
 readonly ASSETS_URL="https://misapuntesde.com/rpi_share/${ASSETS_FILE_NAME}"
 readonly SOURCE_CODE_DIR_NAME="SpaceCadetPinball"

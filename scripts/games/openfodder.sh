@@ -2,7 +2,7 @@
 #
 # Description : OpenFodder (A Cannon Fodder engine)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (11/Oct/25)
+# Version     : 1.0.1 (21/Dec/25)
 # Tested      : Raspberry Pi 5
 #
 # shellcheck disable=SC1091
@@ -14,7 +14,7 @@ readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES=(libsdl2-2.0-0 libsdl2-mixer-2.0-0 libsdl2-ttf-2.0-0)
 readonly PACKAGES_DEV=(liblua5.1-dev libtolua++5.1-dev libsdl2-image-dev libbz2-dev libmng-dev doxygen libtheora-dev libmagick++-dev libcppunit-dev)
 readonly SOURCE_CODE_URL="https://github.com/OpenFodder/openfodder"
-readonly GAME_BINARY_PATH="https://misapuntesde.com/rpi_share/openfodder-v1.9.2-aarch64.tar.gz
+readonly GAME_BINARY_PATH="https://media.githubusercontent.com/media/jmcerrejon/pikiss-bin/refs/heads/main/games/openfodder-v1.9.2-aarch64.tar.gz
 "
 
 runme() {

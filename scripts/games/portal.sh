@@ -2,7 +2,7 @@
 #
 # Description : Source Engine (Portal) installer for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (12/Jan/25)
+# Version     : 1.0.1 (21/Dec/25)
 # Tested      : Raspberry Pi 5
 #
 # shellcheck source=../helper.sh
@@ -14,7 +14,7 @@ readonly GAME_NAME="Portal"
 readonly INSTALL_DIR="$HOME/games"
 readonly BIN_GAME_SOURCE_DIR="$INSTALL_DIR/portal"
 readonly PACKAGES_SOURCE_DEV=(git-all build-essential pkg-config ccache libsdl2-dev libfontconfig1-dev libopenal-dev libjpeg-dev libpng-dev libcurl4-gnutls-dev libbz2-dev libedit-dev)
-readonly BINARY_SOURCE_64_BITS_URL="https://misapuntesde.com/rpi_share/source-eng-portal-aarch64.tar.gz"
+readonly BINARY_SOURCE_64_BITS_URL="https://media.githubusercontent.com/media/jmcerrejon/pikiss-bin/refs/heads/main/games/source-eng-portal-aarch64.tar.gz"
 readonly SOURCE_CODE_URL="https://github.com/nillerusr/source-engine"
 readonly VAR_PORTAL_DATA_NAME="PORTAL"
 

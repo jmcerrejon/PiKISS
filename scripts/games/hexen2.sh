@@ -2,7 +2,7 @@
 #
 # Description : Hexen ][ using fteqw engine for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.1 (01/Nov/25)
+# Version     : 1.0.2 (21/Dec/25)
 # Tested      : Raspberry Pi 5
 #
 # Help        : https://github.com/sezero/uhexen2 (Another port )
@@ -14,7 +14,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="$HOME/games"
 readonly SOURCE_CODE_URL="https://github.com/fte-team/fteqw"
-readonly BINARY_URL="https://misapuntesde.com/rpi_share/hexen2-aarch64.tar.gz"
+readonly BINARY_URL="https://media.githubusercontent.com/media/jmcerrejon/pikiss-bin/refs/heads/main/games/hexen2-aarch64.tar.gz"
 readonly VAR_DATA_NAME="HEXEN_2"
 DATA_URL="https://misapuntesde.com/rpi_share/h2-demo.tar.gz"
 
