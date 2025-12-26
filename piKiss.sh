@@ -130,7 +130,7 @@ smTweaks() {
 
 smGames() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "2Ship2Harkinian, Abbaye, AVP, Arx, Blood, Blake Stone, Captain S, Carmageddon, Doom_engine, Dominatrix (Sin), DX-Rebirth, Dune2, Diablo, Duke Nukem 3D, Fallout 2, GTA, GemRB, Half Life, Hexen 2, Hurrican, OpenMW, OpenClaw, OpenFodder, OpenBor, Portal, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, Shadow Warriors, SpaceCadetPinball, OpenXCom, Unreal Tournament, VVVVVV, WipeOut"
+        show_dialog_only_32_bits "2Ship2Harkinian, Abbaye, AVP, Arx, Blood, Blake Stone, Captain S, Carmageddon, Doom_engine, Dominatrix (Sin), DX-Rebirth, Dune2, Diablo, Duke Nukem 3D, Fallout 2, GTA, GemRB, Half Life, Hexen 2, Hurrican, OpenMW, OpenClaw, OpenFodder, OpenBor, OpenJK, Portal, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, Shadow Warriors, SpaceCadetPinball, OpenXCom, Unreal Tournament, VVVVVV, WipeOut"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Games ]" --menu "Select game from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
