@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1316 hours**
+-   **1318 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (26/12/25)
+
+· 👌 IMPROVE: Games > OpenJK (Jedi Academy) for aarch64.
 
 ### (21/12/25)
 
