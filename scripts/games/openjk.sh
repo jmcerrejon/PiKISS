@@ -2,7 +2,7 @@
 #
 # Description : OpenJK
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 2.0.0 (26/Dec/25)
+# Version     : 2.0.1 (26/Dec/25)
 # Tested      : Raspberry Pi 5
 #
 # shellcheck disable=SC1091
@@ -14,7 +14,7 @@ readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES=(libpng16-16 libjpeg-dev zlib1g-dev)
 readonly PACKAGES_DEV=(build-essential cmake libjpeg-dev libpng-dev zlib1g-dev libsdl2-dev)
 readonly BINARY_URL="https://misapuntesde.com/rpi_share/openjk-rpi.tar.gz"
-readonly BINARY_64_BITS_URL="https://misapuntesde.com/rpi_share/OpenJK-linux-arm64.tar.gz"
+readonly BINARY_64_BITS_URL="https://media.githubusercontent.com/media/jmcerrejon/pikiss-bin/refs/heads/main/games/OpenJK-linux-arm64.tar.gz"
 readonly SOURCE_CODE_URL="https://github.com/JACoders/OpenJK.git"
 readonly VAR_DATA_NAME="JEDI_ACADEMY"
 readonly CODENAME=$(get_codename)
