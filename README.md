@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1318 hours**
+-   **1322 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (10/01/26)
+
+· 👌 IMPROVE: Games > OpenRCT2 for aarch64.
 
 ### (26/12/25)
 

@@ -1,19 +1,27 @@
 #!/bin/bash
 #
-# Description : StarCraft Brood War
+# Description : Stratagus - A free fantasy real time strategy game engine
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.2 (27/Dec/20)
-# Compatible  : Raspberry Pi 4 (tested)
+# Version     : 2.0.0 (06/Jun/25)
+# Tested      : Raspberry Pi 5
+# Note        : For compiling stuff, don't install liblog4cxx-dev
 #
 
-. ./scripts/helper.sh || . ./helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
+set -euo pipefail
+
+# shellcheck disable=SC1094
+# shellcheck disable=SC1091
+. ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
 
 readonly INSTALL_DIR="$HOME/games"
-readonly SCRIPT_PATH="$HOME/games/starcraft/starcraft.sh"
-readonly BINARY_PATH="https://archive.org/download/starcraft-rpi.7z/starcraft-rpi.7z"
 readonly PACKAGES=(wine p7zip-full)
+readonly PACKAGES_DEV=(liblua5.1-dev libtolua++5.1-dev libsdl2-image-dev libbz2-dev libmng-dev doxygen libtheora-dev libmagick++-dev libcppunit-dev)
+readonly SOURCE_CODE_STRATAGUS_URL="https://github.com/Wargus/stratagus"
+readonly SOURCE_CODE_STARGUS_URL="https://github.com/Wargus/stargus"
+readonly SCRIPT_PATH="$HOME/games/starcraft/starcraft.sh"
+readonly GAME_BINARY_PATH="https://archive.org/download/starcraft-rpi.7z/starcraft-rpi.7z"
 
 runme() {
     if [ ! -d "$INSTALL_DIR"/starcraft ]; then
@@ -60,9 +68,44 @@ EOF
     fi
 }
 
+compile_stratagus() {
+    echo -e "\nInstalling dependencies (If proceed)...\n"
+    install_packages_if_missing "${PACKAGES_DEV[@]}"
+    echo -e "\nCloning repository...\n"
+    mkdir -p "$HOME/sc" && cd "$_" || exit 1
+    git clone --recursive "$SOURCE_CODE_STRATAGUS_URL" stratagus && cd "$_" || exit 1
+    mkdir -p build && cd "$_" || exit 1
+    cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo -DENABLE_STATIC=ON
+    echo -e "\nCompiling...\n"
+    make_with_all_cores
+}
+
+compile_stargus() {
+    STRATAGUS_GAME_LAUNCHER_H_PATH="$HOME/sc/stratagus/gameheaders/stratagus-game-launcher.h"
+    STRATAGUS_BINARY_PATH="$HOME/sc/stratagus/build/stratagus"
+    echo -e "\nInstalling dependencies (If proceed)...\n"
+    install_packages_if_missing "${PACKAGES_DEV[@]}"
+    echo -e "\nCloning repository...\n"
+    mkdir -p "$HOME/sc" && cd "$_" || exit 1
+    git clone --recursive "$SOURCE_CODE_STARGUS_URL" stargus && cd "$_" || exit 1
+    meson build
+    if [[ ! -e $STRATAGUS_GAME_LAUNCHER_H_PATH ]]; then
+        echo -e "$STRATAGUS_GAME_LAUNCHER_H_PATH not found. Please run the script again."
+        error_message
+    fi
+    if [[ ! -e $STRATAGUS_BINARY_PATH ]]; then
+        echo -e "$STRATAGUS_BINARY_PATH not found. Please run the script again."
+        error_message
+    fi
+    echo -e "\nCompiling...\n"
+    ninja -C build -j "$(nproc)" -DSTRATAGUS_INCLUDE_DIR="$STRATAGUS_GAME_LAUNCHER_H_PATH" -DSTRATAGUS_BIN="$STRATAGUS_BINARY_PATH"
+    ninja -C build -j "$(nproc)" -DSTRATAGUS_INCLUDE_DIR="$HOME/sc/stratagus/gameheaders/stratagus-game-launcher.h" -DSTRATAGUS_BIN="$HOME/sc/stratagus/build/stratagus"
+    make_with_all_cores
+}
+
 install() {
     install_packages_if_missing "${PACKAGES[@]}"
-    download_and_extract "$BINARY_PATH" "$INSTALL_DIR"
+    download_and_extract "$GAME_BINARY_PATH" "$INSTALL_DIR"
     generate_icon
     echo -e "\nDone. Go to Menu > Games > StarCraft Brood War or type $INSTALL_DIR/starcraft/starcraft.sh"
     runme
@@ -84,9 +127,9 @@ echo "
 Install StarCraft + Brood War
 =============================
 
- · Thanks to PI Labs, Notaz, and Blizzard for release free this game in 2017.
+ · Thanks Blizzard for release free this game in 2017.
  · Install path: $INSTALL_DIR/starcraft
- · This game uses Wine from the repo. If you set emulate a virtual desktop using winecfg previously, you can disable it to support full screen.
+
 "
 
 install
