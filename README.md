@@ -81,7 +81,7 @@ curl -sSL https://git.io/JfAPE | bash
 
 ### (17/01/26)
 
-· 👌 IMPROVE: Games > CatacombGL for aarch64.
+· 📦 ADD: Games > CatacombGL for aarch64.
 
 ### (10/01/26)
 
