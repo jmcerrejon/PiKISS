@@ -144,6 +144,7 @@ smGames() {
         BStone "Robert W. Stone III, AKA Blake Stone must eliminate Dr. Pyrus Goldfire"
         CaptainS "Save Seville from the evil Torrebruno"
         Carmageddon "Carmageddon is a vehicular combat game"
+        Catacomb "CatacombGL is an open source port of the Catacomb 3D game engine"
         Doom_engine "Crispy engine to play Doom, Heretic, Hexen..."
         Dominatrix "Dominatrix is the open-source game Sin Gold Edition"
         DX-Rebirth "Descent I/II improved engine"
@@ -202,6 +203,7 @@ smGames() {
         BStone) ./scripts/games/bstone.sh ;;
         CaptainS) ./scripts/games/captains.sh ;;
         Carmageddon) ./scripts/games/carmageddon.sh ;;
+        Catacomb) ./scripts/games/catacombgl.sh ;;
         Doom_engine) ./scripts/games/cdoom.sh ;;
         Dominatrix) ./scripts/games/dominatrix.sh ;;
         DX-Rebirth) ./scripts/games/descent.sh ;;
