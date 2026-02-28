@@ -14,9 +14,12 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES=(libopengl0)
 readonly GAME_DATA_URL="https://archive.org/download/magic-castle-2021-01-feb/Magic_Castle_2021_01_feb.chd"
-readonly BIOS_URL="https://downloads.retrostic.com/bioses/ps2_bios.zip"
+#Old bios link no longer maintained
+readonly BIOS_URL="https://a.ps2biosonline.com/ps2-bios-all-bios.zip"
 readonly FILENAME="AetherSX2-v1.5-3606.AppImage"
-readonly BINARY_URL="https://www.aethersx2.com/archive/desktop/linux/$FILENAME"
+#Original website .appimage no longer works
+#readonly BINARY_URL="https://www.aethersx2.com/archive/desktop/linux/$FILENAME"
+readonly BINARY_URL="https://archive.org/download/AetherSX2-Collection/AetherSX2-archive/desktop/linux/$FILENAME"
 
 runme() {
     if [ ! -f "$INSTALL_DIR/aethersx2/$FILENAME" ]; then
@@ -24,7 +27,9 @@ runme() {
         exit_message
     fi
     read -p "Press [ENTER] to run..."
-    cd "$INSTALL_DIR"/aethersx2 && ./aethersx2
+    # cd "$INSTALL_DIR"/aethersx2 && ./aethersx2
+    #Filename was wrong
+    cd "$INSTALL_DIR"/aethersx2 && ./FILENAME
     exit_message
 }
 
@@ -53,7 +58,8 @@ fi
 
 generate_icon() {
     local ICON_URL
-    ICON_URL="https://www.aethersx2.com/img/logo.png"
+    #Actually icon, old pago no longer maintain my og author, now became a virus downloader
+    ICON_URL="https://aethersx2.net/wp-content/uploads/2023/04/aethersx2.net_.webp"
 
     echo -e "\nGenerating icon..."
     download_file "$ICON_URL" "$INSTALL_DIR"/aethersx2/
@@ -65,7 +71,7 @@ Version=1.0
 Type=Application
 Comment=AetherSX2 is an emulator of the PS Two console
 Exec=${INSTALL_DIR}/aethersx2/${FILENAME}
-Icon=${INSTALL_DIR}/aethersx2/logo.png
+Icon=${INSTALL_DIR}/aethersx2/aethersx2.net_.webp
 Path=${INSTALL_DIR}/aethersx2/
 Terminal=false
 Categories=Game;
@@ -93,9 +99,9 @@ install() {
     install_packages_if_missing "${PACKAGES[@]}"
     download_file "$BINARY_URL" "$INSTALL_DIR/aethersx2"
     chmod +x "$INSTALL_DIR/aethersx2/$FILENAME"
-    # download_bios
+    download_bios
     generate_icon
-    # download_data
+    download_data
     echo -e "\n\nDone!. You can play typing $INSTALL_DIR/aethersx2/aethersx2 or opening the Menu > Games > AetherSX2.\n"
     runme
 }
@@ -117,7 +123,8 @@ AetherSX2 for Raspberry Pi
  · BIOS & homebrew game included.
  · Install path: $INSTALL_DIR/aethersx2 | Games path: $INSTALL_DIR/aethersx2/games
  · Keys: D-Pad: W/A/S/D | Triangle/Square/Circle/Cross: Numpad8/Numpad4/Numpad6/Numpad2 | L1/R1: Q/E | L2/R2: 1/3 | Start: Enter | Select: Backspace
- · More Info: https://www.aethersx2.com/
+ · More Info: https://archive.org/details/AetherSX2-Collection
+ · NOTE: Make use to add the line: kernel=kernel8.img to the config.txt file of your SD card and reboot, otherwise it won't work. 
 "
 read -p "Press [ENTER] to continue..."
 install
