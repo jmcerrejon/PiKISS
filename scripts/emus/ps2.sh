@@ -29,7 +29,7 @@ runme() {
     read -p "Press [ENTER] to run..."
     # cd "$INSTALL_DIR"/aethersx2 && ./aethersx2
     #Filename was wrong
-    cd "$INSTALL_DIR"/aethersx2 && ./FILENAME
+    cd "$INSTALL_DIR"/aethersx2 && ./"$FILENAME"
     exit_message
 }
 
