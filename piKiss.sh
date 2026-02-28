@@ -253,7 +253,7 @@ smGames() {
 
 smEmulators() {
     if is_userspace_64_bits; then
-        show_dialog_only_32_bits "Amiga, Amstrad, Box86/64, Dolphin, Flycast, DOSBox, Mame, mGBA, Picodrive (Genesis), PCem, PS1, PS2, PSP, RetroArch, Redream, ScummVM, USP (Spectrum), VICE"
+        show_dialog_only_32_bits "Amiga, Amstrad, Box86/64, Dolphin, Flycast, DOSBox, Mame, mGBA, Picodrive (Genesis), PCem, PS1, PSP, RetroArch, Redream, ScummVM, USP (Spectrum), VICE"
     fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Emulators ]" --menu "Select emulator from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
@@ -274,7 +274,6 @@ smEmulators() {
         Pifba "Emulates old arcade games using CPS1, CPS2,..."
         PCem "PCem is an emulator for old XT/AT-class PCs"
         PS1 "DuckStation - PlayStation 1, aka. PSX Emulator"
-        PS2 "AetherSX2 is an emulator of the PS Two console"
         PSP "PPSSPP can run your PSP games on your RPi in full HD resolution"
         ResidualVM "Cross-platform 3D game interpreter to play some games"
         RetroArch "Open source frontend for emulators & game/video engines"
@@ -303,7 +302,6 @@ smEmulators() {
         MSX) ./scripts/emus/openmsx.sh ;;
         NES) ./scripts/emus/nes.sh ;;
         PS1) ./scripts/emus/psx.sh ;;
-        PS2) ./scripts/emus/ps2.sh ;;
         PSP) ./scripts/emus/psp.sh ;;
         Pifba) ./scripts/emus/pifba.sh ;;
         PCem) ./scripts/emus/pcem.sh ;;

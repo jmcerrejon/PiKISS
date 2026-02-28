@@ -4,7 +4,9 @@
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
 # Version     : 1.0.3 (15/Oct/23)
 # Compatible  : Raspberry Pi 4 (tested)
-# Repository  : https://www.aethersx2.com/archive/?dir=desktop/linux
+# Repository  : https://www.aethersx2.net/archive/?dir=desktop/linux
+#
+# WARNING: This script is archived due to the lack of source code and the fact that it is not open source. I keep it for reference, but I will not update it anymore. If you want to contribute, please contact me.
 #
 # shellcheck source=../helper.sh
 . ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
@@ -16,7 +18,7 @@ readonly PACKAGES=(libopengl0)
 readonly GAME_DATA_URL="https://archive.org/download/magic-castle-2021-01-feb/Magic_Castle_2021_01_feb.chd"
 readonly BIOS_URL="https://downloads.retrostic.com/bioses/ps2_bios.zip"
 readonly FILENAME="AetherSX2-v1.5-3606.AppImage"
-readonly BINARY_URL="https://www.aethersx2.com/archive/desktop/linux/$FILENAME"
+readonly BINARY_URL="https://www.aethersx2.net/archive/desktop/linux/$FILENAME"
 
 runme() {
     if [ ! -f "$INSTALL_DIR/aethersx2/$FILENAME" ]; then
@@ -53,7 +55,7 @@ fi
 
 generate_icon() {
     local ICON_URL
-    ICON_URL="https://www.aethersx2.com/img/logo.png"
+    ICON_URL="https://www.aethersx2.net/img/logo.png"
 
     echo -e "\nGenerating icon..."
     download_file "$ICON_URL" "$INSTALL_DIR"/aethersx2/
@@ -84,7 +86,7 @@ download_data() {
     if [[ $response =~ [Nn] ]]; then
         return
     fi
-    echo -e "\nDownloading Magic Castle by Kaiga...\nMore info at http://netyaroze-europe.com/Media/Magic-Castle"
+    echo -e "\nDownloading Magic Castle by Kaiga...\nMore info at http://netyaroze-europe.net/Media/Magic-Castle"
     download_file "$GAME_DATA_URL" "$INSTALL_DIR"/aethersx2/games
 }
 
@@ -117,7 +119,7 @@ AetherSX2 for Raspberry Pi
  · BIOS & homebrew game included.
  · Install path: $INSTALL_DIR/aethersx2 | Games path: $INSTALL_DIR/aethersx2/games
  · Keys: D-Pad: W/A/S/D | Triangle/Square/Circle/Cross: Numpad8/Numpad4/Numpad6/Numpad2 | L1/R1: Q/E | L2/R2: 1/3 | Start: Enter | Select: Backspace
- · More Info: https://www.aethersx2.com/
+ · More Info: https://www.aethersx2.net/
 "
 read -p "Press [ENTER] to continue..."
 install
