@@ -124,7 +124,7 @@ AetherSX2 for Raspberry Pi
  · Install path: $INSTALL_DIR/aethersx2 | Games path: $INSTALL_DIR/aethersx2/games
  · Keys: D-Pad: W/A/S/D | Triangle/Square/Circle/Cross: Numpad8/Numpad4/Numpad6/Numpad2 | L1/R1: Q/E | L2/R2: 1/3 | Start: Enter | Select: Backspace
  · More Info: https://archive.org/details/AetherSX2-Collection
- · NOTE: Make use to add the line: kernel=kernel8.img to the config.txt file of your SD card and reboot, otherwise it won't work. 
+ · NOTE: Make sure to add the line: kernel=kernel8.img to the config.txt file on your SD card and reboot, otherwise it won't work. 
 "
 read -p "Press [ENTER] to continue..."
 install
