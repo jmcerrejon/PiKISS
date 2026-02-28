@@ -2,7 +2,7 @@
 #
 # Description : Gemini CLI
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (25/Jul/25)
+# Version     : 1.0.1 (28/Feb/26)
 # Tested      : Raspberry Pi 5
 #
 # shellcheck source=../helper.sh
@@ -43,8 +43,8 @@ if which gemini >/dev/null; then
 fi
 
 install() {
-    echo -e "\nInstalling Node.js v20 (if not present)..."
-    install_node 20
+    echo -e "\nInstalling Node.js v22 (if not present)..."
+    install_node 22
     echo -e "\nInstalling Gemini CLI globally via npm..."
     sudo npm install -g @google/gemini-cli
     echo -e "\nDone!. Type 'gemini' in your terminal."

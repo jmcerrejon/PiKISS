@@ -2,7 +2,7 @@
 #
 # Description : Install a Framework,CMS to the web server
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (20/Oct/21)
+# Version     : 1.0.1 (28/Feb/26)
 #
 # Help
 #             · https://darryldias.me/wordpress-with-sqlite/
@@ -92,7 +92,7 @@ wordpress_post_install() {
 }
 
 nodejs() {
-    install_node
+    install_node 22
     exit_message
 }
 
@@ -100,7 +100,7 @@ ghost() {
     local GHOST_LATEST_RELEASE_VERSION
     GHOST_LATEST_RELEASE_VERSION=$(get_latest_release $GHOST_REPOSITORY_NAME)
     local GHOST_LATEST_RELEASE_URL="https://github.com/TryGhost/Ghost/releases/download/$GHOST_LATEST_RELEASE_VERSION/Ghost-$GHOST_LATEST_RELEASE_VERSION.zip"
-    install_node 14
+    install_node 22
     sudo mkdir -p "${WWW_PATH}" && cd "$_" || exit 1
     sudo chown "$USER:" .
     download_and_extract "$GHOST_LATEST_RELEASE_URL" "${WWW_PATH}"

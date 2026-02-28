@@ -395,7 +395,7 @@ install_node() {
     local INSTALLED_VERSION
 
     if [[ -z "$1" ]]; then
-        read -p "Type the Node.js version you want to install: 20 (recommended), 19, ...10, followed by [ENTER]: " NODE_VERSION
+        NODE_VERSION="22"
     else
         NODE_VERSION="$1"
     fi
@@ -1401,7 +1401,7 @@ install_go() {
 
 is_vulkan_installed() {
     if [ "$(getconf LONG_BIT)" == "64" ]; then
-        if [ -f /usr/lib/aarch64-linux-gnu/libvulkan.so ]; then
+        if [ -f /usr/lib/aarch64-linux-gnu/libvulkan_broadcom.so ]; then
             true
         else
             false
