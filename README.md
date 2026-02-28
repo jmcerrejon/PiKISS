@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1325 hours**
+-   **1330 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,16 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (28/02/26)
+
+· 👌 IMPROVE: Install Node.js 22 when required.
+
+· 👌 IMPROVE: Vulkan detection.
+
+· 👌 IMPROVE: Others > Hangover (Wine) v11.0 for aarch64. Remove armhf support.
+
+· ❌ REMOVE: Emulators > AetherSX2 (no source code available).
 
 ### (17/01/26)
 
