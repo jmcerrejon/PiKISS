@@ -144,13 +144,13 @@ smGames() {
         BStone "Robert W. Stone III, AKA Blake Stone must eliminate Dr. Pyrus Goldfire"
         CaptainS "Save Seville from the evil Torrebruno"
         Carmageddon "Carmageddon is a vehicular combat game"
-        Catacomb "CatacombGL is an open source port of the Catacomb 3D game engine"
+        Catacomb "CatacombGL is an open source port of the Catacomb 3D game"
+        CaveStory "Cave Story (NxEngine Evo) is a Jump-and-run Platformer Game"
         Doom_engine "Crispy engine to play Doom, Heretic, Hexen..."
         Dominatrix "Dominatrix is the open-source game Sin Gold Edition"
         DX-Rebirth "Descent I/II improved engine"
         Dune2 "Dune 2 Legacy"
         Diablo "Take control of a lone hero battling to rid the world of Diablo"
-        Diablo2 "Diablo 2 Lord of Destruction"
         Duke3D "Duke Nukem 3D is a fps game developed by 3D Realms"
         Fallout2 "Fallout 2 is a post-apocalyptic RPG"
         GTA "GTA III/Vice City are open worlds video games part of the GTA franchise"
@@ -204,12 +204,12 @@ smGames() {
         CaptainS) ./scripts/games/captains.sh ;;
         Carmageddon) ./scripts/games/carmageddon.sh ;;
         Catacomb) ./scripts/games/catacombgl.sh ;;
+        CaveStory) ./scripts/games/nxengine-evo.sh ;;
         Doom_engine) ./scripts/games/cdoom.sh ;;
         Dominatrix) ./scripts/games/dominatrix.sh ;;
         DX-Rebirth) ./scripts/games/descent.sh ;;
         Dune2) ./scripts/games/dune2.sh ;;
         Diablo) ./scripts/games/diablo.sh ;;
-        Diablo2) ./scripts/games/diablo2.sh ;;
         Duke3D) ./scripts/games/duke3d.sh ;;
         Fallout2) ./scripts/games/fallout.sh ;;
         GTA) ./scripts/games/gta.sh ;;
