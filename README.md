@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1330 hours**
+-   **1333 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -21,13 +21,13 @@
 
 -   I want to thank for its contributions and help: [foxhound311](https://github.com/foxhound311), [phoenixbyrd](https://github.com/phoenixbyrd), [ptitSeb](https://github.com/ptitSeb) & [Moldytzu](https://github.com/Moldytzu), Kreal (krishenriksen.dk).
 
--   **Patreon Legends:** I want to thank **Bo Martin, Rodney Hester, CraigsBar, Lohann Paterno Coutinho Ferreira & specially James Carroll** for trusting me. ❤️
+-   **Patreons:** I want to thank **Bo Martin, Rodney Hester, CraigsBar, ** for trusting me. ❤️
 
--   Patreons supported me in the past: _Jay Edwards, Tomás Delgado, Jeremy Palmer, cxgr, Willie D Kerner Jr, Matthew Michink, Mathew Gracie, Mike A. Torevell, David J Leto, Josiah McCracken._
+-   Patreons supported me in the past: _Jay Edwards, Tomás Delgado, Jeremy Palmer, cxgr, Willie D Kerner Jr, Matthew Michink, Mathew Gracie, Mike A. Torevell, David J Leto, Josiah McCracken, Lohann Paterno Coutinho Ferreira._
 
 -   Other users who helped me with donations are: _Ben Daghita, Timo Westphal, danoga, Roman Borowinski, Lenny Tua, Dan Suter, nunnz, Pi-Mania, Bernd Titze, Bogdan Moldovan, Thomas Wurgler, Paul Symes, George Kister, Agustino Dominguez, David Leahy, Jonathan Hodges, Mattias True, Sara J Shireman Anderson, Anthony Skiver, Shawn Mullins, Michaël Bortolin, William Norris, Jacob Ehrman, Karsten Schulz, Robert Napier, Patrick Michels, Kevin Hall, Andrew Rynd._
 
--   [raspipc.es](https://www.raspipc.es/) ❤️
+-   James Carroll as Patreon Legend. I want to thank him for his support and trust in me. ❤️
 
 ## 📣 Stay tuned
 
@@ -78,6 +78,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (14/03/26)
+
+· 📦 ADD: Games > Cave story (NxEngine Evo) for aarch64.
 
 ### (28/02/26)
 
