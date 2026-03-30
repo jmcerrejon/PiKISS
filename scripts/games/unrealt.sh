@@ -2,7 +2,7 @@
 #
 # Description : Unreal Tournament 99 (GOTY)
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.0.0 (2/Apr/24)
+# Version     : 1.1.0 (30/Mar/26)
 # Tested      : Raspberry Pi 5
 #
 # HELP	      : https://www.oldunreal.com
@@ -15,9 +15,11 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 
 readonly INSTALL_DIR="$HOME/games/ut99"
 readonly PACKAGES=(libenet7)
-readonly GAME_URL="https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469d/OldUnreal-UTPatch469d-Linux-arm64.tar.bz2"
+readonly VERSION="469e"
+readonly GAME_URL="https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v${VERSION}/OldUnreal-UTPatch${VERSION}-Linux-arm64.tar.bz2"
 readonly SOURCE_CODE_URL="https://github.com/OldUnreal/UnrealTournamentPatches?tab=readme-ov-file#linux-installation"
 readonly VAR_DATA_NAME="UT99"
+readonly LAUNCHER_FILE="$INSTALL_DIR/ut.sh"
 
 uninstall() {
     echo
@@ -47,7 +49,7 @@ generate_icon() {
         cat <<EOF >~/.local/share/applications/ut99.desktop
 [Desktop Entry]
 Name=Unreal Tournament 99
-Exec=${INSTALL_DIR}/SystemARM64/ut-bin
+Exec=${INSTALL_DIR}/ut.sh
 Icon=${INSTALL_DIR}/icon.jpg
 Path=${INSTALL_DIR}
 Type=Application
@@ -55,6 +57,18 @@ Comment=Unreal Tournament 99 is a first-person shooter video game developed by E
 Categories=Game;ActionGame;
 EOF
     fi
+}
+
+create_launcher_script() {
+    cat <<EOF > "$LAUNCHER_FILE"
+#!/bin/bash
+
+export SDL_VIDEODRIVER="\${SDL_VIDEODRIVER:-wayland}"
+export SDL_VIDEO_FULLSCREEN_DISPLAY="\${SDL_VIDEO_FULLSCREEN_DISPLAY:-0}"
+
+./SystemARM64/ut-bin
+EOF
+    chmod +x "$LAUNCHER_FILE"
 }
 
 install_game() {
@@ -75,9 +89,10 @@ install() {
     echo -e "\nInstalling Unreal Tournament data..."
     cd "$INSTALL_DIR" || exit 1
     mkdir -p ./cache ./profiles ./replays ./times
+    create_launcher_script
     generate_icon
     download_data_files
-    echo -e "\nDone!. Go to Menu Games > Unreal Tournament 99 or cd into $INSTALL_DIR/SystemARM64/ and type: ./ut-bin"
+    echo -e "\nDone!. Go to Menu Games > Unreal Tournament 99 or cd into $INSTALL_DIR and type: ./ut.sh"
     exit_message
 }
 
