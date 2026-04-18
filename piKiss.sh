@@ -464,6 +464,7 @@ smDevs() {
         Back "Back to main menu"
         Docker "Docker use OS-level virtualization to deliver containers"
         Gemini-CLI "Brings the power of Gemini directly into your terminal"
+        OpenCode "It helps you write code faster and better"
         QT5 "Free and open-source toolkit for creating GUI cross-platform apps"
         SQLiteStudio "SQLiteStudio is a SQLite database manager"
         TIC80 "TIC-80 is a free fantasy computer for making, playing tiny games"
@@ -477,6 +478,7 @@ smDevs() {
         Back) break ;;
         Docker) ./scripts/devs/docker.sh ;;
         Gemini-CLI) ./scripts/devs/gemini-cli.sh ;;
+        OpenCode) ./scripts/devs/opencode.sh ;;
         QT5) ./scripts/devs/qt5.sh ;;
         SQLiteStudio) ./scripts/devs/sqlitestudio.sh ;;
         TIC80) ./scripts/devs/tic-80.sh ;;
