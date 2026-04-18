@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1336 hours**
+-   **1340 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,10 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+### (18/04/26)
+
+· 📦 ADD: Devs > OpenCode.
 
 ### (30/03/26)
 
