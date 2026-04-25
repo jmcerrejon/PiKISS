@@ -84,7 +84,6 @@ smInfo() {
         Bmark "Benchmark RPi (CPU, MEM, SD Card...)"
         Lynis "Lynis is a security auditing tool."
         TestInet "Test Internet bandwidth"
-        WebMonitor "Web monitor to your RPi"
     )
 
     choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
@@ -97,7 +96,6 @@ smInfo() {
         Bmark) ./scripts/info/bmark.sh ;;
         Lynis) ./scripts/info/lynis.sh ;;
         TestInet) ./scripts/info/test_inet.sh ;;
-        WebMonitor) ./scripts/info/web_monitor.sh ;;
         esac
     done
 }
