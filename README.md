@@ -83,7 +83,11 @@ curl -sSL https://git.io/JfAPE | bash
 
 · 👌 IMPROVE & fix > Info > Webmin.
 
+· 👌 IMPROVE & fix > Info > Lynis auditing tool.
+
 · ❌ REMOVE > Info > Check image updates. Obsolete.
+
+· ❌ REMOVE > Info > Web monitor.
 
 ### (18/04/26)
 
