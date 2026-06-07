@@ -459,8 +459,6 @@ smDevs() {
     options=(
         Back "Back to main menu"
         Docker "Docker use OS-level virtualization to deliver containers"
-        Gemini-CLI "Brings the power of Gemini directly into your terminal"
-        OpenCode "It helps you write code faster and better"
         QT5 "Free and open-source toolkit for creating GUI cross-platform apps"
         SQLiteStudio "SQLiteStudio is a SQLite database manager"
         TIC80 "TIC-80 is a free fantasy computer for making, playing tiny games"
@@ -473,12 +471,32 @@ smDevs() {
         case $choice in
         Back) break ;;
         Docker) ./scripts/devs/docker.sh ;;
-        Gemini-CLI) ./scripts/devs/gemini-cli.sh ;;
-        OpenCode) ./scripts/devs/opencode.sh ;;
         QT5) ./scripts/devs/qt5.sh ;;
         SQLiteStudio) ./scripts/devs/sqlitestudio.sh ;;
         TIC80) ./scripts/devs/tic-80.sh ;;
         VSCode/ium) ./scripts/devs/vscode.sh ;;
+    esac
+done
+}
+
+smAI() {
+    cmd=(dialog --clear --backtitle "$TITLE" --title "[ AI Tools ]" --menu "Select an AI tool from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
+
+    options=(
+        Back "Back to main menu"
+        Gemini-CLI "Brings the power of Gemini directly into your terminal"
+        litert-lm "Language model tools powered by Litert-LM"
+        OpenCode "It helps you write code faster and better"
+    )
+
+    choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+
+    for choice in $choices; do
+        case $choice in
+        Back) break ;;
+        Gemini-CLI) ./scripts/ai/gemini-cli.sh ;;
+        litert-lm) ./scripts/ai/litert-lm.sh ;;
+        OpenCode) ./scripts/ai/opencode.sh ;;
         esac
     done
 }
@@ -555,6 +573,7 @@ while true; do
         Internet "Tweaks related to internet"
         Server "Use your distro as a server"
         Devs "Tools for making your own apps"
+        AI "AI tools and utilities"
         Others "Scripts with others thematics"
         Exit "Exit to the shell"
     )
@@ -572,6 +591,7 @@ while true; do
         Internet) smInternet ;;
         Server) smServer ;;
         Devs) smDevs ;;
+        AI) smAI ;;
         Others) smOthers ;;
         Exit) clear && exit_pikiss ;;
         1)
