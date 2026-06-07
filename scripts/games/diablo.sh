@@ -2,12 +2,13 @@
 #
 # Description : Diablo for Raspberry Pi
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.2.0 (29/Mar/25)
-# Compatible  : Raspberry Pi 3-4 (tested)
+# Version     : 1.2.1 (07/Jun/26)
+# Tested      : Raspberry Pi 5
 #
 # Help		  : https://github.com/diasurgical/devilutionX/
 #
-# shellcheck source=../helper.sh
+# shellcheck disable=SC1094
+# shellcheck disable=SC1091
 . ./scripts/helper.sh || . ../helper.sh || wget -q 'https://github.com/jmcerrejon/PiKISS/raw/master/scripts/helper.sh'
 clear
 check_board || { echo "Missing file helper.sh. I've tried to download it for you. Try to run the script again." && exit 1; }
@@ -15,7 +16,7 @@ check_board || { echo "Missing file helper.sh. I've tried to download it for you
 readonly INSTALL_DIR="$HOME/games"
 readonly PACKAGES=(p7zip libsdl2-ttf-2.0-0 libsdl2-mixer-2.0-0)
 readonly BINARY_URL="https://github.com/diasurgical/devilutionX/releases/download/1.3.0/devilutionx-linux-armhf.zip"
-readonly BINARY_64_BITS_URL="https://github.com/diasurgical/DevilutionX/releases/download/1.5.4/devilutionx-linux-aarch64.tar.xz"
+readonly BINARY_64_BITS_URL="https://github.com/diasurgical/DevilutionX/releases/download/1.5.5/devilutionx-linux-aarch64.tar.xz"
 readonly SHAREWARE_URL="https://github.com/diasurgical/devilutionx-assets/releases/latest/download/spawn.mpq"
 readonly VAR_DATA_NAME="DIABLO_1"
 readonly DIABLO1_DATA_URL=$(extract_path_from_file "$VAR_DATA_NAME")
