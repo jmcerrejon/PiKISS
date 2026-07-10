@@ -161,6 +161,7 @@ smGames() {
         OpenFodder "OpenFodder is a free reimplementation of Cannon Fodder games."
         OpenJK "Engine for Star Wars Jedi Knight: Jedi Academy (SP & MP)"
         OpenMW "The Elders Scroll III: Morrowind is an open-world RPG"
+        OpenRA "Open-source reimplementation of the classic C&C strategy games"
         OpenRCT2 "Open Source re-implementation of RollerCoaster Tycoon 2"
         OpenSPlex "OpenSupaplex reimplementation of the original 90's game"
         OpenXCom "Open-source clone of UFO: Enemy Unknown"
@@ -220,6 +221,7 @@ smGames() {
         OpenFodder) ./scripts/games/openfodder.sh ;;
         OpenJK) ./scripts/games/openjk.sh ;;
         OpenMW) ./scripts/games/openmw.sh ;;
+        OpenRA) ./scripts/games/openra.sh ;;
         OpenRCT2) ./scripts/games/openrct2.sh ;;
         OpenSPlex) ./scripts/games/supaplex.sh ;;
         OpenXCom) ./scripts/games/openxcom.sh ;;
