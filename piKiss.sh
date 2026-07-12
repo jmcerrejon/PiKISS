@@ -125,9 +125,6 @@ smTweaks() {
 }
 
 smGames() {
-    if is_userspace_64_bits; then
-        show_dialog_only_32_bits "2Ship2Harkinian, Abbaye, AVP, Arx, Blood, Blake Stone, Captain S, Carmageddon, Catacomb, CaveStory, Doom_engine, Dominatrix (Sin), DX-Rebirth, Dune2, Diablo, Duke Nukem 3D, Fallout 2, GTA, GemRB, Half Life, Hexen 2, Hurrican, OpenMW, OpenClaw, OpenFodder, OpenBor, OpenJK, Portal, Quake I-II-III, RVGL (Re-Volt), SMario64, Serious Sam, Shadow Warriors, SpaceCadetPinball, OpenXCom, Unreal Tournament, VVVVVV, WipeOut"
-    fi
     cmd=(dialog --clear --backtitle "$TITLE" --title "[ Games ]" --menu "Select game from the list:" "$wHEIGHT" "$wWIDTH" "$wHEIGHT")
 
     options=(
@@ -484,7 +481,6 @@ smAI() {
 
     options=(
         Back "Back to main menu"
-        Gemini-CLI "Brings the power of Gemini directly into your terminal"
         litert-lm "Language model tools powered by Litert-LM"
         OpenCode "It helps you write code faster and better"
     )
@@ -494,7 +490,6 @@ smAI() {
     for choice in $choices; do
         case $choice in
         Back) break ;;
-        Gemini-CLI) ./scripts/ai/gemini-cli.sh ;;
         litert-lm) ./scripts/ai/litert-lm.sh ;;
         OpenCode) ./scripts/ai/opencode.sh ;;
         esac
