@@ -2,7 +2,7 @@
 #
 # Description : Personal script to tune my custom Raspberry Pi OS
 # Author      : Jose Cerrejon Gonzalez (ulysess@gmail_dot._com)
-# Version     : 1.3.8 (22/Nov/23)
+# Version     : 1.3.9 (13/Jul/26)
 # Tested      : Raspberry Pi 5
 # TODO        : https://itnext.io/linux-setlocale-lc-all-cannot-change-locale-en-us-utf8-and-cyrillic-symbols-2d846fe3c166
 #
@@ -41,23 +41,45 @@ enableZRAM() {
 #!/bin/bash
 
 CORES=$(nproc --all)
-modprobe zram num_devices=${CORES}
+[ "${CORES}" -lt 1 ] && CORES=1
 swapoff -a
-SIZE=$(( ($(free | grep -e "^Mem:" | awk '{print $2}') / ${CORES}) * 1024 ))
-CORE=0
-while [ ${CORE} -lt ${CORES} ]; do
-  echo ${SIZE} > /sys/block/zram${CORE}/disksize
-  mkswap /dev/zram${CORE} > /dev/null
-  swapon -p 5 /dev/zram${CORE}
-  (( CORE += 1 ))
+modprobe -r zram 2>/dev/null || true
+modprobe zram num_devices=${CORES} 2>/dev/null || true
+DEV_COUNT=$(find /sys/block -maxdepth 1 -type d -name 'zram*' | wc -l)
+[ "${DEV_COUNT}" -lt 1 ] && DEV_COUNT=1
+SIZE=$(( ($(free | grep -e "^Mem:" | awk '{print $2}') / ${DEV_COUNT}) * 1024 ))
+for SYS_BLOCK in /sys/block/zram*; do
+  [ -d "${SYS_BLOCK}" ] || continue
+  CORE=${SYS_BLOCK##*zram}
+  DEV="/dev/zram${CORE}"
+  [ -b "${DEV}" ] || continue
+  swapoff "${DEV}" 2>/dev/null || true
+  echo 1 > "${SYS_BLOCK}/reset" 2>/dev/null || true
+  echo "${SIZE}" > "${SYS_BLOCK}/disksize" || continue
+  mkswap -f "${DEV}" > /dev/null
+  swapon -p 5 "${DEV}"
 done
 EOF
     chmod +x /tmp/zram
     sudo mv /tmp/zram /etc/zram
     sudo /etc/zram
-    if [ "$(grep -c zram /etc/rc.local)" -eq 0 ]; then
-        sudo sed -i 's_^exit 0$_/etc/zram\nexit 0_' /etc/rc.local
-    fi
+
+    cat <<\EOF >/tmp/zram-pikiss.service
+[Unit]
+Description=Configure zram swap devices for PiKISS
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/etc/zram
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+EOF
+    sudo mv /tmp/zram-pikiss.service /etc/systemd/system/zram-pikiss.service
+    sudo systemctl daemon-reload
+    sudo systemctl enable --now zram-pikiss.service >/dev/null 2>&1
 }
 
 echo
