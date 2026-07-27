@@ -548,7 +548,11 @@ show_dialog() {
 }
 
 make_desktop_entry() {
-    if [[ ! -e "$HOME"/.local/share/applications/pikiss.desktop ]]; then
+    if [[ ! -e $HOME/.local/share/applications ]]; then
+        exit 0
+    fi
+
+    if [[ ! -e $HOME/.local/share/applications/pikiss.desktop ]]; then
         cat <<EOF >~/.local/share/applications/pikiss.desktop
 [Desktop Entry]
 Name=PiKISS
