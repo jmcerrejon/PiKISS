@@ -79,6 +79,10 @@ curl -sSL https://git.io/JfAPE | bash
 
 ### [ ChangeLog (dd/mm/yy)]
 
+### (10/07/26)
+
+· 📦 ADD: Games > OpenRA for aarch64.
+
 ### (07/06/26)
 
 · 📦 ADD: AI section with: gemini-cli, litert-lm, opencode.
