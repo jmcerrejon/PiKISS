@@ -13,7 +13,7 @@
 
 ## ⏰ Estimated hours of work so far
 
--   **1348 hours**
+-   **1356 hours**
 
 ## 💰 Total amount donated by users & sponsors
 
@@ -78,6 +78,12 @@ curl -sSL https://git.io/JfAPE | bash
 ![piKiss_04](screenshots/pikiss_twisterOS_04.png)
 
 ### [ ChangeLog (dd/mm/yy)]
+
+## (03/09/26)
+
+· 👌 IMPROVE > Emulators > Dolphin Wii & Gamecube Emulator.
+
+· ❌ REMOVE > AI > gemini-cli.
 
 ### (07/06/26)
 

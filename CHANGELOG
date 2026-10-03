@@ -1,5 +1,11 @@
 # Changelog (dd/mm/yy)
 
+## (03/09/26)
+
+· 👌 IMPROVE > Emulators > Dolphin Wii & Gamecube Emulator.
+
+· ❌ REMOVE > AI > gemini-cli.
+
 ## (07/06/26)
 
 · 📦 ADD: AI section with: gemini-cli, litert-lm, opencode.
